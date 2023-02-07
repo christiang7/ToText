@@ -1,0 +1,48 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+
+====== ttex ======
+
+[*] ttex 
+	[*] Integration ins [[GedankenspeicherCoding:ttn]] Programm
+	[*] Korrektur der Namen mit einbauen
+Verschiebung von tex Dateien in einen gesammelten Ordner
+[*] **[[../ttex]]**
+Text creation time:
+[[Zettelkasten:2021:04:29]]
+Modification time:
+[[Zettelkasten:2021:04:22]]
+
+''  noweb.py -Rttex ttex.txt > ttex && chmod u+x ttex && echo 'fertig'''
+
+
+{{{code: lang="awk" linenumbers="True"
+<<ttex>>=
+#!/bin/bash
+File=$(echo "$1" | sed 's/ /_/g' | sed 's/:/;/g'| sed -e "s/'/_/g" | sed 's/\"//g')
+#f=$(basename "$1")
+mv "$1" "$File"
+filename=$(basename "$File" .tex)
+f=$(basename "$1" .tex)
+folder="$filename"-tex
+mkdir "$folder" #
+mv "$1".pdf "$filename".pdf
+mv "$1".log "$filename".log
+mv "$1".aux "$filename".aux
+mv "$1".synctex.gz "$filename".synctex.gz
+mv "$filename".* "$folder"/ #
+#touch "$folder".txt #
+echo "Content-Type: text/x-zim-wiki" >> "$folder".txt
+echo "Wiki-Format: zim 0.6" >> "$folder".txt
+echo "[*] @TEX **$folder**" >> "$folder".txt #
+echo "**[[./$File]]**" >> "$folder".txt 
+echo "**[[./$filename.pdf]]**" >> "$folder".txt 
+echo "Text creation time:" >> "$folder".txt
+date +"[[Zettelkasten:%Y:%m:%d]]">> "$folder".txt
+echo "Modification time:" >> "$folder".txt
+date +'[[Zettelkasten:%Y:%m:%d]]' -r "$folder"/"$File" >> "$folder".txt
+ln -s "$folder"/"$File" "$File"
+ln -s "$folder"/"$filename".pdf "$filename".pdf
+#kate "$folder".txt 2>/dev/null &
+@
+}}}

@@ -1,0 +1,24 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2022-10-18T15:24:47+02:00
+
+===== extract-music =====
+Created Dienstag [[Zettelkasten:2022:10:18]]
+Backlink [[GedankenspeicherCoding]]
+[[../]]
+[*] **extract-music**  >  2277-11-11
+
+  ''noweb.py -Rextract-music.sh extract-music.txt > extract-music.sh && chmod u+x extract-music.sh && ln -sf /home/christian/Gedankenspeicher/Gedankenspeicherwiki/Zettelkasten/Gedankenwanderung/Programme/extract-music.sh ~/.local/bin/extract-music.sh && echo 'fertig'''
+
+
+{{{code: lang="ini" linenumbers="True"
+<<extract-music.sh>>=
+#! /bin/bash
+echo "$1"
+website="$1"
+text=$(yt-dlp --get-description ${website})
+yt-dlp --no-mtime --exec "ttn {} ${website}" -o "~/Musik/Favorieten-open/%(title)s.%(ext)s" -f 251 -i "${website}"
+sleep 5
+# xterm -e "echo [HREF] && yt-dlp --no-mtime --exec 'ttn {} [HREF]' -o '~/Musik/Favorieten-open/%(title)s.%(ext)s' -f 251 -i [HREF] && sleep 5"
+@
+}}}

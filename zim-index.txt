@@ -1,0 +1,19 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2022-06-30T02:09:49+02:00
+
+===== zim-index =====
+Created Donnerstag [[2022:06:30]]
+Backlink [[GedankenspeicherCoding]]
+[[../]]
+[*] **zim-index**  >  2277-11-11
+
+  ''noweb.py -Rzim-index.sh zim-index.txt > zim-index.sh && chmod u+x zim-index.sh && ln -sf /home/christian/Gedankenspeicher/Gedankenspeicherwiki/Zettelkasten/Gedankenwanderung/Programme/zim-index.sh ~/.local/bin/zim-index.sh && echo 'fertig'''
+
+
+{{{code: lang="ini" linenumbers="True"
+<<zim-index.sh>>=
+#! /bin/bash
+sleep 20 && ~/Programme/zim/zim.py --index Gedankenspeicherwiki
+@
+}}}

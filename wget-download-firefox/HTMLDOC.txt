@@ -1,0 +1,11 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2021-05-03T10:49:35+02:00
+
+====== HTMLDOC ======
+Created Montag [[Zettelkasten:2021:05:03]]
+Backlink [[Zettelkasten:2021:05:03]]
+[*] ** HTMLDOC **
+HTMLDOC is a program that reads HTML and Markdown source files or web pages and generates corresponding EPUB, HTML, PostScript, or PDF files with an optional table of contents.
+tags: linux,macos,software,unix,windows
+https://www.msweet.org/htmldoc/index.html

@@ -1,0 +1,69 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2022-06-14T13:13:00+02:00
+
+===== ttrename =====
+Created Dienstag [[Zettelkasten:2022:06:14]]
+Backlink [[GedankenspeicherCoding]]
+[[../]]
+[*] **ttrename**  >2277-11-11
+	[ ] Anpassung auch für Ordner >2277-11-11 
+	[ ] Anpassung bei beliebigen Dateinamen mit doppelten oder keiner Dateiendung >2277-11-11 
+		[ ] mittels file und cut kann man die Dateiendung herausfinden und ansetzen file >2277-11-11  Screenshot_2022-07-26_at_22-51-47_The_mountain_landscape_-_Ferdinand_Engelműller_-_Google_Arts_\&_Culture.png | cut -d ' ' -f 2
+		[*] https://www.geeksforgeeks.org/how-to-find-out-file-types-in-linux/ | How to Find Out File Types in Linux - GeeksforGeeks
+
+[*] WEB Zenity - Create GUI Dialog Boxes In Bash Scripts - OSTechNix 
+ https://ostechnix.com/zenity-create-gui-dialog-boxes-in-bash-scripts/
+
+  ''noweb.py -Rttrename ttrename.txt > ttrename && chmod u+x ttrename && ln -sf /home/christian/Gedankenspeicher/Gedankenspeicherwiki/Zettelkasten/Gedankenwanderung/Programme/ttrename ~/.local/bin/ttrename && echo 'fertig'''
+
+{{{code: lang="awk" linenumbers="True"
+<<ttrename>>=
+#!/bin/bash
+
+#case of input file is the original file
+File=$(echo "$1" | sed 's/ /_/g' | sed 's/:/;/g'| sed -e "s/'/_/g" | sed 's/\"//g')
+f=$(basename "$1")
+extens=${f##*.}
+filename=${f%.*}
+
+# case of input is txt file
+File2=$(basename "$1")
+extens2=${File2##*.}
+filename2=${File2%.*} #only the filename, here it is the original file
+extens3=${filename2##*.}
+
+
+if [[ $extens2 == txt ]]
+then
+	Newname=$(zenity --entry \
+       --width 500 \
+       --title "Type new filename" \
+       --text "Enter new filename" \
+       --entry-text "${filename2%.*}")
+    Newname=$(echo "$Newname" | sed 's/ /_/g' | sed 's/:/;/g'| sed -e "s/'/_/g" | sed 's/\"//g')
+    #sed -i "3 s/$filename2/$Newname."$extens3"/g" "$File".txt
+		#sed -i "4 s/$filename2/$Newname."$extens3"/g" "$File".txt
+    mv "$filename2" "$Newname"."$extens3"
+    mv "$filename2".png "$Newname"."$extens3".png
+    mv "$File2" "$Newname"."$extens3".txt
+    ttncc "$filename2" "$Newname"."$extens3" 
+else 
+	Newname=$(zenity --entry \
+       --width 500 \
+       --title "Type new filename" \
+       --text "Enter new filename" \
+       --entry-text "$filename")
+    Newname=$(echo "$Newname" | sed 's/ /_/g' | sed 's/:/;/g'| sed -e "s/'/_/g" | sed 's/\"//g')
+    #sed -i "3 s/$f/$Newname."$extens"/g" "$File".txt
+		#sed -i "4 s/$f/$Newname."$extens"/g" "$File".txt
+    mv "$f" "$Newname"."$extens"
+    mv "$f".png "$Newname"."$extens".png
+    mv "$File".txt "$Newname"."$extens".txt
+    ttncc "$f" "$Newname"."$extens" 
+fi
+
+
+
+@
+}}}

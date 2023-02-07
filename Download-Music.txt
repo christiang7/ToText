@@ -1,0 +1,23 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2022-10-18T20:08:48+02:00
+
+===== Download-Music =====
+Created Dienstag [[Zettelkasten:2022:10:18]]
+Backlink [[GedankenspeicherCoding]]
+[[../]]
+[*] **Download-Music**  >  2277-11-11
+
+  ''noweb.py -RDownload-Music.sh Download-Music.txt > Download-Music.sh && chmod u+x Download-Music.sh && ln -sf /home/christian/Gedankenspeicher/Gedankenspeicherwiki/Zettelkasten/Gedankenwanderung/Programme/Download-Music.sh ~/.local/bin/Download-Music.sh && echo 'fertig'''
+
+{{{code: lang="ini" linenumbers="True"
+<<Download-Music.sh>>=
+#! /bin/bash
+echo "$1"
+website="$1"
+text=$(yt-dlp --get-description ${website})
+yt-dlp --no-mtime --exec "ttn {} ${website}" -o "~/Musik/Favorieten-open/%(title)s.%(ext)s" --embed-thumbnail --format best --no-mtime --audio-quality 0 -i "${website}"
+sleep 5
+# xterm -e "yt-dlp --exec 'ttn {} [HREF] ' -o '~/Musik/Favorieten-open/%(title)s.%(ext)s' --embed-thumbnail --format best --no-mtime --audio-quality 0 -i [HREF]"
+@
+}}}

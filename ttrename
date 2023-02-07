@@ -1,0 +1,46 @@
+#!/bin/bash
+
+#case of input file is the original file
+File=$(echo "$1" | sed 's/ /_/g' | sed 's/:/;/g'| sed -e "s/'/_/g" | sed 's/\"//g')
+f=$(basename "$1")
+extens=${f##*.}
+filename=${f%.*}
+
+# case of input is txt file
+File2=$(basename "$1")
+extens2=${File2##*.}
+filename2=${File2%.*} #only the filename, here it is the original file
+extens3=${filename2##*.}
+
+
+if [[ $extens2 == txt ]]
+then
+	Newname=$(zenity --entry \
+       --width 500 \
+       --title "Type new filename" \
+       --text "Enter new filename" \
+       --entry-text "${filename2%.*}")
+    Newname=$(echo "$Newname" | sed 's/ /_/g' | sed 's/:/;/g'| sed -e "s/'/_/g" | sed 's/\"//g')
+    #sed -i "3 s/$filename2/$Newname."$extens3"/g" "$File".txt
+		#sed -i "4 s/$filename2/$Newname."$extens3"/g" "$File".txt
+    mv "$filename2" "$Newname"."$extens3"
+    mv "$filename2".png "$Newname"."$extens3".png
+    mv "$File2" "$Newname"."$extens3".txt
+    ttncc "$filename2" "$Newname"."$extens3"
+else
+	Newname=$(zenity --entry \
+       --width 500 \
+       --title "Type new filename" \
+       --text "Enter new filename" \
+       --entry-text "$filename")
+    Newname=$(echo "$Newname" | sed 's/ /_/g' | sed 's/:/;/g'| sed -e "s/'/_/g" | sed 's/\"//g')
+    #sed -i "3 s/$f/$Newname."$extens"/g" "$File".txt
+		#sed -i "4 s/$f/$Newname."$extens"/g" "$File".txt
+    mv "$f" "$Newname"."$extens"
+    mv "$f".png "$Newname"."$extens".png
+    mv "$File".txt "$Newname"."$extens".txt
+    ttncc "$f" "$Newname"."$extens"
+fi
+
+
+

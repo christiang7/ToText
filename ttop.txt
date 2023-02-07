@@ -1,0 +1,23 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2022-03-15T17:09:20+01:00
+
+===== ttop =====
+Created Dienstag [[Zettelkasten:2022:03:15]]
+Backlink [[GedankenspeicherCoding]]
+[[../]]
+[*] **ttop**  >  2277-11-11
+
+Öffne die annotierte Datei
+
+  ''noweb.py -Rttop ttop.txt > ttop && chmod u+x ttop && echo 'fertig'''
+
+{{{code: lang="awk" linenumbers="True"
+<<ttop>>=
+#!/bin/bash
+f=$(basename "$1")
+extens=${f##*.} #only the extension of the file
+filename=${f%.*} #only the filename
+xdg-open "$filename" 2>/dev/null &
+@
+}}}

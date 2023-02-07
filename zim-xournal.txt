@@ -1,0 +1,45 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2022-06-29T13:09:44+02:00
+
+===== zim-xournal =====
+Created Mittwoch [[Zettelkasten:2022:06:29]]
+Backlink [[CodeFabrik:GedankenspeicherCoding]]
+[[../]]
+[*] **zim-xournal**  >  2277-11-11
+	[*] Dazu eine Abfrage vom Dateinamen siehe [[ttrename]]
+
+
+  ''noweb.py -Rzim-xournal.sh zim-xournal.txt > zim-xournal.sh && chmod u+x zim-xournal.sh && ln -sf /home/christian/Gedankenspeicher/Gedankenspeicherwiki/Zettelkasten/ZetteL/CodeFabrik/GedankenspeicherCoding/zim-xournal.sh ~/.local/bin/zim-xournal.sh && echo 'fertig'''
+
+{{{code: lang="ini" linenumbers="True"
+<<zim-xournal.sh>>=
+#!/bin/bash
+#if zenity --question --text="Möchten Sie dieses Programm: Xournalpp öffnen?"
+#then 
+
+File=$(echo "$1" | sed 's/ /_/g' | sed 's/:/;/g'| sed -e "s/'/_/g" | sed 's/\"//g')
+filetxt=${File%.*}
+filetxtname=$(basename "$File" .txt)
+filedate=$(date +"%Y-%m-%d")
+if [[ $2 == Notiz ]]
+then
+	additontext="$2"
+else
+	additontext="$2-$filetxtname"
+fi
+Newname=$(zenity --entry \
+       --width 500 \
+       --title "Type new filename" \
+       --text "Enter new filename" \
+       --entry-text "$filedate-$additontext")
+if [ ! "$Newname" = "" ]; 
+then
+	mkdir -p "$filetxt"
+	cd "$filetxt"
+	filename=$(echo "$Newname" | sed 's/ /_/g' | sed 's/:/;/g'| sed -e "s/'/_/g" | sed 's/\"//g')
+	xournalpp "$filename".xopp && ttn "$filename".xopp 
+fi
+
+@
+}}}

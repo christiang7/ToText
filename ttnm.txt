@@ -1,0 +1,299 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2021-05-03T14:21:42+02:00
+
+===== ttnm =====
+[*] **ttnm**  
+Angelegt Montag [[Zettelkasten:2021:05:03]]
+Backlink [[GedankenspeicherCoding]]
+
+  ''noweb.py -Rttnm ttnm.txt > ttnm && chmod u+x ttnm && echo 'fertig'''
+
+{{{code: lang="awk" linenumbers="True"
+<<ttnm>>=
+#!/usr/bin/env bash
+folder=$(date +"/home/christian/Gedankenspeicher/Gedankenspeicherwiki/Zettelkasten/%Y/%m/%d" -r "$1")
+mkdir -p $folder
+f=$(basename "$1")
+extens=${f##*.}
+name=$(basename "$f" .$extens)
+Newname=$(zenity --entry \
+       --width 500 \
+       --title "Den Dateinamen ändern?" \
+       --text "Den Dateinamen ändern?" \
+       --entry-text "$name")
+File=$(echo "$Newname"."$extens" | sed 's/ /_/g' | sed 's/:/;/g'| sed -e "s/'/_/g" | sed 's/\"//g'|  sed 's/&/n/g' | sed 's/\///g' | sed 's/|//g' | sed 's/\[/(/g' | sed 's/\]/)/g' | sed 's/@/at/g')
+mv "$1" "$File"
+mv "$1".png "$File".png
+mv "$1".avif "$File".avif
+mv "$1".txt "$File".txt
+#File=$(echo "$1" | sed 's/ /_/g' | sed 's/:/;/g' | sed -e "s/'/_/g" | sed 's/\"//g' | sed 's/&/n/g' | sed 's/\///g' | sed 's/|//g' | sed 's/\[/(/g' | sed 's/\]/)/g')
+#f=$(basename "$1")
+#mv "$1" "$File"
+f=$(basename "$File")
+extens=${f##*.}
+source=$(zenity --entry \
+       --width 500 \
+       --title "Noch eine Quelle hinzufügen?" \
+       --text "Noch eine Quelle hinzufügen?" \
+       --entry-text "$2")
+tags=$(zenity --entry \
+       --width 500 \
+       --title "Noch Schlagwörter hinzufügen?" \
+       --text "Noch Schlagwörter hinzufügen?" \
+       --entry-text "$3")
+additiontext=$(zenity --entry \
+       --width 500 \
+       --title "Noch etwas hinzufügen?" \
+       --text "Noch etwas hinzufügen?" \
+       --entry-text "$4")
+function Moving(){
+	mv "$f" $folder/"$f"
+	mv "$File".txt $folder/"$File".txt
+	echo "cd $folder"
+	#kate $folder/"$File".txt 2>/dev/null &
+}
+
+function Wikiprev(){
+	touch "$File".txt
+	echo "Content-Type: text/x-zim-wiki" >> "$File".txt
+	echo "Wiki-Format: zim 0.6" >> "$File".txt
+}
+
+function Timestamps(){
+	echo "Text creation time: $(date +"[[Zettelkasten:%Y:%m:%d]]")" >> "$File".txt
+	echo "Modification time: $(date +"[[Zettelkasten:%Y:%m:%d]]" -r "$File")" >> "$File".txt
+}
+
+#if [[ -f "$File".txt ]] 
+#then
+#		Moving
+#else
+if [[ pdf == $extens ]]
+	then
+	#echo pdf
+	#ttpdfm "$f" "$source" "$tags" "$additiontext"
+	####
+	foldermonth=$(date +"/home/christian/Gedankenspeicher/Gedankenspeicherwiki/Zettelkasten/%Y/%m" -r "$f")
+	calendarfile=$(date +"%d" -r "$f")
+	calendarfile=$calendarfile.txt
+	if [[ ! -e "$foldermonth"/"$calendarfile" ]] 
+	then
+	touch "$foldermonth"/"$calendarfile"
+	echo "Content-Type: text/x-zim-wiki" >> "$foldermonth"/"$calendarfile"
+	echo "Wiki-Format: zim 0.6" >> "$foldermonth"/"$calendarfile"
+	date +"===== %A %d %b %Y =====" -r "$f" >> "$foldermonth"/"$calendarfile"
+	date +"[[Zettelkasten:%Y:Week %W|Week %W]]" -r "$f" >> "$foldermonth"/"$calendarfile"
+	date +"[[Zettelkasten:%Y:%m]]" -r "$f" >> "$foldermonth"/"$calendarfile"
+	echo -e "[[../]]"  >> "$foldermonth"/"$calendarfile"
+	date +"[*] ** %A %d %b %Y ** >  2277-11-11"  -r "$f" >> "$foldermonth"/"$calendarfile"
+	fi
+	if [[ ! -e "$File".txt ]] 
+	then
+	touch "$File".txt
+	mv "$File".txt "$folder"/"$File".txt
+	echo "Content-Type: text/x-zim-wiki" >> "$folder"/"$File".txt
+	echo "Wiki-Format: zim 0.6" >> "$folder"/"$File".txt
+	echo "[*] @ARTIKEL $tags **[[../$f]] $source**" >> "$folder"/"$File".txt
+	echo "Text creation time: $(date +"[[Zettelkasten:%Y:%m:%d]]")" >> "$folder"/"$File".txt
+	echo "Modification time: $(date +"[[Zettelkasten:%Y:%m:%d]]" -r "$File")" >> "$folder"/"$File".txt
+	echo -e "[[../]]\n" >> "$folder"/"$File".txt
+	echo -e "$additiontext\n" >> "$folder"/"$File".txt
+	echo -e "{{../$File.avif?width=750}}\n" >> "$folder"/"$File".txt
+	pdfinfo "$f" | grep Pages >> "$folder"/"$File".txt
+	pdftotext -nopgbrk -enc UTF-8 -f 1 -l 1 "$f" ->> "$folder"/"$File".txt
+	else
+	mv "$File".txt "$folder"/"$File".txt
+	sed -i "9 i$additiontext" "$folder"/"$File".txt
+	echo -e "\n" >> "$folder"/"$File".txt
+	sed -i "13 i{{../$File.avif?width=750}}" "$folder"/"$File".txt
+	echo -e "\n" >> "$folder"/"$File".txt
+	fi
+	pdftoppm -png -singlefile "$File" "$File"
+  convert "$File".png -resize 4000x4000 "$File".avif
+	#pdftoppm -r 90 -png -singlefile "$File" "$folder"/"$File"
+	#convert "$folder"/"$File".png -resize 1200x1200 -quality 97 "$folder"/"$File"-px.png
+  mv "$File".avif "$folder"/"$File".avif
+  rm "$File".png
+	echo -e "\n[[./$f]] -- [[+$f]]" >> "$foldermonth"/"$calendarfile"
+	echo -e "{{$File.avif?width=750}}" >> "$foldermonth"/"$calendarfile"
+	echo "cd $folder"
+	#echo "$foldermonth"
+	#echo "$foldermonth/$calendarfile"
+	mv "$f" $folder/"$f"
+	#kate $folder/"$File".txt 2>/dev/null &
+elif [[ jpg == $extens || png == $extens || webp == $extens || jpeg == $extens || avif == $extens || svg == $extens ]] 
+then
+	#echo pic
+	foldermonth=$(date +"/home/christian/Gedankenspeicher/Gedankenspeicherwiki/Zettelkasten/%Y/%m" -r "$f")
+	calendarfile=$(date +"%d" -r "$f")
+	calendarfile=$calendarfile.txt
+	if [[ ! -e "$foldermonth"/"$calendarfile" ]] 
+	then
+	touch "$foldermonth"/"$calendarfile"
+	echo "Content-Type: text/x-zim-wiki" >> "$foldermonth"/"$calendarfile"
+	echo "Wiki-Format: zim 0.6" >> "$foldermonth"/"$calendarfile"
+	date +"===== %A %d %b %Y =====" -r "$f" >> "$foldermonth"/"$calendarfile"
+	date +"[[Zettelkasten:%Y:Week %W|Week %W]]" -r "$f" >> "$foldermonth"/"$calendarfile"
+	date +"[[Zettelkasten:%Y:%m]]" -r "$f" >> "$foldermonth"/"$calendarfile"
+	echo -e "[[../]]"  >> "$foldermonth"/"$calendarfile"
+	date +"[*] ** %A %d %b %Y ** >  2277-11-11"  -r "$f" >> "$foldermonth"/"$calendarfile"
+	fi
+	if [[ ! -e "$File".txt ]] 
+	then
+	touch "$File".txt
+	mv "$File".txt "$folder"/"$File".txt
+	echo "Content-Type: text/x-zim-wiki" >> "$folder"/"$File".txt
+	echo "Wiki-Format: zim 0.6" >> "$folder"/"$File".txt
+	echo "[*] @BILD $tags **[[../$f]] $source**" >> "$folder"/"$File".txt
+	echo "Text creation time: $(date +"[[Zettelkasten:%Y:%m:%d]]")" >> "$folder"/"$File".txt
+	echo "Modification time: $(date +"[[Zettelkasten:%Y:%m:%d]]" -r "$f")" >> "$folder"/"$File".txt
+	echo -e "[[../]]\n" >> "$folder"/"$File".txt
+	echo "{{../$f?width=750}}" >> "$folder"/"$File".txt
+	fi
+	mv "$File".txt "$folder"/"$File".txt
+	echo "$additiontext" >> "$folder"/"$File".txt
+	echo -e "\n[[+$f]]" >> "$foldermonth"/"$calendarfile"
+	echo -e "{{$f?width=750}}" >> "$foldermonth"/"$calendarfile"
+	echo "cd $folder"
+	#echo "$foldermonth"
+	#echo "$foldermonth/$calendarfile"
+	mv "$f" $folder/"$f"
+	#kate $folder/"$File".txt 2>/dev/null &
+elif [[ mp4 == $extens || mov == $extens || mkv == $extens || flv = $extens ]] 
+then
+	#Wikiprev
+	#echo "[*] @VIDEO $tags **[[../$f]]** $source" >> "$File".txt
+	#Timestamps
+	#echo -e "[[../]]\n$additiontext\n" >> "$File".txt
+	#Moving
+	
+	foldermonth=$(date +"/home/christian/Gedankenspeicher/Gedankenspeicherwiki/Zettelkasten/%Y/%m" -r "$f")
+	calendarfile=$(date +"%d" -r "$f")
+	calendarfile=$calendarfile.txt
+	if [[ ! -e "$foldermonth"/"$calendarfile" ]] 
+	then
+	touch "$foldermonth"/"$calendarfile"
+	echo "Content-Type: text/x-zim-wiki" >> "$foldermonth"/"$calendarfile"
+	echo "Wiki-Format: zim 0.6" >> "$foldermonth"/"$calendarfile"
+	date +"===== %A %d %b %Y =====" -r "$f" >> "$foldermonth"/"$calendarfile"
+	date +"[[Zettelkasten:%Y:Week %W|Week %W]]" -r "$f" >> "$foldermonth"/"$calendarfile"
+	date +"[[Zettelkasten:%Y:%m]]" -r "$f" >> "$foldermonth"/"$calendarfile"
+	echo -e "[[../]]"  >> "$foldermonth"/"$calendarfile"
+	date +"[*] ** %A %d %b %Y ** >  2277-11-11"  -r "$f" >> "$foldermonth"/"$calendarfile"
+	fi
+	if [[ ! -e "$File".txt ]] 
+	then
+	touch "$File".txt
+	mv "$File".txt "$folder"/"$File".txt
+	echo "Content-Type: text/x-zim-wiki" >> "$folder"/"$File".txt
+	echo "Wiki-Format: zim 0.6" >> "$folder"/"$File".txt
+	echo "[*] @VIDEO $tags **[[../$f]] $source**" >> "$folder"/"$File".txt
+	echo "Text creation time: $(date +"[[Zettelkasten:%Y:%m:%d]]")" >> "$folder"/"$File".txt
+	echo "Modification time: $(date +"[[Zettelkasten:%Y:%m:%d]]" -r "$File")" >> "$folder"/"$File".txt
+	echo -e "[[../]]\n" >> "$folder"/"$File".txt
+	echo -e "$additiontext\n" >> "$folder"/"$File".txt
+	ffmpeg -loglevel quiet -ss 2 -i "$File"  -t 1 -f image2 "$folder"/"$File".png
+	convert "$folder"/"$File".png -resize 1200x1200 -quality 97 "$folder"/"$File"-px.png
+  mv "$folder"/"$File"-px.png "$folder"/"$File".png
+	echo -e "{{../$File.png?width=750}}\n" >> "$folder"/"$File".txt
+	ffmpeg -loglevel quiet -ss 2 -i "$File"  -t 1 -f image2 "$folder"/"$File".png
+	else
+	mv "$File".txt "$folder"/"$File".txt
+	sed -i "9 i$additiontext" "$folder"/"$File".txt
+	#echo -e "\n" >> "$folder"/"$File".txt
+	#sed -i "13 i{{../$File.png?width=750}}" "$folder"/"$File".txt
+	#echo -e "\n" >> "$folder"/"$File".txt
+	mv "$File".png "$folder"/"$File".png
+	fi
+	echo -e "\n[[./$f]] -- [[+$f]]" >> "$foldermonth"/"$calendarfile"
+	echo -e "{{$File.png?width=750}}" >> "$foldermonth"/"$calendarfile"
+	echo "cd $folder"
+	#echo "$foldermonth"
+	#echo "$foldermonth/$calendarfile"
+	mv "$f" $folder/"$f"
+elif [[ $extens == xopp ]]
+then
+  echo xopp
+  foldermonth=$(date +"/home/christian/Gedankenspeicher/Gedankenspeicherwiki/Zettelkasten/%Y/%m" -r "$f")
+	calendarfile=$(date +"%d" -r "$f")
+	calendarfile=$calendarfile.txt
+	filename=$(basename "$File" .xopp)
+	if [[ ! -e "$foldermonth"/"$calendarfile" ]] 
+	then
+	touch "$foldermonth"/"$calendarfile"
+	echo "Content-Type: text/x-zim-wiki" >> "$foldermonth"/"$calendarfile"
+	echo "Wiki-Format: zim 0.6" >> "$foldermonth"/"$calendarfile"
+	date +"===== %A %d %b %Y =====" -r "$f" >> "$foldermonth"/"$calendarfile"
+	date +"[[Zettelkasten:%Y:Week %W|Week %W]]" -r "$f" >> "$foldermonth"/"$calendarfile"
+	date +"[[Zettelkasten:%Y:%m]]" -r "$f" >> "$foldermonth"/"$calendarfile"
+	echo -e "[[../]]"  >> "$foldermonth"/"$calendarfile"
+	date +"[*] ** %A %d %b %Y ** >  2277-11-11"  -r "$f" >> "$foldermonth"/"$calendarfile"
+	fi
+	if [[ ! -e "$File".txt ]] 
+	then
+	touch "$File".txt
+	mv "$File".txt "$folder"/"$File".txt
+	echo "Content-Type: text/x-zim-wiki" >> "$folder"/"$File".txt
+	echo "Wiki-Format: zim 0.6" >> "$folder"/"$File".txt
+	echo "[*] @ARTIKEL $tags **[[../$f]] $source**" >> "$folder"/"$File".txt
+	echo "Text creation time: $(date +"[[Zettelkasten:%Y:%m:%d]]")" >> "$folder"/"$File".txt
+	echo "Modification time: $(date +"[[Zettelkasten:%Y:%m:%d]]" -r "$File")" >> "$folder"/"$File".txt
+	echo -e "[[../]]\n" >> "$folder"/"$File".txt
+	echo -e "$additiontext\n" >> "$folder"/"$File".txt
+	echo -e "{{../$File.png?width=750}}\n" >> "$folder"/"$File".txt
+	#pdfinfo "$f" | grep Pages >> "$folder"/"$File".txt
+	#pdftotext -nopgbrk -enc UTF-8 -f 1 -l 1 "$f" ->> "$folder"/"$File".txt
+	xournalpp "$File" -p "$filename".pdf
+	ttpdf "$filename".pdf
+	else
+	mv "$File".txt "$folder"/"$File".txt
+	sed -i "9 i$additiontext" "$folder"/"$File".txt
+	echo -e "\n" >> "$folder"/"$File".txt
+	sed -i "13 i{{../$File.png?width=750}}" "$folder"/"$File".txt
+	echo -e "\n" >> "$folder"/"$File".txt
+	fi
+	#pdftoppm -r 90 -png -singlefile "$File" "$folder"/"$File"
+	xournalpp --export-range=1 "$File" -i "$File".png
+	convert "$File".png -resize 1200x1200 -quality 97 "$File"-px.png
+	mv "$File"-px.png "$folder"/"$File".png
+	mv "$File".png "$folder"/"$File".png
+	mv "$filename".pdf "$folder"/"$filename".pdf
+	mv "$filename".pdf.png "$folder"/"$filename".pdf.png
+	mv "$filename".pdf.txt "$folder"/"$filename".pdf.txt
+	echo -e "\n[[./$f]] [[+$f]]" >> "$foldermonth"/"$calendarfile"
+	echo -e "{{$File.png?width=750}}" >> "$foldermonth"/"$calendarfile"
+	echo "cd $folder"
+	#echo "$foldermonth"
+	#echo "$foldermonth/$calendarfile"
+	mv "$f" $folder/"$f"
+elif [[ epub == $extens ]] 
+then
+		Wikiprev
+		echo "[*] @EBOOK $tags **[[../$f]] $source**" >> "$File".txt
+		Timestamps
+		echo -e "[[../]]\n$additiontext\n" >> "$File".txt
+		einfo "$f" >> "$File".txt
+		Moving
+elif [[ $extens == $f ]] 
+then
+	Wikiprev
+	echo "[*] @ORDNER $tags **[[../$f]] $source**" >> "$File".txt
+	Timestamps
+	echo -e "[[../]]\n$additiontext\n" >> "$File".txt
+	Moving
+else
+	Wikiprev
+	echo "[*] $tags **[[../$f]] $source**" >> "$File".txt
+	Timestamps
+	#echo -e "$2\n" >> "$File".txt
+	echo -e "[[../]]\n$additiontext\n" >> "$File".txt
+	Moving
+fi
+
+#fi
+
+@ 
+}}}
+
+

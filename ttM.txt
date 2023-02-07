@@ -1,0 +1,15 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2021-10-19T13:30:10+02:00
+
+====== ttM ======
+
+[*] ttM
+Umbenennung von Datei und der zugehörigen txt Datei, falls sich die original Datei ändert
+[*] **[[../ttM]]**
+Text creation time:
+[[Zettelkasten:2021:04:29]]
+Modification time:
+[[Zettelkasten:2021:01:04]]
+
+

@@ -1,0 +1,38 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+
+===== zim-insert-picture =====
+Created Donnerstag [[Zettelkasten:2022:12:29]]
+Backlink [[GedankenspeicherCoding]]
+[[../]]
+[*] @NOTIZ @PROGRAMM @SCRIPT  **zim-insert-picture.sh**  >  2277-11-11
+
+''noweb.py -Rzim-insert-picture.sh zim-insert-picture.txt > zim-insert-picture.sh && chmod u+x zim-insert-picture.sh && ln -sf /home/christian/Gedankenspeicher/Gedankenspeicherwiki/Zettelkasten/ZetteL/CodeFabrik/GedankenspeicherCoding/zim-insert-picture.sh ~/.local/bin/zim-insert-picture.sh && echo 'fertig'''
+
+{{{code: lang="ini" linenumbers="True"
+<<zim-insert-picture.sh>>=
+#!/bin/bash
+#if zenity --question --text="Möchten Sie eine neue Skizze anfertigen?"
+#then 
+File=$(echo "$1" | sed 's/ /_/g' | sed 's/:/;/g'| sed -e "s/'/_/g" | sed 's/\"//g')
+filetxt=${File%.*}
+
+datum=$(date +"%Y-%m-%d--%H-%M-%S")
+Newname=$(zenity --entry \
+       --width 500 \
+       --title "Type new filename" \
+       --text "Enter new filename" \
+       --entry-text "${datum}_")
+if [ ! "$Newname" = "" ]; 
+then
+	filename=$(echo "$Newname" | sed 's/ /_/g' | sed 's/:/;/g'| sed -e "s/'/_/g" | sed 's/\"//g')
+	mkdir -p "$filetxt"
+	cd "$filetxt"
+	mypaint "$filename".png
+	ttpic "$filename".png
+	echo -e "[[+${filename}.png]]"
+	echo {{"$filename".png?width=750}}
+fi
+@
+
+}}}

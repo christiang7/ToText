@@ -1,0 +1,56 @@
+#!/bin/bash
+f=$(basename "$1")
+extens=${f##*.}
+filename=${f%.*} #only the filename
+File=$(echo "$1" | sed 's/ /_/g' | sed 's/:/;/g'| sed -e "s/'/_/g" | sed 's/\"//g')
+#f=$(basename "$1")
+line=$(head -n 1 "$File".txt)
+#extens=${f##*.}
+Newname=$(zenity --entry \
+       --width 500 \
+       --title "Die Datei eine Beschreibung geben?" \
+       --text "Den Dateinamen dazu noch ändern?" \
+       --entry-text "$filename")
+if [ ! $? -eq 1 ];
+then
+
+if [[ -e "$filename".txt && ! -d "$filename" ]];
+	then
+	ttvidc "$f"
+elif [[ -e "$File".txt ]]
+	then
+	echo $line
+	if [[ "$line" != "Content-Type: text/x-zim-wiki" ]]
+		then
+		#echo falsch
+		ttnc "$f"
+	fi
+	xdg-open "$File" &
+	#echo test
+
+else
+  if [[ $extens == $f ]]
+  then
+  	File=$(echo "$Newname" | sed 's/ /_/g' | sed 's/:/;/g'| sed -e "s/'/_/g" | sed 's/\"//g'|  sed 's/&/n/g' | sed 's/\///g' | sed 's/|//g' | sed 's/\[/(/g' | sed 's/\]/)/g' | sed 's/@/at/g')
+  else
+  File=$(echo "$Newname"."$extens" | sed 's/ /_/g' | sed 's/:/;/g'| sed -e "s/'/_/g" | sed 's/\"//g'|  sed 's/&/n/g' | sed 's/\///g' | sed 's/|//g' | sed 's/\[/(/g' | sed 's/\]/)/g' | sed 's/@/at/g')
+  fi
+  mv "$f" "$File"
+	ttn "$File"
+fi
+
+if [[ $extens == tex ]]
+then
+filename =$(basename "$File" .tex)
+kate "$filename"-tex.txt
+xdg-open "$File" &
+elif [[ jpg == $extens || png == $extens || webp == $extens || jpeg == $extens || avif == $extens ]]
+then
+	kate "$filename".avif.txt &
+	xdg-open "$filename".avif &
+else
+kate "$File".txt 2>/dev/null &
+xdg-open "$File" &
+fi
+
+fi

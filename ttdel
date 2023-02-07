@@ -1,0 +1,17 @@
+#!/bin/bash
+File=$(echo "$1" | sed 's/ /_/g' | sed 's/:/;/g'| sed -e "s/'/_/g" | sed 's/\"//g')
+
+File2=$(basename "$1")
+extens2=${File2##*.}
+filename2=${File2%.*} #only the filename, here the filename of the original file
+
+if [[ $extens2 == txt ]]
+then
+	rm -r "$filename2"
+	rm "$1"
+else
+	rm -r "$1"
+	rm "$File".txt
+fi
+
+
