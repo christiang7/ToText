@@ -23,8 +23,8 @@ File=$(echo "$Newname" | sed 's/ /_/g' | sed 's/:/;/g'| sed -e "s/'/_/g" | sed '
 #extens=${f##*.}
 #zimpath="${folder}"
 
-source=$(echo "Christian Gößl")
-tags=$(echo "${3}@")
+source="Christian Gößl"
+tags=$(echo "$3")
 additiontext=$(echo "$4")
 
 abfrage=$(zenity --forms \
@@ -46,7 +46,7 @@ echo -e "===== ${File} =====" >> "${folder}"/"${File}".txt
 echo -e "Created $(date +"%A") $(date +[[Zettelkasten:%Y:%m:%d]])" >> "${folder}"/"${File}".txt
 #echo -e "Backlink $([[Zettelkasten:%Y:%m:%d]])" >> "${folder}"/"${File}".txt
 echo -e "[[../]]" >> "${folder}"/"${File}".txt
-echo -e "[*] ${tags} ** ${File} ** >  2277-11-11" >> "${folder}"/"${File}".txt
+echo -e "[*] ${tags} ** ${File} ** ${source} >  2277-11-11" >> "${folder}"/"${File}".txt
 echo -e "\n${additiontext}" >> "${folder}"/"${File}".txt
 #echo -e "\n${tabs}" >> "${folder}"/"${File}".txt
 
