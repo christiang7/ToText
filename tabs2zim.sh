@@ -2,11 +2,11 @@
 #if zenity --question --text="Möchten Sie die Links in Firefox öffnen?"
 #then
 
-additiontext=$(zenity --forms \
+additiontext=$(zenity --entry \
        --width 500 \
        --title "Noch etwas hinzufügen?" \
        --text "Noch etwas hinzufügen?" \
-       --add-entry "Zusätzliche Informationen")
+       --entry-text "")
 if [ ! $? -eq 1 ];
 then
 text="$(xclip -selection clipboard -o)"
