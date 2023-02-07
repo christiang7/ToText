@@ -9,6 +9,7 @@ Backlink [[GedankenspeicherCoding]]
 [*] **zim-template-program**  >  2277-11-11
 	[ ] hinzufügen von git, damit automatisch nen git repo erzeugt wird
 	[ ] Struktur überdenken mit README Datei und das die Datei in das Repo erzeugt wird und nicht auf der Ebene der txt Datei
+	[ ] probieren ob yad Ersatz für zenity funktioniert 
 
 ''noweb.py -Rzim-template-program.sh zim-template-program.txt > zim-template-program.sh && echo "fertig"''
 
