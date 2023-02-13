@@ -7,6 +7,8 @@ Wiki-Format: zim 0.6
 Text creation time: [[Zettelkasten:2021:04:29]]
 Modification time: [[Zettelkasten:2021:04:24]]
 
+
+
   ''noweb.py -Rttn ttn.txt > ttn && chmod u+x ttn && echo 'fertig'''
 
 {{{code: lang="ini" linenumbers="True"
@@ -188,7 +190,7 @@ then
 	echo -e "{{../$File.avif?width=750}}\n" >> "$File".txt
 	xournalpp "$File" -p "$filename".pdf
 	ttpdf "$filename".pdf
-elif [[ mp3 == $extens || webm == $extens || flac == $extens || aac = $extens || ogg = $extens || weba = $extens ]]
+elif [[ mp3 == $extens || webm == $extens || flac == $extens || aac = $extens || ogg = $extens || weba = $extens || wav = $extens || aiff = $extens ]]
 then
 	Wikiprev
 	echo "[*] @Musik $tags **[[../$Filename]] $source**" >> "$File".txt

@@ -175,7 +175,7 @@ then
 	echo -e "{{../$File.avif?width=750}}\n" >> "$File".txt
 	xournalpp "$File" -p "$filename".pdf
 	ttpdf "$filename".pdf
-elif [[ mp3 == $extens || webm == $extens || flac == $extens || aac = $extens || ogg = $extens || weba = $extens ]]
+elif [[ mp3 == $extens || webm == $extens || flac == $extens || aac = $extens || ogg = $extens || weba = $extens || wav = $extens || aiff = $extens ]]
 then
 	Wikiprev
 	echo "[*] @Musik $tags **[[../$Filename]] $source**" >> "$File".txt
