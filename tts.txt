@@ -32,11 +32,13 @@ File=$(echo "$1" | sed 's/ /_/g' | sed 's/:/;/g'| sed -e "s/'/_/g" | sed 's/\"//
 #f=$(basename "$1")
 line=$(head -n 1 "$File".txt)
 #extens=${f##*.}
+#Newname=$(echo $filename)
 Newname=$(zenity --entry \
        --width 500 \
        --title "Die Datei eine Beschreibung geben?" \
        --text "Den Dateinamen dazu noch ändern?" \
        --entry-text "$filename")
+
 if [ ! $? -eq 1 ]; 
 then
 

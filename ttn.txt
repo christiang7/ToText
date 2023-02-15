@@ -8,16 +8,39 @@ Text creation time: [[Zettelkasten:2021:04:29]]
 Modification time: [[Zettelkasten:2021:04:24]]
 
 
-
   ''noweb.py -Rttn ttn.txt > ttn && chmod u+x ttn && echo 'fertig'''
 
 {{{code: lang="ini" linenumbers="True"
 <<ttn>>=
 #!/bin/bash
-#f=$(basename $1)
-#extens=${f##*.}
-#Filename=${f%.*}
-File=$(echo "$1" | sed 's/ /_/g' | sed 's/:/;/g'| sed -e "s/'/_/g" | sed 's/\"//g'|  sed 's/&/n/g' | sed 's/|//g' | sed 's/\[/(/g' | sed 's/\]/)/g' | sed 's/@/at/g' | sed 's/¦//g')
+f=$(basename $1)
+extens=${f##*.}
+Filename=${f%.*}
+Unterricht=$(echo $File | grep -o Unterrichtsnotiz)
+if [[ $(echo $Filename | grep -o Unterrichtsnotiz) == Unterrichtsnotiz || $(echo $Filename | grep -o Unterrichtsnotizen) == Unterrichtsnotizen || $(echo $Filename | grep -o Unterricht) == Unterricht ]]
+then
+	source="Christian Gößl"
+	tags="@Unterricht @Nachhilfe"
+else
+  source="$2"
+  tags="$3"
+  additiontext="$4"
+fi
+
+abfrage=$(yad --title="Diese Datei eine TXT hinzufügen" --text="Noch etwas hinzufügen?" \
+ 	 --form --width 500 --separator="|" --item-separator=","  \
+ 	 --field="Quelle:":CBE \
+ 	 --field="Tags" \
+ 	 --field="Weiteres":TXT \
+ 	 "$source,Internet,Christian Gößl" "$tags" "$addditiontext")
+if [ ! $? -eq 1 ]; 
+then
+	Newname=$Filename
+ 	source=$(echo $abfrage | cut -s -d "|" -f 2)
+	tags=$(echo $abfrage | cut -s -d "|" -f 3)
+	additiontext=$(echo $abfrage | cut -s -d "|" -f 4)
+	
+File=$(echo "$Newname"."$extens" | sed 's/ /_/g' | sed 's/:/;/g'| sed -e "s/'/_/g" | sed 's/\"//g'|  sed 's/&/n/g' | sed 's/|//g' | sed 's/\[/(/g' | sed 's/\]/)/g' | sed 's/@/at/g' | sed 's/¦//g')
 #f=$(basename "$1")
 mv "$1" "$File"
 f=$(basename $File)
@@ -29,38 +52,7 @@ extensmp4=$(echo $File | grep -o mp4)
 extensmov=$(echo $File | grep -o mov)
 extensmkv=$(echo $File | grep -o mkv)
 extensflv=$(echo $File | grep -o flv)
-Unterricht=$(echo $File | grep -o Unterrichtsnotiz)
-if [[ $(echo $File | grep -o Unterrichtsnotiz) == Unterrichtsnotiz || $(echo $File | grep -o Unterrichtsnotizen) == Unterrichtsnotizen || $(echo $File | grep -o Unterricht) == Unterricht ]]
-then
-	source="Christian Gößl"
-	tags="@Unterricht @Nachhilfe"
-	additiontext=""
-else
-	#source=$(zenity --entry \
-  #     --width 500 \
-  #     --title "Noch eine Quelle hinzufügen?" \
-  #     --text "Noch eine Quelle hinzufügen?" \
-  #     --entry-text "$2")
-	#tags=$(zenity --entry \
-  #     --width 500 \
-  #     --title "Noch Schlagwörter hinzufügen?" \
-  #     --text "Noch Schlagwörter hinzufügen?" \
-  #     --entry-text "$3")
-	#additiontext=$(zenity --entry \
-  #     --width 500 \
-  #     --title "Noch etwas hinzufügen?" \
-  #     --text "Noch etwas hinzufügen?" \
-  #     --entry-text "$4")
-	abfrage=$(zenity --forms \
-       --width 500 \
-       --title "Noch etwas hinzufügen?" \
-       --text "Noch etwas hinzufügen?" \
-       --add-entry "Quelle" --add-entry "Schlagwörter" --add-entry "Weiteres")
 
-	source=$(echo $abfrage | cut -s -d "|" -f 1)
-	tags=$(echo $abfrage | cut -s -d "|" -f 2)
-	additiontext=$(echo $abfrage | cut -s -d "|" -f 3)
-fi
 #echo $f
 #echo $extens
 
@@ -221,6 +213,9 @@ else
 	Timestamps
 	echo -e "[[../]]\n$additiontext\n" >> "$File".txt
 	#Opentxt
+fi
+
+
 fi
 @ 
 }}}

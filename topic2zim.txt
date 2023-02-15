@@ -41,22 +41,6 @@ topic=$(echo $abfrage | cut -s -d "|" -f 1)
 tags=$(echo $abfrage | cut -s -d "|" -f 2)
 additiontext=$(echo $abfrage | cut -s -d "|" -f 3)
 
-#topic=$(zenity --entry \
-#       --width 500 \
-#       --title "Was für ein Thema?" \
-#       --text "Was für ein Thema?" \
-#       --entry-text "$1")
-#tags=$(zenity --entry \
-#       --width 500 \
-#       --title "Noch Schlagwörter hinzufügen?" \
-#       --text "Noch Schlagwörter hinzufügen?" \
-#       --entry-text "$2")
-#additiontext=$(zenity --entry \
-#       --width 500 \
-#       --title "Noch etwas hinzufügen?" \
-#       --text "Noch etwas hinzufügen?" \
-#       --entry-text "$3")
-
 if [[ ! "$topic" = "" && ! "$abfrage" = "" ]]; 
 then
 
