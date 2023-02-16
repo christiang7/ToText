@@ -10,7 +10,9 @@ Backlink [[CodeFabrik:GedankenspeicherCoding]]
 	[*] Dazu eine Abfrage vom Dateinamen siehe [[ttrename]]
 
 
-  ''noweb.py -Rzim-xournal.sh zim-xournal.txt > zim-xournal.sh && chmod u+x zim-xournal.sh && ln -sf /home/christian/Gedankenspeicher/Gedankenspeicherwiki/Zettelkasten/ZetteL/CodeFabrik/GedankenspeicherCoding/zim-xournal.sh ~/.local/bin/zim-xournal.sh && echo 'fertig'''
+  ''noweb.py -Rzim-xournal.sh zim-xournal.txt > zim-xournal.sh && echo 'fertig'''
+
+''chmod u+x zim-xournal.sh && ln -sf /home/christian/Gedankenspeicher/Gedankenspeicherwiki/Zettelkasten/ZetteL/CodeFabrik/GedankenspeicherCoding/zim-xournal.sh ~/.local/bin/zim-xournal.sh && echo 'fertig'''
 
 {{{code: lang="ini" linenumbers="True"
 <<zim-xournal.sh>>=

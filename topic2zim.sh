@@ -1,7 +1,4 @@
 #! /bin/bash
-#if zenity --question --text="Möchten Sie die Links speichern?"
-#then
-
 
 choose=$(zenity --height 350 --list --radiolist --print-column ALL --hide-header --column "Checkbox" --column "What" TRUE Neu FALSE Video FALSE Musik FALSE Spiele FALSE Lesen FALSE Physik FALSE Mathematik FALSE Philosophie FALSE Software)
 if [ ! $? -eq 1 ];
@@ -10,64 +7,41 @@ tabs="$(xclip -selection clipboard -o)"
 l="" # lineposition of the desired file
 case ${choose} in
 Neu)
-abfrage=$(zenity --forms \
-       --width 500 \
-       --title "Noch etwas hinzufügen?" \
-       --text "Noch etwas hinzufügen?" \
-       --add-entry "Thema" --add-entry "Schlagwörter" --add-entry "Weiteres")
 
-topic=$(echo $abfrage | cut -s -d "|" -f 1)
-tags=$(echo $abfrage | cut -s -d "|" -f 2)
-additiontext=$(echo $abfrage | cut -s -d "|" -f 3)
+abfrage=$(yad --title="Neues Thema" --text="Noch etwas hinzufügen?" \
+ 	 --form --width 500 --separator="|" --item-separator=","  \
+ 	 --field="Name:" \
+ 	 --field="Quelle:":CBE \
+ 	 --field="Tags" \
+ 	 --field="Weiteres":TXT \
+ 	 "" "Internet,Christian Gößl" "" "")
+if [ ! $? -eq 1 ];
+then
+  topic=$(echo $abfrage | cut -s -d "|" -f 1)
+  source=$(echo $abfrage | cut -s -d "|" -f 2)
+	tags=$(echo $abfrage | cut -s -d "|" -f 3)
+	additiontext=$(echo $abfrage | cut -s -d "|" -f 4)
 
-#topic=$(zenity --entry \
-#       --width 500 \
-#       --title "Was für ein Thema?" \
-#       --text "Was für ein Thema?" \
-#       --entry-text "$1")
-#tags=$(zenity --entry \
-#       --width 500 \
-#       --title "Noch Schlagwörter hinzufügen?" \
-#       --text "Noch Schlagwörter hinzufügen?" \
-#       --entry-text "$2")
-#additiontext=$(zenity --entry \
-#       --width 500 \
-#       --title "Noch etwas hinzufügen?" \
-#       --text "Noch etwas hinzufügen?" \
-#       --entry-text "$3")
-
-if [[ ! "$topic" = "" && ! "$abfrage" = "" ]];
+if [[ ! "$topic" = "" ]];
 then
 
-foldermonth=$(date +"/home/christian/Gedankenspeicher/Gedankenspeicherwiki/Zettelkasten/%Y/%m")
-calendarday=$(date +"%d")
-mkdir -p "${foldermonth}"/"$calendarday"
-calendarfile=${calendarday}.txt
+foldermonth=$(echo "/home/christian/Gedankenspeicher/Gedankenspeicherwiki/Zettelkasten/ZetteL/Gedanken")
 topicfile=$(echo "${topic}" | sed 's/ /_/g' | sed 's/:/;/g' | sed -e "s/'/_/g" | sed 's/\"//g'|  sed 's/&/n/g' | sed 's/|//g' | sed 's/\[/(/g' | sed 's/\]/)/g' | sed 's/@/at/g' | sed 's/¦//g' | sed 's/?/.ß/g').txt
-echo "${topicfile}"
-touch "${foldermonth}"/"$calendarday"/"${topicfile}"
+topicfilename=$(basename "$topicfile" .txt)
+touch "${foldermonth}"/"${topicfile}"
+mkdir -p "${foldermonth}"/"${topicfilename}"
+echo "Content-Type: text/x-zim-wiki" > "${foldermonth}"/"${topicfile}"
+echo "Wiki-Format: zim 0.6" >> "${foldermonth}"/"${topicfile}"
+echo -e "=====  ${topic} =====" >> "${foldermonth}"/"${topicfile}"
+echo -e "Created $(date +[[Zettelkasten:%Y:%m:%d]])" >> "${foldermonth}"/"${topicfile}"
+echo -e "Backlink [[Zettelkasten:ZetteL:Gedanken]]" >> "${foldermonth}"/"${topicfile}"
+echo -e "[[../]]" >> "${foldermonth}"/"${topicfile}"
+echo -e "[*] ${tags} ** ${topic} ** >  2277-11-11" >> "${foldermonth}"/"${topicfile}"
+echo -e "\n${additiontext}" >> "${foldermonth}"/"${topicfile}"
+echo -e "\n${tabs}" >> "${foldermonth}"/"${topicfile}"
+echo -e "\n[[+$(basename ${topicfile} .txt)|${topic}]]" >> "$foldermonth".txt
 
-if [[ ! -e "$foldermonth"/"$calendarfile" ]]
-then
-	touch "$foldermonth"/"$calendarfile"
-	echo "Content-Type: text/x-zim-wiki" >> "$foldermonth"/"$calendarfile"
-	echo "Wiki-Format: zim 0.6" >> "$foldermonth"/"$calendarfile"
-	date +"===== %A %d %b %Y =====" >> "$foldermonth"/"$calendarfile"
-	date +"[[Zettelkasten:%Y:Week %W|Week %W]]" >> "$foldermonth"/"$calendarfile"
-	date +"[[Zettelkasten:%Y:%m]]"  >> "$foldermonth"/"$calendarfile"
-	echo -e "[[../]]"  >> "$foldermonth"/"$calendarfile"
-	date +"[*] ** %A %d %b %Y ** >  2277-11-11"  >> "$foldermonth"/"$calendarfile"
 fi
-echo "Content-Type: text/x-zim-wiki" > "${foldermonth}"/"$calendarday"/"${topicfile}"
-echo "Wiki-Format: zim 0.6" >> "${foldermonth}"/"$calendarday"/"${topicfile}"
-echo -e "=====  ${topic} =====" >> "${foldermonth}"/"$calendarday"/"${topicfile}"
-echo -e "Created $(date +"%A") $(date +[[Zettelkasten:%Y:%m:%d]])" >> "${foldermonth}"/"$calendarday"/"${topicfile}"
-echo -e "Backlink $(date +[[Zettelkasten:%Y:%m:%d]])" >> "${foldermonth}"/"$calendarday"/"${topicfile}"
-echo -e "[[../]]" >> "${foldermonth}"/"$calendarday"/"${topicfile}"
-echo -e "[*] ${tags} ** ${topic} ** >  2277-11-11" >> "${foldermonth}"/"$calendarday"/"${topicfile}"
-echo -e "\n${additiontext}" >> "${foldermonth}"/"$calendarday"/"${topicfile}"
-echo -e "\n${tabs}" >> "${foldermonth}"/"$calendarday"/"${topicfile}"
-echo -e "\n[[+$(basename ${topicfile} .txt)|${topic}]]" >> "$foldermonth"/"$calendarfile"
 fi;;
 
 *)
@@ -79,19 +53,19 @@ additiontext=$(zenity --entry \
 if [ ! $? -eq 1 ];
 then
 case ${choose} in
-Video) file=$(echo "/home/christian/Gedankenspeicher/Gedankenspeicherwiki/Zettelkasten/Zim-Arbeitsflaeche/Video_Stream.txt")
+Video) file=$(echo "/home/christian/Gedankenspeicher/Gedankenspeicherwiki/Zettelkasten/ZetteL/Zim-Arbeitsflaeche/Video_Stream.txt")
 	l=10;;
-Musik) file=$(echo "/home/christian/Gedankenspeicher/Gedankenspeicherwiki/Zettelkasten/Zim-Arbeitsflaeche/MusikStream.txt")
+Musik) file=$(echo "/home/christian/Gedankenspeicher/Gedankenspeicherwiki/Zettelkasten/ZetteL/Zim-Arbeitsflaeche/MusikStream.txt")
 	l=7;;
 Spiele) file=$(echo "/home/christian/Gedankenspeicher/Gedankenspeicherwiki/Zettelkasten/ZetteL/SpielE.txt")
 	l=7;;
 Lesen) file=$(echo "/home/christian/Gedankenspeicher/Gedankenspeicherwiki/Zettelkasten/ZetteL/Buecher/Lesestoff.txt")
 	l=7;;
-Physik) file=$(echo "/home/christian/Gedankenspeicher/Gedankenspeicherwiki/Zettelkasten/Zim-Arbeitsflaeche/Physik.txt")
+Physik) file=$(echo "/home/christian/Gedankenspeicher/Gedankenspeicherwiki/Zettelkasten/ZetteL/Zim-Arbeitsflaeche/Physik.txt")
 	l=10;;
-Mathematik) file=$(echo "/home/christian/Gedankenspeicher/Gedankenspeicherwiki/Zettelkasten/Zim-Arbeitsflaeche/Mathematik.txt")
+Mathematik) file=$(echo "/home/christian/Gedankenspeicher/Gedankenspeicherwiki/Zettelkasten/ZetteL/Zim-Arbeitsflaeche/Mathematik.txt")
 	l=10;;
-Philosophie) file=$(echo "/home/christian/Gedankenspeicher/Gedankenspeicherwiki/Zettelkasten/Zim-Arbeitsflaeche/Philosophie.txt")
+Philosophie) file=$(echo "/home/christian/Gedankenspeicher/Gedankenspeicherwiki/Zettelkasten/ZetteL/Zim-Arbeitsflaeche/Philosophie.txt")
 	l=10;;
 Software) file=$(echo "/home/christian/Gedankenspeicher/Gedankenspeicherwiki/Zettelkasten/ZetteL/CodeFabrik/Software.txt")
 	l=10;;
