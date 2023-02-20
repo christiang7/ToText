@@ -33,14 +33,6 @@ File=$(echo "$1" | sed 's/ /_/g' | sed 's/:/;/g'| sed -e "s/'/_/g" | sed 's/\"//
 line=$(head -n 1 "$File".txt)
 #extens=${f##*.}
 #Newname=$(echo $filename)
-Newname=$(zenity --entry \
-       --width 500 \
-       --title "Die Datei eine Beschreibung geben?" \
-       --text "Den Dateinamen dazu noch ändern?" \
-       --entry-text "$filename")
-
-if [ ! $? -eq 1 ]; 
-then
 
 if [[ -e "$filename".txt && ! -d "$filename" ]]; 
 	then
@@ -57,6 +49,15 @@ elif [[ -e "$File".txt ]]
 	#echo test
 
 else
+	Newname=$(zenity --entry \
+       --width 500 \
+       --title "Die Datei eine Beschreibung geben?" \
+       --text "Den Dateinamen dazu noch ändern?" \
+       --entry-text "$filename")
+
+	if [ ! $? -eq 1 ]; 
+	then
+
   if [[ $extens == $f ]]
   then
   	File=$(echo "$Newname" | sed 's/ /_/g' | sed 's/:/;/g'| sed -e "s/'/_/g" | sed 's/\"//g'|  sed 's/&/n/g' | sed 's/\///g' | sed 's/|//g' | sed 's/\[/(/g' | sed 's/\]/)/g' | sed 's/@/at/g')
@@ -65,6 +66,8 @@ else
   fi
   mv "$f" "$File"
 	ttn "$File"
+	fi
+
 fi
 
 if [[ $extens == tex ]] 
@@ -81,6 +84,6 @@ kate "$File".txt 2>/dev/null &
 xdg-open "$File" &
 fi
 
-fi
+
 @ 
 }}}

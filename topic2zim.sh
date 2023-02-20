@@ -53,19 +53,19 @@ additiontext=$(zenity --entry \
 if [ ! $? -eq 1 ];
 then
 case ${choose} in
-Video) file=$(echo "/home/christian/Gedankenspeicher/Gedankenspeicherwiki/Zettelkasten/ZetteL/Zim-Arbeitsflaeche/Video_Stream.txt")
+Video) file=$(echo "/home/christian/Gedankenspeicher/Gedankenspeicherwiki/Zettelkasten/ZetteL/Video_Stream.txt")
 	l=10;;
-Musik) file=$(echo "/home/christian/Gedankenspeicher/Gedankenspeicherwiki/Zettelkasten/ZetteL/Zim-Arbeitsflaeche/MusikStream.txt")
+Musik) file=$(echo "/home/christian/Gedankenspeicher/Gedankenspeicherwiki/Zettelkasten/ZetteL/MusikStream.txt")
 	l=7;;
 Spiele) file=$(echo "/home/christian/Gedankenspeicher/Gedankenspeicherwiki/Zettelkasten/ZetteL/SpielE.txt")
 	l=7;;
 Lesen) file=$(echo "/home/christian/Gedankenspeicher/Gedankenspeicherwiki/Zettelkasten/ZetteL/Buecher/Lesestoff.txt")
 	l=7;;
-Physik) file=$(echo "/home/christian/Gedankenspeicher/Gedankenspeicherwiki/Zettelkasten/ZetteL/Zim-Arbeitsflaeche/Physik.txt")
+Physik) file=$(echo "/home/christian/Gedankenspeicher/Gedankenspeicherwiki/Zettelkasten/ZetteL/Physik.txt")
 	l=10;;
-Mathematik) file=$(echo "/home/christian/Gedankenspeicher/Gedankenspeicherwiki/Zettelkasten/ZetteL/Zim-Arbeitsflaeche/Mathematik.txt")
+Mathematik) file=$(echo "/home/christian/Gedankenspeicher/Gedankenspeicherwiki/Zettelkasten/ZetteL/Mathematik.txt")
 	l=10;;
-Philosophie) file=$(echo "/home/christian/Gedankenspeicher/Gedankenspeicherwiki/Zettelkasten/ZetteL/Zim-Arbeitsflaeche/Philosophie.txt")
+Philosophie) file=$(echo "/home/christian/Gedankenspeicher/Gedankenspeicherwiki/Zettelkasten/ZetteL/Philosophie.txt")
 	l=10;;
 Software) file=$(echo "/home/christian/Gedankenspeicher/Gedankenspeicherwiki/Zettelkasten/ZetteL/CodeFabrik/Software.txt")
 	l=10;;
