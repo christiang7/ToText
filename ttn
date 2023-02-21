@@ -15,7 +15,7 @@ else
 fi
 
 abfrage=$(yad --title="Diese Datei eine TXT hinzufügen" --text="Noch etwas hinzufügen?" \
- 	 --form --width 500 --separator="|" --item-separator=","  \
+ 	 --form --width 500 --separator="~" --item-separator=","  \
  	 --field="Quelle:":CBE \
  	 --field="Tags" \
  	 --field="Weiteres":TXT \
@@ -23,9 +23,9 @@ abfrage=$(yad --title="Diese Datei eine TXT hinzufügen" --text="Noch etwas hinz
 if [ ! $? -eq 1 ];
 then
 	Newname=$Filename
- 	source=$(echo $abfrage | cut -s -d "|" -f 1)
-	tags=$(echo $abfrage | cut -s -d "|" -f 2)
-	additiontext=$(echo $abfrage | cut -s -d "|" -f 3)
+ 	source=$(echo $abfrage | cut -s -d "~" -f 1)
+	tags=$(echo $abfrage | cut -s -d "~" -f 2)
+	additiontext=$(echo $abfrage | cut -s -d "~" -f 3)
 
 echo $Newname
 echo $source

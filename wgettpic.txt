@@ -16,7 +16,7 @@ Backlink  [[GedankenspeicherCoding]]
 #!/bin/bash
 
 abfrage=$(yad --title="Download Picture" --text="Noch etwas hinzufügen?" \
- 	 --form --separator="|" --item-separator="," \
+ 	 --form --separator="~" --item-separator="," \
  	 --field="Anderer Name:" \
  	 --field="Quelle:" \
  	 --field="Tags:" \
@@ -26,10 +26,10 @@ abfrage=$(yad --title="Download Picture" --text="Noch etwas hinzufügen?" \
 if [ ! $? -eq 1 ]; 
 then
 
-	Newname=$(echo $abfrage | cut -s -d "|" -f 1)
-	source=$(echo $abfrage | cut -s -d "|" -f 2)
-	tags=$(echo $abfrage | cut -s -d "|" -f 3)
-	additiontext=$(echo $abfrage | cut -s -d "|" -f 4)
+	Newname=$(echo $abfrage | cut -s -d "~" -f 1)
+	source=$(echo $abfrage | cut -s -d "~" -f 2)
+	tags=$(echo $abfrage | cut -s -d "~" -f 3)
+	additiontext=$(echo "$abfrage" | cut -s -d "~" -f 4)
 	
 folder=$(date +"/home/christian/Gedankenspeicher/Gedankenspeicherwiki/Zettelkasten/%Y/%m/%d")
 mkdir -p $folder
