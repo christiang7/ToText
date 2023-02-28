@@ -1,0 +1,46 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2020-08-04T00:20:52+02:00
+
+====== Firefox Download mit text Datei versehen ======
+Created Dienstag 04 August 2020
+
+External Application Button Firefox Addon
+wget scripts dann benutzen
+[[ZetteL:CodeFabrik:GedankenspeicherCoding:wgett]]
+[[ZetteL:CodeFabrik:GedankenspeicherCoding:wgettpic]]
+[[ZetteL:CodeFabrik:GedankenspeicherCoding:wgettpdf]]
+
+firefox command after download - Ecosia
+https://www.ecosia.org/search?p=1&q=firefox+command+after+download&tt=mzl2
+firefox - How to run a command automatically after completing download? - Ask Ubuntu
+https://askubuntu.com/questions/641723/how-to-run-a-command-automatically-after-completing-download
+Suchergebnisse für „download“ – Add-ons für Firefox (de)
+https://addons.mozilla.org/de/firefox/search/?q=download
+DownThemAll! – Holen Sie sich diese Erweiterung für 🦊 Firefox (de)
+https://addons.mozilla.org/de/firefox/addon/downthemall/?src=search
+Copycat – Holen Sie sich diese Erweiterung für 🦊 Firefox (de)
+https://addons.mozilla.org/de/firefox/addon/extension-copycat/?src=search
+script after wget - Ecosia
+https://www.ecosia.org/search?tt=mzl2&q=script+after+wget
+wget › Wiki › ubuntuusers.de
+https://wiki.ubuntuusers.de/wget/
+How to Use wget, the Ultimate Command Line Downloading Tool
+https://www.howtogeek.com/281663/how-to-use-wget-the-ultimate-command-line-downloading-tool/
+Linux wget command help and examples
+https://www.computerhope.com/unix/wget.htm
+wget vbscript · GitHub
+https://gist.github.com/sckalath/ec7af6a1786e3de6c309
+ubuntu - Wget a script and run it - Server Fault
+https://serverfault.com/questions/226386/wget-a-script-and-run-it
+php - Run script after wget downloading is complete (wget background mode) - Stack Overflow
+https://stackoverflow.com/questions/39156583/run-script-after-wget-downloading-is-complete-wget-background-mode
+
+Loop Script with wget until exit is typed
+https://www.unix.com/homework-and-coursework-questions/282673-loop-script-wget-until-exit-typed.html
+Download-Manager › Wiki › ubuntuusers.de
+https://wiki.ubuntuusers.de/Download-Manager/
+aria2 › Wiki › ubuntuusers.de
+https://wiki.ubuntuusers.de/aria2/
+How to output the filename in curl download? - Technical Issues and Assistance / Applications - Manjaro Linux Forum
+https://forum.manjaro.org/t/how-to-output-the-filename-in-curl-download/34469

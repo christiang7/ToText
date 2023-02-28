@@ -10,7 +10,7 @@ Backlink [[GedankenspeicherCoding]]
 Anzeige von Dateien deren Text Beschreibung
 
 Hier sind die Dolpin ServiceMenüs
-[[2020:08:31:KDE-Servicemenüs › Wiki › ubuntuusers-de]]
+[[KDE-Servicemenüs › Wiki › ubuntuusers-de]]
 
 [*] WEB How to get File Name and extension in bash|shell script programming https://www.w3schools.io/terminal/bash-extract-file-extension/
 [*] WEB Bash Scripting - How to check If File Exists - GeeksforGeeks https://www.geeksforgeeks.org/bash-scripting-how-to-check-if-file-exists/
