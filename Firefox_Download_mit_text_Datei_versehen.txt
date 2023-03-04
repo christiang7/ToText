@@ -7,9 +7,9 @@ Created Dienstag 04 August 2020
 
 External Application Button Firefox Addon
 wget scripts dann benutzen
-[[ZetteL:CodeFabrik:GedankenspeicherCoding:wgett]]
-[[ZetteL:CodeFabrik:GedankenspeicherCoding:wgettpic]]
-[[ZetteL:CodeFabrik:GedankenspeicherCoding:wgettpdf]]
+[[wgett]]
+[[wgettpic]]
+[[wgettpdf]]
 
 firefox command after download - Ecosia
 https://www.ecosia.org/search?p=1&q=firefox+command+after+download&tt=mzl2

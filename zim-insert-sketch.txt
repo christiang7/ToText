@@ -3,7 +3,7 @@ Wiki-Format: zim 0.6
 
 ===== zim-insert-sketch =====
 Created [[Zettelkasten:2023:03:02]]
-Backlink [[Zettelkasten:ZetteL:CodeFabrik:GedankenspeicherCoding]]
+Backlink [[GedankenspeicherCoding]]
 [[../]]
 [*] **zim-insert-sketch**   >  2277-11-11
 

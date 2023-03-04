@@ -3,9 +3,9 @@ Wiki-Format: zim 0.6
 
 [*] @ArcPROGRAMM @DOWNLOAD **[[../wget-filename.sh]]**
 Text creation time:
-Di [[2021:04:20]]
+Di [[Zettelkasten:2021:04:20]]
 Modification time:
-Di [[2021:04:20]]
+Di [[Zettelkasten:2021:04:20]]
 Uplink
 [[wget-download-firefox]]
 
