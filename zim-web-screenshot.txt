@@ -18,7 +18,10 @@ https://ostechnix.com/take-screenshots-command-line-using-scrot-linux/ | How To 
 
 ''tesseract -l eng 2209.14792.pdf.png stdout''
 
-  ''noweb.py -Rzim-web-screenshot.sh zim-web-screenshot.txt > zim-web-screenshot.sh && chmod u+x zim-web-screenshot.sh && ln -sf /home/christian/Gedankenspeicher/Gedankenspeicherwiki/Zettelkasten/ZetteL/CodeFabrik/GedankenspeicherCoding/zim-web-screenshot.sh ~/.local/bin/zim-web-screenshot.sh && echo 'fertig'''
+  ''noweb.py -Rzim-web-screenshot.sh zim-web-screenshot.txt > zim-web-screenshot.sh && echo 'fertig'''
+
+
+''chmod u+x zim-web-screenshot.sh && ln -sf /home/christian/Gedankenspeicher/Gedankenspeicherwiki/Zettelkasten/ZetteL/CodeFabrik/GedankenspeicherCoding/zim-web-screenshot.sh ~/.local/bin/zim-web-screenshot.sh && echo 'fertig'''
 
 {{{code: lang="ini" linenumbers="True"
 <<zim-web-screenshot.sh>>=

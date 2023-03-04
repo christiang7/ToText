@@ -3,9 +3,14 @@ File=$(echo "$1" | sed 's/ /_/g' | sed 's/:/;/g'| sed -e "s/'/_/g" | sed 's/\"//
 #f=$(basename "$1")
 mv "$1" "$File"
 f=$(basename "$File")
+filename=${f%.*} #only the filename
 folder=$(date +"/home/christian/Gedankenspeicher/Gedankenspeicherwiki/Zettelkasten/%Y/%m/%d" -r "$f")
 archivfolder="/home/christian/Gedankenspeicher/Archiv2/Videos"
 mkdir -p $folder
+if [[ -e "$filename".txt && ! -d "$filename" ]];
+	then
+	ttvidc "$f"
+fi
 if [[ -f "$File".txt ]]
 then
 	sed -i "3 i**Ins Archiv2 verschoben und verlinkt**" "$File".txt
@@ -22,7 +27,7 @@ else
   mv "$File"-px.png "$File".png
   echo "{{../$File.png?width=750}}" >> "$File".txt
 fi
-videostream=$(echo "/home/christian/Gedankenspeicher/Gedankenspeicherwiki/Zettelkasten/Gedankenwanderung/Zim-Arbeitsflaeche/Video_Stream.txt")
+videostream=$(echo "/home/christian/Gedankenspeicher/Gedankenspeicherwiki/Video_Stream.txt")
 sed -i "10i
 " "$videostream"
 sed -i "10 s,^,[[$(date +"Zettelkasten:%Y:%m:%d" -r "$f"):$File]]," "$videostream"

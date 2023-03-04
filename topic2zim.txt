@@ -48,7 +48,7 @@ then
 if [[ ! "$topic" = "" ]]; 
 then
 
-foldermonth=$(echo "/home/christian/Gedankenspeicher/Gedankenspeicherwiki/Zettelkasten/ZetteL/Gedanken")
+foldermonth=$(echo "/home/christian/Gedankenspeicher/Gedankenspeicherwiki/Zettelkasten")
 topicfile=$(echo "${topic}" | sed 's/ /_/g' | sed 's/:/;/g' | sed -e "s/'/_/g" | sed 's/\"//g'|  sed 's/&/n/g' | sed 's/|//g' | sed 's/\[/(/g' | sed 's/\]/)/g' | sed 's/@/at/g' | sed 's/¦//g' | sed 's/?/.ß/g').txt
 topicfilename=$(basename "$topicfile" .txt)
 touch "${foldermonth}"/"${topicfile}"
@@ -76,21 +76,21 @@ additiontext=$(zenity --entry \
 if [ ! $? -eq 1 ]; 
 then
 case ${choose} in
-Video) file=$(echo "/home/christian/Gedankenspeicher/Gedankenspeicherwiki/Zettelkasten/ZetteL/Video_Stream.txt")
+Video) file=$(echo "/home/christian/Gedankenspeicher/Gedankenspeicherwiki/Video_Stream.txt")
 	l=10;;
-Musik) file=$(echo "/home/christian/Gedankenspeicher/Gedankenspeicherwiki/Zettelkasten/ZetteL/MusikStream.txt")
+Musik) file=$(echo "/home/christian/Gedankenspeicher/Gedankenspeicherwiki/MusikStream.txt")
 	l=7;;
-Spiele) file=$(echo "/home/christian/Gedankenspeicher/Gedankenspeicherwiki/Zettelkasten/ZetteL/SpielE.txt")
+Spiele) file=$(echo "/home/christian/Gedankenspeicher/Gedankenspeicherwiki/SpielE.txt")
 	l=7;;
-Lesen) file=$(echo "/home/christian/Gedankenspeicher/Gedankenspeicherwiki/Zettelkasten/ZetteL/Buecher/Lesestoff.txt")
+Lesen) file=$(echo "/home/christian/Gedankenspeicher/Gedankenspeicherwiki/Buecher/Lesestoff.txt")
 	l=7;;
-Physik) file=$(echo "/home/christian/Gedankenspeicher/Gedankenspeicherwiki/Zettelkasten/ZetteL/Physik.txt")
+Physik) file=$(echo "/home/christian/Gedankenspeicher/Gedankenspeicherwiki/Physik.txt")
 	l=10;;
-Mathematik) file=$(echo "/home/christian/Gedankenspeicher/Gedankenspeicherwiki/Zettelkasten/ZetteL/Mathematik.txt")
+Mathematik) file=$(echo "/home/christian/Gedankenspeicher/Gedankenspeicherwiki/Mathematik.txt")
 	l=10;;
-Philosophie) file=$(echo "/home/christian/Gedankenspeicher/Gedankenspeicherwiki/Zettelkasten/ZetteL/Philosophie.txt")
+Philosophie) file=$(echo "/home/christian/Gedankenspeicher/Gedankenspeicherwiki/Philosophie.txt")
 	l=10;;
-Software) file=$(echo "/home/christian/Gedankenspeicher/Gedankenspeicherwiki/Zettelkasten/ZetteL/CodeFabrik/Software.txt")
+Software) file=$(echo "/home/christian/Gedankenspeicher/Gedankenspeicherwiki/CodeFabrik/Software.txt")
 	l=10;;
 esac
 echo $tabs

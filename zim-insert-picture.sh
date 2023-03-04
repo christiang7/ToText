@@ -16,7 +16,7 @@ then
 	mkdir -p "$filetxt"
 	cd "$filetxt"
 	#echo "cp ~/Gedankenspeicher/Gedankenspeicherwiki/Zettelkasten/ZetteL/Vorlagen/Vorlage-Notiz.avif "$filename".avif"
-	cp ~/Gedankenspeicher/Gedankenspeicherwiki/Zettelkasten/ZetteL/Vorlagen/Vorlage-Notiz.kra "$filename".kra
+	cp ~/Gedankenspeicher/Gedankenspeicherwiki/Vorlagen/Vorlage-Notiz.kra "$filename".kra
 	#mypaint "$filename".png
 	xterm -e "krita "$filename".kra"
 	krita "$filename".kra --export --export-filename "$filename".avif

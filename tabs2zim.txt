@@ -8,7 +8,9 @@ Backlink [[GedankenspeicherCoding]]
 [[../]]
 [*] **tabs2zim**  >  2277-11-11
 
-  ''noweb.py -Rtabs2zim.sh tabs2zim.txt > tabs2zim.sh && chmod u+x tabs2zim.sh && ln -sf /home/christian/Gedankenspeicher/Gedankenspeicherwiki/Zettelkasten/ZetteL/CodeFabrik/GedankenspeicherCoding/tabs2zim.sh ~/.local/bin/tabs2zim.sh && echo 'fertig'''
+  ''noweb.py -Rtabs2zim.sh tabs2zim.txt > tabs2zim.sh && echo 'fertig'''
+
+''chmod u+x tabs2zim.sh && ln -sf /home/christian/Gedankenspeicher/Gedankenspeicherwiki/CodeFabrik/GedankenspeicherCoding/tabs2zim.sh ~/.local/bin/tabs2zim.sh && echo 'fertig'''
 
 {{{code: lang="ini" linenumbers="True"
 <<tabs2zim.sh>>=

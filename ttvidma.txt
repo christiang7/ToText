@@ -41,7 +41,7 @@ else
   mv "$File"-px.png "$File".png
   echo "{{../$File.png?width=750}}" >> "$File".txt
 fi
-videostream=$(echo "/home/christian/Gedankenspeicher/Gedankenspeicherwiki/Zettelkasten/Gedankenwanderung/Zim-Arbeitsflaeche/Video_Stream.txt")
+videostream=$(echo "/home/christian/Gedankenspeicher/Gedankenspeicherwiki/Video_Stream.txt")
 sed -i "10i
 " "$videostream"
 sed -i "10 s,^,[[$(date +"Zettelkasten:%Y:%m:%d" -r "$f"):$File]]," "$videostream"

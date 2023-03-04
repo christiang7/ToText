@@ -15,7 +15,7 @@ Für die Benutzung von Krita und der export in der Kommandozeile, weil Krita spe
 
 ''noweb.py -Rzim-insert-picture.sh zim-insert-picture.txt > zim-insert-picture.sh && echo 'fertig'''
 
- ''chmod u+x zim-insert-picture.sh && ln -sf /home/christian/Gedankenspeicher/Gedankenspeicherwiki/Zettelkasten/ZetteL/CodeFabrik/GedankenspeicherCoding/zim-insert-picture.sh ~/.local/bin/zim-insert-picture.sh && echo 'fertig'''
+ ''chmod u+x zim-insert-picture.sh && ln -sf /home/christian/Gedankenspeicher/Gedankenspeicherwiki/CodeFabrik/GedankenspeicherCoding/zim-insert-picture.sh ~/.local/bin/zim-insert-picture.sh && echo 'fertig'''
 
 {{{code: lang="ini" linenumbers="True"
 <<zim-insert-picture.sh>>=
@@ -37,7 +37,7 @@ then
 	mkdir -p "$filetxt"
 	cd "$filetxt"
 	#echo "cp ~/Gedankenspeicher/Gedankenspeicherwiki/Zettelkasten/ZetteL/Vorlagen/Vorlage-Notiz.avif "$filename".avif"
-	cp ~/Gedankenspeicher/Gedankenspeicherwiki/Zettelkasten/ZetteL/Vorlagen/Vorlage-Notiz.kra "$filename".kra
+	cp ~/Gedankenspeicher/Gedankenspeicherwiki/Vorlagen/Vorlage-Notiz.kra "$filename".kra
 	#mypaint "$filename".png
 	xterm -e "krita "$filename".kra"
 	krita "$filename".kra --export --export-filename "$filename".avif

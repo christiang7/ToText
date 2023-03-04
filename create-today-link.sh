@@ -19,8 +19,8 @@
 	echo $folder
 	rm -r /home/christian/Heute
 	ln -fs "$folder" ~/Heute
-	sed "/###/d" ~/Gedankenspeicher/Gedankenspeicherwiki/Zettelkasten/ZetteL/Zim-Arbeitsflaeche/Arbeitsflaeche.txt > ~/Gedankenspeicher/Gedankenspeicherwiki/Zettelkasten/ZetteL/Zim-Arbeitsflaeche/Arbeitsflaeche.txt.tmp
-	mv ~/Gedankenspeicher/Gedankenspeicherwiki/Zettelkasten/ZetteL/Zim-Arbeitsflaeche/Arbeitsflaeche.txt.tmp ~/Gedankenspeicher/Gedankenspeicherwiki/Zettelkasten/ZetteL/Zim-Arbeitsflaeche/Arbeitsflaeche.txt
-	sed -i "17 i### $(date +"[[Zettelkasten:%Y:%m:%d|Heute]]")" ~/Gedankenspeicher/Gedankenspeicherwiki/Zettelkasten/ZetteL/Zim-Arbeitsflaeche/Arbeitsflaeche.txt
-	sed -i "18 i### $(date -d "yesterday" +"[[Zettelkasten:%Y:%m:%d|Gestern]]")" ~/Gedankenspeicher/Gedankenspeicherwiki/Zettelkasten/ZetteL/Zim-Arbeitsflaeche/Arbeitsflaeche.txt
+	sed "/###/d" ~/Gedankenspeicher/Gedankenspeicherwiki/Zim-Arbeitsflaeche/Arbeitsflaeche.txt > ~/Gedankenspeicher/Gedankenspeicherwiki/Zim-Arbeitsflaeche/Arbeitsflaeche.txt.tmp
+	mv ~/Gedankenspeicher/Gedankenspeicherwiki/Zim-Arbeitsflaeche/Arbeitsflaeche.txt.tmp ~/Gedankenspeicher/Gedankenspeicherwiki/Zim-Arbeitsflaeche/Arbeitsflaeche.txt
+	sed -i "17 i### $(date +"[[Zettelkasten:%Y:%m:%d|Heute]]")" ~/Gedankenspeicher/Gedankenspeicherwiki/Zim-Arbeitsflaeche/Arbeitsflaeche.txt
+	sed -i "18 i### $(date -d "yesterday" +"[[Zettelkasten:%Y:%m:%d|Gestern]]")" ~/Gedankenspeicher/Gedankenspeicherwiki/Zim-Arbeitsflaeche/Arbeitsflaeche.txt
 	#ln -f "$folder".txt ~/Gedankenspeicher/Gedankenspeicherwiki/Zettelkasten/Gedankenwanderung/Zim-Arbeitsflaeche/Heute.txt
