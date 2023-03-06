@@ -11,7 +11,7 @@ File2=$(basename "$1")
 extens2=${File2##*.}
 filename2=${File2%.*} #only the filename, here it is the original file
 extens3=${filename2##*.}
-
+filename2=$(echo "$filename2" | sed 's/_/ /g' | sed -e "s/_/'/g")
 
 if [[ $extens2 == txt ]]
 then

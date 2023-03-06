@@ -3,7 +3,7 @@ File=$(echo "$2" | sed 's/ /_/g' | sed 's/:/;/g'| sed -e "s/'/_/g" | sed 's/\"//
 #f=$(basename "$1")
 #mv "$2" "$File"
 #mv
-oldFile=$(basename $(echo $1))
+oldFile=$(basename "$1")
 #echo $oldFile
 #echo $File
 f=$(basename "$File")

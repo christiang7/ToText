@@ -1,0 +1,40 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+
+===== ttam =====
+Created [[Zettelkasten:2023:03:06]]
+Backlink [[CodeFabrik:GedankenspeicherCoding]]
+[[../]]
+[*] **ttam**   >  2277-11-11
+xsdf
+
+
+''noweb.py -Rttam.sh ttam.txt > ttam.sh && echo 'fertig'''
+
+
+''chmod u+x ttam.sh && ln -sf /home/christian/Gedankenspeicher/Gedankenspeicherwiki/CodeFabrik/GedankenspeicherCoding/ttam.sh ~/.local/bin/ttam.sh && echo 'fertig'''
+
+{{{code: lang="sweave" linenumbers="True"
+<<ttam.sh>>=
+#!/usr/bin/env bash
+
+ttrename "$1"
+
+folder=$(readlink -f -n "$1")
+file=$(basename "$folder" .txt)
+
+folder="${folder%/*}"
+
+
+assetsfolder=$(echo ~/Gedankenspeicher/Gedankenspeicherwiki/Assets)
+wikipath=$(echo $assetsfolder | sed "s,/home/christian/Gedankenspeicher/Gedankenspeicherwiki/,," | sed "s,/,:,g")
+
+mv "$folder"/"$file" "$assetsfolder"/"$file"
+mv "$folder"/"$file".png "$assetsfolder"/"$file".png
+mv "$folder"/"$file".avif "$assetsfolder"/"$file".avif
+mv "$folder"/"$file".txt "$assetsfolder"/"$file".txt
+
+echo -e "[[$assetsfolder/$file]]\n[[$wikipath:$file]]" >> "$assetsfolder"/"$file".txt
+@
+
+}}}
