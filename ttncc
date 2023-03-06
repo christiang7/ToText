@@ -28,6 +28,8 @@ then
 	rm "$File".png
 	sed -i "3 s/$oldFile/$f/g" "$File".txt
   sed -i "4 s/$oldFile/$f/g" "$File".txt
+  sed -i "5 s/$oldFile/$f/g" "$File".txt
+  sed -i "6 s/$oldFile/$f/g" "$File".txt
   sed -i "s/$oldFile.png/$f.png/g" "$File".txt
   sed -i "s/$oldFile.avif/$f.avif/g" "$File".txt
 	#Opentxt
@@ -36,6 +38,8 @@ then
 	#sed -i "3 i[*] @BILD **[[../$f]] $2**" "$File".txt
 	sed -i "3 s/$oldFile/$f/" "$File".txt
   sed -i "4 s/$oldFile/$f/" "$File".txt
+  sed -i "5 s/$oldFile/$f/g" "$File".txt
+  sed -i "6 s/$oldFile/$f/g" "$File".txt
   sed -i "s/$oldFile/$f/" "$File".txt
 	#Wikiprev
 	#sed -i "11 i{{../$f?width=750}}" "$File".txt
@@ -49,6 +53,8 @@ then
 	rm "$File".png
 	sed -i "3 s/$oldFile/$f/g" "$File".txt
   sed -i "4 s/$oldFile/$f/g" "$File".txt
+  sed -i "5 s/$oldFile/$f/g" "$File".txt
+  sed -i "6 s/$oldFile/$f/g" "$File".txt
   sed -i "s/$oldFile.png/$f.png/g" "$File".txt
   sed -i "s/$oldFile.avif/$f.avif/g" "$File".txt
 	#Wikiprev
@@ -64,12 +70,16 @@ elif [[ $extens == $f ]]
 then
 	sed -i "3 s/$oldFile/$f/g" "$File".txt
   sed -i "4 s/$oldFile/$f/g" "$File".txt
+  sed -i "5 s/$oldFile/$f/g" "$File".txt
+  sed -i "6 s/$oldFile/$f/g" "$File".txt
   sed -i "s/$oldFile/$f/" "$File".txt
 	#Wikiprev
 	#Opentxt
 else
 	sed -i "3 s/$oldFile/$f/g" "$File".txt
   sed -i "4 s/$oldFile/$f/g" "$File".txt
+  sed -i "5 s/$oldFile/$f/g" "$File".txt
+  sed -i "6 s/$oldFile/$f/g" "$File".txt
   sed -i "s/$oldFile/$f/" "$File".txt
 	#Wikiprev
 	#Opentxt

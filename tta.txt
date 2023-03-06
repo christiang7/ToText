@@ -7,9 +7,7 @@ Backlink [[GedankenspeicherCoding]]
 [[../]]
 [*] **tta**   >  2277-11-11
 
-Program for moving files to the assets folder 
-to extract the file from the txt file to correct the name
-''echo "string1 [[string2]] string3 string4" | sed 's/.*\[\[\([^]]*\)\]\].*/\1/g'''
+Program for linking files to the assets folder
 
 
 ''noweb.py -Rtta.sh tta.txt > tta.sh && echo 'fertig'''

@@ -6,7 +6,8 @@ Created [[Zettelkasten:2023:03:06]]
 Backlink [[CodeFabrik:GedankenspeicherCoding]]
 [[../]]
 [*] **ttam**   >  2277-11-11
-xsdf
+Program for moving files to the assets folder 
+
 
 
 ''noweb.py -Rttam.sh ttam.txt > ttam.sh && echo 'fertig'''
@@ -18,23 +19,33 @@ xsdf
 <<ttam.sh>>=
 #!/usr/bin/env bash
 
-ttrename "$1"
+
 
 folder=$(readlink -f -n "$1")
-file=$(basename "$folder" .txt)
-
 folder="${folder%/*}"
 
+filename=$(ttrename "$1" 2> /dev/null)
+
+#file=$(basename "$folder" .txt)
+
+
+#filename=${file%.*}
 
 assetsfolder=$(echo ~/Gedankenspeicher/Gedankenspeicherwiki/Assets)
 wikipath=$(echo $assetsfolder | sed "s,/home/christian/Gedankenspeicher/Gedankenspeicherwiki/,," | sed "s,/,:,g")
 
-mv "$folder"/"$file" "$assetsfolder"/"$file"
-mv "$folder"/"$file".png "$assetsfolder"/"$file".png
-mv "$folder"/"$file".avif "$assetsfolder"/"$file".avif
-mv "$folder"/"$file".txt "$assetsfolder"/"$file".txt
+mv "$folder"/"$filename" "$assetsfolder"/"$filename"
+#mv "$folder"/"$file" "$assetsfolder"/"$file"
 
-echo -e "[[$assetsfolder/$file]]\n[[$wikipath:$file]]" >> "$assetsfolder"/"$file".txt
+mv "$folder"/"${filename}"_files "$assetsfolder"/"${filename}"_files
+mv "$folder"/"${filename}"-Dateien "$assetsfolder"/"${filename}"-Dateien
+mv "$folder"/"${filename}"_Dateien "$assetsfolder"/"${filename}"_Dateien
+
+mv "$folder"/"$filename".png "$assetsfolder"/"$filename".png
+mv "$folder"/"$filename".avif "$assetsfolder"/"$filename".avif
+mv "$folder"/"$filename".txt "$assetsfolder"/"$filename".txt
+
+echo -e "[[$assetsfolder/$filename]]\n[[$wikipath:$filename]]" >> "$assetsfolder"/"$filename".txt
 @
 
 }}}
