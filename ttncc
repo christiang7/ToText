@@ -39,7 +39,7 @@ then
   sed -i "s/$oldFile/$f/" "$File".txt
 	#Wikiprev
 	#sed -i "11 i{{../$f?width=750}}" "$File".txt
-	Opentxt
+	#Opentxt
 elif [[ mp4 == $extens || mov == $extens || mkv == $extens || flv = $extens  ]]
 then
 	#sed -i "3 i[*] @VIDEO **[[../$f]]** $2" "$File".txt
@@ -52,23 +52,26 @@ then
   sed -i "s/$oldFile.png/$f.png/g" "$File".txt
   sed -i "s/$oldFile.avif/$f.avif/g" "$File".txt
 	#Wikiprev
-	Opentxt
+	#Opentxt
 elif [[ epub == $extens ]]
 then
 	sed -i "3 s/$oldFile/$f/g" "$File".txt
   sed -i "4 s/$oldFile/$f/g" "$File".txt
+  sed -i "s/$oldFile/$f/" "$File".txt
 	#Wikiprev
-	Opentxt
+	#Opentxt
 elif [[ $extens == $f ]]
 then
 	sed -i "3 s/$oldFile/$f/g" "$File".txt
   sed -i "4 s/$oldFile/$f/g" "$File".txt
+  sed -i "s/$oldFile/$f/" "$File".txt
 	#Wikiprev
-	Opentxt
+	#Opentxt
 else
 	sed -i "3 s/$oldFile/$f/g" "$File".txt
   sed -i "4 s/$oldFile/$f/g" "$File".txt
+  sed -i "s/$oldFile/$f/" "$File".txt
 	#Wikiprev
-	Opentxt
+	#Opentxt
 fi
 
