@@ -1,23 +1,3 @@
-Content-Type: text/x-zim-wiki
-Wiki-Format: zim 0.6
-
-===== tta =====
-Created [[Zettelkasten:2023:03:03]]
-Backlink [[GedankenspeicherCoding]]
-[[../]]
-[*] **tta**   >  2277-11-11
-
-Program for moving files to the assets folder 
-
-
-
-''noweb.py -Rtta.sh tta.txt > tta.sh && echo 'fertig'''
-
-
-''chmod u+x tta.sh && ln -sf /home/christian/Gedankenspeicher/Gedankenspeicherwiki/CodeFabrik/GedankenspeicherCoding/tta.sh ~/.local/bin/tta.sh && echo 'fertig'''
-
-{{{code: lang="sweave" linenumbers="True"
-<<tta.sh>>=
 #!/usr/bin/env bash
 
 wikipath=$(xclip -selection clipboard -o)
@@ -39,6 +19,3 @@ ln -s "$filepath".txt "$destinationfolder"/"$file".txt
 
 
 
-@
-
-}}}
