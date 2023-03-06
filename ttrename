@@ -31,6 +31,7 @@ then
     mv "${filename2%.*}"-Dateien "$Newname"-Dateien
     mv "${filename2%.*}"_Dateien "$Newname"_Dateien
     mv "$filename2".png "$Newname"."$extens3".png
+    mv "$filename2".avif "$Newname"."$extens3".avif
     mv "$File2" "$Newname"."$extens3".txt
     ttncc "$filename2" "$Newname"."$extens3"
     echo "$Newname"."$extens3"
@@ -50,6 +51,7 @@ else
     mv "${f%.*}"-Dateien "$Newname"-Dateien
     mv "${f%.*}"_Dateien "$Newname"_Dateien
     mv "$f".png "$Newname"."$extens".png
+    mv "$f".avif "$Newname"."$extens".avif
     mv "$File".txt "$Newname"."$extens".txt
     ttncc "$f" "$Newname"."$extens"
     echo "$Newname"."$extens"

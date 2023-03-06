@@ -33,14 +33,14 @@ then
   sed -i "s/$oldFile.png/$f.png/g" "$File".txt
   sed -i "s/$oldFile.avif/$f.avif/g" "$File".txt
 	#Opentxt
-elif [[ jpg == $extens || png == $extens || webp == $extens || jpeg == $extens ]]
+elif [[ jpg == $extens || png == $extens || webp == $extens || jpeg == $extens || avif == $extens ]]
 then
 	#sed -i "3 i[*] @BILD **[[../$f]] $2**" "$File".txt
 	sed -i "3 s/$oldFile/$f/" "$File".txt
   sed -i "4 s/$oldFile/$f/" "$File".txt
   sed -i "5 s/$oldFile/$f/g" "$File".txt
   sed -i "6 s/$oldFile/$f/g" "$File".txt
-  sed -i "s/$oldFile/$f/" "$File".txt
+  sed -i "s/$oldFile/$f/g" "$File".txt
 	#Wikiprev
 	#sed -i "11 i{{../$f?width=750}}" "$File".txt
 	#Opentxt
@@ -55,6 +55,7 @@ then
   sed -i "4 s/$oldFile/$f/g" "$File".txt
   sed -i "5 s/$oldFile/$f/g" "$File".txt
   sed -i "6 s/$oldFile/$f/g" "$File".txt
+  sed -i "s/$oldFile/$f/g" "$File".txt
   sed -i "s/$oldFile.png/$f.png/g" "$File".txt
   sed -i "s/$oldFile.avif/$f.avif/g" "$File".txt
 	#Wikiprev
@@ -63,7 +64,9 @@ elif [[ epub == $extens ]]
 then
 	sed -i "3 s/$oldFile/$f/g" "$File".txt
   sed -i "4 s/$oldFile/$f/g" "$File".txt
-  sed -i "s/$oldFile/$f/" "$File".txt
+  sed -i "5 s/$oldFile/$f/g" "$File".txt
+  sed -i "6 s/$oldFile/$f/g" "$File".txt
+  sed -i "s/$oldFile/$f/g" "$File".txt
 	#Wikiprev
 	#Opentxt
 elif [[ $extens == $f ]]
@@ -72,7 +75,7 @@ then
   sed -i "4 s/$oldFile/$f/g" "$File".txt
   sed -i "5 s/$oldFile/$f/g" "$File".txt
   sed -i "6 s/$oldFile/$f/g" "$File".txt
-  sed -i "s/$oldFile/$f/" "$File".txt
+  sed -i "s/$oldFile/$f/g" "$File".txt
 	#Wikiprev
 	#Opentxt
 else
@@ -80,7 +83,7 @@ else
   sed -i "4 s/$oldFile/$f/g" "$File".txt
   sed -i "5 s/$oldFile/$f/g" "$File".txt
   sed -i "6 s/$oldFile/$f/g" "$File".txt
-  sed -i "s/$oldFile/$f/" "$File".txt
+  sed -i "s/$oldFile/$f/g" "$File".txt
 	#Wikiprev
 	#Opentxt
 fi
