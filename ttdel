@@ -1,4 +1,6 @@
 #!/bin/bash
+if zenity --question --text="Wirklich löschen?"
+then
 File=$(echo "$1" | sed 's/ /_/g' | sed 's/:/;/g'| sed -e "s/'/_/g" | sed 's/\"//g')
 
 File2=$(basename "$1")
@@ -24,4 +26,5 @@ else
 	rm "$File".pdf.png
 fi
 
+fi
 
