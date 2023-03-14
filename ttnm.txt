@@ -32,7 +32,7 @@ then
 	source=$(echo $abfrage | cut -s -d "|" -f 2)
 	tags=$(echo $abfrage | cut -s -d "|" -f 3)
 	additiontext=$(echo $abfrage | cut -s -d "|" -f 4)
-folder=$(date +"/home/christian/Gedankenspeicher/Gedankenspeicherwiki/Assets)
+folder=/home/christian/Gedankenspeicher/Gedankenspeicherwiki/Assets
 File=$(echo "$Newname"."$extens" | sed 's/ /_/g' | sed 's/:/;/g'| sed -e "s/'/_/g" | sed 's/\"//g'|  sed 's/&/n/g' | sed 's/\///g' | sed 's/|//g' | sed 's/\[/(/g' | sed 's/\]/)/g' | sed 's/@/at/g')
 Newname=$(echo "$Newname" | sed 's/ /_/g' | sed 's/:/;/g'| sed -e "s/'/_/g" | sed 's/\"//g'|  sed 's/&/n/g' | sed 's/\///g' | sed 's/|//g' | sed 's/\[/(/g' | sed 's/\]/)/g' | sed 's/@/at/g')
 mv "$1" "$File"
@@ -183,7 +183,7 @@ then
 elif [[ epub == $extens ]] 
 then
 		Wikiprev
-		echo "[*] @EBOOK $tags **[[../\"$File\"]] $source**" >> "$File".txt
+		echo "[*] @EBOOK $tags **[[../$File]] $source**" >> "$File".txt
 		Timestamps
 		echo -e "[[../]]\n$additiontext\n" >> "$File".txt
 		einfo "$File" >> "$File".txt
@@ -191,13 +191,13 @@ then
 elif [[ $extens == $f ]] 
 then
 	Wikiprev
-	echo "[*] @ORDNER $tags **[[../\"$File\"]] $source**" >> "$File".txt
+	echo "[*] @ORDNER $tags **[[../$File]] $source**" >> "$File".txt
 	Timestamps
 	echo -e "[[../]]\n$additiontext\n" >> "$File".txt
 	Moving
 else
 	Wikiprev
-	echo "[*] $tags **[[../\"$File\"]] $source**" >> "$File".txt
+	echo "[*] $tags **[[../$File]] $source**" >> "$File".txt
 	Timestamps
 	echo -e "[[../]]\n$additiontext\n" >> "$File".txt
 	Moving
