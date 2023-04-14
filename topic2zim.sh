@@ -1,6 +1,6 @@
 #! /bin/bash
 
-choose=$(zenity --height 350 --list --radiolist --print-column ALL --hide-header --column "Checkbox" --column "What" TRUE Neu FALSE Video FALSE Musik FALSE Spiele FALSE Lesen FALSE Physik FALSE Mathematik FALSE Philosophie FALSE Software)
+choose=$(zenity --height 350 --list --radiolist --print-column ALL --hide-header --column "Checkbox" --column "What" TRUE Neu FALSE Video FALSE Musik FALSE Spiele FALSE Diverses FALSE Physik FALSE Mathematik FALSE Philosophie FALSE Technik FALSE Naturwissenschaften FALSE CodeFabrik)
 if [ ! $? -eq 1 ];
 then
 tabs="$(xclip -selection clipboard -o)"
@@ -59,7 +59,7 @@ Musik) file=$(echo "/home/christian/Gedankenspeicher/Gedankenspeicherwiki/MusikS
 	l=7;;
 Spiele) file=$(echo "/home/christian/Gedankenspeicher/Gedankenspeicherwiki/SpielE.txt")
 	l=7;;
-Lesen) file=$(echo "/home/christian/Gedankenspeicher/Gedankenspeicherwiki/Buecher/Lesestoff.txt")
+Diverses) file=$(echo "/home/christian/Gedankenspeicher/Gedankenspeicherwiki/Divrses.txt")
 	l=7;;
 Physik) file=$(echo "/home/christian/Gedankenspeicher/Gedankenspeicherwiki/Physik.txt")
 	l=10;;
@@ -67,7 +67,11 @@ Mathematik) file=$(echo "/home/christian/Gedankenspeicher/Gedankenspeicherwiki/M
 	l=10;;
 Philosophie) file=$(echo "/home/christian/Gedankenspeicher/Gedankenspeicherwiki/Philosophie.txt")
 	l=10;;
-Software) file=$(echo "/home/christian/Gedankenspeicher/Gedankenspeicherwiki/CodeFabrik/Software.txt")
+Technik) file=$(echo "/home/christian/Gedankenspeicher/Gedankenspeicherwiki/Technik.txt")
+	l=7;;
+Naturwissenschaften) file=$(echo "/home/christian/Gedankenspeicher/Gedankenspeicherwiki/Naturwissenschaften.txt")
+	l=10;;
+CodeFabrik) file=$(echo "/home/christian/Gedankenspeicher/Gedankenspeicherwiki/CodeFabrik.txt")
 	l=10;;
 esac
 echo $tabs
