@@ -72,7 +72,7 @@ Technik) file=$(echo "/home/christian/Gedankenspeicher/Gedankenspeicherwiki/Tech
 Naturwissenschaften) file=$(echo "/home/christian/Gedankenspeicher/Gedankenspeicherwiki/Naturwissenschaften.txt")
 	l=10;;
 CodeFabrik) file=$(echo "/home/christian/Gedankenspeicher/Gedankenspeicherwiki/CodeFabrik.txt")
-	l=10;;
+	l=11;;
 esac
 echo $tabs
 today=$(date +"[[Zettelkasten:%Y:%m:%d]]")
