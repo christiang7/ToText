@@ -195,5 +195,12 @@ else
 	Moving
 fi
 
+
+file=$(readlink -f -n "$File")
+filepath=$(echo "${file%/*}" | sed "s,/home/christian,~,")
+wikipath=$(echo $filepath | sed "s,~/Gedankenspeicher/Gedankenspeicherwiki/,," | sed "s,/,:,g")
+FullFilename=$(basename $file .txt)
+echo -e "[[$filepath/$FullFilename]]\n[[$wikipath:$FullFilename]]" >> $folder/"$File".txt
+
 fi
 
