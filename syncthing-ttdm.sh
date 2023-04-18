@@ -43,6 +43,7 @@ function Wikiprev(){
 	touch "$folder"/"$File".txt
 	echo "Content-Type: text/x-zim-wiki" >> $folder/"$Filename".txt
 	echo "Wiki-Format: zim 0.6" >> $folder/"$Filename".txt
+	echo "===== $Filename =====" >> $folder/"$Filename".txt
 }
 
 function Timestamps(){
@@ -80,6 +81,7 @@ if [[ pdf == $extens ]]
 	touch "$folder"/"$Filename".txt
 	echo "Content-Type: text/x-zim-wiki" >> "$folder"/"$Filename".txt
 	echo "Wiki-Format: zim 0.6" >> "$folder"/"$Filename".txt
+	echo "===== $Filename =====" >> $folder/"$Filename".txt
 	echo "[*] @ARTIKEL $tags **[[../$Filename]] $source**" >> "$folder"/"$Filename".txt
 	echo "Text creation time: $(date +"[[Zettelkasten:%Y:%m:%d]]")" >> "$folder"/"$Filename".txt
 	echo "Modification time: $(date +"[[Zettelkasten:%Y:%m:%d]]" -r "$File")" >> "$folder"/"$Filename".txt
@@ -108,6 +110,7 @@ then
 	touch "$folder"/"$Filename".txt
 	echo "Content-Type: text/x-zim-wiki" >> "$folder"/"$Filename".txt
 	echo "Wiki-Format: zim 0.6" >> "$folder"/"$Filename".txt
+	echo "===== $Filename =====" >> $folder/"$Filename".txt
 	echo "[*] @BILD $tags **[[../$Filename]] $source**" >> "$folder"/"$Filename".txt
 	echo "Text creation time: $(date +"[[Zettelkasten:%Y:%m:%d]]")" >> "$folder"/"$Filename".txt
 	echo "Modification time: $(date +"[[Zettelkasten:%Y:%m:%d]]" -r "$File")" >> "$folder"/"$Filename".txt
@@ -128,6 +131,7 @@ then
 	touch "$folder"/"$Filename".txt
 	echo "Content-Type: text/x-zim-wiki" >> "$folder"/"$Filename".txt
 	echo "Wiki-Format: zim 0.6" >> "$folder"/"$Filename".txt
+	echo "===== $Filename =====" >> $folder/"$Filename".txt
 	echo "[*] @VIDEO $tags **[[../$Filename]] $source**" >> "$folder"/"$Filename".txt
 	echo "Text creation time: $(date +"[[Zettelkasten:%Y:%m:%d]]")" >> "$folder"/"$Filename".txt
 	echo "Modification time: $(date +"[[Zettelkasten:%Y:%m:%d]]" -r "$File")" >> "$folder"/"$Filename".txt

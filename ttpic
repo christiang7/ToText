@@ -4,6 +4,7 @@ f=$(basename "$1")
 touch "$File".txt
 echo "Content-Type: text/x-zim-wiki" >> "$File".txt
 echo "Wiki-Format: zim 0.6" >> "$File".txt
+echo "===== $File =====" >> "$File".txt
 echo "[*] @BILD $3 **[[../$f]] $2**" >> "$File".txt
 echo "Text creation time: $(date +"[[Zettelkasten:%Y:%m:%d]]")" >> "$File".txt
 echo "Modification time: $(date +"[[Zettelkasten:%Y:%m:%d]]" -r "$1")" >> "$File".txt

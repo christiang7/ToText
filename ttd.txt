@@ -52,6 +52,8 @@ for (( i=$lines ; i>=1 ; i-- ));
 		touch "$folder"/"$File".txt
 		echo "Content-Type: text/x-zim-wiki" >> "$folder"/"$File".txt
 		echo "Wiki-Format: zim 0.6" >> "$folder"/"$File".txt
+		echo "===== $File =====" >> wiki" >> "$folder"/"$File".txt
+		echo "Wiki-Format: zim 0.6" >> "$folder"/"$File".txt
 	}
 
 	function Timestamps(){

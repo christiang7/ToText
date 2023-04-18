@@ -75,6 +75,7 @@ function Wikiprev(){
 	#touch "$folder"/"$File".txt
 	echo "Content-Type: text/x-zim-wiki" >> "$folder"/"$File".txt
 	echo "Wiki-Format: zim 0.6" >> "$folder"/"$File".txt
+	echo "===== $File =====" >> "$folder"/"$File".txt
 }
 
 function Timestamps(){
@@ -166,6 +167,7 @@ mv "$filename".* "$foldertex"/ #
 #touch "$foldertex".txt #
 echo "Content-Type: text/x-zim-wiki" >> "$folder".txt
 echo "Wiki-Format: zim 0.6" >> "$folder".txt
+echo "===== $File =====" >> "$folder".txt
 echo "[*] @TEX $tags **$folder $source**" >> "$folder".txt #
 echo "**[[./$File]]**" >> "$folder".txt 
 echo "**[[./$filename.pdf]]**" >> "$folder".txt 

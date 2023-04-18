@@ -26,6 +26,7 @@ then
 	xournalpp "$filename".xopp && xournalpp "$File" -p "$filename".pdf
 	echo "Content-Type: text/x-zim-wiki" >> "$File".txt
 	echo "Wiki-Format: zim 0.6" >> "$File".txt
+	echo "===== $File =====" >> "$File".txt
 	echo "[*] $tags **[[../"$filename".xopp]] $source**" >> "$File".txt
 	echo "Text creation time: $(date +"[[Zettelkasten:%Y:%m:%d]]")" >> "$File".txt
 	echo "Modification time: $(date +"[[Zettelkasten:%Y:%m:%d]]" -r "$File")" >> "$File".txt
