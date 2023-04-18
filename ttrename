@@ -11,7 +11,6 @@ File2=$(basename "$1")
 extens2=${File2##*.}
 filename2=${File2%.*} #only the filename, here it is the original file
 extens3=${filename2##*.}
-#filename2=$(echo "$filename2" | sed 's/_/ /g' | sed -e "s/_/'/g")
 filename2=$(cat "$File2" | tr '\n' ' ' | cut -d "[" -f4 | cut -d "]" -f1 | sed "s/..\///g")
 extens3=${filename2##*.}
 

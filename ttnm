@@ -40,6 +40,7 @@ function Wikiprev(){
 	touch "$File".txt
 	echo "Content-Type: text/x-zim-wiki" >> $folder/"$File".txt
 	echo "Wiki-Format: zim 0.6" >> $folder/"$File".txt
+	echo "===== $File =====" >> $folder/"$File".txt
 }
 
 function Timestamps(){
@@ -58,6 +59,7 @@ if [[ pdf == $extens ]]
 	touch "$folder"/"$File".txt
 	echo "Content-Type: text/x-zim-wiki" >> "$folder"/"$File".txt
 	echo "Wiki-Format: zim 0.6" >> "$folder"/"$File".txt
+	echo "===== $File =====" >> $folder/"$File".txt
 	echo "[*] @ARTIKEL $tags **[[../$f]] $source**" >> "$folder"/"$File".txt
 	echo "Text creation time: $(date +"[[Zettelkasten:%Y:%m:%d]]")" >> "$folder"/"$File".txt
 	echo "Modification time: $(date +"[[Zettelkasten:%Y:%m:%d]]" -r "$File")" >> "$folder"/"$File".txt
@@ -93,6 +95,7 @@ then
 	mv "$File".txt "$folder"/"$File".txt
 	echo "Content-Type: text/x-zim-wiki" >> "$folder"/"$File".txt
 	echo "Wiki-Format: zim 0.6" >> "$folder"/"$File".txt
+	echo "===== $File =====" >> $folder/"$File".txt
 	echo "[*] @BILD $tags **[[../$f]] $source**" >> "$folder"/"$File".txt
 	echo "Text creation time: $(date +"[[Zettelkasten:%Y:%m:%d]]")" >> "$folder"/"$File".txt
 	echo "Modification time: $(date +"[[Zettelkasten:%Y:%m:%d]]" -r "$f")" >> "$folder"/"$File".txt
@@ -115,6 +118,7 @@ then
 	mv "$File".txt "$folder"/"$File".txt
 	echo "Content-Type: text/x-zim-wiki" >> "$folder"/"$File".txt
 	echo "Wiki-Format: zim 0.6" >> "$folder"/"$File".txt
+	echo "===== $File =====" >> $folder/"$File".txt
 	echo "[*] @VIDEO $tags **[[../$f]] $source**" >> "$folder"/"$File".txt
 	echo "Text creation time: $(date +"[[Zettelkasten:%Y:%m:%d]]")" >> "$folder"/"$File".txt
 	echo "Modification time: $(date +"[[Zettelkasten:%Y:%m:%d]]" -r "$File")" >> "$folder"/"$File".txt
@@ -143,6 +147,7 @@ then
 	touch "$folder"/"$File".txt
 	echo "Content-Type: text/x-zim-wiki" >> "$folder"/"$File".txt
 	echo "Wiki-Format: zim 0.6" >> "$folder"/"$File".txt
+	echo "===== $File =====" >> $folder/"$File".txt
 	echo "[*] @ARTIKEL $tags **[[../$f]] $source**" >> "$folder"/"$File".txt
 	echo "Text creation time: $(date +"[[Zettelkasten:%Y:%m:%d]]")" >> "$folder"/"$File".txt
 	echo "Modification time: $(date +"[[Zettelkasten:%Y:%m:%d]]" -r "$File")" >> "$folder"/"$File".txt

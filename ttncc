@@ -1,15 +1,10 @@
 #!/bin/bash
 File=$(echo "$2" | sed 's/ /_/g' | sed 's/:/;/g'| sed -e "s/'/_/g" | sed 's/\"//g')
-#f=$(basename "$1")
-#mv "$2" "$File"
-#mv
 oldFile=$(basename "$1")
-#echo $oldFile
-#echo $File
+
 f=$(basename "$File")
 filename=${f%.*} #only the filename
 extens=${f##*.}
-#echo $extens
 function Opentxt(){
 	kate "$File".txt 2>/dev/null &
 }
@@ -27,20 +22,20 @@ then
 	convert "$File".png -resize 4000x4000 "$File".avif
 	rm "$File".png
 	sed -i "3 s/$oldFile/$f/g" "$File".txt
-  sed -i "4 s/$oldFile/$f/g" "$File".txt
-  sed -i "5 s/$oldFile/$f/g" "$File".txt
-  sed -i "6 s/$oldFile/$f/g" "$File".txt
-  sed -i "s/$oldFile.png/$f.png/g" "$File".txt
-  sed -i "s/$oldFile.avif/$f.avif/g" "$File".txt
+	sed -i "4 s/$oldFile/$f/g" "$File".txt
+	sed -i "5 s/$oldFile/$f/g" "$File".txt
+	sed -i "6 s/$oldFile/$f/g" "$File".txt
+	sed -i "s/$oldFile.png/$f.png/g" "$File".txt
+	sed -i "s/$oldFile.avif/$f.avif/g" "$File".txt
 	#Opentxt
 elif [[ jpg == $extens || png == $extens || webp == $extens || jpeg == $extens || avif == $extens ]]
 then
 	#sed -i "3 i[*] @BILD **[[../$f]] $2**" "$File".txt
 	sed -i "3 s/$oldFile/$f/" "$File".txt
-  sed -i "4 s/$oldFile/$f/" "$File".txt
-  sed -i "5 s/$oldFile/$f/g" "$File".txt
-  sed -i "6 s/$oldFile/$f/g" "$File".txt
-  sed -i "s/$oldFile/$f/g" "$File".txt
+	sed -i "4 s/$oldFile/$f/" "$File".txt
+	sed -i "5 s/$oldFile/$f/g" "$File".txt
+	sed -i "6 s/$oldFile/$f/g" "$File".txt
+	sed -i "s/$oldFile/$f/g" "$File".txt
 	#Wikiprev
 	#sed -i "11 i{{../$f?width=750}}" "$File".txt
 	#Opentxt

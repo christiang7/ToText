@@ -25,6 +25,7 @@ function Opentxt(){
 
 function Wikiprev(){
 	touch "$File".txt
+	sed -i "1 i===== $File =====" "$File".txt
 	sed -i "1 iWiki-Format: zim 0.6" "$File".txt
 	sed -i "1 iContent-Type: text/x-zim-wiki" "$File".txt
 }
