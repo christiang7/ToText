@@ -38,6 +38,7 @@ touch "$File".txt
 mv "$File".txt "$folder"/"$File".txt
 echo "Content-Type: text/x-zim-wiki" >> "$folder"/"$File".txt
 echo "Wiki-Format: zim 0.6" >> "$folder"/"$File".txt
+echo "===== $File =====" >> "$folder"/"$File".txt
 echo "[*] @BILD @Webseite @Screenshot $tags **[[../$File]] $url**" >> "$folder"/"$File".txt
 echo "Text creation time: $(date +"[[Zettelkasten:%Y:%m:%d]]")" >> "$folder"/"$File".txt
 echo "Modification time: $(date +"[[Zettelkasten:%Y:%m:%d]]" -r "$folder"/"$File")" >> "$folder"/"$File".txt
