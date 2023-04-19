@@ -1,11 +1,12 @@
 #!/bin/bash
 
 File=$(basename "$1")
-echo "$File"
+#echo "$File"
 
 line=$(sed -n '/\[\*\]/{=;}' $File )
 line=${line:0:1}
-if [[ $line > 5 ]]
+#echo $line
+if [[ $line > 5 || $line == "" ]]
 then
     linee=$(sed -n '/\[\ \]/{=;}' $File )
     linee=${linee:0:1}

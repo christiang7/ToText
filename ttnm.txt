@@ -7,6 +7,9 @@ Creation-Date: 2021-05-03T14:21:42+02:00
 Angelegt Montag [[Zettelkasten:2021:05:03]]
 Backlink [[GedankenspeicherCoding]]
 [[../]]
+
+[ ] epub correction
+
   ''noweb.py -Rttnm ttnm.txt > ttnm && chmod u+x ttnm && echo 'fertig'''
 
 {{{code: lang="awk" linenumbers="True"
