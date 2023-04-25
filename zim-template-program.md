@@ -101,7 +101,7 @@ echo -e "[*] ${tags} ** ${File} ** ${source} >  2277-11-11" >> "${folder}"/"${Fi
 echo -e "\n${additiontext}" >> "${folder}"/"${File}".md
 echo -e "\n''noweb.py -R${File}.${extens} ${File}.md > ${File}.${extens} && echo 'fertig'''" >> "${folder}"/"${File}".md
 echo -e "\n\n''chmod u+x ${File}.${extens} && ln -sf "${folder}"/${File}.${extens} ~/.local/bin/${File}.${extens} && echo 'fertig'''" >> "${folder}"/"${File}".md
-echo -e "\n{{{code: lang="sweave" linenumbers="True"" >> "${folder}"/"${File}".md
+echo -e "\n{{{code: lang="sh" linenumbers="True"" >> "${folder}"/"${File}".md
 echo -e "{{${File}.${extens}}}=" >> "${folder}"/"${File}".md
 echo -e "\n@" >> "${folder}"/"${File}".md
 echo -e "\n}}}" >> "${folder}"/"${File}".md

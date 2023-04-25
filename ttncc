@@ -1,7 +1,6 @@
 #!/bin/bash
 File=$(echo "$2" | sed 's/ /_/g' | sed 's/:/;/g'| sed -e "s/'/_/g" | sed 's/\"//g')
 oldFile=$(basename "$1")
-
 f=$(basename "$File")
 filename=${f%.*} #only the filename
 extens=${f##*.}
@@ -16,9 +15,9 @@ function Wikiprev(){
 if [[ pdf == $extens ]]
 then
 	#Wikiprev
-	pdftoppm -png -singlefile "$File" "$File"
 	rm "$oldFile".png
 	rm "$oldFile".avif
+	pdftoppm -png -singlefile "$File" "$File"
 	convert "$File".png -resize 4000x4000 "$File".avif
 	rm "$File".png
 	sed -i "3 s/$oldFile/$f/g" "$File".md
@@ -42,43 +41,43 @@ then
 elif [[ mp4 == $extens || mov == $extens || mkv == $extens || flv = $extens  ]]
 then
 	#sed -i "3 i[*] @VIDEO **[[../$f]]** $2" "$File".md
-	ffmpeg -loglevel quiet -ss 2 -i "$File"  -t 1 -f image2 "$File".png
 	rm "$oldFile".png
+	ffmpeg -loglevel quiet -ss 2 -i "$File"  -t 1 -f image2 "$File".png
 	convert "$File".png -resize 4000x4000 "$File".avif
 	rm "$File".png
 	sed -i "3 s/$oldFile/$f/g" "$File".md
-  sed -i "4 s/$oldFile/$f/g" "$File".md
-  sed -i "5 s/$oldFile/$f/g" "$File".md
-  sed -i "6 s/$oldFile/$f/g" "$File".md
-  sed -i "s/$oldFile/$f/g" "$File".md
-  sed -i "s/$oldFile.png/$f.png/g" "$File".md
-  sed -i "s/$oldFile.avif/$f.avif/g" "$File".md
+	sed -i "4 s/$oldFile/$f/g" "$File".md
+	sed -i "5 s/$oldFile/$f/g" "$File".md
+	sed -i "6 s/$oldFile/$f/g" "$File".md
+	sed -i "s/$oldFile/$f/g" "$File".md
+	sed -i "s/$oldFile.png/$f.png/g" "$File".md
+	sed -i "s/$oldFile.avif/$f.avif/g" "$File".md
 	#Wikiprev
 	#Opentxt
 elif [[ epub == $extens ]]
 then
 	sed -i "3 s/$oldFile/$f/g" "$File".md
-  sed -i "4 s/$oldFile/$f/g" "$File".md
-  sed -i "5 s/$oldFile/$f/g" "$File".md
-  sed -i "6 s/$oldFile/$f/g" "$File".md
-  sed -i "s/$oldFile/$f/g" "$File".md
+	sed -i "4 s/$oldFile/$f/g" "$File".md
+	sed -i "5 s/$oldFile/$f/g" "$File".md
+	sed -i "6 s/$oldFile/$f/g" "$File".md
+	sed -i "s/$oldFile/$f/g" "$File".md
 	#Wikiprev
 	#Opentxt
 elif [[ $extens == $f ]]
 then
 	sed -i "3 s/$oldFile/$f/g" "$File".md
-  sed -i "4 s/$oldFile/$f/g" "$File".md
-  sed -i "5 s/$oldFile/$f/g" "$File".md
-  sed -i "6 s/$oldFile/$f/g" "$File".md
-  sed -i "s/$oldFile/$f/g" "$File".md
+	sed -i "4 s/$oldFile/$f/g" "$File".md
+	sed -i "5 s/$oldFile/$f/g" "$File".md
+	sed -i "6 s/$oldFile/$f/g" "$File".md
+	sed -i "s/$oldFile/$f/g" "$File".md
 	#Wikiprev
 	#Opentxt
 else
 	sed -i "3 s/$oldFile/$f/g" "$File".md
-  sed -i "4 s/$oldFile/$f/g" "$File".md
-  sed -i "5 s/$oldFile/$f/g" "$File".md
-  sed -i "6 s/$oldFile/$f/g" "$File".md
-  sed -i "s/$oldFile/$f/g" "$File".md
+	sed -i "4 s/$oldFile/$f/g" "$File".md
+	sed -i "5 s/$oldFile/$f/g" "$File".md
+	sed -i "6 s/$oldFile/$f/g" "$File".md
+	sed -i "s/$oldFile/$f/g" "$File".md
 	#Wikiprev
 	#Opentxt
 fi
