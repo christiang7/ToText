@@ -1,3 +1,15 @@
+# ttn
+
+* ☑ **[../ttn](./ttn)**
+
+Text creation time: [Zettelkasten:2021:04:29]()
+Modification time: [Zettelkasten:2021:04:24]()
+
+
+  ``noweb.py -Rttn ttn.txt > ttn && chmod u+x ttn && echo 'fertig``'
+
+```ini
+<<ttn>>=
 #!/bin/bash
 f=$(basename "$1")
 extens=${f##*.}
@@ -20,13 +32,13 @@ abfrage=$(yad --title="Diese Datei eine TXT hinzufügen" --text="Noch etwas hinz
  	 --field="Tags" \
  	 --field="Weiteres":TXT \
  	 "$source,Internet,Christian Gößl" "$tags" "$additiontext")
-if [ ! $? -eq 1 ];
+if [ ! $? -eq 1 ]; 
 then
 	Newname=$Filename
  	source=$(echo $abfrage | cut -s -d "~" -f 1)
 	tags=$(echo $abfrage | cut -s -d "~" -f 2)
 	additiontext=$(echo $abfrage | cut -s -d "~" -f 3)
-
+	
 echo $Newname
 echo $source
 echo $tags$File
@@ -72,8 +84,8 @@ function Timestamps(){
 if [[ pdf == $extens ]]
 then
 	#echo pdf
-	ttpdf "$folder"/"$File" "$source" "$tags" "$additiontext"
-elif [[ jpg == $extens || PNG == $extens || JPEG == $extens || png == $extens || webp == $extens || jpeg == $extens || avif == $extens ]] && [[ -z $extenspdf && -z $extensxopp && -z $extensmp4 && -z $extensmov && -z $extensflv && -z $extensmkv ]]
+	ttpdf "$folder"/"$File" "$source" "$tags" "$additiontext" 
+elif [[ jpg == $extens || PNG == $extens || JPEG == $extens || png == $extens || webp == $extens || jpeg == $extens || avif == $extens ]] && [[ -z $extenspdf && -z $extensxopp && -z $extensmp4 && -z $extensmov && -z $extensflv && -z $extensmkv ]] 
 then
 	#echo pic
 	#echo $extenspdf
@@ -81,16 +93,16 @@ then
 	convert "$folder"/"$File" "$filena".avif
 	ttpic "$filena".avif "$source" "$tags" "$additiontext"
 	if ! zenity --question --text="Möchten Sie das original Bild behalten?"
-	then
+	then 
 	  rm "$folder"/"$File"
 	fi
-	#kate "$folder"/"$File".txt 2>/dev/null &
+	#kate "$folder"/"$File".txt 2>/dev/null & 
 elif [[ mp4 == $extens || mov == $extens || mkv == $extens || flv = $extens || ogv = $extens ]]
 then
 	#echo vid
 	#ttdown "$f" "$2"
 	filena=${Filename%.*} #only the filename
-	if [[ -e "$filena".txt && ! -d "$filena" ]];
+	if [[ -e "$filena".txt && ! -d "$filena" ]]; 
 	then
 	ttvidc "$folder"/"$Filename"
   fi
@@ -127,7 +139,7 @@ then
 	echo "[*] @WEB $tags **[[../$f]] $source $(cat $folder'index.dat' | grep source | cut -f 2)**" >> "$folder"/"$File".txt
 	Timestamps
 	echo -e "[[../]]\n$additiontext\n" >> "$folder"/"$File".txt
-	cat $folder'index.rdf' >> "$folder"/"$File".txt
+	cat $folder'index.rdf' >> "$folder"/"$File".txt 
 	#pandoc -f html -t zimwiki $folder'index.html' >> "$folder"/"$File".txt
 	rm -r $folder
 	#Opentxt
@@ -155,8 +167,8 @@ echo "Content-Type: text/x-zim-wiki" >> "$folder".txt
 echo "Wiki-Format: zim 0.6" >> "$folder".txt
 echo "===== $File =====" >> "$folder".txt
 echo "[*] @TEX $tags **$folder $source**" >> "$folder".txt #
-echo "**[[./$File]]**" >> "$folder".txt
-echo "**[[./$filename.pdf]]**" >> "$folder".txt
+echo "**[[./$File]]**" >> "$folder".txt 
+echo "**[[./$filename.pdf]]**" >> "$folder".txt 
 echo "Text creation time: $(date +"[[Zettelkasten:%Y:%m:%d]]")" >> "$folder".txt
 echo "Modification time: $(date +"[[Zettelkasten:%Y:%m:%d]]" -r "$folder"/"$folder"/"$File")" >> "$folder".txt
 echo -e "\n$additiontext" >> "$folder".txt
@@ -203,7 +215,7 @@ then
 #elif [[ -n $extenspdf || -n $extensxopp || -z $extensmp4 || -z $extensmov || -z $extensflv || -z $extensmkv ]]
 #then
 #	echo "tue nichts"
-else
+else 
 	echo else
 	Wikiprev
 	echo "[*] $tags **[[../$Filename]] $source**" >> "$folder"/"$File".txt
@@ -214,3 +226,9 @@ fi
 
 
 fi
+@ 
+```
+
+
+
+

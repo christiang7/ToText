@@ -1,3 +1,20 @@
+# ttdown
+
+* ☑ @ArcProgramm @Notiz @Anmerkungen  **[../ttdown](./ttdown)**
+
+Text creation time: [Zettelkasten:2021:04:24]()
+Modification time: [Zettelkasten:2021:04:24]()
+
+Only for Downloads for the firefox webbrowser
+
+Kommando zum Extrahieren des Scripts
+
+``noweb.py -Rttdown ttdown.txt > ttdown && echo 'fertig``'
+
+hier die zim-script Datei zum Ausführen
+
+```awk
+<<ttdown>>=
 #!/bin/bash
 f=$(basename "$1")
 extens=${f##*.}
@@ -47,3 +64,9 @@ echo "{{../$f.avif?width=750}}" >> "$folder""$File".txt
 yt-dlp --get-description "$source" >> "$folder""$File".txt
 #echo "$3" >> "$File".txt
 #kate "$File".txt 2>/dev/null &
+@
+```
+
+
+
+

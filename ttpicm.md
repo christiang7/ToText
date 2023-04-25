@@ -1,0 +1,56 @@
+# ttpicm
+
+* ☑ **ttpicm**  
+
+Angelegt Montag [Zettelkasten:2021:05:03]()
+Backlink [GedankenspeicherCoding](../GedankenspeicherCoding.md)
+
+  ``noweb.py -Rttpicm ttpicm.txt > ttpicm && chmod u+x ttpicm && echo 'fertig``'
+
+Für den Fall das der Kalendereintrag noch nicht existiert
+
+	===== %A %d %b %Y =====
+	[[:Zettelkasten:%Y:%W|Week %W]]
+	[[Zettelkasten:%Y:%m]]
+	[[../]]
+	[*] **%A %d %b %Y ** >  2277-11-11
+
+```awk
+<<ttpicm>>=
+#!/bin/bash
+File=$(echo "$1" | sed 's/ /_/g' | sed 's/:/;/g'| sed -e "s/'/_/g" | sed 's/\"//g')
+f=$(basename "$1")
+folder=$(date +"/home/christian/Gedankenspeicher/Gedankenspeicherwiki/Zettelkasten/%Y/%m/%d" -r "$1")
+foldermonth=$(date +"/home/christian/Gedankenspeicher/Gedankenspeicherwiki/Zettelkasten/%Y/%m" -r "$1")
+mkdir -p $folder
+calendarfile=$(date +"%d" -r "$f")
+calendarfile=$calendarfile.txt
+if [[ ! -e "$foldermonth"/"$calendarfile" ]]
+then
+touch "$foldermonth"/"$calendarfile"
+date +"===== %A %d %b %Y ====="  -r "$f">> "$foldermonth"/"$calendarfile"
+date +"[[:Zettelkasten:%Y:%W|Week %W]]"   -r "$f">> "$foldermonth"/"$calendarfile"
+date +"[[Zettelkasten:%Y:%m]]"  -r "$f">> "$foldermonth"/"$calendarfile"
+echo -e "[[../]]"  >> "$foldermonth"/"$calendarfile"
+date +"[*] **%A %d %b %Y ** >  2277-11-11"  -r "$f" >> "$foldermonth"/"$calendarfile"
+#mv "$calendarfile" "$foldermonth"/"$calendarfile"
+fi
+touch "$File".txt
+echo "Content-Type: text/x-zim-wiki" >> "$File".txt
+echo "Wiki-Format: zim 0.6" >> "$File".txt
+echo "[*] @BILD $3 **[[../$f]] $2**" >> "$File".txt
+echo "Text creation time: $(date +"[[Zettelkasten:%Y:%m:%d]]")" >> "$File".txt
+echo "Modification time: $(date +"[[Zettelkasten:%Y:%m:%d]]" -r "$1")" >> "$File".txt
+echo -e "[[../]]\n$4\n" >> "$File".txt
+echo "{{../$f?width=750}}" >> "$File".txt
+echo -e "\n[[+$f]]" >> "$foldermonth"/"$calendarfile"
+echo -e "{{$f?width=750}}" >> "$foldermonth"/"$calendarfile"
+mv "$f" $folder/"$f"
+mv "$File".txt $folder/"$File".txt
+echo "cd $folder"
+kate $folder/"$File".txt 2>/dev/null &
+@
+```
+
+
+

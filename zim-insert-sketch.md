@@ -1,6 +1,22 @@
+# zim-insert-sketch
+Created [Zettelkasten:2023:03:02]()
+Backlink [GedankenspeicherCoding](../GedankenspeicherCoding.md)
+
+* ☑ **zim-insert-sketch**   >  2277-11-11
+
+
+
+
+``noweb.py -Rzim-insert-sketch.sh zim-insert-sketch.txt > zim-insert-sketch.sh && echo 'fertig``'
+
+
+``chmod u+x zim-insert-sketch.sh && ln -sf /home/christian/Gedankenspeicher/Gedankenspeicherwiki/Zettelkasten/ZetteL/CodeFabrik/GedankenspeicherCoding/zim-insert-sketch.sh ~/.local/bin/zim-insert-sketch.sh && echo 'fertig``'
+
+```sweave
+<<zim-insert-sketch.sh>>=
 #!/bin/bash
 #if zenity --question --text="Möchten Sie eine neue Skizze anfertigen?"
-#then
+#then 
 File=$(echo "$1" | sed 's/ /_/g' | sed 's/:/;/g'| sed -e "s/'/_/g" | sed 's/\"//g')
 filetxt=${File%.*}
 
@@ -10,7 +26,7 @@ Newname=$(zenity --entry \
        --title "Type new filename" \
        --text "Enter new filename" \
        --entry-text "_${datum}")
-if [ ! "$Newname" = "" ];
+if [ ! "$Newname" = "" ]; 
 then
 	filename=$(echo "$Newname" | sed 's/ /_/g' | sed 's/:/;/g'| sed -e "s/'/_/g" | sed 's/\"//g')
 	mkdir -p "$filetxt"
@@ -20,3 +36,8 @@ then
 	echo -e "[[+${filename}.png]]"
 	echo {{"$filename".png?width=750}}
 fi
+@
+@
+
+```
+

@@ -1,12 +1,38 @@
+# topic2zim
+Created Dienstag [Zettelkasten:2022:10:25]()
+Backlink [GedankenspeicherCoding](../GedankenspeicherCoding.md)
+
+* ☑ **topic2zim**  >  2277-11-11
+
+
+
+* ☑ WEB sed Substitution With Variables | Baeldung on Linux 
+
+ <https://www.baeldung.com/linux/sed-substitution-variables>
+
+* ☑ WEB Using sed With a Literal String Instead of an Input File | Baeldung on Linux 
+
+ <https://www.baeldung.com/linux/sed-with-string>
+
+* ☑ WEB 12 Useful 'sed' Commands In Linux | LinuxTeck 
+
+ <https://www.linuxteck.com/sed-commands-in-linux/>
+
+  ``noweb.py -Rtopic2zim.sh topic2zim.txt > topic2zim.sh && echo 'fertig``'
+
+``chmod u+x topic2zim.sh && ln -sf /home/christian/Gedankenspeicher/Gedankenspeicherwiki/Zettelkasten/ZetteL/CodeFabrik/GedankenspeicherCoding/topic2zim.sh ~/.local/bin/topic2zim.sh && echo 'fertig``'
+
+```ini
+<<topic2zim.sh>>=
 #! /bin/bash
 
 choose=$(zenity --height 350 --list --radiolist --print-column ALL --hide-header --column "Checkbox" --column "What" TRUE Neu FALSE Spass FALSE Assets FALSE Physik FALSE Mathematik FALSE Philosophie FALSE Naturwissenschaften_und_Instrumentarien FALSE CodeFabrik)
-if [ ! $? -eq 1 ];
+if [ ! $? -eq 1 ]; 
 then
 tabs="$(xclip -selection clipboard -o)"
 l="" # lineposition of the desired file
 case ${choose} in
-Neu)
+Neu) 
 
 abfrage=$(yad --title="Neues Thema" --text="Noch etwas hinzufügen?" \
  	 --form --width 500 --separator="|" --item-separator=","  \
@@ -15,14 +41,14 @@ abfrage=$(yad --title="Neues Thema" --text="Noch etwas hinzufügen?" \
  	 --field="Tags" \
  	 --field="Weiteres":TXT \
  	 "" "Internet,Christian Gößl" "" "")
-if [ ! $? -eq 1 ];
+if [ ! $? -eq 1 ]; 
 then
   topic=$(echo $abfrage | cut -s -d "|" -f 1)
   source=$(echo $abfrage | cut -s -d "|" -f 2)
 	tags=$(echo $abfrage | cut -s -d "|" -f 3)
 	additiontext=$(echo $abfrage | cut -s -d "|" -f 4)
 
-if [[ ! "$topic" = "" ]];
+if [[ ! "$topic" = "" ]]; 
 then
 
 foldermonth=$(echo "/home/christian/Gedankenspeicher/Gedankenspeicherwiki/Zettelkasten")
@@ -50,7 +76,7 @@ additiontext=$(zenity --entry \
        --title "Noch etwas hinzufügen?" \
        --text "Noch etwas hinzufügen?" \
        --entry-text "")
-if [ ! $? -eq 1 ];
+if [ ! $? -eq 1 ]; 
 then
 case ${choose} in
 Spass) file=$(echo "/home/christian/Gedankenspeicher/Gedankenspeicherwiki/Spaß_Stream.txt")
@@ -74,7 +100,7 @@ sed -i "${l}i
 " "$file"
 element=""
 lines="$(wc --lines <<< "$tabs")"
-for (( i=$lines ; i>=1 ; i-- ));
+for (( i=$lines ; i>=1 ; i-- )); 
   do
 	element=$(sed -n "${i}p" <(echo "$tabs"))
 	echo "$element"
@@ -85,7 +111,7 @@ for (( i=$lines ; i>=1 ; i-- ));
 	fi
 	#echo ${i}
 	sed -i "${l} s,^,$element," "$file"
-	if [[ $i > 1 ]]
+	if [[ $i > 1 ]] 
 	then
 	  sed -i "${l}i
 " "$file"
@@ -100,3 +126,6 @@ sed -i "${l}i
 fi;;
 esac
 fi
+@
+```
+

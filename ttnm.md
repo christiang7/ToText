@@ -1,3 +1,18 @@
+# ttnm
+
+* ☑ **ttnm**  
+
+Angelegt Montag [Zettelkasten:2021:05:03]()
+Backlink [GedankenspeicherCoding](../GedankenspeicherCoding.md)
+
+
+* ☐ epub correction
+
+
+  ``noweb.py -Rttnm ttnm.txt > ttnm && chmod u+x ttnm && echo 'fertig``'
+
+```awk
+<<ttnm>>=
 #!/usr/bin/env bash
 
 f=$(basename "$1")
@@ -11,8 +26,8 @@ abfrage=$(yad --title="Der Datei eine TXT hinzufügen?" --text="Noch etwas hinzu
  	 --field="Tags:" \
  	 --field="Weiteres:":TXT \
  	 "$name" "$2" "" "")
-
-if [ ! $? -eq 1 ];
+ 	 
+if [ ! $? -eq 1 ]; 
 then
 
 	Newname=$(echo $abfrage | cut -s -d "|" -f 1)
@@ -48,13 +63,13 @@ function Timestamps(){
 	echo "Modification time: $(date +"[[Zettelkasten:%Y:%m:%d]]" -r "$File")" >> $folder/"$File".txt
 }
 
-#if [[ -f "$File".txt ]]
+#if [[ -f "$File".txt ]] 
 #then
 #		Moving
 #else
 if [[ pdf == $extens ]]
 	then
-	if [[ ! -e "$File".txt ]]
+	if [[ ! -e "$File".txt ]] 
 	then
 	touch "$folder"/"$File".txt
 	echo "Content-Type: text/x-zim-wiki" >> "$folder"/"$File".txt
@@ -81,15 +96,15 @@ if [[ pdf == $extens ]]
   rm "$File".png
 	echo "cd $folder"
 	mv "$File" $folder/"$File"
-elif [[ jpg == $extens || png == $extens || webp == $extens || jpeg == $extens || avif == $extens || svg == $extens ]]
+elif [[ jpg == $extens || png == $extens || webp == $extens || jpeg == $extens || avif == $extens || svg == $extens ]] 
 then
 	convert "$File" "$Newname".avif
 	if ! zenity --question --text="Möchten Sie das original Bild behalten?"
-	then
+	then 
 	  rm "$File"
 	fi
 	File=$(basename "$Newname".avif)
-	if [[ ! -e "$File".txt ]]
+	if [[ ! -e "$File".txt ]] 
 	then
 	touch "$File".txt
 	mv "$File".txt "$folder"/"$File".txt
@@ -109,10 +124,10 @@ then
 
 	mv "$File" $folder/"$File"
 
-elif [[ mp4 == $extens || mov == $extens || mkv == $extens || flv = $extens ]]
+elif [[ mp4 == $extens || mov == $extens || mkv == $extens || flv = $extens ]] 
 then
 
-	if [[ ! -e "$File".txt ]]
+	if [[ ! -e "$File".txt ]] 
 	then
 	touch "$File".txt
 	mv "$File".txt "$folder"/"$File".txt
@@ -142,7 +157,7 @@ then
 
 	filename=$(basename "$File" .xopp)
 
-	if [[ ! -e "$File".txt ]]
+	if [[ ! -e "$File".txt ]] 
 	then
 	touch "$folder"/"$File".txt
 	echo "Content-Type: text/x-zim-wiki" >> "$folder"/"$File".txt
@@ -172,7 +187,7 @@ then
 	mv "$filename".pdf.txt "$folder"/"$filename".pdf.txt
 	echo "cd $folder"
 	mv "$f" $folder/"$f"
-elif [[ epub == $extens ]]
+elif [[ epub == $extens ]] 
 then
 		Wikiprev
 		echo "[*] @EBOOK $tags **[[../$File]] $source**" >> "$folder"/"$File".txt
@@ -180,7 +195,7 @@ then
 		echo -e "[[../]]\n$additiontext\n" >> "$folder"/"$File".txt
 		einfo "$File" >> "$folder"/"$File".txt
 		Moving
-elif [[ $extens == $f ]]
+elif [[ $extens == $f ]] 
 then
 	Wikiprev
 	echo "[*] @ORDNER $tags **[[../$File]] $source**" >> "$folder"/"$File".txt
@@ -203,4 +218,9 @@ FullFilename=$(basename $file .txt)
 echo -e "[[$filepath/$FullFilename]]\n[[$wikipath:$FullFilename]]" >> $folder/"$File".txt
 
 fi
+
+@ 
+```
+
+
 

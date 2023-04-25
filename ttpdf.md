@@ -1,3 +1,16 @@
+# ttpdf
+
+* ☑ **[../ttpdf](./ttpdf)**
+
+Text creation time:
+[Zettelkasten:2021:04:29]()
+Modification time:
+[Zettelkasten:2021:04:22]()
+
+  ``noweb.py -Rttpdf ttpdf.txt > ttpdf && chmod u+x ttpdf && echo 'fertig``'
+
+```awk
+<<ttpdf>>=
 #!/bin/bash
 File=$(echo "$1" | sed 's/ /_/g' | sed 's/:/;/g'| sed -e "s/'/_/g" | sed 's/\"//g')
 f=$(basename "$File")
@@ -23,3 +36,9 @@ pdftotext -nopgbrk -enc UTF-8 -f 1 -l 1 "$f" ->> "$File".txt
 #kate "$File".txt 2>/dev/null &
 #okular "$1" 2>/dev/null &
 #sleep 10
+@
+```
+
+
+
+

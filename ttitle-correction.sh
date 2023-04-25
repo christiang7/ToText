@@ -10,8 +10,8 @@ if [[ $line > 5 || $line == "" ]]
 then
     linee=$(sed -n '/\[\ \]/{=;}' $File )
     linee=${linee:0:1}
-    sed -i "$linee s/\[ \]/===== $(basename $File .txt) =====\\n\[ \]/" "$File"
+    sed -i "$linee s/\[ \]/===== $(basename $File .md) =====\\n\[ \]/" "$File"
 else
-    sed -i "$line s/\[\*\]/===== $(basename $File .txt) =====\\n\[\*\]/" "$File"
+    sed -i "$line s/\[\*\]/===== $(basename $File .md) =====\\n\[\*\]/" "$File"
 fi
 

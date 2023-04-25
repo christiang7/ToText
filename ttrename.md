@@ -1,0 +1,91 @@
+# ttrename
+Created Dienstag [Zettelkasten:2022:06:14]()
+Backlink [GedankenspeicherCoding](../GedankenspeicherCoding.md)
+
+* ☑ **ttrename**  >2277-11-11
+	* ☐ Anpassung auch für Ordner >2277-11-11 
+	* ☐ Anpassung bei beliebigen Dateinamen mit doppelten oder keiner Dateiendung >2277-11-11 
+		* ☐ mittels file und cut kann man die Dateiendung herausfinden und ansetzen file >2277-11-11  Screenshot_2022-07-26_at_22-51-47_The_mountain_landscape_-_Ferdinand_Engelműller_-_Google_Arts_\&_Culture.png | cut -d ' ' -f 2
+		* ☑ <https://www.geeksforgeeks.org/how-to-find-out-file-types-in-linux/> | How to Find Out File Types in Linux - GeeksforGeeks
+
+
+
+* ☑ WEB bash - Extract string from brackets - Stack Overflow 
+
+ <https://stackoverflow.com/questions/7209629/extract-string-from-brackets>
+to extract the file from the txt file to correct the name
+``echo "string1 [[string2]] string3 string4" | sed 's/.*\[\[\([^]]*\)\]\].*/\1/g``'
+
+``cat Brief_Overview_of_Japanese_Art_of_Archery.pdf.txt | tr '\n' ' ' | cut -d "[" -f4 | cut -d "]" -f1 | sed "s/..\///g"``
+
+
+
+
+* ☑ WEB Zenity - Create GUI Dialog Boxes In Bash Scripts - OSTechNix 
+
+ <https://ostechnix.com/zenity-create-gui-dialog-boxes-in-bash-scripts/>
+
+  ``noweb.py -Rttrename ttrename.txt > ttrename && echo 'fertig``'
+
+``chmod u+x ttrename && ln -sf /home/christian/Gedankenspeicher/Gedankenspeicherwiki/Zettelkasten/Gedankenwanderung/Programme/ttrename ~/.local/bin/ttrename && echo 'fertig``'
+
+```awk
+<<ttrename>>=
+#!/bin/bash
+
+#case of input file is the original file
+File=$(echo "$1" | sed 's/ /_/g' | sed 's/:/;/g'| sed -e "s/'/_/g" | sed 's/\"//g')
+f=$(basename "$1")
+extens=${f##*.}
+filename=${f%.*}
+
+# case of input is txt file
+File2=$(basename "$1")
+extens2=${File2##*.}
+filename2=${File2%.*} #only the filename, here it is the original file
+extens3=${filename2##*.}
+filename2=$(cat "$File2" | tr '\n' ' ' | cut -d "[" -f4 | cut -d "]" -f1 | sed "s/..\///g")
+extens3=${filename2##*.}
+
+if [[ $extens2 == txt ]]
+then
+	Newname=$(zenity --entry \
+       --width 500 \
+       --title "Type new filename" \
+       --text "Enter new filename" \
+       --entry-text "${filename2%.*}")
+    Newname=$(echo "$Newname" | sed 's/ /_/g' | sed 's/:/;/g'| sed -e "s/'/_/g" | sed 's/\"//g')
+    mv "$filename2" "$Newname"."$extens3"
+    mv "${filename2%.*}" "$Newname"
+    mv "${filename2%.*}"_files "$Newname"_files
+    mv "${filename2%.*}"-Dateien "$Newname"-Dateien
+    mv "${filename2%.*}"_Dateien "$Newname"_Dateien
+    mv "$filename2".png "$Newname"."$extens3".png
+    mv "$filename2".avif "$Newname"."$extens3".avif
+    mv "$File2" "$Newname"."$extens3".txt
+    ttncc "$filename2" "$Newname"."$extens3"
+    echo "$Newname"."$extens3"
+else 
+	Newname=$(zenity --entry \
+       --width 500 \
+       --title "Type new filename" \
+       --text "Enter new filename" \
+       --entry-text "$filename")
+    Newname=$(echo "$Newname" | sed 's/ /_/g' | sed 's/:/;/g'| sed -e "s/'/_/g" | sed 's/\"//g')
+    mv "$f" "$Newname"."$extens"
+    mv "$f" "$Newname"
+    mv "${f%.*}" "$Newname"
+    mv "${f%.*}"_files "$Newname"_files
+    mv "${f%.*}"-Dateien "$Newname"-Dateien
+    mv "${f%.*}"_Dateien "$Newname"_Dateien
+    mv "$f".png "$Newname"."$extens".png
+    mv "$f".avif "$Newname"."$extens".avif
+    mv "$File".txt "$Newname"."$extens".txt
+    ttncc "$f" "$Newname"."$extens" 
+    echo "$Newname"."$extens" 
+fi
+
+
+@
+```
+
