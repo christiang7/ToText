@@ -9,9 +9,9 @@ Backlink [GedankenspeicherCoding](../GedankenspeicherCoding.md)
 * ☐ epub correction
 
 
-  ``noweb.py -Rttnm ttnm.txt > ttnm && chmod u+x ttnm && echo 'fertig``'
+  ``noweb.py -Rttnm ttnm.md > ttnm && chmod u+x ttnm && echo 'fertig'``
 
-```awk
+```bash
 <<ttnm>>=
 #!/usr/bin/env bash
 

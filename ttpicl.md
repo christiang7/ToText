@@ -5,10 +5,10 @@ Backlink[ GedankenspeicherCoding](../GedankenspeicherCoding.md)
 * ☑ **ttpicl**  
 
 
-  ``noweb.py -Rttpicl ttpicl.txt > ttpicl && chmod u+x ttpicl && echo 'fertig``'
+  ``noweb.py -Rttpicl ttpicl.md > ttpicl && chmod u+x ttpicl && echo 'fertig'``
 
 
-```awk
+```bash
 <<ttpicl>>=
 #!/bin/bash
 File=$(echo "$1" | sed 's/ /_/g' | sed 's/:/;/g'| sed -e "s/'/_/g" | sed 's/\"//g')

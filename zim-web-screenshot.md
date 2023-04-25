@@ -15,12 +15,12 @@ Backlink [CodeFabrik:GedankenspeicherCoding](../GedankenspeicherCoding.md)
 
 ``tesseract -l eng 2209.14792.pdf.png stdout``
 
-  ``noweb.py -Rzim-web-screenshot.sh zim-web-screenshot.txt > zim-web-screenshot.sh && echo 'fertig``'
+  ``noweb.py -Rzim-web-screenshot.sh zim-web-screenshot.md > zim-web-screenshot.sh && echo 'fertig'``
 
 
-``chmod u+x zim-web-screenshot.sh && ln -sf /home/christian/Gedankenspeicher/Gedankenspeicherwiki/Zettelkasten/ZetteL/CodeFabrik/GedankenspeicherCoding/zim-web-screenshot.sh ~/.local/bin/zim-web-screenshot.sh && echo 'fertig``'
+``chmod u+x zim-web-screenshot.sh && ln -sf /home/christian/Gedankenspeicher/Gedankenspeicherwiki/Zettelkasten/ZetteL/CodeFabrik/GedankenspeicherCoding/zim-web-screenshot.sh ~/.local/bin/zim-web-screenshot.sh && echo 'fertig'``
 
-```ini
+```bash
 <<zim-web-screenshot.sh>>=
 #! /bin/bash
 if zenity --question --text="Möchten Sie dieses Programm ein Screenshot aufnehmen?"

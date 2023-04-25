@@ -13,10 +13,10 @@ Text creation time:
 Modification time:
 [Zettelkasten:2021:04:22]()
 
-``  noweb.py -Rttex ttex.txt > ttex && chmod u+x ttex && echo 'fertig``'
+``  noweb.py -Rttex ttex.md > ttex && chmod u+x ttex && echo 'fertig'``
 
 
-```awk
+```bash
 <<ttex>>=
 #!/bin/bash
 File=$(echo "$1" | sed 's/ /_/g' | sed 's/:/;/g'| sed -e "s/'/_/g" | sed 's/\"//g')

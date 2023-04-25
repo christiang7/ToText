@@ -18,11 +18,11 @@ Backlink [GedankenspeicherCoding](../GedankenspeicherCoding.md)
 
  <https://www.linuxteck.com/sed-commands-in-linux/>
 
-  ``noweb.py -Rtopic2zim.sh topic2zim.txt > topic2zim.sh && echo 'fertig``'
+  ``noweb.py -Rtopic2zim.sh topic2zim.md > topic2zim.sh && echo 'fertig'``
 
-``chmod u+x topic2zim.sh && ln -sf /home/christian/Gedankenspeicher/Gedankenspeicherwiki/Zettelkasten/ZetteL/CodeFabrik/GedankenspeicherCoding/topic2zim.sh ~/.local/bin/topic2zim.sh && echo 'fertig``'
+``chmod u+x topic2zim.sh && ln -sf /home/christian/Gedankenspeicher/Gedankenspeicherwiki/Zettelkasten/ZetteL/CodeFabrik/GedankenspeicherCoding/topic2zim.sh ~/.local/bin/topic2zim.sh && echo 'fertig'``
 
-```ini
+```bash
 <<topic2zim.sh>>=
 #! /bin/bash
 

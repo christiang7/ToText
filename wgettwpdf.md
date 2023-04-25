@@ -10,10 +10,10 @@ ist das Testprojekt dafür
 
 
 
-``noweb.py -Rwgettwpdf wgettwpdf.txt > wgettwpdf && chmod u+x wgettwpdf && echo 'fertig``'
+``noweb.py -Rwgettwpdf wgettwpdf.md > wgettwpdf && chmod u+x wgettwpdf && echo 'fertig'``
 
-```awk
-<<wgettwpdf>>=
+```bash
+#<<wgettwpdf>>=
 #!/bin/bash
 folder=$(date +"/home/christian/Gedankenspeicher/Gedankenspeicherwiki/Zettelkasten/%Y/%m/%d")
 mkdir -p $folder

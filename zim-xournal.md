@@ -7,11 +7,11 @@ Backlink [CodeFabrik:GedankenspeicherCoding](../GedankenspeicherCoding.md)
 
 
 
-  ``noweb.py -Rzim-xournal.sh zim-xournal.txt > zim-xournal.sh && echo 'fertig``'
+  ``noweb.py -Rzim-xournal.sh zim-xournal.txt > zim-xournal.sh && echo 'fertig'``
 
-``chmod u+x zim-xournal.sh && ln -sf /home/christian/Gedankenspeicher/Gedankenspeicherwiki/Zettelkasten/ZetteL/CodeFabrik/GedankenspeicherCoding/zim-xournal.sh ~/.local/bin/zim-xournal.sh && echo 'fertig``'
+``chmod u+x zim-xournal.sh && ln -sf /home/christian/Gedankenspeicher/Gedankenspeicherwiki/Zettelkasten/ZetteL/CodeFabrik/GedankenspeicherCoding/zim-xournal.sh ~/.local/bin/zim-xournal.sh && echo 'fertig'``
 
-```ini
+```bash
 <<zim-xournal.sh>>=
 #!/bin/bash
 

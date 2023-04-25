@@ -7,12 +7,12 @@ Backlink [GedankenspeicherCoding](../GedankenspeicherCoding.md)
 
 
 
-``noweb.py -Rzim-insert-sketch.sh zim-insert-sketch.txt > zim-insert-sketch.sh && echo 'fertig``'
+``noweb.py -Rzim-insert-sketch.sh zim-insert-sketch.md > zim-insert-sketch.sh && echo 'fertig'``
 
 
-``chmod u+x zim-insert-sketch.sh && ln -sf /home/christian/Gedankenspeicher/Gedankenspeicherwiki/Zettelkasten/ZetteL/CodeFabrik/GedankenspeicherCoding/zim-insert-sketch.sh ~/.local/bin/zim-insert-sketch.sh && echo 'fertig``'
+``chmod u+x zim-insert-sketch.sh && ln -sf /home/christian/Gedankenspeicher/Gedankenspeicherwiki/Zettelkasten/ZetteL/CodeFabrik/GedankenspeicherCoding/zim-insert-sketch.sh ~/.local/bin/zim-insert-sketch.sh && echo 'fertig'``
 
-```sweave
+```bash
 <<zim-insert-sketch.sh>>=
 #!/bin/bash
 #if zenity --question --text="Möchten Sie eine neue Skizze anfertigen?"

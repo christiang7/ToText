@@ -5,10 +5,10 @@ Backlink [GedankenspeicherCoding](../GedankenspeicherCoding.md)
 * ☑ **firefox-maff-export-txt**  >  2277-11-11
 
 
-  ``noweb.py -Rfirefox-maff-export-txt firefox-maff-export-txt.txt > firefox-maff-export-txt && chmod u+x firefox-maff-export-txt && echo 'fertig``'
+  ``noweb.py -Rfirefox-maff-export-txt firefox-maff-export-txt.md > firefox-maff-export-txt && chmod u+x firefox-maff-export-txt && echo 'fertig'``
 
 
-```awk
+```bash
 <<firefox-maff-export-txt>>=
 #!/bin/sh
 #for f in "$@"; do

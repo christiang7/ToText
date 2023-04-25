@@ -5,11 +5,11 @@ Backlink [GedankenspeicherCoding](../GedankenspeicherCoding.md)
 * ☑ **tabs2zim**  >  2277-11-11
 
 
-  ``noweb.py -Rtabs2zim.sh tabs2zim.txt > tabs2zim.sh && echo 'fertig``'
+  ``noweb.py -Rtabs2zim.sh tabs2zim.md > tabs2zim.sh && echo 'fertig'``
 
-``chmod u+x tabs2zim.sh && ln -sf /home/christian/Gedankenspeicher/Gedankenspeicherwiki/CodeFabrik/GedankenspeicherCoding/tabs2zim.sh ~/.local/bin/tabs2zim.sh && echo 'fertig``'
+``chmod u+x tabs2zim.sh && ln -sf /home/christian/Gedankenspeicher/Gedankenspeicherwiki/CodeFabrik/GedankenspeicherCoding/tabs2zim.sh ~/.local/bin/tabs2zim.sh && echo 'fertig'``
 
-```ini
+```bash
 <<tabs2zim.sh>>=
 #! /bin/bash
 #if zenity --question --text="Möchten Sie die Links in Firefox öffnen?"

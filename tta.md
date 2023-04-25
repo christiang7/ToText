@@ -8,12 +8,12 @@ Backlink [GedankenspeicherCoding](../GedankenspeicherCoding.md)
 Program for linking files to the assets folder
 
 
-``noweb.py -Rtta.sh tta.txt > tta.sh && echo 'fertig``'
+``noweb.py -Rtta.sh tta.md > tta.sh && echo 'fertig'``
 
 
-``chmod u+x tta.sh && ln -sf /home/christian/Gedankenspeicher/Gedankenspeicherwiki/CodeFabrik/GedankenspeicherCoding/tta.sh ~/.local/bin/tta.sh && echo 'fertig``'
+``chmod u+x tta.sh && ln -sf /home/christian/Gedankenspeicher/Gedankenspeicherwiki/CodeFabrik/GedankenspeicherCoding/tta.sh ~/.local/bin/tta.sh && echo 'fertig'``
 
-```sweave
+```bash
 <<tta.sh>>=
 #!/usr/bin/env bash
 

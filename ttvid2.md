@@ -7,9 +7,9 @@ Backlink [CodeArbeitsflaeche]()
 
 Das Script kann die Videodatei in eine Zim Textdatei einfügen und von dort aus anklickbar abspielbar machen
 
-  ``noweb.py -Rttvid2 ttvid2.txt > ttvid2 && chmod u+x ttvid2 && echo 'fertig``'
+  ``noweb.py -Rttvid2 ttvid2.md > ttvid2 && chmod u+x ttvid2 && echo 'fertig'``
 
-```awk
+```bash
 <<ttvid2>>=
 #!/bin/bash
 Zimtxt=$(date +"/home/christian/Gedankenspeicher/Gedankenspeicherwiki/Zettelkasten/%Y/%m/%d.txt" -r "$1")

@@ -25,12 +25,12 @@ Created Samstag 17 April 2021 [17.04.2021]()
 
 Kommando zum Extrahieren des Scripts
 
-``noweb.py -Rzim-script.sh zim-script.txt > zim-script.sh && echo 'fertig``'
+``noweb.py -Rzim-script.sh zim-script.md > zim-script.sh && echo 'fertig'``
 
 hier die zim-script Datei zum Ausführen
 
 
-```awk
+```bash
 <<zim-script.sh>>=
 #!/bin/bash
 output="$(eval $@ 2>&1)"

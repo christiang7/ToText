@@ -14,14 +14,14 @@ Backlink [GedankenspeicherCoding](../GedankenspeicherCoding.md)
 
  <https://www.ibm.com/docs/en/zos/2.4.0?topic=functions-readlink-read-value-symbolic-link>
 
-  ``noweb.py -Rzim-filepath.sh zim-filepath.txt > zim-filepath.sh && echo 'fertig``'
+  ``noweb.py -Rzim-filepath.sh zim-filepath.md > zim-filepath.sh && echo 'fertig'``
 
 
-``chmod u+x zim-filepath.sh && ln -sf /home/christian/Gedankenspeicher/Gedankenspeicherwiki/CodeFabrik/GedankenspeicherCoding/zim-filepath.sh ~/.local/bin/zim-filepath.sh && echo 'fertig``'
+``chmod u+x zim-filepath.sh && ln -sf /home/christian/Gedankenspeicher/Gedankenspeicherwiki/CodeFabrik/GedankenspeicherCoding/zim-filepath.sh ~/.local/bin/zim-filepath.sh && echo 'fertig'``
 
 
-```ini
-<<zim-filepath.sh>>=
+```bash
+#<<zim-filepath.sh>>=
 #!/bin/bash
 file=$(readlink -f -n "$1")
 filepath=$(echo "${file%/*}" | sed "s,/home/christian,~,")

@@ -5,9 +5,9 @@
 Created Freitag [Zettelkasten:2021:06:04]()
 Backlink [GedankenspeicherCoding](../GedankenspeicherCoding.md)
 
-  ``noweb.py -Rttdpicm ttdpicm.txt > ttdpicm && chmod u+x ttdpicm && echo 'fertig``'
+  ``noweb.py -Rttdpicm ttdpicm.md > ttdpicm && chmod u+x ttdpicm && echo 'fertig'``
 
-```awk
+```bash
 <<ttdpicm>>=
 #!/bin/bash
 ls --hide=*.txt "$1" > f

@@ -7,9 +7,9 @@ Backlink [CodeFabrik:GedankenspeicherCoding](../GedankenspeicherCoding.md)
 
 Korrektur von Videos die aus der Mediathek oder anderen Quellen heruntergeladen wurden, vielleicht Verbindung mit dem Programm [ttnc](./ttnc.md)
 
-  ``noweb.py -Rttvidc ttvidc.txt > ttvidc && chmod u+x ttvidc && echo 'fertig``'
+  ``noweb.py -Rttvidc ttvidc.md > ttvidc && chmod u+x ttvidc && echo 'fertig'``
 
-```awk
+```bash
 <<ttvidc>>=
 #!/bin/bash
 File=$(echo "$1" | sed 's/ /_/g' | sed 's/:/;/g'| sed -e "s/'/_/g" | sed 's/\"//g')

@@ -8,12 +8,12 @@ Program for moving files to the assets folder
 
 
 
-``noweb.py -Rttam.sh ttam.txt > ttam.sh && echo 'fertig``'
+``noweb.py -Rttam.sh ttam.md > ttam.sh && echo 'fertig'``
 
 
-``chmod u+x ttam.sh && ln -sf /home/christian/Gedankenspeicher/Gedankenspeicherwiki/CodeFabrik/GedankenspeicherCoding/ttam.sh ~/.local/bin/ttam.sh && echo 'fertig``'
+``chmod u+x ttam.sh && ln -sf /home/christian/Gedankenspeicher/Gedankenspeicherwiki/CodeFabrik/GedankenspeicherCoding/ttam.sh ~/.local/bin/ttam.sh && echo 'fertig'``
 
-```sweave
+```bash
 <<ttam.sh>>=
 #!/usr/bin/env bash
 

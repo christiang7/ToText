@@ -8,9 +8,9 @@ Text creation time:
 Modification time:
 [Zettelkasten:2021:04:22]()
 
-  ``noweb.py -Rttd ttd.txt > ttd && chmod u+x ttd && echo 'fertig``'
+  ``noweb.py -Rttd ttd.md > ttd && chmod u+x ttd && echo 'fertig'``
 
-```awk
+```bash
 <<ttd>>=
 #!/bin/bash
 folder="$1"

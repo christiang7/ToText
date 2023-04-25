@@ -6,9 +6,9 @@ Text creation time: [Zettelkasten:2021:04:29]()
 Modification time: [Zettelkasten:2021:04:24]()
 
 
-  ``noweb.py -Rttn ttn.txt > ttn && chmod u+x ttn && echo 'fertig``'
+  ``noweb.py -Rttn ttn.md > ttn && chmod u+x ttn && echo 'fertig'``
 
-```ini
+```bash
 <<ttn>>=
 #!/bin/bash
 f=$(basename "$1")

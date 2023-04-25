@@ -7,9 +7,9 @@ Backlink [GedankenspeicherCoding](../GedankenspeicherCoding.md)
 
 Öffne die annotierte Datei
 
-  ``noweb.py -Rttop ttop.txt > ttop && chmod u+x ttop && echo 'fertig``'
+  ``noweb.py -Rttop ttop.md > ttop && chmod u+x ttop && echo 'fertig'``
 
-```awk
+```bash
 <<ttop>>=
 #!/bin/bash
 f=$(basename "$1")

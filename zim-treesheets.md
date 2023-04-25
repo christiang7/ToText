@@ -5,13 +5,13 @@ Backlink [CodeFabrik:GedankenspeicherCoding](../GedankenspeicherCoding.md)
 * ☑ **zim-treesheets**  >  2277-11-11
 
 
-  ``noweb.py -Rzim-treesheets.sh zim-treesheets.txt > zim-treesheets.sh && chmod u+x zim-treesheets.sh && ln -sf /home/christian/Gedankenspeicher/Gedankenspeicherwiki/Zettelkasten/ZetteL/CodeFabrik/GedankenspeicherCoding/zim-treesheets.sh ~/.local/bin/zim-treesheets.sh && echo 'fertig``'
+  ``noweb.py -Rzim-treesheets.sh zim-treesheets.md > zim-treesheets.sh && chmod u+x zim-treesheets.sh && ln -sf /home/christian/Gedankenspeicher/Gedankenspeicherwiki/Zettelkasten/ZetteL/CodeFabrik/GedankenspeicherCoding/zim-treesheets.sh ~/.local/bin/zim-treesheets.sh && echo 'fertig'``
 
 exportierte Bilder wieder in die Textdatei einfügen mittels ocr
 
 ``tesseract -l eng+deu 2209.14792.pdf.png stdout``
 
-```ini
+```bash
 <<zim-treesheets.sh>>=
 #!/bin/bash
 if zenity --question --text="Möchten Sie Treesheets öffnen?"

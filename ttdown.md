@@ -9,11 +9,11 @@ Only for Downloads for the firefox webbrowser
 
 Kommando zum Extrahieren des Scripts
 
-``noweb.py -Rttdown ttdown.txt > ttdown && echo 'fertig``'
+``noweb.py -Rttdown ttdown.md > ttdown && echo 'fertig'``
 
 hier die zim-script Datei zum Ausführen
 
-```awk
+```bash
 <<ttdown>>=
 #!/bin/bash
 f=$(basename "$1")

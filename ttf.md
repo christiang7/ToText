@@ -7,9 +7,9 @@ Backlink [CodeFabrik]()
 
 Ordner für die txt Datei erzeugen
 
-  ``noweb.py -Rttf ttf.txt > ttf && chmod u+x ttf && echo 'fertig``'
+  ``noweb.py -Rttf ttf.md > ttf && chmod u+x ttf && echo 'fertig'``
 
-```awk
+```bash
 <<ttf>>=
 #!/bin/bash
 #File=$(echo "$1" | sed 's/ /_/g' | sed 's/:/;/g'| sed -e "s/'/_/g" | sed 's/\"//g')

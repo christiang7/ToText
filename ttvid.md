@@ -7,9 +7,9 @@ Backlink [GedankenspeicherCoding](../GedankenspeicherCoding.md)
 
 Das Script kann die Videodatei in eine Zim Textdatei einfügen und von dort aus anklickbar abspielbar machen
 
-  ``noweb.py -Rttvid ttvid.txt > ttvid && chmod u+x ttvid && echo 'fertig``'
+  ``noweb.py -Rttvid ttvid.md > ttvid && chmod u+x ttvid && echo 'fertig'``
 
-```awk
+```bash
 <<ttvid>>=
 #!/bin/bash
 Zimtxt=$(date +"/home/christian/Gedankenspeicher/Gedankenspeicherwiki/Zettelkasten/%Y/%m/%d.txt" -r "$1")

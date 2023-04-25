@@ -7,10 +7,10 @@ Backlink [GedankenspeicherCoding](../GedankenspeicherCoding.md)
  [wget-download-firefox](./wget-download-firefox.md)
 
 
-``noweb.py -Rwgettpdf wgettpdf.txt > wgettpdf && chmod u+x wgettpdf && echo 'fertig``'
+``noweb.py -Rwgettpdf wgettpdf.md > wgettpdf && chmod u+x wgettpdf && echo 'fertig'``
 
-```awk
-<<wgettpdf>>=
+```bash
+#<<wgettpdf>>=
 #!/bin/bash
 folder=$(date +"/home/christian/Gedankenspeicher/Gedankenspeicherwiki/Zettelkasten/%Y/%m/%d")
 mkdir -p $folder

@@ -5,9 +5,9 @@ Backlink [GedankenspeicherCoding](../GedankenspeicherCoding.md)
 * ☑ **syncthing-ttdm**  >  2277-11-11
 
 
-  ``noweb.py -Rsyncthing-ttdm.sh syncthing-ttdm.txt > syncthing-ttdm.sh && chmod u+x syncthing-ttdm.sh && ln -sf /home/christian/Gedankenspeicher/Gedankenspeicherwiki/Zettelkasten/ZetteL/CodeFabrik/syncthing-ttdm.sh ~/.local/bin/syncthing-ttdm.sh && echo 'fertig``'
+  ``noweb.py -Rsyncthing-ttdm.sh syncthing-ttdm.md > syncthing-ttdm.sh && chmod u+x syncthing-ttdm.sh && ln -sf /home/christian/Gedankenspeicher/Gedankenspeicherwiki/Zettelkasten/ZetteL/CodeFabrik/syncthing-ttdm.sh ~/.local/bin/syncthing-ttdm.sh && echo 'fertig'``
 
-```ini
+```bash
 <<syncthing-ttdm.sh>>=
 #!/bin/bash
 FolderSync=$(echo "$1")

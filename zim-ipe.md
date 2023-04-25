@@ -5,9 +5,9 @@ Backlink [GedankenspeicherCoding](../GedankenspeicherCoding.md)
 * ☑ **zim-ipe**  >  2277-11-11
 
 
-  ``noweb.py -Rzim-ipe.sh zim-ipe.txt > zim-ipe.sh && chmod u+x zim-ipe.sh && echo 'fertig``'
+  ``noweb.py -Rzim-ipe.sh zim-ipe.md > zim-ipe.sh && chmod u+x zim-ipe.sh && echo 'fertig'``
 
-```awk
+```bash
 <<zim-ipe.sh>>=
 #!/bin/bash
 mkdir -p "$1"

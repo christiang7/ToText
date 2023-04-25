@@ -5,10 +5,10 @@ Backlink [GedankenspeicherCoding](../GedankenspeicherCoding.md)
 * ☑ **ttvidma**  >  2277-11-11
 
 
-  ``noweb.py -Rttvidma ttvidma.txt > ttvidma && chmod u+x ttvidma && echo 'fertig``'
+  ``noweb.py -Rttvidma ttvidma.md > ttvidma && chmod u+x ttvidma && echo 'fertig'``
 
-```awk
-<<ttvidma>>=
+```bash
+#<<ttvidma>>=
 #!/bin/bash
 File=$(echo "$1" | sed 's/ /_/g' | sed 's/:/;/g'| sed -e "s/'/_/g" | sed 's/\"//g')
 #f=$(basename "$1")

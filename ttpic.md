@@ -7,9 +7,9 @@ Text creation time:
 Modification time:
 [Zettelkasten:2021:04:22]()
 
-  ``noweb.py -Rttpic ttpic.txt > ttpic && chmod u+x ttpic && echo 'fertig``'
+  ``noweb.py -Rttpic ttpic.md > ttpic && chmod u+x ttpic && echo 'fertig'``
 
-```awk
+```bash
 <<ttpic>>=
 #!/bin/bash
 File=$(echo "$1" | sed 's/ /_/g' | sed 's/:/;/g'| sed -e "s/'/_/g" | sed 's/\"//g')

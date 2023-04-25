@@ -19,9 +19,9 @@ Hier sind die Dolpin ServiceMenüs
 
 Anzeige von Dateien deren Text Beschreibung
 
-  ``noweb.py -Rtts tts.txt > tts && chmod u+x tts && echo 'fertig``'
+  ``noweb.py -Rtts tts.md > tts && chmod u+x tts && echo 'fertig'``
 
-```ini
+```bash
 <<tts>>=
 #!/bin/bash
 f=$(basename "$1")

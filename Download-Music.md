@@ -5,11 +5,11 @@ Backlink [GedankenspeicherCoding](../GedankenspeicherCoding.md)
 * ☑ **Download-Music**  >  2277-11-11
 
 
-  ``noweb.py -RDownload-Music.sh Download-Music.txt > Download-Music.sh && echo 'fertig``'
+  ``noweb.py -RDownload-Music.sh Download-Music.md > Download-Music.sh && echo 'fertig'``
 
-``chmod u+x Download-Music.sh && ln -sf /home/christian/Gedankenspeicher/Gedankenspeicherwiki/Zettelkasten/Gedankenwanderung/Programme/Download-Music.sh ~/.local/bin/Download-Music.sh && echo 'fertig``'
+``chmod u+x Download-Music.sh && ln -sf /home/christian/Gedankenspeicher/Gedankenspeicherwiki/Zettelkasten/Gedankenwanderung/Programme/Download-Music.sh ~/.local/bin/Download-Music.sh && echo 'fertig'``
 
-```ini
+```bash
 <<Download-Music.sh>>=
 #! /bin/bash
 echo "$1"

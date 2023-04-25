@@ -5,9 +5,9 @@ Backlink [GedankenspeicherCoding](../GedankenspeicherCoding.md)
 * ☑ **ttnl**  
 
 
-  ``noweb.py -Rttnl ttnl.txt > ttnl && chmod u+x ttnl && echo 'fertig``'
+  ``noweb.py -Rttnl ttnl.md > ttnl && chmod u+x ttnl && echo 'fertig'``
 
-```awk
+```bash
 <<ttnl>>=
 #!/bin/bash
 folder=$(date +"/home/christian/Gedankenspeicher/Gedankenspeicherwiki/Zettelkasten/%Y/%m/%d" -r "$1")

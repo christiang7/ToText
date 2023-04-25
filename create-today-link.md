@@ -10,12 +10,12 @@ Erzeugung eines Ordners der immer auf den aktuellen Ordner vom Zim Journal zeigt
 Beispiel
 ``ln -ds  ~/Gedankenspeicher/Gedankenspeicherwiki/Zettelkasten/2022/06/25 ~/Heute``
 
-  ``noweb.py -Rcreate-today-link.sh create-today-link.txt > create-today-link.sh && echo 'fertig``'
+  ``noweb.py -Rcreate-today-link.sh create-today-link.md > create-today-link.sh && echo 'fertig'``
 
 
-``chmod u+x create-today-link.sh && ln -sf ~/Gedankenspeicher/Gedankenspeicherwiki/CodeFabrik/GedakenspeicherCoding/create-today-link.sh ~/.local/bin/create-today-link.sh && echo 'fertig``'
+``chmod u+x create-today-link.sh && ln -sf ~/Gedankenspeicher/Gedankenspeicherwiki/CodeFabrik/GedakenspeicherCoding/create-today-link.sh ~/.local/bin/create-today-link.sh && echo 'fertig'``
 
-```awk
+```bash
 <<create-today-link.sh>>=
 	#!/bin/bash
 	folder=$(date +"/home/christian/Gedankenspeicher/Gedankenspeicherwiki/Zettelkasten/%Y/%m/%d")

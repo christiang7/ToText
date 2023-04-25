@@ -11,9 +11,9 @@ Text creation time:
 Modification time:
 [Zettelkasten:2021:04:16]()
 
-``  noweb.py -Rtto tto.txt > tto && chmod u+x tto && echo 'fertig``'
+``  noweb.py -Rtto tto.md > tto && chmod u+x tto && echo 'fertig'``
 
-```awk
+```bash
 <<tto>>=
 #!/bin/bash
 File=$(echo "$1" | sed 's/ /_/g' | sed 's/:/;/g'| sed -e "s/'/_/g" | sed 's/\"//g')

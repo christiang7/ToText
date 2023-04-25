@@ -5,8 +5,9 @@
 Created Sonntag [Zettelkasten:2021:05:23]()
 Backlink [GedankenspeicherCoding](../GedankenspeicherCoding.md)
 
-  ``noweb.py -Rttdvid ttdvid.txt > ttdvid && chmod u+x ttdvid && echo 'fertig``'
+  ``noweb.py -Rttdvid ttdvid.md > ttdvid && chmod u+x ttdvid && echo 'fertig'``
 
+```bash
 	<<ttdvid>>=
 	#!/bin/bash
 	ls --hide=*.txt --hide=*.srt --hide=*.ttml "$1" > f
@@ -21,4 +22,4 @@ Backlink [GedankenspeicherCoding](../GedankenspeicherCoding.md)
 	done < f
 	rm f
 	@ 
-
+```

@@ -5,11 +5,11 @@ Backlink [GedankenspeicherCoding](../GedankenspeicherCoding.md)
 * ☑ **ttncc**  >  2277-11-11
 
 
-  ``noweb.py -Rttncc ttncc.txt > ttncc && chmod u+x ttncc && echo 'fertig``'
+  ``noweb.py -Rttncc ttncc.md > ttncc && chmod u+x ttncc && echo 'fertig'``
 
 
   
-```awk
+```bash
 <<ttncc>>=
 #!/bin/bash
 File=$(echo "$2" | sed 's/ /_/g' | sed 's/:/;/g'| sed -e "s/'/_/g" | sed 's/\"//g')

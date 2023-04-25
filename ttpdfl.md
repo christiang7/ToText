@@ -5,10 +5,10 @@
 Created Samstag [Zettelkasten:2021:06:05]()
 Backlink [GedankenspeicherCoding](../GedankenspeicherCoding.md)
 
-  ``noweb.py -Rttpdfl ttpdfl.txt > ttpdfl && chmod u+x ttpdfl && echo 'fertig``'
+  ``noweb.py -Rttpdfl ttpdfl.md > ttpdfl && chmod u+x ttpdfl && echo 'fertig'``
 
 
-```awk
+```bash
 <<ttpdfl>>=
 #!/bin/bash
 File=$(echo "$1" | sed 's/ /_/g' | sed 's/:/;/g'| sed -e "s/'/_/g" | sed 's/\"//g')

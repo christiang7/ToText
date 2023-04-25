@@ -8,12 +8,12 @@ Backlink [GedankenspeicherCoding](../GedankenspeicherCoding.md)
 	* ☐ probieren ob yad Ersatz für zenity funktioniert 
 
 
-``noweb.py -Rzim-template-program.sh zim-template-program.txt > zim-template-program.sh && echo "fertig"``
+``noweb.py -Rzim-template-program.sh zim-template-program.md > zim-template-program.sh && echo "fertig"``
 
 
 ``chmod u+x zim-template-program.sh && ln -sf /home/christian/Gedankenspeicher/Gedankenspeicherwiki/Zettelkasten/ZetteL/GedankenspeicherCoding/zim-template-program.sh ~/.local/bin/zim-template-program.sh && echo "fertig"``
 
-```sweave
+```bash
 Das komplette Programm
 <<zim-template-program.sh>>=
 <<preamble>>

@@ -17,16 +17,16 @@ then
 	krita "$filename".kra --export --export-filename "$filename".avif
 
 	File=$(echo "$filename".kra)
-	touch "$File".txt
-	echo "Content-Type: text/x-zim-wiki" >> "$File".txt
-	echo "Wiki-Format: zim 0.6" >> "$File".txt
-	echo "===== $File =====" >> "$File".txt
-	echo "[*] @NOTIZ @BILD **[[../"$filename".kra]] Christian Gößl **" >> "$File".txt
-	echo "Text creation time: $(date +"[[Zettelkasten:%Y:%m:%d]]")" >> "$File".txt
-	echo "Modification time: $(date +"[[Zettelkasten:%Y:%m:%d]]" -r "$1")" >> "$File".txt
-	echo -e "[[../]]\n" >> "$File".txt
-	echo "{{../"$filename".avif?width=750}}" >> "$File".txt
-	echo -e "\n" >> "$File".txt
+	touch "$File".md
+	echo "Content-Type: text/x-zim-wiki" >> "$File".md
+	echo "Wiki-Format: zim 0.6" >> "$File".md
+	echo "===== $File =====" >> "$File".md
+	echo "[*] @NOTIZ @BILD **[[../"$filename".kra]] Christian Gößl **" >> "$File".md
+	echo "Text creation time: $(date +"[[Zettelkasten:%Y:%m:%d]]")" >> "$File".md
+	echo "Modification time: $(date +"[[Zettelkasten:%Y:%m:%d]]" -r "$1")" >> "$File".md
+	echo -e "[[../]]\n" >> "$File".md
+	echo "{{../"$filename".avif?width=750}}" >> "$File".md
+	echo -e "\n" >> "$File".md
 
 	echo -e "[[+${filename}.kra]]"
 	echo {{"$filename".avif?width=750}}

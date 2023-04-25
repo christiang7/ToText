@@ -5,9 +5,9 @@
 Angelegt Montag [Zettelkasten:2021:05:03]()
 Backlink [GedankenspeicherCoding](../GedankenspeicherCoding.md)
 
-  ``noweb.py -Rttpdfm ttpdfm.txt > ttpdfm && chmod u+x ttpdfm && echo 'fertig``'
+  ``noweb.py -Rttpdfm ttpdfm.md > ttpdfm && chmod u+x ttpdfm && echo 'fertig'``
 
-```awk
+```bash
 <<ttpdfm>>=
 #!/bin/bash
 File=$(echo "$1" | sed 's/ /_/g' | sed 's/:/;/g'| sed -e "s/'/_/g" | sed 's/\"//g')

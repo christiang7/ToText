@@ -7,7 +7,7 @@ Backlink [CodeFabrik:GedankenspeicherCoding](../GedankenspeicherCoding.md)
 
 
 
-``noweb.py -Rttitle-correction.sh ttitle-correction.md > ttitle-correction.sh && echo 'fertig``'
+``noweb.py -Rttitle-correction.sh ttitle-correction.md > ttitle-correction.sh && echo 'fertig'``
 
 command for insert headline in 3th line in file 
 ``sed -i "3 s/\[\*/===== ansansa =====\\n\[\*/" 1681834707295.avif.txt``
@@ -32,9 +32,9 @@ in all cases it has to be done in 3th and 4th line
  <https://code.whatever.social/questions/18488270/how-can-i-check-the-first-character-in-a-string-in-bash-or-unix-shell>
 
 
-``chmod u+x ttitle-correction.sh && ln -sf /home/christian/Gedankenspeicher/Gedankenspeicherwiki/CodeFabrik/GedankenspeicherCoding/ttitle-correction.sh ~/.local/bin/ttitle-correction.sh && echo 'fertig``'
+``chmod u+x ttitle-correction.sh && ln -sf /home/christian/Gedankenspeicher/Gedankenspeicherwiki/CodeFabrik/GedankenspeicherCoding/ttitle-correction.sh ~/.local/bin/ttitle-correction.sh && echo 'fertig'``
 
-```sweave
+```bash
 <<ttitle-correction.sh>>=
 #!/bin/bash
 

@@ -7,9 +7,9 @@ Text creation time:
 Modification time:
 [Zettelkasten:2021:04:22]()
 
-  ``noweb.py -Rttpdf ttpdf.txt > ttpdf && chmod u+x ttpdf && echo 'fertig``'
+  ``noweb.py -Rttpdf ttpdf.md > ttpdf && chmod u+x ttpdf && echo 'fertig'``
 
-```awk
+```bash
 <<ttpdf>>=
 #!/bin/bash
 File=$(echo "$1" | sed 's/ /_/g' | sed 's/:/;/g'| sed -e "s/'/_/g" | sed 's/\"//g')

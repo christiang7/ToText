@@ -7,9 +7,9 @@ Text creation time:
 Modification time:
 [Zettelkasten:2021:04:22]()
 
-``  noweb.py -Rttdpic ttdpic.txt > ttdpic && chmod u+x ttdpic && echo 'fertig``'
+``  noweb.py -Rttdpic ttdpic.md > ttdpic && chmod u+x ttdpic && echo 'fertig'``
 
-```awk
+```bash
 <<ttdpic>>=
 #!/bin/bash
 ls --hide=*.txt "$1" > f

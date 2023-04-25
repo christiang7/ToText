@@ -7,16 +7,18 @@ Backlink [Zettelkasten:2021:04:20]()
 
 Kommando zum Extrahieren des Scripts
 
-``noweb.py -Rwget-dd.sh wget-download-firefox.txt > wget-download-firefox/wget-dd.sh && chmod u+x wget-download-firefox/wget-dd.sh && echo 'fertig``'
+``noweb.py -Rwget-dd.sh wget-download-firefox.md > wget-download-firefox/wget-dd.sh && chmod u+x wget-download-firefox/wget-dd.sh && echo 'fertig'``
 
 hier die zim-script Datei zum Ausführen
 
-	<<wget-dd.sh>>=
-	#!/bin/bash
-	cd ~/Downloads/
-	xterm -e 'wget $1'
-	@
 
+```bash
+<<wget-dd.sh>>=
+#!/bin/bash
+cd ~/Downloads/
+xterm -e 'wget $1'
+@
+```
 
 Es ist möglich über wget selbst die Downloads zu machen mittels entweder dem Addon 1 oder Addon 2
 

@@ -5,11 +5,11 @@ Backlink [GedankenspeicherCoding](../GedankenspeicherCoding.md)
 * ☑ **Download-Video-select**  >  2277-11-11
 
 
-  ``noweb.py -RDownload-Video-select.sh Download-Video-select.txt > Download-Video-select.sh && echo 'fertig``'
+  ``noweb.py -RDownload-Video-select.sh Download-Video-select.md > Download-Video-select.sh && echo 'fertig'``
 
-``chmod u+x Download-Video-select.sh && ln -sf /home/christian/Gedankenspeicher/Gedankenspeicherwiki/CodeFabrik/GedankenspeicherCoding/Download-Video-select.sh ~/.local/bin/Download-Video-select.sh && echo 'fertig``'
+``chmod u+x Download-Video-select.sh && ln -sf /home/christian/Gedankenspeicher/Gedankenspeicherwiki/CodeFabrik/GedankenspeicherCoding/Download-Video-select.sh ~/.local/bin/Download-Video-select.sh && echo 'fertig'``
 
-```ini
+```bash
 <<Download-Video-select.sh>>=
 #! /bin/bash
 echo "$1"

@@ -9,10 +9,10 @@ Mi 23. Dez 15:48:55 CET 2020
  
  There is a problem with the firefox addon external application
 
-``noweb.py -Rwebpage-pdf webpage-pdf.txt > webpage-pdf && chmod u+x webpage-pdf && echo 'fertig``'
+``noweb.py -Rwebpage-pdf webpage-pdf.md > webpage-pdf && chmod u+x webpage-pdf && echo 'fertig'``
 
-```awk
-<<webpage-pdf>>=
+```bash
+#<<webpage-pdf>>=
 #!/bin/bash
 folder=$(date +"/home/christian/Gedankenspeicher/Gedankenspeicherwiki/Zettelkasten/%Y/%m/%d")
 mkdir -p $folder

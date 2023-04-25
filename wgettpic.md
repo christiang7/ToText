@@ -6,10 +6,10 @@ Created Donnerstag [Zettelkasten:2021:04:29]()
 Backlink  [GedankenspeicherCoding](../GedankenspeicherCoding.md)
 [wget-download-firefox](./wget-download-firefox.md)
 
-``noweb.py -Rwgettpic wgettpic.txt > wgettpic && chmod u+x wgettpic && echo 'fertig``'
+``noweb.py -Rwgettpic wgettpic.md > wgettpic && chmod u+x wgettpic && echo 'fertig'``
 
-```awk
-<<wgettpic>>=
+```bash
+#<<wgettpic>>=
 #!/bin/bash
 
 abfrage=$(yad --title="Download Picture" --text="Noch etwas hinzufügen?" \

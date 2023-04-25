@@ -5,7 +5,7 @@
 Angelegt Montag [Zettelkasten:2021:05:03]()
 Backlink [GedankenspeicherCoding](../GedankenspeicherCoding.md)
 
-  ``noweb.py -Rttpicm ttpicm.txt > ttpicm && chmod u+x ttpicm && echo 'fertig``'
+``noweb.py -Rttpicm ttpicm.md > ttpicm && chmod u+x ttpicm && echo 'fertig'``
 
 Für den Fall das der Kalendereintrag noch nicht existiert
 
@@ -15,7 +15,7 @@ Für den Fall das der Kalendereintrag noch nicht existiert
 	[[../]]
 	[*] **%A %d %b %Y ** >  2277-11-11
 
-```awk
+```bash
 <<ttpicm>>=
 #!/bin/bash
 File=$(echo "$1" | sed 's/ /_/g' | sed 's/:/;/g'| sed -e "s/'/_/g" | sed 's/\"//g')

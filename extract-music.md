@@ -5,12 +5,12 @@ Backlink [GedankenspeicherCoding](../GedankenspeicherCoding.md)
 * ☑ **extract-music**  >  2277-11-11
 
 
-  ``noweb.py -Rextract-music.sh extract-music.txt > extract-music.sh && echo 'fertig``'
+  ``noweb.py -Rextract-music.sh extract-music.md > extract-music.sh && echo 'fertig'``
 
-``chmod u+x extract-music.sh && ln -sf /home/christian/Gedankenspeicher/Gedankenspeicherwiki/Zettelkasten/Gedankenwanderung/Programme/extract-music.sh ~/.local/bin/extract-music.sh && echo 'fertig``'
+``chmod u+x extract-music.sh && ln -sf /home/christian/Gedankenspeicher/Gedankenspeicherwiki/Zettelkasten/Gedankenwanderung/Programme/extract-music.sh ~/.local/bin/extract-music.sh && echo 'fertig'``
 
 
-```ini
+```bash
 <<extract-music.sh>>=
 #! /bin/bash
 echo "$1"

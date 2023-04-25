@@ -7,9 +7,9 @@ Backlink [GedankenspeicherCoding](../GedankenspeicherCoding.md)
 
  ``youtube-dl --exec "ttdown {} [HREF] '[SELECTIONTEXT]' " [HREF]`` 
 
-  ``noweb.py -Rttviddown ttviddown.txt > ttviddown && chmod u+x ttviddown && echo 'fertig``'
+  ``noweb.py -Rttviddown ttviddown.md > ttviddown && chmod u+x ttviddown && echo 'fertig'``
 
-```awk
+```bash
 <<ttviddown>>=
 #!/bin/bash
 File=$(date +"/home/christian/Gedankenspeicher/Gedankenspeicherwiki/Zettelkasten/%Y/%m/%d.txt" -r "$1")

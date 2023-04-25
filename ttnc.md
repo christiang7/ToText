@@ -5,9 +5,9 @@ Backlink [GedankenspeicherCoding](../GedankenspeicherCoding.md)
 * ☑ **ttnc**  
 
 
-  ``noweb.py -Rttnc ttnc.txt > ttnc && chmod u+x ttnc && echo 'fertig``'
+  ``noweb.py -Rttnc ttnc.md > ttnc && chmod u+x ttnc && echo 'fertig'``
 
-```awk
+```bash
 <<ttnc>>=
 #!/bin/bash
 File=$(echo "$1" | sed 's/ /_/g' | sed 's/:/;/g'| sed -e "s/'/_/g" | sed 's/\"//g')
