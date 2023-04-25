@@ -1,14 +1,14 @@
 #!/bin/bash
 
-ls --hide=*.txt --hide=*.srt --hide=*.ttml "$1" > f
+ls --hide=*.md --hide=*.srt --hide=*.ttml "$1" > f
 
 while read f
 
 do
 
-  echo $(date +"/home/christian/Gedankenspeicher/Gedankenspeicherwiki/Zettelkasten/%Y/%m/%d.txt" -r "$1"/"$f")
+  echo $(date +"/home/christian/Gedankenspeicher/Gedankenspeicherwiki/Zettelkasten/%Y/%m/%d.md" -r "$1"/"$f")
 
-  File=$(date +"/home/christian/Gedankenspeicher/Gedankenspeicherwiki/Zettelkasten/%Y/%m/%d.txt" -r "$1"/"$f")
+  File=$(date +"/home/christian/Gedankenspeicher/Gedankenspeicherwiki/Zettelkasten/%Y/%m/%d.md" -r "$1"/"$f")
 
   g=$(basename "$1"/"$f")
 

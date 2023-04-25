@@ -24,7 +24,7 @@ folder=$(date +"/home/christian/Gedankenspeicher/Gedankenspeicherwiki/Zettelkast
 foldermonth=$(date +"/home/christian/Gedankenspeicher/Gedankenspeicherwiki/Zettelkasten/%Y/%m" -r "$1")
 mkdir -p $folder
 calendarfile=$(date +"%d" -r "$f")
-calendarfile=$calendarfile.txt
+calendarfile=$calendarfile.md
 if [[ ! -e "$foldermonth"/"$calendarfile" ]]
 then
 touch "$foldermonth"/"$calendarfile"
@@ -35,20 +35,20 @@ echo -e "[[../]]"  >> "$foldermonth"/"$calendarfile"
 date +"[*] **%A %d %b %Y ** >  2277-11-11"  -r "$f" >> "$foldermonth"/"$calendarfile"
 #mv "$calendarfile" "$foldermonth"/"$calendarfile"
 fi
-touch "$File".txt
-echo "Content-Type: text/x-zim-wiki" >> "$File".txt
-echo "Wiki-Format: zim 0.6" >> "$File".txt
-echo "[*] @BILD $3 **[[../$f]] $2**" >> "$File".txt
-echo "Text creation time: $(date +"[[Zettelkasten:%Y:%m:%d]]")" >> "$File".txt
-echo "Modification time: $(date +"[[Zettelkasten:%Y:%m:%d]]" -r "$1")" >> "$File".txt
-echo -e "[[../]]\n$4\n" >> "$File".txt
-echo "{{../$f?width=750}}" >> "$File".txt
+touch "$File".md
+echo "Content-Type: text/x-zim-wiki" >> "$File".md
+echo "Wiki-Format: zim 0.6" >> "$File".md
+echo "[*] @BILD $3 **[[../$f]] $2**" >> "$File".md
+echo "Text creation time: $(date +"[[Zettelkasten:%Y:%m:%d]]")" >> "$File".md
+echo "Modification time: $(date +"[[Zettelkasten:%Y:%m:%d]]" -r "$1")" >> "$File".md
+echo -e "[[../]]\n$4\n" >> "$File".md
+echo "{{../$f?width=750}}" >> "$File".md
 echo -e "\n[[+$f]]" >> "$foldermonth"/"$calendarfile"
 echo -e "{{$f?width=750}}" >> "$foldermonth"/"$calendarfile"
 mv "$f" $folder/"$f"
-mv "$File".txt $folder/"$File".txt
+mv "$File".md $folder/"$File".md
 echo "cd $folder"
-kate $folder/"$File".txt 2>/dev/null &
+kate $folder/"$File".md 2>/dev/null &
 @
 ```
 

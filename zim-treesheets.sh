@@ -5,7 +5,7 @@ File=$(echo "$1" | sed 's/ /_/g' | sed 's/:/;/g'| sed -e "s/'/_/g" | sed 's/\"//
 filetxt=${File%.*}
 mkdir -p "$filetxt"
 cd "$filetxt"
-filetxtname=$(basename "$File" .txt)
+filetxtname=$(basename "$File" .md)
 filedate=$(date +"%Y-%m-%d")
 if [[ $2 == Notiz ]]
 then

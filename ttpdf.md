@@ -14,26 +14,26 @@ Modification time:
 #!/bin/bash
 File=$(echo "$1" | sed 's/ /_/g' | sed 's/:/;/g'| sed -e "s/'/_/g" | sed 's/\"//g')
 f=$(basename "$File")
-touch "$File".txt
-echo "Content-Type: text/x-zim-wiki" >> "$File".txt
-echo "Wiki-Format: zim 0.6" >> "$File".txt
-echo "===== $f =====" >> "$File".txt
-echo "[*] @ARTIKEL $3 **[[../$f]] >  2277-11-11 $2**" >> "$File".txt
-echo "Text creation time: $(date +"[[Zettelkasten:%Y:%m:%d]]")" >> "$File".txt
-echo "Modification time: $(date +"[[Zettelkasten:%Y:%m:%d]]" -r "$1")" >> "$File".txt
-echo -e "[[../]]\n$4\n" >> "$File".txt
+touch "$File".md
+echo "Content-Type: text/x-zim-wiki" >> "$File".md
+echo "Wiki-Format: zim 0.6" >> "$File".md
+echo "===== $f =====" >> "$File".md
+echo "[*] @ARTIKEL $3 **[[../$f]] >  2277-11-11 $2**" >> "$File".md
+echo "Text creation time: $(date +"[[Zettelkasten:%Y:%m:%d]]")" >> "$File".md
+echo "Modification time: $(date +"[[Zettelkasten:%Y:%m:%d]]" -r "$1")" >> "$File".md
+echo -e "[[../]]\n$4\n" >> "$File".md
 #pdftoppm -r 90 -png -singlefile "$File" "$File"
 pdftoppm -png -singlefile "$File" "$File"
 #convert "$File".png -resize 1200x1200 -quality 97 "$File"-px.png
 #mv "$File"-px.png "$File".png
 convert "$File".png -resize 4000x4000 "$File".avif
 rm "$File".png
-#echo -e "{{../$f.png?width=750}}\n" >> "$File".txt
-echo -e "{{../$f.avif?width=750}}\n" >> "$File".txt
-pdfinfo "$f" | grep Pages >> "$File".txt
-echo -e "\n" >> "$File".txt
-pdftotext -nopgbrk -enc UTF-8 -f 1 -l 1 "$f" ->> "$File".txt
-#kate "$File".txt 2>/dev/null &
+#echo -e "{{../$f.png?width=750}}\n" >> "$File".md
+echo -e "{{../$f.avif?width=750}}\n" >> "$File".md
+pdfinfo "$f" | grep Pages >> "$File".md
+echo -e "\n" >> "$File".md
+pdftotext -nopgbrk -enc UTF-8 -f 1 -l 1 "$f" ->> "$File".md
+#kate "$File".md 2>/dev/null &
 #okular "$1" 2>/dev/null &
 #sleep 10
 @

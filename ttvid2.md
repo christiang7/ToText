@@ -12,15 +12,15 @@ Das Script kann die Videodatei in eine Zim Textdatei einfügen und von dort aus 
 ```bash
 {{ttvid2}}=
 #!/bin/bash
-Zimtxt=$(date +"/home/christian/Gedankenspeicher/Gedankenspeicherwiki/Zettelkasten/%Y/%m/%d.txt" -r "$1")
+Zimtxt=$(date +"/home/christian/Gedankenspeicher/Gedankenspeicherwiki/Zettelkasten/%Y/%m/%d.md" -r "$1")
 file=$(basename "$1")
 filetxt=$(basename "$1" | sed 's/\(.*\)\..*/\1/')
 pathfile=$(realpath "$1" --relative-to=/home/christian)
-pathfiletxt=$(realpath "$filetxt".txt --relative-to=/home/christian)
+pathfiletxt=$(realpath "$filetxt".md --relative-to=/home/christian)
 touch "$Zimtxt"
 echo -e "\n" >> "$Zimtxt"
 echo [ ] ">2277-11-11" @VIDEO @VIDEOARCHIV "$2" "$file" [[~/"$pathfiletxt"]] ";" [[~/"$pathfile"]] >> "$Zimtxt"
-echo -e "\nIST IM WIKI!!!" >> ~/"$pathfiletxt".txt
+echo -e "\nIST IM WIKI!!!" >> ~/"$pathfiletxt".md
 @ 
 
 ```

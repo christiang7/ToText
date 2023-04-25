@@ -1,5 +1,5 @@
 ﻿#!/bin/bash
 File=$(echo "$1" | sed 's/ /_/g' | sed 's/:/;/g'| sed -e "s/'/_/g" | sed 's/\"//g')
-touch "$File".txt
-echo "$2" >> "$File".txt
-nano "$File".txt
+touch "$File".md
+echo "$2" >> "$File".md
+nano "$File".md

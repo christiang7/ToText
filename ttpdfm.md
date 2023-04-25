@@ -14,21 +14,21 @@ File=$(echo "$1" | sed 's/ /_/g' | sed 's/:/;/g'| sed -e "s/'/_/g" | sed 's/\"//
 f=$(basename "$1")
 folder=$(date +"/home/christian/Gedankenspeicher/Gedankenspeicherwiki/Zettelkasten/%Y/%m/%d" -r "$1")
 mkdir -p $folder
-touch "$File".txt
-echo "Content-Type: text/x-zim-wiki" >> "$File".txt
-echo "Wiki-Format: zim 0.6" >> "$File".txt
-echo "[*] @ARTIKEL $3 **[[../$f]] >  2277-11-11 $2**" >> "$File".txt
-echo "Text creation time: $(date +"[[Zettelkasten:%Y:%m:%d]]")" >> "$File".txt
-echo "Modification time: $(date +"[[Zettelkasten:%Y:%m:%d]]" -r "$1")" >> "$File".txt
-echo -e "[[../]]\n$4\n\n" >> "$File".txt
-pdfinfo "$f" | grep Pages >> "$File".txt
-echo -e "\n" >> "$File".txt
-pdftotext -f 1 -l 1 "$f" ->> "$File".txt
+touch "$File".md
+echo "Content-Type: text/x-zim-wiki" >> "$File".md
+echo "Wiki-Format: zim 0.6" >> "$File".md
+echo "[*] @ARTIKEL $3 **[[../$f]] >  2277-11-11 $2**" >> "$File".md
+echo "Text creation time: $(date +"[[Zettelkasten:%Y:%m:%d]]")" >> "$File".md
+echo "Modification time: $(date +"[[Zettelkasten:%Y:%m:%d]]" -r "$1")" >> "$File".md
+echo -e "[[../]]\n$4\n\n" >> "$File".md
+pdfinfo "$f" | grep Pages >> "$File".md
+echo -e "\n" >> "$File".md
+pdftotext -f 1 -l 1 "$f" ->> "$File".md
 #pdftoppm -png -singlefile "$f" "$f"
 mv "$f" $folder/"$f"
-mv "$File".txt $folder/"$File".txt
+mv "$File".md $folder/"$File".md
 echo "cd $folder"
-#kate $folder/"$File".txt 2>/dev/null &
+#kate $folder/"$File".md 2>/dev/null &
 #okular $folder/"$1" 2>/dev/null &
 @
 ```

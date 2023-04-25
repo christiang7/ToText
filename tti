@@ -27,20 +27,20 @@ then
 fi
 if [[ $tags != "" ]]
 then
-sed -i "3 s/\*\*\[\[../$tags \*\*\[\[../" "$File".txt
-sed -i "4 s/\*\*\[\[../$tags \*\*\[\[../" "$File".txt
+sed -i "3 s/\*\*\[\[../$tags \*\*\[\[../" "$File".md
+sed -i "4 s/\*\*\[\[../$tags \*\*\[\[../" "$File".md
 fi
 if [[ $source != "" ]]
 then
-sed -i "3 s/\]\]/\]\] $source/" "$File".txt
-sed -i "4 s/\]\]/\]\] $source/" "$File".txt
+sed -i "3 s/\]\]/\]\] $source/" "$File".md
+sed -i "4 s/\]\]/\]\] $source/" "$File".md
 fi
 if [[ $additiontext != "" ]]
 then
-sed -i "s/\[\[..\/\]\]/\[\[..\/\]\]\n $additiontext/" "$File".txt
+sed -i "s/\[\[..\/\]\]/\[\[..\/\]\]\n $additiontext/" "$File".md
 fi
 if zenity --question --text="Möchten Sie sich die Text nochmal anschauen?"
 then
-kate "$File".txt 2>/dev/null &
+kate "$File".md 2>/dev/null &
 fi
 #sed -i "9 i$additiontext" "$File"

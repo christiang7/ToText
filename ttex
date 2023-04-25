@@ -3,13 +3,13 @@ file=$(basename "$1" .tex)
 folder=tex-$(echo "$file" | sed 's/ /_/g' | sed 's/:/;/g'| sed -e "s/'/_/g" | sed 's/\"//g')
 mkdir "$folder" #
 mv "$file".* "$folder"/ #
-touch "$folder".txt #
-echo "[ ] @TEX **$folder**" >> "$folder".txt #
-echo "**[[./$file.tex]]**" >> "$folder".txt 
-echo "**[[./$file.pdf]]**" >> "$folder".txt 
-echo "Text creation time:" >> "$folder".txt
-date +"[[Zettelkasten:%Y:%m:%d]]">> "$folder".txt
-echo "Modification time:" >> "$folder".txt
-date +'[[Zettelkasten:%Y:%m:%d]]' -r "$folder"/"$1".tex >> "$folder".txt
+touch "$folder".md #
+echo "[ ] @TEX **$folder**" >> "$folder".md #
+echo "**[[./$file.tex]]**" >> "$folder".md 
+echo "**[[./$file.pdf]]**" >> "$folder".md 
+echo "Text creation time:" >> "$folder".md
+date +"[[Zettelkasten:%Y:%m:%d]]">> "$folder".md
+echo "Modification time:" >> "$folder".md
+date +'[[Zettelkasten:%Y:%m:%d]]' -r "$folder"/"$1".tex >> "$folder".md
 
-kate "$folder".txt #
+kate "$folder".md #

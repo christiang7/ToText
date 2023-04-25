@@ -14,67 +14,67 @@ File=$(echo "$1" | sed 's/ /_/g' | sed 's/:/;/g'| sed -e "s/'/_/g" | sed 's/\"//
 f=$(basename "$1")
 filename=${f%.*} #only the filename
 extens=${f##*.}
-line=$(head -n 1 "$File".txt)
+line=$(head -n 1 "$File".md)
 #echo $extens
 function Opentxt(){
-	kate "$File".txt 2>/dev/null &
+	kate "$File".md 2>/dev/null &
 }
 
 function Wikiprev(){
-	touch "$File".txt
-	sed -i "1 i===== $File =====" "$File".txt
-	sed -i "1 iWiki-Format: zim 0.6" "$File".txt
-	sed -i "1 iContent-Type: text/x-zim-wiki" "$File".txt
+	touch "$File".md
+	sed -i "1 i===== $File =====" "$File".md
+	sed -i "1 iWiki-Format: zim 0.6" "$File".md
+	sed -i "1 iContent-Type: text/x-zim-wiki" "$File".md
 }
 
 function Timestamps(){
-	echo "Text creation time:" >> "$File".txt
-	date +"[[Zettelkasten:%Y:%m:%d]]">> "$File".txt
-	echo "Modification time:" >> "$File".txt
-	date +"[[Zettelkasten:%Y:%m:%d]]" -r "$f" >> "$File".txt
+	echo "Text creation time:" >> "$File".md
+	date +"[[Zettelkasten:%Y:%m:%d]]">> "$File".md
+	echo "Modification time:" >> "$File".md
+	date +"[[Zettelkasten:%Y:%m:%d]]" -r "$f" >> "$File".md
 }
 
 if [[ pdf == $extens ]]
 then
-	sed -i "1 i[*] @ARTIKEL **[[../$f]] >  2277-11-11 $2**" "$File".txt
+	sed -i "1 i[*] @ARTIKEL **[[../$f]] >  2277-11-11 $2**" "$File".md
 	Wikiprev
 	Timestamps
-	echo -e "[[../]]\n$2\n" >> "$File".txt
-	pdfinfo "$1" | grep Pages >> "$File".txt
-	echo -e "\n" >> "$File".txt
+	echo -e "[[../]]\n$2\n" >> "$File".md
+	pdfinfo "$1" | grep Pages >> "$File".md
+	echo -e "\n" >> "$File".md
 	pdftoppm -png -singlefile "$File" "$File"
-	sed -i "13 i{{../$File.png?width=750}}" "$File".txt
-	pdftotext -f 1 -l 1 "$1" ->> "$File".txt
+	sed -i "13 i{{../$File.png?width=750}}" "$File".md
+	pdftotext -f 1 -l 1 "$1" ->> "$File".md
 	Opentxt
 elif [[ jpg == $extens || png == $extens || webp == $extens || jpeg == $extens || avif == $extens ]]
 then
-	sed -i "1 i[*] @BILD **[[../$f]] $2**" "$File".txt
+	sed -i "1 i[*] @BILD **[[../$f]] $2**" "$File".md
 	Wikiprev
 	Timestamps
-	echo -e "[[..]]\n$2\n" >> "$File".txt
-	echo "{{../$f?width=750}}" >> "$File".txt
+	echo -e "[[..]]\n$2\n" >> "$File".md
+	echo "{{../$f?width=750}}" >> "$File".md
 	Opentxt
 elif [[ mp4 == $extens || mov == $extens || mkv == $extens || flv = $extens  ]]
 then
-	sed -i "1 i[*] @VIDEO **[[../$f]]** $2" "$File".txt
+	sed -i "1 i[*] @VIDEO **[[../$f]]** $2" "$File".md
 	Wikiprev
 	Timestamps
-	echo -e "[[..]]\n$2\n" >> "$File".txt
+	echo -e "[[..]]\n$2\n" >> "$File".md
 	Opentxt
 elif [[ epub == $extens ]]
 then
-	sed -i "1 i[*] @EBOOK $3 **[[../$f]] $2**" "$File".txt
+	sed -i "1 i[*] @EBOOK $3 **[[../$f]] $2**" "$File".md
 	Wikiprev
 	Timestamps
-	echo -e "[[../]]\n$2\n" >> "$File".txt
-	einfo "$1" >> "$File".txt
+	echo -e "[[../]]\n$2\n" >> "$File".md
+	einfo "$1" >> "$File".md
 	Opentxt
 elif [[ $extens == $f ]]
 then
-	sed -i "1 i[*] @ORDNER $3 **[[../$f]] $2**" "$File".txt
+	sed -i "1 i[*] @ORDNER $3 **[[../$f]] $2**" "$File".md
 	Wikiprev
 	Timestamps
-	echo -e "[[../]]\n$2\n" >> "$File".txt
+	echo -e "[[../]]\n$2\n" >> "$File".md
 	Opentxt
 elif [[ $extens == txt ]] 
 then
@@ -91,11 +91,11 @@ then
 	fi
 	kate "$File" 2>/dev/null &
 	else
-	sed -i "1 i[*] $3 **[[../$f]] $2**" "$File".txt
+	sed -i "1 i[*] $3 **[[../$f]] $2**" "$File".md
 	Wikiprev
 	Timestamps
-	#echo -e "$2\n" >> "$File".txt
-	echo -e "[[../]]\n$2\n" >> "$File".txt
+	#echo -e "$2\n" >> "$File".md
+	echo -e "[[../]]\n$2\n" >> "$File".md
 	Opentxt
 fi
 

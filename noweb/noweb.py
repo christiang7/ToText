@@ -5,7 +5,7 @@ noweb.py
 By Jonathan Aquino (jonathan.aquino@gmail.com)
 
 This program extracts code from a literate programming document in "noweb" format.
-It was generated from noweb.py.txt, itself a literate programming document.
+It was generated from noweb.py.md, itself a literate programming document.
 For more information, including the original source code and documentation,
 see http://jonaquino.blogspot.com/2010/04/nowebpy-or-worlds-first-executable-blog.html
 """

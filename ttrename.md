@@ -16,7 +16,7 @@ Backlink [GedankenspeicherCoding](../GedankenspeicherCoding.md)
 to extract the file from the txt file to correct the name
 ``echo "string1 [[string2]] string3 string4" | sed 's/.*\[\[\([^]]*\)\]\].*/\1/g'``
 
-``cat Brief_Overview_of_Japanese_Art_of_Archery.pdf.txt | tr '\n' ' ' | cut -d "[" -f4 | cut -d "]" -f1 | sed "s/..\///g"``
+``cat Brief_Overview_of_Japanese_Art_of_Archery.pdf.md | tr '\n' ' ' | cut -d "[" -f4 | cut -d "]" -f1 | sed "s/..\///g"``
 
 
 
@@ -62,7 +62,7 @@ then
     mv "${filename2%.*}"_Dateien "$Newname"_Dateien
     mv "$filename2".png "$Newname"."$extens3".png
     mv "$filename2".avif "$Newname"."$extens3".avif
-    mv "$File2" "$Newname"."$extens3".txt
+    mv "$File2" "$Newname"."$extens3".md
     ttncc "$filename2" "$Newname"."$extens3"
     echo "$Newname"."$extens3"
 else 
@@ -80,7 +80,7 @@ else
     mv "${f%.*}"_Dateien "$Newname"_Dateien
     mv "$f".png "$Newname"."$extens".png
     mv "$f".avif "$Newname"."$extens".avif
-    mv "$File".txt "$Newname"."$extens".txt
+    mv "$File".md "$Newname"."$extens".md
     ttncc "$f" "$Newname"."$extens" 
     echo "$Newname"."$extens" 
 fi

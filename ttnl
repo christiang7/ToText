@@ -9,27 +9,27 @@ extens=${f##*.}
 
 function Linking(){
 	mv "$f" $folder/"$f"
-	mv "$File".txt $folder/"$File".txt
+	mv "$File".md $folder/"$File".md
 	ln -s $folder/"$f" "$f"
-	ln -s $folder/"$File".txt "$File".txt
+	ln -s $folder/"$File".md "$File".md
 	echo "cd $folder"
-	#kate $folder/"$File".txt 2>/dev/null &
+	#kate $folder/"$File".md 2>/dev/null &
 }
 
 function Wikiprev(){
-	touch "$File".txt
-	echo "Content-Type: text/x-zim-wiki" >> "$File".txt
-	echo "Wiki-Format: zim 0.6" >> "$File".txt
+	touch "$File".md
+	echo "Content-Type: text/x-zim-wiki" >> "$File".md
+	echo "Wiki-Format: zim 0.6" >> "$File".md
 }
 
 function Timestamps(){
-	echo "Text creation time:" >> "$File".txt
-	date +"[[Zettelkasten:%Y:%m:%d]]">> "$File".txt
-	echo "Modification time:" >> "$File".txt
-	date +"[[Zettelkasten:%Y:%m:%d]]" -r "$f" >> "$File".txt
+	echo "Text creation time:" >> "$File".md
+	date +"[[Zettelkasten:%Y:%m:%d]]">> "$File".md
+	echo "Modification time:" >> "$File".md
+	date +"[[Zettelkasten:%Y:%m:%d]]" -r "$f" >> "$File".md
 }
 
-if [[ -f "$File".txt ]]
+if [[ -f "$File".md ]]
 	then
 		Linking
 	elif [[ pdf == $extens ]]
@@ -43,31 +43,31 @@ if [[ -f "$File".txt ]]
 	elif [[ mp4 == $extens || mov == $extens || mkv == $extens || flv = $extens  ]]
 	then
 		Wikiprev
-		echo "[*] @VIDEO **[[../$f]]** $2" >> "$File".txt
+		echo "[*] @VIDEO **[[../$f]]** $2" >> "$File".md
 		Timestamps
-		echo -e "[[../]]\n$2\n" >> "$File".txt
+		echo -e "[[../]]\n$2\n" >> "$File".md
 		Linking
 	elif [[ epub == $extens ]]
 	then
 		Wikiprev
-		echo "[*] @EBOOK $3 **[[../$f]] $2**" >> "$File".txt
+		echo "[*] @EBOOK $3 **[[../$f]] $2**" >> "$File".md
 		Timestamps
-		echo -e "[[../]]\n$2\n" >> "$File".txt
-		einfo "$f" >> "$File".txt
+		echo -e "[[../]]\n$2\n" >> "$File".md
+		einfo "$f" >> "$File".md
 		Linking
 elif [[ $extens == $f ]]
 then
 	Wikiprev
-	echo "[*] @ORDNER $3 **[[../$f]] $2**" >> "$File".txt
+	echo "[*] @ORDNER $3 **[[../$f]] $2**" >> "$File".md
 	Timestamps
-	echo -e "[[../]]\n$2\n" >> "$File".txt
+	echo -e "[[../]]\n$2\n" >> "$File".md
 	Linking
 else
 		Wikiprev
-		echo "[*] $3 **[[../$f]] $2**" >> "$File".txt
+		echo "[*] $3 **[[../$f]] $2**" >> "$File".md
 		Timestamps
-		#echo -e "$2\n" >> "$File".txt
-		echo -e "[[../]]\n$2\n" >> "$File".txt
+		#echo -e "$2\n" >> "$File".md
+		echo -e "[[../]]\n$2\n" >> "$File".md
 		Linking
 fi
 

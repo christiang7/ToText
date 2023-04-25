@@ -21,7 +21,7 @@ Backlink [GedankenspeicherCoding](../GedankenspeicherCoding.md)
 File=$(echo "$1" | sed 's/ /_/g' | sed 's/:/;/g'| sed -e "s/'/_/g" | sed 's/\"//g')
 folder=$(unzip -Z -1 "$1" '*/')
 unzip "$1"
-tts "$1" && cat $folder'index.rdf' >> "$File".txt && rm -r $folder
+tts "$1" && cat $folder'index.rdf' >> "$File".md && rm -r $folder
 
 @
 ```

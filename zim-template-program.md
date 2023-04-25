@@ -37,7 +37,7 @@ cd "$folder"
 filetxt=$(echo $2)
 filepath=$(echo "${filetxt%/*}" | sed "s,/home/christian,~,")
 wikipath=$(echo $filepath | sed "s,~/Gedankenspeicher/Gedankenspeicherwiki/,," | sed "s,/,:,g")
-FullFilename=$(basename $filetxt .txt)
+FullFilename=$(basename $filetxt .md)
 @
 
 
@@ -82,24 +82,24 @@ fi
 
 Die Erzeugung des templates
 {{create Template}}=
-echo "Content-Type: text/x-zim-wiki" > "${folder}"/"${File}".txt
-echo "Wiki-Format: zim 0.6" >> "${folder}"/"${File}".txt
-echo -e "===== ${File} =====" >> "${folder}"/"${File}".txt
-echo -e "Created $(date +[[Zettelkasten:%Y:%m:%d]])" >> "${folder}"/"${File}".txt
-echo -e "Backlink [[$wikipath:$FullFilename]]" >> "${folder}"/"${File}".txt
-#"${filepath}.txt
-#echo -e "$([[Zettelkasten:%Y:%m:%d]])" >> "${folder}"/"${File}".txt
-echo -e "[[../]]" >> "${folder}"/"${File}".txt
-echo -e "[*] ${tags} ** ${File} ** ${source} >  2277-11-11" >> "${folder}"/"${File}".txt
-echo -e "\n${additiontext}" >> "${folder}"/"${File}".txt
-echo -e "\n''noweb.py -R${File}.${extens} ${File}.txt > ${File}.${extens} && echo 'fertig'''" >> "${folder}"/"${File}".txt
-echo -e "\n\n''chmod u+x ${File}.${extens} && ln -sf "${folder}"/${File}.${extens} ~/.local/bin/${File}.${extens} && echo 'fertig'''" >> "${folder}"/"${File}".txt
-echo -e "\n{{{code: lang="sweave" linenumbers="True"" >> "${folder}"/"${File}".txt
-echo -e "{{${File}.${extens}}}=" >> "${folder}"/"${File}".txt
-echo -e "\n@" >> "${folder}"/"${File}".txt
-echo -e "\n}}}" >> "${folder}"/"${File}".txt
+echo "Content-Type: text/x-zim-wiki" > "${folder}"/"${File}".md
+echo "Wiki-Format: zim 0.6" >> "${folder}"/"${File}".md
+echo -e "===== ${File} =====" >> "${folder}"/"${File}".md
+echo -e "Created $(date +[[Zettelkasten:%Y:%m:%d]])" >> "${folder}"/"${File}".md
+echo -e "Backlink [[$wikipath:$FullFilename]]" >> "${folder}"/"${File}".md
+#"${filepath}.md
+#echo -e "$([[Zettelkasten:%Y:%m:%d]])" >> "${folder}"/"${File}".md
+echo -e "[[../]]" >> "${folder}"/"${File}".md
+echo -e "[*] ${tags} ** ${File} ** ${source} >  2277-11-11" >> "${folder}"/"${File}".md
+echo -e "\n${additiontext}" >> "${folder}"/"${File}".md
+echo -e "\n''noweb.py -R${File}.${extens} ${File}.md > ${File}.${extens} && echo 'fertig'''" >> "${folder}"/"${File}".md
+echo -e "\n\n''chmod u+x ${File}.${extens} && ln -sf "${folder}"/${File}.${extens} ~/.local/bin/${File}.${extens} && echo 'fertig'''" >> "${folder}"/"${File}".md
+echo -e "\n{{{code: lang="sweave" linenumbers="True"" >> "${folder}"/"${File}".md
+echo -e "{{${File}.${extens}}}=" >> "${folder}"/"${File}".md
+echo -e "\n@" >> "${folder}"/"${File}".md
+echo -e "\n}}}" >> "${folder}"/"${File}".md
 
-echo -e "\n[[+${File}]]" >> "${filetxt}.txt"
+echo -e "\n[[+${File}]]" >> "${filetxt}.md"
 
 @
 

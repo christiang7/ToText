@@ -172,7 +172,7 @@ moz-<extension://9607b3ec-7f13-4a1a-858a-88b5d19b11a9/data/options/index.html>
 
 ##### wget für webseiten Download und als pdf weiterverarbeitung
 
-``wget -P $(basename https://www.golem.de/news/schlechte-soundqualitaet-audi-will-in-seinen-autos-kein-musik-streaming-per-bluetooth-2104-156135.html .html) -nd  --no-use-server-timestamps --load-cookies=cookies.txt -level=0 -pk --adjust-extension -e robots=off https://www.golem.de/news/schlechte-soundqualitaet-audi-will-in-seinen-autos-kein-musik-streaming-per-bluetooth-2104-156135.html``
+``wget -P $(basename https://www.golem.de/news/schlechte-soundqualitaet-audi-will-in-seinen-autos-kein-musik-streaming-per-bluetooth-2104-156135.html .html) -nd  --no-use-server-timestamps --load-cookies=cookies.md -level=0 -pk --adjust-extension -e robots=off https://www.golem.de/news/schlechte-soundqualitaet-audi-will-in-seinen-autos-kein-musik-streaming-per-bluetooth-2104-156135.html``
 
 
 

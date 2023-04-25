@@ -38,7 +38,7 @@ if [[ -e "$file".avif ]]
 then
 ln -s "$filepath".avif "$destinationfolder"/"$file".avif
 fi
-ln -s "$filepath".txt "$destinationfolder"/"$file".txt
+ln -s "$filepath".md "$destinationfolder"/"$file".md
 
 
 

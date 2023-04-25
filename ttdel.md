@@ -32,7 +32,7 @@ then
 	rm "$1"
 else 
 	rm -r "$1"
-	rm "$File".txt
+	rm "$File".md
 	rm "$File".avif
 	rm "$File".png
 	rm "$File".pdf

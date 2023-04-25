@@ -15,22 +15,22 @@ File=$(echo "$1" | sed 's/ /_/g' | sed 's/:/;/g'| sed -e "s/'/_/g" | sed 's/\"//
 f=$(basename "$1")
 folder=$(date +"/home/christian/Gedankenspeicher/Gedankenspeicherwiki/Zettelkasten/%Y/%m/%d" -r "$1")
 mkdir -p $folder
-touch "$File".txt
-echo "Content-Type: text/x-zim-wiki" >> "$File".txt
-echo "Wiki-Format: zim 0.6" >> "$File".txt
-echo "[*] @BILD **[[../$f]] $2**" >> "$File".txt
-echo "Text creation time:" >> "$File".txt
-date +"[[Zettelkasten:%Y:%m:%d]]" >> "$File".txt
-echo "Modification time:" >> "$File".txt
-date +"[[Zettelkasten:%Y:%m:%d]]" -r "$1" >> "$File".txt
-echo -e "[[../]]$2\n" >> "$File".txt
-echo "{{../$f?width=750}}" >> "$File".txt
+touch "$File".md
+echo "Content-Type: text/x-zim-wiki" >> "$File".md
+echo "Wiki-Format: zim 0.6" >> "$File".md
+echo "[*] @BILD **[[../$f]] $2**" >> "$File".md
+echo "Text creation time:" >> "$File".md
+date +"[[Zettelkasten:%Y:%m:%d]]" >> "$File".md
+echo "Modification time:" >> "$File".md
+date +"[[Zettelkasten:%Y:%m:%d]]" -r "$1" >> "$File".md
+echo -e "[[../]]$2\n" >> "$File".md
+echo "{{../$f?width=750}}" >> "$File".md
 mv "$1" $folder/"$1"
-mv "$File".txt $folder/"$File".txt
+mv "$File".md $folder/"$File".md
 ln -s $folder/"$1" "$f"
-ln -s $folder/"$File".txt "$File".txt
+ln -s $folder/"$File".md "$File".md
 echo "cd $folder"
-kate $folder/"$File".txt 2>/dev/null &
+kate $folder/"$File".md 2>/dev/null &
 @
 ```
 

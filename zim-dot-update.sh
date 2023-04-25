@@ -7,5 +7,5 @@ filename=${File%.*}
 noweb.py -Rdiagram.dot "$File" > "$filename"/diagram.dot
 dot -Tpng "$filename"/diagram.dot -o "$filename"/diagram.png
 #echo "{{./diagram.png?type=diagram}}"
-#echo "$1" "$2" "$3" > ~/log.txt
+#echo "$1" "$2" "$3" > ~/log.md
 fi

@@ -50,7 +50,7 @@ rm "$File"
 
 foldermonth=$(date +"/home/christian/Gedankenspeicher/Gedankenspeicherwiki/Zettelkasten/%Y/%m" -r "$Newname".avif)
 calendarfile=$(date +"%d")
-calendarfile=$calendarfile.txt
+calendarfile=$calendarfile.md
 if [[ ! -e "$foldermonth"/"$calendarfile" ]]
 then
 touch "$foldermonth"/"$calendarfile"

@@ -31,19 +31,19 @@ mv "$1".log "$filename".log
 mv "$1".aux "$filename".aux
 mv "$1".synctex.gz "$filename".synctex.gz
 mv "$filename".* "$folder"/ #
-#touch "$folder".txt #
-echo "Content-Type: text/x-zim-wiki" >> "$folder".txt
-echo "Wiki-Format: zim 0.6" >> "$folder".txt
-echo "[*] @TEX **$folder**" >> "$folder".txt #
-echo "**[[./$File]]**" >> "$folder".txt 
-echo "**[[./$filename.pdf]]**" >> "$folder".txt 
-echo "Text creation time:" >> "$folder".txt
-date +"[[Zettelkasten:%Y:%m:%d]]">> "$folder".txt
-echo "Modification time:" >> "$folder".txt
-date +'[[Zettelkasten:%Y:%m:%d]]' -r "$folder"/"$File" >> "$folder".txt
+#touch "$folder".md #
+echo "Content-Type: text/x-zim-wiki" >> "$folder".md
+echo "Wiki-Format: zim 0.6" >> "$folder".md
+echo "[*] @TEX **$folder**" >> "$folder".md #
+echo "**[[./$File]]**" >> "$folder".md 
+echo "**[[./$filename.pdf]]**" >> "$folder".md 
+echo "Text creation time:" >> "$folder".md
+date +"[[Zettelkasten:%Y:%m:%d]]">> "$folder".md
+echo "Modification time:" >> "$folder".md
+date +'[[Zettelkasten:%Y:%m:%d]]' -r "$folder"/"$File" >> "$folder".md
 ln -s "$folder"/"$File" "$File"
 ln -s "$folder"/"$filename".pdf "$filename".pdf
-#kate "$folder".txt 2>/dev/null &
+#kate "$folder".md 2>/dev/null &
 @
 ```
 

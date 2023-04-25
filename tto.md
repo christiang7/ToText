@@ -18,12 +18,12 @@ Modification time:
 #!/bin/bash
 File=$(echo "$1" | sed 's/ /_/g' | sed 's/:/;/g'| sed -e "s/'/_/g" | sed 's/\"//g')
 f=$(basename "$1")
-touch "$File".txt
-echo "Content-Type: text/x-zim-wiki" >> "$File".txt
-echo "Wiki-Format: zim 0.6" >> "$File".txt
-echo "[*] **[[../$f]] $2**" >> "$File".txt
-echo "$2" >> "$File".txt
-echo "$3" >> "$File".txt
+touch "$File".md
+echo "Content-Type: text/x-zim-wiki" >> "$File".md
+echo "Wiki-Format: zim 0.6" >> "$File".md
+echo "[*] **[[../$f]] $2**" >> "$File".md
+echo "$2" >> "$File".md
+echo "$3" >> "$File".md
 @
 ```
 

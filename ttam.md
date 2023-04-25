@@ -24,7 +24,7 @@ folder="${folder%/*}"
 
 filename=$(ttrename "$1" 2> /dev/null)
 
-#file=$(basename "$folder" .txt)
+#file=$(basename "$folder" .md)
 
 
 #filename=${file%.*}
@@ -41,9 +41,9 @@ mv "$folder"/"${filename}"_Dateien "$assetsfolder"/"${filename}"_Dateien
 
 mv "$folder"/"$filename".png "$assetsfolder"/"$filename".png
 mv "$folder"/"$filename".avif "$assetsfolder"/"$filename".avif
-mv "$folder"/"$filename".txt "$assetsfolder"/"$filename".txt
+mv "$folder"/"$filename".md "$assetsfolder"/"$filename".md
 
-echo -e "[[$assetsfolder/$filename]]\n[[$wikipath:$filename]]" >> "$assetsfolder"/"$filename".txt
+echo -e "[[$assetsfolder/$filename]]\n[[$wikipath:$filename]]" >> "$assetsfolder"/"$filename".md
 @
 
 ```

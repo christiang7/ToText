@@ -12,7 +12,7 @@ File="$filename".png
 scrot "$folder"/"$File" -s
 foldermonth=$(date +"/home/christian/Gedankenspeicher/Gedankenspeicherwiki/Zettelkasten/%Y/%m")
 calendarfile=$(date +"%d")
-calendarfile=$calendarfile.txt
+calendarfile=$calendarfile.md
 if [[ ! -e "$foldermonth"/"$calendarfile" ]]
 then
 	touch "$foldermonth"/"$calendarfile"
@@ -34,18 +34,18 @@ additiontext=$(zenity --entry \
        --title "Noch etwas hinzufügen?" \
        --text "Noch etwas hinzufügen?" \
        --entry-text "$4")
-touch "$File".txt
-mv "$File".txt "$folder"/"$File".txt
-echo "Content-Type: text/x-zim-wiki" >> "$folder"/"$File".txt
-echo "Wiki-Format: zim 0.6" >> "$folder"/"$File".txt
-echo "===== $File =====" >> "$folder"/"$File".txt
-echo "[*] @BILD @Webseite @Screenshot $tags **[[../$File]] $url**" >> "$folder"/"$File".txt
-echo "Text creation time: $(date +"[[Zettelkasten:%Y:%m:%d]]")" >> "$folder"/"$File".txt
-echo "Modification time: $(date +"[[Zettelkasten:%Y:%m:%d]]" -r "$folder"/"$File")" >> "$folder"/"$File".txt
-echo -e "[[../]]\n" >> "$folder"/"$File".txt
-echo "{{../$File}}" >> "$folder"/"$File".txt
-echo "$additiontext" >> "$folder"/"$File".txt
-tesseract -l eng+deu "$folder"/"$File" stdout | sed 's/\o14//g' >> "$folder"/"$File".txt
+touch "$File".md
+mv "$File".md "$folder"/"$File".md
+echo "Content-Type: text/x-zim-wiki" >> "$folder"/"$File".md
+echo "Wiki-Format: zim 0.6" >> "$folder"/"$File".md
+echo "===== $File =====" >> "$folder"/"$File".md
+echo "[*] @BILD @Webseite @Screenshot $tags **[[../$File]] $url**" >> "$folder"/"$File".md
+echo "Text creation time: $(date +"[[Zettelkasten:%Y:%m:%d]]")" >> "$folder"/"$File".md
+echo "Modification time: $(date +"[[Zettelkasten:%Y:%m:%d]]" -r "$folder"/"$File")" >> "$folder"/"$File".md
+echo -e "[[../]]\n" >> "$folder"/"$File".md
+echo "{{../$File}}" >> "$folder"/"$File".md
+echo "$additiontext" >> "$folder"/"$File".md
+tesseract -l eng+deu "$folder"/"$File" stdout | sed 's/\o14//g' >> "$folder"/"$File".md
 echo -e "\n[*] $urltitle" >> "$foldermonth"/"$calendarfile"
 if [[ ! $additiontext == "" ]]
 then

@@ -26,8 +26,8 @@ if [[ ! "$topic" = "" ]];
 then
 
 foldermonth=$(echo "/home/christian/Gedankenspeicher/Gedankenspeicherwiki/Zettelkasten")
-topicfile=$(echo "${topic}" | sed 's/ /_/g' | sed 's/:/;/g' | sed -e "s/'/_/g" | sed 's/\"//g'|  sed 's/&/n/g' | sed 's/|//g' | sed 's/\[/(/g' | sed 's/\]/)/g' | sed 's/@/at/g' | sed 's/¦//g' | sed 's/?/.ß/g').txt
-topicfilename=$(basename "$topicfile" .txt)
+topicfile=$(echo "${topic}" | sed 's/ /_/g' | sed 's/:/;/g' | sed -e "s/'/_/g" | sed 's/\"//g'|  sed 's/&/n/g' | sed 's/|//g' | sed 's/\[/(/g' | sed 's/\]/)/g' | sed 's/@/at/g' | sed 's/¦//g' | sed 's/?/.ß/g').md
+topicfilename=$(basename "$topicfile" .md)
 touch "${foldermonth}"/"${topicfile}"
 mkdir -p "${foldermonth}"/"${topicfilename}"
 echo "Content-Type: text/x-zim-wiki" > "${foldermonth}"/"${topicfile}"
@@ -39,7 +39,7 @@ echo -e "[[../]]" >> "${foldermonth}"/"${topicfile}"
 echo -e "[*] ${tags} ** ${topic} ** >  2277-11-11" >> "${foldermonth}"/"${topicfile}"
 echo -e "\n${additiontext}" >> "${foldermonth}"/"${topicfile}"
 echo -e "\n${tabs}" >> "${foldermonth}"/"${topicfile}"
-echo -e "\n[[+$(basename ${topicfile} .txt)|${topic}]]" >> "$foldermonth".txt
+echo -e "\n[[+$(basename ${topicfile} .md)|${topic}]]" >> "$foldermonth".md
 
 fi
 fi;;
@@ -53,19 +53,19 @@ additiontext=$(zenity --entry \
 if [ ! $? -eq 1 ];
 then
 case ${choose} in
-Spass) file=$(echo "/home/christian/Gedankenspeicher/Gedankenspeicherwiki/Spaß_Stream.txt")
+Spass) file=$(echo "/home/christian/Gedankenspeicher/Gedankenspeicherwiki/Spaß_Stream.md")
 	l=10;;
-Assets) file=$(echo "/home/christian/Gedankenspeicher/Gedankenspeicherwiki/Assets.txt")
+Assets) file=$(echo "/home/christian/Gedankenspeicher/Gedankenspeicherwiki/Assets.md")
 	l=7;;
-Physik) file=$(echo "/home/christian/Gedankenspeicher/Gedankenspeicherwiki/Physik.txt")
+Physik) file=$(echo "/home/christian/Gedankenspeicher/Gedankenspeicherwiki/Physik.md")
 	l=10;;
-Mathematik) file=$(echo "/home/christian/Gedankenspeicher/Gedankenspeicherwiki/Mathematik.txt")
+Mathematik) file=$(echo "/home/christian/Gedankenspeicher/Gedankenspeicherwiki/Mathematik.md")
 	l=10;;
-Philosophie) file=$(echo "/home/christian/Gedankenspeicher/Gedankenspeicherwiki/Philosophie.txt")
+Philosophie) file=$(echo "/home/christian/Gedankenspeicher/Gedankenspeicherwiki/Philosophie.md")
 	l=10;;
-Naturwissenschaften_und_Instrumentarien) file=$(echo "/home/christian/Gedankenspeicher/Gedankenspeicherwiki/Naturwissenschaften.txt")
+Naturwissenschaften_und_Instrumentarien) file=$(echo "/home/christian/Gedankenspeicher/Gedankenspeicherwiki/Naturwissenschaften.md")
 	l=10;;
-CodeFabrik) file=$(echo "/home/christian/Gedankenspeicher/Gedankenspeicherwiki/CodeFabrik.txt")
+CodeFabrik) file=$(echo "/home/christian/Gedankenspeicher/Gedankenspeicherwiki/CodeFabrik.md")
 	l=11;;
 esac
 echo $tabs

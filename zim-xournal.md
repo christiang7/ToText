@@ -7,7 +7,7 @@ Backlink [CodeFabrik:GedankenspeicherCoding](../GedankenspeicherCoding.md)
 
 
 
-  ``noweb.py -Rzim-xournal.sh zim-xournal.txt > zim-xournal.sh && echo 'fertig'``
+  ``noweb.py -Rzim-xournal.sh zim-xournal.md > zim-xournal.sh && echo 'fertig'``
 
 ``chmod u+x zim-xournal.sh && ln -sf /home/christian/Gedankenspeicher/Gedankenspeicherwiki/Zettelkasten/ZetteL/CodeFabrik/GedankenspeicherCoding/zim-xournal.sh ~/.local/bin/zim-xournal.sh && echo 'fertig'``
 
@@ -17,7 +17,7 @@ Backlink [CodeFabrik:GedankenspeicherCoding](../GedankenspeicherCoding.md)
 
 File=$(echo "$1" | sed 's/ /_/g' | sed 's/:/;/g'| sed -e "s/'/_/g" | sed 's/\"//g')
 filetxt=${File%.*}
-filetxtname=$(basename "$File" .txt)
+filetxtname=$(basename "$File" .md)
 filedate=$(date +"%Y-%m-%d")
 source="Christian Gößl"
 tags="@Unterricht @Nachhilfe"
@@ -39,17 +39,17 @@ then
 	filename=$(echo "$Newname" | sed 's/ /_/g' | sed 's/:/;/g'| sed -e "s/'/_/g" | sed 's/\"//g')
 	File=$(echo "$filename".xopp)
 	xournalpp "$filename".xopp && xournalpp "$File" -p "$filename".pdf
-	echo "Content-Type: text/x-zim-wiki" >> "$File".txt
-	echo "Wiki-Format: zim 0.6" >> "$File".txt
-	echo "===== $File =====" >> "$File".txt
-	echo "[*] $tags **[[../"$filename".xopp]] $source**" >> "$File".txt
-	echo "Text creation time: $(date +"[[Zettelkasten:%Y:%m:%d]]")" >> "$File".txt
-	echo "Modification time: $(date +"[[Zettelkasten:%Y:%m:%d]]" -r "$File")" >> "$File".txt
-	echo -e "[[../]]\n" >> "$File".txt
+	echo "Content-Type: text/x-zim-wiki" >> "$File".md
+	echo "Wiki-Format: zim 0.6" >> "$File".md
+	echo "===== $File =====" >> "$File".md
+	echo "[*] $tags **[[../"$filename".xopp]] $source**" >> "$File".md
+	echo "Text creation time: $(date +"[[Zettelkasten:%Y:%m:%d]]")" >> "$File".md
+	echo "Modification time: $(date +"[[Zettelkasten:%Y:%m:%d]]" -r "$File")" >> "$File".md
+	echo -e "[[../]]\n" >> "$File".md
 	xournalpp --export-range=1 "$File" -i "$File".png
 	convert "$File".png "$File".avif
 	rm "$File".png
-	echo -e "{{../$File.avif?width=750}}\n" >> "$File".txt
+	echo -e "{{../$File.avif?width=750}}\n" >> "$File".md
 	ttpdf "$filename".pdf
 fi
 

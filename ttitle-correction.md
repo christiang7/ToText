@@ -10,7 +10,7 @@ Backlink [CodeFabrik:GedankenspeicherCoding](../GedankenspeicherCoding.md)
 ``noweb.py -Rttitle-correction.sh ttitle-correction.md > ttitle-correction.sh && echo 'fertig'``
 
 command for insert headline in 3th line in file 
-``sed -i "3 s/\[\*/===== ansansa =====\\n\[\*/" 1681834707295.avif.txt``
+``sed -i "3 s/\[\*/===== ansansa =====\\n\[\*/" 1681834707295.avif.md``
 
 in all cases it has to be done in 3th and 4th line
 
