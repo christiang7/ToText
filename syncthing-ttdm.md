@@ -8,7 +8,7 @@ Backlink [GedankenspeicherCoding](../GedankenspeicherCoding.md)
   ``noweb.py -Rsyncthing-ttdm.sh syncthing-ttdm.md > syncthing-ttdm.sh && chmod u+x syncthing-ttdm.sh && ln -sf /home/christian/Gedankenspeicher/Gedankenspeicherwiki/Zettelkasten/ZetteL/CodeFabrik/syncthing-ttdm.sh ~/.local/bin/syncthing-ttdm.sh && echo 'fertig'``
 
 ```bash
-<<syncthing-ttdm.sh>>=
+{{syncthing-ttdm.sh}}=
 #!/bin/bash
 FolderSync=$(echo "$1")
 #ls --hide=*.txt "$folder" > f

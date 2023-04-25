@@ -11,7 +11,7 @@ Backlink [GedankenspeicherCoding](../GedankenspeicherCoding.md)
  ``chmod u+x ttdel && ln -sf /home/christian/Gedankenspeicher/Gedankenspeicherwiki/Zettelkasten/Gedankenwanderung/Programme/ttdel ~/.local/bin/ttdel && echo 'fertig'``
 
 ```bash
-<<ttdel>>=
+{{ttdel}}=
 #!/bin/bash
 if zenity --question --text="Wirklich löschen?"
 then 

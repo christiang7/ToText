@@ -30,7 +30,7 @@ to extract the file from the txt file to correct the name
 ``chmod u+x ttrename && ln -sf /home/christian/Gedankenspeicher/Gedankenspeicherwiki/Zettelkasten/Gedankenwanderung/Programme/ttrename ~/.local/bin/ttrename && echo 'fertig'``
 
 ```bash
-<<ttrename>>=
+{{ttrename}}=
 #!/bin/bash
 
 #case of input file is the original file

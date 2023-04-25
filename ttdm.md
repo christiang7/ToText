@@ -8,7 +8,7 @@ Backlink [GedankenspeicherCoding](../GedankenspeicherCoding.md)
   ``noweb.py -Rttdm ttdm.md > ttdm && chmod u+x ttdm && ln -sf /home/christian/Gedankenspeicher/Gedankenspeicherwiki/Zettelkasten/Gedankenwanderung/Programme/ttdm ~/.local/bin/ttdm && echo 'fertig'``
 
 ```bash
-<<ttdm>>=
+{{ttdm}}=
 #!/bin/bash
 FolderSync=$(echo "$1" | sed 's/\///g')
 #ls --hide=*.txt "$folder" > f

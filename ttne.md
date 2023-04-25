@@ -10,7 +10,7 @@ einen Zim Ordner mit txt Datei erstellen lassen irgendwo im Dateisystem
   ``noweb.py -Rttne.sh ttne.bash > ttne.sh && chmod u+x ttne.sh && ln -sf /home/christian/Gedankenspeicher/Gedankenspeicherwiki/Zettelkasten/ZetteL/CadeFabrik/ttne.sh ~/.local/bin/ttne.sh && echo 'fertig'``
 
 ```bash
-<<ttne.sh>>=
+{{ttne.sh}}=
 #!/usr/bin/env bash
 
 

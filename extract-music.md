@@ -11,7 +11,7 @@ Backlink [GedankenspeicherCoding](../GedankenspeicherCoding.md)
 
 
 ```bash
-<<extract-music.sh>>=
+{{extract-music.sh}}=
 #! /bin/bash
 echo "$1"
 website="$1"

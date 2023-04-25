@@ -9,7 +9,7 @@ Backlink [GedankenspeicherCoding](../GedankenspeicherCoding.md)
 
 
 ```bash
-<<firefox-maff-export-txt>>=
+{{firefox-maff-export-txt}}=
 #!/bin/sh
 #for f in "$@"; do
 #  u=$(printf "%s" "$f" | sed "s|%|%25|g" | sed "s|?|%3F|g" | sed "s|#|%23|g")

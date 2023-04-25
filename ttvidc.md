@@ -10,7 +10,7 @@ Korrektur von Videos die aus der Mediathek oder anderen Quellen heruntergeladen 
   ``noweb.py -Rttvidc ttvidc.md > ttvidc && chmod u+x ttvidc && echo 'fertig'``
 
 ```bash
-<<ttvidc>>=
+{{ttvidc}}=
 #!/bin/bash
 File=$(echo "$1" | sed 's/ /_/g' | sed 's/:/;/g'| sed -e "s/'/_/g" | sed 's/\"//g')
 f=$(basename "$1")

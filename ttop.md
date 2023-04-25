@@ -10,7 +10,7 @@ Backlink [GedankenspeicherCoding](../GedankenspeicherCoding.md)
   ``noweb.py -Rttop ttop.md > ttop && chmod u+x ttop && echo 'fertig'``
 
 ```bash
-<<ttop>>=
+{{ttop}}=
 #!/bin/bash
 f=$(basename "$1")
 extens=${f##*.} #only the extension of the file

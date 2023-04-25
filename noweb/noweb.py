@@ -36,8 +36,8 @@ file = open(filename)
 chunkName = None
 chunks = {}
 # Regexes
-OPEN = "<<"
-CLOSE = ">>"
+OPEN = "{{"
+CLOSE = "}}"
 TAGNAME = "([A-Za-z][-_\.: A-Za-z0-9]+)"
 for line in file:
     match = re.match(OPEN + TAGNAME + CLOSE + "=", line)

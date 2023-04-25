@@ -16,7 +16,7 @@ Beispiel
 ``chmod u+x create-today-link.sh && ln -sf ~/Gedankenspeicher/Gedankenspeicherwiki/CodeFabrik/GedakenspeicherCoding/create-today-link.sh ~/.local/bin/create-today-link.sh && echo 'fertig'``
 
 ```bash
-<<create-today-link.sh>>=
+{{create-today-link.sh}}=
 	#!/bin/bash
 	folder=$(date +"/home/christian/Gedankenspeicher/Gedankenspeicherwiki/Zettelkasten/%Y/%m/%d")
 	foldermonth=$(date +"/home/christian/Gedankenspeicher/Gedankenspeicherwiki/Zettelkasten/%Y/%m/")

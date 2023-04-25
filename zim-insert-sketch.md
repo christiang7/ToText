@@ -13,7 +13,7 @@ Backlink [GedankenspeicherCoding](../GedankenspeicherCoding.md)
 ``chmod u+x zim-insert-sketch.sh && ln -sf /home/christian/Gedankenspeicher/Gedankenspeicherwiki/Zettelkasten/ZetteL/CodeFabrik/GedankenspeicherCoding/zim-insert-sketch.sh ~/.local/bin/zim-insert-sketch.sh && echo 'fertig'``
 
 ```bash
-<<zim-insert-sketch.sh>>=
+{{zim-insert-sketch.sh}}=
 #!/bin/bash
 #if zenity --question --text="Möchten Sie eine neue Skizze anfertigen?"
 #then 

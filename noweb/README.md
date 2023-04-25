@@ -30,7 +30,7 @@ optional arguments:
 This shows our command-line arguments. So let's grab those.
 
 ```python
-<<Parsing the command-line arguments>>=
+{{Parsing the command-line arguments}}=
 parser = argparse.ArgumentParser(
     prog=os.path.basename(__file__),
     formatter_class=argparse.RawDescriptionHelpFormatter,
@@ -112,7 +112,7 @@ Let's start by reading in the file given on the command line. We'll build up
 a map called "chunks", which will contain the chunk names and the lines of each chunk.
 
 ```python
-<<Reading in the file>>=
+{{Reading in the file}}=
 file = open(filename)
 chunkName = None
 chunks = {}
@@ -147,7 +147,7 @@ For simplicity, we'll assume that there are always two command-line arguments:
 in this example, "-Rhello.php" and "hello.noweb". So let's grab those.
 
 ```python
-<<BOGUS Parsing the command-line arguments>>=
+{{BOGUS Parsing the command-line arguments}}=
 filename = sys.argv[-1]
 outputChunkName = sys.argv[-2][2:]
 @
@@ -162,7 +162,7 @@ in the output chunk requested by the user. Expansion of the program preserves
 indentation at each level.
 
 ```python
-<<Recursively expanding the output chunk>>=
+{{Recursively expanding the output chunk}}=
 def expand(chunkName, indent):
     chunkLines = chunks[chunkName]
     expandedChunkLines = []
@@ -183,7 +183,7 @@ def expand(chunkName, indent):
 The last step is easy. We just call the recursive function and output the result.
 
 ```python
-<<Outputting the chunks>>=
+{{Outputting the chunks}}=
 for line in expand(outputChunkName, ""):
     print(line.rstrip(), file=outfile)
 if opts.out:
@@ -214,7 +214,7 @@ Then you can generate noweb.py from README.md as follows:
 Here's how the pieces we have discussed fit together:
 
 ```python
-<<noweb.py>>=
+{{noweb.py}}=
 #! /usr/bin/env python3
 
 """
@@ -228,11 +228,11 @@ see http://jonaquino.blogspot.com/2010/04/nowebpy-or-worlds-first-executable-blo
 """
 
 import os, sys, re, argparse
-<<Parsing the command-line arguments>>
-<<Reading in the file>>
+{{Parsing the command-line arguments>>
+{{Reading in the file>>
 
-<<Recursively expanding the output chunk>>
+{{Recursively expanding the output chunk>>
 
-<<Outputting the chunks>>
+{{Outputting the chunks>>
 @
 ```

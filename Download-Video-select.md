@@ -10,7 +10,7 @@ Backlink [GedankenspeicherCoding](../GedankenspeicherCoding.md)
 ``chmod u+x Download-Video-select.sh && ln -sf /home/christian/Gedankenspeicher/Gedankenspeicherwiki/CodeFabrik/GedankenspeicherCoding/Download-Video-select.sh ~/.local/bin/Download-Video-select.sh && echo 'fertig'``
 
 ```bash
-<<Download-Video-select.sh>>=
+{{Download-Video-select.sh}}=
 #! /bin/bash
 echo "$1"
 website="$1"

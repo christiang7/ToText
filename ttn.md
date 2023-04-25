@@ -9,7 +9,7 @@ Modification time: [Zettelkasten:2021:04:24]()
   ``noweb.py -Rttn ttn.md > ttn && chmod u+x ttn && echo 'fertig'``
 
 ```bash
-<<ttn>>=
+{{ttn}}=
 #!/bin/bash
 f=$(basename "$1")
 extens=${f##*.}

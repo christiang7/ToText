@@ -8,7 +8,7 @@ Backlink [GedankenspeicherCoding](../GedankenspeicherCoding.md)
   ``noweb.py -Rzim-dot-create.sh zim-dot-create.md > zim-dot-create.sh && chmod u+x zim-dot-create.sh && ln -sf /home/christian/Gedankenspeicher/Gedankenspeicherwiki/Zettelkasten/Gedankenwanderung/Programme/zim-dot-create.sh ~/.local/bin/zim-dot-create.sh && echo 'fertig'``
 
 ```bash
-#<<zim-dot-create.sh>>=
+#{{zim-dot-create.sh}}=
 #! /bin/bash
 if zenity --question --text="Möchten Sie ein Diagramm erstellen?"
 then 

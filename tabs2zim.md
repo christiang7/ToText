@@ -10,7 +10,7 @@ Backlink [GedankenspeicherCoding](../GedankenspeicherCoding.md)
 ``chmod u+x tabs2zim.sh && ln -sf /home/christian/Gedankenspeicher/Gedankenspeicherwiki/CodeFabrik/GedankenspeicherCoding/tabs2zim.sh ~/.local/bin/tabs2zim.sh && echo 'fertig'``
 
 ```bash
-<<tabs2zim.sh>>=
+{{tabs2zim.sh}}=
 #! /bin/bash
 #if zenity --question --text="Möchten Sie die Links in Firefox öffnen?"
 #then 

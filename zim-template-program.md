@@ -15,21 +15,21 @@ Backlink [GedankenspeicherCoding](../GedankenspeicherCoding.md)
 
 ```bash
 Das komplette Programm
-<<zim-template-program.sh>>=
-<<preamble>>
-<<Abruf txt Datei Ordner>>
-<<Abfragen>>
-<<create Template>>
+{{zim-template-program.sh}}=
+{{preamble>>
+{{Abruf txt Datei Ordner>>
+{{Abfragen>>
+{{create Template>>
 fi
 @
 
 Einstellungen vor dem Start des eigentlichen Programms, hier für ein Shell Script ist diese Zeile notwendig
-<<preamble>>=
+{{preamble}}=
 #!/bin/bash
 @
 
 Den Ordner erstellen, wo die neue Datei gespeichert werden soll. Dabei wird der Pfad der Datei genommen und für die späteren Links gespeichert
-<<Abruf txt Datei Ordner>>=
+{{Abruf txt Datei Ordner}}=
 txtFile=$(echo "$1")
 folder=${txtFile%.*}
 mkdir -p "$folder"
@@ -41,7 +41,7 @@ FullFilename=$(basename $filetxt .txt)
 @
 
 
-<<Abfragen>>=
+{{Abfragen}}=
 File="Program"
 extens="sh"
 
@@ -81,7 +81,7 @@ fi
 @
 
 Die Erzeugung des templates
-<<create Template>>=
+{{create Template}}=
 echo "Content-Type: text/x-zim-wiki" > "${folder}"/"${File}".txt
 echo "Wiki-Format: zim 0.6" >> "${folder}"/"${File}".txt
 echo -e "===== ${File} =====" >> "${folder}"/"${File}".txt
@@ -95,7 +95,7 @@ echo -e "\n${additiontext}" >> "${folder}"/"${File}".txt
 echo -e "\n''noweb.py -R${File}.${extens} ${File}.txt > ${File}.${extens} && echo 'fertig'''" >> "${folder}"/"${File}".txt
 echo -e "\n\n''chmod u+x ${File}.${extens} && ln -sf "${folder}"/${File}.${extens} ~/.local/bin/${File}.${extens} && echo 'fertig'''" >> "${folder}"/"${File}".txt
 echo -e "\n{{{code: lang="sweave" linenumbers="True"" >> "${folder}"/"${File}".txt
-echo -e "<<${File}.${extens}>>=" >> "${folder}"/"${File}".txt
+echo -e "{{${File}.${extens}}}=" >> "${folder}"/"${File}".txt
 echo -e "\n@" >> "${folder}"/"${File}".txt
 echo -e "\n}}}" >> "${folder}"/"${File}".txt
 

@@ -10,7 +10,7 @@ Backlink [GedankenspeicherCoding](../GedankenspeicherCoding.md)
   ``noweb.py -Rttviddown ttviddown.md > ttviddown && chmod u+x ttviddown && echo 'fertig'``
 
 ```bash
-<<ttviddown>>=
+{{ttviddown}}=
 #!/bin/bash
 File=$(date +"/home/christian/Gedankenspeicher/Gedankenspeicherwiki/Zettelkasten/%Y/%m/%d.txt" -r "$1")
 f=$(basename "$1")

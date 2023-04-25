@@ -16,7 +16,7 @@ Für die Benutzung von Krita und der export in der Kommandozeile, weil Krita spe
  ``chmod u+x zim-insert-picture.sh && ln -sf /home/christian/Gedankenspeicher/Gedankenspeicherwiki/CodeFabrik/GedankenspeicherCoding/zim-insert-picture.sh ~/.local/bin/zim-insert-picture.sh && echo 'fertig'``
 
 ```bash
-<<zim-insert-picture.sh>>=
+{{zim-insert-picture.sh}}=
 #!/bin/bash
 File=$(echo "$1" | sed 's/ /_/g' | sed 's/:/;/g'| sed -e "s/'/_/g" | sed 's/\"//g')
 filetxt=${File%.*}

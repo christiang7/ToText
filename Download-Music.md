@@ -10,7 +10,7 @@ Backlink [GedankenspeicherCoding](../GedankenspeicherCoding.md)
 ``chmod u+x Download-Music.sh && ln -sf /home/christian/Gedankenspeicher/Gedankenspeicherwiki/Zettelkasten/Gedankenwanderung/Programme/Download-Music.sh ~/.local/bin/Download-Music.sh && echo 'fertig'``
 
 ```bash
-<<Download-Music.sh>>=
+{{Download-Music.sh}}=
 #! /bin/bash
 echo "$1"
 website="$1"

@@ -13,7 +13,7 @@ ist das Testprojekt dafür
 ``noweb.py -Rwgettwpdf wgettwpdf.md > wgettwpdf && chmod u+x wgettwpdf && echo 'fertig'``
 
 ```bash
-#<<wgettwpdf>>=
+#{{wgettwpdf}}=
 #!/bin/bash
 folder=$(date +"/home/christian/Gedankenspeicher/Gedankenspeicherwiki/Zettelkasten/%Y/%m/%d")
 mkdir -p $folder

@@ -9,7 +9,7 @@ Backlink [GedankenspeicherCoding](../GedankenspeicherCoding.md)
 
 
 ```bash
-<<ttpdfl>>=
+{{ttpdfl}}=
 #!/bin/bash
 File=$(echo "$1" | sed 's/ /_/g' | sed 's/:/;/g'| sed -e "s/'/_/g" | sed 's/\"//g')
 f=$(basename "$1")

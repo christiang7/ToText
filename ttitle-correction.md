@@ -35,7 +35,7 @@ in all cases it has to be done in 3th and 4th line
 ``chmod u+x ttitle-correction.sh && ln -sf /home/christian/Gedankenspeicher/Gedankenspeicherwiki/CodeFabrik/GedankenspeicherCoding/ttitle-correction.sh ~/.local/bin/ttitle-correction.sh && echo 'fertig'``
 
 ```bash
-<<ttitle-correction.sh>>=
+{{ttitle-correction.sh}}=
 #!/bin/bash
 
 File=$(basename "$1")

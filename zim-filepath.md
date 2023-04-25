@@ -21,7 +21,7 @@ Backlink [GedankenspeicherCoding](../GedankenspeicherCoding.md)
 
 
 ```bash
-#<<zim-filepath.sh>>=
+#{{zim-filepath.sh}}=
 #!/bin/bash
 file=$(readlink -f -n "$1")
 filepath=$(echo "${file%/*}" | sed "s,/home/christian,~,")

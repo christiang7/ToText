@@ -14,7 +14,7 @@ Kommando zum Extrahieren des Scripts
 hier die zim-script Datei zum Ausführen
 
 ```bash
-<<ttdown>>=
+{{ttdown}}=
 #!/bin/bash
 f=$(basename "$1")
 extens=${f##*.}

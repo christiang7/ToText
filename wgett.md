@@ -10,7 +10,7 @@ Backlink [GedankenspeicherCoding](../GedankenspeicherCoding.md)
 ``noweb.py -Rwgett wgett.md > wgett && chmod u+x wgett && echo 'fertig'``
 
 ```bash
-#<<wgett>>=
+#{{wgett}}=
 #!/bin/bash
 folder=$(date +"/home/christian/Gedankenspeicher/Gedankenspeicherwiki/Zettelkasten/%Y/%m/%d")
 mkdir -p $folder

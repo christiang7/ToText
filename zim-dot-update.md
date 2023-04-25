@@ -8,7 +8,7 @@ Backlink [GedankenspeicherCoding](../GedankenspeicherCoding.md)
 
 
 ```bash
-#<<zim-dot-update.sh>>=
+#{{zim-dot-update.sh}}=
 #! /bin/bash
 if zenity --question --text="Möchten Sie das Diagramm aktualisieren?"
 then 

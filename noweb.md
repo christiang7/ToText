@@ -13,5 +13,5 @@ Modification time: [Zettelkasten:2021:10:23]()
 
 Benutzte jetzt diese Programm für noweb
 
-Ich habe die Chuncks wieder zu << und >> gemacht, damit altes mit diesem kompatibel ist
+Ich habe die Chuncks wieder zu {{ und >> gemacht, damit altes mit diesem kompatibel ist
 

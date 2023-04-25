@@ -16,7 +16,7 @@ Für den Fall das der Kalendereintrag noch nicht existiert
 	[*] **%A %d %b %Y ** >  2277-11-11
 
 ```bash
-<<ttpicm>>=
+{{ttpicm}}=
 #!/bin/bash
 File=$(echo "$1" | sed 's/ /_/g' | sed 's/:/;/g'| sed -e "s/'/_/g" | sed 's/\"//g')
 f=$(basename "$1")

@@ -10,7 +10,7 @@ Modification time:
 ``  noweb.py -Rttdpic ttdpic.md > ttdpic && chmod u+x ttdpic && echo 'fertig'``
 
 ```bash
-<<ttdpic>>=
+{{ttdpic}}=
 #!/bin/bash
 ls --hide=*.txt "$1" > f
 while read f

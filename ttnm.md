@@ -12,7 +12,7 @@ Backlink [GedankenspeicherCoding](../GedankenspeicherCoding.md)
   ``noweb.py -Rttnm ttnm.md > ttnm && chmod u+x ttnm && echo 'fertig'``
 
 ```bash
-<<ttnm>>=
+{{ttnm}}=
 #!/usr/bin/env bash
 
 f=$(basename "$1")

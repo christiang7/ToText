@@ -21,7 +21,7 @@ Backlink [CodeFabrik:GedankenspeicherCoding](../GedankenspeicherCoding.md)
 ``chmod u+x zim-web-screenshot.sh && ln -sf /home/christian/Gedankenspeicher/Gedankenspeicherwiki/Zettelkasten/ZetteL/CodeFabrik/GedankenspeicherCoding/zim-web-screenshot.sh ~/.local/bin/zim-web-screenshot.sh && echo 'fertig'``
 
 ```bash
-<<zim-web-screenshot.sh>>=
+{{zim-web-screenshot.sh}}=
 #! /bin/bash
 if zenity --question --text="Möchten Sie dieses Programm ein Screenshot aufnehmen?"
 then 

@@ -12,7 +12,7 @@ Backlink [CodeFabrik:GedankenspeicherCoding](../GedankenspeicherCoding.md)
 ``chmod u+x zim-xournal.sh && ln -sf /home/christian/Gedankenspeicher/Gedankenspeicherwiki/Zettelkasten/ZetteL/CodeFabrik/GedankenspeicherCoding/zim-xournal.sh ~/.local/bin/zim-xournal.sh && echo 'fertig'``
 
 ```bash
-<<zim-xournal.sh>>=
+{{zim-xournal.sh}}=
 #!/bin/bash
 
 File=$(echo "$1" | sed 's/ /_/g' | sed 's/:/;/g'| sed -e "s/'/_/g" | sed 's/\"//g')

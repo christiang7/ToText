@@ -22,7 +22,7 @@ Anzeige von Dateien deren Text Beschreibung
   ``noweb.py -Rtts tts.md > tts && chmod u+x tts && echo 'fertig'``
 
 ```bash
-<<tts>>=
+{{tts}}=
 #!/bin/bash
 f=$(basename "$1")
 extens=${f##*.}

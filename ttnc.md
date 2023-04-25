@@ -8,7 +8,7 @@ Backlink [GedankenspeicherCoding](../GedankenspeicherCoding.md)
   ``noweb.py -Rttnc ttnc.md > ttnc && chmod u+x ttnc && echo 'fertig'``
 
 ```bash
-<<ttnc>>=
+{{ttnc}}=
 #!/bin/bash
 File=$(echo "$1" | sed 's/ /_/g' | sed 's/:/;/g'| sed -e "s/'/_/g" | sed 's/\"//g')
 f=$(basename "$1")

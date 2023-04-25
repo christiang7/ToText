@@ -14,7 +14,7 @@ Program for linking files to the assets folder
 ``chmod u+x tta.sh && ln -sf /home/christian/Gedankenspeicher/Gedankenspeicherwiki/CodeFabrik/GedankenspeicherCoding/tta.sh ~/.local/bin/tta.sh && echo 'fertig'``
 
 ```bash
-<<tta.sh>>=
+{{tta.sh}}=
 #!/usr/bin/env bash
 
 wikipath=$(xclip -selection clipboard -o)

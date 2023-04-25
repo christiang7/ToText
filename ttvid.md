@@ -10,7 +10,7 @@ Das Script kann die Videodatei in eine Zim Textdatei einfügen und von dort aus 
   ``noweb.py -Rttvid ttvid.md > ttvid && chmod u+x ttvid && echo 'fertig'``
 
 ```bash
-<<ttvid>>=
+{{ttvid}}=
 #!/bin/bash
 Zimtxt=$(date +"/home/christian/Gedankenspeicher/Gedankenspeicherwiki/Zettelkasten/%Y/%m/%d.txt" -r "$1")
 file=$(basename "$1")

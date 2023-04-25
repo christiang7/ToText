@@ -12,7 +12,7 @@ exportierte Bilder wieder in die Textdatei einfügen mittels ocr
 ``tesseract -l eng+deu 2209.14792.pdf.png stdout``
 
 ```bash
-<<zim-treesheets.sh>>=
+{{zim-treesheets.sh}}=
 #!/bin/bash
 if zenity --question --text="Möchten Sie Treesheets öffnen?"
 then 

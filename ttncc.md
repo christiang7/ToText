@@ -10,7 +10,7 @@ Backlink [GedankenspeicherCoding](../GedankenspeicherCoding.md)
 
   
 ```bash
-<<ttncc>>=
+{{ttncc}}=
 #!/bin/bash
 File=$(echo "$2" | sed 's/ /_/g' | sed 's/:/;/g'| sed -e "s/'/_/g" | sed 's/\"//g')
 oldFile=$(basename "$1")

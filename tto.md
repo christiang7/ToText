@@ -14,7 +14,7 @@ Modification time:
 ``  noweb.py -Rtto tto.md > tto && chmod u+x tto && echo 'fertig'``
 
 ```bash
-<<tto>>=
+{{tto}}=
 #!/bin/bash
 File=$(echo "$1" | sed 's/ /_/g' | sed 's/:/;/g'| sed -e "s/'/_/g" | sed 's/\"//g')
 f=$(basename "$1")

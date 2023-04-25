@@ -11,7 +11,7 @@ Modification time:
   ``noweb.py -Rttd ttd.md > ttd && chmod u+x ttd && echo 'fertig'``
 
 ```bash
-<<ttd>>=
+{{ttd}}=
 #!/bin/bash
 folder="$1"
 #ls --hide=*.txt "$folder" > f

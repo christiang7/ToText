@@ -1,1 +1,0 @@
-# firefox-maff-export-txt

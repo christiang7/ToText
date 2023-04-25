@@ -11,7 +11,7 @@ Ein Script, was den Ort der Speicherung für zim-clip angibt. Damit kann sicher 
   ``noweb.py -Rzim-clip-time zim-clip-time.md > zim-clip-time && chmod u+x zim-clip-time && echo 'fertig'``
 
 ```bash
-#<<zim-clip-time>>=
+#{{zim-clip-time}}=
 #!/bin/bash
 Time=$(date +"Zettelkasten:%Y:%m:%d")
 #folder=$(date +"/home/christian/Gedankenspeicher/Gedankenspeicherwiki/Zettelkasten/%Y/%m/%d" -r "$1")

@@ -13,7 +13,7 @@ hier die zim-script Datei zum Ausführen
 
 
 ```bash
-<<wget-dd.sh>>=
+{{wget-dd.sh}}=
 #!/bin/bash
 cd ~/Downloads/
 xterm -e 'wget $1'
@@ -35,7 +35,7 @@ Arguments
   ``-hold -e 'wget --output-document="[FILENAME]" --user-agent="[USERAGENT]" --referer="[REFERRER]" --no-check-certificate --continue --load-cookies=[COOKIES] "[URL]"``'
 
 
-	<<wget-u.sh>>=
+	{{wget-u.sh}}=
 	#!/bin/bash
 	cd ~/Downloads/
    ``wget --output-document="$1" --user-agent="$2" --referer="$3" --no-check-certificate --continue --load-cookies=$4 "$5"``

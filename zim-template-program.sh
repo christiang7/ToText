@@ -56,7 +56,7 @@ echo -e "\n${additiontext}" >> "${folder}"/"${File}".txt
 echo -e "\n''noweb.py -R${File}.${extens} ${File}.txt > ${File}.${extens} && echo 'fertig'''" >> "${folder}"/"${File}".txt
 echo -e "\n\n''chmod u+x ${File}.${extens} && ln -sf "${folder}"/${File}.${extens} ~/.local/bin/${File}.${extens} && echo 'fertig'''" >> "${folder}"/"${File}".txt
 echo -e "\n{{{code: lang="sweave" linenumbers="True"" >> "${folder}"/"${File}".txt
-echo -e "<<${File}.${extens}>>=" >> "${folder}"/"${File}".txt
+echo -e "{{${File}.${extens}}}=" >> "${folder}"/"${File}".txt
 echo -e "\n@" >> "${folder}"/"${File}".txt
 echo -e "\n}}}" >> "${folder}"/"${File}".txt
 

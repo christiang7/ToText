@@ -10,7 +10,7 @@ Modification time:
   ``noweb.py -Rttpic ttpic.md > ttpic && chmod u+x ttpic && echo 'fertig'``
 
 ```bash
-<<ttpic>>=
+{{ttpic}}=
 #!/bin/bash
 File=$(echo "$1" | sed 's/ /_/g' | sed 's/:/;/g'| sed -e "s/'/_/g" | sed 's/\"//g')
 f=$(basename "$1")

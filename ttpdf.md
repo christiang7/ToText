@@ -10,7 +10,7 @@ Modification time:
   ``noweb.py -Rttpdf ttpdf.md > ttpdf && chmod u+x ttpdf && echo 'fertig'``
 
 ```bash
-<<ttpdf>>=
+{{ttpdf}}=
 #!/bin/bash
 File=$(echo "$1" | sed 's/ /_/g' | sed 's/:/;/g'| sed -e "s/'/_/g" | sed 's/\"//g')
 f=$(basename "$File")

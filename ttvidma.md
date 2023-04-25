@@ -8,7 +8,7 @@ Backlink [GedankenspeicherCoding](../GedankenspeicherCoding.md)
   ``noweb.py -Rttvidma ttvidma.md > ttvidma && chmod u+x ttvidma && echo 'fertig'``
 
 ```bash
-#<<ttvidma>>=
+#{{ttvidma}}=
 #!/bin/bash
 File=$(echo "$1" | sed 's/ /_/g' | sed 's/:/;/g'| sed -e "s/'/_/g" | sed 's/\"//g')
 #f=$(basename "$1")

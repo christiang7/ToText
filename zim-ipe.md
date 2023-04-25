@@ -8,7 +8,7 @@ Backlink [GedankenspeicherCoding](../GedankenspeicherCoding.md)
   ``noweb.py -Rzim-ipe.sh zim-ipe.md > zim-ipe.sh && chmod u+x zim-ipe.sh && echo 'fertig'``
 
 ```bash
-<<zim-ipe.sh>>=
+{{zim-ipe.sh}}=
 #!/bin/bash
 mkdir -p "$1"
 ipe "$1/$2".ipe

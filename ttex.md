@@ -17,7 +17,7 @@ Modification time:
 
 
 ```bash
-<<ttex>>=
+{{ttex}}=
 #!/bin/bash
 File=$(echo "$1" | sed 's/ /_/g' | sed 's/:/;/g'| sed -e "s/'/_/g" | sed 's/\"//g')
 #f=$(basename "$1")

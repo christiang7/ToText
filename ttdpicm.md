@@ -8,7 +8,7 @@ Backlink [GedankenspeicherCoding](../GedankenspeicherCoding.md)
   ``noweb.py -Rttdpicm ttdpicm.md > ttdpicm && chmod u+x ttdpicm && echo 'fertig'``
 
 ```bash
-<<ttdpicm>>=
+{{ttdpicm}}=
 #!/bin/bash
 ls --hide=*.txt "$1" > f
 while read f

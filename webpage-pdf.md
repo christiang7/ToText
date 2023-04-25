@@ -12,7 +12,7 @@ Mi 23. Dez 15:48:55 CET 2020
 ``noweb.py -Rwebpage-pdf webpage-pdf.md > webpage-pdf && chmod u+x webpage-pdf && echo 'fertig'``
 
 ```bash
-#<<webpage-pdf>>=
+#{{webpage-pdf}}=
 #!/bin/bash
 folder=$(date +"/home/christian/Gedankenspeicher/Gedankenspeicherwiki/Zettelkasten/%Y/%m/%d")
 mkdir -p $folder

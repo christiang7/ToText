@@ -10,7 +10,7 @@ Backlink [GedankenspeicherCoding](../GedankenspeicherCoding.md)
 
 
 ```bash
-#<<zim-dir-txt.sh>>=
+#{{zim-dir-txt.sh}}=
 #! /bin/bash
 if zenity --question --text="Möchten Sie dieses Programm: ttd ausführen?"
 then 

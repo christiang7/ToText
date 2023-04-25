@@ -5,7 +5,7 @@ list=$(ls -1 --hide=*.txt "$folder")
 foldertxt=${folder%.*}
 #echo $list
 #echo "$FolderSync"/
-lines="$(wc --lines <<< "$list")"
+lines="$(wc --lines {{< "$list")"
 for (( i=$lines ; i>=1 ; i-- ));
   do
 	element=$(sed -n "${i}p" <(echo "$list"))

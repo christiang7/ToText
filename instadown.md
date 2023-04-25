@@ -9,7 +9,7 @@ Backlink [GedankenspeicherCoding](../GedankenspeicherCoding.md)
   ``noweb.py -Rinstadown instadown.md > instadown && chmod u+x instadown && echo 'fertig'``
 
 ```bash
-<<instadown>>=
+{{instadown}}=
 #!/bin/bash
 folder=$(date +"/home/christian/Gedankenspeicher/Gedankenspeicherwiki/Zettelkasten/%Y/%m/%d")
 mkdir -p $folder

@@ -8,7 +8,7 @@ Backlink [GedankenspeicherCoding](../GedankenspeicherCoding.md)
   ``noweb.py -Rttdvid ttdvid.md > ttdvid && chmod u+x ttdvid && echo 'fertig'``
 
 ```bash
-	<<ttdvid>>=
+	{{ttdvid}}=
 	#!/bin/bash
 	ls --hide=*.txt --hide=*.srt --hide=*.ttml "$1" > f
 	while read f

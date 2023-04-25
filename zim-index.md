@@ -9,7 +9,7 @@ Backlink [GedankenspeicherCoding](../GedankenspeicherCoding.md)
 
 
 ```bash
-#<<zim-index.sh>>=
+#{{zim-index.sh}}=
 #! /bin/bash
 sleep 20 && ~/Programme/zim/zim.py --index Gedankenspeicherwiki
 @

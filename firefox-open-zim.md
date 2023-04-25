@@ -13,7 +13,7 @@ Backlink [GedankenspeicherCoding](../GedankenspeicherCoding.md)
 ``chmod u+x firefox-open-zim.sh && ln -sf /home/christian/Gedankenspeicher/Gedankenspeicherwiki/Zettelkasten/Gedankenwanderung/Programme/firefox-open-zim.sh ~/.local/bin/firefox-open-zim.sh && echo 'fertig'``
 
 ```bash
-<<firefox-open-zim.sh>>=
+{{firefox-open-zim.sh}}=
 url=$(echo "$1" | sed "s,http://localhost:8080/,," | sed "s,.html,,"  | sed "s,/,:,g")
 cd ~
 ./Programme/zim/zim.py --gui --fullscreen Gedankenspeicherwiki "$url" 

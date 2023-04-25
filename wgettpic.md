@@ -9,7 +9,7 @@ Backlink  [GedankenspeicherCoding](../GedankenspeicherCoding.md)
 ``noweb.py -Rwgettpic wgettpic.md > wgettpic && chmod u+x wgettpic && echo 'fertig'``
 
 ```bash
-#<<wgettpic>>=
+#{{wgettpic}}=
 #!/bin/bash
 
 abfrage=$(yad --title="Download Picture" --text="Noch etwas hinzufügen?" \
