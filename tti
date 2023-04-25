@@ -21,7 +21,7 @@ additiontext=$(zenity --entry \
        --title "Noch etwas hinzufügen?" \
        --text "Noch etwas hinzufügen?" \
        --entry-text "$4")
-if [[ $extens2 == txt ]]
+if [[ $extens2 == md ]]
 then
 	File=$filename2
 fi

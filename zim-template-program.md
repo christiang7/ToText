@@ -16,19 +16,23 @@ Backlink [GedankenspeicherCoding](../GedankenspeicherCoding.md)
 ```bash
 Das komplette Programm
 {{zim-template-program.sh}}=
-{{preamble>>
-{{Abruf txt Datei Ordner>>
-{{Abfragen>>
-{{create Template>>
+{{preamble}}
+{{Abruf txt Datei Ordner}}
+{{Abfragen}}
+{{create Template}}
 fi
 @
+```
 
 Einstellungen vor dem Start des eigentlichen Programms, hier für ein Shell Script ist diese Zeile notwendig
+
+```bash
 {{preamble}}=
 #!/bin/bash
 @
-
+```
 Den Ordner erstellen, wo die neue Datei gespeichert werden soll. Dabei wird der Pfad der Datei genommen und für die späteren Links gespeichert
+```bash
 {{Abruf txt Datei Ordner}}=
 txtFile=$(echo "$1")
 folder=${txtFile%.*}
@@ -39,8 +43,9 @@ filepath=$(echo "${filetxt%/*}" | sed "s,/home/christian,~,")
 wikipath=$(echo $filepath | sed "s,~/Gedankenspeicher/Gedankenspeicherwiki/,," | sed "s,/,:,g")
 FullFilename=$(basename $filetxt .md)
 @
+```
 
-
+```bash
 {{Abfragen}}=
 File="Program"
 extens="sh"
@@ -79,8 +84,10 @@ then
 fi
 
 @
-
+```
 Die Erzeugung des templates
+
+```bash
 {{create Template}}=
 echo "Content-Type: text/x-zim-wiki" > "${folder}"/"${File}".md
 echo "Wiki-Format: zim 0.6" >> "${folder}"/"${File}".md

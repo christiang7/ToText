@@ -47,7 +47,7 @@ extens3=${filename2##*.}
 filename2=$(cat "$File2" | tr '\n' ' ' | cut -d "[" -f4 | cut -d "]" -f1 | sed "s/..\///g")
 extens3=${filename2##*.}
 
-if [[ $extens2 == txt ]]
+if [[ $extens2 == md ]]
 then
 	Newname=$(zenity --entry \
        --width 500 \

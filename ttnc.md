@@ -76,7 +76,7 @@ then
 	Timestamps
 	echo -e "[[../]]\n$2\n" >> "$File".md
 	Opentxt
-elif [[ $extens == txt ]] 
+elif [[ $extens == md ]] 
 then
 	if [ "$line" != "Content-Type: text/x-zim-wiki" ]; 
 		then

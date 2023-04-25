@@ -7,7 +7,7 @@ File2=$(basename "$1")
 extens2=${File2##*.}
 filename2=${File2%.*} #only the filename, here the filename of the original file
 
-if [[ $extens2 == txt ]]
+if [[ $extens2 == md ]]
 then
 	rm -r "$filename2"
 	rm "$filename2".avif

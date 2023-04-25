@@ -49,10 +49,10 @@ then
 		echo -e "[[../]]\n" >> "$File".md
 		ttpdf "$filename".pdf
 		echo -e "{{../$File.avif?width=750}}\n" >> "$File".md
+		xournalpp --export-range=1 "$File" -i "$File".png
+		convert "$File".png "$File".avif
+		rm "$File".png
 	fi
-	xournalpp --export-range=1 "$File" -i "$File".png
-	convert "$File".png "$File".avif
-	rm "$File".png
 fi
 @
 ```
