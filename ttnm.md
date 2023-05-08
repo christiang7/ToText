@@ -78,7 +78,6 @@ if [[ pdf == $extens ]]
 	echo "[*] @ARTIKEL $tags **[[../$f]] $source**" >> "$folder"/"$File".md
 	echo "Text creation time: $(date +"[[Zettelkasten:%Y:%m:%d]]")" >> "$folder"/"$File".md
 	echo "Modification time: $(date +"[[Zettelkasten:%Y:%m:%d]]" -r "$File")" >> "$folder"/"$File".md
-	echo -e "[[../]]\n" >> "$folder"/"$File".md
 	echo -e "$additiontext\n" >> "$folder"/"$File".md
 	echo -e "{{../$File.avif?width=750}}\n" >> "$folder"/"$File".md
 	pdfinfo "$f" | grep Pages >> "$folder"/"$File".md
@@ -114,7 +113,6 @@ then
 	echo "[*] @BILD $tags **[[../$f]] $source**" >> "$folder"/"$File".md
 	echo "Text creation time: $(date +"[[Zettelkasten:%Y:%m:%d]]")" >> "$folder"/"$File".md
 	echo "Modification time: $(date +"[[Zettelkasten:%Y:%m:%d]]" -r "$f")" >> "$folder"/"$File".md
-	echo -e "[[../]]\n" >> "$folder"/"$File".md
 	echo "{{../$File?width=750}}" >> "$folder"/"$File".md
 	else
 	mv "$File".md "$folder"/"$File".md
@@ -137,7 +135,6 @@ then
 	echo "[*] @VIDEO $tags **[[../$f]] $source**" >> "$folder"/"$File".md
 	echo "Text creation time: $(date +"[[Zettelkasten:%Y:%m:%d]]")" >> "$folder"/"$File".md
 	echo "Modification time: $(date +"[[Zettelkasten:%Y:%m:%d]]" -r "$File")" >> "$folder"/"$File".md
-	echo -e "[[../]]\n" >> "$folder"/"$File".md
 	echo -e "$additiontext\n" >> "$folder"/"$File".md
 	ffmpeg -loglevel quiet -ss 2 -i "$File"  -t 1 -f image2 "$folder"/"$File".png
 	convert "$folder"/"$File".png -resize 1200x1200 -quality 97 "$folder"/"$File"-px.png
@@ -166,7 +163,6 @@ then
 	echo "[*] @ARTIKEL $tags **[[../$f]] $source**" >> "$folder"/"$File".md
 	echo "Text creation time: $(date +"[[Zettelkasten:%Y:%m:%d]]")" >> "$folder"/"$File".md
 	echo "Modification time: $(date +"[[Zettelkasten:%Y:%m:%d]]" -r "$File")" >> "$folder"/"$File".md
-	echo -e "[[../]]\n" >> "$folder"/"$File".md
 	echo -e "$additiontext\n" >> "$folder"/"$File".md
 	echo -e "{{../$File.png?width=750}}\n" >> "$folder"/"$File".md
 	xournalpp "$File" -p "$filename".pdf
@@ -192,7 +188,7 @@ then
 		Wikiprev
 		echo "[*] @EBOOK $tags **[[../$File]] $source**" >> "$folder"/"$File".md
 		Timestamps
-		echo -e "[[../]]\n$additiontext\n" >> "$folder"/"$File".md
+		echo -e "$additiontext\n" >> "$folder"/"$File".md
 		einfo "$File" >> "$folder"/"$File".md
 		Moving
 elif [[ $extens == $f ]] 
@@ -200,13 +196,13 @@ then
 	Wikiprev
 	echo "[*] @ORDNER $tags **[[../$File]] $source**" >> "$folder"/"$File".md
 	Timestamps
-	echo -e "[[../]]\n$additiontext\n" >> "$folder"/"$File".md
+	echo -e "$additiontext\n" >> "$folder"/"$File".md
 	Moving
 else
 	Wikiprev
 	echo "[*] $tags **[[../$File]] $source**" >> "$folder"/"$File".md
 	Timestamps
-	echo -e "[[../]]\n$additiontext\n" >> "$folder"/"$File".md
+	echo -e "$additiontext\n" >> "$folder"/"$File".md
 	Moving
 fi
 

@@ -39,7 +39,8 @@ echo -e "[[../]]" >> "${foldermonth}"/"${topicfile}"
 echo -e "[*] ${tags} ** ${topic} ** >  2277-11-11" >> "${foldermonth}"/"${topicfile}"
 echo -e "\n${additiontext}" >> "${foldermonth}"/"${topicfile}"
 echo -e "\n${tabs}" >> "${foldermonth}"/"${topicfile}"
-echo -e "\n[[+$(basename ${topicfile} .md)|${topic}]]" >> "$foldermonth".md
+echo -e "\n===== $(date +[[Zettelkasten:%Y:%m:%d]]) =====" >> "${foldermonth}".md
+echo -e "[[+$(basename ${topicfile} .md)|${topic}]]" >> "$foldermonth".md
 
 fi
 fi;;
