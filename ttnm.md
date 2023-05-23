@@ -1,13 +1,9 @@
 # ttnm
-
-* ☑ **ttnm**  
-
 Angelegt Montag [Zettelkasten:2021:05:03]()
 Backlink [GedankenspeicherCoding](../GedankenspeicherCoding.md)
 
-
-* ☐ epub correction
-
+- [X] **ttnm**
+	- [ ] epub correction
 
   ``noweb.py -Rttnm ttnm.md > ttnm && chmod u+x ttnm && echo 'fertig'``
 

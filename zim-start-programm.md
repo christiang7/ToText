@@ -12,10 +12,10 @@ Backlink [GedankenspeicherCoding](../GedankenspeicherCoding.md)
 
 ```bash
 {{zim-start-programm.sh}}=
-#!/bin/bash
-if zenity --question --text="Möchten Sie dieses Programm: $1 : öffnen?"
-then
-konsole -e "$1"
-fi
+  #!/bin/bash
+  if zenity --question --text="Möchten Sie dieses Programm: $1 : öffnen?"
+  then
+    konsole -e "$1"
+  fi
 ```
 

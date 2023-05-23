@@ -33,13 +33,13 @@ mkdir -p "${foldermonth}"/"${topicfilename}"
 echo "Content-Type: text/x-zim-wiki" > "${foldermonth}"/"${topicfile}"
 echo "Wiki-Format: zim 0.6" >> "${foldermonth}"/"${topicfile}"
 echo -e "=====  ${topic} =====" >> "${foldermonth}"/"${topicfile}"
-echo -e "Created $(date +[[Zettelkasten:%Y:%m:%d]])" >> "${foldermonth}"/"${topicfile}"
+echo -e "Created $(date +[[Zettelkasten:%Y:%m:%d|%Y-%m-%d]])" >> "${foldermonth}"/"${topicfile}"
 echo -e "Backlink [[Zettelkasten]]" >> "${foldermonth}"/"${topicfile}"
 echo -e "[[../]]" >> "${foldermonth}"/"${topicfile}"
 echo -e "[*] ${tags} ** ${topic} ** >  2277-11-11" >> "${foldermonth}"/"${topicfile}"
 echo -e "\n${additiontext}" >> "${foldermonth}"/"${topicfile}"
 echo -e "\n${tabs}" >> "${foldermonth}"/"${topicfile}"
-echo -e "\n===== $(date +[[Zettelkasten:%Y:%m:%d]]) =====" >> "${foldermonth}".md
+echo -e "\n===== $(date +[[Zettelkasten:%Y:%m:%d|%Y-%m-%d]]) =====" >> "${foldermonth}".md
 echo -e "[[+$(basename ${topicfile} .md)|${topic}]]" >> "$foldermonth".md
 
 fi
@@ -67,10 +67,10 @@ Philosophie) file=$(echo "/home/christian/Gedankenspeicher/Gedankenspeicherwiki/
 Naturwissenschaften_und_Instrumentarien) file=$(echo "/home/christian/Gedankenspeicher/Gedankenspeicherwiki/Naturwissenschaften_und_Instrumentarien.md")
 	l=10;;
 CodeFabrik) file=$(echo "/home/christian/Gedankenspeicher/Gedankenspeicherwiki/CodeFabrik.md")
-	l=11;;
+	l=8;;
 esac
 echo $tabs
-today=$(date +"[[Zettelkasten:%Y:%m:%d]]")
+today=$(date +"[[Zettelkasten:%Y:%m:%d|%Y-%m-%d]]")
 sed -i "${l}i
 " "$file"
 element=""

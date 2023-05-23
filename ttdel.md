@@ -3,7 +3,11 @@ Created Dienstag [Zettelkasten:2022:06:14]()
 Backlink [GedankenspeicherCoding](../GedankenspeicherCoding.md)
 
 * ☑ **ttdel**  >  2277-11-11
-	* ☑ PLUS noch Verzeichnisse löschbar machen
+
+
+
+## Features
+- Verzeichnisse löschbar
 
 
   ``noweb.py -Rttdel ttdel.md > ttdel && echo 'fertig'``

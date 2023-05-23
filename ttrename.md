@@ -2,11 +2,11 @@
 Created Dienstag [Zettelkasten:2022:06:14]()
 Backlink [GedankenspeicherCoding](../GedankenspeicherCoding.md)
 
-* ☑ **ttrename**  >2277-11-11
-	* ☐ Anpassung auch für Ordner >2277-11-11 
-	* ☐ Anpassung bei beliebigen Dateinamen mit doppelten oder keiner Dateiendung >2277-11-11 
-		* ☐ mittels file und cut kann man die Dateiendung herausfinden und ansetzen file >2277-11-11  Screenshot_2022-07-26_at_22-51-47_The_mountain_landscape_-_Ferdinand_Engelműller_-_Google_Arts_\&_Culture.png | cut -d ' ' -f 2
-		* ☑ <https://www.geeksforgeeks.org/how-to-find-out-file-types-in-linux/> | How to Find Out File Types in Linux - GeeksforGeeks
+- [X] **ttrename**  >2277-11-11
+	- [ ] Anpassung auch für Ordner >2277-11-11 
+	- [ ] Anpassung bei beliebigen Dateinamen mit doppelten oder keiner Dateiendung >2277-11-11 
+		- [ ] mittels file und cut kann man die Dateiendung herausfinden und ansetzen file >2277-11-11  Screenshot_2022-07-26_at_22-51-47_The_mountain_landscape_-_Ferdinand_Engelműller_-_Google_Arts_\&_Culture.png | cut -d ' ' -f 2
+		https://www.geeksforgeeks.org/how-to-find-out-file-types-in-linux/ | How to Find Out File Types in Linux - GeeksforGeeks
 
 
 
@@ -30,6 +30,7 @@ to extract the file from the txt file to correct the name
 ``chmod u+x ttrename && ln -sf /home/christian/Gedankenspeicher/Gedankenspeicherwiki/Zettelkasten/Gedankenwanderung/Programme/ttrename ~/.local/bin/ttrename && echo 'fertig'``
 
 ```bash
+
 {{ttrename}}=
 #!/bin/bash
 

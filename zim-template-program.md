@@ -13,14 +13,12 @@ Backlink [GedankenspeicherCoding](../GedankenspeicherCoding.md)
 
 ``chmod u+x zim-template-program.sh && ln -sf /home/christian/Gedankenspeicher/Gedankenspeicherwiki/Zettelkasten/ZetteL/GedankenspeicherCoding/zim-template-program.sh ~/.local/bin/zim-template-program.sh && echo "fertig"``
 
-```bash
 Das komplette Programm
+```bash
 {{zim-template-program.sh}}=
-{{preamble}}
-{{Abruf txt Datei Ordner}}
-{{Abfragen}}
-{{create Template}}
-fi
+       {{preamble}}
+       {{Abruf txt Datei Ordner}}
+       {{Abfragen}}
 @
 ```
 
@@ -34,55 +32,57 @@ Einstellungen vor dem Start des eigentlichen Programms, hier für ein Shell Scri
 Den Ordner erstellen, wo die neue Datei gespeichert werden soll. Dabei wird der Pfad der Datei genommen und für die späteren Links gespeichert
 ```bash
 {{Abruf txt Datei Ordner}}=
-txtFile=$(echo "$1")
-folder=${txtFile%.*}
-mkdir -p "$folder"
-cd "$folder"
-filetxt=$(echo $2)
-filepath=$(echo "${filetxt%/*}" | sed "s,/home/christian,~,")
-wikipath=$(echo $filepath | sed "s,~/Gedankenspeicher/Gedankenspeicherwiki/,," | sed "s,/,:,g")
-FullFilename=$(basename $filetxt .md)
+       txtFile=$(echo "$1")
+       folder=${txtFile%.*}
+       mkdir -p "$folder"
+       cd "$folder"
+       filetxt=$(echo $2)
+       filepath=$(echo "${filetxt%/*}" | sed "s,/home/christian,~,")
+       wikipath=$(echo $filepath | sed "s,~/Gedankenspeicher/Gedankenspeicherwiki/,," | sed "s,/,:,g")
+       FullFilename=$(basename $filetxt .md)
 @
 ```
 
 ```bash
 {{Abfragen}}=
-File="Program"
-extens="sh"
+       File="Program"
+       extens="sh"
 
-abfrage=$(zenity --forms \
-       --width 500 \
-       --title "New Program?" \
-       --text "Necessary Informations:" \
-       --add-entry "Filename" --add-entry "Extension Standard sh")
-       
-if [ ! $? -eq 1 ]; 
-then
+       abfrage=$(zenity --forms \
+              --width 500 \
+              --title "New Program?" \
+              --text "Necessary Informations:" \
+              --add-entry "Filename" --add-entry "Extension Standard sh")
+              
+       if [ ! $? -eq 1 ]; 
+       then
 
-if [[ ! "$abfrage" = "" ]]; 
-then
-	File=$(echo $abfrage | cut -s -d "|" -f 1)
-	extens=$(echo $abfrage | cut -s -d "|" -f 2)
-fi
+              if [[ ! "$abfrage" = "" ]]; 
+              then
+                     File=$(echo $abfrage | cut -s -d "|" -f 1)
+                     extens=$(echo $abfrage | cut -s -d "|" -f 2)
+              fi
 
-File=$(echo "$File" | sed 's/ /_/g' | sed 's/:/;/g'| sed -e "s/'/_/g" | sed 's/\"//g')
+              File=$(echo "$File" | sed 's/ /_/g' | sed 's/:/;/g'| sed -e "s/'/_/g" | sed 's/\"//g')
 
-source="Christian Gößl"
-tags=$(echo "$3")
-additiontext=$(echo "$4")
+              source="Christian Gößl"
+              tags=$(echo "$3")
+              additiontext=$(echo "$4")
 
-abfrage=$(zenity --forms \
-       --width 500 \
-       --title "Noch etwas hinzufügen?" \
-       --text "Noch etwas hinzufügen?" \
-       --add-entry "Quelle Standard: Christian Gößl" --add-entry "Schlagwörter" --add-entry "Weiteres")
-if [[ ! "$abfrage" = "" ]]; 
-then
-	source=$(echo $abfrage | cut -s -d "|" -f 1)
-	tags=$(echo $abfrage | cut -s -d "|" -f 2)
-	additiontext=$(echo $abfrage | cut -s -d "|" -f 3)
-fi
-
+              abfrage=$(zenity --forms \
+                     --width 500 \
+                     --title "Noch etwas hinzufügen?" \
+                     --text "Noch etwas hinzufügen?" \
+                     --add-entry "Quelle Standard: Christian Gößl" --add-entry "Schlagwörter" --add-entry "Weiteres")
+              if [[ ! "$abfrage" = "" ]]; 
+              then
+                     source=$(echo $abfrage | cut -s -d "|" -f 1)
+                     tags=$(echo $abfrage | cut -s -d "|" -f 2)
+                     additiontext=$(echo $abfrage | cut -s -d "|" -f 3)
+              fi
+              
+              {{create Template}}
+       fi
 @
 ```
 Die Erzeugung des templates

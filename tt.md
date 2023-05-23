@@ -1,7 +1,5 @@
 # tt
 
-* ☑ tt
-
 Das ist das Skript zum erstellen von Textdateien für andere uneditierbare Dateien
 
 

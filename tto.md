@@ -2,7 +2,7 @@
 
 * ☑ tto
 
-Das gleiche wie das Skript tt, nur wird hier nur die Datei erzeugt nicht mehr.
+Das gleiche wie das Skript tt, nur wird hier nur die Datei erzeugt mit zim wiki Zusätzen, nicht mehr.
 
 * ☑ **[../tto](./tto)**
 

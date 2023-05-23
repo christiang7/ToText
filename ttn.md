@@ -1,231 +1,229 @@
 # ttn
-
-* ☑ **[../ttn](./ttn)**
-
 Text creation time: [Zettelkasten:2021:04:29]()
 Modification time: [Zettelkasten:2021:04:24]()
 
+- [X] **[../ttn](./ttn)**
+	- [ ] tex Dateiformat nochmal überprüfen
 
   ``noweb.py -Rttn ttn.md > ttn && chmod u+x ttn && echo 'fertig'``
 
 ```bash
 {{ttn}}=
-#!/bin/bash
-f=$(basename "$1")
-extens=${f##*.}
-Filename=${f%.*}
-folder=$(dirname "$(realpath "$1")")
-Unterricht=$(echo $File | grep -o Unterrichtsnotiz)
-if [[ $(echo $Filename | grep -o Unterrichtsnotiz) == Unterrichtsnotiz || $(echo $Filename | grep -o Unterrichtsnotizen) == Unterrichtsnotizen || $(echo $Filename | grep -o Unterricht) == Unterricht ]]
-then
-	source="Christian Gößl"
-	tags="@Unterricht @Nachhilfe"
-else
-  source="$2"
-  tags="$3"
-  additiontext="$4"
-fi
-
-abfrage=$(yad --title="Diese Datei eine TXT hinzufügen" --text="Noch etwas hinzufügen?" \
- 	 --form --width 500 --separator="~" --item-separator=","  \
- 	 --field="Quelle:":CBE \
- 	 --field="Tags" \
- 	 --field="Weiteres":TXT \
- 	 "$source,Internet,Christian Gößl" "$tags" "$additiontext")
-if [ ! $? -eq 1 ]; 
-then
-	Newname=$Filename
- 	source=$(echo $abfrage | cut -s -d "~" -f 1)
-	tags=$(echo $abfrage | cut -s -d "~" -f 2)
-	additiontext=$(echo $abfrage | cut -s -d "~" -f 3)
-	
-echo $Newname
-echo $source
-echo $tags$File
-echo $additiontext
-
-File=$(echo "$Newname"."$extens" | sed 's/ /_/g' | sed 's/:/;/g'| sed -e "s/'/_/g" | sed 's/\"//g'|  sed 's/&/n/g' | sed 's/|//g' | sed 's/\[/(/g' | sed 's/\]/)/g' | sed 's/@/at/g' | sed 's/¦//g')
-#f=$(basename "$1")
-mv $folder/"$f" $folder/"$File"
-
-echo $folder/$File
-
-f=$(basename "$folder"/"$File")
-extens=${File##*.}
-Filename=$(basename "$folder"/"$File")
-extenspdf=$(echo "$folder"/"$File" | grep -o pdf)
-extensxopp=$(echo "$folder"/"$File" | grep -o xopp)
-extensmp4=$(echo "$folder"/"$File" | grep -o mp4)
-extensmov=$(echo "$folder"/"$File" | grep -o mov)
-extensmkv=$(echo "$folder"/"$File" | grep -o mkv)
-extensflv=$(echo "$folder"/"$File" | grep -o flv)
-
-#echo $f
-#echo $extens
-
-#function Opentxt(){
-	#kate "$folder"/""$folder"/"$File"".md 2>/dev/null &
-	#sleep 10
-	#ls 2>/dev/null
-#}
-
-function Wikiprev(){
-	#touch "$folder"/"$File".md
-	echo "Content-Type: text/x-zim-wiki" >> "$folder"/"$File".md
-	echo "Wiki-Format: zim 0.6" >> "$folder"/"$File".md
-	echo "===== $Filename =====" >> "$folder"/"$File".md
-}
-
-function Timestamps(){
-	echo "Text creation time: $(date +"[[Zettelkasten:%Y:%m:%d]]")" >> "$folder"/"$File".md
-	echo "Modification time: $(date +"[[Zettelkasten:%Y:%m:%d]]" -r "$folder"/"$File")" >> "$folder"/"$File".md
-}
-
-if [[ pdf == $extens ]]
-then
-	#echo pdf
-	ttpdf "$folder"/"$File" "$source" "$tags" "$additiontext" 
-elif [[ jpg == $extens || PNG == $extens || JPEG == $extens || png == $extens || webp == $extens || jpeg == $extens || avif == $extens ]] && [[ -z $extenspdf && -z $extensxopp && -z $extensmp4 && -z $extensmov && -z $extensflv && -z $extensmkv ]] 
-then
-	#echo pic
-	#echo $extenspdf
-	filena=${Filename%.*} #only the filename
-	convert "$folder"/"$File" "$filena".avif
-	ttpic "$filena".avif "$source" "$tags" "$additiontext"
-	if ! zenity --question --text="Möchten Sie das original Bild behalten?"
-	then 
-	  rm "$folder"/"$File"
-	fi
-	#kate "$folder"/"$File".md 2>/dev/null & 
-elif [[ mp4 == $extens || mov == $extens || mkv == $extens || flv = $extens || ogv = $extens ]]
-then
-	#echo vid
-	#ttdown "$f" "$2"
-	filena=${Filename%.*} #only the filename
-	if [[ -e "$filena".md && ! -d "$filena" ]]; 
+	#!/bin/bash
+	f=$(basename "$1")
+	extens=${f##*.}
+	Filename=${f%.*}
+	folder=$(dirname "$(realpath "$1")")
+	Unterricht=$(echo $File | grep -o Unterrichtsnotiz)
+	if [[ $(echo $Filename | grep -o Unterrichtsnotiz) == Unterrichtsnotiz || $(echo $Filename | grep -o Unterrichtsnotizen) == Unterrichtsnotizen || $(echo $Filename | grep -o Unterricht) == Unterricht ]]
 	then
-	ttvidc "$folder"/"$Filename"
-  fi
-	Wikiprev
-	echo "[*] @VIDEO $tags **[[../$Filename]]** $source" >> "$folder"/"$File".md
-	Timestamps
-	ffmpeg -loglevel quiet -ss 2 -i "$folder"/"$File"  -t 1 -f image2 "$folder"/"$File".png
-	convert "$folder"/"$File".png -resize 4000x4000 "$folder"/"$File".avif
-  rm "$folder"/"$File".png
-	echo -e "[[../]]\n$additiontext\n" >> "$folder"/"$File".md
-	echo "{{../$File.avif?width=750}}" >> "$folder"/"$File".md
-	echo "$3" >> "$folder"/"$File".md
-elif [[ epub == $extens ]]
-then
-	Wikiprev
-	echo "[*] @EBOOK $tags **[[../$Filename]] $source**" >> "$folder"/"$File".md
-	Timestamps
-	echo -e "[[../]]\n$additiontext\n" >> "$folder"/"$File".md
-	einfo "$folder"/"$File" >> "$folder"/"$File".md
-	#Opentxt
-elif [[ eml == $extens ]]
-then
-	Wikiprev
-	echo "[*] @EMAIL $tags **[[../$Filename]] $source**" >> "$folder"/"$File".md
-	Timestamps
-	echo -e "[[../]]\n$additiontext\n" >> "$folder"/"$File".md
-	cat "$folder"/"$File" >> "$folder"/"$File".md
-	#Opentxt
-elif [[ maff == $extens ]]
-then
-	Wikiprev
-	folder=$(unzip -Z -1 "$Filename" '*/')
-	unzip "$folder"/"$File"
-	echo "[*] @WEB $tags **[[../$f]] $source $(cat $folder'index.dat' | grep source | cut -f 2)**" >> "$folder"/"$File".md
-	Timestamps
-	echo -e "[[../]]\n$additiontext\n" >> "$folder"/"$File".md
-	cat $folder'index.rdf' >> "$folder"/"$File".md 
-	#pandoc -f html -t zimwiki $folder'index.html' >> "$folder"/"$File".md
-	rm -r $folder
-	#Opentxt
-elif [[ cts == $extens ]]
-then
-	Wikiprev
-	echo "[*] @TREESHEETS $tags **[[../$Filename]] $source**" >> "$folder"/"$File".md
-	Timestamps
-	echo -e "[[../]]\n$additiontext\n" >> "$folder"/"$File".md
-	echo "{{../$Filename.png?width=750}}" >> "$folder"/"$File".md
-	#Opentxt
-elif [[ tex == $extens ]]
-then
-filename=$(basename "$folder"/"$File" .tex)
-f=$(basename "$1" .tex)
-foldertex="$filename"-tex
-mkdir "$foldertex" #
-mv "$1".pdf "$filename".pdf
-mv "$1".log "$filename".log
-mv "$1".aux "$filename".aux
-mv "$1".synctex.gz "$filename".synctex.gz
-mv "$filename".* "$foldertex"/ #
-#touch "$foldertex".md #
-echo "Content-Type: text/x-zim-wiki" >> "$folder".md
-echo "Wiki-Format: zim 0.6" >> "$folder".md
-echo "===== $File =====" >> "$folder".md
-echo "[*] @TEX $tags **$folder $source**" >> "$folder".md #
-echo "**[[./$File]]**" >> "$folder".md 
-echo "**[[./$filename.pdf]]**" >> "$folder".md 
-echo "Text creation time: $(date +"[[Zettelkasten:%Y:%m:%d]]")" >> "$folder".md
-echo "Modification time: $(date +"[[Zettelkasten:%Y:%m:%d]]" -r "$folder"/"$folder"/"$File")" >> "$folder".md
-echo -e "\n$additiontext" >> "$folder".md
-ln -s "$folder"/"$folder"/"$File" "$folder"/"$File"
-ln -s "$folder"/"$filename".pdf "$filename".pdf
-#kate "$folder".md 2>/dev/null &
-elif [[ $extens == xopp ]]
-then
-  echo xopp
-  filename=$(basename "$folder"/"$File" .xopp)
-	Wikiprev
-	echo "[*] $tags **[[../$Filename]] $source**" >> "$folder"/"$File".md
-	Timestamps
-	echo -e "[[../]]\n$additiontext\n" >> "$folder"/"$File".md
-	xournalpp --export-range=1 "$folder"/"$File" -i "$folder"/"$File".png
-	#convert "$folder"/"$File".png -resize 1200x1200 -quality 97 "$folder"/"$File"-px.png
-	#mv "$folder"/"$File"-px.png "$folder"/"$File".png
-	convert "$folder"/"$File".png "$folder"/"$File".avif
-	rm "$folder"/"$File".png
-	echo -e "{{../$File.avif?width=750}}\n" >> "$folder"/"$File".md
-	xournalpp "$folder"/"$File" -p "$filename".pdf
-	ttpdf "$filename".pdf
-elif [[ mp3 == $extens || webm == $extens || flac == $extens || aac = $extens || ogg = $extens || weba = $extens || wav = $extens || aiff = $extens ]]
-then
-	Wikiprev
-	echo "[*] @Musik $tags **[[../$Filename]] $source**" >> "$folder"/"$File".md
-	Timestamps
-	#additiontext+=$(yt-dlp --get-description ${source})
-	echo -e "[[../]]\n$additiontext\n" >> "$folder"/"$File".md
-elif [[ $extens == $f ]]
-then
-	Wikiprev
-	echo "===== $Filename =====" >> "$folder"/"$File".md
-	echo "[*] @ORDNER $tags **[[../$Filename]] $source**" >> "$folder"/"$File".md
-	Timestamps
-	echo -e "[[../]]\n$additiontext\n" >> "$folder"/"$File".md
-	#Opentxt
-elif [[ $extens == docx || $extens == doc  || $extens == odt || $extens == ods || $extens == xls || $extens == xlsx || $extens == ppt || $extens == pptx || $extens == odp ]]
-then
-	Wikiprev
-	echo "[*] $tags **[[../$Filename]] $source**" >> "$folder"/"$File".md
-	Timestamps
-	echo -e "[[../]]\n$additiontext\n" >> "$folder"/"$File".md
-#elif [[ -n $extenspdf || -n $extensxopp || -z $extensmp4 || -z $extensmov || -z $extensflv || -z $extensmkv ]]
-#then
-#	echo "tue nichts"
-else 
-	echo else
-	Wikiprev
-	echo "[*] $tags **[[../$Filename]] $source**" >> "$folder"/"$File".md
-	Timestamps
-	echo -e "[[../]]\n$additiontext\n" >> "$folder"/"$File".md
-	#Opentxt
-fi
+		source="Christian Gößl"
+		tags="@Unterricht @Nachhilfe"
+	else
+		source="$2"
+		tags="$3"
+		additiontext="$4"
+	fi
 
+	abfrage=$(yad --title="Diese Datei eine TXT hinzufügen" --text="Noch etwas hinzufügen?" \
+		--form --width 500 --separator="~" --item-separator=","  \
+		--field="Quelle:":CBE \
+		--field="Tags" \
+		--field="Weiteres":TXT \
+		"$source,Internet,Christian Gößl" "$tags" "$additiontext")
+	if [ ! $? -eq 1 ]; 
+	then
+		Newname=$Filename
+		source=$(echo $abfrage | cut -s -d "~" -f 1)
+		tags=$(echo $abfrage | cut -s -d "~" -f 2)
+		additiontext=$(echo $abfrage | cut -s -d "~" -f 3)
+		
+		echo $Newname
+		echo $source
+		echo $tags$File
+		echo $additiontext
 
-fi
+		File=$(echo "$Newname"."$extens" | sed 's/ /_/g' | sed 's/:/;/g'| sed -e "s/'/_/g" | sed 's/\"//g'|  sed 's/&/n/g' | sed 's/|//g' | sed 's/\[/(/g' | sed 's/\]/)/g' | sed 's/@/at/g' | sed 's/¦//g')
+		#f=$(basename "$1")
+		mv $folder/"$f" $folder/"$File"
+
+		echo $folder/$File
+
+		f=$(basename "$folder"/"$File")
+		extens=${File##*.}
+		Filename=$(basename "$folder"/"$File")
+		extenspdf=$(echo "$folder"/"$File" | grep -o pdf)
+		extensxopp=$(echo "$folder"/"$File" | grep -o xopp)
+		extensmp4=$(echo "$folder"/"$File" | grep -o mp4)
+		extensmov=$(echo "$folder"/"$File" | grep -o mov)
+		extensmkv=$(echo "$folder"/"$File" | grep -o mkv)
+		extensflv=$(echo "$folder"/"$File" | grep -o flv)
+
+		#echo $f
+		#echo $extens
+
+		#function Opentxt(){
+			#kate "$folder"/""$folder"/"$File"".md 2>/dev/null &
+			#sleep 10
+			#ls 2>/dev/null
+		#}
+
+		function Wikiprev(){
+			#touch "$folder"/"$File".md
+			echo "Content-Type: text/x-zim-wiki" >> "$folder"/"$File".md
+			echo "Wiki-Format: zim 0.6" >> "$folder"/"$File".md
+			echo "===== $Filename =====" >> "$folder"/"$File".md
+		}
+
+		function Timestamps(){
+			echo "Text creation time: $(date +"[[Zettelkasten:%Y:%m:%d]]")" >> "$folder"/"$File".md
+			echo "Modification time: $(date +"[[Zettelkasten:%Y:%m:%d]]" -r "$folder"/"$File")" >> "$folder"/"$File".md
+		}
+
+		if [[ pdf == $extens ]]
+		then
+			#echo pdf
+			ttpdf "$folder"/"$File" "$source" "$tags" "$additiontext" 
+		elif [[ jpg == $extens || PNG == $extens || JPEG == $extens || png == $extens || webp == $extens || jpeg == $extens || avif == $extens ]] && [[ -z $extenspdf && -z $extensxopp && -z $extensmp4 && -z $extensmov && -z $extensflv && -z $extensmkv ]] 
+		then
+			#echo pic
+			#echo $extenspdf
+			filena=${Filename%.*} #only the filename
+			convert "$folder"/"$File" "$filena".avif
+			ttpic "$filena".avif "$source" "$tags" "$additiontext"
+			if ! zenity --question --text="Möchten Sie das original Bild behalten?"
+			then 
+				rm "$folder"/"$File"
+			fi
+			#kate "$folder"/"$File".md 2>/dev/null & 
+		elif [[ mp4 == $extens || mov == $extens || mkv == $extens || flv = $extens || ogv = $extens ]]
+		then
+			#echo vid
+			#ttdown "$f" "$2"
+			filena=${Filename%.*} #only the filename
+			if [[ -e "$filena".md && ! -d "$filena" ]]; 
+				then
+				ttvidc "$folder"/"$Filename"
+			fi
+			Wikiprev
+			echo "[*] @VIDEO $tags **[[../$Filename]]** $source" >> "$folder"/"$File".md
+			Timestamps
+			ffmpeg -loglevel quiet -ss 2 -i "$folder"/"$File"  -t 1 -f image2 "$folder"/"$File".png
+			convert "$folder"/"$File".png -resize 4000x4000 "$folder"/"$File".avif
+			rm "$folder"/"$File".png
+			echo -e "[[../]]\n$additiontext\n" >> "$folder"/"$File".md
+			echo "{{../$File.avif?width=750}}" >> "$folder"/"$File".md
+			echo "$3" >> "$folder"/"$File".md
+		elif [[ epub == $extens ]]
+		then
+			Wikiprev
+			echo "[*] @EBOOK $tags **[[../$Filename]] $source**" >> "$folder"/"$File".md
+			Timestamps
+			echo -e "[[../]]\n$additiontext\n" >> "$folder"/"$File".md
+			einfo "$folder"/"$File" >> "$folder"/"$File".md
+			#Opentxt
+		elif [[ eml == $extens ]]
+		then
+			Wikiprev
+			echo "[*] @EMAIL $tags **[[../$Filename]] $source**" >> "$folder"/"$File".md
+			Timestamps
+			echo -e "[[../]]\n$additiontext\n" >> "$folder"/"$File".md
+			cat "$folder"/"$File" >> "$folder"/"$File".md
+			#Opentxt
+		elif [[ maff == $extens ]]
+		then
+			Wikiprev
+			folder=$(unzip -Z -1 "$Filename" '*/')
+			unzip "$folder"/"$File"
+			echo "[*] @WEB $tags **[[../$f]] $source $(cat $folder'index.dat' | grep source | cut -f 2)**" >> "$folder"/"$File".md
+			Timestamps
+			echo -e "[[../]]\n$additiontext\n" >> "$folder"/"$File".md
+			cat $folder'index.rdf' >> "$folder"/"$File".md 
+			#pandoc -f html -t zimwiki $folder'index.html' >> "$folder"/"$File".md
+			rm -r $folder
+			#Opentxt
+		elif [[ cts == $extens ]]
+		then
+			Wikiprev
+			echo "[*] @TREESHEETS $tags **[[../$Filename]] $source**" >> "$folder"/"$File".md
+			Timestamps
+			echo -e "[[../]]\n$additiontext\n" >> "$folder"/"$File".md
+			echo "{{../$Filename.png?width=750}}" >> "$folder"/"$File".md
+			#Opentxt
+		elif [[ tex == $extens ]]
+		then
+			filename=$(basename "$folder"/"$File" .tex)
+			f=$(basename "$1" .tex)
+			foldertex="$filename"-tex
+			mkdir "$foldertex" #
+			mv "$1".pdf "$filename".pdf
+			mv "$1".log "$filename".log
+			mv "$1".aux "$filename".aux
+			mv "$1".synctex.gz "$filename".synctex.gz
+			mv "$filename".* "$foldertex"/ #
+			#touch "$foldertex".md #
+			echo "Content-Type: text/x-zim-wiki" >> "$folder".md
+			echo "Wiki-Format: zim 0.6" >> "$folder".md
+			echo "===== $File =====" >> "$folder".md
+			echo "[*] @TEX $tags **$folder $source**" >> "$folder".md #
+			echo "**[[./$File]]**" >> "$folder".md 
+			echo "**[[./$filename.pdf]]**" >> "$folder".md 
+			echo "Text creation time: $(date +"[[Zettelkasten:%Y:%m:%d]]")" >> "$folder".md
+			echo "Modification time: $(date +"[[Zettelkasten:%Y:%m:%d]]" -r "$folder"/"$folder"/"$File")" >> "$folder".md
+			echo -e "\n$additiontext" >> "$folder".md
+			ln -s "$folder"/"$folder"/"$File" "$folder"/"$File"
+			ln -s "$folder"/"$filename".pdf "$filename".pdf
+			#kate "$folder".md 2>/dev/null &
+		elif [[ $extens == xopp ]]
+		then
+			echo xopp
+			filename=$(basename "$folder"/"$File" .xopp)
+			Wikiprev
+			echo "[*] $tags **[[../$Filename]] $source**" >> "$folder"/"$File".md
+			Timestamps
+			echo -e "[[../]]\n$additiontext\n" >> "$folder"/"$File".md
+			xournalpp --export-range=1 "$folder"/"$File" -i "$folder"/"$File".png
+			#convert "$folder"/"$File".png -resize 1200x1200 -quality 97 "$folder"/"$File"-px.png
+			#mv "$folder"/"$File"-px.png "$folder"/"$File".png
+			convert "$folder"/"$File".png "$folder"/"$File".avif
+			rm "$folder"/"$File".png
+			echo -e "{{../$File.avif?width=750}}\n" >> "$folder"/"$File".md
+			xournalpp "$folder"/"$File" -p "$filename".pdf
+			ttpdf "$filename".pdf
+		elif [[ mp3 == $extens || webm == $extens || flac == $extens || aac = $extens || ogg = $extens || weba = $extens || wav = $extens || aiff = $extens ]]
+		then
+			Wikiprev
+			echo "[*] @Musik $tags **[[../$Filename]] $source**" >> "$folder"/"$File".md
+			Timestamps
+			#additiontext+=$(yt-dlp --get-description ${source})
+			echo -e "[[../]]\n$additiontext\n" >> "$folder"/"$File".md
+		elif [[ $extens == $f ]]
+		then
+			Wikiprev
+			echo "===== $Filename =====" >> "$folder"/"$File".md
+			echo "[*] @ORDNER $tags **[[../$Filename]] $source**" >> "$folder"/"$File".md
+			Timestamps
+			echo -e "[[../]]\n$additiontext\n" >> "$folder"/"$File".md
+			#Opentxt
+		elif [[ $extens == docx || $extens == doc  || $extens == odt || $extens == ods || $extens == xls || $extens == xlsx || $extens == ppt || $extens == pptx || $extens == odp ]]
+		then
+			Wikiprev
+			echo "[*] $tags **[[../$Filename]] $source**" >> "$folder"/"$File".md
+			Timestamps
+			echo -e "[[../]]\n$additiontext\n" >> "$folder"/"$File".md
+		#elif [[ -n $extenspdf || -n $extensxopp || -z $extensmp4 || -z $extensmov || -z $extensflv || -z $extensmkv ]]
+		#then
+		#	echo "tue nichts"
+		else 
+			echo else
+			Wikiprev
+			echo "[*] $tags **[[../$Filename]] $source**" >> "$folder"/"$File".md
+			Timestamps
+			echo -e "[[../]]\n$additiontext\n" >> "$folder"/"$File".md
+			#Opentxt
+		fi
+
+	fi
 @ 
 ```
 

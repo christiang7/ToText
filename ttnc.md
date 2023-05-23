@@ -2,7 +2,7 @@
 Created Freitag [Zettelkasten:2022:02:25]()
 Backlink [GedankenspeicherCoding](../GedankenspeicherCoding.md)
 
-* ☑ **ttnc**  
+* ☑ **ttnc** 
 
 
   ``noweb.py -Rttnc ttnc.md > ttnc && chmod u+x ttnc && echo 'fertig'``

@@ -1,12 +1,14 @@
 # ttex
+* ☑ **[../ttex](./ttex)**
 
-* ☑ ttex 
-	* ☑ Integration ins [GedankenspeicherCoding:ttn](./ttn.md) Programm
-	* ☑ Korrektur der Namen mit einbauen
+- [X] ttex 
 
 Verschiebung von tex Dateien in einen gesammelten Ordner
 
-* ☑ **[../ttex](./ttex)**
+## Features
+* Integration ins [GedankenspeicherCoding:ttn](./ttn.md) Programm
+* Dateiname wird mit korrigiert
+
 
 Text creation time:
 [Zettelkasten:2021:04:29]()

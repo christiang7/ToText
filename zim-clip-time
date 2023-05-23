@@ -2,6 +2,6 @@
 Time=$(date +"Zettelkasten:%Y:%m:%d")
 #folder=$(date +"/home/christian/Gedankenspeicher/Gedankenspeicherwiki/Zettelkasten/%Y/%m/%d" -r "$1")
 file="/home/christian/.config/zim/preferences.conf"
-sed -i "183s/.*/marks=${Time}/" $file
-sed -i "184s/.*/clips=${Time}/" $file
+sed -i "206s/.*/marks=${Time}/" $file
+sed -i "207s/.*/clips=${Time}/" $file
 
