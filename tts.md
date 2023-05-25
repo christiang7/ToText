@@ -23,64 +23,64 @@ Anzeige von Dateien deren Text Beschreibung
 
 ```bash
 {{tts}}=
-	#!/bin/bash
-	f=$(basename "$1")
-	extens=${f##*.}
-	filename=${f%.*} #only the filename
-	File=$(echo "$1" | sed 's/ /_/g' | sed 's/:/;/g'| sed -e "s/'/_/g" | sed 's/\"//g')
-	#f=$(basename "$1")
-	line=$(head -n 1 "$File".md)
-	#extens=${f##*.}
-	#Newname=$(echo $filename)
+#!/bin/bash
+f=$(basename "$1")
+extens=${f##*.}
+filename=${f%.*} #only the filename
+File=$(echo "$1" | sed 's/ /_/g' | sed 's/:/;/g'| sed -e "s/'/_/g" | sed 's/\"//g')
+#f=$(basename "$1")
+line=$(head -n 1 "$File".md)
+#extens=${f##*.}
+#Newname=$(echo $filename)
 
-	if [[ -e "$filename".md && ! -d "$filename" ]]; 
-	then
-		ttvidc "$f"
-	elif [[ -e "$File".md ]] 
-	then
-		echo $line
-		if [[ "$line" != "Content-Type: text/x-zim-wiki" ]] 
-			then
-			#echo falsch
-			ttnc "$f"
-		fi
-		xdg-open "$File" &
-		#echo test
-
-	else
-		Newname=$(zenity --entry \
-		--width 500 \
-		--title "Die Datei eine Beschreibung geben?" \
-		--text "Den Dateinamen dazu noch ändern?" \
-		--entry-text "$filename")
-
-		if [ ! $? -eq 1 ]; 
+if [[ -e "$filename".md && ! -d "$filename" ]]; 
+then
+	ttvidc "$f"
+elif [[ -e "$File".md ]] 
+then
+	echo $line
+	if [[ "$line" != "Content-Type: text/x-zim-wiki" ]] 
 		then
-			if [[ $extens == $f ]]
-			then
-				File=$(echo "$Newname" | sed 's/ /_/g' | sed 's/:/;/g'| sed -e "s/'/_/g" | sed 's/\"//g'|  sed 's/&/n/g' | sed 's/\///g' | sed 's/|//g' | sed 's/\[/(/g' | sed 's/\]/)/g' | sed 's/@/at/g')
-			else
-				File=$(echo "$Newname"."$extens" | sed 's/ /_/g' | sed 's/:/;/g'| sed -e "s/'/_/g" | sed 's/\"//g'|  sed 's/&/n/g' | sed 's/\///g' | sed 's/|//g' | sed 's/\[/(/g' | sed 's/\]/)/g' | sed 's/@/at/g')
-			fi
-			mv "$f" "$File"
-			ttn "$File"
+		#echo falsch
+		ttnc "$f"
+	fi
+	xdg-open "$File" &
+	#echo test
+
+else
+	Newname=$(zenity --entry \
+	--width 500 \
+	--title "Die Datei eine Beschreibung geben?" \
+	--text "Den Dateinamen dazu noch ändern?" \
+	--entry-text "$filename")
+
+	if [ ! $? -eq 1 ]; 
+	then
+		if [[ $extens == $f ]]
+		then
+			File=$(echo "$Newname" | sed 's/ /_/g' | sed 's/:/;/g'| sed -e "s/'/_/g" | sed 's/\"//g'|  sed 's/&/n/g' | sed 's/\///g' | sed 's/|//g' | sed 's/\[/(/g' | sed 's/\]/)/g' | sed 's/@/at/g')
+		else
+			File=$(echo "$Newname"."$extens" | sed 's/ /_/g' | sed 's/:/;/g'| sed -e "s/'/_/g" | sed 's/\"//g'|  sed 's/&/n/g' | sed 's/\///g' | sed 's/|//g' | sed 's/\[/(/g' | sed 's/\]/)/g' | sed 's/@/at/g')
 		fi
-
+		mv "$f" "$File"
+		ttn "$File"
 	fi
 
-	if [[ $extens == tex ]] 
-	then
-		filename =$(basename "$File" .tex)
-		kate "$filename"-tex.md
-		xdg-open "$File" &
-	elif [[ jpg == $extens || png == $extens || webp == $extens || jpeg == $extens || avif == $extens ]]
-	then
-		kate "$filename".avif.md &
-		xdg-open "$filename".avif &
-	else
-		kate "$File".md 2>/dev/null &
-		xdg-open "$File" &
-	fi
+fi
+
+if [[ $extens == tex ]] 
+then
+	filename =$(basename "$File" .tex)
+	kate "$filename"-tex.md
+	xdg-open "$File" &
+elif [[ jpg == $extens || png == $extens || webp == $extens || jpeg == $extens || avif == $extens ]]
+then
+	kate "$filename".avif.md &
+	xdg-open "$filename".avif &
+else
+	kate "$File".md 2>/dev/null &
+	xdg-open "$File" &
+fi
 
 @ 
 ```

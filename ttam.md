@@ -4,6 +4,15 @@ Backlink [CodeFabrik:GedankenspeicherCoding](../GedankenspeicherCoding.md)
 
 * ☑ **ttam**   >  2277-11-11
 
+	da sollte eventuell auch eingebaut werden, dass die originale Pfad in die Datei geschrieben wird
+	Zustände: 
+		1: Datei hat noch keine txt Datei, Datei wird eine txt bekommen
+		2: Datei hat schon eine txt Datei, keine txt geben
+	Ausführen: 
+		Datei wird mit txt Datei verlinkt in den Ordner
+		Ablauf: Zim txt Datei auswählen, rechtsklick copy path, gehe zu txt Ordner und klicke auf zim button tools mit eigenem Script(das verlinkt alles und setzt in der Originaldatei den
+		Originallink
+
 Program for moving files to the assets folder 
 
 

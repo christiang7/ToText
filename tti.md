@@ -5,14 +5,14 @@ Backlink [CodeFabrik]()
 * ☑ **tti**  >  2277-11-11
 
 
-  ``noweb.py -Rtti tti.md > tti && chmod u+x tti && ln -sf /home/christian/Gedankenspeicher/Gedankenspeicherwiki/Zettelkasten/Gedankenwanderung/Programme/tti ~/.local/bin/tti && echo 'fertig'``
+``noweb.py -Rtti tti.md > tti && chmod u+x tti && ln -sf /home/christian/Gedankenspeicher/Gedankenspeicherwiki/Zettelkasten/Gedankenwanderung/Programme/tti ~/.local/bin/tti && echo 'fertig'``
 
 ```bash
 {{tti}}=
 #!/bin/bash
 File=$1
 
-# in case of input is txt file
+# in case of input is md file
 File2=$(basename "$1")
 extens2=${File2##*.}
 filename2=${File2%.*} #only the filename, here it is the original file
@@ -38,21 +38,21 @@ then
 fi
 if [[ $tags != "" ]]
 then
-sed -i "3 s/\*\*\[\[../$tags \*\*\[\[../" "$File".md
-sed -i "4 s/\*\*\[\[../$tags \*\*\[\[../" "$File".md
+       sed -i "3 s/\*\*\[\[../$tags \*\*\[\[../" "$File".md
+       sed -i "4 s/\*\*\[\[../$tags \*\*\[\[../" "$File".md
 fi
 if [[ $source != "" ]]
 then
-sed -i "3 s/\]\]/\]\] $source/" "$File".md
-sed -i "4 s/\]\]/\]\] $source/" "$File".md
+       sed -i "3 s/\]\]/\]\] $source/" "$File".md
+       sed -i "4 s/\]\]/\]\] $source/" "$File".md
 fi
 if [[ $additiontext != "" ]]
 then
-sed -i "s/\[\[..\/\]\]/\[\[..\/\]\]\n $additiontext/" "$File".md
+       sed -i "s/\[\[..\/\]\]/\[\[..\/\]\]\n $additiontext/" "$File".md
 fi
 if zenity --question --text="Möchten Sie sich die Text nochmal anschauen?"
 then 
-kate "$File".md 2>/dev/null &
+       kate "$File".md 2>/dev/null &
 fi
 #sed -i "9 i$additiontext" "$File"
 @

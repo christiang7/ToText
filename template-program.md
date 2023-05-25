@@ -1,23 +1,25 @@
-# zim-template-program
-Created Montag [Zettelkasten:2022:11:28]()
-Backlink [GedankenspeicherCoding](../GedankenspeicherCoding.md)
+# template-program
+Created [Zettelkasten:2022:11:28]()
 
-- [X] **zim-template-program**  >  2277-11-11 [README](README.md)
-	- [ ] hinzufügen von git, damit automatisch nen git repo erzeugt wird
-	- [ ] Struktur überdenken mit README Datei und das die Datei in das Repo erzeugt wird und nicht auf der Ebene der txt Datei
-	- [ ] probieren ob yad Ersatz für zenity funktioniert 
+- [X] **template-program**  >  2277-11-11 [README](README.md)
+       - [ ] Doing
+              - [ ] Erstellung einer Vorlage für bestehendes Projekt
+       - [X] Backlog
+              - [ ] probieren ob yad Ersatz für zenity funktioniert 
+              - [ ] Auswahlmöglichkeit zwischen in einem bereits vorhanden Projekt ein Programm erstellen und ein ganz neues Programmierprojekt
+                     - [ ] hinzufügen von git bei neuem Programmierprojekt, damit automatisch nen git repo erzeugt wird
+
+## Features
+
+``noweb.py -Rtemplate-program.sh template-program.md > template-program.sh && echo "fertig"``
 
 
-``noweb.py -Rzim-template-program.sh zim-template-program.md > zim-template-program.sh && echo "fertig"``
-
-
-``chmod u+x zim-template-program.sh && ln -sf /home/christian/Gedankenspeicher/Gedankenspeicherwiki/Zettelkasten/ZetteL/GedankenspeicherCoding/zim-template-program.sh ~/.local/bin/zim-template-program.sh && echo "fertig"``
+``chmod u+x template-program.sh && ln -sf /home/christian/Gedankenspeicher/Gedankenspeicherwiki/CodeFabrik/GedankenspeicherCoding/template-program.sh ~/.local/bin/template-program.sh && echo "fertig"``
 
 Das komplette Programm
 ```bash
-{{zim-template-program.sh}}=
-       {{preamble}}
-       {{Abruf txt Datei Ordner}}
+{{template-program.sh}}=
+       {{preamble}}´
        {{Abfragen}}
 @
 ```
@@ -31,15 +33,15 @@ Einstellungen vor dem Start des eigentlichen Programms, hier für ein Shell Scri
 ```
 Den Ordner erstellen, wo die neue Datei gespeichert werden soll. Dabei wird der Pfad der Datei genommen und für die späteren Links gespeichert
 ```bash
-{{Abruf txt Datei Ordner}}=
-       txtFile=$(echo "$1")
-       folder=${txtFile%.*}
+{{Abruf md Datei Ordner}}=
+       mdFile=$(echo "$1")
+       folder=${mdFile%.*}
        mkdir -p "$folder"
        cd "$folder"
-       filetxt=$(echo $2)
-       filepath=$(echo "${filetxt%/*}" | sed "s,/home/christian,~,")
+       filemd=$(echo $2)
+       filepath=$(echo "${filemd%/*}" | sed "s,/home/christian,~,")
        wikipath=$(echo $filepath | sed "s,~/Gedankenspeicher/Gedankenspeicherwiki/,," | sed "s,/,:,g")
-       FullFilename=$(basename $filetxt .md)
+       FullFilename=$(basename $filemd .md)
 @
 ```
 
@@ -106,7 +108,7 @@ echo -e "{{${File}.${extens}}}=" >> "${folder}"/"${File}".md
 echo -e "\n@" >> "${folder}"/"${File}".md
 echo -e "\n}}}" >> "${folder}"/"${File}".md
 
-echo -e "\n[[+${File}]]" >> "${filetxt}.md"
+echo -e "\n[[+${File}]]" >> "${filemd}.md"
 
 @
 

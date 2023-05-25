@@ -25,7 +25,7 @@ to extract the file from the txt file to correct the name
 
  <https://ostechnix.com/zenity-create-gui-dialog-boxes-in-bash-scripts/>
 
-  ``noweb.py -Rttrename ttrename.md > ttrename && echo 'fertig'``
+``noweb.py -Rttrename ttrename.md > ttrename && echo 'fertig'``
 
 ``chmod u+x ttrename && ln -sf /home/christian/Gedankenspeicher/Gedankenspeicherwiki/Zettelkasten/Gedankenwanderung/Programme/ttrename ~/.local/bin/ttrename && echo 'fertig'``
 
