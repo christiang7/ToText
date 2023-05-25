@@ -1,5 +1,5 @@
 #!/bin/bash
-folder="."
+folder="$(pwd)"
        File="Program"
        extens="sh"
        langname="bash"

@@ -24,7 +24,7 @@ Das komplette Programm
 ```bash
 {{template-program.sh}}=
 {{preamble}}
-folder="."
+folder="$(pwd)"
 {{Abfragen}}
 
 @
