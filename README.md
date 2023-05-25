@@ -3,7 +3,7 @@
 - [X] Done
 - [X] Doing Interput (2)
 - [X] Doing (2)
-	- [ ] [zim-template-program](zim-template-program.md) nochmal umschreiben für die Verwendung in Kate Pogramm
+	- [ ] Einfügen von Überschriften mit Datum im zim-wiki
 - [X] Next (2)
 	- [ ] Vermischung von tabs2zim und topic2zim 
 		- [ ] Bei [topic2zim](topic2zim.md) es zu jedem Thema eine neue Notiz einfügen lassen
@@ -12,13 +12,16 @@
 	- [ ] nochmal [ttrename](ttrename.md) überprüfen wenn Benutzung über der Datei geht
 	- [ ] Wie verschieben von Dateien für bestimmte Themen? Eventuell über tags organisieren
 - [X] Backlog
-	- [ ] die html und Video Dateien nochmal anschauen wie nach Assets verschiebenß
+	- [ ] bei [ttn.md](ttn.md) die html und Video Dateien nochmal anschauen wie nach Assets verschiebenß
+	- [ ] [zim-template-program](zim-template-program.md)
 	- [ ] Bei Assets Verschiebung noch einen Link für pdf und deren Bilder da lassen, die md nicht verlinken
 	- [ ] xournal Programmstarter so, dass automatisch, thumbnail aktualisiert wird und von einer pdf als Notizen abgespeichert wird
 	- [ ] Programme über libraries verbinden
 	
 ## Features
 
+### 2023-05-25 Kanboardliste
+[kanboardlist.md](kanboardlist.md) Programm zum Einfügen von Kanboardlisten in zim wiki 
 
 
 ## Description 
