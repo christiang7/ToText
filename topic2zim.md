@@ -82,19 +82,19 @@ then
 		then
 			case ${choose} in
 			Spass) file=$(echo "/home/christian/Gedankenspeicher/Gedankenspeicherwiki/Spaß_Stream.md")
-				l=10;;
+				l=37;;
 			Assets) file=$(echo "/home/christian/Gedankenspeicher/Gedankenspeicherwiki/Assets.md")
-				l=7;;
+				l=37;;
 			Physik) file=$(echo "/home/christian/Gedankenspeicher/Gedankenspeicherwiki/Physik.md")
-				l=10;;
+				l=37;;
 			Mathematik) file=$(echo "/home/christian/Gedankenspeicher/Gedankenspeicherwiki/Mathematik.md")
-				l=10;;
+				l=37;;
 			Philosophie) file=$(echo "/home/christian/Gedankenspeicher/Gedankenspeicherwiki/Philosophie.md")
-				l=10;;
+				l=37;;
 			Naturwissenschaften_und_Instrumentarien) file=$(echo "/home/christian/Gedankenspeicher/Gedankenspeicherwiki/Naturwissenschaften_und_Instrumentarien.md")
-				l=10;;
+				l=37;;
 			CodeFabrik) file=$(echo "/home/christian/Gedankenspeicher/Gedankenspeicherwiki/CodeFabrik.md")
-				l=8;;
+				l=37;;
 			esac
 			echo $tabs
 			today=$(date +"[[Zettelkasten:%Y:%m:%d|%Y-%m-%d]]")
