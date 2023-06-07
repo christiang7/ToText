@@ -3,9 +3,12 @@ Created 2023-06-07
 - [X]  **rss-feed-reinsert**  [README.md](README.md)
    - [X] Doing
    - [X] Backlog
+      - [ ] Option einrichten in welche rss Datei wird der Artikel gespeichert, dafür nachschauen bei [[topic2zim]]
+         - [ ] die rss Dateien für die verschiedenen Bereiche anlegen siehe [[topic2zim]]
 
-## Features
+## Featuress
 
+This program can only save web articles not files for read it later.
 
 
 `` noweb.py -Rrss-feed-reinsert.sh rss-feed-reinsert.md > rss-feed-reinsert.sh && echo 'fertig' ``
@@ -18,21 +21,13 @@ Created 2023-06-07
 rssfile=$(echo "/home/christian/Gedankenspeicher/Gedankenspeicherwiki/CodeFabrik/rss-source.rss")
 sed -i "$ d" $rssfile
 tabs="$(xclip -selection clipboard -o)"
-today=$(date +"[[Zettelkasten:%Y:%m:%d|%Y-%m-%d]]")
-#sed -i "${l}i
-#" "$file"
-element=""
+#today=$(date +"[[Zettelkasten:%Y:%m:%d|%Y-%m-%d]]")
 lines="$(wc --lines <<< "$tabs")"
 lines="$(echo $(($lines/2)))"
 head -n -1 $rssfile > tmp.txt && mv tmp.txt $rssfile
-#echo $lines
-#echo $tabs
-#DELETE_THIS="$(<<< "$tabs" sed -e 's`[][\\/.*^$]`\\&`g')"
-#echo $DELETE_THIS
 for (( i=1 ; i<=$lines ; i++ ));
 do
       title=$(sed -n "${i}p" <(echo "$tabs"))
-      #title= "$(sed -r -n "${i}p" <<< $("$tabs" sed -e 's`[][\\/.*^$]`\\&`g') )"
       l="$( echo $(($i+1)) )"
       element=$(sed -r -n "${l}p" <(echo "$tabs"))
       echo "<item>" >> $rssfile
