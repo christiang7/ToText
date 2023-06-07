@@ -11,10 +11,12 @@
 	- [ ] nochmal [ttrename](ttrename.md) überprüfen wenn Benutzung über der Datei geht
 	- [ ] Wie verschieben von Dateien für bestimmte Themen? Eventuell über tags organisieren
 - [X] Backlog
+	- [ ] bei der Verschiebung und Umbennung von zim Seiten mal nachschauen, ob auch andere Dateien mit verschoben werden können
 	- [ ] bei [ttn.md](ttn.md) die html und Video Dateien nochmal anschauen wie nach Assets verschiebenß
 	- [ ] [zim-template-program](zim-template-program.md)
 	- [ ] Bei Assets Verschiebung noch einen Link für pdf und deren Bilder da lassen, die md nicht verlinken
 	- [ ] xournal Programmstarter so, dass automatisch, thumbnail aktualisiert wird und von einer pdf als Notizen abgespeichert wird
+	- [ ] alles in english schreiben
 	- [ ] Programme über libraries verbinden
 	
 ## Features

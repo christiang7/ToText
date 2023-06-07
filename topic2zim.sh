@@ -82,13 +82,14 @@ then
 				echo "$element"
 				if (($i % 2 != 0));
 				then
-				element=$(echo "${element}" | sed 's/\//-/g' | sed 's/:/;/g')
-				echo "$element"
+					element=$(echo "${element}" | sed 's/\//-/g' | sed 's/:/;/g' | sed 's/:/;/g' | sed "s/|/;/g" | sed "s/·/;/g" | sed "s/💤/;/g")
+					#title=$(echo "${title}" | sed 's/\//-/g' | sed 's/:/;/g' | sed "s/|/;/g" | sed "s/·/;/g" | sed "s/💤/;/g")
+					echo "$element"
 				fi
 				#echo ${i}
 				sed -i "${l} s,^,$element," "$file"
 				if [[ $i > 1 ]]
-					then
+				then
 					sed -i "${l}i
 					" "$file"
 				fi
