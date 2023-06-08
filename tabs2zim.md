@@ -3,11 +3,17 @@ Created Dienstag [Zettelkasten:2022:10:25]()
 Backlink [GedankenspeicherCoding](../GedankenspeicherCoding.md)
 
 - [X] **tabs2zim**
+    - [X] Doing
+    - [X] Backlog
 
 
-  ``noweb.py -Rtabs2zim.sh tabs2zim.md > tabs2zim.sh && echo 'fertig'``
+```bash
+noweb.py -Rtabs2zim.sh tabs2zim.md > tabs2zim.sh && echo 'fertig'
+```
 
-  ``chmod u+x tabs2zim.sh && ln -sf /home/christian/Gedankenspeicher/Gedankenspeicherwiki/CodeFabrik/GedankenspeicherCoding/tabs2zim.sh ~/.local/bin/tabs2zim.sh && echo 'fertig'``
+```bash
+ chmod u+x tabs2zim.sh && ln -sf /home/christian/Gedankenspeicher/Gedankenspeicherwiki/CodeFabrik/GedankenspeicherCoding/tabs2zim.sh ~/.local/bin/tabs2zim.sh && echo 'fertig'
+```
 
 ```bash
 {{tabs2zim.sh}}=

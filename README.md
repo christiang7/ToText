@@ -3,17 +3,18 @@
 - [X] Done
 - [X] Doing Interput (2)
 - [X] Doing (2)
-- [X] Next (2)
 	- [ ] Vermischung von tabs2zim und topic2zim 
 		- [ ] Bei [topic2zim](topic2zim.md) es zu jedem Thema eine neue Notiz einfügen lassen
-		- [ ] Bei [tabs2zim](tabs2zim.md) es bei jeden Thema einfügen lassen
-- [X] Planning (2)
+		- [ ] Bei [tabs2zim](tabs2zim.md) eine neue Tagesnotiz einfügen können
+	- [ ] Bei Downloads von Videos über Mediathekview das Korrekturprogramm in Markdown umwandeln
+- [X] Next (2)
+	- [ ] [template-program](template-program.md)
 	- [ ] nochmal [ttrename](ttrename.md) überprüfen wenn Benutzung über der Datei geht
+- [X] Planning (2)
+	- [ ] bei der Verschiebung und Umbennung von zim Seiten die zim Funktion umschreiben, dass auch andere Dateien mit verschoben werden können
 	- [ ] Wie verschieben von Dateien für bestimmte Themen? Eventuell über tags organisieren
 - [X] Backlog
-	- [ ] bei der Verschiebung und Umbennung von zim Seiten mal nachschauen, ob auch andere Dateien mit verschoben werden können
 	- [ ] bei [ttn.md](ttn.md) die html und Video Dateien nochmal anschauen wie nach Assets verschiebenß
-	- [ ] [zim-template-program](zim-template-program.md)
 	- [ ] Bei Assets Verschiebung noch einen Link für pdf und deren Bilder da lassen, die md nicht verlinken
 	- [ ] xournal Programmstarter so, dass automatisch, thumbnail aktualisiert wird und von einer pdf als Notizen abgespeichert wird
 	- [ ] alles in english schreiben

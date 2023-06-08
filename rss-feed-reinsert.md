@@ -3,6 +3,7 @@ Created [[2023-06-07]]
 
 - [X]  **rss-feed-reinsert**  [README.md](README.md)
    - [X] Doing
+      - [ ] Einen Download Stream einfügen
    - [X] Backlog
 
 ## Featuress
@@ -26,10 +27,14 @@ There exist options to choose in which place the tabs should be stored.
 
 ## Program
 
-`` noweb.py -Rrss-feed-reinsert.sh rss-feed-reinsert.md > rss-feed-reinsert.sh && echo 'fertig' ``
+```bash
+noweb.py -Rrss-feed-reinsert.sh rss-feed-reinsert.md > rss-feed-reinsert.sh && echo 'fertig'
+```
 
 
-`` chmod u+x rss-feed-reinsert.sh && ln -sf /home/christian/Gedankenspeicher/Gedankenspeicherwiki/CodeFabrik/GedankenspeicherCoding/rss-feed-reinsert.sh ~/.local/bin/rss-feed-reinsert.sh && echo 'fertig' ``
+```bash
+chmod u+x rss-feed-reinsert.sh && ln -sf /home/christian/Gedankenspeicher/Gedankenspeicherwiki/CodeFabrik/GedankenspeicherCoding/rss-feed-reinsert.sh ~/.local/bin/rss-feed-reinsert.sh && echo 'fertig'
+```
 
 
 ### Main program
@@ -46,7 +51,7 @@ There exist options to choose in which place the tabs should be stored.
 
 ```bash
 {{request}}=
-choose=$(zenity --height 350 --list --radiolist --print-column ALL --hide-header --column "Checkbox" --column "What" True Spass FALSE Assets FALSE Physik FALSE Mathematik FALSE Philosophie FALSE Naturwissenschaften_und_Instrumentarien FALSE CodeFabrik)
+choose=$(zenity --height 350 --list --radiolist --print-column ALL --hide-header --column "Checkbox" --column "What" True Spass FALSE Assets FALSE Physik FALSE Mathematik FALSE Philosophie FALSE Naturwissenschaften_und_Instrumentarien FALSE CodeFabrik FALSE Download)
 if [ ! $? -eq 1 ];
 then
    {{insert-feeds}}
@@ -72,6 +77,8 @@ case ${choose} in
    Naturwissenschaften_und_Instrumentarien) rssfile=$(echo "/home/christian/Gedankenspeicher/Gedankenspeicherwiki/Naturwissenschaften_und_Instrumentarien/Naturwissenschaften_und_Instrumentarien-rss.md")
       ;;
    CodeFabrik) rssfile=$(echo "/home/christian/Gedankenspeicher/Gedankenspeicherwiki/CodeFabrik/CodeFabrik-rss.md")
+      ;;
+   Download) rssfile=$(echo "/home/christian/Gedankenspeicher/Gedankenspeicherwiki/CodeFabrik/Download-rss.md")
       ;;
 esac
 
