@@ -2,11 +2,11 @@
 Created [Zettelkasten:2022:11:28]()
 
 - [X] **template-program**  >  2277-11-11 [README.md](README.md)
-       - [ ] Doing
-       - [X] Backlog
-              - [ ] probieren ob yad Ersatz für zenity funktioniert 
-              - [ ] Auswahlmöglichkeit zwischen in einem bereits vorhanden Projekt ein Programm erstellen und ein ganz neues Programmierprojekt
-                     - [ ] hinzufügen von git bei neuem Programmierprojekt, damit automatisch nen git repo erzeugt wird
+    - [X] Doing
+    - [X] Backlog
+       - [ ] probieren ob yad Ersatz für zenity funktioniert
+       - [ ] Auswahlmöglichkeit zwischen in einem bereits vorhanden Projekt ein Programm erstellen und ein ganz neues Programmierprojekt
+           - [ ] hinzufügen von git bei neuem Programmierprojekt, damit automatisch nen git repo erzeugt wird
 
 ## Features
 
@@ -14,11 +14,13 @@ Created [Zettelkasten:2022:11:28]()
 * nicht für zim-wiki
 * bei der ersten Abfrage müssen alle Felder ausgewählt werden
 
-
-``noweb.py -Rtemplate-program.sh template-program.md > template-program.sh && echo "fertig"``
+## Program
+`` noweb.py -Rtemplate-program.sh template-program.md > template-program.sh && echo "fertig" ``
 
 
 ``chmod u+x template-program.sh && ln -sf /home/christian/Gedankenspeicher/Gedankenspeicherwiki/CodeFabrik/GedankenspeicherCoding/template-program.sh ~/.local/bin/template-program.sh && echo "fertig"``
+
+### Main Program
 
 Das komplette Programm
 ```bash
@@ -30,6 +32,8 @@ folder="$(pwd)"
 @
 ```
 
+### Presets
+
 Einstellungen vor dem Start des eigentlichen Programms, hier für ein Shell Script ist diese Zeile notwendig
 
 ```bash
@@ -37,6 +41,9 @@ Einstellungen vor dem Start des eigentlichen Programms, hier für ein Shell Scri
 #!/bin/bash
 @
 ```
+
+### Where storing file
+
 Den Ordner erstellen, wo die neue Datei gespeichert werden soll. Dabei wird der Pfad der Datei genommen und für die späteren Links gespeichert
 ```bash
 {{Abruf md Datei Ordner}}=
@@ -51,6 +58,9 @@ Den Ordner erstellen, wo die neue Datei gespeichert werden soll. Dabei wird der 
 @
 ```
 
+### requests
+
+
 ```bash
 {{Abfragen}}=
        File="Program"
@@ -60,7 +70,7 @@ Den Ordner erstellen, wo die neue Datei gespeichert werden soll. Dabei wird der 
               --width 500 \
               --title "New Program?" \
               --text "Necessary Informations:" \
-              --add-entry "Filename" --add-entry "Extension" --add-entry "Shortname")
+              --add-entry "Filename" --add-entry "Extension" --add-entry "Shortname for language")
               
        if [ ! $? -eq 1 ]; 
        then
@@ -94,12 +104,15 @@ Den Ordner erstellen, wo die neue Datei gespeichert werden soll. Dabei wird der 
        fi
 @
 ```
+
+### create templates
+
 Die Erzeugung des templates
 
 ```bash
 {{create Template}}=
 echo -e "# ${File}" >> "${folder}"/"${File}".md
-echo -e "Created $(date +%Y-%m-%d)" >> "${folder}"/"${File}".md
+echo -e "Created [[$(date +%Y-%m-%d)]]" >> "${folder}"/"${File}".md
 echo -e "- [X] ${tags} **${File}** ${source} [README.md](README.md)" >> "${folder}"/"${File}".md
 echo -e "   - [X] Doing" >> "${folder}"/"${File}".md
 echo -e "   - [X] Backlog" >> "${folder}"/"${File}".md

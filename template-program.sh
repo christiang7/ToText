@@ -7,7 +7,7 @@ folder="$(pwd)"
               --width 500 \
               --title "New Program?" \
               --text "Necessary Informations:" \
-              --add-entry "Filename" --add-entry "Extension" --add-entry "Shortname")
+              --add-entry "Filename" --add-entry "Extension" --add-entry "Shortname for language")
 
        if [ ! $? -eq 1 ];
        then
@@ -38,7 +38,7 @@ folder="$(pwd)"
               fi
 
               echo -e "# ${File}" >> "${folder}"/"${File}".md
-              echo -e "Created $(date +%Y-%m-%d)" >> "${folder}"/"${File}".md
+              echo -e "Created [[$(date +%Y-%m-%d)]]" >> "${folder}"/"${File}".md
               echo -e "- [X] ${tags} **${File}** ${source} [README.md](README.md)" >> "${folder}"/"${File}".md
               echo -e "   - [X] Doing" >> "${folder}"/"${File}".md
               echo -e "   - [X] Backlog" >> "${folder}"/"${File}".md
