@@ -3,6 +3,9 @@ Created Dienstag [Zettelkasten:2022:10:25]()
 Backlink [GedankenspeicherCoding](../GedankenspeicherCoding.md)
 
 - [X] **topic2zim**  >  2277-11-11
+    - [X] Doing
+        - [ ] Kombination mit dem Programm [tabs2zim](tabs2zim.md)
+    - [X] Backlog
 
 
 ## Infos
@@ -135,20 +138,20 @@ additiontext=$(zenity --entry \
 if [ ! $? -eq 1 ];
 then
 	case ${choose} in
-		Spass) file=$(echo "/home/christian/Gedankenspeicher/Gedankenspeicherwiki/Spaß_Stream.md")
-			l=37;;
-		Assets) file=$(echo "/home/christian/Gedankenspeicher/Gedankenspeicherwiki/Assets.md")
-			l=37;;
-		Physik) file=$(echo "/home/christian/Gedankenspeicher/Gedankenspeicherwiki/Physik.md")
-			l=37;;
-		Mathematik) file=$(echo "/home/christian/Gedankenspeicher/Gedankenspeicherwiki/Mathematik.md")
-			l=37;;
-		Philosophie) file=$(echo "/home/christian/Gedankenspeicher/Gedankenspeicherwiki/Philosophie.md")
-			l=37;;
-		Naturwissenschaften_und_Instrumentarien) file=$(echo "/home/christian/Gedankenspeicher/Gedankenspeicherwiki/Naturwissenschaften_und_Instrumentarien.md")
-			l=37;;
-		CodeFabrik) file=$(echo "/home/christian/Gedankenspeicher/Gedankenspeicherwiki/CodeFabrik.md")
-			l=37;;
+		Spass) file=$(echo "/home/christian/Gedankenspeicher/Gedankenspeicherwiki/Spaß_Stream/Spaß_Stream_Archiv.md")
+			l=5;;
+		Assets) file=$(echo "/home/christian/Gedankenspeicher/Gedankenspeicherwiki/Assets/Assets_Archiv.md")
+			l=5;;
+		Physik) file=$(echo "/home/christian/Gedankenspeicher/Gedankenspeicherwiki/Physik/Physik_Archiv.md")
+			l=5;;
+		Mathematik) file=$(echo "/home/christian/Gedankenspeicher/Gedankenspeicherwiki/Mathematik/Mathematik_Archiv.md")
+			l=5;;
+		Philosophie) file=$(echo "/home/christian/Gedankenspeicher/Gedankenspeicherwiki/Philosophie/Philosophie_Archiv.md")
+			l=5;;
+		Naturwissenschaften_und_Instrumentarien) file=$(echo "/home/christian/Gedankenspeicher/Gedankenspeicherwiki/Naturwissenschaften_und_Instrumentarien/Naturwissenschaften_und_Instrumentarien_Archiv.md")
+			l=5;;
+		CodeFabrik) file=$(echo "/home/christian/Gedankenspeicher/Gedankenspeicherwiki/CodeFabrik/CodeFabrik_Archiv.md")
+			l=5;;
 	esac
 	echo $tabs
 	today=$(date +"[[Zettelkasten:%Y:%m:%d|%Y-%m-%d]]")
