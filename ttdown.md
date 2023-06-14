@@ -21,10 +21,10 @@ extens=${f##*.}
 name=$(basename "$f" .$extens)
 folder=$(echo ~/Gedankenspeicher/Archiv-Verschiebung/)
 Newname=$(zenity --entry \
-       --width 500 \
-       --title "Den Dateinamen ändern?" \
-       --text "Den Dateinamen ändern?" \
-       --entry-text "$name")
+	   --width 500 \
+	   --title "Den Dateinamen ändern?" \
+	   --text "Den Dateinamen ändern?" \
+	   --entry-text "$name")
 File=$(echo "$Newname"."$extens" | sed 's/ /_/g' | sed 's/:/;/g'| sed -e "s/'/_/g" | sed 's/\"//g'|  sed 's/&/n/g' | sed 's/\///g' | sed 's/|//g' | sed 's/\[/(/g' | sed 's/\]/)/g' | sed 's/@/at/g')
 mv "$1" "$folder""$File"
 #File=$(echo "$1" | sed 's/ /_/g' | sed 's/:/;/g'| sed -e "s/'/_/g" | sed 's/\"//g' |  sed 's/&/n/g' | sed 's/|//g' | sed 's/\[/(/g' | sed 's/\]/)/g' | sed 's/@/at/g')
@@ -33,21 +33,21 @@ f=$(basename "$File")
 
 #f=$(basename "$1")
 source=$(zenity --entry \
-       --width 500 \
-       --title "Noch eine Quelle hinzufügen?" \
-       --text "Noch eine Quelle hinzufügen?" \
-       --entry-text "$2")
+	   --width 500 \
+	   --title "Noch eine Quelle hinzufügen?" \
+	   --text "Noch eine Quelle hinzufügen?" \
+	   --entry-text "$2")
 #additiontext=$(yt-dlp --get-description ${source})
 tags=$(zenity --entry \
-       --width 500 \
-       --title "Noch Schlagwörter hinzufügen?" \
-       --text "Noch Schlagwörter hinzufügen?" \
-       --entry-text "$4")
+	   --width 500 \
+	   --title "Noch Schlagwörter hinzufügen?" \
+	   --text "Noch Schlagwörter hinzufügen?" \
+	   --entry-text "$4")
 additiontext=$(zenity --entry \
-       --width 500 \
-       --title "Noch etwas hinzufügen?" \
-       --text "Noch etwas hinzufügen?" \
-       --entry-text "$3")
+	   --width 500 \
+	   --title "Noch etwas hinzufügen?" \
+	   --text "Noch etwas hinzufügen?" \
+	   --entry-text "$3")
 touch "$folder""$File".md
 echo "Content-Type: text/x-zim-wiki" >> "$folder""$File".md
 echo "Wiki-Format: zim 0.6" >> "$folder""$File".md

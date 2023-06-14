@@ -18,41 +18,41 @@ extens2=${File2##*.}
 filename2=${File2%.*} #only the filename, here it is the original file
 
 source=$(zenity --entry \
-       --width 500 \
-       --title "Noch eine Quelle hinzufügen?" \
-       --text "Noch eine Quelle hinzufügen?" \
-       --entry-text "$2")
+	   --width 500 \
+	   --title "Noch eine Quelle hinzufügen?" \
+	   --text "Noch eine Quelle hinzufügen?" \
+	   --entry-text "$2")
 tags=$(zenity --entry \
-       --width 500 \
-       --title "Noch Schlagwörter hinzufügen?" \
-       --text "Noch Schlagwörter hinzufügen?" \
-       --entry-text "$3")
+	   --width 500 \
+	   --title "Noch Schlagwörter hinzufügen?" \
+	   --text "Noch Schlagwörter hinzufügen?" \
+	   --entry-text "$3")
 additiontext=$(zenity --entry \
-       --width 500 \
-       --title "Noch etwas hinzufügen?" \
-       --text "Noch etwas hinzufügen?" \
-       --entry-text "$4")
+	   --width 500 \
+	   --title "Noch etwas hinzufügen?" \
+	   --text "Noch etwas hinzufügen?" \
+	   --entry-text "$4")
 if [[ $extens2 == md ]]
 then
 	File=$filename2
 fi
 if [[ $tags != "" ]]
 then
-       sed -i "3 s/\*\*\[\[../$tags \*\*\[\[../" "$File".md
-       sed -i "4 s/\*\*\[\[../$tags \*\*\[\[../" "$File".md
+	   sed -i "3 s/\*\*\[\[../$tags \*\*\[\[../" "$File".md
+	   sed -i "4 s/\*\*\[\[../$tags \*\*\[\[../" "$File".md
 fi
 if [[ $source != "" ]]
 then
-       sed -i "3 s/\]\]/\]\] $source/" "$File".md
-       sed -i "4 s/\]\]/\]\] $source/" "$File".md
+	   sed -i "3 s/\]\]/\]\] $source/" "$File".md
+	   sed -i "4 s/\]\]/\]\] $source/" "$File".md
 fi
 if [[ $additiontext != "" ]]
 then
-       sed -i "s/\[\[..\/\]\]/\[\[..\/\]\]\n $additiontext/" "$File".md
+	   sed -i "s/\[\[..\/\]\]/\[\[..\/\]\]\n $additiontext/" "$File".md
 fi
 if zenity --question --text="Möchten Sie sich die Text nochmal anschauen?"
 then 
-       kate "$File".md 2>/dev/null &
+	   kate "$File".md 2>/dev/null &
 fi
 #sed -i "9 i$additiontext" "$File"
 @

@@ -3,9 +3,9 @@ Created Dienstag [Zettelkasten:2022:10:25]()
 Backlink [GedankenspeicherCoding](../GedankenspeicherCoding.md)
 
 - [X] **topic2zim**  >  2277-11-11
-    - [X] Doing
-        - [ ] Kombination mit dem Programm [tabs2zim](tabs2zim.md)
-    - [X] Backlog
+	- [X] Doing
+		- [ ] Kombination mit dem Programm [tabs2zim](tabs2zim.md)
+	- [X] Backlog
 
 
 ## Infos

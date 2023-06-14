@@ -2,11 +2,11 @@
 Created [2022-11-28]()
 
 - [X] **template-program** [README.md](README.md)
-    - [X] Doing
-    - [X] Backlog
-        - [ ] probieren ob yad Ersatz für zenity funktioniert
-        - [ ] Auswahlmöglichkeit zwischen in einem bereits vorhanden Projekt ein Programm erstellen und ein ganz neues Programmierprojekt
-            - [ ] hinzufügen von git bei neuem Programmierprojekt, damit automatisch nen git repo erzeugt wird
+	- [X] Doing
+	- [X] Backlog
+		- [ ] probieren ob yad Ersatz für zenity funktioniert
+		- [ ] Auswahlmöglichkeit zwischen in einem bereits vorhanden Projekt ein Programm erstellen und ein ganz neues Programmierprojekt
+			- [ ] hinzufügen von git bei neuem Programmierprojekt, damit automatisch nen git repo erzeugt wird
 
 ## Features
 
@@ -55,40 +55,40 @@ File="Program"
 extens="sh"
 langname="bash"
 abfrage=$(zenity --forms \
-       --width 500 \
-       --title "New Program?" \
-       --text "Necessary Informations:" \
-       --add-entry "Filename" --add-entry "Extension" --add-entry "Shortname for language")
+	   --width 500 \
+	   --title "New Program?" \
+	   --text "Necessary Informations:" \
+	   --add-entry "Filename" --add-entry "Extension" --add-entry "Shortname for language")
 
 if [ ! $? -eq 1 ];
 then
 
-       if [[ ! "$abfrage" = "" ]];
-       then
-              File=$(echo $abfrage | cut -s -d "|" -f 1)
-              extens=$(echo $abfrage | cut -s -d "|" -f 2)
-              langname=$(echo $abfrage | cut -s -d "|" -f 3)
-       fi
+	   if [[ ! "$abfrage" = "" ]];
+	   then
+			  File=$(echo $abfrage | cut -s -d "|" -f 1)
+			  extens=$(echo $abfrage | cut -s -d "|" -f 2)
+			  langname=$(echo $abfrage | cut -s -d "|" -f 3)
+	   fi
 
-       File=$(echo "$File" | sed 's/ /_/g' | sed 's/:/;/g'| sed -e "s/'/_/g" | sed 's/\"//g')
+	   File=$(echo "$File" | sed 's/ /_/g' | sed 's/:/;/g'| sed -e "s/'/_/g" | sed 's/\"//g')
 
-       source="Christian Gößl"
-       tags=$(echo "$3")
-       additiontext=$(echo "$4")
+	   source="Christian Gößl"
+	   tags=$(echo "$3")
+	   additiontext=$(echo "$4")
 
-       abfrage=$(zenity --forms \
-              --width 500 \
-              --title "Noch etwas hinzufügen?" \
-              --text "Noch etwas hinzufügen?" \
-              --add-entry "Quelle Standard: Christian Gößl" --add-entry "Schlagwörter" --add-entry "Weiteres")
-       if [[ ! "$abfrage" = "" ]];
-       then
-              source=$(echo $abfrage | cut -s -d "|" -f 1)
-              tags=$(echo $abfrage | cut -s -d "|" -f 2)
-              additiontext=$(echo $abfrage | cut -s -d "|" -f 3)
-       fi
+	   abfrage=$(zenity --forms \
+			  --width 500 \
+			  --title "Noch etwas hinzufügen?" \
+			  --text "Noch etwas hinzufügen?" \
+			  --add-entry "Quelle Standard: Christian Gößl" --add-entry "Schlagwörter" --add-entry "Weiteres")
+	   if [[ ! "$abfrage" = "" ]];
+	   then
+			  source=$(echo $abfrage | cut -s -d "|" -f 1)
+			  tags=$(echo $abfrage | cut -s -d "|" -f 2)
+			  additiontext=$(echo $abfrage | cut -s -d "|" -f 3)
+	   fi
 
-       {{create Template}}
+	   {{create Template}}
 fi
 @
 ```
