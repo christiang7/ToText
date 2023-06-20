@@ -2,7 +2,7 @@
 Created Donnerstag [Zettelkasten:2022:10:13]()
 Backlink [GedankenspeicherCoding](../GedankenspeicherCoding.md)
 
-* ☑ **ttdm**  >  2277-11-11
+- [X] **ttdm**
 
 
 ```bash
@@ -71,7 +71,7 @@ if [[ ! -e "$foldermonth"/"$calendarfile" ]]
 	#date +"[[Zettelkasten:%Y:%W|Week %W]]" -r "$File" >> "$foldermonth"/"$calendarfile"
 	date +"[[Zettelkasten:%Y:%m]]" -r "$File" >> "$foldermonth"/"$calendarfile"
 	echo -e "[[../]]"  >> "$foldermonth"/"$calendarfile"
-	date +"[*] ** %A %d %b %Y ** >  2277-11-11"  -r "$File" >> "$foldermonth"/"$calendarfile"
+	date +"[*] ** %A %d %b %Y ** "  -r "$File" >> "$foldermonth"/"$calendarfile"
 fi
 
 

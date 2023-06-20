@@ -1,6 +1,6 @@
 # wgettpic
 
-* ☑ **wgettpic**  
+- [X] **wgettpic**
 
 Created Donnerstag [Zettelkasten:2021:04:29]()
 Backlink  [GedankenspeicherCoding](../GedankenspeicherCoding.md)
@@ -60,7 +60,7 @@ then
         #date +"[[:Zettelkasten:%Y:Week %W|Week %W]]"  >> "$foldermonth"/"$calendarfile"
         date +"[[Zettelkasten:%Y:%m]]" >> "$foldermonth"/"$calendarfile"
         echo -e "[[../]]"  >> "$foldermonth"/"$calendarfile"
-        date +"[*] **%A %d %b %Y ** >  2277-11-11"  >> "$foldermonth"/"$calendarfile"
+        date +"[*] **%A %d %b %Y ** "  >> "$foldermonth"/"$calendarfile"
         #mv "$calendarfile" "$foldermonth"/"$calendarfile"
     fi
 

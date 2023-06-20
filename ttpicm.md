@@ -1,6 +1,6 @@
 # ttpicm
 
-* ☑ **ttpicm**  
+- [X] **ttpicm**
 
 Angelegt Montag [Zettelkasten:2021:05:03]()
 Backlink [GedankenspeicherCoding](../GedankenspeicherCoding.md)
@@ -24,7 +24,7 @@ then
     #date +"[[:Zettelkasten:%Y:%W|Week %W]]"   -r "$f">> "$foldermonth"/"$calendarfile"
     date +"[[Zettelkasten:%Y:%m]]"  -r "$f">> "$foldermonth"/"$calendarfile"
     echo -e "[[../]]"  >> "$foldermonth"/"$calendarfile"
-    date +"[*] **%A %d %b %Y ** >  2277-11-11"  -r "$f" >> "$foldermonth"/"$calendarfile"
+    date +"[*] **%A %d %b %Y ** "  -r "$f" >> "$foldermonth"/"$calendarfile"
     #mv "$calendarfile" "$foldermonth"/"$calendarfile"
 fi
 touch "$File".md

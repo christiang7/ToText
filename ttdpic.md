@@ -1,6 +1,6 @@
 # ttdpic
 
-* ☑ **[../ttdpic](./ttdpic)**
+- [X] **[../ttdpic](./ttdpic)**
 
 Text creation time:
 [Zettelkasten:2021:04:29]()

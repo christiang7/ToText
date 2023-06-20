@@ -1,6 +1,6 @@
 # wget-filename.sh
 
-* ☑ @ArcPROGRAMM @DOWNLOAD **[../wget-filename.sh](./wget-filename.sh)**
+- [X] @ArcPROGRAMM @DOWNLOAD **[../wget-filename.sh](./wget-filename.sh)**
 
 Text creation time:
 Di [Zettelkasten:2021:04:20]()

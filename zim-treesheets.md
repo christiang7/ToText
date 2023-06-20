@@ -2,7 +2,7 @@
 Created Freitag [Zettelkasten:2022:10:07]()
 Backlink [CodeFabrik:GedankenspeicherCoding](../GedankenspeicherCoding.md)
 
-* ☑ **zim-treesheets**  >  2277-11-11
+- [X] **zim-treesheets**
 
 
   ``noweb.py -Rzim-treesheets.sh zim-treesheets.md > zim-treesheets.sh && chmod u+x zim-treesheets.sh && ln -sf /home/christian/Gedankenspeicher/Gedankenspeicherwiki/Zettelkasten/ZetteL/CodeFabrik/GedankenspeicherCoding/zim-treesheets.sh ~/.local/bin/zim-treesheets.sh && echo 'fertig'``

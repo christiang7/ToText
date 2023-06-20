@@ -2,7 +2,7 @@
 Created [Zettelkasten:2023:03:03]()
 Backlink [GedankenspeicherCoding](../GedankenspeicherCoding.md)
 
-* ☑ **tta**   >  2277-11-11
+- [X] **tta**
 
 
 Program for linking files to the assets folder

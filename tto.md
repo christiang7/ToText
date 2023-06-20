@@ -1,10 +1,10 @@
 # tto
 
-* ☑ tto
+- [X] tto
 
 Das gleiche wie das Skript tt, nur wird hier nur die Datei erzeugt mit zim wiki Zusätzen, nicht mehr.
 
-* ☑ **[../tto](./tto)**
+- [X] **[../tto](./tto)**
 
 Text creation time:
 [Zettelkasten:2021:04:29]()

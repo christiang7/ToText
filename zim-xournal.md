@@ -2,7 +2,7 @@
 Created Mittwoch [Zettelkasten:2022:06:29]()
 Backlink [CodeFabrik:GedankenspeicherCoding](../GedankenspeicherCoding.md)
 
-* ☑ **zim-xournal**  >  2277-11-11
+- [X] **zim-xournal**
 
 
 ## Features

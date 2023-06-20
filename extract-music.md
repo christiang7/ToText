@@ -2,7 +2,7 @@
 Created Dienstag [Zettelkasten:2022:10:18]()
 Backlink [GedankenspeicherCoding](../GedankenspeicherCoding.md)
 
-* ☑ **extract-music**  >  2277-11-11
+- [X] **extract-music**
 
 
   ``noweb.py -Rextract-music.sh extract-music.md > extract-music.sh && echo 'fertig'``

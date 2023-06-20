@@ -2,7 +2,7 @@
 Created Donnerstag [Zettelkasten:2022:02:24]()
 Backlink [GedankenspeicherCoding](../GedankenspeicherCoding.md)
 
-* ☑ FRAGMENT **tts**
+- [X] FRAGMENT **tts**
 
 Anzeige von Dateien deren Text Beschreibung
 
@@ -10,10 +10,10 @@ Hier sind die Dolpin ServiceMenüs
 [KDE-Servicemenüs › Wiki › ubuntuusers-de]()
 
 
-* ☑ WEB How to get File Name and extension in bash|shell script programming <https://www.w3schools.io/terminal/bash-extract-file-extension/>
-* ☑ WEB Bash Scripting - How to check If File Exists - GeeksforGeeks <https://www.geeksforgeeks.org/bash-scripting-how-to-check-if-file-exists/>
-* ☑ WEB Zenity - Create GUI Dialog Boxes In Bash Scripts - OSTechNix <https://ostechnix.com/zenity-create-gui-dialog-boxes-in-bash-scripts/>
-* ☑ WEB Bash Conditional Statements - OSTechNix <https://ostechnix.com/bash-conditional-statements/>
+- [X] WEB How to get File Name and extension in bash|shell script programming <https://www.w3schools.io/terminal/bash-extract-file-extension/>
+- [X] WEB Bash Scripting - How to check If File Exists - GeeksforGeeks <https://www.geeksforgeeks.org/bash-scripting-how-to-check-if-file-exists/>
+- [X] WEB Zenity - Create GUI Dialog Boxes In Bash Scripts - OSTechNix <https://ostechnix.com/zenity-create-gui-dialog-boxes-in-bash-scripts/>
+- [X] WEB Bash Conditional Statements - OSTechNix <https://ostechnix.com/bash-conditional-statements/>
 
 
 

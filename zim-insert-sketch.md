@@ -2,7 +2,7 @@
 Created [Zettelkasten:2023:03:02]()
 Backlink [GedankenspeicherCoding](../GedankenspeicherCoding.md)
 
-* ☑ **zim-insert-sketch**   >  2277-11-11
+- [X] **zim-insert-sketch**
 
 
 

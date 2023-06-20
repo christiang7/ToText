@@ -2,7 +2,7 @@
 Created Freitag [Zettelkasten:2022:10:07]()
 Backlink [CodeFabrik:GedankenspeicherCoding](../GedankenspeicherCoding.md)
 
-* ☑ **zim-web-screenshot**  >  2277-11-11
+- [X] **zim-web-screenshot**
 
 
 [Zettelkasten:2022:05:01:Screenshots in Firefox offener tabs]()
@@ -48,7 +48,7 @@ noweb.py -Rzim-web-screenshot.sh zim-web-screenshot.md > zim-web-screenshot.sh &
         #date +"[[:Zettelkasten:%Y:Week %W|Week %W]]" >> "$foldermonth"/"$calendarfile"
         date +"[[Zettelkasten:%Y:%m]]" >> "$foldermonth"/"$calendarfile"
         echo -e "[[../]]"  >> "$foldermonth"/"$calendarfile"
-        date +"[*] ** %A %d %b %Y ** >  2277-11-11" >> "$foldermonth"/"$calendarfile"
+        date +"[*] ** %A %d %b %Y ** " >> "$foldermonth"/"$calendarfile"
     fi
     tags=$(zenity --entry \
           --width 500 \

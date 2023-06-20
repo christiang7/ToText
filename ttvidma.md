@@ -2,7 +2,7 @@
 Created Montag [Zettelkasten:2022:03:07]()
 Backlink [GedankenspeicherCoding](../GedankenspeicherCoding.md)
 
-* ☑ **ttvidma**  >  2277-11-11
+- [X] **ttvidma**
 
 
   ``noweb.py -Rttvidma ttvidma.md > ttvidma && chmod u+x ttvidma && echo 'fertig'``

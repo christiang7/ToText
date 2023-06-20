@@ -2,7 +2,7 @@
 Created Freitag [Zettelkasten:2022:05:20]()
 Backlink [GedankenspeicherCoding](../GedankenspeicherCoding.md)
 
-* ☑ **firefox-maff-export-txt**  >  2277-11-11
+- [X] **firefox-maff-export-txt**
 
 
   ``noweb.py -Rfirefox-maff-export-txt firefox-maff-export-txt.md > firefox-maff-export-txt && chmod u+x firefox-maff-export-txt && echo 'fertig'``

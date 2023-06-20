@@ -2,7 +2,7 @@
 Created Dienstag [Zettelkasten:2022:03:15]()
 Backlink [GedankenspeicherCoding](../GedankenspeicherCoding.md)
 
-* ☑ **ttop**  >  2277-11-11
+- [X] **ttop**
 
 
 Öffne die annotierte Datei

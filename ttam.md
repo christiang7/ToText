@@ -2,7 +2,7 @@
 Created [Zettelkasten:2023:03:06]()
 Backlink [CodeFabrik:GedankenspeicherCoding](../GedankenspeicherCoding.md)
 
-* [X] **ttam**   >  2277-11-11
+- [X] **ttam**
 
 	da sollte eventuell auch eingebaut werden, dass die originale Pfad in die Datei geschrieben wird
 	Zustände: 

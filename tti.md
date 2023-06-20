@@ -2,7 +2,7 @@
 Created Dienstag [Zettelkasten:2022:10:11]()
 Backlink [CodeFabrik]()
 
-* ☑ **tti**  >  2277-11-11
+- [X] **tti**
 
 
 ``noweb.py -Rtti tti.md > tti && chmod u+x tti && ln -sf /home/christian/Gedankenspeicher/Gedankenspeicherwiki/Zettelkasten/Gedankenwanderung/Programme/tti ~/.local/bin/tti && echo 'fertig'``

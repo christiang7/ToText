@@ -54,7 +54,7 @@ then
 				echo -e "Created $(date +[[Zettelkasten:%Y:%m:%d|%Y-%m-%d]])" >> "${folder}"/"${topicfile}"
 				echo -e "Backlink [[Zettelkasten]]" >> "${folder}"/"${topicfile}"
 				echo -e "[[../]]" >> "${folder}"/"${topicfile}"
-				echo -e "[*] ${tags} ** ${topic} ** >  2277-11-11" >> "${folder}"/"${topicfile}"
+				echo -e "[*] ${tags} ** ${topic} ** " >> "${folder}"/"${topicfile}"
 				echo -e "\n${additiontext}" >> "${folder}"/"${topicfile}"
 				echo -e "\n${tabs}" >> "${folder}"/"${topicfile}"
 				echo -e "\n===== $(date +[[Zettelkasten:%Y:%m:%d|%Y-%m-%d]]) =====" >> "${folder}".md

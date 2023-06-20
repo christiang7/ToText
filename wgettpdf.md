@@ -1,6 +1,6 @@
 # wgettpdf
 
-* ☑ **wgettpdf**  
+- [X] **wgettpdf**
 
 Created Freitag [Zettelkasten:2021:04:30]()
 Backlink [GedankenspeicherCoding](../GedankenspeicherCoding.md)

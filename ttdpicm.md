@@ -1,6 +1,6 @@
 # ttdpicm
 
-* ☑ **ttdpicm**  
+- [X] **ttdpicm**
 
 Created Freitag [Zettelkasten:2021:06:04]()
 Backlink [GedankenspeicherCoding](../GedankenspeicherCoding.md)

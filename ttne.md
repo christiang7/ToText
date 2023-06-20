@@ -2,12 +2,18 @@
 Created Dienstag [Zettelkasten:2022:11:01]()
 Backlink [GedankenspeicherCoding](../GedankenspeicherCoding.md)
 
-* ☑ **ttne**  >  2277-11-11
+- [X] **ttne**
 
 
 einen Zim Ordner mit txt Datei erstellen lassen irgendwo im Dateisystem
 
-  ``noweb.py -Rttne.sh ttne.bash > ttne.sh && chmod u+x ttne.sh && ln -sf /home/christian/Gedankenspeicher/Gedankenspeicherwiki/Zettelkasten/ZetteL/CadeFabrik/ttne.sh ~/.local/bin/ttne.sh && echo 'fertig'``
+  ```bash
+noweb.py -Rttne.sh ttne.md > ttne.sh  && echo 'fertig'
+ ```
+
+ ```bash
+chmod u+x ttne.sh  && ln -sf /home/christian/Gedankenspeicher/Gedankenspeicherwiki/Zettelkasten/ZetteL/CadeFabrik/ttne.sh ~/.local/bin/ttne.sh && echo 'fertig'
+  ```
 
 ```bash
 {{ttne.sh}}=
@@ -24,10 +30,10 @@ else
 fi
 
 Newname=$(zenity --entry \
-       --width 500 \
-       --title "Welchen Namen?" \
-       --text "Welchen Namen?" \
-       --entry-text "$filename")
+    --width 500 \
+    --title "Welchen Namen?" \
+    --text "Welchen Namen?" \
+    --entry-text "$filename")
 if [ ! $? -eq 1 ]; 
 then
 
@@ -41,15 +47,15 @@ then
   additiontext=$(echo "$4")
 
   abfrage=$(zenity --forms \
-        --width 500 \
-        --title "Noch etwas hinzufügen?" \
-        --text "Noch etwas hinzufügen?" \
-        --add-entry "Quelle" --add-entry "Schlagwörter" --add-entry "Weiteres")
+    --width 500 \
+    --title "Noch etwas hinzufügen?" \
+    --text "Noch etwas hinzufügen?" \
+    --add-entry "Quelle" --add-entry "Schlagwörter" --add-entry "Weiteres")
   if [[ ! "$abfrage" = "" ]]; 
   then
-      source=$(echo $abfrage | cut -s -d "|" -f 1)
-      tags=$(echo $abfrage | cut -s -d "|" -f 2)
-      additiontext=$(echo $abfrage | cut -s -d "|" -f 3)
+    source=$(echo $abfrage | cut -s -d "|" -f 1)
+    tags=$(echo $abfrage | cut -s -d "|" -f 2)
+    additiontext=$(echo $abfrage | cut -s -d "|" -f 3)
   fi
 
   mkdir -p "${folder}"/"${File}" 
@@ -59,7 +65,7 @@ then
   echo -e "Created $(date +"%A") $(date +[[Zettelkasten:%Y:%m:%d]])" >> "${folder}"/"${File}".md
   #echo -e "Backlink $([[Zettelkasten:%Y:%m:%d]])" >> "${folder}"/"${File}".md
   echo -e "[[../]]" >> "${folder}"/"${File}".md
-  echo -e "[*] ${tags} ** ${File} ** ${source} >  2277-11-11" >> "${folder}"/"${File}".md
+  echo -e "[*] ${tags} ** ${File} ** ${source} " >> "${folder}"/"${File}".md
   echo -e "\n${additiontext}" >> "${folder}"/"${File}".md
   #echo -e "\n${tabs}" >> "${folder}"/"${File}".md
 

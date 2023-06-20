@@ -1,6 +1,6 @@
 # ttdown
 
-* ☑ @ArcProgramm @Notiz @Anmerkungen  **[../ttdown](./ttdown)**
+- [X] @ArcProgramm @Notiz @Anmerkungen  **[../ttdown](./ttdown)**
 
 Text creation time: [Zettelkasten:2021:04:24]()
 Modification time: [Zettelkasten:2021:04:24]()

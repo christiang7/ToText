@@ -2,7 +2,7 @@
 Created Donnerstag [Zettelkasten:2022:12:29]()
 Backlink [GedankenspeicherCoding](../GedankenspeicherCoding.md)
 
-* ☑ @NOTIZ @PROGRAMM @SCRIPT  **zim-insert-picture.sh**  >  2277-11-11
+- [X] @NOTIZ @PROGRAMM @SCRIPT  **zim-insert-picture.sh**
 
 
 Für die Benutzung von Krita und der export in der Kommandozeile, weil Krita speichert die Layer Einstellungen nicht in der Datei ab.

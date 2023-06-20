@@ -2,7 +2,7 @@
 Created Dienstag [Zettelkasten:2022:06:14]()
 Backlink [GedankenspeicherCoding](../GedankenspeicherCoding.md)
 
-* ☑ **ttdel**  >  2277-11-11
+- [X] **ttdel**
 
 
 

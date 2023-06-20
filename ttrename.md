@@ -10,7 +10,7 @@ Backlink [GedankenspeicherCoding](../GedankenspeicherCoding.md)
 
 
 
-* ☑ WEB bash - Extract string from brackets - Stack Overflow 
+- [X] WEB bash - Extract string from brackets - Stack Overflow
 
  <https://stackoverflow.com/questions/7209629/extract-string-from-brackets>
 to extract the file from the txt file to correct the name
@@ -21,7 +21,7 @@ to extract the file from the txt file to correct the name
 
 
 
-* ☑ WEB Zenity - Create GUI Dialog Boxes In Bash Scripts - OSTechNix 
+- [X] WEB Zenity - Create GUI Dialog Boxes In Bash Scripts - OSTechNix
 
  <https://ostechnix.com/zenity-create-gui-dialog-boxes-in-bash-scripts/>
 

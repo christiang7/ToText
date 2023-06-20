@@ -1,6 +1,6 @@
 # ttd
 
-* ☑ **[../ttd](./ttd)** 
+- [X] **[../ttd](./ttd)**
 
 In einem Verzeichernis alle Dateien mit einer Textdatei versehen
 Text creation time:

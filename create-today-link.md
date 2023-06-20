@@ -2,7 +2,7 @@
 Created Dienstag [Zettelkasten:2022:06:28]()
 Backlink [GedankenspeicherCoding](../GedankenspeicherCoding.md)
 
-* ☑ **create-today-link**  >  2277-11-11
+- [X] **create-today-link**
 
 
 Erzeugung eines Ordners der immer auf den aktuellen Ordner vom Zim Journal zeigt
@@ -32,7 +32,7 @@ Beispiel
 	#date +"[[Zettelkasten:%Y:%W|Week %W]]" >> "$foldermonth"/"$calendarfile"
 	#date +"[[Zettelkasten:%Y:%m]]" >> "$foldermonth"/"$calendarfile"
 	#echo -e "[[../]]"  >> "$foldermonth"/"$calendarfile"
-	#date +"[*] ** %A %d %b %Y ** >  2277-11-11" >> "$foldermonth"/"$calendarfile"
+	#date +"[*] ** %A %d %b %Y ** " >> "$foldermonth"/"$calendarfile"
 	#fi
 	mkdir -p $folder
 	echo $folder

@@ -1,25 +1,25 @@
 # zim-script
 
-* ☑ @ArcVORLAGE @ArcPROGRAMM @SCRIPT @Zim  **zim-script**  !!
+- [X] @ArcVORLAGE @ArcPROGRAMM @SCRIPT @Zim  **zim-script**  !!
 
 Created Samstag 17 April 2021 [17.04.2021]()
 
 
-* ☑ WEB terminal - Execute a command in a separate konsole then let users type commands - Unix & Linux Stack Exchange 
+- [X] WEB terminal - Execute a command in a separate konsole then let users type commands - Unix & Linux Stack Exchange
 
  <https://unix.stackexchange.com/questions/613274/execute-a-command-in-a-separate-konsole-then-let-users-type-commands>
 
-* ☑ WEB bash - Run commands in a terminal, then let me type more commands - Unix & Linux Stack Exchange 
+- [X] WEB bash - Run commands in a terminal, then let me type more commands - Unix & Linux Stack Exchange
 
  <https://unix.stackexchange.com/questions/234247/run-commands-in-a-terminal-then-let-me-type-more-commands>
 
 
-* ☑ WEB pass a command as an argument to bash script - Stack Overflow 
+- [X] WEB pass a command as an argument to bash script - Stack Overflow
 
  <https://stackoverflow.com/questions/15749618/pass-a-command-as-an-argument-to-bash-script>
 
 
-* ☑ WEB shell - Redirect stderr and stdout in Bash - Stack Overflow 
+- [X] WEB shell - Redirect stderr and stdout in Bash - Stack Overflow
 
  <https://stackoverflow.com/questions/637827/redirect-stderr-and-stdout-in-bash>
 

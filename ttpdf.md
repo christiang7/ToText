@@ -1,6 +1,6 @@
 # ttpdf
 
-* ☑ **[../ttpdf](./ttpdf)**
+- [X] **[../ttpdf](./ttpdf)**
 
 Text creation time:
 [Zettelkasten:2021:04:29]()
@@ -18,7 +18,7 @@ touch "$File".md
 echo "Content-Type: text/x-zim-wiki" >> "$File".md
 echo "Wiki-Format: zim 0.6" >> "$File".md
 echo "===== $f =====" >> "$File".md
-echo "[*] @ARTIKEL $3 **[[../$f]] >  2277-11-11 $2**" >> "$File".md
+echo "[*] @ARTIKEL $3 **[[../$f]]  $2**" >> "$File".md
 echo "Text creation time: $(date +"[[Zettelkasten:%Y:%m:%d]]")" >> "$File".md
 echo "Modification time: $(date +"[[Zettelkasten:%Y:%m:%d]]" -r "$1")" >> "$File".md
 echo -e "[[../]]\n$4\n" >> "$File".md

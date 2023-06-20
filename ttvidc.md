@@ -2,7 +2,7 @@
 Created Montag [Zettelkasten:2022:03:07]()
 Backlink [CodeFabrik:GedankenspeicherCoding](../GedankenspeicherCoding.md)
 
-- [X] FRAGMENT **ttvidc**  >  2277-11-11
+- [X] FRAGMENT **ttvidc**
 	- [ ] Anwendung testen
 
 ## Features

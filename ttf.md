@@ -2,7 +2,7 @@
 Created Freitag [Zettelkasten:2022:05:20]()
 Backlink [CodeFabrik]()
 
-* ☑ **ttf**  >  2277-11-11
+- [X] **ttf**
 
 
 Ordner für die txt Datei erzeugen

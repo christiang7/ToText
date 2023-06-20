@@ -1,6 +1,6 @@
 # ttviddown
 
-* ☑ **ttviddown**  
+- [X] **ttviddown**
 
 Angelegt Donnerstag [Zettelkasten:2021:05:27]()
 Backlink [GedankenspeicherCoding](../GedankenspeicherCoding.md)

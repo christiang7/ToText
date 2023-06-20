@@ -2,16 +2,20 @@
 Created Montag [Zettelkasten:2022:11:28]()
 Backlink [GedankenspeicherCoding](../GedankenspeicherCoding.md)
 
-- [X] **zim-template-program**  >  2277-11-11 [README](README.md)
+- [X] **zim-template-program**   [README](README.md)
 	- [ ] hinzufügen von git, damit automatisch nen git repo erzeugt wird
 	- [ ] Struktur überdenken mit README Datei und das die Datei in das Repo erzeugt wird und nicht auf der Ebene der txt Datei
 	- [ ] probieren ob yad Ersatz für zenity funktioniert 
 
 
-``noweb.py -Rzim-template-program.sh zim-template-program.md > zim-template-program.sh && echo "fertig"``
+```bash
+noweb.py -Rzim-template-program.sh zim-template-program.md > zim-template-program.sh && echo "fertig"
+```
 
 
-``chmod u+x zim-template-program.sh && ln -sf /home/christian/Gedankenspeicher/Gedankenspeicherwiki/Zettelkasten/ZetteL/GedankenspeicherCoding/zim-template-program.sh ~/.local/bin/zim-template-program.sh && echo "fertig"``
+```bash
+chmod u+x zim-template-program.sh && ln -sf /home/christian/Gedankenspeicher/Gedankenspeicherwiki/Zettelkasten/ZetteL/GedankenspeicherCoding/zim-template-program.sh ~/.local/bin/zim-template-program.sh && echo "fertig"
+```
 
 Das komplette Programm
 ```bash
@@ -95,8 +99,8 @@ echo -e "Created $(date +[[Zettelkasten:%Y:%m:%d]])" >> "${folder}"/"${File}".md
 echo -e "Backlink [[$wikipath:$FullFilename]]" >> "${folder}"/"${File}".md
 #"${filepath}.md
 #echo -e "$([[Zettelkasten:%Y:%m:%d]])" >> "${folder}"/"${File}".md
-echo -e "[[../]]" >> "${folder}"/"${File}".md
-echo -e "[*] ${tags} ** ${File} ** ${source} >  2277-11-11" >> "${folder}"/"${File}".md
+#echo -e "[[../]]" >> "${folder}"/"${File}".md
+echo -e "[*] ${tags} ** ${File} ** ${source} " >> "${folder}"/"${File}".md
 echo -e "\n${additiontext}" >> "${folder}"/"${File}".md
 echo -e "\n''noweb.py -R${File}.${extens} ${File}.md > ${File}.${extens} && echo 'fertig'''" >> "${folder}"/"${File}".md
 echo -e "\n\n''chmod u+x ${File}.${extens} && ln -sf "${folder}"/${File}.${extens} ~/.local/bin/${File}.${extens} && echo 'fertig'''" >> "${folder}"/"${File}".md

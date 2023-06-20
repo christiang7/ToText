@@ -2,7 +2,7 @@
 Created Mittwoch [Zettelkasten:2022:03:16]()
 Backlink [GedankenspeicherCoding](../GedankenspeicherCoding.md)
 
-* ☑ **zim-ipe**  >  2277-11-11
+- [X] **zim-ipe**
 
 
   ``noweb.py -Rzim-ipe.sh zim-ipe.md > zim-ipe.sh && chmod u+x zim-ipe.sh && echo 'fertig'``

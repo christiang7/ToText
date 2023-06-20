@@ -2,7 +2,7 @@
 Created Freitag [Zettelkasten:2022:02:25]()
 Backlink [GedankenspeicherCoding](../GedankenspeicherCoding.md)
 
-* ☑ **ttnc** 
+- [X] **ttnc**
 
 
   ``noweb.py -Rttnc ttnc.md > ttnc && chmod u+x ttnc && echo 'fertig'``
@@ -36,7 +36,7 @@ function Timestamps(){
 
 if [[ pdf == $extens ]]
 then
-	sed -i "1 i[*] @ARTIKEL **[[../$f]] >  2277-11-11 $2**" "$File".md
+	sed -i "1 i[*] @ARTIKEL **[[../$f]]  $2**" "$File".md
 	Wikiprev
 	Timestamps
 	echo -e "[[../]]\n$2\n" >> "$File".md

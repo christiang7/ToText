@@ -1,6 +1,6 @@
 # wgettwpdf
 
-* ☑ >2277-11-11 @AkPROGRAMM **wgettwpdf**  
+- [X] >2277-11-11 @AkPROGRAMM **wgettwpdf**
 
 Angelegt Donnerstag [Zettelkasten:2021:05:20]()
 Backlink [GedankenspeicherCoding](../GedankenspeicherCoding.md)

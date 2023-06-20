@@ -2,7 +2,7 @@
 Created Mittwoch [Zettelkasten:2022:06:08]()
 Backlink [GedankenspeicherCoding](../GedankenspeicherCoding.md)
 
-* ☑ **zim-dot-create**  >  2277-11-11
+- [X] **zim-dot-create**
 
 
   ``noweb.py -Rzim-dot-create.sh zim-dot-create.md > zim-dot-create.sh && chmod u+x zim-dot-create.sh && ln -sf /home/christian/Gedankenspeicher/Gedankenspeicherwiki/Zettelkasten/Gedankenwanderung/Programme/zim-dot-create.sh ~/.local/bin/zim-dot-create.sh && echo 'fertig'``

@@ -2,7 +2,7 @@
 Created Samstag [Zettelkasten:2022:04:09]()
 Backlink [GedankenspeicherCoding](../GedankenspeicherCoding.md)
 
-* ☑ **instadown**  >  2277-11-11
+- [X] **instadown**
 
 
 

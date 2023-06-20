@@ -2,7 +2,7 @@
 Created Dienstag [Zettelkasten:2022:10:11]()
 Backlink [GedankenspeicherCoding](../GedankenspeicherCoding.md)
 
-* ☑ **zim-start-programm**  >  2277-11-11
+- [X] **zim-start-programm**
 
 
   ``noweb.py -Rzim-start-programm.sh zim-start-programm.md > zim-start-programm.sh && echo 'fertig'``

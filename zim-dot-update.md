@@ -2,7 +2,7 @@
 Created Mittwoch [Zettelkasten:2022:06:08]()
 Backlink [GedankenspeicherCoding](../GedankenspeicherCoding.md)
 
-* ☑ **zim-dot-update**  >  2277-11-11
+- [X] **zim-dot-update**
 
 
 

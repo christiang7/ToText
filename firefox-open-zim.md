@@ -2,7 +2,7 @@
 Created Montag [Zettelkasten:2022:12:19]()
 Backlink [GedankenspeicherCoding](../GedankenspeicherCoding.md)
 
-* ☑ @Firefox @Zim @Wiki  **firefox-open-zim**  >  2277-11-11
+- [X] @Firefox @Zim @Wiki  **firefox-open-zim**
 
 
 

@@ -1,6 +1,6 @@
 # ttpdfl
 
-* ☑ **ttpdfl**  
+- [X] **ttpdfl**
 
 Created Samstag [Zettelkasten:2021:06:05]()
 Backlink [GedankenspeicherCoding](../GedankenspeicherCoding.md)
@@ -18,7 +18,7 @@ mkdir -p $folder
 touch "$File".md
 echo "Content-Type: text/x-zim-wiki" >> "$File".md
 echo "Wiki-Format: zim 0.6" >> "$File".md
-echo "[*] @ARTIKEL **[[../$f]] >  2277-11-11 $2**" >> "$File".md
+echo "[*] @ARTIKEL **[[../$f]]  $2**" >> "$File".md
 echo "Text creation time:" >> "$File".md
 date +"[[Zettelkasten:%Y:%m:%d]]">> "$File".md
 echo "Modification time:" >> "$File".md

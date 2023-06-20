@@ -2,7 +2,7 @@
 Created Montag [Zettelkasten:2022:02:21]()
 Backlink[ GedankenspeicherCoding](../GedankenspeicherCoding.md)
 
-* ☑ **ttpicl**  
+- [X] **ttpicl**
 
 
   ``noweb.py -Rttpicl ttpicl.md > ttpicl && chmod u+x ttpicl && echo 'fertig'``

@@ -2,7 +2,7 @@
 Created Dienstag [Zettelkasten:2022:10:18]()
 Backlink [GedankenspeicherCoding](../GedankenspeicherCoding.md)
 
-* ☑ **Download-Music**  >  2277-11-11
+- [X] **Download-Music**
 
 
   ``noweb.py -RDownload-Music.sh Download-Music.md > Download-Music.sh && echo 'fertig'``

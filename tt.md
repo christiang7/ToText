@@ -3,7 +3,7 @@
 Das ist das Skript zum erstellen von Textdateien für andere uneditierbare Dateien
 
 
-* ☑ **[../tt](./tt)**
+- [X] **[../tt](./tt)**
 
 Text creation time:
 [Zettelkasten:2021:04:29]()

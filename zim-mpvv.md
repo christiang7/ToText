@@ -1,6 +1,6 @@
 # zim-mpvv
 
-* ☑ @ArcPROGRAMM @Zim @VIDEO **zim-mpvv**  
+- [X] @ArcPROGRAMM @Zim @VIDEO **zim-mpvv**
 
 Created Samstag [Zettelkasten:2021:04:24]()
 Backlink [Zettelkasten:2021:04:24]()

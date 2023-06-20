@@ -1,6 +1,6 @@
 # ttvid2
 
-* ☑ **ttvid2**  
+- [X] **ttvid2**
 
 Created Montag [Zettelkasten:2021:10:18]()
 Backlink [CodeArbeitsflaeche]()

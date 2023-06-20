@@ -1,6 +1,6 @@
 # zim-clip-time
 
-* ☑ **zim-clip-time**  
+- [X] **zim-clip-time**
 
 Created Freitag [Zettelkasten:2021:10:01]()
 Backlink [GedankenspeicherCoding](../GedankenspeicherCoding.md)

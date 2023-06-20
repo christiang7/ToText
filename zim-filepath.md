@@ -2,15 +2,15 @@
 Created Sonntag [Zettelkasten:2022:11:06]()
 Backlink [GedankenspeicherCoding](../GedankenspeicherCoding.md)
 
-* ☑ **zim-filepath**  >  2277-11-11
+- [X] **zim-filepath**
 
 
 
-* ☑ WEB bash - Readlink - How to crop full path? - Stack Overflow 
+- [X] WEB bash - Readlink - How to crop full path? - Stack Overflow
 
  <https://stackoverflow.com/questions/26341845/readlink-how-to-crop-full-path>
 
-* ☑ WEB readlink() — Read the value of a symbolic link - IBM Documentation 
+- [X] WEB readlink() — Read the value of a symbolic link - IBM Documentation
 
  <https://www.ibm.com/docs/en/zos/2.4.0?topic=functions-readlink-read-value-symbolic-link>
 

@@ -1,10 +1,10 @@
 # ttM
 
-* ☑ ttM
+- [X] ttM
 
 Umbenennung von Datei und der zugehörigen txt Datei, falls sich die original Datei ändert
 
-* ☑ **[../ttM](./ttM)**
+- [X] **[../ttM](./ttM)**
 
 Text creation time:
 [Zettelkasten:2021:04:29]()

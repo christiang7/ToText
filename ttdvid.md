@@ -1,6 +1,6 @@
 # ttdvid
 
-* ☑ **ttdvid**  
+- [X] **ttdvid**
 
 Created Sonntag [Zettelkasten:2021:05:23]()
 Backlink [GedankenspeicherCoding](../GedankenspeicherCoding.md)

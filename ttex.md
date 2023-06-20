@@ -1,5 +1,5 @@
 # ttex
-* ☑ **[../ttex](./ttex)**
+- [X] **[../ttex](./ttex)**
 
 - [X] ttex 
 

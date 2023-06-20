@@ -1,6 +1,6 @@
 # wgett
 
-* ☑ **wgett**  
+- [X] **wgett**
 
 Created Donnerstag [Zettelkasten:2021:04:29]()
 Backlink [GedankenspeicherCoding](../GedankenspeicherCoding.md)

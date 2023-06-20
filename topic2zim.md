@@ -2,7 +2,7 @@
 Created Dienstag [Zettelkasten:2022:10:25]()
 Backlink [GedankenspeicherCoding](../GedankenspeicherCoding.md)
 
-- [X] **topic2zim**  >  2277-11-11
+- [X] **topic2zim**
 	- [X] Doing
 		- [ ] Kombination mit dem Programm [tabs2zim](tabs2zim.md)
 	- [X] Backlog
@@ -10,15 +10,15 @@ Backlink [GedankenspeicherCoding](../GedankenspeicherCoding.md)
 
 ## Infos
 
-* ☑ WEB sed Substitution With Variables | Baeldung on Linux 
+- [X] WEB sed Substitution With Variables | Baeldung on Linux
 
  https://www.baeldung.com/linux/sed-substitution-variables
 
-* ☑ WEB Using sed With a Literal String Instead of an Input File | Baeldung on Linux 
+- [X] WEB Using sed With a Literal String Instead of an Input File | Baeldung on Linux
 
  https://www.baeldung.com/linux/sed-with-string
 
-* ☑ WEB 12 Useful 'sed' Commands In Linux | LinuxTeck 
+- [X] WEB 12 Useful 'sed' Commands In Linux | LinuxTeck
 
  https://www.linuxteck.com/sed-commands-in-linux/
 
@@ -116,7 +116,7 @@ then
 		echo -e "Created $(date +[[Zettelkasten:%Y:%m:%d|%Y-%m-%d]])" >> "${folder}"/"${topicfile}"
 		echo -e "Backlink [[Zettelkasten]]" >> "${folder}"/"${topicfile}"
 		echo -e "[[../]]" >> "${folder}"/"${topicfile}"
-		echo -e "[*] ${tags} ** ${topic} ** >  2277-11-11" >> "${folder}"/"${topicfile}"
+		echo -e "[*] ${tags} ** ${topic} ** " >> "${folder}"/"${topicfile}"
 		echo -e "\n${additiontext}" >> "${folder}"/"${topicfile}"
 		echo -e "\n${tabs}" >> "${folder}"/"${topicfile}"
 		echo -e "\n===== $(date +[[Zettelkasten:%Y:%m:%d|%Y-%m-%d]]) =====" >> "${folder}".md

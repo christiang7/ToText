@@ -1,6 +1,6 @@
 # wget-d.sh
 
-* ☑ **[../wget-d.sh](./wget-d.sh)**
+- [X] **[../wget-d.sh](./wget-d.sh)**
 
 Text creation time:
 Di 20. Apr 15:15:16 CEST 2021

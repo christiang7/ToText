@@ -2,7 +2,7 @@
 Created Dienstag [Zettelkasten:2022:10:18]()
 Backlink [GedankenspeicherCoding](../GedankenspeicherCoding.md)
 
-* ☑ **Download-Video-select**  >  2277-11-11
+- [X] **Download-Video-select**
 
 
   ``noweb.py -RDownload-Video-select.sh Download-Video-select.md > Download-Video-select.sh && echo 'fertig'``
