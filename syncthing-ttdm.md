@@ -5,8 +5,12 @@ Backlink [GedankenspeicherCoding](../GedankenspeicherCoding.md)
 * ☑ **syncthing-ttdm**  >  2277-11-11
 
 
-  ``noweb.py -Rsyncthing-ttdm.sh syncthing-ttdm.md > syncthing-ttdm.sh && chmod u+x syncthing-ttdm.sh && ln -sf /home/christian/Gedankenspeicher/Gedankenspeicherwiki/Zettelkasten/ZetteL/CodeFabrik/syncthing-ttdm.sh ~/.local/bin/syncthing-ttdm.sh && echo 'fertig'``
-
+```bash
+noweb.py -Rsyncthing-ttdm.sh syncthing-ttdm.md > syncthing-ttdm.sh && echo 'fertig'
+```
+```bash
+chmod u+x syncthing-ttdm.sh && ln -sf /home/christian/Gedankenspeicher/Gedankenspeicherwiki/Zettelkasten/ZetteL/CodeFabrik/syncthing-ttdm.sh ~/.local/bin/syncthing-ttdm.sh && echo 'fertig'
+```
 ```bash
 {{syncthing-ttdm.sh}}=
 #!/bin/bash
@@ -71,7 +75,7 @@ do
 		echo "Content-Type: text/x-zim-wiki" >> "$foldermonth"/"$calendarfile"
 		echo "Wiki-Format: zim 0.6" >> "$foldermonth"/"$calendarfile"
 		date +"===== %A %d %b %Y =====" -r "$File" >> "$foldermonth"/"$calendarfile"
-		date +"[[Zettelkasten:%Y:Week %W|Week %W]]" -r "$File" >> "$foldermonth"/"$calendarfile"
+		#date +"[[Zettelkasten:%Y:Week %W|Week %W]]" -r "$File" >> "$foldermonth"/"$calendarfile"
 		date +"[[Zettelkasten:%Y:%m]]" -r "$File" >> "$foldermonth"/"$calendarfile"
 		echo -e "[[../]]"  >> "$foldermonth"/"$calendarfile"
 		date +"[*] ** %A %d %b %Y ** >  2277-11-11"  -r "$File" >> "$foldermonth"/"$calendarfile"

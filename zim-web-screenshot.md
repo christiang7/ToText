@@ -15,7 +15,9 @@ Backlink [CodeFabrik:GedankenspeicherCoding](../GedankenspeicherCoding.md)
 
 ``tesseract -l eng 2209.14792.pdf.png stdout``
 
-  ``noweb.py -Rzim-web-screenshot.sh zim-web-screenshot.md > zim-web-screenshot.sh && echo 'fertig'``
+  ```bash
+noweb.py -Rzim-web-screenshot.sh zim-web-screenshot.md > zim-web-screenshot.sh && echo 'fertig'
+  ```
 
 
 ``chmod u+x zim-web-screenshot.sh && ln -sf /home/christian/Gedankenspeicher/Gedankenspeicherwiki/Zettelkasten/ZetteL/CodeFabrik/GedankenspeicherCoding/zim-web-screenshot.sh ~/.local/bin/zim-web-screenshot.sh && echo 'fertig'``
@@ -43,7 +45,7 @@ Backlink [CodeFabrik:GedankenspeicherCoding](../GedankenspeicherCoding.md)
         echo "Content-Type: text/x-zim-wiki" >> "$foldermonth"/"$calendarfile"
         echo "Wiki-Format: zim 0.6" >> "$foldermonth"/"$calendarfile"
         date +"===== %A %d %b %Y =====" >> "$foldermonth"/"$calendarfile"
-        date +"[[:Zettelkasten:%Y:Week %W|Week %W]]" >> "$foldermonth"/"$calendarfile"
+        #date +"[[:Zettelkasten:%Y:Week %W|Week %W]]" >> "$foldermonth"/"$calendarfile"
         date +"[[Zettelkasten:%Y:%m]]" >> "$foldermonth"/"$calendarfile"
         echo -e "[[../]]"  >> "$foldermonth"/"$calendarfile"
         date +"[*] ** %A %d %b %Y ** >  2277-11-11" >> "$foldermonth"/"$calendarfile"

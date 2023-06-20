@@ -13,18 +13,6 @@ There exist options to choose in which place the tabs should be stored.
 
 ## Infos
 
-[*] WEB 3 Ways to Create an RSS Feed - wikiHow
- https://www.wikihow.com/Create-an-RSS-Feed
-[*] WEB GitHub - powderblock/PyRSS: RSS reader in Python built on feedparser.
- https://github.com/powderblock/PyRSS
-[*] WEB GitHub - icetemple/genrss: RSS generator for python
- https://github.com/icetemple/genrss
-[*] WEB Quickstart — GenRSS 1.0.0 documentation
- https://genrss.readthedocs.io/en/latest/quickstart.html
-[*] WEB How to Get an RSS Feed for a YouTube Channel
- https://danielmiessler.com/p/rss-feed-youtube-channel/
-
-
 ## Program
 
 ```bash
@@ -41,6 +29,7 @@ chmod u+x rss-feed-reinsert.sh && ln -sf /home/christian/Gedankenspeicher/Gedank
 
 ```bash
 {{rss-feed-reinsert.sh}}=
+#!/bin/bash
 {{request}}
 
 @

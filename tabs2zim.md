@@ -38,7 +38,7 @@ then
 	echo "Content-Type: text/x-zim-wiki" >> "$foldermonth"/"$calendarfile"
 	echo "Wiki-Format: zim 0.6" >> "$foldermonth"/"$calendarfile"
 	date +"===== %A %d %b %Y =====" >> "$foldermonth"/"$calendarfile"
-	date +"[[Zettelkasten:%Y:Week %W|Week %W]]">> "$foldermonth"/"$calendarfile"
+	#date +"[[Zettelkasten:%Y:Week %W|Week %W]]">> "$foldermonth"/"$calendarfile"
 	date +"[[Zettelkasten:%Y:%m]]" >> "$foldermonth"/"$calendarfile"
 	echo -e "[[../]]"  >> "$foldermonth"/"$calendarfile"
 	date +"[*] ** %A %d %b %Y ** >  2277-11-11" >> "$foldermonth"/"$calendarfile"

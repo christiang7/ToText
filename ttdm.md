@@ -5,7 +5,12 @@ Backlink [GedankenspeicherCoding](../GedankenspeicherCoding.md)
 * ☑ **ttdm**  >  2277-11-11
 
 
-  ``noweb.py -Rttdm ttdm.md > ttdm && chmod u+x ttdm && ln -sf /home/christian/Gedankenspeicher/Gedankenspeicherwiki/Zettelkasten/Gedankenwanderung/Programme/ttdm ~/.local/bin/ttdm && echo 'fertig'``
+```bash
+noweb.py -Rttdm ttdm.md > ttdm && echo 'fertig'
+```
+```bash
+  chmod u+x ttdm && ln -sf /home/christian/Gedankenspeicher/Gedankenspeicherwiki/Zettelkasten/Gedankenwanderung/Programme/ttdm ~/.local/bin/ttdm && echo 'fertig'
+```
 
 ```bash
 {{ttdm}}=
@@ -63,7 +68,7 @@ if [[ ! -e "$foldermonth"/"$calendarfile" ]]
 	echo "Content-Type: text/x-zim-wiki" >> "$foldermonth"/"$calendarfile"
 	echo "Wiki-Format: zim 0.6" >> "$foldermonth"/"$calendarfile"
 	date +"===== %A %d %b %Y =====" -r "$File" >> "$foldermonth"/"$calendarfile"
-	date +"[[Zettelkasten:%Y:%W|Week %W]]" -r "$File" >> "$foldermonth"/"$calendarfile"
+	#date +"[[Zettelkasten:%Y:%W|Week %W]]" -r "$File" >> "$foldermonth"/"$calendarfile"
 	date +"[[Zettelkasten:%Y:%m]]" -r "$File" >> "$foldermonth"/"$calendarfile"
 	echo -e "[[../]]"  >> "$foldermonth"/"$calendarfile"
 	date +"[*] ** %A %d %b %Y ** >  2277-11-11"  -r "$File" >> "$foldermonth"/"$calendarfile"

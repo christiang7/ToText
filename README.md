@@ -3,20 +3,22 @@
 - [X] Done
 - [X] Doing Interput (2)
 - [X] Doing (2)
+	- [ ] Programm zum Kopieren von Textzeilen mit dem Link zur Seite für zim wiki
 	- [ ] Vermischung von tabs2zim und topic2zim
 		- [ ] Bei [topic2zim](topic2zim.md) es zu jedem Thema eine neue Notiz einfügen lassen
 		- [ ] Bei [tabs2zim](tabs2zim.md) eine neue Tagesnotiz einfügen können
-- [X] Next (2)
+- [X] Next ②
+	- [ ] bei [ttn.md](ttn.md) die html und Video Dateien nochmal anschauen wie nach Assets verschiebenß
 	- [ ] Bei Downloads von Videos über Mediathekview das Korrekturprogramm in Markdown umwandeln
-	- [ ] [template-program](template-program.md)
 - [X] Planning (2)
 	- [ ] bei der Verschiebung und Umbennung von zim Seiten die zim Funktion umschreiben, dass auch andere Dateien mit verschoben werden können
-	- [ ] Wie verschieben von Dateien für bestimmte Themen? Eventuell über tags organisieren
-- [X] Backlog
-	- [ ] nochmal [ttrename](ttrename.md) überprüfen wenn Benutzung über der Datei geht
-	- [ ] bei [ttn.md](ttn.md) die html und Video Dateien nochmal anschauen wie nach Assets verschiebenß
 	- [ ] Bei Assets Verschiebung noch einen Link für pdf und deren Bilder da lassen, die md nicht verlinken
-	- [ ] xournal Programmstarter so, dass automatisch, thumbnail aktualisiert wird und von einer pdf als Notizen abgespeichert wird
+- [X] Backlog
+    - [ ] Custom tool für öffne den aktuellen Ordner der Datei
+    - [ ] Custom tool für einsetzen von "<2277-11-11" Datum für später lesen
+	- [ ] [template-program](template-program.md)
+	- [ ] nochmal [ttrename](ttrename.md) überprüfen wenn Benutzung über der Datei geht
+	- [ ] xournal Programmstarter so, dass automatisch thumbnail aktualisiert wird und von einer pdf als Notizen abgespeichert wird
 	- [ ] alles in english schreiben
 	- [ ] Programme über libraries verbinden
 	
