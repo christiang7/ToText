@@ -1,6 +1,6 @@
 #! /bin/bash
 
-choose=$(zenity --height 350 --list --radiolist --print-column ALL --hide-header --column "Checkbox" --column "What" TRUE NeuNotiz FALSE Spass FALSE Assets FALSE Physik FALSE Mathematik FALSE Philosophie FALSE Naturwissenschaften_und_Instrumentarien FALSE CodeFabrik)
+choose=$(zenity --height 350 --list --radiolist --print-column ALL --hide-header --column "Checkbox" --column "What" TRUE NeuNotiz FALSE Spass FALSE Assets FALSE Heute FALSE Physik FALSE Mathematik FALSE Philosophie FALSE Naturwissenschaften_und_Instrumentarien FALSE CodeFabrik)
 
 if [ ! $? -eq 1 ];
 then
@@ -50,11 +50,10 @@ then
 				mkdir -p "${folder}"/"${topicfilename}"
 				echo "Content-Type: text/x-zim-wiki" > "${folder}"/"${topicfile}"
 				echo "Wiki-Format: zim 0.6" >> "${folder}"/"${topicfile}"
-				echo -e "=====  ${topic} =====" >> "${folder}"/"${topicfile}"
+				echo -e "===== ${topic} =====" >> "${folder}"/"${topicfile}"
 				echo -e "Created $(date +[[Zettelkasten:%Y:%m:%d|%Y-%m-%d]])" >> "${folder}"/"${topicfile}"
-				echo -e "Backlink [[Zettelkasten]]" >> "${folder}"/"${topicfile}"
-				echo -e "[[../]]" >> "${folder}"/"${topicfile}"
-				echo -e "[*] ${tags} ** ${topic} ** " >> "${folder}"/"${topicfile}"
+				#echo -e "[[../]]" >> "${folder}"/"${topicfile}"
+				echo -e "[*] ${tags} ** ${topic} ** [[$(basename ${folder})]] " >> "${folder}"/"${topicfile}"
 				echo -e "\n${additiontext}" >> "${folder}"/"${topicfile}"
 				echo -e "\n${tabs}" >> "${folder}"/"${topicfile}"
 				echo -e "\n===== $(date +[[Zettelkasten:%Y:%m:%d|%Y-%m-%d]]) =====" >> "${folder}".md
@@ -74,7 +73,10 @@ then
 				Spass) file=$(echo "/home/christian/Gedankenspeicher/Gedankenspeicherwiki/Spaß_Stream/Spaß_Stream_Archiv.md")
 					l=5;;
 				Assets) file=$(echo "/home/christian/Gedankenspeicher/Gedankenspeicherwiki/Assets/Assets_Archiv.md")
-					l=5;;
+		            l=5;;
+				Heute) tabs2zim.sh
+		            exit
+		            ;;
 				Physik) file=$(echo "/home/christian/Gedankenspeicher/Gedankenspeicherwiki/Physik/Physik_Archiv.md")
 					l=5;;
 				Mathematik) file=$(echo "/home/christian/Gedankenspeicher/Gedankenspeicherwiki/Mathematik/Mathematik_Archiv.md")
