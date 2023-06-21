@@ -12,7 +12,7 @@
 	#date +"===== %A %d %b %Y =====" >> "$foldermonth"/"$calendarfile"
 	#date +"[[Zettelkasten:%Y:%W|Week %W]]" >> "$foldermonth"/"$calendarfile"
 	#date +"[[Zettelkasten:%Y:%m]]" >> "$foldermonth"/"$calendarfile"
-	#echo -e "[[../]]"  >> "$foldermonth"/"$calendarfile"
+	#echo -e ""  >> "$foldermonth"/"$calendarfile"
 	#date +"[*] ** %A %d %b %Y ** " >> "$foldermonth"/"$calendarfile"
 	#fi
 	mkdir -p $folder

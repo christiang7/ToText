@@ -62,7 +62,7 @@ do
 		date +"===== %A %d %b %Y =====" -r "$File" >> "$foldermonth"/"$calendarfile"
 		#date +"[[Zettelkasten:%Y:Week %W|Week %W]]" -r "$File" >> "$foldermonth"/"$calendarfile"
 		date +"[[Zettelkasten:%Y:%m]]" -r "$File" >> "$foldermonth"/"$calendarfile"
-		echo -e "[[../]]"  >> "$foldermonth"/"$calendarfile"
+		echo -e ""  >> "$foldermonth"/"$calendarfile"
 		date +"[*] ** %A %d %b %Y ** "  -r "$File" >> "$foldermonth"/"$calendarfile"
 	fi
 
@@ -85,7 +85,7 @@ do
 			echo "[*] @ARTIKEL $tags **[[../$Filename]] $source**" >> "$folder"/"$Filename".md
 			echo "Text creation time: $(date +"[[Zettelkasten:%Y:%m:%d]]")" >> "$folder"/"$Filename".md
 			echo "Modification time: $(date +"[[Zettelkasten:%Y:%m:%d]]" -r "$File")" >> "$folder"/"$Filename".md
-			echo -e "[[../]]\n" >> "$folder"/"$Filename".md
+			echo -e "\n" >> "$folder"/"$Filename".md
 			echo -e "$additiontext\n" >> "$folder"/"$Filename".md
 			echo -e "{{../$Filename.png?width=750}}\n" >> "$folder"/"$Filename".md
 			pdfinfo "$File" | grep Pages >> "$folder"/"$Filename".md
@@ -114,7 +114,7 @@ do
 			echo "[*] @BILD $tags **[[../$Filename]] $source**" >> "$folder"/"$Filename".md
 			echo "Text creation time: $(date +"[[Zettelkasten:%Y:%m:%d]]")" >> "$folder"/"$Filename".md
 			echo "Modification time: $(date +"[[Zettelkasten:%Y:%m:%d]]" -r "$File")" >> "$folder"/"$Filename".md
-			echo -e "[[../]]\n$additiontext" >> "$folder"/"$Filename".md
+			echo -e "\n$additiontext" >> "$folder"/"$Filename".md
 			echo "{{../$Filename?width=750}}" >> "$folder"/"$Filename".md
 		else
 			mv "$File".md "$folder"/"$Filename".md
@@ -135,7 +135,7 @@ do
 			echo "[*] @VIDEO $tags **[[../$Filename]] $source**" >> "$folder"/"$Filename".md
 			echo "Text creation time: $(date +"[[Zettelkasten:%Y:%m:%d]]")" >> "$folder"/"$Filename".md
 			echo "Modification time: $(date +"[[Zettelkasten:%Y:%m:%d]]" -r "$File")" >> "$folder"/"$Filename".md
-			echo -e "[[../]]\n" >> "$folder"/"$Filename".md
+			echo -e "\n" >> "$folder"/"$Filename".md
 			echo -e "$additiontext\n" >> "$folder"/"$Filename".md
 			echo -e "{{../$Filename.png?width=750}}\n" >> "$folder"/"$Filename".md
 			ffmpeg -loglevel quiet -ss 2 -i "$File"  -t 1 -f image2 "$folder"/"$Filename".png
@@ -153,7 +153,7 @@ do
 		Wikiprev
 		echo "[*] @EBOOK $tags **[[../$Filename]] $source**" >> "$folder"/"$Filename".md
 		Timestamps
-		echo -e "[[../]]\n$additiontext\n" >> "$folder"/"$Filename".md
+		echo -e "\n$additiontext\n" >> "$folder"/"$Filename".md
 		einfo "$File" >> "$folder"/"$Filename".md
 		Moving
 	elif [[ $extens == $g ]]
@@ -161,13 +161,13 @@ do
 		Wikiprev
 		echo "[*] @ORDNER $tags **[[../$Filename]] $source**" >> "$folder"/"$Filename".md
 		Timestamps
-		echo -e "[[../]]\n$additiontext\n" >> "$folder"/"$Filename".md
+		echo -e "\n$additiontext\n" >> "$folder"/"$Filename".md
 		Moving
 	else
 		Wikiprev
 		echo "[*] $tags **[[../$Filename]] $source**" >> "$folder"/"$Filename".md
 		Timestamps
-		echo -e "[[../]]\n$additiontext\n" >> "$folder"/"$Filename".md
+		echo -e "\n$additiontext\n" >> "$folder"/"$Filename".md
 		Moving
 	fi
 

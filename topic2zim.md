@@ -14,6 +14,12 @@ You can add tabs from browser in a specific page you choose.
 
 ## Infos
 
+[*] WEB keyboard shortcuts - How do I cut a line in KDE Kate? - Super User
+ https://superuser.com/questions/1080876/how-do-i-cut-a-line-in-kde-kate
+[*] WEB How to Safely Exit from Bash Scripts | Baeldung on Linux
+ https://www.baeldung.com/linux/safely-exit-scripts
+
+
 - [X] WEB sed Substitution With Variables | Baeldung on Linux
 
  https://www.baeldung.com/linux/sed-substitution-variables
@@ -118,7 +124,7 @@ then
 		echo "Wiki-Format: zim 0.6" >> "${folder}"/"${topicfile}"
 		echo -e "===== ${topic} =====" >> "${folder}"/"${topicfile}"
 		echo -e "Created $(date +[[Zettelkasten:%Y:%m:%d|%Y-%m-%d]])" >> "${folder}"/"${topicfile}"
-		#echo -e "[[../]]" >> "${folder}"/"${topicfile}"
+		#echo -e "" >> "${folder}"/"${topicfile}"
 		echo -e "[*] ${tags} ** ${topic} ** [[$(basename ${folder})]] " >> "${folder}"/"${topicfile}"
 		echo -e "\n${additiontext}" >> "${folder}"/"${topicfile}"
 		echo -e "\n${tabs}" >> "${folder}"/"${topicfile}"

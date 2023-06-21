@@ -23,7 +23,7 @@ echo "Text creation time:" >> "$File".md
 date +"[[Zettelkasten:%Y:%m:%d]]">> "$File".md
 echo "Modification time:" >> "$File".md
 date +"[[Zettelkasten:%Y:%m:%d]]" -r "$1" >> "$File".md
-echo -e "[[../]]\n$2\n\n" >> "$File".md
+echo -e "\n$2\n\n" >> "$File".md
 pdfinfo "$1" | grep Pages >> "$File".md
 echo -e "\n" >> "$File".md
 pdftotext -f 1 -l 1 "$1" ->> "$File".md

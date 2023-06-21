@@ -21,7 +21,7 @@
         date +"===== %A %d %b %Y =====" >> "$foldermonth"/"$calendarfile"
         #date +"[[:Zettelkasten:%Y:Week %W|Week %W]]" >> "$foldermonth"/"$calendarfile"
         date +"[[Zettelkasten:%Y:%m]]" >> "$foldermonth"/"$calendarfile"
-        echo -e "[[../]]"  >> "$foldermonth"/"$calendarfile"
+        echo -e ""  >> "$foldermonth"/"$calendarfile"
         date +"[*] ** %A %d %b %Y ** " >> "$foldermonth"/"$calendarfile"
     fi
     tags=$(zenity --entry \
@@ -42,7 +42,7 @@
     echo "[*] @BILD @Webseite @Screenshot $tags **[[../$File]] $url**" >> "$folder"/"$File".md
     echo "Text creation time: $(date +"[[Zettelkasten:%Y:%m:%d]]")" >> "$folder"/"$File".md
     echo "Modification time: $(date +"[[Zettelkasten:%Y:%m:%d]]" -r "$folder"/"$File")" >> "$folder"/"$File".md
-    echo -e "[[../]]\n" >> "$folder"/"$File".md
+    echo -e "\n" >> "$folder"/"$File".md
     echo "{{../$File}}" >> "$folder"/"$File".md
     echo "$additiontext" >> "$folder"/"$File".md
     tesseract -l eng+deu "$folder"/"$File" stdout | sed 's/\o14//g' >> "$folder"/"$File".md

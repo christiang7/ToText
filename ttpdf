@@ -8,7 +8,7 @@ echo "===== $f =====" >> "$File".md
 echo "[*] @ARTIKEL $3 **[[../$f]]  $2**" >> "$File".md
 echo "Text creation time: $(date +"[[Zettelkasten:%Y:%m:%d]]")" >> "$File".md
 echo "Modification time: $(date +"[[Zettelkasten:%Y:%m:%d]]" -r "$1")" >> "$File".md
-echo -e "[[../]]\n$4\n" >> "$File".md
+echo -e "\n$4\n" >> "$File".md
 #pdftoppm -r 90 -png -singlefile "$File" "$File"
 pdftoppm -png -singlefile "$File" "$File"
 #convert "$File".png -resize 1200x1200 -quality 97 "$File"-px.png

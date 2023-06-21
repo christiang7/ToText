@@ -12,7 +12,7 @@ then
     date +"===== %A %d %b %Y ====="  -r "$f">> "$foldermonth"/"$calendarfile"
     #date +"[[:Zettelkasten:%Y:%W|Week %W]]"   -r "$f">> "$foldermonth"/"$calendarfile"
     date +"[[Zettelkasten:%Y:%m]]"  -r "$f">> "$foldermonth"/"$calendarfile"
-    echo -e "[[../]]"  >> "$foldermonth"/"$calendarfile"
+    echo -e ""  >> "$foldermonth"/"$calendarfile"
     date +"[*] **%A %d %b %Y ** "  -r "$f" >> "$foldermonth"/"$calendarfile"
     #mv "$calendarfile" "$foldermonth"/"$calendarfile"
 fi
@@ -22,7 +22,7 @@ echo "Wiki-Format: zim 0.6" >> "$File".md
 echo "[*] @BILD $3 **[[../$f]] $2**" >> "$File".md
 echo "Text creation time: $(date +"[[Zettelkasten:%Y:%m:%d]]")" >> "$File".md
 echo "Modification time: $(date +"[[Zettelkasten:%Y:%m:%d]]" -r "$1")" >> "$File".md
-echo -e "[[../]]\n$4\n" >> "$File".md
+echo -e "\n$4\n" >> "$File".md
 echo "{{../$f?width=750}}" >> "$File".md
 echo -e "\n[[+$f]]" >> "$foldermonth"/"$calendarfile"
 echo -e "{{$f?width=750}}" >> "$foldermonth"/"$calendarfile"

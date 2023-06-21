@@ -24,7 +24,7 @@ then
 	echo "[*] @NOTIZ @BILD **[[../"$filename".kra]] Christian Gößl **" >> "$File".md
 	echo "Text creation time: $(date +"[[Zettelkasten:%Y:%m:%d]]")" >> "$File".md
 	echo "Modification time: $(date +"[[Zettelkasten:%Y:%m:%d]]" -r "$1")" >> "$File".md
-	echo -e "[[../]]\n" >> "$File".md
+	echo -e "\n" >> "$File".md
 	echo "{{../"$filename".avif?width=750}}" >> "$File".md
 	echo -e "\n" >> "$File".md
 

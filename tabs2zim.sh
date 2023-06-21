@@ -21,7 +21,7 @@ then
 	date +"===== %A %d %b %Y =====" >> "$foldermonth"/"$calendarfile"
 	#date +"[[Zettelkasten:%Y:Week %W|Week %W]]">> "$foldermonth"/"$calendarfile"
 	date +"[[Zettelkasten:%Y:%m]]" >> "$foldermonth"/"$calendarfile"
-	#echo -e "[[../]]"  >> "$foldermonth"/"$calendarfile"
+	#echo -e ""  >> "$foldermonth"/"$calendarfile"
 	date +"[*] ** %A %d %b %Y ** " >> "$foldermonth"/"$calendarfile"
   fi
   echo -e "\n${additiontext}\n${text}" >> "$foldermonth"/"$calendarfile"

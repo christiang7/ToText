@@ -31,7 +31,7 @@ then
 		echo "[*] **[[../"$filename".xopp]] $source**" >> "$File".md
 		echo "Text creation time: $(date +"[[Zettelkasten:%Y:%m:%d]]")" >> "$File".md
 		echo "Modification time: $(date +"[[Zettelkasten:%Y:%m:%d]]" -r "$File")" >> "$File".md
-		echo -e "[[../]]\n" >> "$File".md
+		echo -e "\n" >> "$File".md
 		ttpdf "$filename".pdf
 		echo -e "{{../$File.avif?width=750}}\n" >> "$File".md
 		xournalpp --export-range=1 "$File" -i "$File".png

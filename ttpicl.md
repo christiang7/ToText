@@ -23,7 +23,7 @@ echo "Text creation time:" >> "$File".md
 date +"[[Zettelkasten:%Y:%m:%d]]" >> "$File".md
 echo "Modification time:" >> "$File".md
 date +"[[Zettelkasten:%Y:%m:%d]]" -r "$1" >> "$File".md
-echo -e "[[../]]$2\n" >> "$File".md
+echo -e "$2\n" >> "$File".md
 echo "{{../$f?width=750}}" >> "$File".md
 mv "$1" $folder/"$1"
 mv "$File".md $folder/"$File".md

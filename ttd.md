@@ -88,7 +88,7 @@ do
 			ffmpeg -loglevel quiet -ss 2 -i "$File"  -t 1 -f image2 "$File".png
 			convert "$File".png -resize 1200x1200 -quality 97 "$File"-px.png
 			mv "$File"-px.png "$File".png
-			echo -e "[[../]]\n$2" >> "$File".md
+			echo -e "\n$2" >> "$File".md
 			echo -e "\n{{../$File.png?width=750}}\n" >> "$File".md
 			echo "$3" >> "$File".md
 		elif [[ epub == $extens ]]
@@ -96,7 +96,7 @@ do
 			Wikiprev
 			echo "[*] @EBOOK $3 **[[../$f]] $2**" >> "$folder"/"$File".md
 			Timestamps
-			echo -e "[[../]]\n$2\n" >> "$folder"/"$File".md
+			echo -e "\n$2\n" >> "$folder"/"$File".md
 			einfo "$folder"/"$g" >> "$folder"/"$File".md
 			#Opentxt
 		elif [[ eml == $extens ]]
@@ -104,7 +104,7 @@ do
 			Wikiprev
 			echo "[*] @EMAIL $3 **[[../$f]] $2**" >> "$folder"/"$File".md
 			Timestamps
-			echo -e "[[../]]\n$2\n" >> "$folder"/"$File".md
+			echo -e "\n$2\n" >> "$folder"/"$File".md
 			cat "$folder"/"$g" >> "$folder"/"$File".md
 			#Opentxt
 		elif [[ maff == $extens ]]
@@ -114,7 +114,7 @@ do
 			unzip "$f"
 			echo "[*] @WEB $3 **[[../$f]] $2 $(cat $folder/$folder2'index.dat' | grep source | cut -f 2)**" >> "$folder"/"$File".md
 			Timestamps
-			echo -e "[[../]]\n$2\n" >> "$folder"/"$File".md
+			echo -e "\n$2\n" >> "$folder"/"$File".md
 			cat "$folder"/$folder'index.rdf' >> "$folder"/"$File".md 
 			#pandoc -f html -t zimwiki $folder'index.html' >> "$File".md
 			rm -r "$folder"/"$folder2"
@@ -126,7 +126,7 @@ do
 			Wikiprev
 			echo "[*] $tags **[[../$Filename]] $source**" >> "$folder"/"$File".md
 			Timestamps
-			echo -e "[[../]]\n$additiontext\n" >> "$folder"/"$File".md
+			echo -e "\n$additiontext\n" >> "$folder"/"$File".md
 			xournalpp --export-range=1 "$folder"/"$File" -i "$folder"/"$File".png
 			echo -e "{{../$File.png?width=750}}\n" >> "$folder"/"$File".md
 			#xournalpp "$folder"/"$File" -p "$folder"/"$filename".pdf
@@ -139,14 +139,14 @@ do
 			Wikiprev
 			echo "[*] @ORDNER $3 **[[../$g]] $2**" >> "$folder"/"$File".md
 			Timestamps
-			echo -e "[[../]]\n$2\n" >> "$folder"/"$File".md
+			echo -e "\n$2\n" >> "$folder"/"$File".md
 			#Opentxt
 		else 
 			#echo else
 			Wikiprev
 			echo "[*] $3 **[[../$g]] $2**" >> "$folder"/"$File".md
 			Timestamps
-			echo -e "[[../]]\n$2\n" >> "$folder"/"$File".md
+			echo -e "\n$2\n" >> "$folder"/"$File".md
 			#Opentxt
 		fi
 

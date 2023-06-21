@@ -49,7 +49,7 @@ then
     echo -e "Backlink [[$wikipath:$FullFilename]]" >> "${folder}"/"${File}".md
     #"${filepath}.md
     #echo -e "$([[Zettelkasten:%Y:%m:%d]])" >> "${folder}"/"${File}".md
-    #echo -e "[[../]]" >> "${folder}"/"${File}".md
+    #echo -e "" >> "${folder}"/"${File}".md
     echo -e "[*] ${tags} ** ${File} ** ${source} " >> "${folder}"/"${File}".md
     echo -e "\n${additiontext}" >> "${folder}"/"${File}".md
     echo -e "\n''noweb.py -R${File}.${extens} ${File}.md > ${File}.${extens} && echo 'fertig'''" >> "${folder}"/"${File}".md

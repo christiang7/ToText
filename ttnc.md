@@ -39,7 +39,7 @@ then
 	sed -i "1 i[*] @ARTIKEL **[[../$f]]  $2**" "$File".md
 	Wikiprev
 	Timestamps
-	echo -e "[[../]]\n$2\n" >> "$File".md
+	echo -e "\n$2\n" >> "$File".md
 	pdfinfo "$1" | grep Pages >> "$File".md
 	echo -e "\n" >> "$File".md
 	pdftoppm -png -singlefile "$File" "$File"
@@ -66,7 +66,7 @@ then
 	sed -i "1 i[*] @EBOOK $3 **[[../$f]] $2**" "$File".md
 	Wikiprev
 	Timestamps
-	echo -e "[[../]]\n$2\n" >> "$File".md
+	echo -e "\n$2\n" >> "$File".md
 	einfo "$1" >> "$File".md
 	Opentxt
 elif [[ $extens == $f ]]
@@ -74,7 +74,7 @@ then
 	sed -i "1 i[*] @ORDNER $3 **[[../$f]] $2**" "$File".md
 	Wikiprev
 	Timestamps
-	echo -e "[[../]]\n$2\n" >> "$File".md
+	echo -e "\n$2\n" >> "$File".md
 	Opentxt
 elif [[ $extens == md ]] 
 then
@@ -87,7 +87,7 @@ then
 		date +"[[Zettelkasten:%Y:%m:%d]]">> "$File"
 		echo "Modification time:" >> "$File"
 		date +"[[Zettelkasten:%Y:%m:%d]]" -r "$filename" >> "$File"
-		echo -e "[[../]]\n$2\n" >> "$File"
+		echo -e "\n$2\n" >> "$File"
 	fi
 	kate "$File" 2>/dev/null &
 	else
@@ -95,7 +95,7 @@ then
 	Wikiprev
 	Timestamps
 	#echo -e "$2\n" >> "$File".md
-	echo -e "[[../]]\n$2\n" >> "$File".md
+	echo -e "\n$2\n" >> "$File".md
 	Opentxt
 fi
 
