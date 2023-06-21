@@ -3,20 +3,26 @@
 - [X] Done
 - [X] Doing Interput (2)
 - [X] Doing (2)
-	- [ ] Programm zum Kopieren von Textzeilen mit dem Link zur Seite für zim wiki
-    - [ ] das einsetzen von [[../]] aus allen Programm nehmen
+	- [ ] Programm zum Kopieren von Textzeilen mit dem
+	Link zur Seite für zim wiki
+    - [ ] Custom tool für öffne den aktuellen Ordner der Datei
 - [X] Next (2)
-    - [ ] Custom tool für öffne den aktuellen Ordner der´ Datei
-	- [ ] Bei Downloads von Videos über Mediathekview das Korrekturprogramm in Markdown umwandeln
-- [X] Planning (2)
-	- [ ] bei [ttn.md](ttn.md) die html und Video Dateien nochmal anschauen wie nach Assets verschiebenß
-	- [ ] bei der Verschiebung und Umbennung von zim Seiten die zim Funktion umschreiben, dass auch andere Dateien mit verschoben werden können
-- [X] Backlog
-	- [ ] Bei Assets Verschiebung noch einen Link für pdf und deren Bilder da lassen, die md nicht verlinken
     - [ ] Custom tool für einsetzen von "<2277-11-11" Datum für später lesen
+	- [ ] Bei Downloads von Videos über Mediathekview
+	das Korrekturprogramm in Markdown umwandeln
+- [X] Planning (2)
+	- [ ] bei [ttn.md](ttn.md) die html und Video Dateien
+	nochmal anschauen wie nach Assets verschiebenß
+	- [ ] bei der Verschiebung und Umbennung von zim Seiten
+	die zim Funktion umschreiben, dass auch andere Dateien
+	mit verschoben werden können
+- [X] Backlog
+	- [ ] Bei Assets Verschiebung noch einen Link für pdf und
+	deren Bilder da lassen, die md nicht verlinken
 	- [ ] [template-program](template-program.md)
 	- [ ] nochmal [ttrename](ttrename.md) überprüfen wenn Benutzung über der Datei geht
-	- [ ] xournal Programmstarter so, dass automatisch thumbnail aktualisiert wird und von einer pdf als Notizen abgespeichert wird
+	- [ ] xournal Programmstarter so, dass automatisch thumbnail
+	aktualisiert wird und von einer pdf als Notizen abgespeichert wird
 	- [ ] alles in english schreiben
 	- [ ] Programme über libraries verbinden
 	

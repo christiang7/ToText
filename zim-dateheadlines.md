@@ -25,6 +25,7 @@ simples einfügen der Überschrift mit einem Datum
 
 ```bash
 {{dateheadlines}}=
+#!/bin/bash
 echo -e "==== $(date +"[[Zettelkasten:%Y:%m:%d|%Y-%m-%d]]") "
 @
 
