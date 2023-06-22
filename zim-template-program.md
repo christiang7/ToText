@@ -3,9 +3,12 @@ Created Montag [Zettelkasten:2022:11:28]()
 Backlink [GedankenspeicherCoding](../GedankenspeicherCoding.md)
 
 - [X] **zim-template-program**   [README](README.md)
-	- [ ] hinzufügen von git, damit automatisch nen git repo erzeugt wird
-	- [ ] Struktur überdenken mit README Datei und das die Datei in das Repo erzeugt wird und nicht auf der Ebene der txt Datei
-	- [ ] probieren ob yad Ersatz für zenity funktioniert 
+    - [X] Doing
+        - [ ] changing to markdown
+    - [X] Backlog
+        - [ ] hinzufügen von git, damit automatisch nen git repo erzeugt wird
+        - [ ] Struktur überdenken mit README Datei und das die Datei in das Repo erzeugt wird und nicht auf der Ebene der txt Datei
+        - [ ] probieren ob yad Ersatz für zenity funktioniert
 
 
 ```bash
