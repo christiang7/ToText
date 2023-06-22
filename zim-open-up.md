@@ -7,7 +7,7 @@ Created [[2023-06-22]]
 
 ## Features
 
-
+Open in zim the folder of the containing file.
 
 ```bash
  noweb.py -Rzim-open-up.sh zim-open-up.md > zim-open-up.sh && echo 'fertig' 
@@ -18,9 +18,15 @@ Created [[2023-06-22]]
  chmod u+x zim-open-up.sh && ln -sf /home/christian/Gedankenspeicher/KanDo/GedankenspeicherEinrichtung/GedankenspeicherCoding/zim-open-up.sh ~/.local/bin/zim-open-up.sh && echo 'fertig'
  ```
 
+
+## Main program
+
 ```bash
 {{zim-open-up.sh}}=
-
+#!/bin/bash
+file=$(readlink -f -n "$1")
+filepath=$(echo "${file%/*}")
+xdg-open $filepath
 @
 
 ```

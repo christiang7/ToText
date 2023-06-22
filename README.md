@@ -3,22 +3,23 @@
 - [X] Done
 - [X] Doing Interput (2)
 - [X] Doing (2)
-    - [ ] Custom tool für öffne den aktuellen Ordner der Datei
     - [ ] [zim-template-program]()
-- [X] Next (2)
     - [ ] create script for creating calculations in zim, like [zim-template-program]()
-- [X] Planning (2)
-	- [ ] bei [ttn.md](ttn.md) die html und Video Dateien
-	nochmal anschauen wie nach Assets verschiebenß
+        - [ ] für zim
+        - [ ] für ohne zim
+- [X] Next (2)
 	- [ ] Bei Downloads von Videos über Mediathekview
 	das Korrekturprogramm in Markdown umwandeln
-- [X] Backlog
+	- [ ] bei [ttn.md](ttn.md) die html und Video Dateien
+	nochmal anschauen wie nach Assets verschiebenß
+- [X] Planning (2)
 	- [ ] bei der Verschiebung und Umbennung von zim Seiten
 	die zim Funktion umschreiben, dass auch andere Dateien
 	mit verschoben werden können
+	- [ ] [template-program](template-program.md)
+- [X] Backlog
 	- [ ] Bei Assets Verschiebung noch einen Link für pdf und
 	deren Bilder da lassen, die md nicht verlinken
-	- [ ] [template-program](template-program.md)
 	- [ ] nochmal [ttrename](ttrename.md) überprüfen wenn Benutzung über der Datei geht
 	- [ ] xournal Programmstarter so, dass automatisch thumbnail
 	aktualisiert wird und von einer pdf als Notizen abgespeichert wird
@@ -27,8 +28,9 @@
 
 ## Features
 
-### 2023-06-222 Insert date later
+### 2023-06-222 Insert date later and open folder zim
 Custom tool [zim-date-later]() für einsetzen von "<2277-11-11" Datum für später lesen
+Custom tool for open in zim the folder of the containing file.
 
 ### 2023-06-21 Zim Quoting
 The program [zim-quoting-copy]() can copy a marked line. The marked line gets an anchor. The copied text can be pasted at the desired position of pages.
