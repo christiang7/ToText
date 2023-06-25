@@ -9,8 +9,8 @@ then
 
 	case ${choose} in
 	NeuNotiz)
-		chooseWhere=$(zenity --height 350 --list --radiolist --print-column ALL --hide-header --column "Checkbox" --column "What" TRUE Spass FALSE Assets FALSE Physik FALSE Mathematik FALSE Philosophie FALSE Naturwissenschaften_und_Instrumentarien FALSE CodeFabrik FALSE Zettelkasten)
-		case ${chooseHere} in
+		chooseWhere=$(zenity --height 350 --list --radiolist --print-column ALL --hide-header --column "Checkbox" --column "Which topic" TRUE Spass FALSE Assets FALSE Physik FALSE Mathematik FALSE Philosophie FALSE Naturwissenschaften_und_Instrumentarien FALSE CodeFabrik FALSE Zettelkasten)
+		case ${chooseWhere} in
 			Spass) folder=$(echo "/home/christian/Gedankenspeicher/Gedankenspeicherwiki/Spaß_Stream")
 				l=37;;
 			Assets) folder=$(echo "/home/christian/Gedankenspeicher/Gedankenspeicherwiki/Assets")
@@ -28,8 +28,9 @@ then
 			Zettelkasten) folder=$(echo "/home/christian/Gedankenspeicher/Gedankenspeicherwiki/Zettelkasten")
 				l=37;;
 		esac
+		echo $folder
 		abfrage=$(yad --title="Neues Thema" --text="Noch etwas hinzufügen?" \
-			--form --width 500 --separator="|" --item-separator=","  \
+			--form --width 500 --separator="~" --item-separator=","  \
 			--field="Name:" \
 			--field="Quelle:":CBE \
 			--field="Tags" \
@@ -37,10 +38,10 @@ then
 			"" "Internet,Christian Gößl" "" "")
 		if [ ! $? -eq 1 ];
 		then
-			topic=$(echo $abfrage | cut -s -d "|" -f 1)
-			source=$(echo $abfrage | cut -s -d "|" -f 2)
-			tags=$(echo $abfrage | cut -s -d "|" -f 3)
-			additiontext=$(echo $abfrage | cut -s -d "|" -f 4)
+			topic=$(echo $abfrage | cut -s -d "~" -f 1)
+			source=$(echo $abfrage | cut -s -d "~" -f 2)
+			tags=$(echo $abfrage | cut -s -d "~" -f 3)
+			additiontext=$(echo $abfrage | cut -s -d "~" -f 4)
 
 			if [[ ! "$topic" = "" ]];
 			then
@@ -51,12 +52,12 @@ then
 				echo "Content-Type: text/x-zim-wiki" > "${folder}"/"${topicfile}"
 				echo "Wiki-Format: zim 0.6" >> "${folder}"/"${topicfile}"
 				echo -e "===== ${topic} =====" >> "${folder}"/"${topicfile}"
-				echo -e "Created $(date +[[Zettelkasten:%Y:%m:%d|%Y-%m-%d]])" >> "${folder}"/"${topicfile}"
+				echo -e "Created $(date +"[[Zettelkasten:%Y:%m:%d|%Y-%m-%d]]")" >> "${folder}"/"${topicfile}"
 				#echo -e "" >> "${folder}"/"${topicfile}"
 				echo -e "[*] ${tags} ** ${topic} ** [[$(basename ${folder})]] " >> "${folder}"/"${topicfile}"
 				echo -e "\n${additiontext}" >> "${folder}"/"${topicfile}"
 				echo -e "\n${tabs}" >> "${folder}"/"${topicfile}"
-				echo -e "\n===== $(date +[[Zettelkasten:%Y:%m:%d|%Y-%m-%d]]) =====" >> "${folder}".md
+				echo -e "\n===== $(date +"[[Zettelkasten:%Y:%m:%d|%Y-%m-%d]]") =====" >> "${folder}".md
 				echo -e "[[+$(basename ${topicfile} .md)|${topic}]]" >> "$folder".md
 			fi
 		fi

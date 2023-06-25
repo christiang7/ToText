@@ -5,18 +5,18 @@
 - [X] Doing (2)
 	- [ ] Bei Downloads von Videos über Mediathekview
 	das Korrekturprogramm in Markdown umwandeln
-- [X] Next (2)
 	- [ ] bei der Verschiebung und Umbennung von zim Seiten
 	die zim Funktion umschreiben, dass auch andere Dateien
 	mit verschoben werden können
+- [X] Next (2)
 	- [ ] bei [ttn.md](ttn.md) die html und Video Dateien
 	nochmal anschauen wie nach Assets verschiebenß
-- [X] Planning (2)
 	- [ ] nochmal [ttrename](ttrename.md) überprüfen wenn Benutzung über der Datei geht
+- [X] Planning (2)
     - [ ] überall yad Ersatz für zenity einfügen
-- [X] Backlog
 	- [ ] Bei Assets Verschiebung noch einen Link für pdf und
 	deren Bilder da lassen, die md nicht verlinken
+- [X] Backlog
 	- [ ] xournal Programmstarter so, dass automatisch thumbnail
 	aktualisiert wird und von einer pdf als Notizen abgespeichert wird
 	- [ ] alles in english schreiben
