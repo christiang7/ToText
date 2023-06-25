@@ -2,10 +2,6 @@
 Created [2022-11-28]()
 - [X] **template-program** [README.md](README.md)
 	- [X] Doing
-		- [X] Auswahlmöglichkeit zwischen in einem bereits vorhanden Projekt ein Programm erstellen und ein ganz neues Programmierprojekt
-            - [X] die Auswahlmöglichkeit zwischen Projekt und Standalone mit if Anwendung und Angabe der Textdatei vom Wiki
-                - [X] benutzen von path vom Programm [zim-filepath.md]()
-
 	- [X] Backlog
 
 ## Features
@@ -31,17 +27,15 @@ chmod u+x template-program.sh && ln -sf /home/christian/Gedankenspeicher/Gedanke
 Das komplette Programm
 ```bash
 {{template-program.sh}}=
-
 {{preamble}}
 
 if [[ ! -e "$1" ]]
 then
   folder=$(pwd)
+  {{Abfragen}}
 else
   zim-template-program.sh "$1"
 fi
-
-{{Abfragen}}
 
 @
 ```
@@ -69,7 +63,7 @@ abfrage=$(yad --title="New Program?" --text="Necessary Informations:" \
 	--field="Author":CBE \
 	--field="Tags":CBE \
 	--field="Description":TXT \
-	"$File" "$langname,bash,python,julia,html,css,javascript" "$extens,sh,py,jl,html,css,js" "$source,Christian Gößl,Internet" "$tags,@physic,@math" "$additiontext")
+	"$File" "bash,python,julia,html,css,javascript" "sh,py,jl,html,css,js" "Christian Gößl,Internet" ",physic,math" "$additiontext")
 if [ ! $? -eq 1 ];
 then
 	File=$(echo $abfrage | cut -s -d "~" -f 1)

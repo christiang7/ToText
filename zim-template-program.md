@@ -2,9 +2,6 @@
 Created Montag [2022-11-28]()
 - [X] **zim-template-program**  [README](README.md)
     - [X] Doing
-        - [ ] hinzufügen von git bei neuem Programmierprojekt, damit automatisch nen git repo erzeugt wird
-			- [ ] create README and add to git
-        - [ ] README template
     - [X] Backlog
 
 
@@ -20,7 +17,6 @@ chmod u+x zim-template-program.sh && ln -sf /home/christian/Gedankenspeicher/Ged
 Das komplette Programm
 ```bash
 {{zim-template-program.sh}}=
-
 {{preamble}}
 
 {{Abruf txt Datei Ordner}}
@@ -49,10 +45,7 @@ filetxt=$(readlink -f -n "$1")
 folder=${filetxt%.*}
 mkdir -p "$folder"
 cd "$folder"
-#filetxt=$(echo $2)
-#filepath=$(echo "${filetxt%/*}" | sed "s,/home/christian,~,")
-#wikipath=$(echo $filepath | sed "s,~/Gedankenspeicher/Gedankenspeicherwiki/,," | sed "s,/,:,g")
-#FullFilename=$(basename $filetxt .md)
+Project=$(basename $filetxt .md)
 @
 ```
 
@@ -69,7 +62,7 @@ abfrage=$(yad --title="New Project Program" --text="Necessary Informations:" \
 	--field="Author":CBE \
 	--field="Tags":CBE \
 	--field="Description":TXT \
-	"$Project" "$File" "$langname,bash,python,julia,html,css,javascript" "$extens,sh,py,jl,html,css,js" "$source,Christian Gößl,Internet" "$tags,physic,math" "$additiontext")
+	"$Project" "$File" "bash,python,julia,html,css,javascript" "sh,py,jl,html,css,js" "Christian Gößl,Internet" ",physic,math" "$additiontext")
 if [ ! $? -eq 1 ];
 then
 	Project=$(echo $abfrage | cut -s -d "~" -f 1)
