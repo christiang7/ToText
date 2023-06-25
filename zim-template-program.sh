@@ -1,64 +1,73 @@
+
 #!/bin/bash
-txtFile=$(echo "$1")
-folder=${txtFile%.*}
+
+filetxt=$(readlink -f -n "$1")
+folder=${filetxt%.*}
 mkdir -p "$folder"
 cd "$folder"
-filetxt=$(echo $2)
-filepath=$(echo "${filetxt%/*}" | sed "s,/home/christian,~,")
-wikipath=$(echo $filepath | sed "s,~/Gedankenspeicher/Gedankenspeicherwiki/,," | sed "s,/,:,g")
-FullFilename=$(basename $filetxt .md)
-File="Program"
-extens="sh"
+#filetxt=$(echo $2)
+#filepath=$(echo "${filetxt%/*}" | sed "s,/home/christian,~,")
+#wikipath=$(echo $filepath | sed "s,~/Gedankenspeicher/Gedankenspeicherwiki/,," | sed "s,/,:,g")
+#FullFilename=$(basename $filetxt .md)
 
-abfrage=$(zenity --forms \
-    --width 500 \
-    --title "New Program?" \
-    --text "Necessary Informations:" \
-    --add-entry "Filename" --add-entry "Extension Standard sh")
-
+abfrage=$(yad --title="New Project Program" --text="Necessary Informations:" \
+	--form --width 500 --separator="~" --item-separator=","  \
+	--field="Projectname" \
+	--field="Filename" \
+	--field="Shortname for language":CBE \
+	--field="Extension":CBE \
+	--field="Author":CBE \
+	--field="Tags":CBE \
+	--field="Description":TXT \
+	"$Project" "$File" "$langname,bash,python,julia,html,css,javascript" "$extens,sh,py,jl,html,css,js" "$source,Christian Gößl,Internet" "$tags,physic,math" "$additiontext")
 if [ ! $? -eq 1 ];
 then
-    if [[ ! "$abfrage" = "" ]];
-    then
-        File=$(echo $abfrage | cut -s -d "|" -f 1)
-        extens=$(echo $abfrage | cut -s -d "|" -f 2)
-    fi
+	Project=$(echo $abfrage | cut -s -d "~" -f 1)
+	File=$(echo $abfrage | cut -s -d "~" -f 2)
+	langname=$(echo $abfrage | cut -s -d "~" -f 3)
+	extens=$(echo $abfrage | cut -s -d "~" -f 4)
+	source=$(echo $abfrage | cut -s -d "~" -f 5)
+	tags=$(echo $abfrage | cut -s -d "~" -f 6)
+	additiontext=$(echo $abfrage | cut -s -d "~" -f 7)
+	File=$(echo "$File" | sed 's/ /_/g' | sed 's/:/;/g'| sed -e "s/'/_/g" | sed 's/\"//g')
 
-    File=$(echo "$File" | sed 's/ /_/g' | sed 's/:/;/g'| sed -e "s/'/_/g" | sed 's/\"//g')
+    #{{zim file folder}} #Ordner erstellen
 
-    source="Christian Gößl"
-    tags=$(echo "$3")
-    additiontext=$(echo "$4")
+    echo -e "# ${Project}" >> "README".md
+    echo -e "Created [$(date +%Y-%m-%d)]()\n" >> "README".md
+    echo -e "- [X] ${tags} **${Project}** " >> "README".md
+    echo -e "    - [X] Done" >> "README".md
+    echo -e "    - [X] Doing Interput" >> "README".md
+    echo -e "    - [X] Doing" >> "README".md
+    echo -e "    - [X] Next" >> "README".md
+    echo -e "    - [X] Planning" >> "README".md
+    echo -e "    - [X] Backlog" >> "README".md
+    echo -e "       - [ ] [${File}](${File}.md)" >> "README".md
+    echo -e "\n## Features" >> "README".md
+    echo -e "\n## Description" >> "README".md
+    echo -e "\n${additiontext}" >> "README".md
+    #README template
+    echo -e "# ${File}" >> "${File}".md
+    echo -e "Created [$(date +%Y-%m-%d)]()\n" >> "${File}".md
+    echo -e "- [X] ${tags} **${File}** [README](README.md)" >> "${File}".md
+    echo -e "    - [X] Doing" >> "${File}".md
+    echo -e "    - [X] Backlog" >> "${File}".md
+    echo -e "       - [ ] " >> "${File}".md
+    echo -e "\n## Features" >> "${File}".md
+    echo -e "\n## Informations" >> "${File}".md
+    echo -e "\n## Main Program" >> "${File}".md
+    echo -e "\n\`\`\`bash\n noweb.py -R${File}.${extens} ${File}.md > ${File}.${extens} && echo 'fertig' \n\`\`\`" >> "${File}".md
+    echo -e "\n\n\`\`\`bash\n chmod u+x ${File}.${extens} && ln -sf "$folder"/${File}.${extens} ~/.local/bin/${File}.${extens} && echo 'fertig'\n \`\`\`" >> "${File}".md
+    echo -e "\n\`\`\`${langname}" >> "${File}".md
+    echo -e "{{${File}.${extens}}}=" >> "${File}".md
+    echo -e "\n@" >> "${File}".md
+    echo -e "\n\`\`\`" >> "${File}".md
 
-    abfrage=$(zenity --forms \
-        --width 500 \
-        --title "Noch etwas hinzufügen?" \
-        --text "Noch etwas hinzufügen?" \
-        --add-entry "Quelle Standard: Christian Gößl" --add-entry "Schlagwörter" --add-entry "Weiteres")
-    if [[ ! "$abfrage" = "" ]];
-    then
-        source=$(echo $abfrage | cut -s -d "|" -f 1)
-        tags=$(echo $abfrage | cut -s -d "|" -f 2)
-        additiontext=$(echo $abfrage | cut -s -d "|" -f 3)
-    fi
+    git init
+    git add README.md
+    git add "${File}".md
+    git commit -a -m "init git"
 
-    echo "Content-Type: text/x-zim-wiki" > "${folder}"/"${File}".md
-    echo "Wiki-Format: zim 0.6" >> "${folder}"/"${File}".md
-    echo -e "===== ${File} =====" >> "${folder}"/"${File}".md
-    echo -e "Created $(date +[[Zettelkasten:%Y:%m:%d]])" >> "${folder}"/"${File}".md
-    echo -e "Backlink [[$wikipath:$FullFilename]]" >> "${folder}"/"${File}".md
-    #"${filepath}.md
-    #echo -e "$([[Zettelkasten:%Y:%m:%d]])" >> "${folder}"/"${File}".md
-    #echo -e "" >> "${folder}"/"${File}".md
-    echo -e "[*] ${tags} ** ${File} ** ${source} " >> "${folder}"/"${File}".md
-    echo -e "\n${additiontext}" >> "${folder}"/"${File}".md
-    echo -e "\n''noweb.py -R${File}.${extens} ${File}.md > ${File}.${extens} && echo 'fertig'''" >> "${folder}"/"${File}".md
-    echo -e "\n\n''chmod u+x ${File}.${extens} && ln -sf "${folder}"/${File}.${extens} ~/.local/bin/${File}.${extens} && echo 'fertig'''" >> "${folder}"/"${File}".md
-    echo -e "\n{{{code: lang="sh" linenumbers="True"" >> "${folder}"/"${File}".md
-    echo -e "{{${File}.${extens}}}=" >> "${folder}"/"${File}".md
-    echo -e "\n@" >> "${folder}"/"${File}".md
-    echo -e "\n}}}" >> "${folder}"/"${File}".md
-
-    echo -e "\n[[+${File}]]" >> "${filetxt}.md"
 
 fi
+
