@@ -3,24 +3,27 @@
 - [X] Done
 - [X] Doing Interput (2)
 - [X] Doing (2)
-    - [ ] [zim-template-program]()
-    - [ ] create script for creating calculations in zim, like [zim-template-program]()
+    - [ ] [zim-template-program]() und [template-program]() Kombination durch Schalter siehe [template-program]()
+        - [X] [zim-template-program]() nicht mehr benutzen
+    - [ ] create script for creating calculations in zim, like [template-program]()
         - [ ] für zim
         - [ ] für ohne zim
+        - [ ] mit Schalter
 - [X] Next (2)
 	- [ ] Bei Downloads von Videos über Mediathekview
 	das Korrekturprogramm in Markdown umwandeln
-	- [ ] bei [ttn.md](ttn.md) die html und Video Dateien
-	nochmal anschauen wie nach Assets verschiebenß
+	- [ ] button for zim open files from the document
 - [X] Planning (2)
 	- [ ] bei der Verschiebung und Umbennung von zim Seiten
 	die zim Funktion umschreiben, dass auch andere Dateien
 	mit verschoben werden können
-	- [ ] [template-program](template-program.md)
+	- [ ] bei [ttn.md](ttn.md) die html und Video Dateien
+	nochmal anschauen wie nach Assets verschiebenß
 - [X] Backlog
+	- [ ] nochmal [ttrename](ttrename.md) überprüfen wenn Benutzung über der Datei geht
+    - [ ] probieren ob yad Ersatz für zenity funktioniert
 	- [ ] Bei Assets Verschiebung noch einen Link für pdf und
 	deren Bilder da lassen, die md nicht verlinken
-	- [ ] nochmal [ttrename](ttrename.md) überprüfen wenn Benutzung über der Datei geht
 	- [ ] xournal Programmstarter so, dass automatisch thumbnail
 	aktualisiert wird und von einer pdf als Notizen abgespeichert wird
 	- [ ] alles in english schreiben

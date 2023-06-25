@@ -1,8 +1,6 @@
 # zim-filepath
-Created Sonntag [Zettelkasten:2022:11:06]()
-Backlink [GedankenspeicherCoding](../GedankenspeicherCoding.md)
-
-- [X] **zim-filepath**
+Created Sonntag [2022-11-06]()
+- [X] **zim-filepath** [README](README.md)
 
 
 

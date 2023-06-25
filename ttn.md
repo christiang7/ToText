@@ -38,16 +38,16 @@ then
 	tags=$(echo $abfrage | cut -s -d "~" -f 2)
 	additiontext=$(echo $abfrage | cut -s -d "~" -f 3)
 	
-	echo $Newname
-	echo $source
-	echo $tags$File
-	echo $additiontext
+	#echo $Newname
+	#echo $source
+	#echo $tags$File
+	#echo $additiontext
 
 	File=$(echo "$Newname"."$extens" | sed 's/ /_/g' | sed 's/:/;/g'| sed -e "s/'/_/g" | sed 's/\"//g'|  sed 's/&/n/g' | sed 's/|//g' | sed 's/\[/(/g' | sed 's/\]/)/g' | sed 's/@/at/g' | sed 's/¦//g')
 	#f=$(basename "$1")
 	mv $folder/"$f" $folder/"$File"
 
-	echo $folder/$File
+	#echo $folder/$File
 
 	f=$(basename "$folder"/"$File")
 	extens=${File##*.}

@@ -1,8 +1,6 @@
 # ttne
-Created Dienstag [Zettelkasten:2022:11:01]()
-Backlink [GedankenspeicherCoding](../GedankenspeicherCoding.md)
-
-- [X] **ttne**
+Created Dienstag [Zettelkasten:2022:11:01](
+- [X] **ttne** [README]()
 
 
 einen Zim Ordner mit txt Datei erstellen lassen irgendwo im Dateisystem
