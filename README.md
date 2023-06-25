@@ -3,25 +3,18 @@
 - [X] Done
 - [X] Doing Interput (2)
 - [X] Doing (2)
-    - [ ] [zim-template-program]() und [template-program]() Kombination durch Schalter siehe [template-program]()
-        - [X] [zim-template-program]() nicht mehr benutzen
-    - [ ] create script for creating calculations in zim, like [template-program]()
-        - [ ] für zim
-        - [ ] für ohne zim
-        - [ ] mit Schalter
-- [X] Next (2)
 	- [ ] Bei Downloads von Videos über Mediathekview
 	das Korrekturprogramm in Markdown umwandeln
-	- [ ] button for zim open files from the document
-- [X] Planning (2)
+- [X] Next (2)
 	- [ ] bei der Verschiebung und Umbennung von zim Seiten
 	die zim Funktion umschreiben, dass auch andere Dateien
 	mit verschoben werden können
 	- [ ] bei [ttn.md](ttn.md) die html und Video Dateien
 	nochmal anschauen wie nach Assets verschiebenß
-- [X] Backlog
+- [X] Planning (2)
 	- [ ] nochmal [ttrename](ttrename.md) überprüfen wenn Benutzung über der Datei geht
-    - [ ] probieren ob yad Ersatz für zenity funktioniert
+    - [ ] überall yad Ersatz für zenity einfügen
+- [X] Backlog
 	- [ ] Bei Assets Verschiebung noch einen Link für pdf und
 	deren Bilder da lassen, die md nicht verlinken
 	- [ ] xournal Programmstarter so, dass automatisch thumbnail
@@ -31,7 +24,12 @@
 
 ## Features
 
-### 2023-06-222 Insert date later and open folder zim
+### 2023-06-25 open-file template-program and template-calculation
+Combinaion of template-program and zim-template-program.
+Custom tool for open file in zim.
+Creation of template-calculation and zim-template-calculation.
+
+### 2023-06-22 Insert date later and open folder zim
 Custom tool [zim-date-later]() für einsetzen von "<2277-11-11" Datum für später lesen
 Custom tool for open in zim the folder of the containing file.
 
