@@ -1,8 +1,10 @@
 # ttam
 Created [Zettelkasten:2023:03:06]()
-Backlink [CodeFabrik:GedankenspeicherCoding](../GedankenspeicherCoding.md)
 
 - [X] **ttam**
+    - [X] Doing
+        - [ ] add a gui for choosing in which folder the file is moved
+    - [X] Backlog
 
 	da sollte eventuell auch eingebaut werden, dass die originale Pfad in die Datei geschrieben wird
 	Zustände: 
@@ -17,10 +19,14 @@ Program for moving files to the assets folder
 
 
 
-``noweb.py -Rttam.sh ttam.md > ttam.sh && echo 'fertig'``
+```bash
+noweb.py -Rttam.sh ttam.md > ttam.sh && echo 'fertig'
+```
 
 
-``chmod u+x ttam.sh && ln -sf /home/christian/Gedankenspeicher/Gedankenspeicherwiki/CodeFabrik/GedankenspeicherCoding/ttam.sh ~/.local/bin/ttam.sh && echo 'fertig'``
+```bash
+chmod u+x ttam.sh && ln -sf /home/christian/Gedankenspeicher/Gedankenspeicherwiki/CodeFabrik/GedankenspeicherCoding/ttam.sh ~/.local/bin/ttam.sh && echo 'fertig'
+```
 
 ```bash
 {{ttam.sh}}=

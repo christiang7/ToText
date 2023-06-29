@@ -3,12 +3,12 @@
 - [X] Done
 - [X] Doing Interput (2)
 - [X] Doing (2)
-	- [ ] Bei Downloads von Videos über Mediathekview
-	das Korrekturprogramm in Markdown umwandeln
 	- [ ] bei der Verschiebung und Umbennung von zim Seiten
 	die zim Funktion umschreiben, dass auch andere Dateien
 	mit verschoben werden können
+	- [ ] [ttma](ttma.md)
 - [X] Next (2)
+    - [ ] custom tool for insert page.section in file
 	- [ ] bei [ttn.md](ttn.md) die html und Video Dateien
 	nochmal anschauen wie nach Assets verschiebenß
 	- [ ] nochmal [ttrename](ttrename.md) überprüfen wenn Benutzung über der Datei geht
@@ -17,6 +17,8 @@
 	- [ ] Bei Assets Verschiebung noch einen Link für pdf und
 	deren Bilder da lassen, die md nicht verlinken
 - [X] Backlog
+	- [ ] Bei Downloads von Videos über Mediathekview
+	das Korrekturprogramm in Markdown umwandeln
 	- [ ] xournal Programmstarter so, dass automatisch thumbnail
 	aktualisiert wird und von einer pdf als Notizen abgespeichert wird
 	- [ ] alles in english schreiben
