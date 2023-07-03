@@ -1,12 +1,14 @@
 #!/bin/bash
 
+Newname=$(basename "$1")
+
 abfrage=$(yad --title="Download Picture" --text="Noch etwas hinzufügen?" \
     --form --separator="~" --item-separator="," \
     --field="Anderer Name:" \
     --field="Quelle:" \
     --field="Tags:" \
     --field="Weiteres:":TXT \
-    "" "$1" "" "")
+    "$Newname" "$1" "" "")
 
 if [ ! $? -eq 1 ];
 then

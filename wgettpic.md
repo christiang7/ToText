@@ -6,11 +6,15 @@ Created Donnerstag [Zettelkasten:2021:04:29]()
 Backlink  [GedankenspeicherCoding](../GedankenspeicherCoding.md)
 [wget-download-firefox](./wget-download-firefox.md)
 
-``noweb.py -Rwgettpic wgettpic.md > wgettpic && chmod u+x wgettpic && echo 'fertig'``
+```bash
+noweb.py -Rwgettpic wgettpic.md > wgettpic && chmod u+x wgettpic && echo 'fertig'
+```
 
 ```bash
 {{wgettpic}}=
 #!/bin/bash
+
+Newname=$(basename "$1")
 
 abfrage=$(yad --title="Download Picture" --text="Noch etwas hinzufügen?" \
     --form --separator="~" --item-separator="," \
@@ -18,7 +22,7 @@ abfrage=$(yad --title="Download Picture" --text="Noch etwas hinzufügen?" \
     --field="Quelle:" \
     --field="Tags:" \
     --field="Weiteres:":TXT \
-    "" "$1" "" "")
+    "$Newname" "$1" "" "")
 
 if [ ! $? -eq 1 ];
 then

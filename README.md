@@ -6,17 +6,18 @@
 	- [ ] bei der Verschiebung und Umbennung von zim Seiten
 	die zim Funktion umschreiben, dass auch andere Dateien
 	mit verschoben werden können
-	- [ ] [ttma](ttma.md)
+	- [ ] custom tool for insert clipboard of wayland
 - [X] Next (2)
+	- [ ] [ttma](ttma.md)
     - [ ] custom tool for insert page.section in file
+- [X] Planning (2)
 	- [ ] bei [ttn.md](ttn.md) die html und Video Dateien
 	nochmal anschauen wie nach Assets verschiebenß
 	- [ ] nochmal [ttrename](ttrename.md) überprüfen wenn Benutzung über der Datei geht
-- [X] Planning (2)
+- [X] Backlog
     - [ ] überall yad Ersatz für zenity einfügen
 	- [ ] Bei Assets Verschiebung noch einen Link für pdf und
 	deren Bilder da lassen, die md nicht verlinken
-- [X] Backlog
 	- [ ] Bei Downloads von Videos über Mediathekview
 	das Korrekturprogramm in Markdown umwandeln
 	- [ ] xournal Programmstarter so, dass automatisch thumbnail
