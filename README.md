@@ -6,7 +6,6 @@
 	- [ ] bei der Verschiebung und Umbennung von zim Seiten
 	die zim Funktion umschreiben, dass auch andere Dateien
 	mit verschoben werden können
-	- [ ] custom tool for insert clipboard of wayland
 - [X] Next (2)
 	- [ ] [ttma](ttma.md)
     - [ ] custom tool for insert page.section in file
@@ -26,6 +25,9 @@
 	- [ ] Programme über libraries verbinden
 
 ## Features
+
+### 2023-07-03 wayland paste in zim
+custom tool for insert clipboard of wayland
 
 ### 2023-06-25 open-file template-program and template-calculation
 Combinaion of template-program and zim-template-program.

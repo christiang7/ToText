@@ -93,8 +93,8 @@ echo -e "\n## Features" >> "${folder}"/"${File}".md
 echo -e "\n${additiontext}" >> "${folder}"/"${File}".md
 echo -e "\n## Informations" >> "${folder}"/"${File}".md
 echo -e "\n## Main Program" >> "${folder}"/"${File}".md
-echo -e "\n\`\`\`bash\n noweb.py -R${File}.${extens} ${File}.md > ${File}.${extens} && echo 'fertig' \n\`\`\`" >> "${folder}"/"${File}".md
-echo -e "\n\n\`\`\`bash\n chmod u+x ${File}.${extens} && ln -sf "${folder}"/${File}.${extens} ~/.local/bin/${File}.${extens} && echo 'fertig'\n \`\`\`" >> "${folder}"/"${File}".md
+echo -e "\n\`\`\`bash\nnoweb.py -R${File}.${extens} ${File}.md > ${File}.${extens} && echo 'fertig' \n\`\`\`" >> "${folder}"/"${File}".md
+echo -e "\n\n\`\`\`bash\nchmod u+x ${File}.${extens} && ln -sf "${folder}"/${File}.${extens} ~/.local/bin/${File}.${extens} && echo 'fertig'\n \`\`\`" >> "${folder}"/"${File}".md
 echo -e "\n\`\`\`${langname}" >> "${folder}"/"${File}".md
 echo -e "{{${File}.${extens}}}=" >> "${folder}"/"${File}".md
 echo -e "\n@" >> "${folder}"/"${File}".md
