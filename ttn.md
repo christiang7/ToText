@@ -5,7 +5,9 @@ Modification time: [Zettelkasten:2021:04:24]()
 - [X] **[../ttn](./ttn)**
 	- [ ] tex Dateiformat nochmal überprüfen
 
-  ``noweb.py -Rttn ttn.md > ttn && chmod u+x ttn && echo 'fertig'``
+  ```bash
+noweb.py -Rttn ttn.md > ttn && chmod u+x ttn && echo 'fertig'
+  ```
 
 ```bash
 {{ttn}}=
@@ -76,8 +78,8 @@ then
 	}
 
 	function Timestamps(){
-		echo "Text creation time: $(date +"[[Zettelkasten:%Y:%m:%d]]")" >> "$folder"/"$File".md
-		echo "Modification time: $(date +"[[Zettelkasten:%Y:%m:%d]]" -r "$folder"/"$File")" >> "$folder"/"$File".md
+		echo "Text creation time: $(date +"[[Zettelkasten:%Y:%m:%d|%Y-%m-%d]]")" >> "$folder"/"$File".md
+		echo "Modification time: $(date +"[[Zettelkasten:%Y:%m:%d|%Y-%m-%d]]" -r "$folder"/"$File")" >> "$folder"/"$File".md
 	}
 
 	if [[ pdf == $extens ]]
@@ -168,8 +170,8 @@ then
 		echo "[*] @TEX $tags **$folder $source**" >> "$folder".md #
 		echo "**[[./$File]]**" >> "$folder".md 
 		echo "**[[./$filename.pdf]]**" >> "$folder".md 
-		echo "Text creation time: $(date +"[[Zettelkasten:%Y:%m:%d]]")" >> "$folder".md
-		echo "Modification time: $(date +"[[Zettelkasten:%Y:%m:%d]]" -r "$folder"/"$folder"/"$File")" >> "$folder".md
+		echo "Text creation time: $(date +"[[Zettelkasten:%Y:%m:%d|%Y-%m-%d]]")" >> "$folder".md
+		echo "Modification time: $(date +"[[Zettelkasten:%Y:%m:%d|%Y-%m-%d]]" -r "$folder"/"$folder"/"$File")" >> "$folder".md
 		echo -e "\n$additiontext" >> "$folder".md
 		ln -s "$folder"/"$folder"/"$File" "$folder"/"$File"
 		ln -s "$folder"/"$filename".pdf "$filename".pdf

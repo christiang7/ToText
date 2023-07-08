@@ -1,13 +1,13 @@
 # ttpic
-
+Text creation time: [Zettelkasten:2021:04:29]()
+Modification time: [Zettelkasten:2021:04:22]()
 - [X] **[../ttpic](./ttpic)**
 
-Text creation time:
-[Zettelkasten:2021:04:29]()
-Modification time:
-[Zettelkasten:2021:04:22]()
 
-  ``noweb.py -Rttpic ttpic.md > ttpic && chmod u+x ttpic && echo 'fertig'``
+
+  ```bash
+noweb.py -Rttpic ttpic.md > ttpic && chmod u+x ttpic && echo 'fertig'
+```
 
 ```bash
 {{ttpic}}=
@@ -19,8 +19,8 @@ echo "Content-Type: text/x-zim-wiki" >> "$File".md
 echo "Wiki-Format: zim 0.6" >> "$File".md
 echo "===== $f =====" >> "$File".md
 echo "[*] @BILD $3 **[[../$f]] $2**" >> "$File".md
-echo "Text creation time: $(date +"[[Zettelkasten:%Y:%m:%d]]")" >> "$File".md
-echo "Modification time: $(date +"[[Zettelkasten:%Y:%m:%d]]" -r "$1")" >> "$File".md
+echo "Text creation time: $(date +"[[Zettelkasten:%Y:%m:%d|%Y-%m-%d]]")" >> "$File".md
+echo "Modification time: $(date +"[[Zettelkasten:%Y:%m:%d|%Y-%m-%d]]" -r "$1")" >> "$File".md
 echo -e "\n" >> "$File".md
 echo "{{../$f?width=750}}" >> "$File".md
 echo -e "\n$4" >> "$File".md

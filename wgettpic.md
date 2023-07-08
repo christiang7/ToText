@@ -1,9 +1,8 @@
 # wgettpic
-
-- [X] **wgettpic**
-
 Created Donnerstag [Zettelkasten:2021:04:29]()
-Backlink  [GedankenspeicherCoding](../GedankenspeicherCoding.md)
+- [X] **wgettpic** [README](README.md)
+
+
 [wget-download-firefox](./wget-download-firefox.md)
 
 ```bash
@@ -52,25 +51,25 @@ then
     convert "$File" "$Newname".avif
     rm "$File"
 
-    foldermonth=$(date +"/home/christian/Gedankenspeicher/Gedankenspeicherwiki/Zettelkasten/%Y/%m" -r "$Newname".avif)
-    calendarfile=$(date +"%d")
-    calendarfile=$calendarfile.md
-    if [[ ! -e "$foldermonth"/"$calendarfile" ]]
-    then
-        touch "$foldermonth"/"$calendarfile"
-        echo "Content-Type: text/x-zim-wiki" >> "$foldermonth"/"$calendarfile"
-        echo "Wiki-Format: zim 0.6" >> "$foldermonth"/"$calendarfile"
-        date +"===== %A %d %b %Y =====" >> "$foldermonth"/"$calendarfile"
+    #foldermonth=$(date +"/home/christian/Gedankenspeicher/Gedankenspeicherwiki/Zettelkasten/%Y/%m" -r "$Newname".avif)
+    #calendarfile=$(date +"%d")
+    #calendarfile=$calendarfile.md
+    #if [[ ! -e "$foldermonth"/"$calendarfile" ]]
+    #then
+    #    touch "$foldermonth"/"$calendarfile"
+    #    echo "Content-Type: text/x-zim-wiki" >> "$foldermonth"/"$calendarfile"
+    #    echo "Wiki-Format: zim 0.6" >> "$foldermonth"/"$calendarfile"
+    #    date +"===== %A %d %b %Y =====" >> "$foldermonth"/"$calendarfile"
         #date +"[[:Zettelkasten:%Y:Week %W|Week %W]]"  >> "$foldermonth"/"$calendarfile"
-        date +"[[Zettelkasten:%Y:%m]]" >> "$foldermonth"/"$calendarfile"
-        echo -e ""  >> "$foldermonth"/"$calendarfile"
-        date +"[*] **%A %d %b %Y ** "  >> "$foldermonth"/"$calendarfile"
+    #    date +"[[Zettelkasten:%Y:%m]]" >> "$foldermonth"/"$calendarfile"
+    #    echo -e ""  >> "$foldermonth"/"$calendarfile"
+    #    date +"[*] **%A %d %b %Y ** "  >> "$foldermonth"/"$calendarfile"
         #mv "$calendarfile" "$foldermonth"/"$calendarfile"
-    fi
+    #fi
 
     ttpic "${Newname}.avif" "$source" "$tags" "$additiontext"
-    echo -e "\n[[+${Newname}.avif]]" >> "$foldermonth"/"$calendarfile"
-    echo -e "{{${Newname}.avif?width=750}}" >> "$foldermonth"/"$calendarfile"
+    #echo -e "\n[[+${Newname}.avif]]" >> "$foldermonth"/"$calendarfile"
+    #echo -e "{{${Newname}.avif?width=750}}" >> "$foldermonth"/"$calendarfile"
 
 fi
 @

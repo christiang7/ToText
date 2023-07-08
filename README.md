@@ -7,11 +7,9 @@
 	die zim Funktion umschreiben, dass auch andere Dateien
 	mit verschoben werden können
 - [X] Next (2)
-	- [ ] [ttma](ttma.md)
     - [ ] custom tool for insert page.section in file
 - [X] Planning (2)
-	- [ ] bei [ttn.md](ttn.md) die html und Video Dateien
-	nochmal anschauen wie nach Assets verschiebenß
+	- [ ] bei [ttam.md](ttam.md)
 	- [ ] nochmal [ttrename](ttrename.md) überprüfen wenn Benutzung über der Datei geht
 - [X] Backlog
     - [ ] überall yad Ersatz für zenity einfügen
@@ -23,6 +21,7 @@
 	aktualisiert wird und von einer pdf als Notizen abgespeichert wird
 	- [ ] alles in english schreiben
 	- [ ] Programme über libraries verbinden
+	- [ ] [ttn](ttn.md)
 
 ## Features
 
