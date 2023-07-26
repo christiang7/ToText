@@ -69,7 +69,7 @@ then
 
     ttpic "${Newname}.avif" "$source" "$tags" "$additiontext"
     #echo -e "\n[[+${Newname}.avif]]" >> "$foldermonth"/"$calendarfile"
-    #echo -e "{{${Newname}.avif?width=750}}" >> "$foldermonth"/"$calendarfile"
+    #echo -e "{{${Newname}.avif?width=500}}" >> "$foldermonth"/"$calendarfile"
 
 fi
 @

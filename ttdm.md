@@ -94,19 +94,19 @@ if [[ pdf == $extens ]]
 	echo "Modification time: $(date +"[[Zettelkasten:%Y:%m:%d]]" -r "$File")" >> "$folder"/"$Filename".md
 	echo -e "\n" >> "$folder"/"$Filename".md
 	echo -e "$additiontext\n" >> "$folder"/"$Filename".md
-	echo -e "{{../$Filename.png?width=750}}\n" >> "$folder"/"$Filename".md
+	echo -e "{{../$Filename.png?width=500}}\n" >> "$folder"/"$Filename".md
 	pdfinfo "$File" | grep Pages >> "$folder"/"$Filename".md
 	pdftotext -nopgbrk -enc UTF-8 -f 1 -l 1 "$File" ->> "$folder"/"$Filename".md
 	else
 	mv "$File".md "$folder"/"$Filename".md
 	sed -i "9 i$additiontext" "$folder"/"$Filename".md
 	echo -e "\n" >> "$folder"/"$Filename".md
-	sed -i "13 i{{../$Filename.png?width=750}}" "$folder"/"$Filename".md
+	sed -i "13 i{{../$Filename.png?width=500}}" "$folder"/"$Filename".md
 	echo -e "\n" >> "$folder"/"$Filename".md
 	fi
 	pdftoppm -r 90 -png -singlefile "$File" "$folder"/"$Filename"
 	echo -e "\n[[./$Filename]] [[+$Filename]]" >> "$foldermonth"/"$calendarfile"
-	echo -e "{{$Filename.png?width=750}}" >> "$foldermonth"/"$calendarfile"
+	echo -e "{{$Filename.png?width=500}}" >> "$foldermonth"/"$calendarfile"
 	echo "cd $folder"
 	mv "$File" $folder/"$Filename"
 elif [[ jpg == $extens || png == $extens || webp == $extens || jpeg == $extens || avif == $extens || svg == $extens ]] 
@@ -121,13 +121,13 @@ then
 	echo "Text creation time: $(date +"[[Zettelkasten:%Y:%m:%d]]")" >> "$folder"/"$Filename".md
 	echo "Modification time: $(date +"[[Zettelkasten:%Y:%m:%d]]" -r "$File")" >> "$folder"/"$Filename".md
 	echo -e "\n$additiontext" >> "$folder"/"$Filename".md
-	echo "{{../$Filename?width=750}}" >> "$folder"/"$Filename".md
+	echo "{{../$Filename?width=500}}" >> "$folder"/"$Filename".md
 	else
 	mv "$File".md "$folder"/"$Filename".md
 	echo "$additiontext" >> "$folder"/"$Filename".md
 	fi
 	echo -e "\n[[+$Filename]]" >> "$foldermonth"/"$calendarfile"
-	echo -e "{{$Filename?width=750}}" >> "$foldermonth"/"$calendarfile"
+	echo -e "{{$Filename?width=500}}" >> "$foldermonth"/"$calendarfile"
 	mv "$File" $folder/"$Filename"
 elif [[ mp4 == $extens || mov == $extens || mkv == $extens || flv = $extens ]] 
 then
@@ -142,13 +142,13 @@ then
 	echo "Modification time: $(date +"[[Zettelkasten:%Y:%m:%d]]" -r "$File")" >> "$folder"/"$Filename".md
 	echo -e "\n" >> "$folder"/"$Filename".md
 	echo -e "$additiontext\n" >> "$folder"/"$Filename".md
-	echo -e "{{../$Filename.png?width=750}}\n" >> "$folder"/"$Filename".md
+	echo -e "{{../$Filename.png?width=500}}\n" >> "$folder"/"$Filename".md
 	ffmpeg -loglevel quiet -ss 2 -i "$File"  -t 1 -f image2 "$folder"/"$Filename".png
 	else
 	mv "$File".md "$folder"/"$Filename".md
 	sed -i "9 i$additiontext" "$folder"/"$Filename".md
 	#echo -e "\n" >> "$folder"/"$File".md
-	#sed -i "13 i{{../$File.png?width=750}}" "$folder"/"$File".md
+	#sed -i "13 i{{../$File.png?width=500}}" "$folder"/"$File".md
 	#echo -e "\n" >> "$folder"/"$File".md
 	mv "$File".png "$folder"/"$Filename".png
 	fi

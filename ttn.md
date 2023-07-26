@@ -114,7 +114,7 @@ then
 		convert "$folder"/"$File".png -resize 4000x4000 "$folder"/"$File".avif
 		rm "$folder"/"$File".png
 		echo -e "\n$additiontext\n" >> "$folder"/"$File".md
-		echo "{{../$File.avif?width=750}}" >> "$folder"/"$File".md
+		echo "{{../$File.avif?width=500}}" >> "$folder"/"$File".md
 		echo "$3" >> "$folder"/"$File".md
 	elif [[ epub == $extens ]]
 	then
@@ -150,7 +150,7 @@ then
 		echo "[*] @TREESHEETS $tags **[[../$Filename]] $source**" >> "$folder"/"$File".md
 		Timestamps
 		echo -e "\n$additiontext\n" >> "$folder"/"$File".md
-		echo "{{../$Filename.png?width=750}}" >> "$folder"/"$File".md
+		echo "{{../$Filename.png?width=500}}" >> "$folder"/"$File".md
 		#Opentxt
 	elif [[ tex == $extens ]]
 	then
@@ -189,7 +189,7 @@ then
 		#mv "$folder"/"$File"-px.png "$folder"/"$File".png
 		convert "$folder"/"$File".png "$folder"/"$File".avif
 		rm "$folder"/"$File".png
-		echo -e "{{../$File.avif?width=750}}\n" >> "$folder"/"$File".md
+		echo -e "{{../$File.avif?width=500}}\n" >> "$folder"/"$File".md
 		xournalpp "$folder"/"$File" -p "$filename".pdf
 		ttpdf "$filename".pdf
 	elif [[ mp3 == $extens || webm == $extens || flac == $extens || aac = $extens || ogg = $extens || weba = $extens || wav = $extens || aiff = $extens ]]

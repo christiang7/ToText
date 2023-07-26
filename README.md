@@ -6,22 +6,22 @@
 	- [ ] bei der Verschiebung und Umbennung von zim Seiten
 	die zim Funktion umschreiben, dass auch andere Dateien
 	mit verschoben werden können
-- [X] Next (2)
     - [ ] custom tool for insert page.section in file
-- [X] Planning (2)
+- [X] Next (2)
 	- [ ] bei [ttam.md](ttam.md)
 	- [ ] nochmal [ttrename](ttrename.md) überprüfen wenn Benutzung über der Datei geht
-- [X] Backlog
+- [X] Planning (2)
     - [ ] überall yad Ersatz für zenity einfügen
 	- [ ] Bei Assets Verschiebung noch einen Link für pdf und
 	deren Bilder da lassen, die md nicht verlinken
+- [X] Backlog
+	- [ ] [ttn](ttn.md)
 	- [ ] Bei Downloads von Videos über Mediathekview
 	das Korrekturprogramm in Markdown umwandeln
 	- [ ] xournal Programmstarter so, dass automatisch thumbnail
 	aktualisiert wird und von einer pdf als Notizen abgespeichert wird
 	- [ ] alles in english schreiben
 	- [ ] Programme über libraries verbinden
-	- [ ] [ttn](ttn.md)
 
 ## Features
 

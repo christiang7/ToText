@@ -32,7 +32,7 @@ then
 	pdfinfo "$1" | grep Pages >> "$File".md
 	echo -e "\n" >> "$File".md
 	pdftoppm -png -singlefile "$File" "$File"
-	sed -i "13 i{{../$File.png?width=750}}" "$File".md
+	sed -i "13 i{{../$File.png?width=500}}" "$File".md
 	pdftotext -f 1 -l 1 "$1" ->> "$File".md
 	Opentxt
 elif [[ jpg == $extens || png == $extens || webp == $extens || jpeg == $extens || avif == $extens ]]
@@ -41,7 +41,7 @@ then
 	Wikiprev
 	Timestamps
 	echo -e "[[..]]\n$2\n" >> "$File".md
-	echo "{{../$f?width=750}}" >> "$File".md
+	echo "{{../$f?width=500}}" >> "$File".md
 	Opentxt
 elif [[ mp4 == $extens || mov == $extens || mkv == $extens || flv = $extens  ]]
 then

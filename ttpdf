@@ -15,8 +15,8 @@ pdftoppm -png -singlefile "$File" "$File"
 #mv "$File"-px.png "$File".png
 convert "$File".png -resize 4000x4000 "$File".avif
 rm "$File".png
-#echo -e "{{../$f.png?width=750}}\n" >> "$File".md
-echo -e "{{../$f.avif?width=750}}\n" >> "$File".md
+#echo -e "{{../$f.png?width=500}}\n" >> "$File".md
+echo -e "{{../$f.avif?width=500}}\n" >> "$File".md
 pdfinfo "$f" | grep Pages >> "$File".md
 echo -e "\n" >> "$File".md
 pdftotext -nopgbrk -enc UTF-8 -f 1 -l 1 "$f" ->> "$File".md

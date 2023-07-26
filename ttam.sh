@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 
-chooseWhere=$(zenity --height 450 --list --radiolist --print-column ALL --hide-header --column "Checkbox" --column "What" TRUE Spass FALSE Assets FALSE KanDo FALSE Physik FALSE Mathematik FALSE Philosophie FALSE Naturwissenschaften_und_Instrumentarien FALSE CodeFabrik FALSE Zitat FALSE Privat FALSE Kyudo FALSE HSP)
+chooseWhere=$(zenity --height 450 --list --radiolist --print-column ALL --hide-header --column "Checkbox" --column "What" TRUE Spass FALSE Assets FALSE KanDo FALSE Physik FALSE Mathematik FALSE Philosophie FALSE Naturwissenschaften_und_Instrumentarien FALSE CodeFabrik FALSE Zitat FALSE Privat FALSE Kyudo FALSE HSP FALSE Zettelkasten)
 
 if [ ! $? -eq 1 ];
 then
@@ -33,7 +33,7 @@ then
 		;;
 	Zettelkasten) assetsfolder=$(echo "/home/christian/Gedankenspeicher/Gedankenspeicherwiki/Zettelkasten")
 		;;
-    Zitat) assetsfolder=$(echo "/home/christian/Gedankenspeicher/Gedankenspeicherwiki/Zettelkasten/Zitat")
+    Zitat) assetsfolder=$(echo "/home/christian/Gedankenspeicher/Gedankenspeicherwiki/Zettelkasten/ZitaT")
 		;;
     Privat) assetsfolder=$(echo "/home/christian/Gedankenspeicher/Gedankenspeicherwiki/Zettelkasten/Privat")
 		;;

@@ -36,7 +36,7 @@ then
 	ffmpeg -loglevel quiet -ss 2 -i "$File"  -t 1 -f image2 "$File".png
 	convert "$File".png -resize 1200x1200 -quality 97 "$File"-px.png
 	mv "$File"-px.png "$File".png
-	sed -i "8 i{{../$File.png?width=750}}" "$File".md
+	sed -i "8 i{{../$File.png?width=500}}" "$File".md
 fi
 
 @

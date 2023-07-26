@@ -36,7 +36,7 @@ then
 	sed -i "6 s/$oldFile/$f/g" "$File".md
 	sed -i "s/$oldFile/$f/g" "$File".md
 	#Wikiprev
-	#sed -i "11 i{{../$f?width=750}}" "$File".md
+	#sed -i "11 i{{../$f?width=500}}" "$File".md
 	#Opentxt
 elif [[ mp4 == $extens || mov == $extens || mkv == $extens || flv = $extens  ]]
 then

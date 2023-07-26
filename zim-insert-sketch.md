@@ -34,7 +34,7 @@ Backlink [GedankenspeicherCoding](../GedankenspeicherCoding.md)
 		mypaint "$filename".png
 		ttpic "$filename".png
 		echo -e "[[+${filename}.png]]"
-		echo {{"$filename".png?width=750}}
+		echo {{"$filename".png?width=500}}
 	fi
 	#fi
 @

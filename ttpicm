@@ -23,9 +23,9 @@ echo "[*] @BILD $3 **[[../$f]] $2**" >> "$File".md
 echo "Text creation time: $(date +"[[Zettelkasten:%Y:%m:%d]]")" >> "$File".md
 echo "Modification time: $(date +"[[Zettelkasten:%Y:%m:%d]]" -r "$1")" >> "$File".md
 echo -e "\n$4\n" >> "$File".md
-echo "{{../$f?width=750}}" >> "$File".md
+echo "{{../$f?width=500}}" >> "$File".md
 echo -e "\n[[+$f]]" >> "$foldermonth"/"$calendarfile"
-echo -e "{{$f?width=750}}" >> "$foldermonth"/"$calendarfile"
+echo -e "{{$f?width=500}}" >> "$foldermonth"/"$calendarfile"
 mv "$f" $folder/"$f"
 mv "$File".md $folder/"$File".md
 echo "cd $folder"

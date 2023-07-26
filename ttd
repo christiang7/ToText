@@ -75,7 +75,7 @@ do
 			convert "$File".png -resize 1200x1200 -quality 97 "$File"-px.png
 			mv "$File"-px.png "$File".png
 			echo -e "\n$2" >> "$File".md
-			echo -e "\n{{../$File.png?width=750}}\n" >> "$File".md
+			echo -e "\n{{../$File.png?width=500}}\n" >> "$File".md
 			echo "$3" >> "$File".md
 		elif [[ epub == $extens ]]
 		then
@@ -114,7 +114,7 @@ do
 			Timestamps
 			echo -e "\n$additiontext\n" >> "$folder"/"$File".md
 			xournalpp --export-range=1 "$folder"/"$File" -i "$folder"/"$File".png
-			echo -e "{{../$File.png?width=750}}\n" >> "$folder"/"$File".md
+			echo -e "{{../$File.png?width=500}}\n" >> "$folder"/"$File".md
 			#xournalpp "$folder"/"$File" -p "$folder"/"$filename".pdf
 			#ttpdf "$folder"/"$filename".pdf
 		elif [[ -n $extenspdf || -n $extensxopp || -z $extensmp4 || -z $extensmov || -z $extensflv || -z $extensmkv ]]

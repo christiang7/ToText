@@ -22,7 +22,7 @@ echo "[*] @BILD $3 **[[../$f]] $2**" >> "$File".md
 echo "Text creation time: $(date +"[[Zettelkasten:%Y:%m:%d|%Y-%m-%d]]")" >> "$File".md
 echo "Modification time: $(date +"[[Zettelkasten:%Y:%m:%d|%Y-%m-%d]]" -r "$1")" >> "$File".md
 echo -e "\n" >> "$File".md
-echo "{{../$f?width=750}}" >> "$File".md
+echo "{{../$f?width=500}}" >> "$File".md
 echo -e "\n$4" >> "$File".md
 #kate "$File".md 2>/dev/null & 
 #sleep 10

@@ -25,9 +25,9 @@ then
 	echo "Text creation time: $(date +"[[Zettelkasten:%Y:%m:%d]]")" >> "$File".md
 	echo "Modification time: $(date +"[[Zettelkasten:%Y:%m:%d]]" -r "$1")" >> "$File".md
 	echo -e "\n" >> "$File".md
-	echo "{{../"$filename".avif?width=750}}" >> "$File".md
+	echo "{{../"$filename".avif?width=500}}" >> "$File".md
 	echo -e "\n" >> "$File".md
 
 	echo -e "[[+${filename}.kra]]"
-	echo {{"$filename".avif?width=750}}
+	echo {{"$filename".avif?width=500}}
 fi

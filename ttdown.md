@@ -60,7 +60,7 @@ ffmpeg -loglevel quiet -ss 2 -i "$folder""$File" -t 1 -f image2 "$folder""$File"
 convert "$folder""$File".png "$folder""$File".avif
 rm "$folder""$File".png
 echo -e "\n$additiontext\n" >> "$folder""$File".md
-echo "{{../$f.avif?width=750}}" >> "$folder""$File".md
+echo "{{../$f.avif?width=500}}" >> "$folder""$File".md
 yt-dlp --get-description "$source" >> "$folder""$File".md
 #echo "$3" >> "$File".md
 #kate "$File".md 2>/dev/null &

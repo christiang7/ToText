@@ -25,7 +25,7 @@ do
   date +"[[Zettelkasten:%Y:%m:%d]]" >> "$1"/"$filetxt".md
   echo "Modification time:" >> "$1"/"$filetxt".md
   date +"[[Zettelkasten:%Y:%m:%d]]" -r "$1"/"$filename" >> "$1"/"$filetxt".md
-  echo "{{../$filename?width=750}}" >> "$1"/"$filetxt".md
+  echo "{{../$filename?width=500}}" >> "$1"/"$filetxt".md
   echo -e "\n$4\n" >> "$1"/"$filetxt".md
   mv "$1"/"$filename" "$folder"/"$filename"
   mv "$1"/"$filetxt".md "$folder"/"$filetxt".md
