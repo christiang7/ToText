@@ -3,6 +3,7 @@ Created Sonntag [2022-11-06]()
 - [X] **zim-filepath** [README](README.md)
 
 
+## Information
 
 - [X] WEB bash - Readlink - How to crop full path? - Stack Overflow
 
@@ -11,6 +12,9 @@ Created Sonntag [2022-11-06]()
 - [X] WEB readlink() — Read the value of a symbolic link - IBM Documentation
 
  <https://www.ibm.com/docs/en/zos/2.4.0?topic=functions-readlink-read-value-symbolic-link>
+
+
+## Program
 
 ```bash
 noweb.py -Rzim-filepath.sh zim-filepath.md > zim-filepath.sh && echo 'fertig'
@@ -21,6 +25,7 @@ noweb.py -Rzim-filepath.sh zim-filepath.md > zim-filepath.sh && echo 'fertig'
 chmod u+x zim-filepath.sh && ln -sf /home/christian/Gedankenspeicher/Gedankenspeicherwiki/CodeFabrik/GedankenspeicherCoding/zim-filepath.sh ~/.local/bin/zim-filepath.sh && echo 'fertig'
 ```
 
+## Main Program
 
 ```bash
 {{zim-filepath.sh}}=

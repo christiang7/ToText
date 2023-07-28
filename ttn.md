@@ -1,5 +1,5 @@
 # ttn
-Text creation time: [Zettelkasten:2021:04:29]() Modification time: [Zettelkasten:2021:04:24]()
+Text date: [Zettelkasten:2021:04:29]() File date: [Zettelkasten:2021:04:24]()
 - [X] **[../ttn](./ttn)**
 	- [ ] tex Dateiformat nochmal überprüfen
 
@@ -80,7 +80,7 @@ then
 	}
 
 	function Timestamps(){
-		echo "Text date: $(date +"[[Zettelkasten:%Y:%m:%d|%Y-%m-%d]]") Modi date: $(date +"[[Zettelkasten:%Y:%m:%d|%Y-%m-%d]]" -r "$folder"/"$File")" >> "$folder"/"$File".md
+		echo "Text date: $(date +"[[Zettelkasten:%Y:%m:%d|%Y-%m-%d]]") File date: $(date +"[[Zettelkasten:%Y:%m:%d|%Y-%m-%d]]" -r "$folder"/"$File")" >> "$folder"/"$File".md
 		#echo "Modi date: $(date +"[[Zettelkasten:%Y:%m:%d|%Y-%m-%d]]" -r "$folder"/"$File")" >> "$folder"/"$File".md
 	}
 
