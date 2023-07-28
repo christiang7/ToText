@@ -33,6 +33,7 @@ dateID=$(date +"date%Y%m%d%H%M%S")
 outputText="== [[$wikipath:$FullFilename\#$dateID|Zitat der Seite: $PageName]] ==\n ''$text''\n Vom $(date +"[[Zettelkasten:%Y:%m:%d|%Y-%m-%d]]")"
 echo -n -e "**__ $text (Zitat {{id: $dateID}})__**"
 wlexecution=$(echo -e $outputText | wl-copy -n &)
+sleep 1
 killall wl-copy
 exit
 
