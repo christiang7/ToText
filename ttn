@@ -177,8 +177,8 @@ then
 		convert "$folder"/"$File".png "$folder"/"$File".avif
 		rm "$folder"/"$File".png
 		echo -e "{{../$File.avif?width=500}}\n" >> "$folder"/"$File".md
-		xournalpp "$folder"/"$File" -p "$filename".pdf
-		ttpdf "$filename".pdf
+		#xournalpp "$folder"/"$File" -p "$filename".pdf
+		#ttpdf "$filename".pdf
 	elif [[ mp3 == $extens || webm == $extens || flac == $extens || aac = $extens || ogg = $extens || weba = $extens || wav = $extens || aiff = $extens ]]
 	then
 		Wikiprev
