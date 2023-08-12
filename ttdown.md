@@ -1,17 +1,16 @@
 # ttdown
-
-- [X] @ArcProgramm @Notiz @Anmerkungen  **[../ttdown](./ttdown)**
-
-Text creation time: [Zettelkasten:2021:04:24]()
-Modification time: [Zettelkasten:2021:04:24]()
+Text creation time: [2021:04:24]()
+- [X] **ttdowm**
 
 Only for Downloads for the firefox webbrowser
 
 Kommando zum Extrahieren des Scripts
 
-``noweb.py -Rttdown ttdown.md > ttdown && echo 'fertig'``
+```bash
+noweb.py -Rttdown ttdown.md > ttdown && echo 'fertig'
+```
 
-hier die zim-script Datei zum Ausführen
+## Main program
 
 ```bash
 {{ttdown}}=
@@ -51,9 +50,10 @@ additiontext=$(zenity --entry \
 touch "$folder""$File".md
 echo "Content-Type: text/x-zim-wiki" >> "$folder""$File".md
 echo "Wiki-Format: zim 0.6" >> "$folder""$File".md
+echo "===== $f =====" >> "$folder""$File".md
+echo "Text date:$(date +"[[Zettelkasten:%Y:%m:%d|%Y-%m-%d]]") Modi date:$(date +"[[Zettelkasten:%Y:%m:%d|%Y-%m-%d]]" -r "$folder""$File")" "$folder""$File".md
 echo "[*] @VIDEO $tags **[[../$f]]** $source" >> "$folder""$File".md
-echo "Text creation time:$(date +"[[Zettelkasten:%Y:%m:%d]]")" >> "$folder""$File".md
-echo "Modification time:$(date +"[[Zettelkasten:%Y:%m:%d]]" -r "$folder""$File")" >> "$folder""$File".md
+#echo "Modification time:$(date +"[[Zettelkasten:%Y:%m:%d]]" -r "$folder""$File")" >> "$folder""$File".md
 ffmpeg -loglevel quiet -ss 2 -i "$folder""$File" -t 1 -f image2 "$folder""$File".png
 #convert "$folder""$File".png -resize 1200x1200 -quality 97 "$folder""$File"-px.png
 #mv "$folder""$File"-px.png "$folder""$File".png
