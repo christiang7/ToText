@@ -1,8 +1,7 @@
 # Download-Video-select
 Created Dienstag [Zettelkasten:2022:10:18]()
-Backlink [GedankenspeicherCoding](../GedankenspeicherCoding.md)
-
 - [X] **Download-Video-select**
+
 
 
 ```bash
