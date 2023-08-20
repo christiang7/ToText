@@ -3,12 +3,9 @@ Created [Zettelkasten:2023:04:18]
 
 - [X] **ttitle-correction**
 
+## Informations
 
-```bash
-noweb.py -Rttitle-correction.sh ttitle-correction.md > ttitle-correction.sh && echo 'fertig'
-```
-
-command for insert headline in 3th line in file 
+command for insert headline in 3th line in file
 
 ```bash
 sed -i "3 s/\[\*/===== ansansa =====\\n\[\*/" 1681834707295.avif.md
@@ -33,6 +30,11 @@ in all cases it has to be done in 3th and 4th line
 
  https://code.whatever.social/questions/18488270/how-can-i-check-the-first-character-in-a-string-in-bash-or-unix-shell
 
+## main program
+
+```bash
+noweb.py -Rttitle-correction.sh ttitle-correction.md > ttitle-correction.sh && echo 'fertig'
+```
 
 ```bash
 chmod u+x ttitle-correction.sh && ln -sf /home/christian/Gedankenspeicher/Gedankenspeicherwiki/CodeFabrik/GedankenspeicherCoding/ttitle-correction.sh ~/.local/bin/ttitle-correction.sh && echo 'fertig'
@@ -53,9 +55,9 @@ if [[ $line > 5 || $line == "" ]]
 then
     linee=$(sed -n '/\[\ \]/{=;}' $File )
     linee=${linee:0:1}
-    sed -i "$linee s/\[ \]/===== $(basename $File .md) =====\\n\[ \]/" "$File"
+    sed -i "$linee s/\[ \]/====== $(basename $File .md) ======\\n\[ \]/" "$File"
 else
-    sed -i "$line s/\[\*\]/===== $(basename $File .md) =====\\n\[\*\]/" "$File"
+    sed -i "$line s/\[\*\]/====== $(basename $File .md) ======\\n\[\*\]/" "$File"
 fi
 
 @

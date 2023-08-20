@@ -5,7 +5,9 @@ Backlink [GedankenspeicherCoding](../GedankenspeicherCoding.md)
 - [X] **ttnc**
 
 
-  ``noweb.py -Rttnc ttnc.md > ttnc && chmod u+x ttnc && echo 'fertig'``
+```bash
+noweb.py -Rttnc ttnc.md > ttnc && chmod u+x ttnc && echo 'fertig'
+```
 
 ```bash
 {{ttnc}}=
@@ -22,7 +24,7 @@ function Opentxt(){
 
 function Wikiprev(){
 	touch "$File".md
-	sed -i "1 i===== $File =====" "$File".md
+	sed -i "1 i====== $File ======" "$File".md
 	sed -i "1 iWiki-Format: zim 0.6" "$File".md
 	sed -i "1 iContent-Type: text/x-zim-wiki" "$File".md
 }

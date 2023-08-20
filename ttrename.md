@@ -14,9 +14,13 @@ Backlink [GedankenspeicherCoding](../GedankenspeicherCoding.md)
 
  <https://stackoverflow.com/questions/7209629/extract-string-from-brackets>
 to extract the file from the txt file to correct the name
-``echo "string1 [[string2]] string3 string4" | sed 's/.*\[\[\([^]]*\)\]\].*/\1/g'``
+```bash
+echo "string1 [[string2]] string3 string4" | sed 's/.*\[\[\([^]]*\)\]\].*/\1/g'
+```
 
-``cat Brief_Overview_of_Japanese_Art_of_Archery.pdf.md | tr '\n' ' ' | cut -d "[" -f4 | cut -d "]" -f1 | sed "s/..\///g"``
+```bash
+cat Brief_Overview_of_Japanese_Art_of_Archery.pdf.md | tr '\n' ' ' | cut -d "[" -f4 | cut -d "]" -f1 | sed "s/..\///g"
+```
 
 
 
@@ -25,9 +29,13 @@ to extract the file from the txt file to correct the name
 
  <https://ostechnix.com/zenity-create-gui-dialog-boxes-in-bash-scripts/>
 
-``noweb.py -Rttrename ttrename.md > ttrename && echo 'fertig'``
+```bash
+noweb.py -Rttrename ttrename.md > ttrename && echo 'fertig'
+```
 
-``chmod u+x ttrename && ln -sf /home/christian/Gedankenspeicher/Gedankenspeicherwiki/Zettelkasten/Gedankenwanderung/Programme/ttrename ~/.local/bin/ttrename && echo 'fertig'``
+```bash
+chmod u+x ttrename && ln -sf /home/christian/Gedankenspeicher/Gedankenspeicherwiki/Zettelkasten/Gedankenwanderung/Programme/ttrename ~/.local/bin/ttrename && echo 'fertig'
+```
 
 ```bash
 

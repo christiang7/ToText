@@ -30,7 +30,7 @@ then
     touch "$folder""$File".md
     echo "Content-Type: text/x-zim-wiki" >> "$folder""$File".md
     echo "Wiki-Format: zim 0.6" >> "$folder""$File".md
-    echo "===== $f =====" >> "$folder""$File".md
+    echo "====== $f ======" >> "$folder""$File".md
     echo "Text date:$(date +"[[Zettelkasten:%Y:%m:%d|%Y-%m-%d]]") Modi date:$(date +"[[Zettelkasten:%Y:%m:%d|%Y-%m-%d]]" -r "$folder""$File")" >> "$folder""$File".md
     echo "[*] @VIDEO $tags **[[../$f]]** $source" >> "$folder""$File".md
     #echo "Modification time:$(date +"[[Zettelkasten:%Y:%m:%d]]" -r "$folder""$File")" >> "$folder""$File".md

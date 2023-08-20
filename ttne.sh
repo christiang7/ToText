@@ -42,7 +42,7 @@ then
   mkdir -p "${folder}"/"${File}"
   echo "Content-Type: text/x-zim-wiki" > "${folder}"/"${File}".md
   echo "Wiki-Format: zim 0.6" >> "${folder}"/"${File}".md
-  echo -e "===== ${File} =====" >> "${folder}"/"${File}".md
+  echo -e "====== ${File} ======" >> "${folder}"/"${File}".md
   echo -e "Created $(date +"%A") $(date +"[[Zettelkasten:%Y:%m:%d|%Y-%m-%d]]")" >> "${folder}"/"${File}".md
   #echo -e "Backlink $([[Zettelkasten:%Y:%m:%d]])" >> "${folder}"/"${File}".md
   #echo -e "" >> "${folder}"/"${File}".md
