@@ -8,7 +8,7 @@
 	mit verschoben werden können
     - [ ] custom tool for insert page.section in file
 - [X] Next (2)
-	- [ ] bei [ttam.md](ttam.md)
+	- [ ] [ttam.md](ttam.md)
 	- [ ] nochmal [ttrename](ttrename.md) überprüfen wenn Benutzung über der Datei geht
 - [X] Planning (2)
     - [ ] überall yad Ersatz für zenity einfügen
