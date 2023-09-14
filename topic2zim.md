@@ -129,8 +129,8 @@ then
 		echo -e "[*] ${tags} ** ${topic} ** [[$(basename ${folder})]] " >> "${folder}"/"${topicfile}"
 		echo -e "\n${additiontext}" >> "${folder}"/"${topicfile}"
 		echo -e "\n${tabs}" >> "${folder}"/"${topicfile}"
-		echo -e "\n===== $(date +"[[Zettelkasten:%Y:%m:%d|%Y-%m-%d]]") =====" >> "${folder}".md
-		echo -e "[[+$(basename ${topicfile} .md)|${topic}]]" >> "$folder".md
+		echo -e "		[*] $(date +"[[Zettelkasten:%Y:%m:%d|%Y-%m-%d]]")" >> "${folder}".md
+		echo -e "			[*] [[+$(basename ${topicfile} .md)|${topic}]]" >> "$folder".md
 	fi
 fi
 @
