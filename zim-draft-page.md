@@ -11,6 +11,10 @@ Created [2023-09-19]()
 
 ## Informations
 
+Get yesterday's date in bash on Linux, DST-safe | AnonymousOverflow
+https://overflow.hostux.net/questions/15374752/get-yesterdays-date-in-bash-on-linux-dst-safe
+
+
 ## Main Program
 
 ```bash
