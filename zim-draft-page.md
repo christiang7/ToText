@@ -1,0 +1,70 @@
+# zim-draft-page
+Created [2023-09-19]()
+
+- [X]  **zim-draft-page** Christian Gößl [README.md](README.md)
+    - [X] Doing
+    - [X] Backlog
+
+## Features
+
+
+
+## Informations
+
+## Main Program
+
+```bash
+noweb.py -Rzim-draft-page.sh zim-draft-page.md > zim-draft-page.sh && echo 'fertig' 
+```
+
+
+```bash
+chmod u+x zim-draft-page.sh && ln -sf /home/christian/Gedankenspeicher/KanDo/GedankenspeicherEinrichtung/GedankenspeicherCoding/zim-draft-page.sh ~/.local/bin/zim-draft-page.sh && echo 'fertig'
+ ```
+
+```bash
+{{zim-draft-page.sh}}=
+{{preamble}}
+{{create page template}}
+{{move page}}
+@
+
+```
+
+### Presets
+
+Einstellungen vor dem Start des eigentlichen Programms, hier für ein Shell Script ist diese Zeile notwendig
+
+```bash
+{{preamble}}=
+#!/bin/bash
+@
+```
+
+### Template for draft page
+
+
+
+
+```bash
+{{create page template}}=
+filename=$(date +"Draft_page_%Y-%m-%d")
+touch "${filename}".md
+echo "Content-Type: text/x-zim-wiki" > "${filename}".md
+echo "Wiki-Format: zim 0.6" >> "${filename}".md
+echo -e "===== $(date +"Draft page %Y-%m-%d") =====" >> "${filename}".md
+echo -e "Created $(date +"[[Zettelkasten:%Y:%m:%d|%Y-%m-%d]]")" >> "${filename}".md
+echo -e "[*] ** $(date +"Draft page %Y-%m-%d") ** [[Artelier:Input|Input]] \n\n" >> "${filename}".md
+@
+```
+
+
+### Moving Page
+
+
+```bash
+{{move page}}=
+mv ~/Downloads/"${filename}".md ~/Alte-Inputs/"${filename}".md
+mv "${filename}".md ~/Downloads/"${filename}".md
+@
+```
