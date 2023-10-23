@@ -3,8 +3,7 @@
 - [X] Done
 - [X] Doing Interput (2)
 - [X] Doing (2)
-	- [ ] nochmal [ttrename](ttrename.md) überprüfen wenn Benutzung über die md Datei geht
-- [X] Next (2)
+	- [ ] [ttn](ttn.md)
 - [X] Planning (2)
     - [ ] überall yad Ersatz für zenity einfügen
 - [X] Backlog
@@ -13,7 +12,6 @@
 	mit verschoben werden können
     - [ ] custom tool for insert page.section in file
     - [ ] [ttam](ttam)
-	- [ ] [ttn](ttn.md)
 	- [ ] Bei Downloads von Videos über Mediathekview
 	das Korrekturprogramm in Markdown umwandeln
 	- [ ] xournal Programmstarter so, dass automatisch thumbnail
