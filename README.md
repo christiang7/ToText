@@ -3,18 +3,16 @@
 - [X] Done
 - [X] Doing Interput (2)
 - [X] Doing (2)
-	- [ ] bei der Verschiebung und Umbennung von zim Seiten
-	die zim Funktion umschreiben, dass auch andere Dateien
-	mit verschoben werden können
-    - [ ] custom tool for insert page.section in file
+	- [ ] nochmal [ttrename](ttrename.md) überprüfen wenn Benutzung über die md Datei geht
 - [X] Next (2)
-	- [ ] [ttam.md](ttam.md)
-	- [ ] nochmal [ttrename](ttrename.md) überprüfen wenn Benutzung über der Datei geht
 - [X] Planning (2)
     - [ ] überall yad Ersatz für zenity einfügen
-	- [ ] Bei Assets Verschiebung noch einen Link für pdf und
-	deren Bilder da lassen, die md nicht verlinken
 - [X] Backlog
+	- [ ] bei der Verschiebung und Umbenennung von zim Seiten
+	die zim Funktion umschreiben, so dass auch andere Dateien
+	mit verschoben werden können
+    - [ ] custom tool for insert page.section in file
+    - [ ] [ttam](ttam)
 	- [ ] [ttn](ttn.md)
 	- [ ] Bei Downloads von Videos über Mediathekview
 	das Korrekturprogramm in Markdown umwandeln
