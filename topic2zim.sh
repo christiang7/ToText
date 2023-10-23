@@ -51,7 +51,7 @@ then
 				mkdir -p "${folder}"/"${topicfilename}"
 				echo "Content-Type: text/x-zim-wiki" > "${folder}"/"${topicfile}"
 				echo "Wiki-Format: zim 0.6" >> "${folder}"/"${topicfile}"
-				echo -e "===== ${topic} =====" >> "${folder}"/"${topicfile}"
+				echo -e "====== ${topic} ======" >> "${folder}"/"${topicfile}"
 				echo -e "Created $(date +"[[Zettelkasten:%Y:%m:%d|%Y-%m-%d]]")" >> "${folder}"/"${topicfile}"
 				#echo -e "" >> "${folder}"/"${topicfile}"
 				echo -e "[*] ${tags} ** ${topic} ** [[$(basename ${folder})]] " >> "${folder}"/"${topicfile}"
@@ -116,7 +116,7 @@ then
 			sed -i "${l}i $additiontext" "$file"
 			sed -i "${l}i
 			" "$file"
-			sed -i "${l}s/^/===== $today =====/g" "$file"
+			sed -i "${l}s/^/====== $today ======/g" "$file"
 			sed -i "${l}i
 			" "$file"
 		fi

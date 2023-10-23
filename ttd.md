@@ -1,14 +1,12 @@
 # ttd
-
+[Zettelkasten:2021:04:22]()
 - [X] **[../ttd](./ttd)**
 
-In einem Verzeichernis alle Dateien mit einer Textdatei versehen
-Text creation time:
-[Zettelkasten:2021:04:29]()
-Modification time:
-[Zettelkasten:2021:04:22]()
+In einem Verzeichnis alle Dateien mit einer Textdatei versehen
 
-  ``noweb.py -Rttd ttd.md > ttd && chmod u+x ttd && echo 'fertig'``
+  ```bash
+noweb.py -Rttd ttd.md > ttd && chmod u+x ttd && echo 'fertig'
+```
 
 ```bash
 {{ttd}}=
@@ -152,8 +150,8 @@ do
 
 	fi
 	
-	echo "[[./$File]]" >> "$foldertxt".md
-	echo "[[+$File]]" >> "$foldertxt".md
+	#echo "[[./$File]]" >> "$foldertxt".md
+	#echo "[[+$File]]" >> "$foldertxt".md
 done
 @
 ```

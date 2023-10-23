@@ -138,6 +138,6 @@ do
 
 	fi
 
-	echo "[[./$File]]" >> "$foldertxt".md
-	echo "[[+$File]]" >> "$foldertxt".md
+	#echo "[[./$File]]" >> "$foldertxt".md
+	#echo "[[+$File]]" >> "$foldertxt".md
 done
