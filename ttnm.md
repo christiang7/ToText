@@ -112,7 +112,7 @@ then
 			echo "Text date: $(date +"[[Zettelkasten:%Y:%m:%d|%Y-%m-%d]]") File date: $(date +"[[Zettelkasten:%Y:%m:%d|%Y-%m-%d]]" -r "$f")" >> "$folder"/"$File".md
 			echo "@BILD $tags " >> "$folder"/"$File".md
 			echo "[*] **[[../$f]] **" >> "$folder"/"$File".md
-			echo "$source\n{{../$File?width=500}}" >> "$folder"/"$File".md
+			echo -e "$source\n{{../$File?width=500}}" >> "$folder"/"$File".md
 		else
 			mv "$File".md "$folder"/"$File".md
 		fi
