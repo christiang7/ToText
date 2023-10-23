@@ -48,7 +48,7 @@ f=$(basename "$1")
 extens=${f##*.}
 filename=${f%.*}
 
-# case of input is txt file
+# case of input is md file
 File2=$(basename "$1")
 extens2=${File2##*.}
 filename2=${File2%.*} #only the filename, here it is the original file

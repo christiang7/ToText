@@ -41,10 +41,12 @@ then
     folder=$(readlink -f -n "$1")
     folder="${folder%/*}"
 
-    filename=$(ttrename "$1" 2> /dev/null)
+    #filename=$(ttrename "$1" 2> /dev/null)
 
-    #file=$(basename "$folder" .md)
+    filename=$(basename "$1" .md)
 
+    echo $folder
+    echo $filename
 
     #filename=${file%.*}
     case ${chooseWhere} in
