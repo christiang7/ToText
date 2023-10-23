@@ -16,7 +16,7 @@ Created [Zettelkasten:2023:03:06]()
 		Ablauf: Zim txt Datei auswählen, rechtsklick copy path, gehe zu txt Ordner und klicke auf zim button tools mit eigenem Script(das verlinkt alles und setzt in der Originaldatei den
 		Originallink
 
-Program for moving files to the assets folder 
+Program for moving files to the the main topic folders
 
 
 
