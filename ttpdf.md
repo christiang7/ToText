@@ -18,9 +18,10 @@ echo "Content-Type: text/x-zim-wiki" >> "$File".md
 echo "Wiki-Format: zim 0.6" >> "$File".md
 echo "====== $f ======" >> "$File".md
 echo "Text date: $(date +"[[Zettelkasten:%Y:%m:%d|%Y-%m-%d]]") Modi date: $(date +"[[Zettelkasten:%Y:%m:%d|%Y-%m-%d]]" -r "$1")" >> "$File".md
-echo "[*] @ARTIKEL $3 **[[../$f]]  $2**" >> "$File".md
+echo "[*] @ARTIKEL $3 **" >> "$File".md
+echo "[*] **[[../$f]] **" >> "$File".md
 #echo "Modification time: $(date +"[[Zettelkasten:%Y:%m:%d|%Y-%m-%d]]" -r "$1")" >> "$File".md
-echo -e "\n$4\n" >> "$File".md
+echo -e "$2\n$4\n" >> "$File".md
 #pdftoppm -r 90 -png -singlefile "$File" "$File"
 pdftoppm -png -singlefile "$File" "$File"
 #convert "$File".png -resize 1200x1200 -quality 97 "$File"-px.png
