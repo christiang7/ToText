@@ -19,184 +19,187 @@ then
 	source=$(echo $abfrage | cut -s -d "|" -f 2)
 	tags=$(echo $abfrage | cut -s -d "|" -f 3)
 	additiontext=$(echo $abfrage | cut -s -d "|" -f 4)
-folder=/home/christian/Gedankenspeicher/Gedankenspeicherwiki/Assets
-File=$(echo "$Newname"."$extens" | sed 's/ /_/g' | sed 's/:/;/g'| sed -e "s/'/_/g" | sed 's/\"//g'|  sed 's/&/n/g' | sed 's/\///g' | sed 's/|//g' | sed 's/\[/(/g' | sed 's/\]/)/g' | sed 's/@/at/g')
-Newname=$(echo "$Newname" | sed 's/ /_/g' | sed 's/:/;/g'| sed -e "s/'/_/g" | sed 's/\"//g'|  sed 's/&/n/g' | sed 's/\///g' | sed 's/|//g' | sed 's/\[/(/g' | sed 's/\]/)/g' | sed 's/@/at/g')
-mv "$1" "$File"
-mv "$1".png "$File".png
-mv "$1".avif "$File".avif
-mv "$1".md "$File".md
+	#folder=/home/christian/Gedankenspeicher/Gedankenspeicherwiki/Assets
+    folder=$(date +"/home/christian/Gedankenspeicher/Gedankenspeicherwiki/Zettelkasten/%Y/%m/%d")
+	File=$(echo "$Newname"."$extens" | sed 's/ /_/g' | sed 's/:/;/g'| sed -e "s/'/_/g" | sed 's/\"//g'|  sed 's/&/n/g' | sed 's/\///g' | sed 's/|//g' | sed 's/\[/(/g' | sed 's/\]/)/g' | sed 's/@/at/g')
+	Newname=$(echo "$Newname" | sed 's/ /_/g' | sed 's/:/;/g'| sed -e "s/'/_/g" | sed 's/\"//g'|  sed 's/&/n/g' | sed 's/\///g' | sed 's/|//g' | sed 's/\[/(/g' | sed 's/\]/)/g' | sed 's/@/at/g')
+	mv "$1" "$File"
+	mv "$1".png "$File".png
+	mv "$1".avif "$File".avif
+	mv "$1".md "$File".md
 
-f=$(basename "$File")
-extens=${f##*.}
+	f=$(basename "$File")
+	extens=${f##*.}
 
-function Moving(){
-	mv "$File" $folder/"$File"
-	mv "$File".md $folder/"$File".md
-	echo "cd $folder"
-}
+	function Moving(){
+		mv "$File" $folder/"$File"
+		mv "$File".md $folder/"$File".md
+		echo "cd $folder"
+	}
 
-function Wikiprev(){
-	touch "$File".md
-	echo "Content-Type: text/x-zim-wiki" >> $folder/"$File".md
-	echo "Wiki-Format: zim 0.6" >> $folder/"$File".md
-	echo "===== $File =====" >> $folder/"$File".md
-}
+	function Wikiprev(){
+		touch "$File".md
+		echo "Content-Type: text/x-zim-wiki" >> $folder/"$File".md
+		echo "Wiki-Format: zim 0.6" >> $folder/"$File".md
+		echo "====== $File ======" >> $folder/"$File".md
+	}
 
-function Timestamps(){
-	echo "Text creation time: $(date +"[[Zettelkasten:%Y:%m:%d]]")" >> $folder/"$File".md
-	echo "Modification time: $(date +"[[Zettelkasten:%Y:%m:%d]]" -r "$File")" >> $folder/"$File".md
-}
+	function Timestamps(){
+		echo "Text date: $(date +"[[Zettelkasten:%Y:%m:%d|%Y-%m-%d]]") File date: $(date +"[[Zettelkasten:%Y:%m:%d|%Y-%m-%d]]" -r "$File")" >> $folder/"$File".md
+	}
 
-#if [[ -f "$File".md ]]
-#then
-#		Moving
-#else
-if [[ pdf == $extens ]]
+	#if [[ -f "$File".md ]]
+	#then
+	#		Moving
+	#else
+	if [[ pdf == $extens ]]
+		then
+		if [[ ! -e "$File".md ]]
+		then
+			touch "$folder"/"$File".md
+			echo "Content-Type: text/x-zim-wiki" >> "$folder"/"$File".md
+			echo "Wiki-Format: zim 0.6" >> "$folder"/"$File".md
+			echo "====== $File ======" >> $folder/"$File".md
+			echo "Text date: $(date +"[[Zettelkasten:%Y:%m:%d|%Y-%m-%d]]") File date: $(date +"[[Zettelkasten:%Y:%m:%d|%Y-%m-%d]]" -r "$File")" >> "$folder"/"$File".md
+			echo "@ARTIKEL $tags " >> "$folder"/"$File".md
+			echo "[*] **[[../$f]] **" >> "$folder"/"$File".md
+			echo -e "$source\n$additiontext\n" >> "$folder"/"$File".md
+			echo -e "{{../$File.avif?width=500}}\n" >> "$folder"/"$File".md
+			pdfinfo "$f" | grep Pages >> "$folder"/"$File".md
+			pdftotext -nopgbrk -enc UTF-8 -f 1 -l 1 "$f" ->> "$folder"/"$File".md
+			else
+			mv "$File".md "$folder"/"$File".md
+			sed -i "9 i$additiontext" "$folder"/"$File".md
+			echo -e "\n" >> "$folder"/"$File".md
+			sed -i "13 i{{../$File.avif?width=500}}" "$folder"/"$File".md
+			echo -e "\n" >> "$folder"/"$File".md
+		fi
+		pdftoppm -png -singlefile "$File" "$File"
+		convert "$File".png -resize 4000x4000 "$File".avif
+		mv "$File".avif "$folder"/"$File".avif
+		rm "$File".png
+		echo "cd $folder"
+		mv "$File" $folder/"$File"
+	elif [[ jpg == $extens || png == $extens || webp == $extens || jpeg == $extens || avif == $extens || svg == $extens ]]
 	then
-	if [[ ! -e "$File".md ]]
+		convert "$File" "$Newname".avif
+		if ! zenity --question --text="Möchten Sie das original Bild behalten?"
+		then
+			rm "$File"
+		fi
+		File=$(basename "$Newname".avif)
+		if [[ ! -e "$File".md ]]
+		then
+			touch "$File".md
+			mv "$File".md "$folder"/"$File".md
+			echo "Content-Type: text/x-zim-wiki" >> "$folder"/"$File".md
+			echo "Wiki-Format: zim 0.6" >> "$folder"/"$File".md
+			echo "====== $File ======" >> $folder/"$File".md
+			echo "Text date: $(date +"[[Zettelkasten:%Y:%m:%d|%Y-%m-%d]]") File date: $(date +"[[Zettelkasten:%Y:%m:%d|%Y-%m-%d]]" -r "$f")" >> "$folder"/"$File".md
+			echo "@BILD $tags " >> "$folder"/"$File".md
+			echo "[*] **[[../$f]] **" >> "$folder"/"$File".md
+			echo "$source\n{{../$File?width=500}}" >> "$folder"/"$File".md
+		else
+			mv "$File".md "$folder"/"$File".md
+		fi
+		echo "$additiontext" >> "$folder"/"$File".md
+		echo "cd $folder"
+
+		mv "$File" $folder/"$File"
+
+	elif [[ mp4 == $extens || mov == $extens || mkv == $extens || flv = $extens ]]
 	then
-	touch "$folder"/"$File".md
-	echo "Content-Type: text/x-zim-wiki" >> "$folder"/"$File".md
-	echo "Wiki-Format: zim 0.6" >> "$folder"/"$File".md
-	echo "===== $File =====" >> $folder/"$File".md
-	echo "[*] @ARTIKEL $tags **[[../$f]] $source**" >> "$folder"/"$File".md
-	echo "Text creation time: $(date +"[[Zettelkasten:%Y:%m:%d]]")" >> "$folder"/"$File".md
-	echo "Modification time: $(date +"[[Zettelkasten:%Y:%m:%d]]" -r "$File")" >> "$folder"/"$File".md
-	echo -e "$additiontext\n" >> "$folder"/"$File".md
-	echo -e "{{../$File.avif?width=500}}\n" >> "$folder"/"$File".md
-	pdfinfo "$f" | grep Pages >> "$folder"/"$File".md
-	pdftotext -nopgbrk -enc UTF-8 -f 1 -l 1 "$f" ->> "$folder"/"$File".md
-	else
-	mv "$File".md "$folder"/"$File".md
-	sed -i "9 i$additiontext" "$folder"/"$File".md
-	echo -e "\n" >> "$folder"/"$File".md
-	sed -i "13 i{{../$File.avif?width=500}}" "$folder"/"$File".md
-	echo -e "\n" >> "$folder"/"$File".md
-	fi
-	pdftoppm -png -singlefile "$File" "$File"
-  convert "$File".png -resize 4000x4000 "$File".avif
-  mv "$File".avif "$folder"/"$File".avif
-  rm "$File".png
-	echo "cd $folder"
-	mv "$File" $folder/"$File"
-elif [[ jpg == $extens || png == $extens || webp == $extens || jpeg == $extens || avif == $extens || svg == $extens ]]
-then
-	convert "$File" "$Newname".avif
-	if ! zenity --question --text="Möchten Sie das original Bild behalten?"
+
+		if [[ ! -e "$File".md ]]
+		then
+			touch "$File".md
+			mv "$File".md "$folder"/"$File".md
+			echo "Content-Type: text/x-zim-wiki" >> "$folder"/"$File".md
+			echo "Wiki-Format: zim 0.6" >> "$folder"/"$File".md
+			echo "====== $File ======" >> $folder/"$File".md
+			echo "Text date: $(date +"[[Zettelkasten:%Y:%m:%d|%Y-%m-%d]]") File date: $(date +"[[Zettelkasten:%Y:%m:%d|%Y-%m-%d]]" -r "$File")" >> "$folder"/"$File".md
+			echo "@VIDEO $tags " >> "$folder"/"$File".md
+			echo "[*] **[[../$f]] **" >> "$folder"/"$File".md
+			echo -e "$source\n$additiontext\n" >> "$folder"/"$File".md
+			ffmpeg -loglevel quiet -ss 2 -i "$File"  -t 1 -f image2 "$folder"/"$File".png
+			convert "$folder"/"$File".png -resize 1200x1200 -quality 97 "$folder"/"$File"-px.png
+			mv "$folder"/"$File"-px.png "$folder"/"$File".png
+			echo -e "{{../$File.png?width=500}}\n" >> "$folder"/"$File".md
+			ffmpeg -loglevel quiet -ss 2 -i "$File"  -t 1 -f image2 "$folder"/"$File".png
+		else
+			mv "$File".md "$folder"/"$File".md
+			sed -i "9 i$additiontext" "$folder"/"$File".md
+			mv "$File".png "$folder"/"$File".png
+		fi
+
+		echo "cd $folder"
+		mv "$f" $folder/"$f"
+	elif [[ $extens == xopp ]]
 	then
-	  rm "$File"
-	fi
-	File=$(basename "$Newname".avif)
-	if [[ ! -e "$File".md ]]
+
+		filename=$(basename "$File" .xopp)
+
+		if [[ ! -e "$File".md ]]
+		then
+			touch "$folder"/"$File".md
+			echo "Content-Type: text/x-zim-wiki" >> "$folder"/"$File".md
+			echo "Wiki-Format: zim 0.6" >> "$folder"/"$File".md
+			echo "====== $File ======" >> $folder/"$File".md
+			echo "Text date: $(date +"[[Zettelkasten:%Y:%m:%d|%Y-%m-%d]]") File date: $(date +"[[Zettelkasten:%Y:%m:%d|%Y-%m-%d]]" -r "$File")" >> "$folder"/"$File".md
+            echo "@ARTIKEL $tags " >> "$folder"/"$File".md
+			echo "[*] **[[../$f]] **" >> "$folder"/"$File".md
+			echo -e "$source\n$additiontext\n" >> "$folder"/"$File".md
+			echo -e "{{../$File.png?width=500}}\n" >> "$folder"/"$File".md
+			xournalpp "$File" -p "$filename".pdf
+			ttpdf "$filename".pdf
+		else
+			mv "$File".md "$folder"/"$File".md
+			sed -i "9 i$additiontext" "$folder"/"$File".md
+			echo -e "\n" >> "$folder"/"$File".md
+			sed -i "13 i{{../$File.png?width=500}}" "$folder"/"$File".md
+			echo -e "\n" >> "$folder"/"$File".md
+		fi
+		xournalpp --export-range=1 "$File" -i "$File".png
+		convert "$File".png -resize 1200x1200 -quality 97 "$File"-px.png
+		mv "$File"-px.png "$folder"/"$File".png
+		mv "$File".png "$folder"/"$File".png
+		mv "$filename".pdf "$folder"/"$filename".pdf
+		mv "$filename".pdf.png "$folder"/"$filename".pdf.png
+		mv "$filename".pdf.md "$folder"/"$filename".pdf.md
+		echo "cd $folder"
+		mv "$f" $folder/"$f"
+	elif [[ epub == $extens ]]
 	then
-	touch "$File".md
-	mv "$File".md "$folder"/"$File".md
-	echo "Content-Type: text/x-zim-wiki" >> "$folder"/"$File".md
-	echo "Wiki-Format: zim 0.6" >> "$folder"/"$File".md
-	echo "===== $File =====" >> $folder/"$File".md
-	echo "[*] @BILD $tags **[[../$f]] $source**" >> "$folder"/"$File".md
-	echo "Text creation time: $(date +"[[Zettelkasten:%Y:%m:%d]]")" >> "$folder"/"$File".md
-	echo "Modification time: $(date +"[[Zettelkasten:%Y:%m:%d]]" -r "$f")" >> "$folder"/"$File".md
-	echo "{{../$File?width=500}}" >> "$folder"/"$File".md
-	else
-	mv "$File".md "$folder"/"$File".md
-	fi
-	echo "$additiontext" >> "$folder"/"$File".md
-	echo "cd $folder"
-
-	mv "$File" $folder/"$File"
-
-elif [[ mp4 == $extens || mov == $extens || mkv == $extens || flv = $extens ]]
-then
-
-	if [[ ! -e "$File".md ]]
-	then
-	touch "$File".md
-	mv "$File".md "$folder"/"$File".md
-	echo "Content-Type: text/x-zim-wiki" >> "$folder"/"$File".md
-	echo "Wiki-Format: zim 0.6" >> "$folder"/"$File".md
-	echo "===== $File =====" >> $folder/"$File".md
-	echo "[*] @VIDEO $tags **[[../$f]] $source**" >> "$folder"/"$File".md
-	echo "Text creation time: $(date +"[[Zettelkasten:%Y:%m:%d]]")" >> "$folder"/"$File".md
-	echo "Modification time: $(date +"[[Zettelkasten:%Y:%m:%d]]" -r "$File")" >> "$folder"/"$File".md
-	echo -e "$additiontext\n" >> "$folder"/"$File".md
-	ffmpeg -loglevel quiet -ss 2 -i "$File"  -t 1 -f image2 "$folder"/"$File".png
-	convert "$folder"/"$File".png -resize 1200x1200 -quality 97 "$folder"/"$File"-px.png
-  mv "$folder"/"$File"-px.png "$folder"/"$File".png
-	echo -e "{{../$File.png?width=500}}\n" >> "$folder"/"$File".md
-	ffmpeg -loglevel quiet -ss 2 -i "$File"  -t 1 -f image2 "$folder"/"$File".png
-	else
-	mv "$File".md "$folder"/"$File".md
-	sed -i "9 i$additiontext" "$folder"/"$File".md
-	mv "$File".png "$folder"/"$File".png
-	fi
-
-	echo "cd $folder"
-	mv "$f" $folder/"$f"
-elif [[ $extens == xopp ]]
-then
-
-	filename=$(basename "$File" .xopp)
-
-	if [[ ! -e "$File".md ]]
-	then
-	touch "$folder"/"$File".md
-	echo "Content-Type: text/x-zim-wiki" >> "$folder"/"$File".md
-	echo "Wiki-Format: zim 0.6" >> "$folder"/"$File".md
-	echo "===== $File =====" >> $folder/"$File".md
-	echo "[*] @ARTIKEL $tags **[[../$f]] $source**" >> "$folder"/"$File".md
-	echo "Text creation time: $(date +"[[Zettelkasten:%Y:%m:%d]]")" >> "$folder"/"$File".md
-	echo "Modification time: $(date +"[[Zettelkasten:%Y:%m:%d]]" -r "$File")" >> "$folder"/"$File".md
-	echo -e "$additiontext\n" >> "$folder"/"$File".md
-	echo -e "{{../$File.png?width=500}}\n" >> "$folder"/"$File".md
-	xournalpp "$File" -p "$filename".pdf
-	ttpdf "$filename".pdf
-	else
-	mv "$File".md "$folder"/"$File".md
-	sed -i "9 i$additiontext" "$folder"/"$File".md
-	echo -e "\n" >> "$folder"/"$File".md
-	sed -i "13 i{{../$File.png?width=500}}" "$folder"/"$File".md
-	echo -e "\n" >> "$folder"/"$File".md
-	fi
-	xournalpp --export-range=1 "$File" -i "$File".png
-	convert "$File".png -resize 1200x1200 -quality 97 "$File"-px.png
-	mv "$File"-px.png "$folder"/"$File".png
-	mv "$File".png "$folder"/"$File".png
-	mv "$filename".pdf "$folder"/"$filename".pdf
-	mv "$filename".pdf.png "$folder"/"$filename".pdf.png
-	mv "$filename".pdf.md "$folder"/"$filename".pdf.md
-	echo "cd $folder"
-	mv "$f" $folder/"$f"
-elif [[ epub == $extens ]]
-then
 		Wikiprev
-		echo "[*] @EBOOK $tags **[[../$File]] $source**" >> "$folder"/"$File".md
 		Timestamps
-		echo -e "$additiontext\n" >> "$folder"/"$File".md
+		echo "@EBOOK $tags " >> "$folder"/"$File".md
+		echo "[*] **[[../$File]] **" >> "$folder"/"$File".md
+		echo -e "$source\n$additiontext\n" >> "$folder"/"$File".md
 		einfo "$File" >> "$folder"/"$File".md
 		Moving
-elif [[ $extens == $f ]]
-then
-	Wikiprev
-	echo "[*] @ORDNER $tags **[[../$File]] $source**" >> "$folder"/"$File".md
-	Timestamps
-	echo -e "$additiontext\n" >> "$folder"/"$File".md
-	Moving
-else
-	Wikiprev
-	echo "[*] $tags **[[../$File]] $source**" >> "$folder"/"$File".md
-	Timestamps
-	echo -e "$additiontext\n" >> "$folder"/"$File".md
-	Moving
-fi
+	elif [[ $extens == $f ]]
+	then
+		Wikiprev
+		Timestamps
+		echo "$tags " >> "$folder"/"$File".md
+		echo "[*] **[[../$File]] **" >> "$folder"/"$File".md
+		echo -e "$source\n$additiontext\n" >> "$folder"/"$File".md
+		Moving
+	else
+		Wikiprev
+		Timestamps
+		echo "$tags " >> "$folder"/"$File".md
+		echo "[*] **[[../$File]] **" >> "$folder"/"$File".md
+		echo -e "$source\n$additiontext\n" >> "$folder"/"$File".md
+		Moving
+	fi
 
 
-file=$(readlink -f -n "$folder"/"$File")
-filepath=$(echo "${file%/*}" | sed "s,/home/christian,~,")
-wikipath=$(echo $filepath | sed "s,~/Gedankenspeicher/Gedankenspeicherwiki/,," | sed "s,/,:,g")
-FullFilename=$(basename $file .md)
-echo -e "[[$filepath/$FullFilename]]\n[[$wikipath:$FullFilename]]" >> $folder/"$File".md
+	file=$(readlink -f -n "$folder"/"$File")
+	filepath=$(echo "${file%/*}" | sed "s,/home/christian,~,")
+	wikipath=$(echo $filepath | sed "s,~/Gedankenspeicher/Gedankenspeicherwiki/,," | sed "s,/,:,g")
+	FullFilename=$(basename $file .md)
+	echo -e "[[$filepath/$FullFilename]]\n[[$wikipath:$FullFilename]]" >> $folder/"$File".md
 
 fi
 

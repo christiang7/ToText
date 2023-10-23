@@ -5,7 +5,9 @@ Backlink [GedankenspeicherCoding](../GedankenspeicherCoding.md)
 - [X] **ttnm**
 	- [ ] epub correction
 
-  ``noweb.py -Rttnm ttnm.md > ttnm && chmod u+x ttnm && echo 'fertig'``
+```bash
+noweb.py -Rttnm ttnm.md > ttnm && chmod u+x ttnm && echo 'fertig'
+```
 
 ```bash
 {{ttnm}}=
@@ -30,7 +32,8 @@ then
 	source=$(echo $abfrage | cut -s -d "|" -f 2)
 	tags=$(echo $abfrage | cut -s -d "|" -f 3)
 	additiontext=$(echo $abfrage | cut -s -d "|" -f 4)
-	folder=/home/christian/Gedankenspeicher/Gedankenspeicherwiki/Assets
+	#folder=/home/christian/Gedankenspeicher/Gedankenspeicherwiki/Assets
+    folder=$(date +"/home/christian/Gedankenspeicher/Gedankenspeicherwiki/Zettelkasten/%Y/%m/%d")
 	File=$(echo "$Newname"."$extens" | sed 's/ /_/g' | sed 's/:/;/g'| sed -e "s/'/_/g" | sed 's/\"//g'|  sed 's/&/n/g' | sed 's/\///g' | sed 's/|//g' | sed 's/\[/(/g' | sed 's/\]/)/g' | sed 's/@/at/g')
 	Newname=$(echo "$Newname" | sed 's/ /_/g' | sed 's/:/;/g'| sed -e "s/'/_/g" | sed 's/\"//g'|  sed 's/&/n/g' | sed 's/\///g' | sed 's/|//g' | sed 's/\[/(/g' | sed 's/\]/)/g' | sed 's/@/at/g')
 	mv "$1" "$File"
@@ -51,12 +54,11 @@ then
 		touch "$File".md
 		echo "Content-Type: text/x-zim-wiki" >> $folder/"$File".md
 		echo "Wiki-Format: zim 0.6" >> $folder/"$File".md
-		echo "===== $File =====" >> $folder/"$File".md
+		echo "====== $File ======" >> $folder/"$File".md
 	}
 
 	function Timestamps(){
-		echo "Text creation time: $(date +"[[Zettelkasten:%Y:%m:%d]]")" >> $folder/"$File".md
-		echo "Modification time: $(date +"[[Zettelkasten:%Y:%m:%d]]" -r "$File")" >> $folder/"$File".md
+		echo "Text date: $(date +"[[Zettelkasten:%Y:%m:%d|%Y-%m-%d]]") File date: $(date +"[[Zettelkasten:%Y:%m:%d|%Y-%m-%d]]" -r "$File")" >> $folder/"$File".md
 	}
 
 	#if [[ -f "$File".md ]] 
@@ -70,11 +72,11 @@ then
 			touch "$folder"/"$File".md
 			echo "Content-Type: text/x-zim-wiki" >> "$folder"/"$File".md
 			echo "Wiki-Format: zim 0.6" >> "$folder"/"$File".md
-			echo "===== $File =====" >> $folder/"$File".md
-			echo "[*] @ARTIKEL $tags **[[../$f]] $source**" >> "$folder"/"$File".md
-			echo "Text creation time: $(date +"[[Zettelkasten:%Y:%m:%d]]")" >> "$folder"/"$File".md
-			echo "Modification time: $(date +"[[Zettelkasten:%Y:%m:%d]]" -r "$File")" >> "$folder"/"$File".md
-			echo -e "$additiontext\n" >> "$folder"/"$File".md
+			echo "====== $File ======" >> $folder/"$File".md
+			echo "Text date: $(date +"[[Zettelkasten:%Y:%m:%d|%Y-%m-%d]]") File date: $(date +"[[Zettelkasten:%Y:%m:%d|%Y-%m-%d]]" -r "$File")" >> "$folder"/"$File".md
+			echo "@ARTIKEL $tags " >> "$folder"/"$File".md
+			echo "[*] **[[../$f]] **" >> "$folder"/"$File".md
+			echo -e "$source\n$additiontext\n" >> "$folder"/"$File".md
 			echo -e "{{../$File.avif?width=500}}\n" >> "$folder"/"$File".md
 			pdfinfo "$f" | grep Pages >> "$folder"/"$File".md
 			pdftotext -nopgbrk -enc UTF-8 -f 1 -l 1 "$f" ->> "$folder"/"$File".md
@@ -105,11 +107,11 @@ then
 			mv "$File".md "$folder"/"$File".md
 			echo "Content-Type: text/x-zim-wiki" >> "$folder"/"$File".md
 			echo "Wiki-Format: zim 0.6" >> "$folder"/"$File".md
-			echo "===== $File =====" >> $folder/"$File".md
-			echo "[*] @BILD $tags **[[../$f]] $source**" >> "$folder"/"$File".md
-			echo "Text creation time: $(date +"[[Zettelkasten:%Y:%m:%d]]")" >> "$folder"/"$File".md
-			echo "Modification time: $(date +"[[Zettelkasten:%Y:%m:%d]]" -r "$f")" >> "$folder"/"$File".md
-			echo "{{../$File?width=500}}" >> "$folder"/"$File".md
+			echo "====== $File ======" >> $folder/"$File".md
+			echo "Text date: $(date +"[[Zettelkasten:%Y:%m:%d|%Y-%m-%d]]") File date: $(date +"[[Zettelkasten:%Y:%m:%d|%Y-%m-%d]]" -r "$f")" >> "$folder"/"$File".md
+			echo "@BILD $tags " >> "$folder"/"$File".md
+			echo "[*] **[[../$f]] **" >> "$folder"/"$File".md
+			echo "$source\n{{../$File?width=500}}" >> "$folder"/"$File".md
 		else
 			mv "$File".md "$folder"/"$File".md
 		fi
@@ -127,11 +129,11 @@ then
 			mv "$File".md "$folder"/"$File".md
 			echo "Content-Type: text/x-zim-wiki" >> "$folder"/"$File".md
 			echo "Wiki-Format: zim 0.6" >> "$folder"/"$File".md
-			echo "===== $File =====" >> $folder/"$File".md
-			echo "[*] @VIDEO $tags **[[../$f]] $source**" >> "$folder"/"$File".md
-			echo "Text creation time: $(date +"[[Zettelkasten:%Y:%m:%d]]")" >> "$folder"/"$File".md
-			echo "Modification time: $(date +"[[Zettelkasten:%Y:%m:%d]]" -r "$File")" >> "$folder"/"$File".md
-			echo -e "$additiontext\n" >> "$folder"/"$File".md
+			echo "====== $File ======" >> $folder/"$File".md
+			echo "Text date: $(date +"[[Zettelkasten:%Y:%m:%d|%Y-%m-%d]]") File date: $(date +"[[Zettelkasten:%Y:%m:%d|%Y-%m-%d]]" -r "$File")" >> "$folder"/"$File".md
+			echo "@VIDEO $tags " >> "$folder"/"$File".md
+			echo "[*] **[[../$f]] **" >> "$folder"/"$File".md
+			echo -e "$source\n$additiontext\n" >> "$folder"/"$File".md
 			ffmpeg -loglevel quiet -ss 2 -i "$File"  -t 1 -f image2 "$folder"/"$File".png
 			convert "$folder"/"$File".png -resize 1200x1200 -quality 97 "$folder"/"$File"-px.png
 			mv "$folder"/"$File"-px.png "$folder"/"$File".png
@@ -155,11 +157,11 @@ then
 			touch "$folder"/"$File".md
 			echo "Content-Type: text/x-zim-wiki" >> "$folder"/"$File".md
 			echo "Wiki-Format: zim 0.6" >> "$folder"/"$File".md
-			echo "===== $File =====" >> $folder/"$File".md
-			echo "[*] @ARTIKEL $tags **[[../$f]] $source**" >> "$folder"/"$File".md
-			echo "Text creation time: $(date +"[[Zettelkasten:%Y:%m:%d]]")" >> "$folder"/"$File".md
-			echo "Modification time: $(date +"[[Zettelkasten:%Y:%m:%d]]" -r "$File")" >> "$folder"/"$File".md
-			echo -e "$additiontext\n" >> "$folder"/"$File".md
+			echo "====== $File ======" >> $folder/"$File".md
+			echo "Text date: $(date +"[[Zettelkasten:%Y:%m:%d|%Y-%m-%d]]") File date: $(date +"[[Zettelkasten:%Y:%m:%d|%Y-%m-%d]]" -r "$File")" >> "$folder"/"$File".md
+            echo "@ARTIKEL $tags " >> "$folder"/"$File".md
+			echo "[*] **[[../$f]] **" >> "$folder"/"$File".md
+			echo -e "$source\n$additiontext\n" >> "$folder"/"$File".md
 			echo -e "{{../$File.png?width=500}}\n" >> "$folder"/"$File".md
 			xournalpp "$File" -p "$filename".pdf
 			ttpdf "$filename".pdf
@@ -182,23 +184,26 @@ then
 	elif [[ epub == $extens ]] 
 	then
 		Wikiprev
-		echo "[*] @EBOOK $tags **[[../$File]] $source**" >> "$folder"/"$File".md
 		Timestamps
-		echo -e "$additiontext\n" >> "$folder"/"$File".md
+		echo "@EBOOK $tags " >> "$folder"/"$File".md
+		echo "[*] **[[../$File]] **" >> "$folder"/"$File".md
+		echo -e "$source\n$additiontext\n" >> "$folder"/"$File".md
 		einfo "$File" >> "$folder"/"$File".md
 		Moving
 	elif [[ $extens == $f ]] 
 	then
 		Wikiprev
-		echo "[*] @ORDNER $tags **[[../$File]] $source**" >> "$folder"/"$File".md
 		Timestamps
-		echo -e "$additiontext\n" >> "$folder"/"$File".md
+		echo "$tags " >> "$folder"/"$File".md
+		echo "[*] **[[../$File]] **" >> "$folder"/"$File".md
+		echo -e "$source\n$additiontext\n" >> "$folder"/"$File".md
 		Moving
 	else
 		Wikiprev
-		echo "[*] $tags **[[../$File]] $source**" >> "$folder"/"$File".md
 		Timestamps
-		echo -e "$additiontext\n" >> "$folder"/"$File".md
+		echo "$tags " >> "$folder"/"$File".md
+		echo "[*] **[[../$File]] **" >> "$folder"/"$File".md
+		echo -e "$source\n$additiontext\n" >> "$folder"/"$File".md
 		Moving
 	fi
 

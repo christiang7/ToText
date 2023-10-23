@@ -3,10 +3,10 @@
 - [X] Done
 - [X] Doing Interput (2)
 - [X] Doing (2)
-	- [ ] [ttn](ttn.md)
 - [X] Planning (2)
     - [ ] überall yad Ersatz für zenity einfügen
 - [X] Backlog
+	- [ ] [ttn](ttn.md)
 	- [ ] bei der Verschiebung und Umbenennung von zim Seiten
 	die zim Funktion umschreiben, so dass auch andere Dateien
 	mit verschoben werden können
