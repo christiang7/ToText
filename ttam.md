@@ -45,8 +45,8 @@ then
 
     filename=$(basename "$1" .md)
 
-    echo $folder
-    echo $filename
+    #echo $folder
+    #echo $filename
 
     #filename=${file%.*}
     case ${chooseWhere} in
