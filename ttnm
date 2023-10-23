@@ -21,6 +21,7 @@ then
 	additiontext=$(echo $abfrage | cut -s -d "|" -f 4)
 	#folder=/home/christian/Gedankenspeicher/Gedankenspeicherwiki/Assets
     folder=$(date +"/home/christian/Gedankenspeicher/Gedankenspeicherwiki/Zettelkasten/%Y/%m/%d")
+    mkdir -p $folder
 	File=$(echo "$Newname"."$extens" | sed 's/ /_/g' | sed 's/:/;/g'| sed -e "s/'/_/g" | sed 's/\"//g'|  sed 's/&/n/g' | sed 's/\///g' | sed 's/|//g' | sed 's/\[/(/g' | sed 's/\]/)/g' | sed 's/@/at/g')
 	Newname=$(echo "$Newname" | sed 's/ /_/g' | sed 's/:/;/g'| sed -e "s/'/_/g" | sed 's/\"//g'|  sed 's/&/n/g' | sed 's/\///g' | sed 's/|//g' | sed 's/\[/(/g' | sed 's/\]/)/g' | sed 's/@/at/g')
 	mv "$1" "$File"
@@ -195,11 +196,11 @@ then
 	fi
 
 
-	file=$(readlink -f -n "$folder"/"$File")
-	filepath=$(echo "${file%/*}" | sed "s,/home/christian,~,")
-	wikipath=$(echo $filepath | sed "s,~/Gedankenspeicher/Gedankenspeicherwiki/,," | sed "s,/,:,g")
-	FullFilename=$(basename $file .md)
-	echo -e "[[$filepath/$FullFilename]]\n[[$wikipath:$FullFilename]]" >> $folder/"$File".md
+	#file=$(readlink -f -n "$folder"/"$File")
+	#filepath=$(echo "${file%/*}" | sed "s,/home/christian,~,")
+	#wikipath=$(echo $filepath | sed "s,~/Gedankenspeicher/Gedankenspeicherwiki/,," | sed "s,/,:,g")
+	#FullFilename=$(basename $file .md)
+	#echo -e "[[$filepath/$FullFilename]]\n[[$wikipath:$FullFilename]]" >> $folder/"$File".md
 
 fi
 

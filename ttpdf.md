@@ -3,7 +3,7 @@ Text date: [Zettelkasten:2021:04:29]() Modi date: [Zettelkasten:2021:04:22]()
 - [X] ttpdf [README](README.md)
 
 
-  ```bash
+```bash
 noweb.py -Rttpdf ttpdf.md > ttpdf && chmod u+x ttpdf && echo 'fertig'
 ```
 
@@ -18,7 +18,7 @@ echo "Content-Type: text/x-zim-wiki" >> "$File".md
 echo "Wiki-Format: zim 0.6" >> "$File".md
 echo "====== $f ======" >> "$File".md
 echo "Text date: $(date +"[[Zettelkasten:%Y:%m:%d|%Y-%m-%d]]") Modi date: $(date +"[[Zettelkasten:%Y:%m:%d|%Y-%m-%d]]" -r "$1")" >> "$File".md
-echo "[*] @ARTIKEL $3 **" >> "$File".md
+echo "@ARTIKEL $3 " >> "$File".md
 echo "[*] **[[../$f]] **" >> "$File".md
 #echo "Modification time: $(date +"[[Zettelkasten:%Y:%m:%d|%Y-%m-%d]]" -r "$1")" >> "$File".md
 echo -e "$2\n$4\n" >> "$File".md
@@ -26,7 +26,7 @@ echo -e "$2\n$4\n" >> "$File".md
 pdftoppm -png -singlefile "$File" "$File"
 #convert "$File".png -resize 1200x1200 -quality 97 "$File"-px.png
 #mv "$File"-px.png "$File".png
-convert "$File".png -resize 4000x4000 "$File".avif
+convert "$File".png -resize 800x800 "$File".avif
 rm "$File".png
 #echo -e "{{../$f.png?width=500}}\n" >> "$File".md
 echo -e "{{../$f.avif?width=500}}\n" >> "$File".md

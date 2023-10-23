@@ -20,7 +20,7 @@ echo "Content-Type: text/x-zim-wiki" >> "$File".md
 echo "Wiki-Format: zim 0.6" >> "$File".md
 echo "====== $f ======" >> "$File".md
 echo "Text date: $(date +"[[Zettelkasten:%Y:%m:%d|%Y-%m-%d]]") Modi date: $(date +"[[Zettelkasten:%Y:%m:%d|%Y-%m-%d]]" -r "$1")" >> "$File".md
-echo "[*] @BILD $3 **" >> "$File".md
+echo "@BILD $3 " >> "$File".md
 echo "[*] **[[../$f]] **" >> "$File".md
 #echo "Modification time: $(date +"[[Zettelkasten:%Y:%m:%d|%Y-%m-%d]]" -r "$1")" >> "$File".md
 echo -e "$2\n" >> "$File".md
