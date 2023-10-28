@@ -5,28 +5,43 @@ folder=${filetxt%.*}
 mkdir -p "$folder"
 cd "$folder"
 Project=$(basename $filetxt .md)
+File="Filename"
 
 abfrage=$(yad --title="New Project calculation" --text="Necessary Informations:" \
 	--form --width 500 --separator="~" --item-separator=","  \
 	--field="Projectname" \
 	--field="Filename" \
-	--field="Shortname for language":CBE \
-	--field="Extension":CBE \
+	--field="Shortname for language":CB \
 	--field="Author":CBE \
 	--field="Tags":CBE \
 	--field="Description":TXT \
-	"$Project" "$File" "python,julia,html,css,javascript,bash" "py,jl,html,css,js,sh" "Christian Gößl,Internet" "physic,math" "$additiontext")
+	"$Project" "$File" "python,julia,html,css,bash,javascript,other" "Christian Gößl,Internet" "physic,math" "$additiontext")
 if [ ! $? -eq 1 ];
 then
 	Project=$(echo $abfrage | cut -s -d "~" -f 1)
 	File=$(echo $abfrage | cut -s -d "~" -f 2)
 	langname=$(echo $abfrage | cut -s -d "~" -f 3)
-	extens=$(echo $abfrage | cut -s -d "~" -f 4)
-	source=$(echo $abfrage | cut -s -d "~" -f 5)
-	tags=$(echo $abfrage | cut -s -d "~" -f 6)
-	additiontext=$(echo $abfrage | cut -s -d "~" -f 7)
+	source=$(echo $abfrage | cut -s -d "~" -f 4)
+	tags=$(echo $abfrage | cut -s -d "~" -f 5)
+	additiontext=$(echo $abfrage | cut -s -d "~" -f 6)
 	File=$(echo "$File" | sed 's/ /_/g' | sed 's/:/;/g'| sed -e "s/'/_/g" | sed 's/\"//g')
 
+	case ${langname} in
+	python) extens="py"
+		;;
+    julia) extens="jl"
+		;;
+    html) extens="html"
+		;;
+    css) extens="css"
+		;;
+    javascript) extens="js"
+		;;
+    bash) extens="sh"
+		;;
+    other) extens="other"
+		;;
+    esac
     #{{zim file folder}} #Ordner erstellen
 
     echo -e "# ${Project}" >> "README".md
@@ -52,12 +67,14 @@ then
     echo -e "\n## Features" >> "${File}".md
     echo -e "\n## Informations" >> "${File}".md
     echo -e "\n## Main Program" >> "${File}".md
-    echo -e "\n\`\`\`bash\n noweb.py -R${File}.${extens} ${File}.md > ${File}.${extens} && echo 'fertig' \n\`\`\`" >> "${File}".md
-    echo -e "\n\n\`\`\`bash\n chmod u+x ${File}.${extens} && ln -sf "$folder"/${File}.${extens} ~/.local/bin/${File}.${extens} && echo 'fertig'\n \`\`\`" >> "${File}".md
+    echo -e "\n\`\`\`bash" >> "${File}".md
+    echo -e "noweb.py -R${File}.${extens} ${File}.md > ${File}.${extens} && echo 'fertig' \n\`\`\`" >> "${File}".md
+    echo -e "\n\n\`\`\`bash" >> "${File}".md
+    echo -e "chmod u+x ${File}.${extens} && ln -sf "$folder"/${File}.${extens} ~/.local/bin/${File}.${extens} && echo 'fertig'\n \`\`\`" >> "${File}".md
     echo -e "\n\`\`\`${langname}" >> "${File}".md
     echo -e "{{${File}.${extens}}}=" >> "${File}".md
     echo -e "\n@" >> "${File}".md
-    echo -e "\n\`\`\`" >> "${File}".md
+    echo -e "\`\`\`" >> "${File}".md
 
     git init
     git add README.md
