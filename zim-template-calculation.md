@@ -154,6 +154,7 @@ echo -e "\n\`\`\`${langname}" >> "${File}".md
 echo -e "{{${File}.${extens}}}=" >> "${File}".md
 echo -e "\n@" >> "${File}".md
 echo -e "\`\`\`" >> "${File}".md
+touch ${File}.${extens}
 @
 
 ```
@@ -165,6 +166,7 @@ echo -e "\`\`\`" >> "${File}".md
 git init
 git add README.md
 git add "${File}".md
+git add ${File}.${extens}
 git commit -a -m "init git"
 
 @
