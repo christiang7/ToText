@@ -3,6 +3,7 @@
 - [X] Done
 - [X] Doing Interput (2)
 - [X] Doing (2)
+    - [ ] create programm tex-template.sh like template-calculation
 - [X] Planning (2)
     - [ ] überall yad Ersatz für zenity einfügen
 - [X] Backlog

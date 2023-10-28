@@ -48,11 +48,14 @@ Einstellungen vor dem Start des eigentlichen Programms, hier für ein Shell Scri
 Den Ordner erstellen, wo die neue Datei gespeichert werden soll. Dabei wird der Pfad der Datei genommen und für die späteren Links gespeichert
 ```bash
 {{Abruf txt Datei Ordner}}=
-filetxt=$(readlink -f -n "$1")
-folder=${filetxt%.*}
-mkdir -p "$folder"
-cd "$folder"
-Project=$(basename $filetxt .md)
+if [[ -e "$1" ]]
+then
+    filetxt=$(readlink -f -n "$1")
+    folder=${filetxt%.*}
+    Project=$(basename $folder)
+else
+    Project="Projectname"
+fi
 File="Filename"
 @
 ```
@@ -80,6 +83,9 @@ then
 	additiontext=$(echo $abfrage | cut -s -d "~" -f 6)
 	File=$(echo "$File" | sed 's/ /_/g' | sed 's/:/;/g'| sed -e "s/'/_/g" | sed 's/\"//g')
 
+	mkdir -p "$Project"
+    cd "$Project"
+
 	case ${langname} in
 	python) extens="py"
 		;;
@@ -96,7 +102,11 @@ then
     other) extens="other"
 		;;
     esac
-    #{{zim file folder}} #Ordner erstellen
+
+    Filename="$File"
+    File="$File"."${extens}"
+
+    {{Using zim}}
 
     {{readme file}}
     #README template
@@ -108,6 +118,24 @@ fi
 @
 
 ```
+
+### Using zim?
+When the program is used not for zim pages, then we create a zim file.
+
+```bash
+{{Using zim}}=
+if [[ ! -e ../"$Project".md ]]
+then
+folder=$(basename $Project)
+#touch ../"$folder".md
+echo -e "====== $folder ======" >> ../"$folder".md
+echo -e "Created $(date +"[[Zettelkasten:%Y:%m:%d|%Y-%m-%d]]")" >> ../"$folder".md
+echo -e "[*] ** $folder **" >> ../"$folder".md
+fi
+@
+```
+
+
 ### create README file
 
 
@@ -119,10 +147,10 @@ echo -e "- [X] ${tags} **${Project}** " >> "README".md
 echo -e "    - [X] Done" >> "README".md
 echo -e "    - [X] Doing Interput" >> "README".md
 echo -e "    - [X] Doing" >> "README".md
+echo -e "       - [ ] [${File}](${File}.md)" >> "README".md
 echo -e "    - [X] Next" >> "README".md
 echo -e "    - [X] Planning" >> "README".md
 echo -e "    - [X] Backlog" >> "README".md
-echo -e "       - [ ] [${File}](${File}.md)" >> "README".md
 echo -e "\n## Features" >> "README".md
 echo -e "\n## Description" >> "README".md
 echo -e "\n${additiontext}" >> "README".md
@@ -147,14 +175,14 @@ echo -e "\n## Features" >> "${File}".md
 echo -e "\n## Informations" >> "${File}".md
 echo -e "\n## Main Program" >> "${File}".md
 echo -e "\n\`\`\`bash" >> "${File}".md
-echo -e "noweb.py -R${File}.${extens} ${File}.md > ${File}.${extens} && echo 'fertig' \n\`\`\`" >> "${File}".md
+echo -e "noweb.py -R${Filename}.${extens} ${File}.md > ${Filename}.${extens} && echo 'fertig' \n\`\`\`" >> "${File}".md
 echo -e "\n\n\`\`\`bash" >> "${File}".md
-echo -e "chmod u+x ${File}.${extens} && ln -sf "$folder"/${File}.${extens} ~/.local/bin/${File}.${extens} && echo 'fertig'\n \`\`\`" >> "${File}".md
+echo -e "chmod u+x ${Filename}.${extens} && ln -sf "$folder"/${Filename}.${extens} ~/.local/bin/${Filename}.${extens} && echo 'fertig'\n \`\`\`" >> "${File}".md
 echo -e "\n\`\`\`${langname}" >> "${File}".md
-echo -e "{{${File}.${extens}}}=" >> "${File}".md
+echo -e "{{${Filename}.${extens}}}=" >> "${File}".md
 echo -e "\n@" >> "${File}".md
 echo -e "\`\`\`" >> "${File}".md
-touch ${File}.${extens}
+touch ${Filename}.${extens}
 @
 
 ```
@@ -166,7 +194,7 @@ touch ${File}.${extens}
 git init
 git add README.md
 git add "${File}".md
-git add ${File}.${extens}
+git add ${Filename}.${extens}
 git commit -a -m "init git"
 
 @

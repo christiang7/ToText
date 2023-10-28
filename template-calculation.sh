@@ -37,25 +37,28 @@ then
       other) extens="other"
   		;;
       esac
+      Filename="$File"
+      File="$File"."${extens}"
 
       echo -e "# ${File}" >> "${folder}"/"${File}".md
       echo -e "Created [$(date +%Y-%m-%d)]()\n" >> "${folder}"/"${File}".md
-      echo -e "- [X] ${tags} **${File}** ${source} [README.md](README.md)" >> "${folder}"/"${File}".md
+      echo -e "${tags}" >> "${folder}"/"${File}".md
+      echo -e "- [X] **${File}** [README.md](README.md)" >> "${folder}"/"${File}".md
       echo -e "    - [X] Doing" >> "${folder}"/"${File}".md
       echo -e "    - [X] Backlog" >> "${folder}"/"${File}".md
       echo -e "\n## Features" >> "${folder}"/"${File}".md
       echo -e "\n${additiontext}" >> "${folder}"/"${File}".md
       echo -e "\n## Informations" >> "${folder}"/"${File}".md
-      echo -e "\n## Main Program" >> "${folder}"/"${File}".md
+      echo -e " ${source}\n## Main Program" >> "${folder}"/"${File}".md
       echo -e "\n\`\`\`bash" >> "${folder}"/"${File}".md
-      echo -e "noweb.py -R${File}.${extens} ${File}.md > ${File}.${extens} && echo 'fertig' \n\`\`\`" >> "${folder}"/"${File}".md
+      echo -e "noweb.py -R${Filename}.${extens} ${File}.md > ${Filename}.${extens} && echo 'fertig' \n\`\`\`" >> "${folder}"/"${File}".md
       echo -e "\n\n\`\`\`bash" >> "${folder}"/"${File}".md
-      echo -e "chmod u+x ${File}.${extens} && ln -sf "${folder}"/${File}.${extens} ~/.local/bin/${File}.${extens} && echo 'fertig'\n \`\`\`" >> "${folder}"/"${File}".md
+      echo -e "chmod u+x ${Filename}.${extens} && ln -sf "${folder}"/${Filename}.${extens} ~/.local/bin/${Filename}.${extens} && echo 'fertig'\n \`\`\`" >> "${folder}"/"${File}".md
       echo -e "\n\`\`\`${langname}" >> "${folder}"/"${File}".md
-      echo -e "{{${File}.${extens}}}=" >> "${folder}"/"${File}".md
+      echo -e "{{${Filename}.${extens}}}=" >> "${folder}"/"${File}".md
       echo -e "\n@" >> "${folder}"/"${File}".md
       echo -e "\`\`\`" >> "${folder}"/"${File}".md
-      touch "${folder}"/${File}.${extens}
+      touch "${folder}"/${File}
   fi
 else
   zim-template-calculation.sh "$1"
