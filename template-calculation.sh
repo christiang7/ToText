@@ -11,7 +11,7 @@ then
   	--field="Author":CBE \
   	--field="Tags":CBE \
   	--field="Description":TXT \
-  	"$File" "python,julia,html,css,javascript,bash" "Christian Gößl,Internet" "physic,math" "$additiontext")
+  	"$File" "python,julia,html,css,javascript,bash,lua,other" "Christian Gößl,Internet" "physic,math" "$additiontext")
   if [ ! $? -eq 1 ];
   then
   	File=$(echo $abfrage | cut -s -d "~" -f 1)
@@ -34,6 +34,8 @@ then
   		;;
       bash) extens="sh"
   		;;
+      lua) extens="lua"
+  		;;
       other) extens="other"
   		;;
       esac
@@ -41,9 +43,9 @@ then
       File="$File"."${extens}"
 
       echo -e "# ${File}" >> "${folder}"/"${File}".md
-      echo -e "Created [$(date +%Y-%m-%d)]()\n" >> "${folder}"/"${File}".md
+      echo -e "Created [$(date +%Y-%m-%d)]($(date +%Y-%m-%d))" >> "${folder}"/"${File}".md
       echo -e "${tags}" >> "${folder}"/"${File}".md
-      echo -e "- [X] **${File}** [README.md](README.md)" >> "${folder}"/"${File}".md
+      echo -e "- [X] **${File}**" >> "${folder}"/"${File}".md
       echo -e "    - [X] Doing" >> "${folder}"/"${File}".md
       echo -e "    - [X] Backlog" >> "${folder}"/"${File}".md
       echo -e "\n## Features" >> "${folder}"/"${File}".md

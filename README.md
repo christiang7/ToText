@@ -21,7 +21,7 @@
 
 ## Features
 
-### 2023-10-30 created programm template-tex.sh
+### 2023-10-30 created programms template-tex.sh and texstudio-noweb-py.sh
 created program template-tex.sh like template-calculation
 texstudio behavior for markdown files with noweb, compilation and so on changed with script [texstudio-noweb-py.sh]
 

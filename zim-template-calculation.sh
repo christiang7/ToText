@@ -18,7 +18,7 @@ abfrage=$(yad --title="New Project calculation" --text="Necessary Informations:"
 	--field="Author":CBE \
 	--field="Tags":CBE \
 	--field="Description":TXT \
-	"$Project" "$File" "python,julia,html,css,bash,javascript,other" "Christian Gößl,Internet" "physic,math" "$additiontext")
+	"$Project" "$File" "python,julia,html,css,bash,javascript,lua,other" "Christian Gößl,Internet" "physic,math" "$additiontext")
 if [ ! $? -eq 1 ];
 then
 	Project=$(echo $abfrage | cut -s -d "~" -f 1)
@@ -44,6 +44,8 @@ then
     javascript) extens="js"
 		;;
     bash) extens="sh"
+		;;
+    lua) extens="lua"
 		;;
     other) extens="other"
 		;;
