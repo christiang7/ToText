@@ -12,7 +12,14 @@ Created [2023-10-29]()
 
 ## Informations
 Christian Gößl
+tex dateien mit markdown erstellen
 
+Problem ist texstudio zu sagen wie es zu kompilieren ist
+
+es ist möglich in texstudio andere Pfade fürs kompilieren zu geben
+
+Kombination mit dem tt Programm und dann die Spezifikation ausarbeiten, damit es
+auch mit zim zusammen funktioniert.
 
 
 ## Main Program
