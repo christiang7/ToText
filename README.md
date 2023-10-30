@@ -3,7 +3,8 @@
 - [X] Done
 - [X] Doing Interput (2)
 - [X] Doing (2)
-    - [ ] create programm tex-template.sh like template-calculation
+    - [ ] texstudio behavior for markdown files with noweb, compilation and so on
+        - [ ] maybe writing a script for handling such tasks
 - [X] Planning (2)
     - [ ] überall yad Ersatz für zenity einfügen
 - [X] Backlog
@@ -22,11 +23,14 @@
 
 ## Features
 
+### 2023-10-30 created programm template-tex.sh
+created program template-tex.sh like template-calculation
+
 ### 2023-07-03 wayland paste in zim
 custom tool for insert clipboard of wayland
 
 ### 2023-06-25 open-file template-program and template-calculation
-Combinaion of template-program and zim-template-program.
+Combination of template-program and zim-template-program.
 Custom tool for open file in zim.
 Creation of template-calculation and zim-template-calculation.
 
