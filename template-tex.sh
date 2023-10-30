@@ -32,8 +32,8 @@ then
     cd "$foldertex"
 
 
-    Filename="$File"
-    File="$File".tex
+    #Filename="$File"
+    #File="$File".tex
 
 
 
@@ -41,11 +41,11 @@ then
     echo -e "Created $(date +"[[Zettelkasten:%Y:%m:%d|%Y-%m-%d]]")" >> ../"$foldertex".md
     echo -e "[*] ** $foldertex **" >> ../"$foldertex".md
     echo -e "Folder for the latex file" >> ../"$foldertex".md
-    echo -e "[[./"${File}".md]]\n[[./"${Filename}".tex]]\n[[./"${Filename}".pdf]]" >> ../"$foldertex".md
+    echo -e "[[./"${File}".md]]\n[[./"${File}".tex]]\n[[./"${File}".pdf]]" >> ../"$foldertex".md
 
-    echo -e "# ${File}" >> "${File}".md
+    echo -e "# ${File}.tex" >> "${File}".md
     echo -e "Created [$(date +%Y-%m-%d)]()\n" >> "${File}".md
-    echo -e "- [X] **${File}** " >> "${File}".md
+    echo -e "- [X] **${File}.tex** " >> "${File}".md
     echo -e "    - [X] Doing" >> "${File}".md
     echo -e "    - [X] Backlog" >> "${File}".md
     echo -e "       - [ ] " >> "${File}".md
@@ -53,9 +53,9 @@ then
     echo -e "\n## Informations" >> "${File}".md
     echo -e "\n## Latex File\n" >> "${File}".md
     echo -e "\n\`\`\`bash" >> "${File}".md
-    echo -e "noweb.py -R${Filename}.tex ${File}.md > ${Filename}.tex && pdflatex ${Filename}.tex && xdg-open ${Filename}.pdf 2>/dev/null & \n\`\`\`\n\n" >> "${File}".md
+    echo -e "noweb.py -R${File}.tex ${File}.md > ${File}.tex && pdflatex ${Filename}.tex && xdg-open ${File}.pdf 2>/dev/null & \n\`\`\`\n\n" >> "${File}".md
     echo -e "\`\`\`tex" >> "${File}".md
-    echo -e "{{${Filename}.tex}}=" >> "${File}".md
+    echo -e "{{${File}.tex}}=" >> "${File}".md
     echo -e "\\documentclass[10pt,fleqn,reqno,a4paper]{article}" >> "${File}".md
     echo -e "\\input{general-preamble.tex}\n\\input{color-symbols.tex}" >> "${File}".md
     echo "\begin{document}%\selectlanguage{english}" >> "${File}".md
@@ -63,11 +63,11 @@ then
     echo "\end{document}" >> "${File}".md
     echo -e "\n@" >> "${File}".md
     echo -e "\`\`\`" >> "${File}".md
-    touch ${Filename}.tex
+    touch ${File}.tex
 
     git init
     git add "${File}".md
-    git add ${Filename}.tex
+    git add ${File}.tex
     git add general-preamble.tex
     git add color-symbols.tex
     git commit -a -m "init git"

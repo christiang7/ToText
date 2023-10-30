@@ -3,8 +3,6 @@
 - [X] Done
 - [X] Doing Interput (2)
 - [X] Doing (2)
-    - [ ] texstudio behavior for markdown files with noweb, compilation and so on
-        - [ ] maybe writing a script for handling such tasks
 - [X] Planning (2)
     - [ ] überall yad Ersatz für zenity einfügen
 - [X] Backlog
@@ -25,6 +23,7 @@
 
 ### 2023-10-30 created programm template-tex.sh
 created program template-tex.sh like template-calculation
+texstudio behavior for markdown files with noweb, compilation and so on changed with script [texstudio-noweb-py.sh]
 
 ### 2023-07-03 wayland paste in zim
 custom tool for insert clipboard of wayland
