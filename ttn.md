@@ -1,13 +1,18 @@
 # ttn
 Text date: [Zettelkasten:2021:04:29]() File date: [Zettelkasten:2021:04:24]()
 - [X] **[../ttn](./ttn)**
-	- [ ] tex Dateiformat nochmal überprüfen
+
+## Features
+
+### 2023-10-30 tex Format supported
+tex format support again
 
 
+## Program
 
-  ```bash
+```bash
 noweb.py -Rttn ttn.md > ttn && chmod u+x ttn && echo 'fertig'
-  ```
+ ```
 
 
 
@@ -164,26 +169,50 @@ then
 	then
 		filename=$(basename "$folder"/"$File" .tex)
 		f=$(basename "$1" .tex)
-		foldertex="$filename"-tex
-		mkdir "$foldertex" #
-		mv "$1".pdf "$filename".pdf
-		mv "$1".log "$filename".log
-		mv "$1".aux "$filename".aux
-		mv "$1".synctex.gz "$filename".synctex.gz
+		foldertex="$filename"_tex_folder
+		mkdir -p "$foldertex" #
+		mv "$f".pdf "$filename".pdf
+		mv "$f".log "$filename".log
+		mv "$f".aux "$filename".aux
+		mv "$f".synctex.gz "$filename".synctex.gz
+		mv "$f".toc "$filename".toc
+		mv "$f".out "$filename".out
+		mv "$f".blg "$filename".blg
+		mv "$f".bbl "$filename".bbl
+        mv "$f".run.xml "$filename".run.xml
+        mv "$f".bcf "$filename".bcf
+        mv "$f".sbl "$filename".sbl
+        mv "$f".ist "$filename".ist
 		mv "$filename".* "$foldertex"/ #
 		#touch "$foldertex".md #
-		echo "Content-Type: text/x-zim-wiki" >> "$folder".md
-		echo "Wiki-Format: zim 0.6" >> "$folder".md
-		echo "===== $File =====" >> "$folder".md
-		echo "Text date: $(date +"[[Zettelkasten:%Y:%m:%d|%Y-%m-%d]]") Modi date: $(date +"[[Zettelkasten:%Y:%m:%d|%Y-%m-%d]]" -r "$folder"/"$folder"/"$File")" >> "$folder".md
-		echo "@TEX $tags" >> "$folder".md
-		echo "[*] **$folder **" >> "$folder".md #
-		echo "**[[./$File]]**" >> "$folder".md
-		echo "**[[./$filename.pdf]]**" >> "$folder".md
+		echo "Content-Type: text/x-zim-wiki" >> "$foldertex".md
+		echo "Wiki-Format: zim 0.6" >> "$foldertex".md
+		echo "====== $filename ======" >> "$foldertex".md
+		echo "Text date: $(date +"[[Zettelkasten:%Y:%m:%d|%Y-%m-%d]]") Modi date: $(date +"[[Zettelkasten:%Y:%m:%d|%Y-%m-%d]]" -r "$foldertex"/"$filename".tex)" >> "$foldertex".md
+		echo "@LATEX $tags" >> "$foldertex".md
+		echo "[*] **$folder **" >> "$foldertex".md #
+		echo -e "**[[./$filename.md]]**\n**[[./$filename.tex]]\n**[[./$filename.pdf]]**" >> "$foldertex".md
 		#echo "Modification time: $(date +"[[Zettelkasten:%Y:%m:%d|%Y-%m-%d]]" -r "$folder"/"$folder"/"$File")" >> "$folder".md
-		echo -e "$source\n$additiontext" >> "$folder".md
-		ln -s "$folder"/"$folder"/"$File" "$folder"/"$File"
-		ln -s "$folder"/"$filename".pdf "$filename".pdf
+		echo -e "$source\n$additiontext" >> "$foldertex".md
+		# latex file in markdown
+		echo -e "# ${filename}.tex" >> "$foldertex"/"${filename}".md
+        echo -e "Created [$(date +%Y-%m-%d)]()\n" >> "$foldertex"/"${filename}".md
+        echo -e "- [X] **${filename}.tex** " >> "$foldertex"/"${filename}".md
+        echo -e "    - [X] Doing" >> "$foldertex"/"${filename}".md
+        echo -e "    - [X] Backlog" >> "$foldertex"/"${filename}".md
+        echo -e "       - [ ] " >> "$foldertex"/"${filename}".md
+        echo -e "\n## Features" >> "$foldertex"/"${filename}".md
+        echo -e "\n## Informations" >> "$foldertex"/"${filename}".md
+        echo -e "\n## Latex File\n" >> "$foldertex"/"${filename}".md
+        echo -e "\n\`\`\`bash" >> "$foldertex"/"${filename}".md
+        echo -e "noweb.py -R${filename}.tex ${filename}.md > ${filename}.tex && pdflatex ${filename}.tex && xdg-open ${filename}.pdf 2>/dev/null & \n\`\`\`\n\n" >> "$foldertex"/"${filename}".md
+        echo -e "\`\`\`tex" >> "$foldertex"/"${filename}".md
+        echo -e "{{${filename}.tex}}=" >> "$foldertex"/"${filename}".md
+        cat "$foldertex"/"${filename}".tex >> "$foldertex"/"${filename}".md
+        echo -e "\n@" >> "$foldertex"/"${filename}".md
+        echo -e "\`\`\`" >> "$foldertex"/"${filename}".md
+		#ln -s "$folder"/"$folder"/"$File" "$folder"/"$File"
+		#ln -s "$folder"/"$filename".pdf "$filename".pdf
 		#kate "$folder".md 2>/dev/null &
 	elif [[ $extens == xopp ]]
 	then

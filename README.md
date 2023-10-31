@@ -1,19 +1,17 @@
 # Gedankenspeicher - Focus - ToText tt
 
-- [X] Done
 - [X] Doing Interput (2)
 - [X] Doing (2)
 - [X] Planning (2)
     - [ ] überall yad Ersatz für zenity einfügen
+	- [ ] Bei Downloads von Videos über Mediathekview
+	das Korrekturprogramm in Markdown umwandeln
 - [X] Backlog
-	- [ ] [ttn](ttn.md)
 	- [ ] bei der Verschiebung und Umbenennung von zim Seiten
 	die zim Funktion umschreiben, so dass auch andere Dateien
 	mit verschoben werden können
     - [ ] custom tool for insert page.section in file
     - [ ] [ttam](ttam)
-	- [ ] Bei Downloads von Videos über Mediathekview
-	das Korrekturprogramm in Markdown umwandeln
 	- [ ] xournal Programmstarter so, dass automatisch thumbnail
 	aktualisiert wird und von einer pdf als Notizen abgespeichert wird
 	- [ ] alles in english schreiben
@@ -21,7 +19,9 @@
 
 ## Features
 
-### 2023-10-30 created programms template-tex.sh and texstudio-noweb-py.sh
+### 2023-10-30 tex support in ttn and tts
+
+### 2023-10-29 created programms template-tex.sh and texstudio-noweb-py.sh
 created program template-tex.sh like template-calculation
 texstudio behavior for markdown files with noweb, compilation and so on changed with script [texstudio-noweb-py.sh]
 

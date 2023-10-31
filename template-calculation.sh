@@ -1,9 +1,17 @@
 #!/bin/bash
-yad --title="New calculation?" --text="Standalone File?\n\n"
+yad --title="New calculation?" --text="\n Standalone File?\n"
 if [ ! $? -eq 1 ];
 then
-  folder=$(pwd)
+  if [[ ! -e "$1" ]]
+  then
+    folder=$(pwd)
+  else
+    filetxt=$(readlink -f -n "$1")
+    folder=${filetxt%.*}
+    mkdir -p "$folder"
+  fi
   File="Filename"
+  cd $folder
   abfrage=$(yad --title="New calculation?" --text="Necessary Informations:" \
   	--form --width 500 --separator="~" --item-separator=","  \
   	--field="Filename" \
@@ -42,25 +50,25 @@ then
       Filename="$File"
       File="$File"."${extens}"
 
-      echo -e "# ${File}" >> "${folder}"/"${File}".md
-      echo -e "Created [$(date +%Y-%m-%d)]($(date +%Y-%m-%d))" >> "${folder}"/"${File}".md
-      echo -e "${tags}" >> "${folder}"/"${File}".md
-      echo -e "- [X] **${File}**" >> "${folder}"/"${File}".md
-      echo -e "    - [X] Doing" >> "${folder}"/"${File}".md
-      echo -e "    - [X] Backlog" >> "${folder}"/"${File}".md
-      echo -e "\n## Features" >> "${folder}"/"${File}".md
-      echo -e "\n${additiontext}" >> "${folder}"/"${File}".md
-      echo -e "\n## Informations" >> "${folder}"/"${File}".md
-      echo -e " ${source}\n## Main Program" >> "${folder}"/"${File}".md
-      echo -e "\n\`\`\`bash" >> "${folder}"/"${File}".md
-      echo -e "noweb.py -R${Filename}.${extens} ${File}.md > ${Filename}.${extens} && echo 'fertig' \n\`\`\`" >> "${folder}"/"${File}".md
-      echo -e "\n\n\`\`\`bash" >> "${folder}"/"${File}".md
-      echo -e "chmod u+x ${Filename}.${extens} && ln -sf "${folder}"/${Filename}.${extens} ~/.local/bin/${Filename}.${extens} && echo 'fertig'\n \`\`\`" >> "${folder}"/"${File}".md
-      echo -e "\n\`\`\`${langname}" >> "${folder}"/"${File}".md
-      echo -e "{{${Filename}.${extens}}}=" >> "${folder}"/"${File}".md
-      echo -e "\n@" >> "${folder}"/"${File}".md
-      echo -e "\`\`\`" >> "${folder}"/"${File}".md
-      touch "${folder}"/${File}
+      echo -e "# ${File}" >> "${File}".md
+      echo -e "Created [$(date +%Y-%m-%d)]($(date +%Y-%m-%d))" >> "${File}".md
+      echo -e "${tags}" >> "${File}".md
+      echo -e "- [X] **${File}**" >> "${File}".md
+      echo -e "    - [X] Doing" >> "${File}".md
+      echo -e "    - [X] Backlog" >> "${File}".md
+      echo -e "\n## Features" >> "${File}".md
+      echo -e "\n${additiontext}" >> "${File}".md
+      echo -e "\n## Informations" >> "${File}".md
+      echo -e " ${source}\n## Main Program" >> "${File}".md
+      echo -e "\n\`\`\`bash" >> "${File}".md
+      echo -e "noweb.py -R${Filename}.${extens} ${File}.md > ${Filename}.${extens} && echo 'fertig' \n\`\`\`" >> "${File}".md
+      echo -e "\n\n\`\`\`bash" >> "${File}".md
+      echo -e "chmod u+x ${Filename}.${extens} && ln -sf "${folder}"/${Filename}.${extens} ~/.local/bin/${Filename}.${extens} && echo 'fertig'\n \`\`\`" >> "${File}".md
+      echo -e "\n\`\`\`${langname}" >> "${File}".md
+      echo -e "{{${Filename}.${extens}}}=" >> "${File}".md
+      echo -e "\n@" >> "${File}".md
+      echo -e "\`\`\`" >> "${File}".md
+      touch ${File}
   fi
 else
   zim-template-calculation.sh "$1"

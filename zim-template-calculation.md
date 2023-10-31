@@ -52,11 +52,13 @@ if [[ -e "$1" ]]
 then
     filetxt=$(readlink -f -n "$1")
     folder=${filetxt%.*}
-    Project=$(basename $folder)
-else
-    Project="Projectname"
+    #Project=$(basename $folder)
+#else
+#    Project="Projectname"
 fi
+cd $folder
 File="Filename"
+Project="Projectname"
 @
 ```
 
@@ -72,7 +74,7 @@ abfrage=$(yad --title="New Project calculation" --text="Necessary Informations:"
 	--field="Author":CBE \
 	--field="Tags":CBE \
 	--field="Description":TXT \
-	"$Project" "$File" "python,julia,html,css,bash,javascript,lua,other" "Christian Gößl,Internet" "physic,math" "$additiontext")
+	"$Project" "$File" "python,julia,html,css,bash,javascript,lua,other" "Christian Gößl,Internet" ",physic,math" "$additiontext")
 if [ ! $? -eq 1 ];
 then
 	Project=$(echo $abfrage | cut -s -d "~" -f 1)

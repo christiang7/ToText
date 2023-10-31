@@ -9,10 +9,10 @@ line=$(head -n 1 "$File".md)
 #Newname=$(echo $filename)
 
 if [[ -e "$filename".md && ! -d "$filename" ]];
-	then
+then
 	ttvidc "$f"
 elif [[ -e "$File".md ]]
-	then
+then
 	echo $line
 	if [[ "$line" != "Content-Type: text/x-zim-wiki" ]]
 		then
@@ -24,38 +24,41 @@ elif [[ -e "$File".md ]]
 
 else
 	Newname=$(zenity --entry \
-       --width 500 \
-       --title "Die Datei eine Beschreibung geben?" \
-       --text "Den Dateinamen dazu noch ändern?" \
-       --entry-text "$filename")
+	--width 500 \
+	--title "Die Datei eine Beschreibung geben?" \
+	--text "Den Dateinamen dazu noch ändern?" \
+	--entry-text "$filename")
 
 	if [ ! $? -eq 1 ];
 	then
-
-  if [[ $extens == $f ]]
-  then
-  	File=$(echo "$Newname" | sed 's/ /_/g' | sed 's/:/;/g'| sed -e "s/'/_/g" | sed 's/\"//g'|  sed 's/&/n/g' | sed 's/\///g' | sed 's/|//g' | sed 's/\[/(/g' | sed 's/\]/)/g' | sed 's/@/at/g')
-  else
-  File=$(echo "$Newname"."$extens" | sed 's/ /_/g' | sed 's/:/;/g'| sed -e "s/'/_/g" | sed 's/\"//g'|  sed 's/&/n/g' | sed 's/\///g' | sed 's/|//g' | sed 's/\[/(/g' | sed 's/\]/)/g' | sed 's/@/at/g')
-  fi
-  mv "$f" "$File"
-	ttn "$File"
+		if [[ $extens == $f ]]
+		then
+			File=$(echo "$Newname" | sed 's/ /_/g' | sed 's/:/;/g'| sed -e "s/'/_/g" | sed 's/\"//g'|  sed 's/&/n/g' | sed 's/\///g' | sed 's/|//g' | sed 's/\[/(/g' | sed 's/\]/)/g' | sed 's/@/at/g')
+			mv "$f" "$File"
+		elif [[ $extens == tex ]]
+		then
+            File="$filename"."$extens"
+		else
+			File=$(echo "$Newname"."$extens" | sed 's/ /_/g' | sed 's/:/;/g'| sed -e "s/'/_/g" | sed 's/\"//g'|  sed 's/&/n/g' | sed 's/\///g' | sed 's/|//g' | sed 's/\[/(/g' | sed 's/\]/)/g' | sed 's/@/at/g')
+			mv "$f" "$File"
+		fi
+		ttn "$File"
 	fi
 
 fi
 
 if [[ $extens == tex ]]
 then
-filename =$(basename "$File" .tex)
-kate "$filename"-tex.md
-xdg-open "$File" &
+    File=$(echo "$Newname"."$extens" | sed 's/ /_/g' | sed 's/:/;/g'| sed -e "s/'/_/g" | sed 's/\"//g'|  sed 's/&/n/g' | sed 's/\///g' | sed 's/|//g' | sed 's/\[/(/g' | sed 's/\]/)/g' | sed 's/@/at/g')
+	filename=$(basename "$File" .tex)
+	#kate "$filename"_tex_folder.md
+	texstudio "$filename"_tex_folder/"$filename".md &
 elif [[ jpg == $extens || png == $extens || webp == $extens || jpeg == $extens || avif == $extens ]]
 then
 	kate "$filename".avif.md &
 	xdg-open "$filename".avif &
 else
-kate "$File".md 2>/dev/null &
-xdg-open "$File" &
+	kate "$File".md 2>/dev/null &
+	xdg-open "$File" &
 fi
-
 

@@ -19,7 +19,9 @@ Hier sind die Dolpin ServiceMenüs
 
 Anzeige von Dateien deren Text Beschreibung
 
-  ``noweb.py -Rtts tts.md > tts && chmod u+x tts && echo 'fertig'``
+```bash
+noweb.py -Rtts tts.md > tts && chmod u+x tts && echo 'fertig'
+```
 
 ```bash
 {{tts}}=
@@ -59,10 +61,14 @@ else
 		if [[ $extens == $f ]]
 		then
 			File=$(echo "$Newname" | sed 's/ /_/g' | sed 's/:/;/g'| sed -e "s/'/_/g" | sed 's/\"//g'|  sed 's/&/n/g' | sed 's/\///g' | sed 's/|//g' | sed 's/\[/(/g' | sed 's/\]/)/g' | sed 's/@/at/g')
+			mv "$f" "$File"
+		elif [[ $extens == tex ]]
+		then
+            File="$filename"."$extens"
 		else
 			File=$(echo "$Newname"."$extens" | sed 's/ /_/g' | sed 's/:/;/g'| sed -e "s/'/_/g" | sed 's/\"//g'|  sed 's/&/n/g' | sed 's/\///g' | sed 's/|//g' | sed 's/\[/(/g' | sed 's/\]/)/g' | sed 's/@/at/g')
+			mv "$f" "$File"
 		fi
-		mv "$f" "$File"
 		ttn "$File"
 	fi
 
@@ -70,9 +76,10 @@ fi
 
 if [[ $extens == tex ]] 
 then
-	filename =$(basename "$File" .tex)
-	kate "$filename"-tex.md
-	xdg-open "$File" &
+    File=$(echo "$Newname"."$extens" | sed 's/ /_/g' | sed 's/:/;/g'| sed -e "s/'/_/g" | sed 's/\"//g'|  sed 's/&/n/g' | sed 's/\///g' | sed 's/|//g' | sed 's/\[/(/g' | sed 's/\]/)/g' | sed 's/@/at/g')
+	filename=$(basename "$File" .tex)
+	#kate "$filename"_tex_folder.md
+	texstudio "$filename"_tex_folder/"$filename".md &
 elif [[ jpg == $extens || png == $extens || webp == $extens || jpeg == $extens || avif == $extens ]]
 then
 	kate "$filename".avif.md &
