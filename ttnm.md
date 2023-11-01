@@ -18,7 +18,7 @@ extens=${f##*.}
 name=$(basename "$f" .$extens)
 
 abfrage=$(yad --title="Der Datei eine TXT hinzufügen?" --text="Noch etwas hinzufügen?" \
- 	 --form --separator="|" --item-separator="," \
+ 	 --form --separator="~" --item-separator="," \
  	 --field="Name:" \
  	 --field="Quelle:" \
  	 --field="Tags:" \
@@ -28,10 +28,10 @@ abfrage=$(yad --title="Der Datei eine TXT hinzufügen?" --text="Noch etwas hinzu
 if [ ! $? -eq 1 ]; 
 then
 
-	Newname=$(echo $abfrage | cut -s -d "|" -f 1)
-	source=$(echo $abfrage | cut -s -d "|" -f 2)
-	tags=$(echo $abfrage | cut -s -d "|" -f 3)
-	additiontext=$(echo $abfrage | cut -s -d "|" -f 4)
+	Newname=$(echo $abfrage | cut -s -d "~" -f 1)
+	source=$(echo $abfrage | cut -s -d "~" -f 2)
+	tags=$(echo $abfrage | cut -s -d "~" -f 3)
+	additiontext=$(echo $abfrage | cut -s -d "~" -f 4)
 	#folder=/home/christian/Gedankenspeicher/Gedankenspeicherwiki/Assets
     folder=$(date +"/home/christian/Gedankenspeicher/Gedankenspeicherwiki/Zettelkasten/%Y/%m/%d")
     mkdir -p $folder
@@ -76,10 +76,10 @@ then
 			echo "====== $File ======" >> $folder/"$File".md
 			echo "Text date: $(date +"[[Zettelkasten:%Y:%m:%d|%Y-%m-%d]]") File date: $(date +"[[Zettelkasten:%Y:%m:%d|%Y-%m-%d]]" -r "$File")" >> "$folder"/"$File".md
 			echo "@ARTIKEL $tags " >> "$folder"/"$File".md
-			echo "[*] **[[../$f]] **" >> "$folder"/"$File".md
+			echo "[*] **[[../$File]] **" >> "$folder"/"$File".md
 			echo -e "$source\n$additiontext\n" >> "$folder"/"$File".md
 			echo -e "{{../$File.avif?width=500}}\n" >> "$folder"/"$File".md
-			pdfinfo "$f" | grep Pages >> "$folder"/"$File".md
+			pdfinfo "$File" | grep Pages >> "$folder"/"$File".md
 			pdftotext -nopgbrk -enc UTF-8 -f 1 -l 1 "$f" ->> "$folder"/"$File".md
 			else
 			mv "$File".md "$folder"/"$File".md
@@ -109,9 +109,9 @@ then
 			echo "Content-Type: text/x-zim-wiki" >> "$folder"/"$File".md
 			echo "Wiki-Format: zim 0.6" >> "$folder"/"$File".md
 			echo "====== $File ======" >> $folder/"$File".md
-			echo "Text date: $(date +"[[Zettelkasten:%Y:%m:%d|%Y-%m-%d]]") File date: $(date +"[[Zettelkasten:%Y:%m:%d|%Y-%m-%d]]" -r "$f")" >> "$folder"/"$File".md
+			echo "Text date: $(date +"[[Zettelkasten:%Y:%m:%d|%Y-%m-%d]]") File date: $(date +"[[Zettelkasten:%Y:%m:%d|%Y-%m-%d]]" -r "$File")" >> "$folder"/"$File".md
 			echo "@BILD $tags " >> "$folder"/"$File".md
-			echo "[*] **[[../$f]] **" >> "$folder"/"$File".md
+			echo "[*] **[[../$File]] **" >> "$folder"/"$File".md
 			echo -e "$source\n{{../$File?width=500}}" >> "$folder"/"$File".md
 		else
 			mv "$File".md "$folder"/"$File".md
@@ -133,7 +133,7 @@ then
 			echo "====== $File ======" >> $folder/"$File".md
 			echo "Text date: $(date +"[[Zettelkasten:%Y:%m:%d|%Y-%m-%d]]") File date: $(date +"[[Zettelkasten:%Y:%m:%d|%Y-%m-%d]]" -r "$File")" >> "$folder"/"$File".md
 			echo "@VIDEO $tags " >> "$folder"/"$File".md
-			echo "[*] **[[../$f]] **" >> "$folder"/"$File".md
+			echo "[*] **[[../$File]] **" >> "$folder"/"$File".md
 			echo -e "$source\n$additiontext\n" >> "$folder"/"$File".md
 			ffmpeg -loglevel quiet -ss 2 -i "$File"  -t 1 -f image2 "$folder"/"$File".png
 			convert "$folder"/"$File".png -resize 1200x1200 -quality 97 "$folder"/"$File"-px.png
@@ -150,9 +150,7 @@ then
 		mv "$f" $folder/"$f"
 	elif [[ $extens == xopp ]]
 	then
-
 		filename=$(basename "$File" .xopp)
-
 		if [[ ! -e "$File".md ]] 
 		then
 			touch "$folder"/"$File".md
@@ -161,7 +159,7 @@ then
 			echo "====== $File ======" >> $folder/"$File".md
 			echo "Text date: $(date +"[[Zettelkasten:%Y:%m:%d|%Y-%m-%d]]") File date: $(date +"[[Zettelkasten:%Y:%m:%d|%Y-%m-%d]]" -r "$File")" >> "$folder"/"$File".md
             echo "@ARTIKEL $tags " >> "$folder"/"$File".md
-			echo "[*] **[[../$f]] **" >> "$folder"/"$File".md
+			echo "[*] **[[../$File]] **" >> "$folder"/"$File".md
 			echo -e "$source\n$additiontext\n" >> "$folder"/"$File".md
 			echo -e "{{../$File.png?width=500}}\n" >> "$folder"/"$File".md
 			xournalpp "$File" -p "$filename".pdf

@@ -4,7 +4,6 @@
 - [X] Doing (2)
 - [X] Planning (2)
     - [ ] überall yad Ersatz für zenity einfügen
-
 - [X] Backlog
 	- [ ] bei der Verschiebung und Umbenennung von zim Seiten
 	die zim Funktion umschreiben, so dass auch andere Dateien
@@ -14,7 +13,7 @@
 	- [ ] xournal Programmstarter so, dass automatisch thumbnail
 	aktualisiert wird und von einer pdf als Notizen abgespeichert wird
 	- [ ] alles in english schreiben
-	- [ ] Programme über libraries verbinden
+    - [ ] Programme über libraries verbinden
 
 ## Features
 
