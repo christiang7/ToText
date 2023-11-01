@@ -3,6 +3,8 @@ Created Dienstag [Zettelkasten:2022:06:14]()
 Backlink [GedankenspeicherCoding](../GedankenspeicherCoding.md)
 
 - [X] **ttrename**
+    - [X] Doing
+    - [X] Backlog
 	- [ ] Anpassung bei beliebigen Dateinamen mit doppelten oder keiner Dateiendung
 		- [ ] mittels file und cut kann man die Dateiendung herausfinden und ansetzen file   Screenshot_2022-07-26_at_22-51-47_The_mountain_landscape_-_Ferdinand_Engelműller_-_Google_Arts_\&_Culture.png | cut -d ' ' -f 2
 		https://www.geeksforgeeks.org/how-to-find-out-file-types-in-linux/ | How to Find Out File Types in Linux - GeeksforGeeks
@@ -57,7 +59,7 @@ filename=${f%.*}
 File2=$(basename "$1")
 extens2=${File2##*.}
 filename2=${File2%.*} #only the filename, here it is the original file
-extens3=${filename2##*.}
+extens3=${filename2##*.} # and the original file extension
 #echo "${File2}"
 #echo $extens2
 #echo "${filename2}"

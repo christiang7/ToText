@@ -5,7 +5,13 @@ Backlink [CodeFabrik]()
 - [X] **tti**
 
 
-``noweb.py -Rtti tti.md > tti && chmod u+x tti && ln -sf /home/christian/Gedankenspeicher/Gedankenspeicherwiki/Zettelkasten/Gedankenwanderung/Programme/tti ~/.local/bin/tti && echo 'fertig'``
+```bash
+noweb.py -Rtti tti.md > tti && chmod u+x tti && echo 'fertig'
+```
+
+```bash
+ln -sf /home/christian/Gedankenspeicher/Gedankenspeicherwiki/Zettelkasten/Gedankenwanderung/Programme/tti ~/.local/bin/tti && echo 'fertig'
+```
 
 ```bash
 {{tti}}=

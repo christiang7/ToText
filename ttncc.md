@@ -5,7 +5,9 @@ Backlink [GedankenspeicherCoding](../GedankenspeicherCoding.md)
 - [X] **ttncc**
 
 
-  ``noweb.py -Rttncc ttncc.md > ttncc && chmod u+x ttncc && echo 'fertig'``
+```bash
+noweb.py -Rttncc ttncc.md > ttncc && chmod u+x ttncc && echo 'fertig'
+```
 
 
   
@@ -31,13 +33,14 @@ then
 	rm "$oldFile".png
 	rm "$oldFile".avif
 	pdftoppm -png -singlefile "$File" "$File"
-	convert "$File".png -resize 4000x4000 "$File".avif
+	convert "$File".png -resize 1200x1200 "$File".avif
 	rm "$File".png
 	sed -i "3 s/$oldFile/$f/g" "$File".md
 	sed -i "4 s/$oldFile/$f/g" "$File".md
 	sed -i "5 s/$oldFile/$f/g" "$File".md
 	sed -i "6 s/$oldFile/$f/g" "$File".md
-	sed -i "s/$oldFile.png/$f.png/g" "$File".md
+	sed -i "s/$oldFile/$f/g" "$File".md
+	sed -i "s/$oldFile.png/$f.avif/g" "$File".md
 	sed -i "s/$oldFile.avif/$f.avif/g" "$File".md
 	#Opentxt
 elif [[ jpg == $extens || png == $extens || webp == $extens || jpeg == $extens || avif == $extens ]]
@@ -63,7 +66,7 @@ then
 	sed -i "5 s/$oldFile/$f/g" "$File".md
 	sed -i "6 s/$oldFile/$f/g" "$File".md
 	sed -i "s/$oldFile/$f/g" "$File".md
-	sed -i "s/$oldFile.png/$f.png/g" "$File".md
+	sed -i "s/$oldFile.png/$f.avif/g" "$File".md
 	sed -i "s/$oldFile.avif/$f.avif/g" "$File".md
 	#Wikiprev
 	#Opentxt

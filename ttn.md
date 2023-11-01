@@ -120,7 +120,7 @@ then
 		echo "[*] **[[../$Filename]]** " >> "$folder"/"$File".md
 		echo "$source" >> "$folder"/"$File".md
 		ffmpeg -loglevel quiet -ss 2 -i "$folder"/"$File"  -t 1 -f image2 "$folder"/"$File".png
-		convert "$folder"/"$File".png -resize 4000x4000 "$folder"/"$File".avif
+		convert "$folder"/"$File".png -resize 1200x1200 "$folder"/"$File".avif
 		rm "$folder"/"$File".png
 		echo -e "\n$additiontext\n" >> "$folder"/"$File".md
 		echo "{{../$File.avif?width=500}}" >> "$folder"/"$File".md
