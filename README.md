@@ -4,8 +4,7 @@
 - [X] Doing (2)
 - [X] Planning (2)
     - [ ] überall yad Ersatz für zenity einfügen
-	- [ ] Bei Downloads von Videos über Mediathekview
-	das Korrekturprogramm in Markdown umwandeln
+
 - [X] Backlog
 	- [ ] bei der Verschiebung und Umbenennung von zim Seiten
 	die zim Funktion umschreiben, so dass auch andere Dateien
@@ -18,6 +17,9 @@
 	- [ ] Programme über libraries verbinden
 
 ## Features
+
+### ttvidc corrected to markdown
+ttvidc corrected to markdown and you can choose both files
 
 ### 2023-10-30 tex support in ttn and tts
 

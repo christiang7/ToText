@@ -24,8 +24,7 @@ oldfilename=${f%.*}
 File=$(echo "$f" | sed 's/ /_/g' | sed 's/:/;/g'| sed -e "s/'/_/g" | sed 's/\"//g')
 extens=${f##*.} #only the extension of the file
 filename=${File%.*} #only the filename
-mv "$oldfilename.mp4" $filename.mp4
-mv "$oldfilename.txt" $filename.mp4.md
+
 
 # case of input is txt file
 #File2=$(basename "$1")
@@ -33,36 +32,20 @@ mv "$oldfilename.txt" $filename.mp4.md
 #filename2=${File2%.*} #only the filename, here it is the original file
 #extens3=${filename2##*.}
 
-if [[ -e "$filename".txt ]] 
+if [[ -e "$oldfilename".txt ]]
 then
-    if [[ $extens == txt ]]
-    then
-        #mv "$filename".txt "$filename".mp4.md
-        sed -i "1 iContent-Type: text/x-zim-wiki" "$filename".mp4.md
-        sed -i "2 iWiki-Format: zim 0.6" "$filename".$extens.md
-        sed -i "3 i====== $filename.mp4 ======" "$filename".mp4.md
-        sed -i "4 i[*] @ARCHIV2 @VIDEO " "$filename".mp4.md
-        sed -i "5 i[*] **[[../"$filename".mp4]]**" "$filename".mp4.md
-        sed -i "6 iText creation time: $(date +"[[Zettelkasten:%Y:%m:%d]]") Modification time: $(date +"[[Zettelkasten:%Y:%m:%d]]" -r "$filename".mp4)" "$filename".mp4.md
-        sed -i "7 i\n" "$filename".mp4.md
-        ffmpeg -loglevel quiet -ss 2 -i "$filename".mp4  -t 1 -f image2 "$filename".png
-        convert "$filename".png -resize 1200x1200 -quality 97 "$filename"-px.avif
-        mv "$filename"-px.avif "$filename".avif
-        sed -i "8 i{{../$filename.avif?width=500}}" "$filename".mp4.md
-    else
-        #mv "$filename".txt "$File".md
-        sed -i "1 iContent-Type: text/x-zim-wiki" "$File".md
-        sed -i "2 iWiki-Format: zim 0.6" "$File".md
-        sed -i "3 i====== $filename.mp4 ======" "$File".md
-        sed -i "4 i[*] @ARCHIV2 @VIDEO " "$filename".mp4.md
-        sed -i "5 i[*] **[[../"$filename".mp4]]**" "$filename".mp4.md
-        sed -i "6 iText creation time: $(date +"[[Zettelkasten:%Y:%m:%d]]") Modification time: $(date +"[[Zettelkasten:%Y:%m:%d]]" -r "$filename".mp4)" "$File".md
-        sed -i "7 i\n" "$File".md
-        ffmpeg -loglevel quiet -ss 2 -i "$filename".mp4  -t 1 -f image2 "$filename".png
-        convert "$filename".png -resize 1200x1200 -quality 97 "$filename"-px.avif
-        mv "$filename"-px.avif "$filename".avif
-        sed -i "8 i{{../$filename.avif?width=500}}" "$filename".mp4.md
-    fi
+    mv "$oldfilename.mp4" $filename.mp4
+    mv "$oldfilename.txt" $filename.mp4.md
+    sed -i "1 iContent-Type: text/x-zim-wiki" "$filename".mp4.md
+    sed -i "2 iWiki-Format: zim 0.6" "$filename".mp4.md
+    sed -i "3 i====== $filename.mp4 ======" "$filename".mp4.md
+    sed -i "4 iText creation time: $(date +"[[Zettelkasten:%Y:%m:%d]]") Modification time: $(date +"[[Zettelkasten:%Y:%m:%d]]" -r "$filename".mp4)" "$filename".mp4.md
+    sed -i "5 i@ARCHIV2 @VIDEO " "$filename".mp4.md
+    sed -i "6 i[*] **[[../"$filename".mp4]]**" "$filename".mp4.md
+    #sed -i "7 i" "$filename".mp4.md
+    ffmpeg -loglevel quiet -ss 2 -i "$filename".mp4  -t 1 -f image2 "$filename".png
+    #convert "$filename".png -resize 1200x1200 "$filename".avif
+    sed -i "7 i{{../$filename.png?width=500}}" "$filename".mp4.md
 fi
 
 @
