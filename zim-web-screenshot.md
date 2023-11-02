@@ -24,7 +24,7 @@ noweb.py -Rzim-web-screenshot.sh zim-web-screenshot.md > zim-web-screenshot.sh &
 
 ```bash
 {{zim-web-screenshot.sh}}=
-  #! /bin/bash
+#! /bin/bash
   if zenity --question --text="Möchten Sie dieses Programm ein Screenshot aufnehmen?"
   then 
     url="$1"

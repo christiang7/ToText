@@ -5,7 +5,13 @@ Backlink [CodeFabrik:GedankenspeicherCoding](../GedankenspeicherCoding.md)
 - [X] **zim-treesheets**
 
 
-  ``noweb.py -Rzim-treesheets.sh zim-treesheets.md > zim-treesheets.sh && chmod u+x zim-treesheets.sh && ln -sf /home/christian/Gedankenspeicher/Gedankenspeicherwiki/Zettelkasten/ZetteL/CodeFabrik/GedankenspeicherCoding/zim-treesheets.sh ~/.local/bin/zim-treesheets.sh && echo 'fertig'``
+  ```bash
+noweb.py -Rzim-treesheets.sh zim-treesheets.md > zim-treesheets.sh && echo 'fertig'
+```
+
+  ```bash
+chmod u+x zim-treesheets.sh && ln -sf /home/christian/Gedankenspeicher/Gedankenspeicherwiki/Zettelkasten/ZetteL/CodeFabrik/GedankenspeicherCoding/zim-treesheets.sh ~/.local/bin/zim-treesheets.sh && echo 'fertig'
+```
 
 exportierte Bilder wieder in die Textdatei einfügen mittels ocr
 
@@ -13,7 +19,7 @@ exportierte Bilder wieder in die Textdatei einfügen mittels ocr
 
 ```bash
 {{zim-treesheets.sh}}=
-  #!/bin/bash
+#!/bin/bash
   if zenity --question --text="Möchten Sie Treesheets öffnen?"
   then 
     File=$(echo "$1" | sed 's/ /_/g' | sed 's/:/;/g'| sed -e "s/'/_/g" | sed 's/\"//g')

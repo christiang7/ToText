@@ -1,4 +1,4 @@
-  #! /bin/bash
+#! /bin/bash
   if zenity --question --text="Möchten Sie dieses Programm ein Screenshot aufnehmen?"
   then
     url="$1"

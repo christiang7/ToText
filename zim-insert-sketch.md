@@ -18,7 +18,7 @@ chmod u+x zim-insert-sketch.sh && ln -sf /home/christian/Gedankenspeicher/Gedank
 
 ```bash
 {{zim-insert-sketch.sh}}=
-	#!/bin/bash
+#!/bin/bash
 	#if zenity --question --text="Möchten Sie eine neue Skizze anfertigen?"
 	#then 
 	File=$(echo "$1" | sed 's/ /_/g' | sed 's/:/;/g'| sed -e "s/'/_/g" | sed 's/\"//g')

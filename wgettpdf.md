@@ -11,7 +11,7 @@ Backlink [GedankenspeicherCoding](../GedankenspeicherCoding.md)
 
 ```bash
 {{wgettpdf}}=
-    #!/bin/bash
+#!/bin/bash
     folder=$(date +"/home/christian/Gedankenspeicher/Gedankenspeicherwiki/Zettelkasten/%Y/%m/%d")
     mkdir -p $folder
     cd $folder

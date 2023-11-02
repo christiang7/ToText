@@ -21,7 +21,7 @@ Backlink [GedankenspeicherCoding](../GedankenspeicherCoding.md)
 
 ```bash
 {{zim-firefox-session.sh}}=
-	#! /bin/bash
+#!/bin/bash
 	if zenity --question --text="Möchten Sie die Links in Firefox öffnen?"
 	then 
 		text="$(xclip -o)"

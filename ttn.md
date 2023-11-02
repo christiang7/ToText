@@ -220,7 +220,7 @@ then
 		filename=$(basename "$folder"/"$File" .xopp)
 		Wikiprev
 		Timestamps
-		echo "$tags**" >> "$folder"/"$File".md
+		echo "$tags" >> "$folder"/"$File".md
 		echo "[*]  **[[../$Filename]] **" >> "$folder"/"$File".md
 		echo -e "$source\n$additiontext\n" >> "$folder"/"$File".md
 		xournalpp --export-range=1 "$folder"/"$File" -i "$folder"/"$File".png
