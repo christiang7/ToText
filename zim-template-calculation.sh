@@ -5,9 +5,11 @@ then
     filetxt=$(readlink -f -n "$1")
     folder=${filetxt%.*}
     #Project=$(basename $folder)
-#else
-#    Project="Projectname"
+else
+    #Project="Projectname"
+    folder=$(pwd)
 fi
+echo $folder
 cd $folder
 File="Filename"
 Project="Projectname"
@@ -20,7 +22,7 @@ abfrage=$(yad --title="New Project calculation" --text="Necessary Informations:"
 	--field="Author":CBE \
 	--field="Tags":CBE \
 	--field="Description":TXT \
-	"$Project" "$File" "python,julia,html,css,bash,javascript,lua,other" "Christian Gößl,Internet" ",physic,math" "$additiontext")
+	"$Project" "$File" "cpp,python,julia,html,css,bash,javascript,lua,other" "Christian Gößl,Internet" ",physic,math" "$additiontext")
 if [ ! $? -eq 1 ];
 then
 	Project=$(echo $abfrage | cut -s -d "~" -f 1)
@@ -30,11 +32,15 @@ then
 	tags=$(echo $abfrage | cut -s -d "~" -f 5)
 	additiontext=$(echo $abfrage | cut -s -d "~" -f 6)
 	File=$(echo "$File" | sed 's/ /_/g' | sed 's/:/;/g'| sed -e "s/'/_/g" | sed 's/\"//g')
+    ProjectName="$Project"
+    Project=$(echo "$Project" | sed 's/ /_/g' | sed 's/:/;/g'| sed -e "s/'/_/g" | sed 's/\"//g')
 
 	mkdir -p "$Project"
     cd "$Project"
 
 	case ${langname} in
+	cpp) extens="cpp"
+		;;
 	python) extens="py"
 		;;
     julia) extens="jl"
@@ -58,16 +64,17 @@ then
 
     if [[ ! -e ../"$Project".md ]]
     then
-    folder=$(basename $Project)
+    folder="$Project"
     #touch ../"$folder".md
-    echo -e "====== $folder ======" >> ../"$folder".md
+    echo -e "====== $ProjectName ======" >> ../"$folder".md
     echo -e "Created $(date +"[[Zettelkasten:%Y:%m:%d|%Y-%m-%d]]")" >> ../"$folder".md
     echo -e "[*] ** $folder **" >> ../"$folder".md
     fi
 
-    echo -e "# ${Project}" >> "README".md
+    echo -e "# README" >> "README".md
     echo -e "Created [$(date +%Y-%m-%d)]()\n" >> "README".md
-    echo -e "- [X] ${tags} **${Project}** " >> "README".md
+    echo -e "${tags} " >> "README".md
+    echo -e "- [X] **${ProjectName}** " >> "README".md
     echo -e "    - [X] Done" >> "README".md
     echo -e "    - [X] Doing Interput" >> "README".md
     echo -e "    - [X] Doing" >> "README".md
@@ -81,7 +88,8 @@ then
     #README template
     echo -e "# ${File}" >> "${File}".md
     echo -e "Created [$(date +%Y-%m-%d)]()\n" >> "${File}".md
-    echo -e "- [X] ${tags} **${File}** [README](README.md)" >> "${File}".md
+    echo -e "${tags} " >> "${File}".md
+    echo -e "- [X] **${File}** [README](README.md)" >> "${File}".md
     echo -e "    - [X] Doing" >> "${File}".md
     echo -e "    - [X] Backlog" >> "${File}".md
     echo -e "       - [ ] " >> "${File}".md

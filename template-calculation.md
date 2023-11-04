@@ -1,7 +1,7 @@
 # template-calculation
 Created [2023-06-25]()
-
-- [X] math **template-calculation** Christian Gößl [README.md](README.md)
+ math
+- [X] **template-calculation** [README.md](README.md)
     - [X] Doing
     - [X] Backlog
 
@@ -10,7 +10,7 @@ Created [2023-06-25]()
 
 
 ## Informations
-
+ Christian Gößl
 ## Main Program
 
 ```bash
@@ -31,16 +31,19 @@ then
   if [[ ! -e "$1" ]]
   then
     folder=$(pwd)
+    #echo $folder
   else
     filetxt=$(readlink -f -n "$1")
     folder=${filetxt%.*}
+    #echo $folder
     mkdir -p "$folder"
   fi
   File="Filename"
   cd $folder
-  {{Abfragen}}
+  {{requests}}
 else
   zim-template-calculation.sh "$1"
+  #echo 2
 fi
 
 @
@@ -60,7 +63,7 @@ Einstellungen vor dem Start des eigentlichen Programms, hier für ein Shell Scri
 
 
 ```bash
-{{Abfragen}}=
+{{requests}}=
 abfrage=$(yad --title="New calculation?" --text="Necessary Informations:" \
 	--form --width 500 --separator="~" --item-separator=","  \
 	--field="Filename" \
@@ -68,7 +71,7 @@ abfrage=$(yad --title="New calculation?" --text="Necessary Informations:" \
 	--field="Author":CBE \
 	--field="Tags":CBE \
 	--field="Description":TXT \
-	"$File" "python,julia,html,css,javascript,bash,lua,other" "Christian Gößl,Internet" "physic,math" "$additiontext")
+	"$File" "cpp,python,julia,html,css,javascript,bash,lua,other" "Christian Gößl,Internet" ",physic,math" "$additiontext")
 if [ ! $? -eq 1 ];
 then
 	File=$(echo $abfrage | cut -s -d "~" -f 1)
@@ -79,6 +82,8 @@ then
 	File=$(echo "$File" | sed 's/ /_/g' | sed 's/:/;/g'| sed -e "s/'/_/g" | sed 's/\"//g')
 
 	case ${langname} in
+	cpp) extens="cpp"
+		;;
 	python) extens="py"
 		;;
     julia) extens="jl"
@@ -132,3 +137,6 @@ touch ${File}
 @
 
 ```
+
+
+### create latex template

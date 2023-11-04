@@ -4,10 +4,10 @@ Created [2023-10-29]()
 - [X] **template-tex.sh** [README.md](README.md)
     - [X] Doing
     - [X] Backlog
-        - [ ] insert needed specifications for latex, look in master thesis
 
 ## Features
 
+preamble from master thesis
 
 
 ## Informations
@@ -53,7 +53,8 @@ cd $folder
 
 ### Preamble
 
-Einstellungen vor dem Start des eigentlichen Programms, hier für ein Shell Script ist diese Zeile notwendig
+presets bevor starting the program
+the first line is needed for shell scripts
 
 ```bash
 {{preamble}}=

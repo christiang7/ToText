@@ -63,8 +63,9 @@ then
   echo -e "Created $(date +"%A") $(date +"[[Zettelkasten:%Y:%m:%d|%Y-%m-%d]]")" >> "${folder}"/"${File}".md
   #echo -e "Backlink $([[Zettelkasten:%Y:%m:%d]])" >> "${folder}"/"${File}".md
   #echo -e "" >> "${folder}"/"${File}".md
-  echo -e "[*] ${tags} ** ${File} ** ${source} " >> "${folder}"/"${File}".md
-  echo -e "\n${additiontext}" >> "${folder}"/"${File}".md
+  echo -e "${tags}" >> "${folder}"/"${File}".md
+  echo -e "[*]  ** ${File} ** " >> "${folder}"/"${File}".md
+  echo -e "${source}\n${additiontext}" >> "${folder}"/"${File}".md
   #echo -e "\n${tabs}" >> "${folder}"/"${File}".md
 
 fi

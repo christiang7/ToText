@@ -4,4 +4,3 @@ Time=$(date +"Zettelkasten:%Y:%m:%d")
 file="/home/christian/.config/zim/preferences.conf"
 sed -i "206s/.*/marks=${Time}/" $file
 sed -i "207s/.*/clips=${Time}/" $file
-
