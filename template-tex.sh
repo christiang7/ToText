@@ -17,8 +17,9 @@ abfrage=$(yad --title="New Latex File" --text="Necessary Informations:" \
 	--field="Shortname for language":CB \
 	--field="Author:":CBE \
 	--field="Tags:":CBE \
+	--field="Git init?":CB \
 	--field="Description:":TXT \
-    "Filename" "programming,normal" "cpp,python,julia,html,css,javascript,bash,lua,other" "Christian Gößl,Internet" ",physic,math" "$additiontext")
+    "Filename" "programming,normal" "cpp,python,julia,html,css,javascript,bash,lua,other" "Christian Gößl,Internet" ",physic,math" "No,Yes" "$additiontext")
 if [ ! $? -eq 1 ];
 then
 	File=$(echo $abfrage | cut -s -d "~" -f 1)
@@ -26,10 +27,11 @@ then
 	langname=$(echo $abfrage | cut -s -d "~" -f 3)
 	source=$(echo $abfrage | cut -s -d "~" -f 4)
 	tags=$(echo $abfrage | cut -s -d "~" -f 5)
-	additiontext=$(echo $abfrage | cut -s -d "~" -f 6)
+	gitinit=$(echo $abfrage | cut -s -d "~" -f 6)
+	additiontext=$(echo $abfrage | cut -s -d "~" -f 7)
 	File=$(echo "$File" | sed 's/ /_/g' | sed 's/:/;/g'| sed -e "s/'/_/g" | sed 's/\"//g')
 
-    foldertex="$File"_tex_folder
+    foldertex="$File"_tex_$template
 	mkdir -p "$foldertex"
     cp ~/Gedankenspeicher/Vorlagen/general-preamble.tex "$foldertex"/general-preamble.tex
     cp ~/Gedankenspeicher/Vorlagen/color-symbols.tex "$foldertex"/color-symbols.tex
@@ -39,13 +41,12 @@ then
     #Filename="$File"
     #File="$File".tex
 
-
-
     echo -e "====== $foldertex ======" >> ../"$foldertex".md
     echo -e "Created $(date +"[[Zettelkasten:%Y:%m:%d|%Y-%m-%d]]")" >> ../"$foldertex".md
     echo -e "[*] ** $foldertex **" >> ../"$foldertex".md
     echo -e "Folder for the latex file" >> ../"$foldertex".md
     echo -e "[[./"${File}".md]]\n[[./"${File}".tex]]\n[[./"${File}".pdf]]" >> ../"$foldertex".md
+
     case ${template} in
         normal) {{normal tex template}}
             ;;
@@ -102,18 +103,26 @@ then
             echo "\end{document}" >> "${File}".md
             echo "@" >> "${File}".md
             echo -e "\`\`\`" >> "${File}".md
+            echo -e "[[./"${File}".${extens}]]" >> ../"$foldertex".md
             touch ${File}.tex
             noweb.py -R${File}.tex ${File}.md > ${File}.tex
+            noweb.py -R${File}.${extens} ${File}.md > ${File}.${extens}
             ;;
     esac
+    if [[ $gitinit == "Yes" ]];
+    then
+        git init
+        git add "${File}".md
+        git add ${File}.tex
+        if [[ $template == "programming" ]];
+        then
+            git add ${File}.${extens}
+        fi
+        git add general-preamble.tex
+        git add color-symbols.tex
+        git commit -a -m "init git"
 
-    git init
-    git add "${File}".md
-    git add ${File}.tex
-    git add general-preamble.tex
-    git add color-symbols.tex
-    git commit -a -m "init git"
-
+    fi
 
 fi
 
