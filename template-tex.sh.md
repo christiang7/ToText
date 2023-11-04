@@ -104,6 +104,7 @@ then
 	tags=$(echo $abfrage | cut -s -d "~" -f 5)
 	gitinit=$(echo $abfrage | cut -s -d "~" -f 6)
 	additiontext=$(echo $abfrage | cut -s -d "~" -f 7)
+	title="$File"
 	File=$(echo "$File" | sed 's/ /_/g' | sed 's/:/;/g'| sed -e "s/'/_/g" | sed 's/\"//g')
 
     foldertex="$File"_tex_$template
@@ -161,9 +162,9 @@ fi
 
 ```bash
 {{description file}}=
-echo -e "====== $foldertex ======" >> ../"$foldertex".md
+echo -e "====== $title ======" >> ../"$foldertex".md
 echo -e "Created $(date +"[[Zettelkasten:%Y:%m:%d|%Y-%m-%d]]")" >> ../"$foldertex".md
-echo -e "[*] ** $foldertex **" >> ../"$foldertex".md
+echo -e "[*] ** $title **" >> ../"$foldertex".md
 echo -e "Folder for the latex file" >> ../"$foldertex".md
 echo -e "[[./"${File}".md]]\n[[./"${File}".tex]]\n[[./"${File}".pdf]]" >> ../"$foldertex".md
 @
@@ -177,9 +178,9 @@ Creation of template
 
 ```bash
 {{programming tex template}}=
-echo -e "# ${File}.tex" >> "${File}".md
+echo -e "# ${title}" >> "${File}".md
 echo -e "Created [$(date +%Y-%m-%d)]()\n" >> "${File}".md
-echo -e "- [X] **${File}.tex** " >> "${File}".md
+echo -e "- [X] **${title}** " >> "${File}".md
 echo -e "    - [X] Doing" >> "${File}".md
 echo -e "    - [X] Backlog" >> "${File}".md
 echo -e "       - [ ] " >> "${File}".md
@@ -188,9 +189,6 @@ echo -e "\n## Informations" >> "${File}".md
 echo -e "\n## Programming" >> "${File}".md
 echo -e "\n\`\`\`bash" >> "${File}".md
 echo -e "noweb.py -R${File}.${extens} ${File}.md > ${File}.${extens} && echo 'fertig' \n\`\`\`" >> "${File}".md
-echo -e "\n\n\`\`\`bash" >> "${File}".md
-echo -e "chmod u+x ${File}.${extens} && ln -sf "${folder}"/${File}.${extens} ~/.local/bin/${File}.${extens} && echo 'fertig'\n \`\`\`\n" >> "${File}".md
-echo -e "\`\`\`${langname}" >> "${File}".md
 echo -e "{{${File}.${extens}}}=\n\n" >> "${File}".md
 echo "@" >> "${File}".md
 echo -e "\`\`\`" >> "${File}".md
@@ -205,7 +203,7 @@ echo "\begin{document}%\selectlanguage{english}" >> "${File}".md
 echo -e "\n\n" >> "${File}".md
 echo "\begin{minted}{${langname}}" >> "${File}".md
 echo "{{${File}.${extens}}}" >> "${File}".md
-echo "\end{minted}{${langname}}" >> "${File}".md
+echo "\end{minted}" >> "${File}".md
 echo "\end{document}" >> "${File}".md
 echo "@" >> "${File}".md
 echo -e "\`\`\`" >> "${File}".md
