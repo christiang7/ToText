@@ -10,7 +10,11 @@ Created [2023-06-25]()
 
 
 ## Informations
- Christian Gößl
+Christian Gößl
+
+
+
+
 ## Main Program
 
 ```bash
@@ -137,6 +141,3 @@ touch ${File}
 @
 
 ```
-
-
-### create latex template
