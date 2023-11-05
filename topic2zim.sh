@@ -4,7 +4,7 @@ request=$(yad --title="Notes or archiv" --text="Something to add?" \
 	--form --width 500 --separator="~" --item-separator=","  \
 	--field="Quelle:":CB \
 	--field="Weiteres":TXT \
-	"NeuNotiz,Spass,Assets,Heute,Physik,Mathematik,Philosophie,Naturwissenschaften_und_Instrumentarien,CodeFabrik" "")
+	"Spass,NeuNotiz,Assets,Heute,Physik,Mathematik,Philosophie,Naturwissenschaften_und_Instrumentarien,CodeFabrik" "")
 choose=$(echo $request | cut -s -d "~" -f 1)
 additiontext=$(echo $request | cut -s -d "~" -f 2)
 if [ ! $? -eq 1 ];
