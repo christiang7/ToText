@@ -201,7 +201,7 @@ echo -e "\\documentclass[10pt,fleqn,reqno,a4paper]{article}" >> "${File}".md
 echo -e "\\input{general-preamble.tex}\n\\input{color-symbols.tex}" >> "${File}".md
 echo "\begin{document}%\selectlanguage{english}" >> "${File}".md
 echo -e "\n\n" >> "${File}".md
-echo "\begin{minted}{${langname}}" >> "${File}".md
+echo "\begin{minted}[linenos=true,bgcolor=lightgraycolor,numberblanklines=true,showspaces=false,breaklines=true]{${langname}}" >> "${File}".md
 echo "{{${File}.${extens}}}" >> "${File}".md
 echo "\end{minted}" >> "${File}".md
 echo "\end{document}" >> "${File}".md
