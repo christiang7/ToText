@@ -115,7 +115,7 @@ then
 		sed -i "${l}i $additiontext" "$file"
 		sed -i "${l}i
 		" "$file"
-		sed -i "${l}s/^/====== $today ======/g" "$file"
+		sed -i "${l}s/^/==== $today ====/g" "$file"
 		sed -i "${l}i
 		" "$file"
 		;;

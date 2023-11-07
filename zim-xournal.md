@@ -29,13 +29,14 @@ filetxtname=$(basename "$File" .md)
 filedate=$(date +"%Y-%m-%d")
 source="Christian Gößl"
 par="$(echo $2)"
-if [[ "Notiz" != "$par" ]];
-then
-    additontext="$2"
-else
-    additontext="$2-$filetxtname"
-    #echo ifNotiz >> log.md
-fi
+#if [[ "Notiz" != "$par" ]];
+#then
+#    additontext="$2-$filetxtname"
+#else
+#    additontext="$2"
+#    echo ifNotiz >> log.md
+#fi
+additontext="$2-$filetxtname"
 Newname=$(zenity --entry \
     --width 500 \
     --title "Type new filename" \
