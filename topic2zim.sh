@@ -9,9 +9,9 @@ choose=$(echo $request | cut -s -d "~" -f 1)
 additiontext=$(echo $request | cut -s -d "~" -f 2)
 if [ ! $? -eq 1 ];
 then
-	tabs="$(xclip -selection clipboard -o)"
+	#tabs="$(xclip -selection clipboard -o)"
 	l="" # lineposition of the desired file
-
+	tabs="$(wl-paste -n)"
 	case ${choose} in
 	NeuNotiz)
 		request=$(yad --title="Which topic" --text="Something to add?" \

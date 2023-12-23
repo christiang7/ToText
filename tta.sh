@@ -1,8 +1,9 @@
 #!/usr/bin/env bash
 
-wikipath=$(xclip -selection clipboard -o)
-
-filepath=$(xclip -selection clipboard -o | sed "s,:,/,g" | sed "s, ,_,g")
+#wikipath=$(xclip -selection clipboard -o)
+wikipath="$(wl-paste -n)"
+#filepath=$(xclip -selection clipboard -o | sed "s,:,/,g" | sed "s, ,_,g")
+filepath="$(wl-paste -n | sed "s,:,/,g" | sed "s, ,_,g")"
 filepath=$(echo ~/Gedankenspeicher/Gedankenspeicherwiki/$filepath)
 
 destinationfolder=$(readlink -f -n "$1")

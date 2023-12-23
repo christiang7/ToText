@@ -9,7 +9,8 @@ additiontext=$(zenity --entry \
 	  --entry-text "")
 if [ ! $? -eq 1 ];
 then
-  text="$(xclip -selection clipboard -o)"
+  #text="$(xclip -selection clipboard -o)"
+  text="$(wl-paste -n)"
   foldermonth=$(date +"/home/christian/Gedankenspeicher/Gedankenspeicherwiki/Zettelkasten/%Y/%m")
   calendarfile=$(date +"%d")
   calendarfile=${calendarfile}.md

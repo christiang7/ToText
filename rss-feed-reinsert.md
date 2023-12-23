@@ -81,7 +81,8 @@ esac
 {{choose}}
 #rssfile=$(echo "/home/christian/Gedankenspeicher/Gedankenspeicherwiki/CodeFabrik/rss-source.rss")
 sed -i "$ d" $rssfile
-tabs="$(xclip -selection clipboard -o)"
+#tabs="$(xclip -selection clipboard -o)"
+tabs="$(wl-paste -n)"
 #today=$(date +"[[Zettelkasten:%Y:%m:%d|%Y-%m-%d]]")
 lines="$(wc --lines <<< "$tabs")"
 #lines="$(echo $(($lines/2)))"

@@ -8,18 +8,23 @@ Backlink [GedankenspeicherCoding](../GedankenspeicherCoding.md)
 Program for linking files to the assets folder
 
 
-``noweb.py -Rtta.sh tta.md > tta.sh && echo 'fertig'``
+```bash
+noweb.py -Rtta.sh tta.md > tta.sh && echo 'fertig'
+```
 
 
-``chmod u+x tta.sh && ln -sf /home/christian/Gedankenspeicher/Gedankenspeicherwiki/CodeFabrik/GedankenspeicherCoding/tta.sh ~/.local/bin/tta.sh && echo 'fertig'``
+```bash
+chmod u+x tta.sh && ln -sf /home/christian/Gedankenspeicher/Gedankenspeicherwiki/CodeFabrik/GedankenspeicherCoding/tta.sh ~/.local/bin/tta.sh && echo 'fertig'
+```
 
 ```bash
 {{tta.sh}}=
 #!/usr/bin/env bash
 
-wikipath=$(xclip -selection clipboard -o)
-
-filepath=$(xclip -selection clipboard -o | sed "s,:,/,g" | sed "s, ,_,g")
+#wikipath=$(xclip -selection clipboard -o)
+wikipath="$(wl-paste -n)"
+#filepath=$(xclip -selection clipboard -o | sed "s,:,/,g" | sed "s, ,_,g")
+filepath="$(wl-paste -n | sed "s,:,/,g" | sed "s, ,_,g")"
 filepath=$(echo ~/Gedankenspeicher/Gedankenspeicherwiki/$filepath)
 
 destinationfolder=$(readlink -f -n "$1")
