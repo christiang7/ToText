@@ -1,6 +1,7 @@
 #!/bin/bash
 
 Newname=$(basename "$1")
+Newname=${Newname%.*}
 
 abfrage=$(yad --title="Download Picture" --text="Noch etwas hinzufügen?" \
     --form --separator="~" --item-separator="," \

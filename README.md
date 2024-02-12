@@ -2,6 +2,9 @@
 
 - [X] Doing Interput (2)
 - [X] Doing (2)
+    - [ ] Zusammenlegung von tts und ttn
+        - [ ] prüfen, warum die Dateien nicht geöffnet werden
+        - [ ] als Option einfügen, ob Datei geöffnet werden soll danach oder nicht
 - [X] Planning (2)
     - [ ] überall yad Ersatz für zenity einfügen
 - [X] Backlog

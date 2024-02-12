@@ -97,29 +97,29 @@ request=$(yad --title="Which topic" --text="Something to add?" \
 
 if [ ! $? -eq 1 ];
 then
-    chooseWhere=$(echo $request | cut -s -d "~" -f 1)
-    topic=$(echo $request | cut -s -d "~" -f 2)
-    source=$(echo $request | cut -s -d "~" -f 3)
-    tags=$(echo $request | cut -s -d "~" -f 4)
-    additiontext=$(echo $request | cut -s -d "~" -f 5)
-    case ${chooseWhere} in
-        Spass) folder=$(echo "/home/christian/Gedankenspeicher/Gedankenspeicherwiki/Spaß_Stream")
-            l=37;;
-        Assets) folder=$(echo "/home/christian/Gedankenspeicher/Gedankenspeicherwiki/Assets")
-            l=37;;
-        Physik) folder=$(echo "/home/christian/Gedankenspeicher/Gedankenspeicherwiki/Physik")
-            l=37;;
-        Mathematik) folder=$(echo "/home/christian/Gedankenspeicher/Gedankenspeicherwiki/Mathematik")
-            l=37;;
-        Philosophie) folder=$(echo "/home/christian/Gedankenspeicher/Gedankenspeicherwiki/Philosophie")
-            l=37;;
-        Naturwissenschaften_und_Instrumentarien) folder=$(echo "/home/christian/Gedankenspeicher/Gedankenspeicherwiki/Naturwissenschaften_und_Instrumentarien")
-            l=37;;
-        CodeFabrik) folder=$(echo "/home/christian/Gedankenspeicher/Gedankenspeicherwiki/CodeFabrik")
-            l=37;;
-        Zettelkasten) folder=$(echo "/home/christian/Gedankenspeicher/Gedankenspeicherwiki/Zettelkasten")
-            l=37;;
-    esac
+	chooseWhere=$(echo $request | cut -s -d "~" -f 1)
+	topic=$(echo $request | cut -s -d "~" -f 2)
+	source=$(echo $request | cut -s -d "~" -f 3)
+	tags=$(echo $request | cut -s -d "~" -f 4)
+	additiontext=$(echo $request | cut -s -d "~" -f 5)
+	case ${chooseWhere} in
+		Spass) folder=$(echo "/home/christian/Gedankenspeicher/Gedankenspeicherwiki/Spaß_Stream")
+			l=37;;
+		Assets) folder=$(echo "/home/christian/Gedankenspeicher/Gedankenspeicherwiki/Assets")
+			l=37;;
+		Physik) folder=$(echo "/home/christian/Gedankenspeicher/Gedankenspeicherwiki/Physik")
+			l=37;;
+		Mathematik) folder=$(echo "/home/christian/Gedankenspeicher/Gedankenspeicherwiki/Mathematik")
+			l=37;;
+		Philosophie) folder=$(echo "/home/christian/Gedankenspeicher/Gedankenspeicherwiki/Philosophie")
+			l=37;;
+		Naturwissenschaften_und_Instrumentarien) folder=$(echo "/home/christian/Gedankenspeicher/Gedankenspeicherwiki/Naturwissenschaften_und_Instrumentarien")
+			l=37;;
+		CodeFabrik) folder=$(echo "/home/christian/Gedankenspeicher/Gedankenspeicherwiki/CodeFabrik")
+			l=37;;
+		Zettelkasten) folder=$(echo "/home/christian/Gedankenspeicher/Gedankenspeicherwiki/Zettelkasten")
+			l=37;;
+	esac
 
 	if [[ ! "$topic" = "" ]];
 	then
@@ -147,23 +147,23 @@ fi
 ```bash
 {{tabs to topics}}=
 case ${choose} in
-    Spass) file=$(echo "/home/christian/Gedankenspeicher/Gedankenspeicherwiki/Spaß_Stream/Spaß_Stream_Archiv.md")
-        l=5;;
-    Assets) file=$(echo "/home/christian/Gedankenspeicher/Gedankenspeicherwiki/Assets/Assets_Archiv.md")
-        l=5;;
-    Heute) tabs2zim.sh
-        exit
-        ;;
-    Physik) file=$(echo "/home/christian/Gedankenspeicher/Gedankenspeicherwiki/Physik/Physik_Archiv.md")
-        l=5;;
-    Mathematik) file=$(echo "/home/christian/Gedankenspeicher/Gedankenspeicherwiki/Mathematik/Mathematik_Archiv.md")
-        l=5;;
-    Philosophie) file=$(echo "/home/christian/Gedankenspeicher/Gedankenspeicherwiki/Philosophie/Philosophie_Archiv.md")
-        l=5;;
-    Naturwissenschaften_und_Instrumentarien) file=$(echo "/home/christian/Gedankenspeicher/Gedankenspeicherwiki/Naturwissenschaften_und_Instrumentarien/Naturwissenschaften_und_Instrumentarien_Archiv.md")
-        l=5;;
-    CodeFabrik) file=$(echo "/home/christian/Gedankenspeicher/Gedankenspeicherwiki/CodeFabrik/CodeFabrik_Archiv.md")
-        l=5;;
+	Spass) file=$(echo "/home/christian/Gedankenspeicher/Gedankenspeicherwiki/Spaß_Stream/Spaß_Stream_Archiv.md")
+		l=5;;
+	Assets) file=$(echo "/home/christian/Gedankenspeicher/Gedankenspeicherwiki/Assets/Assets_Archiv.md")
+		l=5;;
+	Heute) tabs2zim.sh
+		exit
+		;;
+	Physik) file=$(echo "/home/christian/Gedankenspeicher/Gedankenspeicherwiki/Physik/Physik_Archiv.md")
+		l=5;;
+	Mathematik) file=$(echo "/home/christian/Gedankenspeicher/Gedankenspeicherwiki/Mathematik/Mathematik_Archiv.md")
+		l=5;;
+	Philosophie) file=$(echo "/home/christian/Gedankenspeicher/Gedankenspeicherwiki/Philosophie/Philosophie_Archiv.md")
+		l=5;;
+	Naturwissenschaften_und_Instrumentarien) file=$(echo "/home/christian/Gedankenspeicher/Gedankenspeicherwiki/Naturwissenschaften_und_Instrumentarien/Naturwissenschaften_und_Instrumentarien_Archiv.md")
+		l=5;;
+	CodeFabrik) file=$(echo "/home/christian/Gedankenspeicher/Gedankenspeicherwiki/CodeFabrik/CodeFabrik_Archiv.md")
+		l=5;;
 esac
 #echo $tabs
 today=$(date +"[[Zettelkasten:%Y:%m:%d|%Y-%m-%d]]")
@@ -173,21 +173,21 @@ element=""
 lines="$(wc --lines <<< "$tabs")"
 for (( i=$lines ; i>=1 ; i-- ));
 do
-    element=$(sed -n "${i}p" <(echo "$tabs"))
-    echo "$element"
-    if (($i % 2 != 0));
-    then
-        element=$(echo "${element}" | sed 's/\//-/g' | sed 's/:/;/g' | sed 's/:/;/g' | sed "s/|/;/g" | sed "s/·/;/g" | sed "s/💤/;/g")
-        #title=$(echo "${title}" | sed 's/\//-/g' | sed 's/:/;/g' | sed "s/|/;/g" | sed "s/·/;/g" | sed "s/💤/;/g")
-        echo "$element"
-    fi
-    #echo ${i}
-    sed -i "${l} s,^,$element," "$file"
-    if [[ $i > 1 ]]
-    then
-        sed -i "${l}i
-        " "$file"
-    fi
+	element=$(sed -n "${i}p" <(echo "$tabs"))
+	echo "$element"
+	if (($i % 2 != 0));
+	then
+		element=$(echo "${element}" | sed 's/\//-/g' | sed 's/:/;/g' | sed 's/:/;/g' | sed "s/|/;/g" | sed "s/·/;/g" | sed "s/💤/;/g")
+		#title=$(echo "${title}" | sed 's/\//-/g' | sed 's/:/;/g' | sed "s/|/;/g" | sed "s/·/;/g" | sed "s/💤/;/g")
+		echo "$element"
+	fi
+	#echo ${i}
+	sed -i "${l} s,^,$element," "$file"
+	if [[ $i > 1 ]]
+	then
+		sed -i "${l}i
+		" "$file"
+	fi
 done
 sed -i "${l}i $additiontext" "$file"
 sed -i "${l}i

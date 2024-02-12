@@ -2,8 +2,8 @@
 Created [2023-06-25]()
  math
 - [X] **template-calculation** [README.md](README.md)
-    - [X] Doing
-    - [X] Backlog
+	- [X] Doing
+	- [X] Backlog
 
 ## Features
 
@@ -34,13 +34,13 @@ if [ ! $? -eq 1 ];
 then
   if [[ ! -e "$1" ]]
   then
-    folder=$(pwd)
-    #echo $folder
+	folder=$(pwd)
+	#echo $folder
   else
-    filetxt=$(readlink -f -n "$1")
-    folder=${filetxt%.*}
-    #echo $folder
-    mkdir -p "$folder"
+	filetxt=$(readlink -f -n "$1")
+	folder=${filetxt%.*}
+	#echo $folder
+	mkdir -p "$folder"
   fi
   File="Filename"
   cd $folder
@@ -90,25 +90,25 @@ then
 		;;
 	python) extens="py"
 		;;
-    julia) extens="jl"
+	julia) extens="jl"
 		;;
-    html) extens="html"
+	html) extens="html"
 		;;
-    css) extens="css"
+	css) extens="css"
 		;;
-    javascript) extens="js"
+	javascript) extens="js"
 		;;
-    bash) extens="sh"
+	bash) extens="sh"
 		;;
-    lua) extens="lua"
+	lua) extens="lua"
 		;;
-    other) extens="other"
+	other) extens="other"
 		;;
-    esac
-    Filename="$File"
-    File="$File"."${extens}"
+	esac
+	Filename="$File"
+	File="$File"."${extens}"
 
-    {{create Template}}
+	{{create Template}}
 fi
 @
 ```

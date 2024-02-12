@@ -93,7 +93,7 @@ then
 	then
 		#echo pdf
 		ttpdf "$folder"/"$File" "$source" "$tags" "$additiontext" 
-	elif [[ jpg == $extens || PNG == $extens || JPEG == $extens || png == $extens || webp == $extens || jpeg == $extens || avif == $extens ]] && [[ -z $extenspdf && -z $extensxopp && -z $extensmp4 && -z $extensmov && -z $extensflv && -z $extensmkv ]] 
+	elif [[ jpg == $extens | PNG == $extens || JPEG == $extens || png == $extens || webp == $extens || jpeg == $extens || avif == $extens ]] && [[ -z $extenspdf && -z $extensxopp && -z $extensmp4 && -z $extensmov && -z $extensflv && -z $extensmkv ]] 
 	then
 		#echo pic
 		#echo $extenspdf
@@ -105,7 +105,7 @@ then
 			rm "$folder"/"$File"
 		fi
 		#kate "$folder"/"$File".md 2>/dev/null & 
-	elif [[ mp4 == $extens || mov == $extens || mkv == $extens || flv = $extens || ogv = $extens ]]
+	elif [[ mp4 == $extens | mov == $extens || mkv == $extens || flv = $extens || ogv = $extens ]]
 	then
 		#echo vid
 		#ttdown "$f" "$2"
@@ -129,7 +129,7 @@ then
 	then
 		Wikiprev
 		Timestamps
-        echo "@EBOOK $tags " >> "$folder"/"$File".md
+		echo "@EBOOK $tags " >> "$folder"/"$File".md
 		echo "[*] **[[../$Filename]] **" >> "$folder"/"$File".md
 		echo -e "$source\n$additiontext\n" >> "$folder"/"$File".md
 		einfo "$folder"/"$File" >> "$folder"/"$File".md
@@ -179,10 +179,10 @@ then
 		mv "$f".out "$filename".out
 		mv "$f".blg "$filename".blg
 		mv "$f".bbl "$filename".bbl
-        mv "$f".run.xml "$filename".run.xml
-        mv "$f".bcf "$filename".bcf
-        mv "$f".sbl "$filename".sbl
-        mv "$f".ist "$filename".ist
+		mv "$f".run.xml "$filename".run.xml
+		mv "$f".bcf "$filename".bcf
+		mv "$f".sbl "$filename".sbl
+		mv "$f".ist "$filename".ist
 		mv "$filename".* "$foldertex"/ #
 		#touch "$foldertex".md #
 		echo "Content-Type: text/x-zim-wiki" >> "$foldertex".md
@@ -196,21 +196,21 @@ then
 		echo -e "$source\n$additiontext" >> "$foldertex".md
 		# latex file in markdown
 		echo -e "# ${filename}.tex" >> "$foldertex"/"${filename}".md
-        echo -e "Created [$(date +%Y-%m-%d)]()\n" >> "$foldertex"/"${filename}".md
-        echo -e "- [X] **${filename}.tex** " >> "$foldertex"/"${filename}".md
-        echo -e "    - [X] Doing" >> "$foldertex"/"${filename}".md
-        echo -e "    - [X] Backlog" >> "$foldertex"/"${filename}".md
-        echo -e "       - [ ] " >> "$foldertex"/"${filename}".md
-        echo -e "\n## Features" >> "$foldertex"/"${filename}".md
-        echo -e "\n## Informations" >> "$foldertex"/"${filename}".md
-        echo -e "\n## Latex File\n" >> "$foldertex"/"${filename}".md
-        echo -e "\n\`\`\`bash" >> "$foldertex"/"${filename}".md
-        echo -e "noweb.py -R${filename}.tex ${filename}.md > ${filename}.tex && pdflatex ${filename}.tex && xdg-open ${filename}.pdf 2>/dev/null & \n\`\`\`\n\n" >> "$foldertex"/"${filename}".md
-        echo -e "\`\`\`tex" >> "$foldertex"/"${filename}".md
-        echo -e "{{${filename}.tex}}=" >> "$foldertex"/"${filename}".md
-        cat "$foldertex"/"${filename}".tex >> "$foldertex"/"${filename}".md
-        echo -e "\n@" >> "$foldertex"/"${filename}".md
-        echo -e "\`\`\`" >> "$foldertex"/"${filename}".md
+		echo -e "Created [$(date +%Y-%m-%d)]()\n" >> "$foldertex"/"${filename}".md
+		echo -e "- [X] **${filename}.tex** " >> "$foldertex"/"${filename}".md
+		echo -e "    - [X] Doing" >> "$foldertex"/"${filename}".md
+		echo -e "    - [X] Backlog" >> "$foldertex"/"${filename}".md
+		echo -e "       - [ ] " >> "$foldertex"/"${filename}".md
+		echo -e "\n## Features" >> "$foldertex"/"${filename}".md
+		echo -e "\n## Informations" >> "$foldertex"/"${filename}".md
+		echo -e "\n## Latex File\n" >> "$foldertex"/"${filename}".md
+		echo -e "\n\`\`\`bash" >> "$foldertex"/"${filename}".md
+		echo -e "noweb.py -R${filename}.tex ${filename}.md > ${filename}.tex && pdflatex ${filename}.tex && xdg-open ${filename}.pdf 2>/dev/null & \n\`\`\`\n\n" >> "$foldertex"/"${filename}".md
+		echo -e "\`\`\`tex" >> "$foldertex"/"${filename}".md
+		echo -e "{{${filename}.tex}}=" >> "$foldertex"/"${filename}".md
+		cat "$foldertex"/"${filename}".tex >> "$foldertex"/"${filename}".md
+		echo -e "\n@" >> "$foldertex"/"${filename}".md
+		echo -e "\`\`\`" >> "$foldertex"/"${filename}".md
 		#ln -s "$folder"/"$folder"/"$File" "$folder"/"$File"
 		#ln -s "$folder"/"$filename".pdf "$filename".pdf
 		#kate "$folder".md 2>/dev/null &
@@ -231,7 +231,7 @@ then
 		echo -e "{{../$File.avif?width=500}}\n" >> "$folder"/"$File".md
 		#xournalpp "$folder"/"$File" -p "$filename".pdf
 		#ttpdf "$filename".pdf
-	elif [[ mp3 == $extens || webm == $extens || flac == $extens || aac = $extens || ogg = $extens || weba = $extens || wav = $extens || aiff = $extens ]]
+	elif [[ mp3 == $extens | webm == $extens || flac == $extens || aac = $extens || ogg = $extens || weba = $extens || wav = $extens || aiff = $extens ]]
 	then
 		Wikiprev
 		Timestamps
@@ -248,14 +248,14 @@ then
 		echo "[*] **[[../$Filename]] **" >> "$folder"/"$File".md
 		echo -e "$source\n$additiontext\n" >> "$folder"/"$File".md
 		#Opentxt
-	elif [[ $extens == docx || $extens == doc  || $extens == odt || $extens == ods || $extens == xls || $extens == xlsx || $extens == ppt || $extens == pptx || $extens == odp ]]
+	elif [[ $extens == docx | $extens == doc  || $extens == odt || $extens == ods || $extens == xls || $extens == xlsx || $extens == ppt || $extens == pptx || $extens == odp ]]
 	then
 		Wikiprev
 		Timestamps
 		echo "$tags**" >> "$folder"/"$File".md
 		echo "[*] **[[../$Filename]] **" >> "$folder"/"$File".md
 		echo -e "$source\n$additiontext\n" >> "$folder"/"$File".md
-	#elif [[ -n $extenspdf || -n $extensxopp || -z $extensmp4 || -z $extensmov || -z $extensflv || -z $extensmkv ]]
+	#elif [[ -n $extenspdf | -n $extensxopp || -z $extensmp4 || -z $extensmov || -z $extensflv || -z $extensmkv ]]
 	#then
 	#	echo "tue nichts"
 	else 

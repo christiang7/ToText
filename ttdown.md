@@ -23,7 +23,7 @@ folder=$(echo ~/Gedankenspeicher/Archiv-Verschiebung/)
 
 abfrage=$(yad --title="Diese Datei eine TXT hinzufügen" --text="Noch etwas hinzufügen?" \
 	--form --width 500 --separator="~" --item-separator=","  \
-    --field="Anderer Name:" \
+	--field="Anderer Name:" \
 	--field="Quelle:":CBE \
 	--field="Tags" \
 	--field="Weiteres":TXT \
@@ -35,31 +35,31 @@ then
 	tags=$(echo $abfrage | cut -s -d "~" -f 3)
 	additiontext=$(echo $abfrage | cut -s -d "~" -f 4)
 
-    File=$(echo "$Newname"."$extens" | sed 's/ /_/g' | sed 's/:/;/g'| sed -e "s/'/_/g" | sed 's/\"//g'|  sed 's/&/n/g' | sed 's/\///g' | sed 's/|//g' | sed 's/\[/(/g' | sed 's/\]/)/g' | sed 's/@/at/g')
-    mv "$1" "$folder""$File"
-    #File=$(echo "$1" | sed 's/ /_/g' | sed 's/:/;/g'| sed -e "s/'/_/g" | sed 's/\"//g' |  sed 's/&/n/g' | sed 's/|//g' | sed 's/\[/(/g' | sed 's/\]/)/g' | sed 's/@/at/g')
-    #mv "$1" "$File"
-    f=$(basename "$File")
+	File=$(echo "$Newname"."$extens" | sed 's/ /_/g' | sed 's/:/;/g'| sed -e "s/'/_/g" | sed 's/\"//g'|  sed 's/&/n/g' | sed 's/\///g' | sed 's/|//g' | sed 's/\[/(/g' | sed 's/\]/)/g' | sed 's/@/at/g')
+	mv "$1" "$folder""$File"
+	#File=$(echo "$1" | sed 's/ /_/g' | sed 's/:/;/g'| sed -e "s/'/_/g" | sed 's/\"//g' |  sed 's/&/n/g' | sed 's/|//g' | sed 's/\[/(/g' | sed 's/\]/)/g' | sed 's/@/at/g')
+	#mv "$1" "$File"
+	f=$(basename "$File")
 
-    #f=$(basename "$1")
+	#f=$(basename "$1")
 
-    touch "$folder""$File".md
-    echo "Content-Type: text/x-zim-wiki" >> "$folder""$File".md
-    echo "Wiki-Format: zim 0.6" >> "$folder""$File".md
-    echo "====== $f ======" >> "$folder""$File".md
-    echo "Text date:$(date +"[[Zettelkasten:%Y:%m:%d|%Y-%m-%d]]") Modi date:$(date +"[[Zettelkasten:%Y:%m:%d|%Y-%m-%d]]" -r "$folder""$File")" >> "$folder""$File".md
-    echo "[*] @VIDEO $tags **[[../$f]]** $source" >> "$folder""$File".md
-    #echo "Modification time:$(date +"[[Zettelkasten:%Y:%m:%d]]" -r "$folder""$File")" >> "$folder""$File".md
-    ffmpeg -loglevel quiet -ss 2 -i "$folder""$File" -t 1 -f image2 "$folder""$File".png
-    #convert "$folder""$File".png -resize 1200x1200 -quality 97 "$folder""$File"-px.png
-    #mv "$folder""$File"-px.png "$folder""$File".png
-    convert "$folder""$File".png "$folder""$File".avif
-    rm "$folder""$File".png
-    echo -e "\n$additiontext\n" >> "$folder""$File".md
-    echo "{{../$f.avif?width=500}}" >> "$folder""$File".md
-    yt-dlp --get-description "$source" >> "$folder""$File".md
-    #echo "$3" >> "$File".md
-    #kate "$File".md 2>/dev/null &
+	touch "$folder""$File".md
+	echo "Content-Type: text/x-zim-wiki" >> "$folder""$File".md
+	echo "Wiki-Format: zim 0.6" >> "$folder""$File".md
+	echo "====== $f ======" >> "$folder""$File".md
+	echo "Text date:$(date +"[[Zettelkasten:%Y:%m:%d|%Y-%m-%d]]") Modi date:$(date +"[[Zettelkasten:%Y:%m:%d|%Y-%m-%d]]" -r "$folder""$File")" >> "$folder""$File".md
+	echo "[*] @VIDEO $tags **[[../$f]]** $source" >> "$folder""$File".md
+	#echo "Modification time:$(date +"[[Zettelkasten:%Y:%m:%d]]" -r "$folder""$File")" >> "$folder""$File".md
+	ffmpeg -loglevel quiet -ss 2 -i "$folder""$File" -t 1 -f image2 "$folder""$File".png
+	#convert "$folder""$File".png -resize 1200x1200 -quality 97 "$folder""$File"-px.png
+	#mv "$folder""$File"-px.png "$folder""$File".png
+	convert "$folder""$File".png "$folder""$File".avif
+	rm "$folder""$File".png
+	echo -e "\n$additiontext\n" >> "$folder""$File".md
+	echo "{{../$f.avif?width=500}}" >> "$folder""$File".md
+	yt-dlp --get-description "$source" >> "$folder""$File".md
+	#echo "$3" >> "$File".md
+	#kate "$File".md 2>/dev/null &
 
 fi
 @

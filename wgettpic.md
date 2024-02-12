@@ -14,6 +14,7 @@ noweb.py -Rwgettpic wgettpic.md > wgettpic && chmod u+x wgettpic && echo 'fertig
 #!/bin/bash
 
 Newname=$(basename "$1")
+Newname=${Newname%.*}
 
 abfrage=$(yad --title="Download Picture" --text="Noch etwas hinzufügen?" \
     --form --separator="~" --item-separator="," \

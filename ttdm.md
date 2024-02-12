@@ -109,7 +109,7 @@ if [[ pdf == $extens ]]
 	echo -e "{{$Filename.png?width=500}}" >> "$foldermonth"/"$calendarfile"
 	echo "cd $folder"
 	mv "$File" $folder/"$Filename"
-elif [[ jpg == $extens || png == $extens || webp == $extens || jpeg == $extens || avif == $extens || svg == $extens ]] 
+elif [[ jpg == $extens | png == $extens || webp == $extens || jpeg == $extens || avif == $extens || svg == $extens ]] 
 then
 	#echo pic
 	if [[ ! -e "$Filename".md ]] 
@@ -129,7 +129,7 @@ then
 	echo -e "\n[[+$Filename]]" >> "$foldermonth"/"$calendarfile"
 	echo -e "{{$Filename?width=500}}" >> "$foldermonth"/"$calendarfile"
 	mv "$File" $folder/"$Filename"
-elif [[ mp4 == $extens || mov == $extens || mkv == $extens || flv = $extens ]] 
+elif [[ mp4 == $extens | mov == $extens || mkv == $extens || flv = $extens ]] 
 then
 	folder=~/Gedankenspeicher/Arbeitsflaeche/Archiv-Verschiebung/
 	if [[ ! -e "$File".md ]] 

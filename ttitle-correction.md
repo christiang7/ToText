@@ -51,13 +51,13 @@ File=$(basename "$1")
 line=$(sed -n '/\[\*\]/{=;}' $File )
 line=${line:0:1}
 #echo $line
-if [[ $line > 5 || $line == "" ]]
+if [[ $line > 5 | $line == "" ]]
 then
-    linee=$(sed -n '/\[\ \]/{=;}' $File )
-    linee=${linee:0:1}
-    sed -i "$linee s/\[ \]/====== $(basename $File .md) ======\\n\[ \]/" "$File"
+	linee=$(sed -n '/\[\ \]/{=;}' $File )
+	linee=${linee:0:1}
+	sed -i "$linee s/\[ \]/====== $(basename $File .md) ======\\n\[ \]/" "$File"
 else
-    sed -i "$line s/\[\*\]/====== $(basename $File .md) ======\\n\[\*\]/" "$File"
+	sed -i "$line s/\[\*\]/====== $(basename $File .md) ======\\n\[\*\]/" "$File"
 fi
 
 @

@@ -2,8 +2,8 @@
 Created [2023-10-29]()
 
 - [X] **template-tex.sh** [README.md](README.md)
-    - [X] Doing
-    - [X] Backlog
+	- [X] Doing
+	- [X] Backlog
 
 ## Features
 
@@ -50,11 +50,11 @@ chmod u+x template-tex.sh && ln -sf /home/christian/Gedankenspeicher/KanDo/Gedan
 
 if [[ ! -e "$1" ]]
 then
-    folder=$(pwd)
+	folder=$(pwd)
 else
-    filetxt=$(readlink -f -n "$1")
-    folder=${filetxt%.*}
-    mkdir -p "$folder"
+	filetxt=$(readlink -f -n "$1")
+	folder=${filetxt%.*}
+	mkdir -p "$folder"
 fi
 cd $folder
 {{Main}}
@@ -86,7 +86,7 @@ abfrage=$(yad --title="New Latex File" --text="Necessary Informations:" \
 	--field="Tags:":CBE \
 	--field="Git init?":CB \
 	--field="Description:":TXT \
-    "Filename" "programming,normal" "cpp,python,julia,html,css,javascript,bash,lua,other" "Christian Gößl,Internet" ",physic,math" "No,Yes" "$additiontext")
+	"Filename" "programming,normal" "cpp,python,julia,html,css,javascript,bash,lua,other" "Christian Gößl,Internet" ",physic,math" "No,Yes" "$additiontext")
 @
 
 ```
@@ -110,49 +110,49 @@ then
 	title="$File"
 	File=$(echo "$File" | sed 's/ /_/g' | sed 's/:/;/g'| sed -e "s/'/_/g" | sed 's/\"//g')
 
-    foldertex="$File"_tex_$template
+	foldertex="$File"_tex_$template
 	mkdir -p "$foldertex"
-    cp ~/Gedankenspeicher/Vorlagen/general-preamble.tex "$foldertex"/general-preamble.tex
-    cp ~/Gedankenspeicher/Vorlagen/color-symbols.tex "$foldertex"/color-symbols.tex
-    cd "$foldertex"
+	cp ~/Gedankenspeicher/Vorlagen/general-preamble.tex "$foldertex"/general-preamble.tex
+	cp ~/Gedankenspeicher/Vorlagen/color-symbols.tex "$foldertex"/color-symbols.tex
+	cd "$foldertex"
 
 
-    #Filename="$File"
-    #File="$File".tex
+	#Filename="$File"
+	#File="$File".tex
 
-    {{description file}}
+	{{description file}}
 
-    case ${template} in
-        normal) {{normal tex template}}
-            ;;
-        programming)
-            case ${langname} in
-            cpp) extens="cpp"
-                ;;
-            python) extens="py"
-                ;;
-            julia) extens="jl"
-                ;;
-            html) extens="html"
-                ;;
-            css) extens="css"
-                ;;
-            javascript) extens="js"
-                ;;
-            bash) extens="sh"
-                ;;
-            lua) extens="lua"
-                ;;
-            other) extens="other"
-                ;;
-            esac
-            {{programming tex template}}
-            ;;
-    esac
-    if [[ $gitinit == "Yes" ]];
-    then
-        {{git init}}
-    fi
+	case ${template} in
+		normal) {{normal tex template}}
+			;;
+		programming)
+			case ${langname} in
+			cpp) extens="cpp"
+				;;
+			python) extens="py"
+				;;
+			julia) extens="jl"
+				;;
+			html) extens="html"
+				;;
+			css) extens="css"
+				;;
+			javascript) extens="js"
+				;;
+			bash) extens="sh"
+				;;
+			lua) extens="lua"
+				;;
+			other) extens="other"
+				;;
+			esac
+			{{programming tex template}}
+			;;
+	esac
+	if [[ $gitinit == "Yes" ]];
+	then
+		{{git init}}
+	fi
 
 fi
 
@@ -262,7 +262,7 @@ git add "${File}".md
 git add ${File}.tex
 if [[ $template == "programming" ]];
 then
-    git add ${File}.${extens}
+	git add ${File}.${extens}
 fi
 git add general-preamble.tex
 git add color-symbols.tex
