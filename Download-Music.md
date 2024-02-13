@@ -1,8 +1,14 @@
 # Download-Music
 Created Dienstag [Zettelkasten:2022:10:18]()
-Backlink [GedankenspeicherCoding](../GedankenspeicherCoding.md)
 
 - [X] **Download-Music**
+
+For dumping the website, but it is not good formated
+```bash
+lynx --dump  https://kalax.bandcamp.com/track/confie-hold-on-feat-francci
+
+inks2 -dump https://kalax.bandcamp.com/track/confie-hold-on-feat-francci
+```
 
 
   ```bash
@@ -19,7 +25,8 @@ chmod u+x Download-Music.sh && ln -sf /home/christian/Gedankenspeicher/Gedankens
 echo "$1"
 website="$1"
 text=$(yt-dlp --get-description ${website})
-yt-dlp --no-mtime --exec "ttn {} \"${website}\" \"$text\"" -o "~/Musik/Favorieten-open/%(title)s.%(ext)s" --embed-thumbnail --format best --no-mtime --audio-quality 0 -i "${website}"
+text="$(echo -e "${text}" | sed 's/\"//g')"
+yt-dlp --no-mtime --exec "ttn {} \"${website}\" \"@Lied\" \"${text} \" " -o "~/Musik/Favorieten-open/%(title)s.%(ext)s" --embed-thumbnail -f b --no-mtime --audio-quality 0 -i "${website}"
 sleep 5
 @
 ```

@@ -4,8 +4,24 @@ Text date: [Zettelkasten:2021:04:29]() File date: [Zettelkasten:2021:04:24]()
 
 ## Features
 
+### 2024-02-13 combined ttn with tts
+The tts program is now integrated in the ttn program. The workflow is now better and just one request.
+
 ### 2023-10-30 tex Format supported
 tex format support again
+
+
+
+Hier sind die Dolpin ServiceMenüs
+[KDE-Servicemenüs › Wiki › ubuntuusers-de]()
+
+
+- [X] WEB How to get File Name and extension in bash|shell script programming <https://www.w3schools.io/terminal/bash-extract-file-extension/>
+- [X] WEB Bash Scripting - How to check If File Exists - GeeksforGeeks <https://www.geeksforgeeks.org/bash-scripting-how-to-check-if-file-exists/>
+- [X] WEB Zenity - Create GUI Dialog Boxes In Bash Scripts - OSTechNix <https://ostechnix.com/zenity-create-gui-dialog-boxes-in-bash-scripts/>
+- [X] WEB Bash Conditional Statements - OSTechNix <https://ostechnix.com/bash-conditional-statements/>
+
+
 
 
 ## Program
@@ -24,37 +40,66 @@ extens=${f##*.}
 Filename=${f%.*}
 folder=$(dirname "$(realpath "$1")")
 Unterricht=$(echo $File | grep -o Unterrichtsnotiz)
-if [[ $(echo $Filename | grep -o Unterrichtsnotiz) == Unterrichtsnotiz || $(echo $Filename | grep -o Unterrichtsnotizen) == Unterrichtsnotizen || $(echo $Filename | grep -o Unterricht) == Unterricht ]]
-then
-	source="Christian Gößl"
-	tags="@Unterricht @Nachhilfe"
-else
-	source="$2"
-	tags="$3"
-	additiontext="$4"
-fi
 
-abfrage=$(yad --title="Diese Datei eine TXT hinzufügen" --text="Noch etwas hinzufügen?" \
+line=$(head -n 1 "$Filename".md)
+
+if [[ -e "$Filename".md && ! -d "$Filename" ]];
+then
+	ttvidc "$f"
+elif [[ -e "$File".md ]]
+then
+	echo $line
+	if [[ "$line" != "Content-Type: text/x-zim-wiki" ]]
+		then
+		#echo falsch
+		ttnc "$f"
+	fi
+	xdg-open "$File" &
+else
+    if [[ $(echo $Filename | grep -o Unterrichtsnotiz) == Unterrichtsnotiz || $(echo $Filename | grep -o Unterrichtsnotizen) == Unterrichtsnotizen || $(echo $Filename | grep -o Unterricht) == Unterricht ]]
+    then
+        source="Christian Gößl"
+        tags="@Unterricht @Nachhilfe"
+    else
+        source="$2"
+        tags="$3"
+        additiontext="$4"
+    fi
+    abfrage=$(yad --title="Dieser Datei eine TXT hinzufügen" --text="Noch etwas hinzufügen?" \
 	--form --width 500 --separator="~" --item-separator=","  \
+    --field="Name" \
 	--field="Quelle:":CBE \
 	--field="Tags" \
+	--field="Bild behalten:":CB \
+	--field="Datei anzeigen:":CB \
 	--field="Weiteres":TXT \
-	"$source,Internet,Christian Gößl" "$tags" "$additiontext")
+	"$Filename" "$source,Internet,Christian Gößl" "$tags" "No,Yes" "No,Yes" "$additiontext")
+fi
+
 if [ ! $? -eq 1 ]; 
 then
-	Newname=$Filename
-	source=$(echo $abfrage | cut -s -d "~" -f 1)
-	tags=$(echo $abfrage | cut -s -d "~" -f 2)
-	additiontext=$(echo $abfrage | cut -s -d "~" -f 3)
-	
+    Newname=$(echo $abfrage | cut -s -d "~" -f 1)
+	if [[ $extens == $f ]]
+    then
+        File=$(echo "$Newname" | sed 's/ /_/g' | sed 's/:/;/g'| sed -e "s/'/_/g" | sed 's/\"//g'|  sed 's/&/n/g' | sed 's/\///g' | sed 's/|//g' | sed 's/\[/(/g' | sed 's/\]/)/g' | sed 's/@/at/g')
+    else
+        File=$(echo "$Newname"."$extens" | sed 's/ /_/g' | sed 's/:/;/g'| sed -e "s/'/_/g" | sed 's/\"//g'|  sed 's/&/n/g' | sed 's/\///g' | sed 's/|//g' | sed 's/\[/(/g' | sed 's/\]/)/g' | sed 's/@/at/g')
+    fi
+	mv $folder/"$f" $folder/"$File"
+
+	source=$(echo $abfrage | cut -s -d "~" -f 2)
+	tags=$(echo $abfrage | cut -s -d "~" -f 3)
+	origpic=$(echo $abfrage | cut -s -d "~" -f 4)
+	showfile=$(echo $abfrage | cut -s -d "~" -f 5)
+	additiontext=$(echo $abfrage | cut -s -d "~" -f 6)
+
+
 	#echo $Newname
 	#echo $source
 	#echo $tags$File
 	#echo $additiontext
 
-	File=$(echo "$Newname"."$extens" | sed 's/ /_/g' | sed 's/:/;/g'| sed -e "s/'/_/g" | sed 's/\"//g'|  sed 's/&/n/g' | sed 's/|//g' | sed 's/\[/(/g' | sed 's/\]/)/g' | sed 's/@/at/g' | sed 's/¦//g')
 	#f=$(basename "$1")
-	mv $folder/"$f" $folder/"$File"
 
 	#echo $folder/$File
 
@@ -93,19 +138,19 @@ then
 	then
 		#echo pdf
 		ttpdf "$folder"/"$File" "$source" "$tags" "$additiontext" 
-	elif [[ jpg == $extens | PNG == $extens || JPEG == $extens || png == $extens || webp == $extens || jpeg == $extens || avif == $extens ]] && [[ -z $extenspdf && -z $extensxopp && -z $extensmp4 && -z $extensmov && -z $extensflv && -z $extensmkv ]] 
+	elif [[ jpg == $extens || PNG == $extens || JPEG == $extens || png == $extens || webp == $extens || jpeg == $extens || avif == $extens ]] && [[ -z $extenspdf && -z $extensxopp && -z $extensmp4 && -z $extensmov && -z $extensflv && -z $extensmkv ]]
 	then
 		#echo pic
 		#echo $extenspdf
 		filena=${Filename%.*} #only the filename
 		convert "$folder"/"$File" "$filena".avif
 		ttpic "$filena".avif "$source" "$tags" "$additiontext"
-		if ! zenity --question --text="Möchten Sie das original Bild behalten?"
-		then 
-			rm "$folder"/"$File"
+		if [[ $origpic == "No" ]];
+		then
+			rm "$File"
 		fi
 		#kate "$folder"/"$File".md 2>/dev/null & 
-	elif [[ mp4 == $extens | mov == $extens || mkv == $extens || flv = $extens || ogv = $extens ]]
+	elif [[ mp4 == $extens || mov == $extens || mkv == $extens || flv = $extens || ogv = $extens ]]
 	then
 		#echo vid
 		#ttdown "$f" "$2"
@@ -231,12 +276,12 @@ then
 		echo -e "{{../$File.avif?width=500}}\n" >> "$folder"/"$File".md
 		#xournalpp "$folder"/"$File" -p "$filename".pdf
 		#ttpdf "$filename".pdf
-	elif [[ mp3 == $extens | webm == $extens || flac == $extens || aac = $extens || ogg = $extens || weba = $extens || wav = $extens || aiff = $extens ]]
+	elif [[ mp3 == $extens || webm == $extens || flac == $extens || aac = $extens || ogg = $extens || weba = $extens || wav = $extens || aiff = $extens ]]
 	then
 		Wikiprev
 		Timestamps
-		echo "$tags**" >> "$folder"/"$File".md
-		echo "[*] @Musik $tags  **[[../$Filename]] **" >> "$folder"/"$File".md
+		echo "@Musik $tags" >> "$folder"/"$File".md
+		echo "[*] **[[../$Filename]] **" >> "$folder"/"$File".md
 		#additiontext+=$(yt-dlp --get-description ${source})
 		echo -e "$source\n$additiontext\n" >> "$folder"/"$File".md
 	elif [[ $extens == $f ]]
@@ -244,15 +289,15 @@ then
 		Wikiprev
 		#echo "===== $Filename =====" >> "$folder"/"$File".md
 		Timestamps
-		echo "$tags**" >> "$folder"/"$File".md
+		echo "$tags" >> "$folder"/"$File".md
 		echo "[*] **[[../$Filename]] **" >> "$folder"/"$File".md
 		echo -e "$source\n$additiontext\n" >> "$folder"/"$File".md
 		#Opentxt
-	elif [[ $extens == docx | $extens == doc  || $extens == odt || $extens == ods || $extens == xls || $extens == xlsx || $extens == ppt || $extens == pptx || $extens == odp ]]
+	elif [[ $extens == docx || $extens == doc  || $extens == odt || $extens == ods || $extens == xls || $extens == xlsx || $extens == ppt || $extens == pptx || $extens == odp ]]
 	then
 		Wikiprev
 		Timestamps
-		echo "$tags**" >> "$folder"/"$File".md
+		echo "$tags" >> "$folder"/"$File".md
 		echo "[*] **[[../$Filename]] **" >> "$folder"/"$File".md
 		echo -e "$source\n$additiontext\n" >> "$folder"/"$File".md
 	#elif [[ -n $extenspdf | -n $extensxopp || -z $extensmp4 || -z $extensmov || -z $extensflv || -z $extensmkv ]]
@@ -262,13 +307,32 @@ then
 		echo else
 		Wikiprev
 		Timestamps
-		echo "$tags**" >> "$folder"/"$File".md
+		echo "$tags" >> "$folder"/"$File".md
 		echo "[*] **[[../$Filename]] **" >> "$folder"/"$File".md
 		echo -e "$source\n$additiontext\n" >> "$folder"/"$File".md
 		#Opentxt
 	fi
 
 fi
+
+if [[ $showfile == "Yes" ]];
+then
+    if [[ $extens == tex ]]
+    then
+        File=$(echo "$Newname"."$extens" | sed 's/ /_/g' | sed 's/:/;/g'| sed -e "s/'/_/g" | sed 's/\"//g'|  sed 's/&/n/g' | sed 's/\///g' | sed 's/|//g' | sed 's/\[/(/g' | sed 's/\]/)/g' | sed 's/@/at/g')
+        filename=$(basename "$File" .tex)
+        #kate "$filename"_tex_folder.md
+        texstudio "$filename"_tex_folder/"$filename".md 2>/dev/null &
+    elif [[ jpg == $extens || png == $extens || webp == $extens || jpeg == $extens || avif == $extens ]]
+    then
+        kate "$filename".avif.md 2>/dev/null &
+        xdg-open "$filename".avif 2>/dev/null &
+    else
+        kate "$File".md 2>/dev/null &
+        xdg-open "$File" 2>/dev/null &
+    fi
+fi
+
 @ 
 ```
 
