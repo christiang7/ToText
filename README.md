@@ -2,9 +2,6 @@
 
 - [X] Doing Interput (2)
 - [X] Doing (2)
-    - [ ] Zusammenlegung von tts und ttn
-        - [ ] prüfen, warum die Dateien nicht geöffnet werden
-        - [ ] als Option einfügen, ob Datei geöffnet werden soll danach oder nicht
 - [X] Planning (2)
     - [ ] überall yad Ersatz für zenity einfügen
 - [X] Backlog
@@ -19,6 +16,10 @@
     - [ ] Programme über libraries verbinden
 
 ## Features
+
+### 2024-02-13 Zusammenlegung der Scripte tts und ttn
+Zusammenlegung von tts und ttn als Option einfügen, ob Datei geöffnet werden soll danach oder nicht
+tts ist gelöscht
 
 ### ttvidc corrected to markdown
 ttvidc corrected to markdown and you can choose both files

@@ -7,7 +7,7 @@ For dumping the website, but it is not good formated
 ```bash
 lynx --dump  https://kalax.bandcamp.com/track/confie-hold-on-feat-francci
 
-inks2 -dump https://kalax.bandcamp.com/track/confie-hold-on-feat-francci
+links2 -dump https://kalax.bandcamp.com/track/confie-hold-on-feat-francci
 ```
 
 
@@ -24,7 +24,7 @@ chmod u+x Download-Music.sh && ln -sf /home/christian/Gedankenspeicher/Gedankens
 #!/bin/bash
 echo "$1"
 website="$1"
-text=$(yt-dlp --get-description ${website})
+text=$(links2 -dump ${website})
 text="$(echo -e "${text}" | sed 's/\"//g')"
 yt-dlp --no-mtime --exec "ttn {} \"${website}\" \"@Lied\" \"${text} \" " -o "~/Musik/Favorieten-open/%(title)s.%(ext)s" --embed-thumbnail -f b --no-mtime --audio-quality 0 -i "${website}"
 sleep 5
