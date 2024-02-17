@@ -66,12 +66,12 @@ do
 		then
 			#echo pdf
 			ttpdf "$folder"/"$g" "$source" "$tags" "$additiontext" 
-		elif [[ JPEG == $extens | jpg == $extens || png == $extens || webp == $extens || jpeg == $extens || svg == $extens ]] && [[ -z $extenspdf && -z $extensxopp && -z $extensmp4 && -z $extensmov && -z $extensflv && -z $extensmkv ]]
+		elif [[ JPEG == $extens || jpg == $extens || png == $extens || webp == $extens || jpeg == $extens || svg == $extens ]] && [[ -z $extenspdf && -z $extensxopp && -z $extensmp4 && -z $extensmov && -z $extensflv && -z $extensmkv ]]
 		then
 			#echo pic
 			ttpic "$folder"/"$g" "$source" "$tags" "$additiontext" 
 			#echo yes
-		elif [[ mp4 == $extens | mov == $extens || mkv == $extens || flv = $extens ]]
+		elif [[ mp4 == $extens || mov == $extens || mkv == $extens || flv = $extens ]]
 		then
 			#echo vid
 			#ttdown "$folder"/"$g" "$2"
@@ -81,14 +81,14 @@ do
 			ttvidc "$Filename"
 		fi
 			Wikiprev
-			echo "[*] @VIDEO $tags **[[../$Filename]]** $source" >> "$File".md
+			echo "[*] @VIDEO $tags **[[../$Filename]]** $source" >> "$folder"/"$File".md
 			Timestamps
-			ffmpeg -loglevel quiet -ss 2 -i "$File"  -t 1 -f image2 "$File".png
-			convert "$File".png -resize 1200x1200 -quality 97 "$File"-px.png
-			mv "$File"-px.png "$File".png
-			echo -e "\n$2" >> "$File".md
-			echo -e "\n{{../$File.png?width=500}}\n" >> "$File".md
-			echo "$3" >> "$File".md
+			ffmpeg -loglevel quiet -ss 2 -i "$File"  -t 1 -f image2 "$folder"/"$File".png
+			convert "$folder"/"$File".png -resize 1200x1200 -quality 97 "$folder"/"$File"-px.png
+			mv "$folder"/"$File"-px.png "$folder"/"$File".png
+			echo -e "\n$2" >> "$folder"/"$File".md
+			echo -e "\n{{../$File.png?width=500}}\n" >> "$folder"/"$File".md
+			echo "$3" >> "$folder"/"$File".md
 		elif [[ epub == $extens ]]
 		then
 			Wikiprev
@@ -129,7 +129,7 @@ do
 			echo -e "{{../$File.png?width=500}}\n" >> "$folder"/"$File".md
 			#xournalpp "$folder"/"$File" -p "$folder"/"$filename".pdf
 			#ttpdf "$folder"/"$filename".pdf
-		elif [[ -n $extenspdf | -n $extensxopp || -z $extensmp4 || -z $extensmov || -z $extensflv || -z $extensmkv ]]
+		elif [[ -n $extenspdf || -n $extensxopp || -z $extensmp4 || -z $extensmov || -z $extensflv || -z $extensmkv ]]
 		then
 			echo "tue nichts"
 		elif [[ $extens == $g ]]
