@@ -4,7 +4,7 @@
 
 In einem Verzeichnis alle Dateien mit einer Textdatei versehen
 
-  ```bash
+```bash
 noweb.py -Rttd ttd.md > ttd && chmod u+x ttd && echo 'fertig'
 ```
 
@@ -15,8 +15,8 @@ folder="$1"
 #ls --hide=*.md "$folder" > f
 list=$(ls -1 --hide=*.md "$folder")
 foldertxt=${folder%.*}
-#echo $list
-#echo "$FolderSync"/
+echo $list
+echo "$foldertxt"
 lines="$(wc --lines <<< "$list")"
 
 for (( i=$lines ; i>=1 ; i-- )); 
@@ -27,7 +27,8 @@ do
 	#for f in $list;
 	#do 
 	File=$(echo "$element" | sed 's/ /_/g' | sed 's/:/;/g'| sed -e "s/'/_/g" | sed 's/\"//g')
-	mv -n "$folder"/"$element" "$folder"/"$File"
+	echo $File
+	mv -n "$foldertxt"/"$element" "$foldertxt"/"$File"
 	g=$(basename "$File")
 	extens=${g##*.}
 	Filena=${File%.*}
@@ -50,12 +51,11 @@ do
 		echo "Content-Type: text/x-zim-wiki" >> "$folder"/"$File".md
 		echo "Wiki-Format: zim 0.6" >> "$folder"/"$File".md
 		echo "===== $File =====" >> "$folder"/"$File".md
-		echo "Wiki-Format: zim 0.6" >> "$folder"/"$File".md
 	}
 
 	function Timestamps(){
-		echo "Text creation time: $(date +"[[Zettelkasten:%Y:%m:%d]]")" >> "$folder"/"$File".md
-		echo "Modification time: $(date +"[[Zettelkasten:%Y:%m:%d]]" -r "$folder"/"$g")" >> "$folder"/"$File".md
+		echo "Text creation time: $(date +"[[Zettelkasten:%Y:%m:%d|%Y-%m-%d]]") Modification time: $(date +"[[Zettelkasten:%Y:%m:%d|%Y-%m-%d]]" -r "$folder"/"$g")" >> "$folder"/"$File".md
+		#echo "" >> "$folder"/"$File".md
 	}
 
 	if [ -e "$folder"/"$File".md ]; 
@@ -81,8 +81,8 @@ do
 			ttvidc "$Filename"
 		fi
 			Wikiprev
-			echo "[*] @VIDEO $tags **[[../$Filename]]** $source" >> "$folder"/"$File".md
 			Timestamps
+			echo "[*] @VIDEO $tags **[[../$Filename]]** $source" >> "$folder"/"$File".md
 			ffmpeg -loglevel quiet -ss 2 -i "$File"  -t 1 -f image2 "$folder"/"$File".png
 			convert "$folder"/"$File".png -resize 1200x1200 -quality 97 "$folder"/"$File"-px.png
 			mv "$folder"/"$File"-px.png "$folder"/"$File".png
@@ -92,30 +92,30 @@ do
 		elif [[ epub == $extens ]]
 		then
 			Wikiprev
-			echo "[*] @EBOOK $3 **[[../$f]] $2**" >> "$folder"/"$File".md
 			Timestamps
+			echo "[*] @EBOOK $3 **[[../$f]] $2**" >> "$folder"/"$File".md
 			echo -e "\n$2\n" >> "$folder"/"$File".md
 			einfo "$folder"/"$g" >> "$folder"/"$File".md
 			#Opentxt
 		elif [[ eml == $extens ]]
 		then
 			Wikiprev
-			echo "[*] @EMAIL $3 **[[../$f]] $2**" >> "$folder"/"$File".md
 			Timestamps
+			echo "[*] @EMAIL $3 **[[../$f]] $2**" >> "$folder"/"$File".md
 			echo -e "\n$2\n" >> "$folder"/"$File".md
 			cat "$folder"/"$g" >> "$folder"/"$File".md
 			#Opentxt
 		elif [[ maff == $extens ]]
 		then
 			Wikiprev
-			folder2=$(unzip -Z -1 "$g" '*/')
-			unzip "$f"
-			echo "[*] @WEB $3 **[[../$f]] $2 $(cat $folder/$folder2'index.dat' | grep source | cut -f 2)**" >> "$folder"/"$File".md
 			Timestamps
+			folder2=$(unzip -Z -1 "$g" '*/')
+			unzip "$g" -d $foldertxt
+			echo "[*] @WEB $3 **[[../$g]] $2 $(cat $foldertxt/$folder2'index.dat' | grep source | cut -f 2)**" >> "$foldertxt"/"$File".md
 			echo -e "\n$2\n" >> "$folder"/"$File".md
-			cat "$folder"/$folder'index.rdf' >> "$folder"/"$File".md 
+			cat "$foldertxt"/$folder2'index.rdf' >> "$foldertxt"/"$File".md
 			#pandoc -f html -t zimwiki $folder'index.html' >> "$File".md
-			rm -r "$folder"/"$folder2"
+			rm -r "$foldertxt"/"$folder2"
 			#Opentxt
 		elif [[ $extens == xopp ]]
 		then
