@@ -110,12 +110,11 @@ then
 	title="$File"
 	File=$(echo "$File" | sed 's/ /_/g' | sed 's/:/;/g'| sed -e "s/'/_/g" | sed 's/\"//g')
 
-	foldertex="$File"_tex_$template
+	foldertex="$File"_tex
 	mkdir -p "$foldertex"
 	cp ~/Gedankenspeicher/Vorlagen/general-preamble.tex "$foldertex"/general-preamble.tex
 	cp ~/Gedankenspeicher/Vorlagen/color-symbols.tex "$foldertex"/color-symbols.tex
 	cd "$foldertex"
-
 
 	#Filename="$File"
 	#File="$File".tex
@@ -123,7 +122,8 @@ then
 	{{description file}}
 
 	case ${template} in
-		normal) {{normal tex template}}
+		normal)
+		{{normal tex template}}
 			;;
 		programming)
 			case ${langname} in
@@ -165,9 +165,9 @@ fi
 
 ```bash
 {{description file}}=
-echo -e "====== $title ======" >> ../"$foldertex".md
+echo -e "====== $foldertex ======" >> ../"$foldertex".md
 echo -e "Created $(date +"[[Zettelkasten:%Y:%m:%d|%Y-%m-%d]]")" >> ../"$foldertex".md
-echo -e "[*] ** $title **" >> ../"$foldertex".md
+echo -e "[*] ** $foldertex **" >> ../"$foldertex".md
 echo -e "Folder for the latex file" >> ../"$foldertex".md
 echo -e "[[./"${File}".md]]\n[[./"${File}".tex]]\n[[./"${File}".pdf]]" >> ../"$foldertex".md
 @

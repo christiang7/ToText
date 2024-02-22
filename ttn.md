@@ -85,7 +85,7 @@ then
     else
         File=$(echo "$Newname"."$extens" | sed 's/ /_/g' | sed 's/:/;/g'| sed -e "s/'/_/g" | sed 's/\"//g'|  sed 's/&/n/g' | sed 's/\///g' | sed 's/|//g' | sed 's/\[/(/g' | sed 's/\]/)/g' | sed 's/@/at/g')
     fi
-	mv $folder/"$f" $folder/"$File"
+	mv "$folder"/"$f" "$folder"/"$File"
 
 	source=$(echo $abfrage | cut -s -d "~" -f 2)
 	tags=$(echo $abfrage | cut -s -d "~" -f 3)
@@ -192,15 +192,15 @@ then
 	then
 		Wikiprev
 		Timestamps
-		folder=$(unzip -Z -1 "$Filename" '*/')
-		unzip "$folder"/"$File"
+		folder2=$(unzip -Z -1 "$Filename" '*/')
+		#unzip "$folder"/"$File"
 		echo "@WEB $tags " >> "$folder"/"$File".md
 		echo "[*] **[[../$f]]**" >> "$folder"/"$File".md
-		echo -e " $source $(cat $folder'index.dat' | grep source | cut -f 2)\n$additiontext\n" >> "$folder"/"$File".md
-		cat $folder'index.rdf' >> "$folder"/"$File".md 
+		echo -e " $source $(cat $folder2'index.dat' | grep source | cut -f 2)\n$additiontext\n" >> "$folder"/"$File".md
+		cat $folder2'index.rdf' >> "$folder"/"$File".md
 		#pandoc -f html -t zimwiki $folder'index.html' >> "$folder"/"$File".md
-		rm -r $folder
-		#Opentxt
+		#
+		rm -r $folder2
 	elif [[ cts == $extens ]]
 	then
 		Wikiprev
@@ -243,7 +243,7 @@ then
 		echo -e "# ${filename}.tex" >> "$foldertex"/"${filename}".md
 		echo -e "Created [$(date +%Y-%m-%d)]()\n" >> "$foldertex"/"${filename}".md
 		echo -e "- [X] **${filename}.tex** " >> "$foldertex"/"${filename}".md
-		echo -e "    - [X] Doing" >> "$foldertex"/"${filename}".md
+		echo -e "    - [X] Doing" >>dat "$foldertex"/"${filename}".md
 		echo -e "    - [X] Backlog" >> "$foldertex"/"${filename}".md
 		echo -e "       - [ ] " >> "$foldertex"/"${filename}".md
 		echo -e "\n## Features" >> "$foldertex"/"${filename}".md

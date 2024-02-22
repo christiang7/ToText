@@ -2,6 +2,9 @@
 
 - [X] Doing Interput (2)
 - [X] Doing (2)
+    - [ ] umwandeln von Einträgen von Zotero in maff
+        - [ ] export item
+        - [ ]
 - [X] Planning (2)
     - [ ] überall yad Ersatz für zenity einfügen
 - [X] Backlog

@@ -12,22 +12,21 @@ noweb.py -Rttd ttd.md > ttd && chmod u+x ttd && echo 'fertig'
 {{ttd}}=
 #!/bin/bash
 folder="$1"
+folder=$(echo $folder | sed 's/\///g')
 #ls --hide=*.md "$folder" > f
 list=$(ls -1 --hide=*.md "$folder")
 foldertxt=${folder%.*}
-echo $list
-echo "$foldertxt"
 lines="$(wc --lines <<< "$list")"
 
 for (( i=$lines ; i>=1 ; i-- )); 
 do
 	element=$(sed -n "${i}p" <(echo "$list"))
-	echo "$element"
+	#echo "$element"
 	#f=$(basename $element)
 	#for f in $list;
 	#do 
 	File=$(echo "$element" | sed 's/ /_/g' | sed 's/:/;/g'| sed -e "s/'/_/g" | sed 's/\"//g')
-	echo $File
+	#echo $File
 	mv -n "$foldertxt"/"$element" "$foldertxt"/"$File"
 	g=$(basename "$File")
 	extens=${g##*.}
@@ -78,8 +77,8 @@ do
 			filena=${g%.*} #only the filename
 			if [[ -e "$filena".md && ! -d "$filena" ]]; 
 			then
-			ttvidc "$Filename"
-		fi
+                ttvidc "$Filename"
+            fi
 			Wikiprev
 			Timestamps
 			echo "[*] @VIDEO $tags **[[../$Filename]]** $source" >> "$folder"/"$File".md
@@ -109,9 +108,10 @@ do
 		then
 			Wikiprev
 			Timestamps
-			folder2=$(unzip -Z -1 "$g" '*/')
-			unzip "$g" -d $foldertxt
-			echo "[*] @WEB $3 **[[../$g]] $2 $(cat $foldertxt/$folder2'index.dat' | grep source | cut -f 2)**" >> "$foldertxt"/"$File".md
+			folder2=$(unzip -Z -1 "$foldertxt"/"$g" '*/')
+			echo $folder2
+			unzip "$foldertxt"/"$g" -d $foldertxt
+			echo "[*] @WEB $3 **[[../$g]] $2 $(cat "$foldertxt"/$folder2'index.dat' | grep source | cut -f 2)**" >> "$foldertxt"/"$File".md
 			echo -e "\n$2\n" >> "$folder"/"$File".md
 			cat "$foldertxt"/$folder2'index.rdf' >> "$foldertxt"/"$File".md
 			#pandoc -f html -t zimwiki $folder'index.html' >> "$File".md
