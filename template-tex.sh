@@ -19,7 +19,7 @@ abfrage=$(yad --title="New Latex File" --text="Necessary Informations:" \
 	--field="Tags:":CBE \
 	--field="Git init?":CB \
 	--field="Description:":TXT \
-	"Filename" "programming,normal" "cpp,python,julia,html,css,javascript,bash,lua,other" "Christian Gößl,Internet" ",physic,math" "No,Yes" "$additiontext")
+	"Filename" "programming,normal,Rechnung,Bewerbung" "cpp,python,julia,html,css,javascript,bash,lua,other" "Christian Gößl,Internet" ",physic,math" "No,Yes" "$additiontext")
 if [ ! $? -eq 1 ];
 then
 	File=$(echo $abfrage | cut -s -d "~" -f 1)
@@ -73,6 +73,56 @@ then
 		touch ${File}.tex
 		noweb.py -R${File}.tex ${File}.md > ${File}.tex
 			;;
+        Rechnung)
+		echo -e "# ${File}.tex" >> "${File}".md
+		echo -e "Created [$(date +%Y-%m-%d)]()\n" >> "${File}".md
+		echo -e "- [X] **${File}.tex** " >> "${File}".md
+		echo -e "    - [X] Doing" >> "${File}".md
+		echo -e "    - [X] Backlog" >> "${File}".md
+		echo -e "       - [ ] " >> "${File}".md
+		echo -e "\n## Features" >> "${File}".md
+		echo -e "\n## Informations" >> "${File}".md
+		echo -e "\n## Latex File\n" >> "${File}".md
+		echo -e "\n\`\`\`bash" >> "${File}".md
+		echo -e "noweb.py -R${File}.tex ${File}.md > ${File}.tex && pdflatex -shell-escape ${File}.tex && xdg-open ${File}.pdf 2>/dev/null & \n\`\`\`\n\n" >> "${File}".md
+		echo -e "\`\`\`tex" >> "${File}".md
+		echo -e "{{${File}.tex}}=" >> "${File}".md
+		echo -e "\\documentclass[10pt,fleqn,reqno,a4paper]{article}" >> "${File}".md
+		echo -e "\\input{general-preamble.tex}\n\\input{color-symbols.tex}" >> "${File}".md
+		echo -e "{{${File}.tex}}=" >> "${File}".md
+		echo "\begin{document}%\selectlanguage{english}" >> "${File}".md
+		echo -e "\n\n" >> "${File}".md
+		echo "\end{document}" >> "${File}".md
+		echo -e "\n@" >> "${File}".md
+		echo -e "\`\`\`" >> "${File}".md
+		touch ${File}.tex
+		noweb.py -R${File}.tex ${File}.md > ${File}.tex
+			;;
+        Bewerbung)
+		echo -e "# ${File}.tex" >> "${File}".md
+		echo -e "Created [$(date +%Y-%m-%d)]()\n" >> "${File}".md
+		echo -e "- [X] **${File}.tex** " >> "${File}".md
+		echo -e "    - [X] Doing" >> "${File}".md
+		echo -e "    - [X] Backlog" >> "${File}".md
+		echo -e "       - [ ] " >> "${File}".md
+		echo -e "\n## Features" >> "${File}".md
+		echo -e "\n## Informations" >> "${File}".md
+		echo -e "\n## Latex File\n" >> "${File}".md
+		echo -e "\n\`\`\`bash" >> "${File}".md
+		echo -e "noweb.py -R${File}.tex ${File}.md > ${File}.tex && pdflatex -shell-escape ${File}.tex && xdg-open ${File}.pdf 2>/dev/null & \n\`\`\`\n\n" >> "${File}".md
+		echo -e "\`\`\`tex" >> "${File}".md
+		echo -e "{{${File}.tex}}=" >> "${File}".md
+		echo -e "\\documentclass[10pt,fleqn,reqno,a4paper]{article}" >> "${File}".md
+		echo -e "\\input{general-preamble.tex}\n\\input{color-symbols.tex}" >> "${File}".md
+		echo -e "{{${File}.tex}}=" >> "${File}".md
+		echo "\begin{document}%\selectlanguage{english}" >> "${File}".md
+		echo -e "\n\n" >> "${File}".md
+		echo "\end{document}" >> "${File}".md
+		echo -e "\n@" >> "${File}".md
+		echo -e "\`\`\`" >> "${File}".md
+		touch ${File}.tex
+		noweb.py -R${File}.tex ${File}.md > ${File}.tex
+        ;;
 		programming)
 			case ${langname} in
 			cpp) extens="cpp"

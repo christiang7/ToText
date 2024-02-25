@@ -2,21 +2,21 @@
 
 - [X] Doing Interput (2)
 - [X] Doing (2)
-    - [ ] umwandeln von Einträgen von Zotero in maff
-        - [ ] export item
-        - [ ]
+	- [ ] template-tex
+		- [ ] template for rechnung
+		- [ ] template for Bewerbung
 - [X] Planning (2)
-    - [ ] überall yad Ersatz für zenity einfügen
+	- [ ] überall yad Ersatz für zenity einfügen
 - [X] Backlog
 	- [ ] bei der Verschiebung und Umbenennung von zim Seiten
 	die zim Funktion umschreiben, so dass auch andere Dateien
 	mit verschoben werden können
-    - [ ] custom tool for insert page.section in file
-    - [ ] [ttam](ttam)
+	- [ ] custom tool for insert page.section in file
+	- [ ] [ttam](ttam)
 	- [ ] xournal Programmstarter so, dass automatisch thumbnail
 	aktualisiert wird und von einer pdf als Notizen abgespeichert wird
 	- [ ] alles in english schreiben
-    - [ ] Programme über libraries verbinden
+	- [ ] Programme über libraries verbinden
 
 ## Features
 
