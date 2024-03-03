@@ -98,7 +98,7 @@ request=$(yad --title="Which topic" --text="Something to add?" \
 if [ ! $? -eq 1 ];
 then
 	chooseWhere=$(echo $request | cut -s -d "~" -f 1)
-	topic=$(echo $request | cut -s -d "~" -f 2)
+	topic="2»$(echo $request | cut -s -d "~" -f 2)"
 	source=$(echo $request | cut -s -d "~" -f 3)
 	tags=$(echo $request | cut -s -d "~" -f 4)
 	additiontext=$(echo $request | cut -s -d "~" -f 5)
@@ -123,7 +123,7 @@ then
 
 	if [[ ! "$topic" = "" ]];
 	then
-		topicfile=$(echo "${topic}" | sed 's/ /_/g' | sed 's/:/;/g' | sed -e "s/'/_/g" | sed 's/\"//g'|  sed 's/&/n/g' | sed 's/|//g' | sed 's/\[/(/g' | sed 's/\]/)/g' | sed 's/@/at/g' | sed 's/¦//g' | sed 's/?/.ß/g').md
+		topicfile="$(echo "${topic}" | sed 's/ /_/g' | sed 's/:/;/g' | sed -e "s/'/_/g" | sed 's/\"//g'|  sed 's/&/n/g' | sed 's/|//g' | sed 's/\[/(/g' | sed 's/\]/)/g' | sed 's/@/at/g' | sed 's/¦//g' | sed 's/?/.ß/g').md"
 		topicfilename=$(basename "$topicfile" .md)
 		touch "${folder}"/"${topicfile}"
 		mkdir -p "${folder}"/"${topicfilename}"
@@ -147,22 +147,22 @@ fi
 ```bash
 {{tabs to topics}}=
 case ${choose} in
-	Spass) file=$(echo "/home/christian/Gedankenspeicher/Gedankenspeicherwiki/Spaß_Stream/Spaß_Stream_Archiv.md")
+	Spass) file=$(echo "/home/christian/Gedankenspeicher/Gedankenspeicherwiki/Spaß_Stream/1»Spaß_Stream_Archiv.md")
 		l=5;;
-	Assets) file=$(echo "/home/christian/Gedankenspeicher/Gedankenspeicherwiki/Assets/Assets_Archiv.md")
+	Assets) file=$(echo "/home/christian/Gedankenspeicher/Gedankenspeicherwiki/Assets/1»Assets_Archiv.md")
 		l=5;;
 	Heute) tabs2zim.sh
 		exit
 		;;
-	Physik) file=$(echo "/home/christian/Gedankenspeicher/Gedankenspeicherwiki/Physik/Physik_Archiv.md")
+	Physik) file=$(echo "/home/christian/Gedankenspeicher/Gedankenspeicherwiki/Physik/1»Physik_Archiv.md")
 		l=5;;
-	Mathematik) file=$(echo "/home/christian/Gedankenspeicher/Gedankenspeicherwiki/Mathematik/Mathematik_Archiv.md")
+	Mathematik) file=$(echo "/home/christian/Gedankenspeicher/Gedankenspeicherwiki/Mathematik/1»Mathematik_Archiv.md")
 		l=5;;
-	Philosophie) file=$(echo "/home/christian/Gedankenspeicher/Gedankenspeicherwiki/Philosophie/Philosophie_Archiv.md")
+	Philosophie) file=$(echo "/home/christian/Gedankenspeicher/Gedankenspeicherwiki/Philosophie/1»Philosophie_Archiv.md")
 		l=5;;
-	Naturwissenschaften_und_Instrumentarien) file=$(echo "/home/christian/Gedankenspeicher/Gedankenspeicherwiki/Naturwissenschaften_und_Instrumentarien/Naturwissenschaften_und_Instrumentarien_Archiv.md")
+	Naturwissenschaften_und_Instrumentarien) file=$(echo "/home/christian/Gedankenspeicher/Gedankenspeicherwiki/Naturwissenschaften_und_Instrumentarien/1»Naturwissenschaften_und_Instrumentarien_Archiv.md")
 		l=5;;
-	CodeFabrik) file=$(echo "/home/christian/Gedankenspeicher/Gedankenspeicherwiki/CodeFabrik/CodeFabrik_Archiv.md")
+	CodeFabrik) file=$(echo "/home/christian/Gedankenspeicher/Gedankenspeicherwiki/CodeFabrik/1»CodeFabrik_Archiv.md")
 		l=5;;
 esac
 #echo $tabs
