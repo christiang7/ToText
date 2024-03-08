@@ -4,7 +4,7 @@ filetxt=${File%.*}
 filetxtname=$(basename "$File" .md)
 filedate=$(date +"%Y-%m-%d")
 source="Christian Gößl"
-par="$(echo $2)"
+#par="$(echo $2)"
 #if [[ "Notiz" != "$par" ]];
 #then
 #    additontext="$2-$filetxtname"
@@ -12,12 +12,12 @@ par="$(echo $2)"
 #    additontext="$2"
 #    echo ifNotiz >> log.md
 #fi
-additontext="$2-$filetxtname"
+additontext="$filetxtname"
 Newname=$(zenity --entry \
     --width 500 \
     --title "Type new filename" \
     --text "Enter new filename" \
-    --entry-text "$filedate-$additontext")
+    --entry-text "$2-$filedate-$additontext")
 if [ ! "$Newname" = "" ];
 then
     mkdir -p "$filetxtname"
