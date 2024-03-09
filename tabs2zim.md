@@ -21,11 +21,7 @@ noweb.py -Rtabs2zim.sh tabs2zim.md > tabs2zim.sh && echo 'fertig'
 #if zenity --question --text="Möchten Sie die Links in Firefox öffnen?"
 #then 
 
-additiontext=$(zenity --entry \
-	  --width 500 \
-	  --title "Noch etwas hinzufügen?" \
-	  --text "Noch etwas hinzufügen?" \
-	  --entry-text "")
+additiontext=$(echo $1)
 if [ ! $? -eq 1 ]; 
 then
   #text="$(xclip -selection clipboard -o)"

@@ -74,7 +74,7 @@ then
 				l=5;;
 			Assets) file=$(echo "/home/christian/Gedankenspeicher/Gedankenspeicherwiki/Assets/1»Assets_Archiv.md")
 				l=5;;
-			Heute) tabs2zim.sh
+			Heute) tabs2zim.sh $additiontext
 				exit
 				;;
 			Physik) file=$(echo "/home/christian/Gedankenspeicher/Gedankenspeicherwiki/Physik/1»Physik_Archiv.md")
