@@ -4,7 +4,7 @@ filetxt=${File%.*}
 filetxtname=$(basename "$File" .md)
 filedate=$(date +"%Y-%m-%d")
 source="Christian Gößl"
-#par="$(echo $2)"
+par="$(echo $2)"
 #if [[ "Notiz" != "$par" ]];
 #then
 #    additontext="$2-$filetxtname"
