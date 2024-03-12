@@ -25,11 +25,11 @@ do
     zip -r "$maffFileName".zip "$folder"
     mv "$maffFileName".zip "$maffFileName".maff
     #ttn $maffFileName.maff
-    echo "Content-Type: text/x-zim-wiki" >> "$maffFileName".md
-    echo "Wiki-Format: zim 0.6" >> "$maffFileName".md
-    echo "====== $maffFileName.maff ======" >> "$maffFileName".md
+    echo "Content-Type: text/x-zim-wiki" >> "$maffFileName".maff.md
+    echo "Wiki-Format: zim 0.6" >> "$maffFileName".maff.md
+    echo "====== $maffFileName.maff ======" >> "$maffFileName".maff.md
     echo "Text date: $(date +"[[Zettelkasten:%Y:%m:%d|%Y-%m-%d]]") File date: $(date +"[[Zettelkasten:%Y:%m:%d|%Y-%m-%d]]" -r "$maffFileName".maff)" >> "$maffFileName".md
     folder2=$(unzip -Z -1 "$maffFileName.maff" '*/')
-    echo "[*] **[[../$maffFileName.maff]]**" >> "$maffFileName".md
-    cat $folder2'index.rdf' >> "$maffFileName".md
+    echo "[*] **[[../$maffFileName.maff]]**" >> "$maffFileName".maff.md
+    cat $folder2'index.rdf' >> "$maffFileName".maff.md
 done
