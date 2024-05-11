@@ -1,8 +1,44 @@
+# noweb
+Text creation time: [Zettelkasten:2021:10:23]() Modification time: [Zettelkasten:2021:10:23]()
+
+GitHub - wware/noweb.py: A python script that extracts code from a literate programming document in "noweb" format.
+
+<https://github.com/wware/noweb.py>
+
+Using noweb for literate programming.
 
 You can generate noweb.py from README.md as follows:
 
 ```bash
 ./noweb.py -Rnoweb.py README.md > noweb.py
+```
+
+# SUMMARY OF THE PROGRAM
+
+Here's how the pieces we have discussed fit together:
+
+```python
+{{noweb.py}}=
+#! /usr/bin/env python3
+
+"""
+noweb.py
+By Jonathan Aquino (jonathan.aquino@gmail.com)
+
+This program extracts code from a literate programming document in "noweb" format.
+It was generated from noweb.py.md, itself a literate programming document.
+For more information, including the original source code and documentation,
+see http://jonaquino.blogspot.com/2010/04/nowebpy-or-worlds-first-executable-blog.html
+"""
+
+import os, sys, re, argparse
+{{Parsing the command-line arguments}}
+{{Reading in the file}}
+
+{{Recursively expanding the output chunk}}
+
+{{Outputting the chunks}}
+@
 ```
 
 # BETTER PARSING OF COMMAND-LINE ARGUMENTS
@@ -141,7 +177,9 @@ Now that we have a map of chunk names to the lines of each chunk, we need to kno
 which chunk name the user has asked to extract. In other words, we need to parse
 the command-line arguments given to the script:
 
-    noweb.py -Rhello.php hello.noweb
+```bash
+noweb.py -Rhello.php hello.noweb
+```
 
 For simplicity, we'll assume that there are always two command-line arguments:
 in this example, "-Rhello.php" and "hello.noweb". So let's grab those.
@@ -205,34 +243,7 @@ Python script [noweb.py](http://github.com/JonathanAquino/noweb.py/raw/master/no
 
 Then you can generate noweb.py from README.md as follows:
 
-    ./noweb.py -Rnoweb.py README.md > noweb.py
-
-
-
-# APPENDIX II: SUMMARY OF THE PROGRAM
-
-Here's how the pieces we have discussed fit together:
-
-```python
-{{noweb.py}}=
-#! /usr/bin/env python3
-
-"""
-noweb.py
-By Jonathan Aquino (jonathan.aquino@gmail.com)
-
-This program extracts code from a literate programming document in "noweb" format.
-It was generated from noweb.py.md, itself a literate programming document.
-For more information, including the original source code and documentation,
-see http://jonaquino.blogspot.com/2010/04/nowebpy-or-worlds-first-executable-blog.html
-"""
-
-import os, sys, re, argparse
-{{Parsing the command-line arguments>>
-{{Reading in the file>>
-
-{{Recursively expanding the output chunk>>
-
-{{Outputting the chunks>>
-@
+```bash
+./noweb.py -Rnoweb.py noweb.py.md > noweb.py
 ```
+

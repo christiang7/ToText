@@ -38,7 +38,7 @@ chunks = {}
 # Regexes
 OPEN = "{{"
 CLOSE = "}}"
-TAGNAME = "([A-Za-z][-_\.: A-Za-z0-9]+)"
+TAGNAME = "([A-Za-z][-_\\.: A-Za-z0-9]+)"
 for line in file:
     match = re.match(OPEN + TAGNAME + CLOSE + "=", line)
     if match:
@@ -56,7 +56,7 @@ def expand(chunkName, indent):
     chunkLines = chunks[chunkName]
     expandedChunkLines = []
     for line in chunkLines:
-        match = re.match("(\s*)" + OPEN + TAGNAME + CLOSE + "\s*$", line)
+        match = re.match("(\\s*)" + OPEN + TAGNAME + CLOSE + "\\s*$", line)
         if match:
             expandedChunkLines.extend(expand(match.group(2), indent + match.group(1)))
         else:
