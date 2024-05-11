@@ -198,8 +198,6 @@ outputChunkName = sys.argv[-2][2:]
 @
 ```
 
-
-
 ## RECURSIVELY EXPANDING THE OUTPUT CHUNK
 
 So far, so good. Now we need a recursive function to expand any chunks found
@@ -220,8 +218,6 @@ def expand(chunkName, indent):
     return expandedChunkLines
 @
 ```
-
-
 
 ## OUTPUTTING THE CHUNKS
 
@@ -248,7 +244,7 @@ code from it. You can use the original [noweb](http://www.cs.tufts.edu/~nr/noweb
 tool, but that's a bit cumbersome to install, so it's easier to use the
 Python script [noweb.py](http://github.com/JonathanAquino/noweb.py/raw/master/noweb.py).
 
-Then you can generate noweb.py from README.md as follows:
+Then you can generate noweb.py from noweb.py.md as follows:
 
 ```bash
 ./noweb.py -Rnoweb.py noweb.py.md > noweb.py
