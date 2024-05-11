@@ -10,7 +10,7 @@ Using noweb for literate programming.
 You can generate noweb.py from README.md as follows:
 
 ```bash
-./noweb.py -Rnoweb.py README.md > noweb.py
+noweb.py -Rnoweb.py noweb.py.md > noweb.py
 ```
 
 # SUMMARY OF THE PROGRAM
@@ -60,7 +60,8 @@ positional arguments:
 optional arguments:
   -h, --help         show this help message and exit
   --ref REF, -R REF  the root chunk to be extracted
-  --out OUT, -o OUT  specify an output file (and chmod +x that file)
+  --out OUT, -o OUT  specify an output file
+  -x                 chmod +x that file
 ```
 
 This shows our command-line arguments. So let's grab those.
@@ -82,7 +83,11 @@ parser.add_argument(
 )
 parser.add_argument(
     '--out', '-o',
-    help='specify an output file (and chmod +x that file)',
+    help='specify an output file',
+)
+parser.add_argument(
+    '--exectuable', '-x',
+    help='if an output file was specified, chmod +x that file',
 )
 opts = parser.parse_args()
 outputChunkName = opts.ref
@@ -133,7 +138,9 @@ you can [download](http://github.com/JonathanAquino/noweb.py/raw/master/noweb.py
 The end goal is to produce a Python script that will take a literate program
 as input (noweb format) and extract code from it as output. For example,
 
-    noweb.py -Rhello.php hello.noweb > hello.php
+```bash
+noweb.py -Rhello.php hello.noweb > hello.php
+```
 
 This will read in a file called hello.noweb and extract the code labelled "hello.php".
 We redirect the output into a hello.php file.
@@ -224,7 +231,7 @@ The last step is easy. We just call the recursive function and output the result
 {{Outputting the chunks}}=
 for line in expand(outputChunkName, ""):
     print(line.rstrip(), file=outfile)
-if opts.out:
+if opts.out and opts.executable:
     os.system("chmod +x " + opts.out)
 @
 ```

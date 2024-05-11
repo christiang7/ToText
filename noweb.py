@@ -26,7 +26,11 @@ parser.add_argument(
 )
 parser.add_argument(
     '--out', '-o',
-    help='specify an output file (and chmod +x that file)',
+    help='specify an output file',
+)
+parser.add_argument(
+    '--exectuable', '-x',
+    help='if an output file was specified, chmod +x that file',
 )
 opts = parser.parse_args()
 outputChunkName = opts.ref
@@ -38,7 +42,7 @@ chunks = {}
 # Regexes
 OPEN = "{{"
 CLOSE = "}}"
-TAGNAME = "([A-Za-z][-_\\.: A-Za-z0-9]+)"
+TAGNAME = "([A-Za-z][-_\.: A-Za-z0-9]+)"
 for line in file:
     match = re.match(OPEN + TAGNAME + CLOSE + "=", line)
     if match:
@@ -56,7 +60,7 @@ def expand(chunkName, indent):
     chunkLines = chunks[chunkName]
     expandedChunkLines = []
     for line in chunkLines:
-        match = re.match("(\\s*)" + OPEN + TAGNAME + CLOSE + "\\s*$", line)
+        match = re.match("(\s*)" + OPEN + TAGNAME + CLOSE + "\s*$", line)
         if match:
             expandedChunkLines.extend(expand(match.group(2), indent + match.group(1)))
         else:
@@ -65,5 +69,5 @@ def expand(chunkName, indent):
 
 for line in expand(outputChunkName, ""):
     print(line.rstrip(), file=outfile)
-if opts.out:
+if opts.out and opts.executable:
     os.system("chmod +x " + opts.out)
