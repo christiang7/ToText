@@ -4,13 +4,13 @@ if [ ! $? -eq 1 ];
 then
   if [[ ! -e "$1" ]]
   then
-    folder=$(pwd)
-    #echo $folder
+	folder=$(pwd)
+	#echo $folder
   else
-    filetxt=$(readlink -f -n "$1")
-    folder=${filetxt%.*}
-    #echo $folder
-    mkdir -p "$folder"
+	filetxt=$(readlink -f -n "$1")
+	folder=${filetxt%.*}
+	#echo $folder
+	mkdir -p "$folder"
   fi
   File="Filename"
   cd $folder
@@ -21,7 +21,7 @@ then
   	--field="Author":CBE \
   	--field="Tags":CBE \
   	--field="Description":TXT \
-  	"$File" "cpp,python,julia,html,css,javascript,bash,lua,other" "Christian Gößl,Internet" ",physic,math" "$additiontext")
+  	"$File" "cpp,python,julia,html,css,javascript,bash,lua,plantuml,other" "Christian Gößl,Internet" ",physic,math" "$additiontext")
   if [ ! $? -eq 1 ];
   then
   	File=$(echo $abfrage | cut -s -d "~" -f 1)
@@ -36,43 +36,56 @@ then
   		;;
   	python) extens="py"
   		;;
-      julia) extens="jl"
+  	julia) extens="jl"
   		;;
-      html) extens="html"
+  	html) extens="html"
   		;;
-      css) extens="css"
+  	css) extens="css"
   		;;
-      javascript) extens="js"
+  	javascript) extens="js"
   		;;
-      bash) extens="sh"
+  	bash) extens="sh"
   		;;
-      lua) extens="lua"
+  	lua) extens="lua"
   		;;
-      other) extens="other"
+  	plantuml) extens="plantuml"
   		;;
-      esac
-      Filename="$File"
-      File="$File"."${extens}"
+  	other) extens="other"
+  		;;
+  	esac
+  	Filename="$File"
+  	File="$File"."${extens}"
 
-      echo -e "# ${File}" >> "${File}".md
-      echo -e "Created [$(date +%Y-%m-%d)]($(date +%Y-%m-%d))" >> "${File}".md
-      echo -e "${tags}" >> "${File}".md
-      echo -e "- [X] **${File}**" >> "${File}".md
-      echo -e "    - [X] Doing" >> "${File}".md
-      echo -e "    - [X] Backlog" >> "${File}".md
-      echo -e "\n## Features" >> "${File}".md
-      echo -e "\n${additiontext}" >> "${File}".md
-      echo -e "\n## Informations" >> "${File}".md
-      echo -e " ${source}\n## Main Program" >> "${File}".md
-      echo -e "\n\`\`\`bash" >> "${File}".md
-      echo -e "noweb.py -R${Filename}.${extens} ${File}.md > ${Filename}.${extens} && echo 'fertig' \n\`\`\`" >> "${File}".md
-      echo -e "\n\n\`\`\`bash" >> "${File}".md
-      echo -e "chmod u+x ${Filename}.${extens} && ln -sf "${folder}"/${Filename}.${extens} ~/.local/bin/${Filename}.${extens} && echo 'fertig'\n \`\`\`" >> "${File}".md
-      echo -e "\n\`\`\`${langname}" >> "${File}".md
-      echo -e "{{${Filename}.${extens}}}=" >> "${File}".md
-      echo -e "\n@" >> "${File}".md
-      echo -e "\`\`\`" >> "${File}".md
-      touch ${File}
+  	echo -e "# ${File}" >> "${File}".md
+  	echo -e "Created [$(date +%Y-%m-%d)]($(date +%Y-%m-%d))" >> "${File}".md
+  	echo -e "${tags}" >> "${File}".md
+  	echo -e "- [X] **${File}**" >> "${File}".md
+  	echo -e "    - [X] Doing" >> "${File}".md
+  	echo -e "    - [X] Backlog" >> "${File}".md
+  	echo -e "\n## Features" >> "${File}".md
+  	echo -e "\n${additiontext}" >> "${File}".md
+  	echo -e "\n## Informations" >> "${File}".md
+  	echo -e " ${source}\n## Main Program" >> "${File}".md
+  	echo -e "\n\`\`\`bash" >> "${File}".md
+  	echo -e "{{run-cell.sh}}" >> "${File}".md
+  	if  [[ $extens != "plantuml" ]]
+  	then
+  		echo -e "noweb.py -R${Filename}.${extens} ${File}.md > ${Filename}.${extens} && echo 'fertig' \n@\n\`\`\`" >> "${File}".md
+  		echo -e "\n\n\`\`\`bash" >> "${File}".md
+  		echo -e "chmod u+x ${Filename}.${extens} && ln -sf "${folder}"/${Filename}.${extens} ~/.local/bin/${Filename}.${extens} && echo 'fertig'\n \`\`\`" >> "${File}".md
+  	else
+  		echo -e "noweb.py -R${Filename}.${extens} ${File}.md > ${Filename}.${extens} && plantuml ${Filename}.${extens} && gwenview ${Filename}.png 2>/dev/null \n@\n\`\`\`" >> "${File}".md
+  	fi
+  	echo -e "\n\`\`\`${langname}" >> "${File}".md
+  	echo -e "{{${Filename}.${extens}}}=" >> "${File}".md
+  	if  [[ $extens == "plantuml" ]]
+  	then
+  	  echo -e "  @startuml\n" >> "${File}".md
+  	  echo -e "  @enduml" >> "${File}".md
+  	fi
+  	echo -e "\n@" >> "${File}".md
+  	echo -e "\`\`\`" >> "${File}".md
+  	touch ${File}
   fi
 else
   zim-template-calculation.sh "$1"

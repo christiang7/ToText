@@ -12,13 +12,16 @@ Created [2023-06-25]()
 ## Informations
 Christian Gößl
 
-
+External Tools
+https://docs.kde.org/stable5/en/kate/kate/kate-application-plugin-external-tools.html
 
 
 ## Main Program
 
 ```bash
+{{run-cell.sh}}=
 noweb.py -Rtemplate-calculation.sh template-calculation.md > template-calculation.sh && echo 'fertig'
+@
 ```
 
 
@@ -75,7 +78,7 @@ abfrage=$(yad --title="New calculation?" --text="Necessary Informations:" \
 	--field="Author":CBE \
 	--field="Tags":CBE \
 	--field="Description":TXT \
-	"$File" "cpp,python,julia,html,css,javascript,bash,lua,other" "Christian Gößl,Internet" ",physic,math" "$additiontext")
+	"$File" "cpp,python,julia,html,css,javascript,bash,lua,plantuml,other" "Christian Gößl,Internet" ",physic,math" "$additiontext")
 if [ ! $? -eq 1 ];
 then
 	File=$(echo $abfrage | cut -s -d "~" -f 1)
@@ -101,6 +104,8 @@ then
 	bash) extens="sh"
 		;;
 	lua) extens="lua"
+		;;
+	plantuml) extens="plantuml"
 		;;
 	other) extens="other"
 		;;
@@ -130,11 +135,22 @@ echo -e "\n${additiontext}" >> "${File}".md
 echo -e "\n## Informations" >> "${File}".md
 echo -e " ${source}\n## Main Program" >> "${File}".md
 echo -e "\n\`\`\`bash" >> "${File}".md
-echo -e "noweb.py -R${Filename}.${extens} ${File}.md > ${Filename}.${extens} && echo 'fertig' \n\`\`\`" >> "${File}".md
-echo -e "\n\n\`\`\`bash" >> "${File}".md
-echo -e "chmod u+x ${Filename}.${extens} && ln -sf "${folder}"/${Filename}.${extens} ~/.local/bin/${Filename}.${extens} && echo 'fertig'\n \`\`\`" >> "${File}".md
+echo -e "{{run-cell.sh}}" >> "${File}".md
+if  [[ $extens != "plantuml" ]]
+then
+	echo -e "noweb.py -R${Filename}.${extens} ${File}.md > ${Filename}.${extens} && echo 'fertig' \n@\n\`\`\`" >> "${File}".md
+	echo -e "\n\n\`\`\`bash" >> "${File}".md
+	echo -e "chmod u+x ${Filename}.${extens} && ln -sf "${folder}"/${Filename}.${extens} ~/.local/bin/${Filename}.${extens} && echo 'fertig'\n \`\`\`" >> "${File}".md
+else
+	echo -e "noweb.py -R${Filename}.${extens} ${File}.md > ${Filename}.${extens} && plantuml ${Filename}.${extens} && gwenview ${Filename}.png 2>/dev/null \n@\n\`\`\`" >> "${File}".md
+fi
 echo -e "\n\`\`\`${langname}" >> "${File}".md
 echo -e "{{${Filename}.${extens}}}=" >> "${File}".md
+if  [[ $extens == "plantuml" ]]
+then
+  echo -e "  @startuml\n" >> "${File}".md
+  echo -e "  @enduml" >> "${File}".md
+fi
 echo -e "\n@" >> "${File}".md
 echo -e "\`\`\`" >> "${File}".md
 touch ${File}

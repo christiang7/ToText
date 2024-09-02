@@ -15,11 +15,13 @@ then
 	touch "$foldermonth"/"$calendarfile"
 	echo "Content-Type: text/x-zim-wiki" >> "$foldermonth"/"$calendarfile"
 	echo "Wiki-Format: zim 0.6" >> "$foldermonth"/"$calendarfile"
-	date +"====== %A %d %b %Y ======" >> "$foldermonth"/"$calendarfile"
+	#date +"====== %A %d %b %Y ======" >> "$foldermonth"/"$calendarfile"
+	echo -e "====== $(date +"%A %Y-%m-%d") ======" >> "$foldermonth"/"$calendarfile"
 	#date +"[[Zettelkasten:%Y:Week %W|Week %W]]">> "$foldermonth"/"$calendarfile"
-	date +"[[Zettelkasten:%Y:%m]]" >> "$foldermonth"/"$calendarfile"
+	#date +"[[Zettelkasten:%Y:%m]]" >> "$foldermonth"/"$calendarfile"
 	#echo -e ""  >> "$foldermonth"/"$calendarfile"
-	date +"[*] ** %A %d %b %Y ** " >> "$foldermonth"/"$calendarfile"
+	#date +"[*] ** %A %d %b %Y ** " >> "$foldermonth"/"$calendarfile"
+	echo -e "$(date +"[*] ** %A %Y-%m-%d **")  $(date +"[[Zettelkasten:%Y:%m|%Y-%m]]")" >> "$foldermonth"/"$calendarfile"
   fi
   echo -e "\n${additiontext}\n${text}" >> "$foldermonth"/"$calendarfile"
 

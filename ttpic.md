@@ -1,6 +1,5 @@
 # ttpic
-Text creation time: [Zettelkasten:2021:04:29]()
-Modification time: [Zettelkasten:2021:04:22]()
+Text creation time: [Zettelkasten:2021:04:29]() Modification time: [Zettelkasten:2021:04:22]()
 - [X] **[../ttpic](./ttpic)**
 
 
