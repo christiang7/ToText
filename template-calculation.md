@@ -135,7 +135,7 @@ echo -e "\n${additiontext}" >> "${File}".md
 echo -e "\n## Informations" >> "${File}".md
 echo -e " ${source}\n## Main Program" >> "${File}".md
 echo -e "\n\`\`\`bash" >> "${File}".md
-echo -e "{{run-cell.sh}}" >> "${File}".md
+echo -e "{{run-cell.sh}}=" >> "${File}".md
 if  [[ $extens != "plantuml" ]]
 then
 	echo -e "noweb.py -R${Filename}.${extens} ${File}.md > ${Filename}.${extens} && echo 'fertig' \n@\n\`\`\`" >> "${File}".md
@@ -150,6 +150,9 @@ if  [[ $extens == "plantuml" ]]
 then
   echo -e "  @startuml\n" >> "${File}".md
   echo -e "  @enduml" >> "${File}".md
+elif [[ $extens == "sh" ]]
+then
+  echo -e "#!/bin/bash" >> "${File}".md
 fi
 echo -e "\n@" >> "${File}".md
 echo -e "\`\`\`" >> "${File}".md

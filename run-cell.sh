@@ -1,1 +1,1 @@
-noweb.py -Rtemplate-tex.sh template-tex.sh.md > template-tex.sh && echo 'fertig'
+noweb.py -Rzim-insert-plantuml.sh zim-insert-plantuml.sh.md > zim-insert-plantuml.sh && echo 'fertig'
