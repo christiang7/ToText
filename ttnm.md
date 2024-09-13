@@ -6,7 +6,9 @@ Backlink [GedankenspeicherCoding](../GedankenspeicherCoding.md)
 	- [ ] epub correction
 
 ```bash
+{{run-cell.sh}}=
 noweb.py -Rttnm ttnm.md > ttnm && chmod u+x ttnm && echo 'fertig'
+@
 ```
 
 ```bash

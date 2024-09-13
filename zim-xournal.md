@@ -52,7 +52,8 @@ then
     filename=$(echo "$Newname" | sed 's/ /_/g' | sed 's/:/;/g'| sed -e "s/'/_/g" | sed 's/\"//g')
     File=$(echo "$filename".xopp)
     xournalpp "$filename".xopp && xournalpp "$File" -p "$filename".pdf
-    if [ "Unterrichtsnotiz" != "$par" ]; then
+    if [ "Unterrichtsnotiz" != "$par" ];
+    then
         {{Zim template}}
     fi
 fi

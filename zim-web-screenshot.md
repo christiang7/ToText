@@ -15,18 +15,22 @@ Backlink [CodeFabrik:GedankenspeicherCoding](../GedankenspeicherCoding.md)
 
 ``tesseract -l eng 2209.14792.pdf.png stdout``
 
-  ```bash
+```bash
+{{run-cell.sh}}=
 noweb.py -Rzim-web-screenshot.sh zim-web-screenshot.md > zim-web-screenshot.sh && echo 'fertig'
-  ```
+@
+```
 
 
-``chmod u+x zim-web-screenshot.sh && ln -sf /home/christian/Gedankenspeicher/Gedankenspeicherwiki/Zettelkasten/ZetteL/CodeFabrik/GedankenspeicherCoding/zim-web-screenshot.sh ~/.local/bin/zim-web-screenshot.sh && echo 'fertig'``
+```bash
+chmod u+x zim-web-screenshot.sh && ln -sf /home/christian/Gedankenspeicher/Gedankenspeicherwiki/Zettelkasten/ZetteL/CodeFabrik/GedankenspeicherCoding/zim-web-screenshot.sh ~/.local/bin/zim-web-screenshot.sh && echo 'fertig'
+```
 
 ```bash
 {{zim-web-screenshot.sh}}=
 #! /bin/bash
-  if zenity --question --text="Möchten Sie dieses Programm ein Screenshot aufnehmen?"
-  then 
+if zenity --question --text="Möchten Sie Screenshot aufnehmen?"
+then
     url="$1"
     selecttext="$2"
     #urltitle=$(wget -qO- "$url" | perl -l -0777 -ne 'print $1 if /<title.*?>\s*(.*?)\s*<\/title/si' | recode html..)
@@ -80,7 +84,7 @@ noweb.py -Rzim-web-screenshot.sh zim-web-screenshot.md > zim-web-screenshot.sh &
     echo -e "$url" >> "$foldermonth"/"$calendarfile"
     echo -e "[[+$File]]" >> "$foldermonth"/"$calendarfile"
     echo -e "{{$File}}" >> "$foldermonth"/"$calendarfile"
-  fi
+fi
 @
 ```
 

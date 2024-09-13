@@ -138,11 +138,11 @@ When the program is used not for zim pages, then we create a zim file.
 {{Using zim}}=
 if [[ ! -e ../"$Project".md ]]
 then
-folder="$Project"
-#touch ../"$folder".md
-echo -e "====== $ProjectName ======" >> ../"$folder".md
-echo -e "Created $(date +"[[Zettelkasten:%Y:%m:%d|%Y-%m-%d]]")" >> ../"$folder".md
-echo -e "[*] ** $folder **" >> ../"$folder".md
+	folder="$Project"
+	#touch ../"$folder".md
+	echo -e "====== $ProjectName ======" >> ../"$folder".md
+	echo -e "Created $(date +"[[Zettelkasten:%Y:%m:%d|%Y-%m-%d]]")" >> ../"$folder".md
+	echo -e "[*] ** $folder **" >> ../"$folder".md
 fi
 @
 ```
@@ -156,11 +156,11 @@ When the program is used not for zim pages, then we create a zim file.
 {{Using markdown}}=
 if [[ ! -e ../"$Project".md ]]
 then
-folder="$Project"
-#touch ../"$folder".md
-echo -e "# $ProjectName" >> ../"$folder".md
-echo -e "Created $(date +"[[Zettelkasten/%Y/%m/%d|%Y-%m-%d]]")" >> ../"$folder".md
-echo -e "- [X] ** $folder **" >> ../"$folder".md
+	folder="$Project"
+	#touch ../"$folder".md
+	echo -e "# $ProjectName" >> ../"$folder".md
+	echo -e "Created $(date +"[[Zettelkasten/%Y/%m/%d|%Y-%m-%d]]")" >> ../"$folder".md
+	echo -e "- [X] ** $folder **" >> ../"$folder".md
 fi
 @
 ```
