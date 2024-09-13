@@ -14,7 +14,9 @@ math
 ## Main Program
 
 ```bash
+{{run-cell.sh}}=
 noweb.py -Rzim-template-calculation.sh zim-template-calculation.md > zim-template-calculation.sh && echo 'fertig'
+@
 ```
 
 
@@ -145,6 +147,23 @@ fi
 @
 ```
 
+
+
+### Using Markdown?
+When the program is used not for zim pages, then we create a zim file.
+
+```bash
+{{Using markdown}}=
+if [[ ! -e ../"$Project".md ]]
+then
+folder="$Project"
+#touch ../"$folder".md
+echo -e "# $ProjectName" >> ../"$folder".md
+echo -e "Created $(date +"[[Zettelkasten/%Y/%m/%d|%Y-%m-%d]]")" >> ../"$folder".md
+echo -e "- [X] ** $folder **" >> ../"$folder".md
+fi
+@
+```
 
 ### create README file
 

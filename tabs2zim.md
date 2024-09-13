@@ -8,7 +8,9 @@ Backlink [GedankenspeicherCoding](../GedankenspeicherCoding.md)
 
 
 ```bash
+{{run-cell.sh}}=
 noweb.py -Rtabs2zim.sh tabs2zim.md > tabs2zim.sh && echo 'fertig'
+@
 ```
 
 ```bash
@@ -32,15 +34,7 @@ then
   if [[ ! -e "$foldermonth"/"$calendarfile" ]] 
   then
 	touch "$foldermonth"/"$calendarfile"
-	echo "Content-Type: text/x-zim-wiki" >> "$foldermonth"/"$calendarfile"
-	echo "Wiki-Format: zim 0.6" >> "$foldermonth"/"$calendarfile"
-	#date +"====== %A %d %b %Y ======" >> "$foldermonth"/"$calendarfile"
-	echo -e "====== $(date +"%A %Y-%m-%d") ======" >> "$foldermonth"/"$calendarfile"
-	#date +"[[Zettelkasten:%Y:Week %W|Week %W]]">> "$foldermonth"/"$calendarfile"
-	#date +"[[Zettelkasten:%Y:%m]]" >> "$foldermonth"/"$calendarfile"
-	#echo -e ""  >> "$foldermonth"/"$calendarfile"
-	#date +"[*] ** %A %d %b %Y ** " >> "$foldermonth"/"$calendarfile"
-	echo -e "$(date +"[*] ** %A %Y-%m-%d **")  $(date +"[[Zettelkasten:%Y:%m|%Y-%m]]")" >> "$foldermonth"/"$calendarfile"
+	{{zim template}}
   fi
   echo -e "\n${additiontext}\n${text}" >> "$foldermonth"/"$calendarfile"
 
@@ -48,3 +42,27 @@ fi
 @
 ```
 
+
+#### zim template
+```bash
+{{zim template}}=
+echo "Content-Type: text/x-zim-wiki" >> "$foldermonth"/"$calendarfile"
+echo "Wiki-Format: zim 0.6" >> "$foldermonth"/"$calendarfile"
+#date +"====== %A %d %b %Y ======" >> "$foldermonth"/"$calendarfile"
+echo -e "====== $(date +"%A %Y-%m-%d") ======" >> "$foldermonth"/"$calendarfile"
+#date +"[[Zettelkasten:%Y:Week %W|Week %W]]">> "$foldermonth"/"$calendarfile"
+#date +"[[Zettelkasten:%Y:%m]]" >> "$foldermonth"/"$calendarfile"
+#echo -e ""  >> "$foldermonth"/"$calendarfile"
+#date +"[*] ** %A %d %b %Y ** " >> "$foldermonth"/"$calendarfile"
+echo -e "$(date +"[*] ** %A %Y-%m-%d **")  $(date +"[[Zettelkasten:%Y:%m|%Y-%m]]")" >> "$foldermonth"/"$calendarfile"
+@
+```
+
+
+#### markdown template
+```bash
+{{markdown template}}=
+echo -e "# $(date +"%A %Y-%m-%d")" >> "$foldermonth"/"$calendarfile"
+echo -e "$(date +"- [X] ** %A %Y-%m-%d **")  $(date +"[[Zettelkasten/%Y/%m|%Y-%m]]")" >> "$foldermonth"/"$calendarfile"
+@
+```

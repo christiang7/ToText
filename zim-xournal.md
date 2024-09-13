@@ -10,8 +10,11 @@ Backlink [CodeFabrik:GedankenspeicherCoding](../GedankenspeicherCoding.md)
 - export automatisch die pdf Datei nach schließen der Datei 
 
 
+## Code
 ```bash
+{{run-cell.sh}}=
 noweb.py -Rzim-xournal.sh zim-xournal.md > zim-xournal.sh && echo 'fertig'
+@
 ```
 
 
@@ -50,19 +53,35 @@ then
     File=$(echo "$filename".xopp)
     xournalpp "$filename".xopp && xournalpp "$File" -p "$filename".pdf
     if [ "Unterrichtsnotiz" != "$par" ]; then
-        echo "Content-Type: text/x-zim-wiki" >> "$File".md
-        echo "Wiki-Format: zim 0.6" >> "$File".md
-        echo "====== $File ======" >> "$File".md
-        echo "Text creation time: $(date +"[[Zettelkasten:%Y:%m:%d|%Y-%m-%d]]") Modification time: $(date +"[[Zettelkasten:%Y:%m:%d|%Y-%m-%d]]" -r "$File")" >> "$File".md
-        echo "[*] **[[../"$filename".xopp]] **" >> "$File".md
-        echo "$source" >> "$File".md
-        #ttpdf "$filename".pdf
-        #echo -e "{{../$File.avif?width=500}}\n" >> "$File".md
-        #xournalpp --export-range=1 "$File" -i "$File".png
-        #convert "$File".png "$File".avif
-        #rm "$File".png
+        {{Zim template}}
     fi
 fi
 @
 ```
 
+### Markdown template
+
+```bash
+{{Markdown template}}=
+echo "# $File" >> "$File".md
+echo "Text creation time: $(date +"[[Zettelkasten/%Y/%m/%d|%Y-%m-%d]]") Modification time: $(date +"[[Zettelkasten/%Y/%m/%d|%Y-%m-%d]]" -r "$File")" >> "$File".md
+echo "- [X] **[["$filename".xopp]] **" >> "$File".md
+echo "$source" >> "$File".md
+@
+```
+
+```bash
+{{Zim template}}=
+echo "Content-Type: text/x-zim-wiki" >> "$File".md
+echo "Wiki-Format: zim 0.6" >> "$File".md
+echo "====== $File ======" >> "$File".md
+echo "Text creation time: $(date +"[[Zettelkasten:%Y:%m:%d|%Y-%m-%d]]") Modification time: $(date +"[[Zettelkasten:%Y:%m:%d|%Y-%m-%d]]" -r "$File")" >> "$File".md
+echo "[*] **[[../"$filename".xopp]] **" >> "$File".md
+echo "$source" >> "$File".md
+#ttpdf "$filename".pdf
+#echo -e "{{../$File.avif?width=500}}\n" >> "$File".md
+#xournalpp --export-range=1 "$File" -i "$File".png
+#convert "$File".png "$File".avif
+#rm "$File".png
+@
+```

@@ -27,7 +27,9 @@ Hier sind die Dolpin ServiceMenüs
 ## Program
 
 ```bash
+{{run-cell.sh}}=
 noweb.py -Rttn ttn.md > ttn && chmod u+x ttn && echo 'fertig'
+@
  ```
 
 

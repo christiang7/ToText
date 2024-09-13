@@ -35,10 +35,10 @@ abfrage=$(yad --title="New plantuml?" --text="Necessary Informations:" \
 if [ ! $? -eq 1 ];
 then
     Filename=$(echo $abfrage | cut -s -d "~" -f 1)
-    echo -e "{{../Schönheit-Diagramm.png?width=500}}\n\n"
+    echo -e "{{../${Filename}.png?width=500}}\n![](${Filename}.png?)\n"
     echo -e "\n\`\`\`plantuml"
     echo -e "{{${Filename}.plantuml}}="
-    echo -e "  @startuml\n"
+    echo -e "  @startuml\n allowmixing\n"
     echo -e "  @enduml"
     echo -e "\n@"
     echo -e "\`\`\`\n\n"

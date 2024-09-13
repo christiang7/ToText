@@ -2,9 +2,7 @@
 
 - [X] Doing Interput (2)
 - [X] Doing (2)
-	- [ ] template-tex
-		- [ ] template for rechnung
-		- [ ] template for Bewerbung
+	- [ ] [ttdm] anpassen an [ttnm]
 - [X] Planning (2)
 	- [ ] überall yad Ersatz für zenity einfügen
 - [X] Backlog
@@ -19,6 +17,11 @@
 	- [ ] Programme über libraries verbinden
 
 ## Features
+
+### 2024-08-08 template tex
+	- [X] template-tex
+		- [X] template for rechnung
+		- [X] template for Bewerbung
 
 ### 2024-02-13 Zusammenlegung der Scripte tts und ttn
 Zusammenlegung von tts und ttn als Option einfügen, ob Datei geöffnet werden soll danach oder nicht

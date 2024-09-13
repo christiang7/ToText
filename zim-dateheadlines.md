@@ -9,7 +9,9 @@ Created [2023-05-25]()
 
 
 ```bash
+{{run-cell.sh}}=
 noweb.py -Rzim-dateheadlines.sh zim-dateheadlines.md > zim-dateheadlines.sh && echo 'fertig'
+@
 ```
 
 
@@ -34,3 +36,9 @@ echo -e "==== $(date +"[[Zettelkasten:%Y:%m:%d|%Y-%m-%d]]") "
 
 ```
 
+```bash
+{{dateheadlines markdown}}=
+echo -e "## $(date +"[[Zettelkasten/%Y/%m/%d|%Y-%m-%d]]") "
+@
+
+```

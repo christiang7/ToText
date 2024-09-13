@@ -14,28 +14,29 @@ You can add tabs from browser in a specific page you choose.
 
 ## Infos
 
-[*] WEB keyboard shortcuts - How do I cut a line in KDE Kate? - Super User
- https://superuser.com/questions/1080876/how-do-i-cut-a-line-in-kde-kate
-[*] WEB How to Safely Exit from Bash Scripts | Baeldung on Linux
- https://www.baeldung.com/linux/safely-exit-scripts
+WEB keyboard shortcuts - How do I cut a line in KDE Kate? - Super User
+https://superuser.com/questions/1080876/how-do-i-cut-a-line-in-kde-kate
+WEB How to Safely Exit from Bash Scripts | Baeldung on Linux
+https://www.baeldung.com/linux/safely-exit-scripts
 
 
-- [X] WEB sed Substitution With Variables | Baeldung on Linux
+WEB sed Substitution With Variables | Baeldung on Linux
 
- https://www.baeldung.com/linux/sed-substitution-variables
+https://www.baeldung.com/linux/sed-substitution-variables
 
-- [X] WEB Using sed With a Literal String Instead of an Input File | Baeldung on Linux
+WEB Using sed With a Literal String Instead of an Input File | Baeldung on Linux
+https://www.baeldung.com/linux/sed-with-string
 
- https://www.baeldung.com/linux/sed-with-string
+WEB 12 Useful 'sed' Commands In Linux | LinuxTeck
 
-- [X] WEB 12 Useful 'sed' Commands In Linux | LinuxTeck
-
- https://www.linuxteck.com/sed-commands-in-linux/
+https://www.linuxteck.com/sed-commands-in-linux/
 
 ## Program
 
 ```bash
+{{run-cell.sh}}=
 noweb.py -Rtopic2zim.sh topic2zim.md > topic2zim.sh && echo 'fertig'
+@
 ```
 
 ```bash
@@ -127,18 +128,41 @@ then
 		topicfilename=$(basename "$topicfile" .md)
 		touch "${folder}"/"${topicfile}"
 		mkdir -p "${folder}"/"${topicfilename}"
-		echo "Content-Type: text/x-zim-wiki" > "${folder}"/"${topicfile}"
-		echo "Wiki-Format: zim 0.6" >> "${folder}"/"${topicfile}"
-		echo -e "====== ${topic} ======" >> "${folder}"/"${topicfile}"
-		echo -e "Created $(date +"[[Zettelkasten:%Y:%m:%d|%Y-%m-%d]]")" >> "${folder}"/"${topicfile}"
-		#echo -e "" >> "${folder}"/"${topicfile}"
-		echo -e "[*] ${tags} ** ${topic} ** [[$(basename ${folder})]] " >> "${folder}"/"${topicfile}"
-		echo -e "\n${additiontext}" >> "${folder}"/"${topicfile}"
-		echo -e "\n${tabs}" >> "${folder}"/"${topicfile}"
-		echo -e "		[*] $(date +"[[Zettelkasten:%Y:%m:%d|%Y-%m-%d]]")" >> "${folder}".md
-		echo -e "			[*] [[+$(basename ${topicfile} .md)|${topic}]]" >> "$folder".md
+		{{zim template}}
 	fi
 fi
+@
+```
+
+
+#### zim template
+```bash
+{{zim template}}=
+echo "Content-Type: text/x-zim-wiki" > "${folder}"/"${topicfile}"
+echo "Wiki-Format: zim 0.6" >> "${folder}"/"${topicfile}"
+echo -e "====== ${topic} ======" >> "${folder}"/"${topicfile}"
+echo -e "Created $(date +"[[Zettelkasten:%Y:%m:%d|%Y-%m-%d]]")" >> "${folder}"/"${topicfile}"
+#echo -e "" >> "${folder}"/"${topicfile}"
+echo -e "[*] ${tags} ** ${topic} ** [[$(basename ${folder})]] " >> "${folder}"/"${topicfile}"
+echo -e "\n${additiontext}" >> "${folder}"/"${topicfile}"
+echo -e "\n${tabs}" >> "${folder}"/"${topicfile}"
+echo -e "		[*] $(date +"[[Zettelkasten:%Y:%m:%d|%Y-%m-%d]]")" >> "${folder}".md
+echo -e "			[*] [[+$(basename ${topicfile} .md)|${topic}]]" >> "$folder".md
+@
+```
+
+
+#### markdown template
+```bash
+{{markdown template}}=
+echo -e "# ${topic}" >> "${folder}"/"${topicfile}"
+echo -e "Created $(date +"[[Zettelkasten/%Y/%m/%d|%Y-%m-%d]]")" >> "${folder}"/"${topicfile}"
+#echo -e "" >> "${folder}"/"${topicfile}"
+echo -e "- [X] ${tags} ** ${topic} ** [[$(basename ${folder})]] " >> "${folder}"/"${topicfile}"
+echo -e "\n${additiontext}" >> "${folder}"/"${topicfile}"
+echo -e "\n${tabs}" >> "${folder}"/"${topicfile}"
+echo -e "		- [X] $(date +"[[Zettelkasten/%Y/%m/%d|%Y-%m-%d]]")" >> "${folder}".md
+echo -e "			- [X] [[/$(basename ${topicfile} .md)|${topic}]]" >> "$folder".md
 @
 ```
 
@@ -167,6 +191,9 @@ case ${choose} in
 esac
 #echo $tabs
 today=$(date +"[[Zettelkasten:%Y:%m:%d|%Y-%m-%d]]")
+
+## today=$(date +"[[Zettelkasten/%Y/%m/%d|%Y-%m-%d]]")
+
 sed -i "${l}i
 " "$file"
 element=""

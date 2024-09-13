@@ -11,8 +11,10 @@ links2 -dump https://kalax.bandcamp.com/track/confie-hold-on-feat-francci
 ```
 
 
-  ```bash
+```bash
+{{run-cell.sh}}=
 noweb.py -RDownload-Music.sh Download-Music.md > Download-Music.sh && echo 'fertig'
+@
 ```
 
 ```bash

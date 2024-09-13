@@ -90,6 +90,9 @@ then
 		esac
 		#echo $tabs
 		today=$(date +"[[Zettelkasten:%Y:%m:%d|%Y-%m-%d]]")
+
+		## today=$(date +"[[Zettelkasten/%Y/%m/%d|%Y-%m-%d]]")
+
 		sed -i "${l}i
 		" "$file"
 		element=""
