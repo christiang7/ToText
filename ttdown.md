@@ -7,7 +7,9 @@ Only for Downloads for the firefox webbrowser
 Kommando zum Extrahieren des Scripts
 
 ```bash
+{{run-cell.sh}}=
 noweb.py -Rttdown ttdown.md > ttdown && echo 'fertig'
+@
 ```
 
 ## Main program
@@ -19,7 +21,7 @@ f=$(basename "$1")
 extens=${f##*.}
 name=$(basename "$f" .$extens)
 source=$(echo "$2")
-folder=$(echo ~/Gedankenspeicher/Archiv-Verschiebung/)
+folder=$(echo ~/Gedankenspeicher/Output/)
 
 abfrage=$(yad --title="Diese Datei eine TXT hinzufügen" --text="Noch etwas hinzufügen?" \
 	--form --width 500 --separator="~" --item-separator=","  \
