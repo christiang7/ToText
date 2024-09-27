@@ -5,7 +5,9 @@ Text creation time: [Zettelkasten:2021:04:29]() Modification time: [Zettelkasten
 
 
 ```bash
+{{run-cell.sh}}=
 noweb.py -Rttpic ttpic.md > ttpic && chmod u+x ttpic && echo 'fertig'
+@
 ```
 
 
@@ -17,10 +19,11 @@ f=$(basename "$1")
 touch "$File".md
 echo "Content-Type: text/x-zim-wiki" >> "$File".md
 echo "Wiki-Format: zim 0.6" >> "$File".md
-echo "====== $f ======" >> "$File".md
+#echo "====== $f ======" >> "$File".md
+echo "# $f" >> "$File".md
 echo "Text date: $(date +"[[Zettelkasten:%Y:%m:%d|%Y-%m-%d]]") Modi date: $(date +"[[Zettelkasten:%Y:%m:%d|%Y-%m-%d]]" -r "$1")" >> "$File".md
 echo "@BILD $3 " >> "$File".md
-echo "[*] **[[../$f]] **" >> "$File".md
+echo "- [X] **[[../$f]] **" >> "$File".md
 #echo "Modification time: $(date +"[[Zettelkasten:%Y:%m:%d|%Y-%m-%d]]" -r "$1")" >> "$File".md
 echo -e "$2\n" >> "$File".md
 echo "{{../$f?width=500}}" >> "$File".md
