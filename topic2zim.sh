@@ -4,7 +4,7 @@ request=$(yad --title="Notes or archiv" --text="Something to add?" \
 	--form --width 500 --separator="~" --item-separator=","  \
 	--field="Quelle:":CB \
 	--field="Weiteres":TXT \
-	"Spass,NeuNotiz,Assets,Heute,Physik,Mathematik,Philosophie,Naturwissenschaften_und_Instrumentarien,CodeFabrik" "")
+	"Spass,NeuNotiz,Heute,Physik,Mathematik,Philosophie,Naturwissenschaften_und_Instrumentarien,CodeFabrik,Zettelkasten" "")
 choose=$(echo $request | cut -s -d "~" -f 1)
 additiontext=$(echo $request | cut -s -d "~" -f 2)
 if [ ! $? -eq 1 ];
@@ -21,7 +21,7 @@ then
 			--field="Source:":CBE \
 			--field="Tags:" \
 			--field="Something else":TXT \
-			"Spass,Assets,Physik,Mathematik,Philosophie,Naturwissenschaften_und_Instrumentarien,CodeFabrik,Zettelkasten" "Topicname" "Internet,Christian Gößl," "" "$additiontext")
+			"Spass,Physik,Mathematik,Philosophie,Naturwissenschaften_und_Instrumentarien,CodeFabrik,Zettelkasten" "Topicname" "Internet,Christian Gößl," "" "$additiontext")
 
 		if [ ! $? -eq 1 ];
 		then
@@ -32,8 +32,6 @@ then
 			additiontext=$(echo $request | cut -s -d "~" -f 5)
 			case ${chooseWhere} in
 				Spass) folder=$(echo "/home/christian/Gedankenspeicher/Gedankenspeicherwiki/Spaß_Stream")
-					l=37;;
-				Assets) folder=$(echo "/home/christian/Gedankenspeicher/Gedankenspeicherwiki/Assets")
 					l=37;;
 				Physik) folder=$(echo "/home/christian/Gedankenspeicher/Gedankenspeicherwiki/Physik")
 					l=37;;
@@ -55,16 +53,14 @@ then
 				topicfilename=$(basename "$topicfile" .md)
 				touch "${folder}"/"${topicfile}"
 				mkdir -p "${folder}"/"${topicfilename}"
-				echo "Content-Type: text/x-zim-wiki" > "${folder}"/"${topicfile}"
-				echo "Wiki-Format: zim 0.6" >> "${folder}"/"${topicfile}"
-				echo -e "====== ${topic} ======" >> "${folder}"/"${topicfile}"
-				echo -e "Created $(date +"[[Zettelkasten:%Y:%m:%d|%Y-%m-%d]]")" >> "${folder}"/"${topicfile}"
+				echo -e "# ${topic}" >> "${folder}"/"${topicfile}"
+				echo -e "Created $(date +"[[Zettelkasten/%Y/%m/%d|%Y-%m-%d]]")" >> "${folder}"/"${topicfile}"
 				#echo -e "" >> "${folder}"/"${topicfile}"
-				echo -e "[*] ${tags} ** ${topic} ** [[$(basename ${folder})]] " >> "${folder}"/"${topicfile}"
+				echo -e "- [X] ${tags} ** ${topic} ** [[$(basename ${folder})]] " >> "${folder}"/"${topicfile}"
 				echo -e "\n${additiontext}" >> "${folder}"/"${topicfile}"
 				echo -e "\n${tabs}" >> "${folder}"/"${topicfile}"
-				echo -e "		[*] $(date +"[[Zettelkasten:%Y:%m:%d|%Y-%m-%d]]")" >> "${folder}".md
-				echo -e "			[*] [[+$(basename ${topicfile} .md)|${topic}]]" >> "$folder".md
+				echo -e "		- [X] $(date +"[[Zettelkasten/%Y/%m/%d|%Y-%m-%d]]")" >> "${folder}".md
+				echo -e "			- [X] [[/$(basename ${topicfile} .md)|${topic}]]" >> "$folder".md
 			fi
 		fi
 		;;
@@ -72,7 +68,7 @@ then
 		case ${choose} in
 			Spass) file=$(echo "/home/christian/Gedankenspeicher/Gedankenspeicherwiki/Spaß_Stream/1»Spaß_Stream_Archiv.md")
 				l=5;;
-			Assets) file=$(echo "/home/christian/Gedankenspeicher/Gedankenspeicherwiki/Assets/1»Assets_Archiv.md")
+			Zettelkasten) file=$(echo "/home/christian/Gedankenspeicher/Gedankenspeicherwiki/Zettelkasten/1»Pfad_Zettelkasten_Archiv.md")
 				l=5;;
 			Heute) tabs2zim.sh $additiontext
 				exit

@@ -129,7 +129,7 @@ then
 		echo "Content-Type: text/x-zim-wiki" >> "$folder"/"$File".md
 		echo "Wiki-Format: zim 0.6" >> "$folder"/"$File".md
 		#echo "====== $Filename ======" >> "$folder"/"$File".md
-		"# $Filename" >> "$folder"/"$File".md
+		echo "# $Filename" >> "$folder"/"$File".md
 	}
 
 	function Timestamps(){

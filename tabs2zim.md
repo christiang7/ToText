@@ -34,7 +34,7 @@ then
   if [[ ! -e "$foldermonth"/"$calendarfile" ]] 
   then
 	touch "$foldermonth"/"$calendarfile"
-	{{zim template}}
+	{{markdown template}}
   fi
   echo -e "\n${additiontext}\n${text}" >> "$foldermonth"/"$calendarfile"
 
