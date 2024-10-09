@@ -179,7 +179,7 @@ then
 	then
 		filename=$(basename "$folder"/"$File" .tex)
 		f=$(basename "$1" .tex)
-		foldertex="$filename"_tex_folder
+		foldertex="$filename"_tex
 		mkdir -p "$foldertex" #
 		mv "$f".pdf "$filename".pdf
 		mv "$f".log "$filename".log
@@ -197,10 +197,10 @@ then
 		#touch "$foldertex".md #
 		echo "Content-Type: text/x-zim-wiki" >> "$foldertex".md
 		echo "Wiki-Format: zim 0.6" >> "$foldertex".md
-		echo "====== $filename ======" >> "$foldertex".md
+		echo "# $filename" >> "$foldertex".md
 		echo "Text date: $(date +"[[Zettelkasten:%Y:%m:%d|%Y-%m-%d]]") Modi date: $(date +"[[Zettelkasten:%Y:%m:%d|%Y-%m-%d]]" -r "$foldertex"/"$filename".tex)" >> "$foldertex".md
 		echo "@LATEX $tags" >> "$foldertex".md
-		echo "- [X] **$folder **" >> "$foldertex".md #
+		#echo "- [X] **$folder **" >> "$foldertex".md #
 		echo -e "**[[./$filename.md]]**\n**[[./$filename.tex]]\n**[[./$filename.pdf]]**" >> "$foldertex".md
 		#echo "Modification time: $(date +"[[Zettelkasten:%Y:%m:%d|%Y-%m-%d]]" -r "$folder"/"$folder"/"$File")" >> "$folder".md
 		echo -e "$source\n$additiontext" >> "$foldertex".md

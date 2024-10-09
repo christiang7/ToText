@@ -6,8 +6,8 @@ Backlink [GedankenspeicherCoding](../GedankenspeicherCoding.md)
     - [X] Doing
     - [X] Backlog
 	- [ ] Anpassung bei beliebigen Dateinamen mit doppelten oder keiner Dateiendung
-		- [ ] mittels file und cut kann man die Dateiendung herausfinden und ansetzen file   Screenshot_2022-07-26_at_22-51-47_The_mountain_landscape_-_Ferdinand_Engelműller_-_Google_Arts_\&_Culture.png | cut -d ' ' -f 2
-		https://www.geeksforgeeks.org/how-to-find-out-file-types-in-linux/ | How to Find Out File Types in Linux - GeeksforGeeks
+		- [ ] mittels file und cut kann man die Dateiendung herausfinden und ansetzen ``file Culture.png | cut -d ' ' -f 2``
+            - [ ] https://www.geeksforgeeks.org/how-to-find-out-file-types-in-linux/ | How to Find Out File Types in Linux - GeeksforGeeks
 
 
 ## Informations
