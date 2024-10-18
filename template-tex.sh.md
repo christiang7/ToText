@@ -1,9 +1,9 @@
 # template-tex.sh
 Created [2023-10-29]()
 
-- [X] **template-tex.sh** [README.md](README.md)
-	- [X] Doing
-	- [X] Backlog
+ [README.md](README.md)
+- [X] Doing
+- [X] Backlog
 
 ## Features
 
@@ -308,7 +308,7 @@ echo -e "\n## Features" >> "${File}".md
 echo -e "\n## Informations" >> "${File}".md
 echo -e "\n## Latex File\n" >> "${File}".md
 echo -e "\n\`\`\`bash" >> "${File}".md
-echo -e "{{run-cell.sh}}" >> "${File}".md
+echo -e "{{run-cell.sh}}=" >> "${File}".md
 echo -e "noweb.py -R${File}.tex ${File}.md > ${File}.tex && pdflatex -shell-escape ${File}.tex && xournalpp ${File}.pdf 2>/dev/null & \n@\n\`\`\`\n\n" >> "${File}".md
 echo -e "\`\`\`latex" >> "${File}".md
 echo -e "{{${File}.tex}}=" >> "${File}".md
@@ -337,7 +337,7 @@ echo -e "\n## Features" >> "${File}".md
 echo -e "\n## Informations" >> "${File}".md
 echo -e "\n## Latex File\n" >> "${File}".md
 echo -e "\n\`\`\`bash" >> "${File}".md
-echo -e "{{run-cell.sh}}" >> "${File}".md
+echo -e "{{run-cell.sh}}=" >> "${File}".md
 echo -e "noweb.py -R${File}.tex ${File}.md > ${File}.tex && pdflatex -shell-escape ${File}.tex && xournalpp ${File}.pdf 2>/dev/null & \n@\n\`\`\`\n\n" >> "${File}".md
 echo -e "\`\`\`latex" >> "${File}".md
 echo -e "{{${File}.tex}}=" >> "${File}".md

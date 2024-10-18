@@ -18,20 +18,20 @@ Backlink [GedankenspeicherCoding](../GedankenspeicherCoding.md)
 
 - [X] WEB bash - Extract string from brackets - Stack Overflow
 
- <https://stackoverflow.com/questions/7209629/extract-string-from-brackets>
+https://stackoverflow.com/questions/7209629/extract-string-from-brackets
 to extract the file from the txt file to correct the name
 ```bash
 echo "string1 [[string2]] string3 string4" | sed 's/.*\[\[\([^]]*\)\]\].*/\1/g'
 ```
 
 ```bash
-cat Brief_Overview_of_Japanese_Art_of_Archery.pdf.md | tr '\n' ' ' | cut -d "[" -f4 | cut -d "]" -f1 | sed "s/..\///g"
+cat Archery.pdf.md | tr '\n' ' ' | cut -d "[" -f4 | cut -d "]" -f1 | sed "s/..\///g"
 ```
 
 
 - [X] WEB Zenity - Create GUI Dialog Boxes In Bash Scripts - OSTechNix
 
- <https://ostechnix.com/zenity-create-gui-dialog-boxes-in-bash-scripts/>
+https://ostechnix.com/zenity-create-gui-dialog-boxes-in-bash-scripts/
 
 
 ## Main program

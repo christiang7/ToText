@@ -34,7 +34,7 @@ then
   if [[ ! -e "$foldermonth"/"$calendarfile" ]] 
   then
 	touch "$foldermonth"/"$calendarfile"
-	{{markdown template}}
+	{{zim template}}
   fi
   echo -e "\n${additiontext}\n${text}" >> "$foldermonth"/"$calendarfile"
 
@@ -54,7 +54,7 @@ echo -e "====== $(date +"%A %Y-%m-%d") ======" >> "$foldermonth"/"$calendarfile"
 #date +"[[Zettelkasten:%Y:%m]]" >> "$foldermonth"/"$calendarfile"
 #echo -e ""  >> "$foldermonth"/"$calendarfile"
 #date +"[*] ** %A %d %b %Y ** " >> "$foldermonth"/"$calendarfile"
-echo -e "$(date +"[*] ** %A %Y-%m-%d **")  $(date +"[[Zettelkasten:%Y:%m|%Y-%m]]")" >> "$foldermonth"/"$calendarfile"
+echo -e "$(date +"[[Zettelkasten:%Y:%m|%Y-%m]]")" >> "$foldermonth"/"$calendarfile"
 @
 ```
 
@@ -63,6 +63,6 @@ echo -e "$(date +"[*] ** %A %Y-%m-%d **")  $(date +"[[Zettelkasten:%Y:%m|%Y-%m]]
 ```bash
 {{markdown template}}=
 echo -e "# $(date +"%A %Y-%m-%d")" >> "$foldermonth"/"$calendarfile"
-echo -e "$(date +"- [X] ** %A %Y-%m-%d **")  $(date +"[[Zettelkasten/%Y/%m|%Y-%m]]")" >> "$foldermonth"/"$calendarfile"
+echo -e "$(date +"[[Zettelkasten/%Y/%m|%Y-%m]]")" >> "$foldermonth"/"$calendarfile"
 @
 ```

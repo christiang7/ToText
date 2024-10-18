@@ -232,6 +232,8 @@ then
 		mv "$f".sbl "$filename".sbl
 		mv "$f".ist "$filename".ist
 		mv "$filename".* "$foldertex"/ #
+		mv "$foldertex" "$filename".tex
+		foldertex="$filename".tex
 		#touch "$foldertex".md #
 		echo "Content-Type: text/x-zim-wiki" >> "$foldertex".md
 		echo "Wiki-Format: zim 0.6" >> "$foldertex".md
@@ -239,21 +241,21 @@ then
 		echo "Text date: $(date +"[[Zettelkasten:%Y:%m:%d|%Y-%m-%d]]") Modi date: $(date +"[[Zettelkasten:%Y:%m:%d|%Y-%m-%d]]" -r "$foldertex"/"$filename".tex)" >> "$foldertex".md
 		echo "@LATEX $tags" >> "$foldertex".md
 		#echo "- [X] **$folder **" >> "$foldertex".md #
-		echo -e "**[[./$filename.md]]**\n**[[./$filename.tex]]\n**[[./$filename.pdf]]**" >> "$foldertex".md
+		echo -e "[[./$filename.md]]\n[[./$filename.tex]]\n[[./$filename.pdf]]" >> "$foldertex".md
 		#echo "Modification time: $(date +"[[Zettelkasten:%Y:%m:%d|%Y-%m-%d]]" -r "$folder"/"$folder"/"$File")" >> "$folder".md
 		echo -e "$source\n$additiontext" >> "$foldertex".md
 		# latex file in markdown
 		echo -e "# ${filename}.tex" >> "$foldertex"/"${filename}".md
 		echo -e "Created [$(date +%Y-%m-%d)]()\n" >> "$foldertex"/"${filename}".md
-		echo -e "- [X] **${filename}.tex** " >> "$foldertex"/"${filename}".md
-		echo -e "    - [X] Doing" >>dat "$foldertex"/"${filename}".md
-		echo -e "    - [X] Backlog" >> "$foldertex"/"${filename}".md
-		echo -e "       - [ ] " >> "$foldertex"/"${filename}".md
+		#echo -e "- [X] **${filename}.tex** " >> "$foldertex"/"${filename}".md
+		echo -e " - [X] Doing" >> "$foldertex"/"${filename}".md
+		echo -e " - [X] Backlog" >> "$foldertex"/"${filename}".md
+		echo -e "    - [ ] " >> "$foldertex"/"${filename}".md
 		echo -e "\n## Features" >> "$foldertex"/"${filename}".md
 		echo -e "\n## Informations" >> "$foldertex"/"${filename}".md
 		echo -e "\n## Latex File\n" >> "$foldertex"/"${filename}".md
 		echo -e "\n\`\`\`bash" >> "$foldertex"/"${filename}".md
-		echo -e "noweb.py -R${filename}.tex ${filename}.md > ${filename}.tex && pdflatex ${filename}.tex && xdg-open ${filename}.pdf 2>/dev/null \n\`\`\`\n\n" >> "$foldertex"/"${filename}".md
+		echo -e "{{run-cell.sh}}=\nnoweb.py -R${filename}.tex ${filename}.md > ${filename}.tex && pdflatex ${filename}.tex && xdg-open ${filename}.pdf 2>/dev/null \n@\n\`\`\`\n\n" >> "$foldertex"/"${filename}".md
 		echo -e "\`\`\`tex" >> "$foldertex"/"${filename}".md
 		echo -e "{{${filename}.tex}}=" >> "$foldertex"/"${filename}".md
 		cat "$foldertex"/"${filename}".tex >> "$foldertex"/"${filename}".md
