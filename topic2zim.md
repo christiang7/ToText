@@ -126,7 +126,7 @@ then
 		topicfilename=$(basename "$topicfile" .md)
 		touch "${folder}"/"${topicfile}"
 		mkdir -p "${folder}"/"${topicfilename}"
-		{{markdown template}}
+		{{zim template}}
 	fi
 fi
 @

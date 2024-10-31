@@ -53,14 +53,16 @@ then
 				topicfilename=$(basename "$topicfile" .md)
 				touch "${folder}"/"${topicfile}"
 				mkdir -p "${folder}"/"${topicfilename}"
-				echo -e "# ${topic}" >> "${folder}"/"${topicfile}"
-				echo -e "Created $(date +"[[Zettelkasten/%Y/%m/%d|%Y-%m-%d]]")" >> "${folder}"/"${topicfile}"
+				echo "Content-Type: text/x-zim-wiki" > "${folder}"/"${topicfile}"
+				echo "Wiki-Format: zim 0.6" >> "${folder}"/"${topicfile}"
+				echo -e "====== ${topic} ======" >> "${folder}"/"${topicfile}"
+				echo -e "Created $(date +"[[Zettelkasten:%Y:%m:%d|%Y-%m-%d]]")" >> "${folder}"/"${topicfile}"
 				#echo -e "" >> "${folder}"/"${topicfile}"
-				echo -e "- [X] ${tags} ** ${topic} ** [[$(basename ${folder})]] " >> "${folder}"/"${topicfile}"
+				echo -e "[*] ${tags} ** ${topic} ** [[$(basename ${folder})]] " >> "${folder}"/"${topicfile}"
 				echo -e "\n${additiontext}" >> "${folder}"/"${topicfile}"
 				echo -e "\n${tabs}" >> "${folder}"/"${topicfile}"
-				echo -e "		- [X] $(date +"[[Zettelkasten/%Y/%m/%d|%Y-%m-%d]]")" >> "${folder}".md
-				echo -e "			- [X] [[/$(basename ${topicfile} .md)|${topic}]]" >> "$folder".md
+				echo -e "		[*] $(date +"[[Zettelkasten:%Y:%m:%d|%Y-%m-%d]]")" >> "${folder}".md
+				echo -e "			[*] [[+$(basename ${topicfile} .md)|${topic}]]" >> "$folder".md
 			fi
 		fi
 		;;
