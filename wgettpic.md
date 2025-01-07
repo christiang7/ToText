@@ -6,15 +6,20 @@ Created Donnerstag [Zettelkasten:2021:04:29]()
 [wget-download-firefox](./wget-download-firefox.md)
 
 ```bash
+{{run-cell.sh}}=
 noweb.py -Rwgettpic wgettpic.md > wgettpic && chmod u+x wgettpic && echo 'fertig'
+@
 ```
 
 ```bash
 {{wgettpic}}=
 #!/bin/bash
 
-Newname=$(basename "$1")
-Newname=${Newname%.*}
+Orig=$(basename "$1")
+f=$(basename "$Orig")
+origname=${Orig%.*} #only the filename
+extens=${Orig##*.}
+Newname=${Orig%.*}
 
 abfrage=$(yad --title="Download Picture" --text="Noch etwas hinzufügen?" \
     --form --separator="~" --item-separator="," \
@@ -35,15 +40,12 @@ then
     folder=$(date +"/home/christian/Gedankenspeicher/Gedankenspeicherwiki/Zettelkasten/%Y/%m/%d")
     mkdir -p $folder
     cd $folder
-    File=$(wget --no-use-server-timestamps --user-agent="Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:88.0)" --no-check-certificate "$1" 2>&1 | tee /dev/tty | grep Saving | cut -d ' ' -f 3 | sed -e 's/[^A-Za-z0-9._-]//g')
-    f=$(basename "$File")
-    extens=${File##*.}
-    filename=${File%.*} #only the filename
-    #wget --no-use-server-timestamps --no-check-certificate --user-agent="Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:88.0)" -O $File $1
+    File=$(wget --no-use-server-timestamps --user-agent="Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:88.0)" --no-check-certificate "$1" 2>&1 | tee /dev/tty | grep gespeichert | cut -d ' ' -f 3 | sed -e 's/[^A-Za-z0-9._-]//g')
+
 
     if [ "$Newname" == ""  ];
     then
-        Newname=$(echo $filename)
+        Newname=$(echo "$origname")
     fi
 
     File=$(echo "$Newname"."$extens" | sed 's/ /_/g' | sed 's/:/;/g'| sed -e "s/'/_/g" | sed 's/\"//g'|  sed 's/&/n/g' | sed 's/\///g' | sed 's/|//g' | sed 's/\[/(/g' | sed 's/\]/)/g' | sed 's/@/at/g')
@@ -52,25 +54,7 @@ then
     convert "$File" "$Newname".avif
     rm "$File"
 
-    #foldermonth=$(date +"/home/christian/Gedankenspeicher/Gedankenspeicherwiki/Zettelkasten/%Y/%m" -r "$Newname".avif)
-    #calendarfile=$(date +"%d")
-    #calendarfile=$calendarfile.md
-    #if [[ ! -e "$foldermonth"/"$calendarfile" ]]
-    #then
-    #    touch "$foldermonth"/"$calendarfile"
-    #    echo "Content-Type: text/x-zim-wiki" >> "$foldermonth"/"$calendarfile"
-    #    echo "Wiki-Format: zim 0.6" >> "$foldermonth"/"$calendarfile"
-    #    date +"===== %A %d %b %Y =====" >> "$foldermonth"/"$calendarfile"
-        #date +"[[:Zettelkasten:%Y:Week %W|Week %W]]"  >> "$foldermonth"/"$calendarfile"
-    #    date +"[[Zettelkasten:%Y:%m]]" >> "$foldermonth"/"$calendarfile"
-    #    echo -e ""  >> "$foldermonth"/"$calendarfile"
-    #    date +"[*] **%A %d %b %Y ** "  >> "$foldermonth"/"$calendarfile"
-        #mv "$calendarfile" "$foldermonth"/"$calendarfile"
-    #fi
-
     ttpic "${Newname}.avif" "$source" "$tags" "$additiontext"
-    #echo -e "\n[[+${Newname}.avif]]" >> "$foldermonth"/"$calendarfile"
-    #echo -e "{{${Newname}.avif?width=500}}" >> "$foldermonth"/"$calendarfile"
 
 fi
 @

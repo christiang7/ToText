@@ -10,9 +10,10 @@ folder="$folder.pdf"
 touch "$File".md
 echo "Content-Type: text/x-zim-wiki" >> "$File".md
 echo "Wiki-Format: zim 0.6" >> "$File".md
-echo "# [[./$File]]" >> "$File".md
+echo "====== $File ======" >> "$File".md
 echo "Text date: $(date +"[[Zettelkasten:%Y:%m:%d|%Y-%m-%d]]") Modi date: $(date +"[[Zettelkasten:%Y:%m:%d|%Y-%m-%d]]" -r "$folder"/"$File")" >> "$File".md
 echo "@ARTIKEL $3 " >> "$File".md
+echo "**[[./$File]] **" >> "$File".md
 echo -e "$2\n$4\n" >> "$File".md
 pdftoppm -png -singlefile "$folder"/"$File" "$folder"/"$File"
 convert "$folder"/"$File".png -resize 800x800 "$folder"/"$File".avif

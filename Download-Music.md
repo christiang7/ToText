@@ -31,7 +31,7 @@ if [[ ! "$yt" = "" ]];
 then
     text="$(yt-dlp --get-description ${website})"
     text="$(echo -e "${text}" | sed 's/\"//g')"
-    yt-dlp --no-mtime --exec "ttn {} \"${website}\" \"@Lied\" \"${text} \" " -o "~/Musik/Favorieten-open/%(title)s.%(ext)s" -f 251 -i "${website}"
+    yt-dlp --no-mtime --exec "ttn {} \"${website}\" \"@Lied\" \"${text} \" " -o "~/Musik/Favorieten-open/%(title)s.%(ext)s" -f '251/140' -i "${website}"
 else
     text=$(links2 -dump ${website})
     text="$(echo -e "${text}" | sed 's/\"//g')"

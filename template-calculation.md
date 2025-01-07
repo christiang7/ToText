@@ -105,7 +105,7 @@ then
 		;;
 	lua) extens="lua"
 		;;
-	plantuml) extens="plantuml"
+	plantuml) extens="plantuml" langname="pl"
 		;;
 	typst) extens="typ"
 		;;
@@ -144,7 +144,7 @@ then
 elif [[ $extens == "typst" ]]
 then
 	echo -e "noweb.py -R${Filename}.${extens} ${File}.md > ${Filename}.${extens} && typst compile --format pdf ${Filename}.${extens} && xournalpp ${Filename}.pdf 2>/dev/null \n@\n\`\`\`" >> "${File}".md
-else
+elselangname
 	echo -e "noweb.py -R${Filename}.${extens} ${File}.md > ${Filename}.${extens} && echo 'fertig' \n@\n\`\`\`" >> "${File}".md
 	echo -e "\n\n\`\`\`bash" >> "${File}".md
 	echo -e "chmod u+x ${Filename}.${extens} && ln -sf "${folder}"/${Filename}.${extens} ~/.local/bin/${Filename}.${extens} && echo 'fertig'\n \`\`\`" >> "${File}".md

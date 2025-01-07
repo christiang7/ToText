@@ -1,1 +1,1 @@
-noweb.py -Rtopic2zim.sh topic2zim.md > topic2zim.sh && echo 'fertig'
+noweb.py -RDownload-Video-select.sh Download-Video-select.md > Download-Video-select.sh && echo 'fertig'

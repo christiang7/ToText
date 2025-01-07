@@ -8,7 +8,7 @@ if [ ! $? -eq 1 ];
 then
     Filename=$(echo $abfrage | cut -s -d "~" -f 1)
     echo -e "{{../${Filename}.png?width=500}}\n![](${Filename}.png?)\n"
-    echo -e "\n\`\`\`plantuml"
+    echo -e "\n\`\`\`pl"
     echo -e "{{${Filename}.plantuml}}="
     echo -e "  @startuml\n allowmixing\n"
     echo -e "  @enduml"
