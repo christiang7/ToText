@@ -233,8 +233,8 @@ then
 		mv "$f".sbl "$filename".sbl
 		mv "$f".ist "$filename".ist
 		mv "$filename".* "$foldertex"/ #
-		mv "$foldertex" "$filename".tex
-		foldertex="$filename".tex
+		#mv "$foldertex" "$filename".tex
+		foldertex="$filename"_tex
 		#touch "$foldertex".md #
 		echo "Content-Type: text/x-zim-wiki" >> "$foldertex".md
 		echo "Wiki-Format: zim 0.6" >> "$foldertex".md
