@@ -8,10 +8,9 @@ Created [2023-05-25]()
 
 
 
+*run-cell.sh*
 ```bash
-{{run-cell.sh}}=
 noweb.py -Rzim-dateheadlines.sh zim-dateheadlines.md > zim-dateheadlines.sh && echo 'fertig'
-@
 ```
 
 
@@ -19,26 +18,22 @@ noweb.py -Rzim-dateheadlines.sh zim-dateheadlines.md > zim-dateheadlines.sh && e
 chmod u+x zim-dateheadlines.sh && ln -sf ~/Gedankenspeicher/Gedankenspeicherwiki/CodeFabrik/GedankenspeicherCoding/zim-dateheadlines.sh ~/.local/bin/zim-dateheadlines.sh && echo 'fertig'
 ```
 
+*zim-dateheadlines.sh*
 ```bash
-{{zim-dateheadlines.sh}}=
 #!/bin/bash
-{{dateheadlines}}
-@
+
+#*dateheadlines}}
 
 ```
 
 simples einfügen der Überschrift mit einem Datum
 
+*dateheadlines*
 ```bash
-{{dateheadlines}}=
 echo -e "==== $(date +"[[Zettelkasten:%Y:%m:%d|%Y-%m-%d]]") "
-@
-
 ```
 
+*dateheadlines markdown*
 ```bash
-{{dateheadlines markdown}}=
 echo -e "## $(date +"[[Zettelkasten/%Y/%m/%d|%Y-%m-%d]]") "
-@
-
 ```

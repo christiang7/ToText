@@ -8,8 +8,8 @@ Backlink [GedankenspeicherCoding](../GedankenspeicherCoding.md)
   ``noweb.py -Rttpdfl ttpdfl.md > ttpdfl && chmod u+x ttpdfl && echo 'fertig'``
 
 
+*ttpdfl*
 ```bash
-{{ttpdfl}}=
 #!/bin/bash
 File=$(echo "$1" | sed 's/ /_/g' | sed 's/:/;/g'| sed -e "s/'/_/g" | sed 's/\"//g')
 f=$(basename "$1")
@@ -34,8 +34,6 @@ ln -s $folder/"$File".md "$File".md
 echo "cd $folder"
 #kate $folder/"$File".md 2>/dev/null &
 #okular $folder/"$1" 2>/dev/null &
-@
-
 ```
 
 

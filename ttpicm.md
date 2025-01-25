@@ -7,8 +7,8 @@ Backlink [GedankenspeicherCoding](../GedankenspeicherCoding.md)
 
 ``noweb.py -Rttpicm ttpicm.md > ttpicm && chmod u+x ttpicm && echo 'fertig'``
 
+*ttpicm*
 ```bash
-{{ttpicm}}=
 #!/bin/bash
 File=$(echo "$1" | sed 's/ /_/g' | sed 's/:/;/g'| sed -e "s/'/_/g" | sed 's/\"//g')
 f=$(basename "$1")
@@ -41,7 +41,6 @@ mv "$f" $folder/"$f"
 mv "$File".md $folder/"$File".md
 echo "cd $folder"
 kate $folder/"$File".md 2>/dev/null &
-@
 ```
 
 

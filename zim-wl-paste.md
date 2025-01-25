@@ -22,13 +22,11 @@ noweb.py -Rzim-wl-past.sh zim-wl-past.md > zim-wl-past.sh && echo 'fertig'
 chmod u+x zim-wl-past.sh && ln -sf /home/christian/Gedankenspeicher/KanDo/GedankenspeicherEinrichtung/GedankenspeicherCoding/zim-wl-past.sh ~/.local/bin/zim-wl-past.sh && echo 'fertig'
  ```
 
+*zim-wl-past.sh*
 ```bash
-{{zim-wl-past.sh}}=
 #!/bin/bash
 wl-paste -n
 sleep 0.5
 killall wl-paste 2> /dev/null
 exit
-@
-
 ```

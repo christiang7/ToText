@@ -16,8 +16,8 @@ Korrektur von Videos die aus der Mediathek oder anderen Quellen heruntergeladen 
 noweb.py -Rttvidc ttvidc.md > ttvidc && chmod u+x ttvidc && echo 'fertig'
 ```
 
+*ttvidc*
 ```bash
-{{ttvidc}}=
 #!/bin/bash
 f=$(basename "$1")
 oldfilename=${f%.*}
@@ -47,7 +47,5 @@ then
     #convert "$filename".png -resize 1200x1200 "$filename".avif
     sed -i "7 i{{../$filename.png?width=500}}" "$filename".mp4.md
 fi
-
-@
 ```
 

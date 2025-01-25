@@ -27,8 +27,8 @@ chmod u+x zim-filepath.sh && ln -sf /home/christian/Gedankenspeicher/Gedankenspe
 
 ## Main Program
 
+*zim-filepath.sh*
 ```bash
-{{zim-filepath.sh}}=
 #!/bin/bash
 file=$(readlink -f -n "$1")
 filepath=$(echo "${file%/*}" | sed "s,/home/christian,~,")
@@ -44,6 +44,5 @@ killall wl-copy
 exit
   #echo [[$wikipath:$FullFilename]] | xclip -selection primary
   #echo [[$wikipath:$FullFilename]] | xclip -selection clipboard
-@
 ```
 

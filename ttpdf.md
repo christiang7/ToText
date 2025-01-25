@@ -3,26 +3,26 @@ Text date: [Zettelkasten:2021:04:29]() Modi date: [Zettelkasten:2021:04:22]()
 - [X] ttpdf [README](README.md)
 
 
+*run-cell.sh*
 ```bash
-{{run-cell.sh}}=
 noweb.py -Rttpdf ttpdf.md > ttpdf && chmod u+x ttpdf && echo 'fertig'
-@
 ```
 
 
+*ttpdf*
 ```bash
-{{ttpdf}}=
 #!/bin/bash
 f=$(echo "$1" | sed 's/ /_/g' | sed 's/:/;/g'| sed -e "s/'/_/g" | sed 's/\"//g')
 File=$(basename "$f")
-{{pdf with folder}}
-@
+
+#*pdf with folder}}
+
 ```
 
 ### pdf with folder
 
+*pdf with folder*
 ```bash
-{{pdf with folder}}=
 folder=$(basename "$File" .pdf)
 echo $folder
 mkdir "$folder"
@@ -32,7 +32,9 @@ folder="$folder.pdf"
 touch "$File".md
 echo "Content-Type: text/x-zim-wiki" >> "$File".md
 echo "Wiki-Format: zim 0.6" >> "$File".md
-{{zim-wiki}}
+
+#*zim-wiki}}
+
 echo "Text date: $(date +"[[Zettelkasten:%Y:%m:%d|%Y-%m-%d]]") Modi date: $(date +"[[Zettelkasten:%Y:%m:%d|%Y-%m-%d]]" -r "$folder"/"$File")" >> "$File".md
 echo "@ARTIKEL $3 " >> "$File".md
 echo "**[[./$File]] **" >> "$File".md
@@ -44,18 +46,19 @@ echo -e "{{./$File.avif?width=500}}\n" >> "$File".md
 pdfinfo "$folder"/"$File" | grep Pages >> "$File".md
 echo -e "\n" >> "$File".md
 pdftotext -nopgbrk -enc UTF-8 -f 1 -l 1 "$folder"/"$File" ->> "$File".md
-@
 ```
 
 ### pdf without folder
 
 
+*pdf without folder*
 ```Bash
-{{pdf without folder}}=
 touch "$File".md
 echo "Content-Type: text/x-zim-wiki" >> "$File".md
 echo "Wiki-Format: zim 0.6" >> "$File".md
-{{zim-wiki}}
+
+#*zim-wiki}}
+
 echo "Text date: $(date +"[[Zettelkasten:%Y:%m:%d|%Y-%m-%d]]") Modi date: $(date +"[[Zettelkasten:%Y:%m:%d|%Y-%m-%d]]" -r "$1")" >> "$File".md
 echo "@ARTIKEL $3 " >> "$File".md
 echo "**[[../$File]] **" >> "$File".md
@@ -75,7 +78,6 @@ pdftotext -nopgbrk -enc UTF-8 -f 1 -l 1 "$File" ->> "$File".md
 #kate "$File".md 2>/dev/null &
 #okular "$1" 2>/dev/null &
 #sleep 10
-@
 ```
 
 
@@ -83,18 +85,16 @@ pdftotext -nopgbrk -enc UTF-8 -f 1 -l 1 "$File" ->> "$File".md
 
 #### zim wiki
 
+*zim-wiki*
 ```bash
-{{zim-wiki}}=
 echo "====== $File ======" >> "$File".md
-@
 ```
 
 
 #### markdown
 
+*markdown*
 ```bash
-{{markdown}}=
 echo "# $File" >> "$File".md
-@
 ```
 

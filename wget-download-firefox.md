@@ -12,12 +12,11 @@ Kommando zum Extrahieren des Scripts
 hier die zim-script Datei zum Ausführen
 
 
+*wget-dd.sh*
 ```bash
-{{wget-dd.sh}}=
 #!/bin/bash
 cd ~/Downloads/
 xterm -e 'wget $1'
-@
 ```
 
 Es ist möglich über wget selbst die Downloads zu machen mittels entweder dem Addon 1 oder Addon 2

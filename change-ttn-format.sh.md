@@ -13,10 +13,9 @@ Created [2024-10-09](2024-10-09)
  Christian Gößl
 ## Main Program
 
+*run-cell.sh*
 ```bash
-{{run-cell.sh}}=
 noweb.py -Rchange-ttn-format.sh change-ttn-format.sh.md > change-ttn-format.sh && echo 'fertig' 
-@
 ```
 
 
@@ -24,8 +23,8 @@ noweb.py -Rchange-ttn-format.sh change-ttn-format.sh.md > change-ttn-format.sh &
 chmod u+x change-ttn-format.sh && ln -sf /home/christian/Gedankenspeicher/Gedankenspeicherwiki/CodeFabrik/Gedankenspeicher-Coding/change-ttn-format.sh ~/.local/bin/change-ttn-format.sh && echo 'fertig'
  ```
 
+*change-ttn-format.sh*
 ```bash
-{{change-ttn-format.sh}}=
 #!/bin/bash
 File=$(basename "$1")
 extensmd=${File##*.}
@@ -44,5 +43,4 @@ mv "${Filename%.*}"_Dateien "$folder"/"$Filename"_Dateien
 mv "$folder" "$folder.$extens"
 folder="$folder.$extens"
 sed -i "s/..\/$Filename/.\/$Filename/g" "$File"
-@
 ```

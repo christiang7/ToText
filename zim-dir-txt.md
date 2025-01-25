@@ -10,8 +10,8 @@ noweb.py -Rzim-dir-txt.sh zim-dir-txt.md > zim-dir-txt.sh && echo 'fertig'
 chmod u+x zim-dir-txt.sh && ln -sf /home/christian/Gedankenspeicher/Gedankenspeicherwiki/Zettelkasten/Gedankenwanderung/Programme/zim-dir-txt.sh ~/.local/bin/zim-dir-txt.sh && echo 'fertig'
 ```
 
+*zim-dir-txt.sh*
 ```bash
-{{zim-dir-txt.sh}}=
 #! /bin/bash
 if zenity --question --text="Möchten Sie dieses Programm: ttd ausführen?"
 then
@@ -20,6 +20,5 @@ then
     mkdir -p "$filename"
     ttd "$filename"
 fi
-@
 ```
 

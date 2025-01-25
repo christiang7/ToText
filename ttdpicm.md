@@ -7,8 +7,8 @@ Backlink [GedankenspeicherCoding](../GedankenspeicherCoding.md)
 
   ``noweb.py -Rttdpicm ttdpicm.md > ttdpicm && chmod u+x ttdpicm && echo 'fertig'``
 
+*ttdpicm*
 ```bash
-{{ttdpicm}}=
 #!/bin/bash
 ls --hide=*.md "$1" > f
 while read f
@@ -31,8 +31,6 @@ do
   mv "$1"/"$filetxt".md "$folder"/"$filetxt".md
 done < f
 rm f
-
-@
 ```
 
 

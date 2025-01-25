@@ -10,6 +10,7 @@ else
 fi
 cd $folder
 
+
 abfrage=$(yad --title="New Latex File" --text="Necessary Informations:" \
 	--form --width 500 --separator="~" --item-separator=","  \
 	--field="Filename:" \
@@ -20,6 +21,7 @@ abfrage=$(yad --title="New Latex File" --text="Necessary Informations:" \
 	--field="Git init?":CB \
 	--field="Description:":TXT \
 	"Filename" "Programming,normal,Rechnung,Schreiben,Bewerbung" "cpp,python,julia,html,css,javascript,bash,lua,other" "Christian Gößl,Internet" ",physic,math" "No,Yes" "$additiontext")
+
 if [ ! $? -eq 1 ];
 then
 	File=$(echo $abfrage | cut -s -d "~" -f 1)
@@ -57,20 +59,23 @@ then
 		echo -e "       - [ ] " >> "${File}".md
 		echo -e "\n## Features" >> "${File}".md
 		echo -e "\n## Informations" >> "${File}".md
+
 		echo -e "\n## Latex File\n" >> "${File}".md
-		echo -e "\n\`\`\`bash" >> "${File}".md
-		echo -e "{{run-cell.sh}}=" >> "${File}".md
-		echo -e "noweb.py -R${File}.tex ${File}.md > ${File}.tex && pdflatex -shell-escape ${File}.tex && xournalpp ${File}.pdf 2>/dev/null  \n@\n\`\`\`\n\n" >> "${File}".md
+
+		echo -e "\n*run-cell.sh*" >> "${File}".md
+		echo -e "\`\`\`bash" >> "${File}".md
+		echo -e "noweb.py -R${File}.tex ${File}.md > ${File}.tex && pdflatex -shell-escape ${File}.tex && xournalpp ${File}.pdf 2>/dev/null  \n\`\`\`\n\n" >> "${File}".md
+
+		echo -e "*${File}.tex*" >> "${File}".md
 		echo -e "\`\`\`latex" >> "${File}".md
-		echo -e "{{${File}.tex}}=" >> "${File}".md
 		echo -e "\\documentclass[10pt,fleqn,reqno,a4paper]{article}" >> "${File}".md
 		echo -e "\\input{general-preamble.tex}\n\\input{color-symbols.tex}" >> "${File}".md
-		echo -e "{{${File}.tex}}=" >> "${File}".md
-		echo "\begin{document}%\selectlanguage{english}" >> "${File}".md
+		echo -e "\begin{document}%\selectlanguage{english}" >> "${File}".md
 		echo -e "\n\n" >> "${File}".md
-		echo "\end{document}" >> "${File}".md
-		echo -e "\n@" >> "${File}".md
+		echo -e "\end{document}" >> "${File}".md
+		# echo -e "\n@" >> "${File}".md
 		echo -e "\`\`\`" >> "${File}".md
+
 		touch ${File}.tex
 		noweb.py -R${File}.tex ${File}.md > ${File}.tex
 			;;
@@ -83,15 +88,19 @@ then
 		echo -e "       - [ ] " >> "${File}".md
 		echo -e "\n## Features" >> "${File}".md
 		echo -e "\n## Informations" >> "${File}".md
+
 		echo -e "\n## Latex File\n" >> "${File}".md
-		echo -e "\n\`\`\`bash" >> "${File}".md
-		echo -e "{{run-cell.sh}}=" >> "${File}".md
-		echo -e "noweb.py -R${File}.tex ${File}.md > ${File}.tex && pdflatex -shell-escape ${File}.tex && xournalpp ${File}.pdf 2>/dev/null  \n@\n\`\`\`\n\n" >> "${File}".md
+
+		echo -e "\n*run-cell.sh*" >> "${File}".md
+		echo -e "\`\`\`bash" >> "${File}".md
+		echo -e "noweb.py -R${File}.tex ${File}.md > ${File}.tex && pdflatex -shell-escape ${File}.tex && xournalpp ${File}.pdf 2>/dev/null  \n\`\`\`\n\n" >> "${File}".md
+
+		echo -e "*${File}.tex*" >> "${File}".md
 		echo -e "\`\`\`latex" >> "${File}".md
-		echo -e "{{${File}.tex}}=" >> "${File}".md
 		cat /home/christian/Gedankenspeicher/Vorlagen/Rechnung-Vorlage.tex >> "${File}".md
-		echo -e "\n@" >> "${File}".md
+		# echo -e "\n@" >> "${File}".md
 		echo -e "\`\`\`" >> "${File}".md
+
 		touch ${File}.tex
 		noweb.py -R${File}.tex ${File}.md > ${File}.tex
 			;;
@@ -103,21 +112,25 @@ then
 		echo -e "    - [X] Backlog" >> "${File}".md
 		echo -e "       - [ ] " >> "${File}".md
 		echo -e "\n## Features" >> "${File}".md
+
 		echo -e "\n## Informations" >> "${File}".md
+
 		echo -e "\n## Latex File\n" >> "${File}".md
-		echo -e "\n\`\`\`bash" >> "${File}".md
-		echo -e "{{run-cell.sh}}=" >> "${File}".md
-		echo -e "noweb.py -R${File}.tex ${File}.md > ${File}.tex && pdflatex -shell-escape ${File}.tex && xournalpp ${File}.pdf 2>/dev/null & \n@\n\`\`\`\n\n" >> "${File}".md
+
+		echo -e "\n*run-cell.sh*" >> "${File}".md
+		echo -e "\`\`\`bash" >> "${File}".md
+		echo -e "noweb.py -R${File}.tex ${File}.md > ${File}.tex && pdflatex -shell-escape ${File}.tex && xournalpp ${File}.pdf 2>/dev/null & \n\`\`\`\n\n" >> "${File}".md
+
+		echo -e "*${File}.tex*" >> "${File}".md
 		echo -e "\`\`\`latex" >> "${File}".md
-		echo -e "{{${File}.tex}}=" >> "${File}".md
 		echo -e "\\documentclass[10pt,fleqn,reqno,a4paper]{article}" >> "${File}".md
 		echo -e "\\input{general-preamble.tex}\n\\input{color-symbols.tex}" >> "${File}".md
-		echo -e "{{${File}.tex}}=" >> "${File}".md
-		echo "\begin{document}%\selectlanguage{english}" >> "${File}".md
+		echo -e "\begin{document}%\selectlanguage{english}" >> "${File}".md
 		echo -e "\n\n" >> "${File}".md
-		echo "\end{document}" >> "${File}".md
-		echo -e "\n@" >> "${File}".md
+		echo -e "\end{document}" >> "${File}".md
+		# echo -e "\n@" >> "${File}".md
 		echo -e "\`\`\`" >> "${File}".md
+
 		touch ${File}.tex
 		noweb.py -R${File}.tex ${File}.md > ${File}.tex
             ;;
@@ -129,16 +142,21 @@ then
 		echo -e "    - [X] Backlog" >> "${File}".md
 		echo -e "       - [ ] " >> "${File}".md
 		echo -e "\n## Features" >> "${File}".md
+
 		echo -e "\n## Informations" >> "${File}".md
+
 		echo -e "\n## Latex File\n" >> "${File}".md
-		echo -e "\n\`\`\`bash" >> "${File}".md
-		echo -e "{{run-cell.sh}}=" >> "${File}".md
-		echo -e "noweb.py -R${File}.tex ${File}.md > ${File}.tex && pdflatex -shell-escape ${File}.tex && xournalpp ${File}.pdf 2>/dev/null & \n@\n\`\`\`\n\n" >> "${File}".md
+
+		echo -e "\n*run-cell.sh*" >> "${File}".md
+		echo -e "\`\`\`bash" >> "${File}".md
+		echo -e "noweb.py -R${File}.tex ${File}.md > ${File}.tex && pdflatex -shell-escape ${File}.tex && xournalpp ${File}.pdf 2>/dev/null & \n\`\`\`\n\n" >> "${File}".md
+
+		echo -e "*${File}.tex*" >> "${File}".md
 		echo -e "\`\`\`latex" >> "${File}".md
-		echo -e "{{${File}.tex}}=" >> "${File}".md
 		cat /home/christian/Gedankenspeicher/Vorlagen/Schreiben-Vorlagen.tex >> "${File}".md
-		echo -e "\n@" >> "${File}".md
+		# echo -e "\n@" >> "${File}".md
 		echo -e "\`\`\`" >> "${File}".md
+
 		touch ${File}.tex
 		noweb.py -R${File}.tex ${File}.md > ${File}.tex
             ;;
@@ -171,28 +189,35 @@ then
 			echo -e "       - [ ] " >> "${File}".md
 			echo -e "\n## Features" >> "${File}".md
 			echo -e "\n## Informations" >> "${File}".md
+
 			echo -e "\n## Programming" >> "${File}".md
-			echo -e "\n\`\`\`bash" >> "${File}".md
-			echo -e "{{run-cell.sh}}=" >> "${File}".md
-			echo -e "noweb.py -R${File}.${extens} ${File}.md > ${File}.${extens} && noweb.py -R${File}.tex ${File}.md > ${File}.tex && pdflatex -shell-escape ${File}.tex && echo 'fertig' \n@\n\`\`\`" >> "${File}".md
-			echo -e "{{${File}.${extens}}}=\n\n" >> "${File}".md
-			echo "@" >> "${File}".md
-			echo -e "\`\`\`" >> "${File}".md
+
+			echo -e "\n*run-cell.sh*" >> "${File}".md
+			echo -e "\`\`\`bash" >> "${File}".md
+			echo -e "noweb.py -R${File}.${extens} ${File}.md > ${File}.${extens} && noweb.py -R${File}.tex ${File}.md > ${File}.tex && pdflatex -shell-escape ${File}.tex && echo 'fertig' \n\`\`\`" >> "${File}".md
+
+			echo -e "\n*${File}.${extens}*" >> "${File}".md
+			echo -e "\`\`\`${extens}" >> "${File}".md
+			echo -e "\n\`\`\`" >> "${File}".md
+
 			echo -e "\n## Latex File\n" >> "${File}".md
+
 			echo -e "\n\`\`\`bash" >> "${File}".md
 			echo -e "noweb.py -R${File}.tex ${File}.md > ${File}.tex && pdflatex -shell-escape ${File}.tex && xournalpp ${File}.pdf 2>/dev/null  \n\`\`\`\n\n" >> "${File}".md
+
+			echo -e "*${File}.tex*" >> "${File}".md
 			echo -e "\`\`\`latex" >> "${File}".md
-			echo -e "{{${File}.tex}}=" >> "${File}".md
 			echo -e "\\documentclass[10pt,fleqn,reqno,a4paper]{article}" >> "${File}".md
 			echo -e "\\input{general-preamble.tex}\n\\input{color-symbols.tex}" >> "${File}".md
 			echo "\begin{document}%\selectlanguage{english}" >> "${File}".md
 			echo -e "\n\n" >> "${File}".md
 			echo "\begin{minted}[linenos=true,bgcolor=lightgraycolor,numberblanklines=true,showspaces=false,breaklines=true]{${langname}}" >> "${File}".md
-			echo "{{${File}.${extens}}}" >> "${File}".md
+			echo "#*${File}.${extens}}}" >> "${File}".md
 			echo "\end{minted}" >> "${File}".md
 			echo "\end{document}" >> "${File}".md
-			echo "@" >> "${File}".md
+			# echo "@" >> "${File}".md
 			echo -e "\`\`\`" >> "${File}".md
+
 			echo -e "[[./"${File}".${extens}]]" >> ../"$foldertex".md
 			touch ${File}.tex
 			noweb.py -R${File}.tex ${File}.md > ${File}.tex
@@ -211,7 +236,6 @@ then
 		git add general-preamble.tex
 		git add color-symbols.tex
 		git commit -a -m "init git"
-
 	fi
 
 fi

@@ -35,10 +35,9 @@ https://overflow.adminforge.de/exchange/tex/questions/200310/break-lines-in-mint
 
 ## Main Program
 
+*run-cell.sh*
 ```bash
-{{run-cell.sh}}=
 noweb.py -Rtemplate-tex.sh template-tex.sh.md > template-tex.sh && echo 'fertig' 
-@
 ```
 
 
@@ -46,9 +45,9 @@ noweb.py -Rtemplate-tex.sh template-tex.sh.md > template-tex.sh && echo 'fertig'
 chmod u+x template-tex.sh && ln -sf /home/christian/Gedankenspeicher/KanDo/GedankenspeicherEinrichtung/GedankenspeicherCoding/template-tex.sh ~/.local/bin/template-tex.sh && echo 'fertig'
  ```
 
+*template-tex.sh*
 ```bash
-{{template-tex.sh}}=
-{{preamble}}
+#*preamble}}
 
 if [[ ! -e "$1" ]]
 then
@@ -59,8 +58,9 @@ else
 	mkdir -p "$folder"
 fi
 cd $folder
-{{Main}}
-@
+
+#*Main}}
+
 ```
 
 
@@ -69,16 +69,15 @@ cd $folder
 setting presets before starting the program
 the first line is needed for shell scripts
 
+*preamble*
 ```bash
-{{preamble}}=
 #!/bin/bash
-@
 ```
 
 ### Request
 
+*request*
 ```bash
-{{request}}=
 abfrage=$(yad --title="New Latex File" --text="Necessary Informations:" \
 	--form --width 500 --separator="~" --item-separator=","  \
 	--field="Filename:" \
@@ -89,17 +88,16 @@ abfrage=$(yad --title="New Latex File" --text="Necessary Informations:" \
 	--field="Git init?":CB \
 	--field="Description:":TXT \
 	"Filename" "Programming,normal,Rechnung,Schreiben,Bewerbung" "cpp,python,julia,html,css,javascript,bash,lua,other" "Christian Gößl,Internet" ",physic,math" "No,Yes" "$additiontext")
-@
-
 ```
 
 ### Main
 
 
+*Main*
 ```bash
-{{Main}}=
 
-{{request}}
+#*request}}
+
 if [ ! $? -eq 1 ];
 then
 	File=$(echo $abfrage | cut -s -d "~" -f 1)
@@ -121,20 +119,20 @@ then
 	#Filename="$File"
 	#File="$File".tex
 
-	{{description file}}
+	#*description file}}
 
 	case ${template} in
 		normal)
-		{{normal tex template}}
+		#*normal tex template}}
 			;;
         Rechnung)
-		{{Rechnung tex template}}
+		#*Rechnung tex template}}
 			;;
         Bewerbung)
-		{{Bewerbung tex template}}
+		#*Bewerbung tex template}}
             ;;
 		Schreiben)
-		{{Schreiben tex template}}
+		#*Schreiben tex template}}
             ;;
 		Programming)
 			case ${langname} in
@@ -157,32 +155,27 @@ then
 			other) extens="other"
 				;;
 			esac
-			{{programming tex template}}
+			#*programming tex template}}
 			;;
 	esac
 	if [[ $gitinit == "Yes" ]];
 	then
-		{{git init}}
+		#*git init}}
 	fi
 
 fi
-
-@
-
 ```
 
 ### create description file
 
 
+*description file*
 ```bash
-{{description file}}=
 echo -e "====== $foldertex ======" >> ../"$foldertex".md
 echo -e "Created $(date +"[[Zettelkasten:%Y:%m:%d|%Y-%m-%d]]")" >> ../"$foldertex".md
 echo -e "[*] ** $foldertex **" >> ../"$foldertex".md
 echo -e "Folder for the latex file" >> ../"$foldertex".md
 echo -e "[[./"${File}".md]]\n[[./"${File}".tex]]\n[[./"${File}".pdf]]" >> ../"$foldertex".md
-@
-
 ```
 
 
@@ -190,8 +183,8 @@ echo -e "[[./"${File}".md]]\n[[./"${File}".tex]]\n[[./"${File}".pdf]]" >> ../"$f
 
 Creation of template
 
+*programming tex template*
 ```bash
-{{programming tex template}}=
 echo -e "# ${title}" >> "${File}".md
 echo -e "Created [$(date +%Y-%m-%d)]()\n" >> "${File}".md
 echo -e "- [X] **${title}** " >> "${File}".md
@@ -200,34 +193,39 @@ echo -e "    - [X] Backlog" >> "${File}".md
 echo -e "       - [ ] " >> "${File}".md
 echo -e "\n## Features" >> "${File}".md
 echo -e "\n## Informations" >> "${File}".md
+
 echo -e "\n## Programming" >> "${File}".md
-echo -e "\n\`\`\`bash" >> "${File}".md
-echo -e "{{run-cell.sh}}=" >> "${File}".md
-echo -e "noweb.py -R${File}.${extens} ${File}.md > ${File}.${extens} && noweb.py -R${File}.tex ${File}.md > ${File}.tex && pdflatex -shell-escape ${File}.tex && echo 'fertig' \n@\n\`\`\`" >> "${File}".md
-echo -e "{{${File}.${extens}}}=\n\n" >> "${File}".md
-echo "@" >> "${File}".md
-echo -e "\`\`\`" >> "${File}".md
+
+echo -e "\n*run-cell.sh*" >> "${File}".md
+echo -e "\`\`\`bash" >> "${File}".md
+echo -e "noweb.py -R${File}.${extens} ${File}.md > ${File}.${extens} && noweb.py -R${File}.tex ${File}.md > ${File}.tex && pdflatex -shell-escape ${File}.tex && echo 'fertig' \n\`\`\`" >> "${File}".md
+
+echo -e "\n*${File}.${extens}*" >> "${File}".md
+echo -e "\`\`\`${extens}" >> "${File}".md
+echo -e "\n\`\`\`" >> "${File}".md
+
 echo -e "\n## Latex File\n" >> "${File}".md
+
 echo -e "\n\`\`\`bash" >> "${File}".md
 echo -e "noweb.py -R${File}.tex ${File}.md > ${File}.tex && pdflatex -shell-escape ${File}.tex && xournalpp ${File}.pdf 2>/dev/null  \n\`\`\`\n\n" >> "${File}".md
+
+echo -e "*${File}.tex*" >> "${File}".md
 echo -e "\`\`\`latex" >> "${File}".md
-echo -e "{{${File}.tex}}=" >> "${File}".md
 echo -e "\\documentclass[10pt,fleqn,reqno,a4paper]{article}" >> "${File}".md
 echo -e "\\input{general-preamble.tex}\n\\input{color-symbols.tex}" >> "${File}".md
 echo "\begin{document}%\selectlanguage{english}" >> "${File}".md
 echo -e "\n\n" >> "${File}".md
 echo "\begin{minted}[linenos=true,bgcolor=lightgraycolor,numberblanklines=true,showspaces=false,breaklines=true]{${langname}}" >> "${File}".md
-echo "{{${File}.${extens}}}" >> "${File}".md
+echo "#*${File}.${extens}}}" >> "${File}".md
 echo "\end{minted}" >> "${File}".md
 echo "\end{document}" >> "${File}".md
-echo "@" >> "${File}".md
+# echo "@" >> "${File}".md
 echo -e "\`\`\`" >> "${File}".md
+
 echo -e "[[./"${File}".${extens}]]" >> ../"$foldertex".md
 touch ${File}.tex
 noweb.py -R${File}.tex ${File}.md > ${File}.tex
 noweb.py -R${File}.${extens} ${File}.md > ${File}.${extens}
-@
-
 ```
 
 
@@ -235,8 +233,8 @@ noweb.py -R${File}.${extens} ${File}.md > ${File}.${extens}
 
 Creation of templates
 
+*normal tex template*
 ```bash
-{{normal tex template}}=
 echo -e "# ${File}.tex" >> "${File}".md
 echo -e "Created [$(date +%Y-%m-%d)]()\n" >> "${File}".md
 echo -e "- [X] **${File}.tex** " >> "${File}".md
@@ -245,24 +243,25 @@ echo -e "    - [X] Backlog" >> "${File}".md
 echo -e "       - [ ] " >> "${File}".md
 echo -e "\n## Features" >> "${File}".md
 echo -e "\n## Informations" >> "${File}".md
+
 echo -e "\n## Latex File\n" >> "${File}".md
-echo -e "\n\`\`\`bash" >> "${File}".md
-echo -e "{{run-cell.sh}}=" >> "${File}".md
-echo -e "noweb.py -R${File}.tex ${File}.md > ${File}.tex && pdflatex -shell-escape ${File}.tex && xournalpp ${File}.pdf 2>/dev/null  \n@\n\`\`\`\n\n" >> "${File}".md
+
+echo -e "\n*run-cell.sh*" >> "${File}".md
+echo -e "\`\`\`bash" >> "${File}".md
+echo -e "noweb.py -R${File}.tex ${File}.md > ${File}.tex && pdflatex -shell-escape ${File}.tex && xournalpp ${File}.pdf 2>/dev/null  \n\`\`\`\n\n" >> "${File}".md
+
+echo -e "*${File}.tex*" >> "${File}".md
 echo -e "\`\`\`latex" >> "${File}".md
-echo -e "{{${File}.tex}}=" >> "${File}".md
 echo -e "\\documentclass[10pt,fleqn,reqno,a4paper]{article}" >> "${File}".md
 echo -e "\\input{general-preamble.tex}\n\\input{color-symbols.tex}" >> "${File}".md
-echo -e "{{${File}.tex}}=" >> "${File}".md
-echo "\begin{document}%\selectlanguage{english}" >> "${File}".md
+echo -e "\begin{document}%\selectlanguage{english}" >> "${File}".md
 echo -e "\n\n" >> "${File}".md
-echo "\end{document}" >> "${File}".md
-echo -e "\n@" >> "${File}".md
+echo -e "\end{document}" >> "${File}".md
+# echo -e "\n@" >> "${File}".md
 echo -e "\`\`\`" >> "${File}".md
+
 touch ${File}.tex
 noweb.py -R${File}.tex ${File}.md > ${File}.tex
-@
-
 ```
 
 
@@ -270,8 +269,8 @@ noweb.py -R${File}.tex ${File}.md > ${File}.tex
 
 Creation of Rechnung template
 
+*Rechnung tex template*
 ```bash
-{{Rechnung tex template}}=
 echo -e "# ${File}.tex" >> "${File}".md
 echo -e "Created [$(date +%Y-%m-%d)]()\n" >> "${File}".md
 echo -e "- [X] **${File}.tex** " >> "${File}".md
@@ -280,24 +279,26 @@ echo -e "    - [X] Backlog" >> "${File}".md
 echo -e "       - [ ] " >> "${File}".md
 echo -e "\n## Features" >> "${File}".md
 echo -e "\n## Informations" >> "${File}".md
+
 echo -e "\n## Latex File\n" >> "${File}".md
-echo -e "\n\`\`\`bash" >> "${File}".md
-echo -e "{{run-cell.sh}}=" >> "${File}".md
-echo -e "noweb.py -R${File}.tex ${File}.md > ${File}.tex && pdflatex -shell-escape ${File}.tex && xournalpp ${File}.pdf 2>/dev/null  \n@\n\`\`\`\n\n" >> "${File}".md
+
+echo -e "\n*run-cell.sh*" >> "${File}".md
+echo -e "\`\`\`bash" >> "${File}".md
+echo -e "noweb.py -R${File}.tex ${File}.md > ${File}.tex && pdflatex -shell-escape ${File}.tex && xournalpp ${File}.pdf 2>/dev/null  \n\`\`\`\n\n" >> "${File}".md
+
+echo -e "*${File}.tex*" >> "${File}".md
 echo -e "\`\`\`latex" >> "${File}".md
-echo -e "{{${File}.tex}}=" >> "${File}".md
 cat /home/christian/Gedankenspeicher/Vorlagen/Rechnung-Vorlage.tex >> "${File}".md
-echo -e "\n@" >> "${File}".md
+# echo -e "\n@" >> "${File}".md
 echo -e "\`\`\`" >> "${File}".md
+
 touch ${File}.tex
 noweb.py -R${File}.tex ${File}.md > ${File}.tex
-@
-
 ```
 ### create Schreiben template
 
+*Schreiben tex template*
 ```bash
-{{Schreiben tex template}}=
 echo -e "# ${File}.tex" >> "${File}".md
 echo -e "Created [$(date +%Y-%m-%d)]()\n" >> "${File}".md
 echo -e "- [X] **${File}.tex** " >> "${File}".md
@@ -305,19 +306,23 @@ echo -e "    - [X] Doing" >> "${File}".md
 echo -e "    - [X] Backlog" >> "${File}".md
 echo -e "       - [ ] " >> "${File}".md
 echo -e "\n## Features" >> "${File}".md
+
 echo -e "\n## Informations" >> "${File}".md
+
 echo -e "\n## Latex File\n" >> "${File}".md
-echo -e "\n\`\`\`bash" >> "${File}".md
-echo -e "{{run-cell.sh}}=" >> "${File}".md
-echo -e "noweb.py -R${File}.tex ${File}.md > ${File}.tex && pdflatex -shell-escape ${File}.tex && xournalpp ${File}.pdf 2>/dev/null & \n@\n\`\`\`\n\n" >> "${File}".md
+
+echo -e "\n*run-cell.sh*" >> "${File}".md
+echo -e "\`\`\`bash" >> "${File}".md
+echo -e "noweb.py -R${File}.tex ${File}.md > ${File}.tex && pdflatex -shell-escape ${File}.tex && xournalpp ${File}.pdf 2>/dev/null & \n\`\`\`\n\n" >> "${File}".md
+
+echo -e "*${File}.tex*" >> "${File}".md
 echo -e "\`\`\`latex" >> "${File}".md
-echo -e "{{${File}.tex}}=" >> "${File}".md
 cat /home/christian/Gedankenspeicher/Vorlagen/Schreiben-Vorlagen.tex >> "${File}".md
-echo -e "\n@" >> "${File}".md
+# echo -e "\n@" >> "${File}".md
 echo -e "\`\`\`" >> "${File}".md
+
 touch ${File}.tex
 noweb.py -R${File}.tex ${File}.md > ${File}.tex
-@
 ```
 
 
@@ -325,8 +330,8 @@ noweb.py -R${File}.tex ${File}.md > ${File}.tex
 
 Creation of Bewerbung template
 
+*Bewerbung tex template*
 ```bash
-{{Bewerbung tex template}}=
 echo -e "# ${File}.tex" >> "${File}".md
 echo -e "Created [$(date +%Y-%m-%d)]()\n" >> "${File}".md
 echo -e "- [X] **${File}.tex** " >> "${File}".md
@@ -334,33 +339,35 @@ echo -e "    - [X] Doing" >> "${File}".md
 echo -e "    - [X] Backlog" >> "${File}".md
 echo -e "       - [ ] " >> "${File}".md
 echo -e "\n## Features" >> "${File}".md
+
 echo -e "\n## Informations" >> "${File}".md
+
 echo -e "\n## Latex File\n" >> "${File}".md
-echo -e "\n\`\`\`bash" >> "${File}".md
-echo -e "{{run-cell.sh}}=" >> "${File}".md
-echo -e "noweb.py -R${File}.tex ${File}.md > ${File}.tex && pdflatex -shell-escape ${File}.tex && xournalpp ${File}.pdf 2>/dev/null & \n@\n\`\`\`\n\n" >> "${File}".md
+
+echo -e "\n*run-cell.sh*" >> "${File}".md
+echo -e "\`\`\`bash" >> "${File}".md
+echo -e "noweb.py -R${File}.tex ${File}.md > ${File}.tex && pdflatex -shell-escape ${File}.tex && xournalpp ${File}.pdf 2>/dev/null & \n\`\`\`\n\n" >> "${File}".md
+
+echo -e "*${File}.tex*" >> "${File}".md
 echo -e "\`\`\`latex" >> "${File}".md
-echo -e "{{${File}.tex}}=" >> "${File}".md
 echo -e "\\documentclass[10pt,fleqn,reqno,a4paper]{article}" >> "${File}".md
 echo -e "\\input{general-preamble.tex}\n\\input{color-symbols.tex}" >> "${File}".md
-echo -e "{{${File}.tex}}=" >> "${File}".md
-echo "\begin{document}%\selectlanguage{english}" >> "${File}".md
+echo -e "\begin{document}%\selectlanguage{english}" >> "${File}".md
 echo -e "\n\n" >> "${File}".md
-echo "\end{document}" >> "${File}".md
-echo -e "\n@" >> "${File}".md
+echo -e "\end{document}" >> "${File}".md
+# echo -e "\n@" >> "${File}".md
 echo -e "\`\`\`" >> "${File}".md
+
 touch ${File}.tex
 noweb.py -R${File}.tex ${File}.md > ${File}.tex
-@
-
 ```
 
 
 
 ### git versioning
 
+*git init*
 ```bash
-{{git init}}=
 git init
 git add "${File}".md
 git add ${File}.tex
@@ -371,8 +378,6 @@ fi
 git add general-preamble.tex
 git add color-symbols.tex
 git commit -a -m "init git"
-
-@
 ```
 
 

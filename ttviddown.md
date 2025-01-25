@@ -9,8 +9,8 @@ Backlink [GedankenspeicherCoding](../GedankenspeicherCoding.md)
 
   ``noweb.py -Rttviddown ttviddown.md > ttviddown && chmod u+x ttviddown && echo 'fertig'``
 
+*ttviddown*
 ```bash
-{{ttviddown}}=
 #!/bin/bash
 File=$(date +"/home/christian/Gedankenspeicher/Gedankenspeicherwiki/Zettelkasten/%Y/%m/%d.md" -r "$1")
 f=$(basename "$1")
@@ -20,8 +20,6 @@ echo "Content-Type: text/x-zim-wiki" >> "$File".md
 echo "Wiki-Format: zim 0.6" >> "$File".md
 echo "===== $File =====" >> "$File".md
 echo [ ] @VIDEO @VIDEOARCHIV "$2" "$f" >> "$File"
-@ 
-
 ```
 
 

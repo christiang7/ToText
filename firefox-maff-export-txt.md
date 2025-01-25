@@ -1,15 +1,16 @@
 # firefox-maff-export-txt
 Created Freitag [Zettelkasten:2022:05:20]()
-Backlink [GedankenspeicherCoding](../GedankenspeicherCoding.md)
 
 - [X] **firefox-maff-export-txt**
 
-
-  ``noweb.py -Rfirefox-maff-export-txt firefox-maff-export-txt.md > firefox-maff-export-txt && chmod u+x firefox-maff-export-txt && echo 'fertig'``
-
-
+*run-cell.sh*
 ```bash
-{{firefox-maff-export-txt}}=
+noweb.py -Rfirefox-maff-export-txt firefox-maff-export-txt.md > firefox-maff-export-txt && chmod u+x firefox-maff-export-txt && echo 'fertig'
+```
+
+
+*firefox-maff-export-txt*
+```bash
 #!/bin/sh
 #for f in "$@"; do
 #  u=$(printf "%s" "$f" | sed "s|%|%25|g" | sed "s|?|%3F|g" | sed "s|#|%23|g")
@@ -21,8 +22,6 @@ Backlink [GedankenspeicherCoding](../GedankenspeicherCoding.md)
 File=$(echo "$1" | sed 's/ /_/g' | sed 's/:/;/g'| sed -e "s/'/_/g" | sed 's/\"//g')
 folder=$(unzip -Z -1 "$1" '*/')
 unzip "$1"
-tts "$1" && cat $folder'index.rdf' >> "$File".md && rm -r $folder
-
-@
+ttn "$1" && cat $folder'index.rdf' >> "$File".md && rm -r $folder
 ```
 

@@ -13,8 +13,8 @@ noweb.py -Rttne.sh ttne.md > ttne.sh  && echo 'fertig'
 chmod u+x ttne.sh  && ln -sf /home/christian/Gedankenspeicher/Gedankenspeicherwiki/Zettelkasten/ZetteL/CadeFabrik/ttne.sh ~/.local/bin/ttne.sh && echo 'fertig'
   ```
 
+*ttne.sh*
 ```bash
-{{ttne.sh}}=
 #!/usr/bin/env bash
 
 
@@ -69,6 +69,5 @@ then
   #echo -e "\n${tabs}" >> "${folder}"/"${File}".md
 
 fi
-@ 
 ```
 

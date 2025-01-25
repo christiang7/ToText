@@ -11,10 +11,10 @@ Backlink [CodeFabrik:GedankenspeicherCoding](../GedankenspeicherCoding.md)
 
 
 ## Code
+
+*run-cell.sh*
 ```bash
-{{run-cell.sh}}=
 noweb.py -Rzim-xournal.sh zim-xournal.md > zim-xournal.sh && echo 'fertig'
-@
 ```
 
 
@@ -23,8 +23,8 @@ chmod u+x zim-xournal.sh && ln -sf /home/christian/Gedankenspeicher/Gedankenspei
 ```
 
 
+*zim-xournal.sh*
 ```bash
-{{zim-xournal.sh}}=
 #!/bin/bash
 File=$(echo "$1" | sed 's/ /_/g' | sed 's/:/;/g'| sed -e "s/'/_/g" | sed 's/\"//g')
 filetxt=${File%.*}
@@ -54,25 +54,23 @@ then
     xournalpp "$filename".xopp && xournalpp "$File" -p "$filename".pdf
     if [ "Unterrichtsnotiz" != "$par" ];
     then
-        {{Zim template}}
+        #*Zim template}}
     fi
 fi
-@
 ```
 
 ### Markdown template
 
+*Markdown template*
 ```bash
-{{Markdown template}}=
 echo "# $File" >> "$File".md
 echo "Text creation time: $(date +"[[Zettelkasten/%Y/%m/%d|%Y-%m-%d]]") Modification time: $(date +"[[Zettelkasten/%Y/%m/%d|%Y-%m-%d]]" -r "$File")" >> "$File".md
 echo "- [X] **[["$filename".xopp]] **" >> "$File".md
 echo "$source" >> "$File".md
-@
 ```
 
+*Zim template*
 ```bash
-{{Zim template}}=
 echo "Content-Type: text/x-zim-wiki" >> "$File".md
 echo "Wiki-Format: zim 0.6" >> "$File".md
 echo "====== $File ======" >> "$File".md
@@ -84,5 +82,4 @@ echo "$source" >> "$File".md
 #xournalpp --export-range=1 "$File" -i "$File".png
 #convert "$File".png "$File".avif
 #rm "$File".png
-@
 ```

@@ -11,8 +11,10 @@ noweb.py -Rsyncthing-ttdm.sh syncthing-ttdm.md > syncthing-ttdm.sh && echo 'fert
 ```bash
 chmod u+x syncthing-ttdm.sh && ln -sf /home/christian/Gedankenspeicher/Gedankenspeicherwiki/Zettelkasten/ZetteL/CodeFabrik/syncthing-ttdm.sh ~/.local/bin/syncthing-ttdm.sh && echo 'fertig'
 ```
+
+
+*syncthing-ttdm.sh*
 ```bash
-{{syncthing-ttdm.sh}}=
 #!/bin/bash
 FolderSync=$(echo "$1")
 #ls --hide=*.md "$folder" > f
@@ -190,6 +192,5 @@ do
 done
 
 #rm f
-@
 ```
 

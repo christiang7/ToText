@@ -7,10 +7,13 @@ Text creation time:
 Modification time:
 [Zettelkasten:2021:04:22]()
 
-``  noweb.py -Rttdpic ttdpic.md > ttdpic && chmod u+x ttdpic && echo 'fertig'``
-
+*run-cell.sh*
 ```bash
-{{ttdpic}}=
+noweb.py -Rttdpic ttdpic.md > ttdpic && chmod u+x ttdpic && echo 'fertig'
+```
+
+*ttdpic*
+```bash
 #!/bin/bash
 ls --hide=*.md "$1" > f
 while read f
@@ -30,8 +33,6 @@ do
   echo -e "\n$2\n" >> "$1"/"$filetxt".md
 done < f
 rm f
-
-@
 ```
 
 

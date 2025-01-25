@@ -4,22 +4,22 @@ Text creation time: [Zettelkasten:2021:04:29]() Modification time: [Zettelkasten
 
 
 
+*run-cell.sh*
 ```bash
-{{run-cell.sh}}=
 noweb.py -Rttpic ttpic.md > ttpic && chmod u+x ttpic && echo 'fertig'
-@
 ```
 
-
+*ttpic*
 ```bash
-{{ttpic}}=
 #!/bin/bash
 File=$(echo "$1" | sed 's/ /_/g' | sed 's/:/;/g'| sed -e "s/'/_/g" | sed 's/\"//g')
 #f=$(basename "$1")
 touch "$File".md
 echo "Content-Type: text/x-zim-wiki" >> "$File".md
 echo "Wiki-Format: zim 0.6" >> "$File".md
-{{zim-wiki}}
+
+#*zim-wiki}}
+
 echo "Text date: $(date +"[[Zettelkasten:%Y:%m:%d|%Y-%m-%d]]") Modi date: $(date +"[[Zettelkasten:%Y:%m:%d|%Y-%m-%d]]" -r "$1")" >> "$File".md
 echo "@BILD $3 " >> "$File".md
 echo "**[[../$File]] **" >> "$File".md
@@ -31,7 +31,6 @@ echo -e "\n$4" >> "$File".md
 #sleep 10
 #kwrite
 #echo fertig
-@
 ```
 
 
@@ -39,19 +38,17 @@ echo -e "\n$4" >> "$File".md
 
 #### zim wiki
 
+*zim-wiki*
 ```bash
-{{zim-wiki}}=
 echo "====== $File ======" >> "$File".md
-@
 ```
 
 
 #### markdown
 
+*markdown*
 ```bash
-{{markdown}}=
 echo "# $File" >> "$File".md
-@
 ```
 
 

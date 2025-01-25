@@ -217,13 +217,16 @@ then
 		echo -e "\n## Features" >> "$foldertex"/"${filename}".md
 		echo -e "\n## Informations" >> "$foldertex"/"${filename}".md
 		echo -e "\n## Latex File\n" >> "$foldertex"/"${filename}".md
-		echo -e "\n\`\`\`bash" >> "$foldertex"/"${filename}".md
-		echo -e "{{run-cell.sh}}=\nnoweb.py -R${filename}.tex ${filename}.md > ${filename}.tex && pdflatex ${filename}.tex && xdg-open ${filename}.pdf 2>/dev/null \n@\n\`\`\`\n\n" >> "$foldertex"/"${filename}".md
+
+		echo -e "\n*run-cell.sh*" >> "$foldertex"/"${filename}".md
+		echo -e "\`\`\`bash" >> "$foldertex"/"${filename}".md
+		echo -e "noweb.py -R${filename}.tex ${filename}.md > ${filename}.tex && pdflatex ${filename}.tex && xdg-open ${filename}.pdf 2>/dev/null \n\`\`\`\n\n" >> "$foldertex"/"${filename}".md
+		echo -e "*${filename}.tex*" >> "$foldertex"/"${filename}".md
 		echo -e "\`\`\`tex" >> "$foldertex"/"${filename}".md
-		echo -e "{{${filename}.tex}}=" >> "$foldertex"/"${filename}".md
 		cat "$foldertex"/"${filename}".tex >> "$foldertex"/"${filename}".md
-		echo -e "\n@" >> "$foldertex"/"${filename}".md
-		echo -e "\`\`\`" >> "$foldertex"/"${filename}".md
+		# echo -e "\n@" >> "$foldertex"/"${filename}".md
+		echo -e "\n\`\`\`" >> "$foldertex"/"${filename}".md
+
 		#ln -s "$folder"/"$folder"/"$File" "$folder"/"$File"
 		#ln -s "$folder"/"$filename".pdf "$filename".pdf
 		#kate "$folder".md 2>/dev/null &
@@ -300,4 +303,3 @@ then
         xdg-open "$File" 2>/dev/null &
     fi
 fi
-

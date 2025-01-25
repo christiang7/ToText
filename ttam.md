@@ -29,8 +29,8 @@ noweb.py -Rttam.sh ttam.md > ttam.sh && echo 'fertig'
 chmod u+x ttam.sh && ln -sf /home/christian/Gedankenspeicher/Gedankenspeicherwiki/CodeFabrik/GedankenspeicherCoding/ttam.sh ~/.local/bin/ttam.sh && echo 'fertig'
 ```
 
+*ttam.sh*
 ```bash
-{{ttam.sh}}=
 #!/usr/bin/env bash
 
 
@@ -91,7 +91,5 @@ then
 
 	#echo -e "[[$assetsfolder/$filename]]\n[[$wikipath:$filename]]" >> "$assetsfolder"/"$filename".md
 fi
-@
-
 ```
 

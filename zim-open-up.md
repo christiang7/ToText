@@ -9,6 +9,7 @@ Created [[2023-06-22]]
 
 Open in zim the folder of the containing file.
 
+*run-cell.sh*
 ```bash
  noweb.py -Rzim-open-up.sh zim-open-up.md > zim-open-up.sh && echo 'fertig' 
 ```
@@ -21,12 +22,10 @@ Open in zim the folder of the containing file.
 
 ## Main program
 
+*zim-open-up.sh*
 ```bash
-{{zim-open-up.sh}}=
 #!/bin/bash
 file=$(readlink -f -n "$1")
 filepath=$(echo "${file%/*}")
 xdg-open $filepath
-@
-
 ```

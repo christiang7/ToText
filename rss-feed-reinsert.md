@@ -27,31 +27,28 @@ chmod u+x rss-feed-reinsert.sh && ln -sf /home/christian/Gedankenspeicher/Gedank
 
 ### Main program
 
+*rss-feed-reinsert.sh*
 ```bash
-{{rss-feed-reinsert.sh}}=
 #!/bin/bash
-{{request}}
 
-@
-
+#*request}}
 ```
 
 ### Request
 
+*request*
 ```bash
-{{request}}=
 choose=$(zenity --height 350 --list --radiolist --print-column ALL --hide-header --column "Checkbox" --column "What" True Spass FALSE Assets FALSE Physik FALSE Mathematik FALSE Philosophie FALSE Naturwissenschaften_und_Instrumentarien FALSE CodeFabrik FALSE Download)
 if [ ! $? -eq 1 ];
 then
-   {{insert-feeds}}
+   #*insert-feeds}}
 fi
-@
 ```
 
 ### Choose of the files
 
+*choose*
 ```bash
-{{choose}}=
 case ${choose} in
    Spass) rssfile=$(echo "/home/christian/Gedankenspeicher/Gedankenspeicherwiki/Spaß_Stream/Spass_Stream-rss.md")
 	  ;;
@@ -70,15 +67,14 @@ case ${choose} in
    Download) rssfile=$(echo "/home/christian/Gedankenspeicher/Gedankenspeicherwiki/CodeFabrik/Download-rss.md")
 	  ;;
 esac
-
-@
 ```
 
 ### Insert the feeds
 
+*insert-feeds*
 ```bash
-{{insert-feeds}}=
-{{choose}}
+#*choose}}
+
 #rssfile=$(echo "/home/christian/Gedankenspeicher/Gedankenspeicherwiki/CodeFabrik/rss-source.rss")
 sed -i "$ d" $rssfile
 #tabs="$(xclip -selection clipboard -o)"
@@ -102,7 +98,4 @@ do
 done
 echo "</channel>" >> $rssfile
 echo "</rss>" >> $rssfile
-
-@
-
 ```

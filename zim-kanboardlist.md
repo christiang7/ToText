@@ -9,6 +9,7 @@ einfügen von einer Standard Kanboardliste für zim-wiki
 
 ## Program
 
+*run-cell.sh*
 ```bash
 noweb.py -Rzim-kanboardlist.sh zim-kanboardlist.md > zim-kanboardlist.sh && echo 'fertig'
 ```
@@ -20,22 +21,23 @@ chmod u+x zim-kanboardlist.sh && ln -sf ~/Gedankenspeicher/Gedankenspeicherwiki/
 
 ## Main program
 
+*zim-kanboardlist.sh*
 ```bash
-{{zim-kanboardlist.sh}}=
 #!/bin/bash
-{{list}}
-@
+
+#*list}}
 
 ```
 
+### Insert list
 Die Standardliste für das Gedankenspeicherprojekt für Kanboards
 
+*list*
 ```bash
-{{list}}=
 echo "    [*] Done" 
 echo "    [*] Doing Interput ② "
 echo "    [*] Doing ② "
 echo "    [*] Next ②"
 echo "    [*] Planung ②"
 echo "    [*] Backlog"
-@
+```

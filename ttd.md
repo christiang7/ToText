@@ -4,14 +4,13 @@
 
 In einem Verzeichnis alle Dateien mit einer Textdatei versehen
 
+*run-cell.sh*
 ```bash
-{{run-cell.sh}}=
 noweb.py -Rttd ttd.md > ttd && chmod u+x ttd && echo 'fertig'
-@
 ```
 
+*ttd*
 ```bash
-{{ttd}}=
 #!/bin/bash
 folder="$1"
 folder=$(echo $folder | sed 's/\///g')
@@ -161,6 +160,5 @@ do
 	#echo "[[./$File]]" >> "$foldertxt".md
 	#echo "[[+$File]]" >> "$foldertxt".md
 done
-@
 ```
 

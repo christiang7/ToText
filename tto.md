@@ -13,8 +13,8 @@ Modification time:
 
 ``  noweb.py -Rtto tto.md > tto && chmod u+x tto && echo 'fertig'``
 
+*tto*
 ```bash
-{{tto}}=
 #!/bin/bash
 File=$(echo "$1" | sed 's/ /_/g' | sed 's/:/;/g'| sed -e "s/'/_/g" | sed 's/\"//g')
 f=$(basename "$1")
@@ -24,6 +24,5 @@ echo "Wiki-Format: zim 0.6" >> "$File".md
 echo "[*] **[[../$f]] $2**" >> "$File".md
 echo "$2" >> "$File".md
 echo "$3" >> "$File".md
-@
 ```
 

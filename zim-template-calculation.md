@@ -11,12 +11,13 @@ math
 
 ## Informations
  Christian Gößl
+
+
 ## Main Program
 
+*run-cell.sh*
 ```bash
-{{run-cell.sh}}=
 noweb.py -Rzim-template-calculation.sh zim-template-calculation.md > zim-template-calculation.sh && echo 'fertig'
-@
 ```
 
 
@@ -24,32 +25,33 @@ noweb.py -Rzim-template-calculation.sh zim-template-calculation.md > zim-templat
 chmod u+x zim-template-calculation.sh && ln -sf /home/christian/Gedankenspeicher/KanDo/GedankenspeicherEinrichtung/GedankenspeicherCoding/zim-template-calculation.sh ~/.local/bin/zim-template-calculation.sh && echo 'fertig'
  ```
 
+
+
+*zim-template-calculation.sh*
 ```bash
-{{zim-template-calculation.sh}}=
-{{preamble}}
+#*preamble}}
 
-{{Abruf txt Datei Ordner}}
+#*Abruf txt Datei Ordner}}
 
-{{Abfragen}}
+#*Abfragen}}
 
-@
 ```
 
 ### Preamble
 
 Einstellungen vor dem Start des eigentlichen Programms, hier für ein Shell Script ist diese Zeile notwendig
 
+*preamble*
 ```bash
-{{preamble}}=
 #!/bin/bash
-@
 ```
 
 ### Abruf wo sich die Datei befindet
 
 Den Ordner erstellen, wo die neue Datei gespeichert werden soll. Dabei wird der Pfad der Datei genommen und für die späteren Links gespeichert
+
+*Abruf txt Datei Ordner*
 ```bash
-{{Abruf txt Datei Ordner}}=
 if [[ -e "$1" ]]
 then
     filetxt=$(readlink -f -n "$1")
@@ -63,13 +65,12 @@ echo $folder
 cd $folder
 File="Filename"
 Project="Projectname"
-@
 ```
 
 ### Abfrage was genau angelegt werden soll
 
+*Abfragen*
 ```bash
-{{Abfragen}}=
 abfrage=$(yad --title="New Project calculation" --text="Necessary Informations:" \
 	--form --width 500 --separator="~" --item-separator=","  \
 	--field="Projectname" \
@@ -118,24 +119,22 @@ then
     Filename="$File"
     File="$File"."${extens}"
 
-    {{Using zim}}
+    #*Using zim}}
 
-    {{readme file}}
-    #README template
-    {{calculation template}}
+    #*readme file}}
 
-    {{git init}}
+    #*calculation template}}
+
+    #*git init}}
 
 fi
-@
-
 ```
 
 ### Using zim?
 When the program is used not for zim pages, then we create a zim file.
 
+*Using zim*
 ```bash
-{{Using zim}}=
 if [[ ! -e ../"$Project".md ]]
 then
 	folder="$Project"
@@ -144,16 +143,13 @@ then
 	echo -e "Created $(date +"[[Zettelkasten:%Y:%m:%d|%Y-%m-%d]]")" >> ../"$folder".md
 	echo -e "[*] ** $folder **" >> ../"$folder".md
 fi
-@
 ```
-
-
 
 ### Using Markdown?
 When the program is used not for zim pages, then we create a zim file.
 
+*Using markdown*
 ```bash
-{{Using markdown}}=
 if [[ ! -e ../"$Project".md ]]
 then
 	folder="$Project"
@@ -162,14 +158,13 @@ then
 	echo -e "Created $(date +"[[Zettelkasten/%Y/%m/%d|%Y-%m-%d]]")" >> ../"$folder".md
 	echo -e "- [X] ** $folder **" >> ../"$folder".md
 fi
-@
 ```
 
 ### create README file
 
 
+*readme file*
 ```bash
-{{readme file}}=
 echo -e "# README" >> "README".md
 echo -e "Created [$(date +%Y-%m-%d)]()\n" >> "README".md
 echo -e "${tags} " >> "README".md
@@ -184,8 +179,6 @@ echo -e "    - [X] Backlog" >> "README".md
 echo -e "\n## Features" >> "README".md
 echo -e "\n## Description" >> "README".md
 echo -e "\n${additiontext}" >> "README".md
-@
-
 ```
 
 
@@ -193,8 +186,8 @@ echo -e "\n${additiontext}" >> "README".md
 
 Die Erzeugung des templates
 
+*calculation template*
 ```bash
-{{calculation template}}=
 echo -e "# ${File}" >> "${File}".md
 echo -e "Created [$(date +%Y-%m-%d)]()\n" >> "${File}".md
 echo -e "${tags} " >> "${File}".md
@@ -204,29 +197,31 @@ echo -e "    - [X] Backlog" >> "${File}".md
 echo -e "       - [ ] " >> "${File}".md
 echo -e "\n## Features" >> "${File}".md
 echo -e "\n## Informations" >> "${File}".md
+
 echo -e "\n## Main Program" >> "${File}".md
-echo -e "\n\`\`\`bash" >> "${File}".md
+
+echo -e "*run-cell.sh*" >> "${File}".md
+echo -e "\`\`\`bash" >> "${File}".md
 echo -e "noweb.py -R${Filename}.${extens} ${File}.md > ${Filename}.${extens} && echo 'fertig' \n\`\`\`" >> "${File}".md
+
 echo -e "\n\n\`\`\`bash" >> "${File}".md
 echo -e "chmod u+x ${Filename}.${extens} && ln -sf "$folder"/${Filename}.${extens} ~/.local/bin/${Filename}.${extens} && echo 'fertig'\n \`\`\`" >> "${File}".md
-echo -e "\n\`\`\`${langname}" >> "${File}".md
-echo -e "{{${Filename}.${extens}}}=" >> "${File}".md
-echo -e "\n@" >> "${File}".md
-echo -e "\`\`\`" >> "${File}".md
-touch ${Filename}.${extens}
-@
 
+echo -e "\n*${Filename}.${extens}*" >> "${File}".md
+echo -e "\`\`\`${langname}" >> "${File}".md
+# echo -e "\n@" >> "${File}".md
+echo -e "\`\`\`" >> "${File}".md
+
+touch ${Filename}.${extens}
 ```
 
 ### git versioning
 
+*git init*
 ```bash
-{{git init}}=
 git init
 git add README.md
 git add "${File}".md
 git add ${Filename}.${extens}
 git commit -a -m "init git"
-
-@
 ```

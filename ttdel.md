@@ -9,43 +9,42 @@ Backlink [GedankenspeicherCoding](../GedankenspeicherCoding.md)
 ## Features
 - Verzeichnisse löschbar
 
-
-  ``noweb.py -Rttdel ttdel.md > ttdel && echo 'fertig'``
+*run-cell.sh*
+```bash
+noweb.py -Rttdel ttdel.md > ttdel && echo 'fertig'
+```
 
  ``chmod u+x ttdel && ln -sf /home/christian/Gedankenspeicher/Gedankenspeicherwiki/Zettelkasten/Gedankenwanderung/Programme/ttdel ~/.local/bin/ttdel && echo 'fertig'``
 
+*ttdel*
 ```bash
-{{ttdel}}=
 #!/bin/bash
 if zenity --question --text="Wirklich löschen?"
 then 
-File=$(echo "$1" | sed 's/ /_/g' | sed 's/:/;/g'| sed -e "s/'/_/g" | sed 's/\"//g')
+	File=$(echo "$1" | sed 's/ /_/g' | sed 's/:/;/g'| sed -e "s/'/_/g" | sed 's/\"//g')
 
-File2=$(basename "$1")
-extens2=${File2##*.}
-filename2=${File2%.*} #only the filename, here the filename of the original file
+	File2=$(basename "$1")
+	extens2=${File2##*.}
+	filename2=${File2%.*} #only the filename, here the filename of the original file
 
-if [[ $extens2 == md ]]
-then
-	rm -r "$filename2"
-	rm "$filename2".avif
-	rm "$filename2".png
-	rm "$filename2".pdf
-	rm "$filename2".pdf.png
-	rm "$filename2".pdf.avif
-	rm "$1"
-else 
-	rm -r "$1"
-	rm "$File".md
-	rm "$File".avif
-	rm "$File".png
-	rm "$File".pdf
-	rm "$File".pdf.avif
-	rm "$File".pdf.png
+	if [[ $extens2 == md ]]
+	then
+		rm -r "$filename2"
+		rm "$filename2".avif
+		rm "$filename2".png
+		rm "$filename2".pdf
+		rm "$filename2".pdf.png
+		rm "$filename2".pdf.avif
+		rm "$1"
+	else
+		rm -r "$1"
+		rm "$File".md
+		rm "$File".avif
+		rm "$File".png
+		rm "$File".pdf
+		rm "$File".pdf.avif
+		rm "$File".pdf.png
+	fi
 fi
-
-fi
-
-@
 ```
 

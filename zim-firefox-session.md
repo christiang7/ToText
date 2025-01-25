@@ -23,8 +23,8 @@ noweb.py -Rzim-firefox-session.sh zim-firefox-session.md > zim-firefox-session.s
 chmod u+x zim-firefox-session.sh && ln -sf /home/christian/Gedankenspeicher/Gedankenspeicherwiki/Zettelkasten/Gedankenwanderung/Programme/zim-firefox-session.sh ~/.local/bin/zim-firefox-session.sh && echo 'fertig'
 ```
 
+*zim-firefox-session.sh*
 ```bash
-{{zim-firefox-session.sh}}=
 #!/bin/bash
 if zenity --question --text="Möchten Sie die Links in Firefox öffnen?"
 then
@@ -65,6 +65,5 @@ then
     fi
 
 fi
-@
 ```
 

@@ -17,8 +17,8 @@ noweb.py -Rtta.sh tta.md > tta.sh && echo 'fertig'
 chmod u+x tta.sh && ln -sf /home/christian/Gedankenspeicher/Gedankenspeicherwiki/CodeFabrik/GedankenspeicherCoding/tta.sh ~/.local/bin/tta.sh && echo 'fertig'
 ```
 
+*tta.sh*
 ```bash
-{{tta.sh}}=
 #!/usr/bin/env bash
 
 #wikipath=$(xclip -selection clipboard -o)
@@ -37,17 +37,14 @@ mkdir -p $destinationfolder
 ln -s "$filepath" "$destinationfolder"/"$file"
 if [[ -e "$file".png ]] 
 then
-ln -s "$filepath".png "$destinationfolder"/"$file".png
+    ln -s "$filepath".png "$destinationfolder"/"$file".png
 fi
 if [[ -e "$file".avif ]] 
 then
-ln -s "$filepath".avif "$destinationfolder"/"$file".avif
+    ln -s "$filepath".avif "$destinationfolder"/"$file".avif
 fi
+
 ln -s "$filepath".md "$destinationfolder"/"$file".md
-
-
-
-@
 
 ```
 

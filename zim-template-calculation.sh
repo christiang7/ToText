@@ -64,11 +64,11 @@ then
 
     if [[ ! -e ../"$Project".md ]]
     then
-    folder="$Project"
-    #touch ../"$folder".md
-    echo -e "====== $ProjectName ======" >> ../"$folder".md
-    echo -e "Created $(date +"[[Zettelkasten:%Y:%m:%d|%Y-%m-%d]]")" >> ../"$folder".md
-    echo -e "[*] ** $folder **" >> ../"$folder".md
+    	folder="$Project"
+    	#touch ../"$folder".md
+    	echo -e "====== $ProjectName ======" >> ../"$folder".md
+    	echo -e "Created $(date +"[[Zettelkasten:%Y:%m:%d|%Y-%m-%d]]")" >> ../"$folder".md
+    	echo -e "[*] ** $folder **" >> ../"$folder".md
     fi
 
     echo -e "# README" >> "README".md
@@ -85,7 +85,7 @@ then
     echo -e "\n## Features" >> "README".md
     echo -e "\n## Description" >> "README".md
     echo -e "\n${additiontext}" >> "README".md
-    #README template
+
     echo -e "# ${File}" >> "${File}".md
     echo -e "Created [$(date +%Y-%m-%d)]()\n" >> "${File}".md
     echo -e "${tags} " >> "${File}".md
@@ -95,15 +95,21 @@ then
     echo -e "       - [ ] " >> "${File}".md
     echo -e "\n## Features" >> "${File}".md
     echo -e "\n## Informations" >> "${File}".md
+
     echo -e "\n## Main Program" >> "${File}".md
-    echo -e "\n\`\`\`bash" >> "${File}".md
+
+    echo -e "*run-cell.sh*" >> "${File}".md
+    echo -e "\`\`\`bash" >> "${File}".md
     echo -e "noweb.py -R${Filename}.${extens} ${File}.md > ${Filename}.${extens} && echo 'fertig' \n\`\`\`" >> "${File}".md
+
     echo -e "\n\n\`\`\`bash" >> "${File}".md
     echo -e "chmod u+x ${Filename}.${extens} && ln -sf "$folder"/${Filename}.${extens} ~/.local/bin/${Filename}.${extens} && echo 'fertig'\n \`\`\`" >> "${File}".md
-    echo -e "\n\`\`\`${langname}" >> "${File}".md
-    echo -e "{{${Filename}.${extens}}}=" >> "${File}".md
-    echo -e "\n@" >> "${File}".md
+
+    echo -e "\n*${Filename}.${extens}*" >> "${File}".md
+    echo -e "\`\`\`${langname}" >> "${File}".md
+    # echo -e "\n@" >> "${File}".md
     echo -e "\`\`\`" >> "${File}".md
+
     touch ${Filename}.${extens}
 
     git init
@@ -111,7 +117,7 @@ then
     git add "${File}".md
     git add ${Filename}.${extens}
     git commit -a -m "init git"
-
+    ```
 
 fi
 

@@ -1,6 +1,5 @@
 # ttn
 Text date: [Zettelkasten:2021:04:29]() File date: [Zettelkasten:2021:04:24]()
-- [X] **[../ttn](./ttn)**
 
 ## Features
 
@@ -26,16 +25,15 @@ Hier sind die Dolpin ServiceMenüs
 
 ## Program
 
+*run-cell.sh*
 ```bash
-{{run-cell.sh}}=
 noweb.py -Rttn ttn.md > ttn && chmod u+x ttn && echo 'fertig'
-@
- ```
+```
 
 
 
+*ttn*
 ```bash
-{{ttn}}=
 #!/bin/bash
 f=$(basename "$1")
 extens=${f##*.}
@@ -255,13 +253,16 @@ then
 		echo -e "\n## Features" >> "$foldertex"/"${filename}".md
 		echo -e "\n## Informations" >> "$foldertex"/"${filename}".md
 		echo -e "\n## Latex File\n" >> "$foldertex"/"${filename}".md
-		echo -e "\n\`\`\`bash" >> "$foldertex"/"${filename}".md
-		echo -e "{{run-cell.sh}}=\nnoweb.py -R${filename}.tex ${filename}.md > ${filename}.tex && pdflatex ${filename}.tex && xdg-open ${filename}.pdf 2>/dev/null \n@\n\`\`\`\n\n" >> "$foldertex"/"${filename}".md
+
+		echo -e "\n*run-cell.sh*" >> "$foldertex"/"${filename}".md
+		echo -e "\`\`\`bash" >> "$foldertex"/"${filename}".md
+		echo -e "noweb.py -R${filename}.tex ${filename}.md > ${filename}.tex && pdflatex ${filename}.tex && xdg-open ${filename}.pdf 2>/dev/null \n\`\`\`\n\n" >> "$foldertex"/"${filename}".md
+		echo -e "*${filename}.tex*" >> "$foldertex"/"${filename}".md
 		echo -e "\`\`\`tex" >> "$foldertex"/"${filename}".md
-		echo -e "{{${filename}.tex}}=" >> "$foldertex"/"${filename}".md
 		cat "$foldertex"/"${filename}".tex >> "$foldertex"/"${filename}".md
-		echo -e "\n@" >> "$foldertex"/"${filename}".md
-		echo -e "\`\`\`" >> "$foldertex"/"${filename}".md
+		# echo -e "\n@" >> "$foldertex"/"${filename}".md
+		echo -e "\n\`\`\`" >> "$foldertex"/"${filename}".md
+
 		#ln -s "$folder"/"$folder"/"$File" "$folder"/"$File"
 		#ln -s "$folder"/"$filename".pdf "$filename".pdf
 		#kate "$folder".md 2>/dev/null &
@@ -338,8 +339,6 @@ then
         xdg-open "$File" 2>/dev/null &
     fi
 fi
-
-@ 
 ```
 
 

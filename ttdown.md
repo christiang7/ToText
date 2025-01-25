@@ -6,16 +6,15 @@ Only for Downloads for the firefox webbrowser
 
 Kommando zum Extrahieren des Scripts
 
+*run-cell.sh*
 ```bash
-{{run-cell.sh}}=
 noweb.py -Rttdown ttdown.md > ttdown && echo 'fertig'
-@
 ```
 
 ## Main program
 
+*ttdown*
 ```bash
-{{ttdown}}=
 #!/bin/bash
 f=$(basename "$1")
 extens=${f##*.}
@@ -64,7 +63,6 @@ then
 	#kate "$File".md 2>/dev/null &
 
 fi
-@
 ```
 
 

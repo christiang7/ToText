@@ -11,10 +11,9 @@ Kommando zum Extrahieren des Scripts
 
 hier die zim-script Datei zum Ausführen
 
-~~~bash
-{{zim-mpvv}}=
-	#!/bin/bash
-	#xterm -e "mpvv '$1'; bash" &
-	konsole --hold -e sh -c "mpvv $1 ; exec bash" &
-@
-~~~
+*zim-mpvv*
+```bash
+#!/bin/bash
+#xterm -e "mpvv '$1'; bash" &
+konsole --hold -e sh -c "mpvv $1 ; exec bash" &
+```

@@ -15,10 +15,9 @@ Backlink [CodeFabrik:GedankenspeicherCoding](../GedankenspeicherCoding.md)
 
 ``tesseract -l eng 2209.14792.pdf.png stdout``
 
+*run-cell.sh*
 ```bash
-{{run-cell.sh}}=
 noweb.py -Rzim-web-screenshot.sh zim-web-screenshot.md > zim-web-screenshot.sh && echo 'fertig'
-@
 ```
 
 
@@ -26,8 +25,8 @@ noweb.py -Rzim-web-screenshot.sh zim-web-screenshot.md > zim-web-screenshot.sh &
 chmod u+x zim-web-screenshot.sh && ln -sf /home/christian/Gedankenspeicher/Gedankenspeicherwiki/Zettelkasten/ZetteL/CodeFabrik/GedankenspeicherCoding/zim-web-screenshot.sh ~/.local/bin/zim-web-screenshot.sh && echo 'fertig'
 ```
 
+*zim-web-screenshot.sh*
 ```bash
-{{zim-web-screenshot.sh}}=
 #! /bin/bash
 if zenity --question --text="Möchten Sie Screenshot aufnehmen?"
 then
@@ -85,6 +84,5 @@ then
     echo -e "[[+$File]]" >> "$foldermonth"/"$calendarfile"
     echo -e "{{$File}}" >> "$foldermonth"/"$calendarfile"
 fi
-@
 ```
 

@@ -11,18 +11,17 @@ links2 -dump https://kalax.bandcamp.com/track/confie-hold-on-feat-francci
 ```
 
 
+*run-cell.sh*
 ```bash
-{{run-cell.sh}}=
 noweb.py -RDownload-Music.sh Download-Music.md > Download-Music.sh && echo 'fertig'
-@
 ```
 
 ```bash
 chmod u+x Download-Music.sh && ln -sf /home/christian/Gedankenspeicher/Gedankenspeicherwiki/Zettelkasten/Gedankenwanderung/Programme/Download-Music.sh ~/.local/bin/Download-Music.sh && echo 'fertig'
 ```
 
+*Download-Music.sh*
 ```bash
-{{Download-Music.sh}}=
 #!/bin/bash
 echo "$1"
 website="$1"
@@ -38,6 +37,5 @@ else
     yt-dlp --no-mtime --exec "ttn {} \"${website}\" \"@Lied\" \"${text} \" " -o "~/Musik/Favorieten-open/%(title)s.%(ext)s" --embed-thumbnail -f b --no-mtime --audio-quality 0 -i "${website}"
 fi
 #sleep 5
-@
 ```
 

@@ -13,8 +13,8 @@ noweb.py -Rtti tti.md > tti && chmod u+x tti && echo 'fertig'
 ln -sf /home/christian/Gedankenspeicher/Gedankenspeicherwiki/Zettelkasten/Gedankenwanderung/Programme/tti ~/.local/bin/tti && echo 'fertig'
 ```
 
+*tti*
 ```bash
-{{tti}}=
 #!/bin/bash
 File=$1
 
@@ -61,6 +61,5 @@ then
 	   kate "$File".md 2>/dev/null &
 fi
 #sed -i "9 i$additiontext" "$File"
-@
 ```
 

@@ -41,8 +41,8 @@ chmod u+x ttitle-correction.sh && ln -sf /home/christian/Gedankenspeicher/Gedank
 ```
 
 
+*ttitle-correction.sh*
 ```bash
-{{ttitle-correction.sh}}=
 #!/bin/bash
 
 File=$(basename "$1")
@@ -59,8 +59,5 @@ then
 else
 	sed -i "$line s/\[\*\]/====== $(basename $File .md) ======\\n\[\*\]/" "$File"
 fi
-
-@
-
 ```
 

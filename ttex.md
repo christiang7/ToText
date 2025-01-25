@@ -18,8 +18,8 @@ Modification time:
 ``  noweb.py -Rttex ttex.md > ttex && chmod u+x ttex && echo 'fertig'``
 
 
+*ttex*
 ```bash
-{{ttex}}=
 #!/bin/bash
 File=$(echo "$1" | sed 's/ /_/g' | sed 's/:/;/g'| sed -e "s/'/_/g" | sed 's/\"//g')
 #f=$(basename "$1")
@@ -46,6 +46,5 @@ date +'[[Zettelkasten:%Y:%m:%d]]' -r "$folder"/"$File" >> "$folder".md
 ln -s "$folder"/"$File" "$File"
 ln -s "$folder"/"$filename".pdf "$filename".pdf
 #kate "$folder".md 2>/dev/null &
-@
 ```
 

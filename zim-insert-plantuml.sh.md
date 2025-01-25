@@ -13,10 +13,9 @@ Created [2024-09-03](2024-09-03)
  Christian Gößl
 ## Main Program
 
+*run-cell.sh*
 ```bash
-{{run-cell.sh}}=
 noweb.py -Rzim-insert-plantuml.sh zim-insert-plantuml.sh.md > zim-insert-plantuml.sh && echo 'fertig' 
-@
 ```
 
 
@@ -24,8 +23,8 @@ noweb.py -Rzim-insert-plantuml.sh zim-insert-plantuml.sh.md > zim-insert-plantum
 chmod u+x zim-insert-plantuml.sh && ln -sf /home/christian/Gedankenspeicher/Gedankenspeicherwiki/CodeFabrik/Gedankenspeicher-Coding/zim-insert-plantuml.sh ~/.local/bin/zim-insert-plantuml.sh && echo 'fertig'
  ```
 
+*zim-insert-plantuml.sh*
 ```bash
-{{zim-insert-plantuml.sh}}=
 #!/bin/bash
 File=$(echo $1)
 abfrage=$(yad --title="New plantuml?" --text="Necessary Informations:" \
@@ -36,15 +35,14 @@ if [ ! $? -eq 1 ];
 then
     Filename=$(echo $abfrage | cut -s -d "~" -f 1)
     echo -e "{{../${Filename}.png?width=500}}\n![](${Filename}.png?)\n"
-    echo -e "\n\`\`\`pl"
-    echo -e "{{${Filename}.plantuml}}="
-    echo -e "  @startuml\n allowmixing\n"
-    echo -e "  @enduml"
-    echo -e "\n@"
+    echo -e "\n*{Filename}.plantuml*"
+    echo -e "\`\`\`pl"
+    echo -e "@startuml\n allowmixing\n"
+    echo -e "@enduml"
+#    echo -e "\n@"
     echo -e "\`\`\`\n\n"
-    echo -e "\n\`\`\`bash"
-    echo -e "{{run-cell.sh}}="
-    echo -e "noweb.py -R${Filename}.plantuml $(basename ${File}) > ${Filename}.plantuml && plantuml ${Filename}.plantuml && gwenview ${Filename}.png 2>/dev/null \n@\n\`\`\`"
+    echo -e "*run-cell.sh*"
+    echo -e "\`\`\`bash"
+    echo -e "noweb.py -R${Filename}.plantuml $(basename ${File}) > ${Filename}.plantuml && plantuml ${Filename}.plantuml && gwenview ${Filename}.png 2>/dev/null \n\`\`\`"
 fi
-@
 ```

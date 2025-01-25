@@ -18,10 +18,8 @@ Created [[2023-06-22]]
  chmod u+x zim-date-later.sh && ln -sf /home/christian/Gedankenspeicher/KanDo/GedankenspeicherEinrichtung/GedankenspeicherCoding/zim-date-later.sh ~/.local/bin/zim-date-later.sh && echo 'fertig'
  ```
 
+*zim-date-later.sh*
 ```bash
-{{zim-date-later.sh}}=
 #!/bin/bash
 echo -e "<  2277-11-11"
-@
-
 ```

@@ -17,15 +17,14 @@ noweb.py -Rzim-clip-time zim-clip-time.md > zim-clip-time && echo 'fertig'
 chmod u+x zim-clip-time && echo 'fertig'
 ```
 
+*zim-clip-time*
 ```bash
-{{zim-clip-time}}=
 #!/bin/bash
 Time=$(date +"Zettelkasten:%Y:%m:%d")
 #folder=$(date +"/home/christian/Gedankenspeicher/Gedankenspeicherwiki/Zettelkasten/%Y/%m/%d" -r "$1")
 file="/home/christian/.config/zim/preferences.conf"
 sed -i "206s/.*/marks=${Time}/" $file
 sed -i "207s/.*/clips=${Time}/" $file
-@
 ```
 
 

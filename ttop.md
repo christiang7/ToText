@@ -9,13 +9,12 @@ Backlink [GedankenspeicherCoding](../GedankenspeicherCoding.md)
 
   ``noweb.py -Rttop ttop.md > ttop && chmod u+x ttop && echo 'fertig'``
 
+*ttop*
 ```bash
-{{ttop}}=
 #!/bin/bash
 f=$(basename "$1")
 extens=${f##*.} #only the extension of the file
 filename=${f%.*} #only the filename
 xdg-open "$filename" 2>/dev/null &
-@
 ```
 

@@ -1,4 +1,5 @@
 #!/bin/bash
+
 yad --title="New calculation?" --text="\n Standalone File?\n"
 if [ ! $? -eq 1 ];
 then
@@ -14,6 +15,7 @@ then
   fi
   File="Filename"
   cd $folder
+
   abfrage=$(yad --title="New calculation?" --text="Necessary Informations:" \
   	--form --width 500 --separator="~" --item-separator=","  \
   	--field="Filename" \
@@ -67,36 +69,37 @@ then
   	echo -e "\n## Features" >> "${File}".md
   	echo -e "\n${additiontext}" >> "${File}".md
   	echo -e "\n## Informations" >> "${File}".md
-  	echo -e " ${source}\n## Main Program" >> "${File}".md
-  	echo -e "\n\`\`\`bash" >> "${File}".md
-  	echo -e "{{run-cell.sh}}=" >> "${File}".md
+  	echo -e " ${source}\n## Main Program\n\n" >> "${File}".md
+  	echo -e "*run-cell.sh*" >> "${File}".md
+  	echo -e "\`\`\`bash" >> "${File}".md
   	if  [[ $extens == "plantuml" ]]
   	then
-  		echo -e "noweb.py -R${Filename}.${extens} ${File}.md > ${Filename}.${extens} && plantuml ${Filename}.${extens} && gwenview ${Filename}.png 2>/dev/null \n@\n\`\`\`" >> "${File}".md
+  		echo -e "noweb.py -R${Filename}.${extens} ${File}.md > ${Filename}.${extens} && plantuml ${Filename}.${extens} && gwenview ${Filename}.png 2>/dev/null \n\`\`\`" >> "${File}".md
   	elif [[ $extens == "typst" ]]
   	then
-  		echo -e "noweb.py -R${Filename}.${extens} ${File}.md > ${Filename}.${extens} && typst compile --format pdf ${Filename}.${extens} && xournalpp ${Filename}.pdf 2>/dev/null \n@\n\`\`\`" >> "${File}".md
-  	elselangname
+  		echo -e "noweb.py -R${Filename}.${extens} ${File}.md > ${Filename}.${extens} && typst compile --format pdf ${Filename}.${extens} && xournalpp ${Filename}.pdf 2>/dev/null \n\`\`\`" >> "${File}".md
+  	else
   		echo -e "noweb.py -R${Filename}.${extens} ${File}.md > ${Filename}.${extens} && echo 'fertig' \n@\n\`\`\`" >> "${File}".md
   		echo -e "\n\n\`\`\`bash" >> "${File}".md
   		echo -e "chmod u+x ${Filename}.${extens} && ln -sf "${folder}"/${Filename}.${extens} ~/.local/bin/${Filename}.${extens} && echo 'fertig'\n \`\`\`" >> "${File}".md
   	fi
-  	echo -e "\n\`\`\`${langname}" >> "${File}".md
-  	echo -e "{{${Filename}.${extens}}}=" >> "${File}".md
+  	echo -e "\n*${Filename}.${extens}*" >> "${File}".md
+  	echo -e "\`\`\`${langname}" >> "${File}".md
   	if  [[ $extens == "plantuml" ]]
   	then
-  	  echo -e "  @startuml\n" >> "${File}".md
-  	  echo -e "  @enduml" >> "${File}".md
+  	  echo -e "@startuml\n" >> "${File}".md
+  	  echo -e "@enduml" >> "${File}".md
   	elif [[ $extens == "sh" ]]
   	then
   	  echo -e "#!/bin/bash" >> "${File}".md
   	fi
-  	echo -e "\n@" >> "${File}".md
+  	echo -e "\n" >> "${File}".md
   	echo -e "\`\`\`" >> "${File}".md
   	touch ${File}
+
   fi
+
 else
   zim-template-calculation.sh "$1"
   #echo 2
 fi
-

@@ -7,8 +7,8 @@ Backlink [GedankenspeicherCoding](../GedankenspeicherCoding.md)
 
   ``noweb.py -Rttnl ttnl.md > ttnl && chmod u+x ttnl && echo 'fertig'``
 
+*ttnl*
 ```bash
-{{ttnl}}=
 #!/bin/bash
 folder=$(date +"/home/christian/Gedankenspeicher/Gedankenspeicherwiki/Zettelkasten/%Y/%m/%d" -r "$1")
 mkdir -p $folder
@@ -81,7 +81,5 @@ else
 		echo -e "\n$2\n" >> "$File".md
 		Linking
 fi
-
-@ 
 ```
 

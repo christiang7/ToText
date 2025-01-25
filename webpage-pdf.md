@@ -11,17 +11,16 @@ Mi 23. Dez 15:48:55 CET 2020
 
 ``noweb.py -Rwebpage-pdf webpage-pdf.md > webpage-pdf && chmod u+x webpage-pdf && echo 'fertig'``
 
+*webpage-pdf*
 ```bash
-    {{webpage-pdf}}=
-    #!/bin/bash
-    folder=$(date +"/home/christian/Gedankenspeicher/Gedankenspeicherwiki/Zettelkasten/%Y/%m/%d")
-    mkdir -p $folder
-    File=$(echo "$2" | sed 's/:/;/g')
-    wkhtmltoimage --enable-javascript --images "$1" $folder/"$File".png
-    ttpdf $folder/"$File".png "$1"
+#!/bin/bash
+folder=$(date +"/home/christian/Gedankenspeicher/Gedankenspeicherwiki/Zettelkasten/%Y/%m/%d")
+mkdir -p $folder
+File=$(echo "$2" | sed 's/:/;/g')
+wkhtmltoimage --enable-javascript --images "$1" $folder/"$File".png
+ttpdf $folder/"$File".png "$1"
 
-    # --print-media-type
-    # --encoding utf8 --stop-slow-scripts --no-background --disable-forms --footer-center '[page]/[toPage]' -L 4cm -R 4cm --minimum-font-size 17
-@
+# --print-media-type
+# --encoding utf8 --stop-slow-scripts --no-background --disable-forms --footer-center '[page]/[toPage]' -L 4cm -R 4cm --minimum-font-size 17
 ```
 

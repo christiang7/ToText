@@ -24,6 +24,8 @@ make script:
     - [x] rename zip file to maff
     - [x] ttn of maff file
 
+
+*run-cell.sh*
 ```bash
 noweb.py -Rhtml-folder-to-maff.sh html-folder-to-maff.sh.md > html-folder-to-maff.sh && echo 'fertig' 
 ```
@@ -33,8 +35,8 @@ noweb.py -Rhtml-folder-to-maff.sh html-folder-to-maff.sh.md > html-folder-to-maf
 chmod u+x html-folder-to-maff.sh && ln -sf /home/christian/Gedankenspeicher/Gedankenspeicherwiki/CodeFabrik/Gedankenspeicher-Coding/html-folder-to-maff.sh ~/.local/bin/html-folder-to-maff.sh && echo 'fertig'
  ```
 
+*html-folder-to-maff.sh*
 ```bash
-{{html-folder-to-maff.sh}}=
 #!/bin/bash
 htmlfolder="$1"
 list=$(ls -1 "$htmlfolder")
@@ -45,15 +47,14 @@ for (( i=$lines ; i>=1 ; i-- ));
 do
 	element=$(sed -n "${i}p" <(echo "$list"))
 	echo "$element"
-    {{maff file creation}}
-    {{description file}}
+    #*maff file creation}}
+    #*description file}}
 done
-@
 ```
 
 
+*maff file creation*
 ```bash
-{{maff file creation}}=
 folder="$element"
 folder=$(echo $folder | sed 's/\///g')
 echo $folder
@@ -71,12 +72,11 @@ maffFileName=$(echo "$htmlFileName-$folder")
 zip -r "$maffFileName".zip "$folder"
 mv "$maffFileName".zip "$maffFileName".maff
 #ttn $maffFileName.maff
-@
 ```
 
 
+*description file*
 ```bash
-{{description file}}=
 echo "Content-Type: text/x-zim-wiki" >> "$maffFileName".maff.md
 echo "Wiki-Format: zim 0.6" >> "$maffFileName".maff.md
 echo "====== $maffFileName.maff ======" >> "$maffFileName".maff.md
@@ -84,5 +84,4 @@ echo "Text date: $(date +"[[Zettelkasten:%Y:%m:%d|%Y-%m-%d]]") File date: $(date
 folder2=$(unzip -Z -1 "$maffFileName.maff" '*/')
 echo "[*] **[[../$maffFileName.maff]]**" >> "$maffFileName".maff.md
 cat $folder2'index.rdf' >> "$maffFileName".maff.md
-@
 ```

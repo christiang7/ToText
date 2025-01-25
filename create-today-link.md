@@ -15,8 +15,9 @@ Beispiel
 
 ``chmod u+x create-today-link.sh && ln -sf ~/Gedankenspeicher/Gedankenspeicherwiki/CodeFabrik/GedakenspeicherCoding/create-today-link.sh ~/.local/bin/create-today-link.sh && echo 'fertig'``
 
+
+*create-today-link.sh*
 ```bash
-{{create-today-link.sh}}=
 	#!/bin/bash
 	folder=$(date +"/home/christian/Gedankenspeicher/Gedankenspeicherwiki/Zettelkasten/%Y/%m/%d")
 	foldermonth=$(date +"/home/christian/Gedankenspeicher/Gedankenspeicherwiki/Zettelkasten/%Y/%m/")
@@ -43,6 +44,5 @@ Beispiel
 	sed -i "17 i### $(date +"[[Zettelkasten:%Y:%m:%d|Heute]]")" ~/Gedankenspeicher/Gedankenspeicherwiki/Zim-Arbeitsflaeche/Arbeitsflaeche.md
 	sed -i "18 i### $(date -d "yesterday" +"[[Zettelkasten:%Y:%m:%d|Gestern]]")" ~/Gedankenspeicher/Gedankenspeicherwiki/Zim-Arbeitsflaeche/Arbeitsflaeche.md
 	#ln -f "$folder".md ~/Gedankenspeicher/Gedankenspeicherwiki/Zettelkasten/Gedankenwanderung/Zim-Arbeitsflaeche/Heute.md
-@
 ```
 

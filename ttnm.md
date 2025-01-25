@@ -5,14 +5,13 @@ Backlink [GedankenspeicherCoding](../GedankenspeicherCoding.md)
 - [X] **ttnm**
 	- [ ] epub correction
 
+*run-cell.sh*
 ```bash
-{{run-cell.sh}}=
 noweb.py -Rttnm ttnm.md > ttnm && chmod u+x ttnm && echo 'fertig'
-@
 ```
 
+*ttnm*
 ```bash
-{{ttnm}}=
 #!/usr/bin/env bash
 
 f=$(basename "$1")
@@ -216,8 +215,6 @@ then
 	#echo -e "[[$filepath/$FullFilename]]\n[[$wikipath:$FullFilename]]" >> $folder/"$File".md
 
 fi
-
-@ 
 ```
 
 

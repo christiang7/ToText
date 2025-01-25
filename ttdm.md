@@ -5,17 +5,17 @@ Backlink [GedankenspeicherCoding](../GedankenspeicherCoding.md)
 - [X] **ttdm**
 
 
+*run-cell.sh*
 ```bash
-{{run-cell.sh}}=
 noweb.py -Rttdm ttdm.md > ttdm && echo 'fertig'
-@
-```
-```bash
-  chmod u+x ttdm && ln -sf /home/christian/Gedankenspeicher/Gedankenspeicherwiki/Zettelkasten/Gedankenwanderung/Programme/ttdm ~/.local/bin/ttdm && echo 'fertig'
 ```
 
 ```bash
-{{ttdm}}=
+chmod u+x ttdm && ln -sf /home/christian/Gedankenspeicher/Gedankenspeicherwiki/Zettelkasten/Gedankenwanderung/Programme/ttdm ~/.local/bin/ttdm && echo 'fertig'
+```
+
+*ttdm*
+```bash
 #!/bin/bash
 FolderSync=$(echo "$1" | sed 's/\///g')
 #ls --hide=*.md "$folder" > f
@@ -183,6 +183,5 @@ do
 done
 
 #rm f
-@
 ```
 

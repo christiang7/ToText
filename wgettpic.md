@@ -5,14 +5,13 @@ Created Donnerstag [Zettelkasten:2021:04:29]()
 
 [wget-download-firefox](./wget-download-firefox.md)
 
+*run-cell.sh*
 ```bash
-{{run-cell.sh}}=
 noweb.py -Rwgettpic wgettpic.md > wgettpic && chmod u+x wgettpic && echo 'fertig'
-@
 ```
 
+*wgettpic*
 ```bash
-{{wgettpic}}=
 #!/bin/bash
 
 Orig=$(basename "$1")
@@ -57,7 +56,6 @@ then
     ttpic "${Newname}.avif" "$source" "$tags" "$additiontext"
 
 fi
-@
 ```
 
 

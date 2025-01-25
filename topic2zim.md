@@ -33,10 +33,9 @@ https://www.linuxteck.com/sed-commands-in-linux/
 
 ## Program
 
+*run-cell.sh*
 ```bash
-{{run-cell.sh}}=
 noweb.py -Rtopic2zim.sh topic2zim.md > topic2zim.sh && echo 'fertig'
-@
 ```
 
 ```bash
@@ -46,17 +45,19 @@ chmod u+x topic2zim.sh && ln -sf /home/christian/Gedankenspeicher/Gedankenspeich
 
 ### Main program
 
+*topic2zim.sh*
 ```bash
-{{topic2zim.sh}}=
 #! /bin/bash
-{{request}}
+
+#*request}}
+
 @
 ```
 
 ### Request
 
+*request*
 ```bash
-{{request}}=
 
 request=$(yad --title="Notes or archiv" --text="Something to add?" \
 	--form --width 500 --separator="~" --item-separator=","  \
@@ -72,21 +73,20 @@ then
 	tabs="$(wl-paste -n)"
 	case ${choose} in
 	NeuNotiz)
-		{{new note}}
+		#*new note}}
 		;;
 	*)
-		{{tabs to topics}}
+		#*tabs to topics}}
 		;;
 	esac
 fi
-@
 ```
 
 ### new note creation
 
 
+*new note*
 ```bash
-{{new note}}=
 request=$(yad --title="Which topic" --text="Something to add?" \
 	--form --width 500 --separator="~" --item-separator=","  \
 	--field="Where:":CB \
@@ -126,16 +126,17 @@ then
 		topicfilename=$(basename "$topicfile" .md)
 		touch "${folder}"/"${topicfile}"
 		mkdir -p "${folder}"/"${topicfilename}"
-		{{zim template}}
+		#*zim template}}
 	fi
 fi
-@
 ```
 
 
 #### zim template
+
+
+*zim template*
 ```bash
-{{zim template}}=
 echo "Content-Type: text/x-zim-wiki" > "${folder}"/"${topicfile}"
 echo "Wiki-Format: zim 0.6" >> "${folder}"/"${topicfile}"
 echo -e "====== ${topic} ======" >> "${folder}"/"${topicfile}"
@@ -146,13 +147,14 @@ echo -e "\n${additiontext}" >> "${folder}"/"${topicfile}"
 echo -e "\n${tabs}" >> "${folder}"/"${topicfile}"
 echo -e "		[*] $(date +"[[Zettelkasten:%Y:%m:%d|%Y-%m-%d]]")" >> "${folder}".md
 echo -e "			[*] [[+$(basename ${topicfile} .md)|${topic}]]" >> "$folder".md
-@
 ```
 
 
 #### markdown template
+
+
+*markdown template*
 ```bash
-{{markdown template}}=
 echo -e "# ${topic}" >> "${folder}"/"${topicfile}"
 echo -e "Created $(date +"[[Zettelkasten/%Y/%m/%d|%Y-%m-%d]]")" >> "${folder}"/"${topicfile}"
 #echo -e "" >> "${folder}"/"${topicfile}"
@@ -161,13 +163,12 @@ echo -e "\n${additiontext}" >> "${folder}"/"${topicfile}"
 echo -e "\n${tabs}" >> "${folder}"/"${topicfile}"
 echo -e "		- [X] $(date +"[[Zettelkasten/%Y/%m/%d|%Y-%m-%d]]")" >> "${folder}".md
 echo -e "			- [X] [[/$(basename ${topicfile} .md)|${topic}]]" >> "$folder".md
-@
 ```
 
 ### Tabs to topics
 
+*tabs to topics*
 ```bash
-{{tabs to topics}}=
 case ${choose} in
 	Spass) file=$(echo "/home/christian/Gedankenspeicher/Gedankenspeicherwiki/Spaß_Stream/1»Spaß_Stream_Archiv.md")
 		l=5;;
@@ -220,5 +221,4 @@ sed -i "${l}i
 sed -i "${l}s/^/==== $today ====/g" "$file"
 sed -i "${l}i
 " "$file"
-@
 ```

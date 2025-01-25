@@ -44,9 +44,8 @@ noweb.py -Rttrename ttrename.md > ttrename && echo 'fertig'
 chmod u+x ttrename && ln -sf /home/christian/Gedankenspeicher/Gedankenspeicherwiki/Zettelkasten/Gedankenwanderung/Programme/ttrename ~/.local/bin/ttrename && echo 'fertig'
 ```
 
+*ttrename*
 ```bash
-
-{{ttrename}}=
 #!/bin/bash
 
 #case of input file is the original file
@@ -106,8 +105,5 @@ else
         echo "$Newname"."$extens"
     fi
 fi
-
-
-@
 ```
 

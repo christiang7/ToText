@@ -10,12 +10,12 @@ Backlink [GedankenspeicherCoding](../GedankenspeicherCoding.md)
 
 ``chmod u+x zim-start-programm.sh && ln -sf /home/christian/Gedankenspeicher/Gedankenspeicherwiki/Zettelkasten/Gedankenwanderung/Programme/zim-start-programm.sh ~/.local/bin/zim-start-programm.sh && echo 'fertig'``
 
+*zim-start-programm.sh*
 ```bash
-{{zim-start-programm.sh}}=
-  #!/bin/bash
-  if zenity --question --text="Möchten Sie dieses Programm: $1 : öffnen?"
-  then
-    konsole -e "$1"
-  fi
+#!/bin/bash
+if zenity --question --text="Möchten Sie dieses Programm: $1 : öffnen?"
+then
+  konsole -e "$1"
+fi
 ```
 
