@@ -20,7 +20,7 @@ https://docs.kde.org/stable5/en/kate/kate/kate-application-plugin-external-tools
 
 *run-cell.sh*
 ```bash
-noweb.py -Rtemplate-calculation.sh template-calculation.md > template-calculation.sh && echo 'fertig'
+noweb.py -Rtemplate-calculation.sh template-calculation.md > template-calculation.sh && echo 'template-calculation.sh' && date
 ```
 
 
@@ -139,12 +139,12 @@ echo -e "*run-cell.sh*" >> "${File}".md
 echo -e "\`\`\`bash" >> "${File}".md
 if  [[ $extens == "plantuml" ]]
 then
-	echo -e "noweb.py -R${Filename}.${extens} ${File}.md > ${Filename}.${extens} && plantuml ${Filename}.${extens} && gwenview ${Filename}.png 2>/dev/null \n\`\`\`" >> "${File}".md
+	echo -e "noweb.py -R${Filename}.${extens} ${File}.md > ${Filename}.${extens} && plantuml ${Filename}.${extens} && echo '${Filename}.${extens}' && date && gwenview ${Filename}.png 2>/dev/null \n\`\`\`" >> "${File}".md
 elif [[ $extens == "typst" ]]
 then
-	echo -e "noweb.py -R${Filename}.${extens} ${File}.md > ${Filename}.${extens} && typst compile --format pdf ${Filename}.${extens} && xournalpp ${Filename}.pdf 2>/dev/null \n\`\`\`" >> "${File}".md
+	echo -e "noweb.py -R${Filename}.${extens} ${File}.md > ${Filename}.${extens} && typst compile --format pdf ${Filename}.${extens} && echo '${Filename}.${extens}' && date && xournalpp ${Filename}.pdf 2>/dev/null & \n\`\`\`" >> "${File}".md
 else
-	echo -e "noweb.py -R${Filename}.${extens} ${File}.md > ${Filename}.${extens} && echo 'fertig' \n@\n\`\`\`" >> "${File}".md
+	echo -e "noweb.py -R${Filename}.${extens} ${File}.md > ${Filename}.${extens} && echo '${Filename}.${extens}' && date \n\`\`\`" >> "${File}".md
 	echo -e "\n\n\`\`\`bash" >> "${File}".md
 	echo -e "chmod u+x ${Filename}.${extens} && ln -sf "${folder}"/${Filename}.${extens} ~/.local/bin/${Filename}.${extens} && echo 'fertig'\n \`\`\`" >> "${File}".md
 fi

@@ -1,9 +1,6 @@
 # zim-insert-plantuml.sh
 Created [2024-09-03](2024-09-03)
 
-- [X] **zim-insert-plantuml.sh**
-    - [X] Doing
-    - [X] Backlog
 
 ## Features
 
@@ -11,17 +8,23 @@ Created [2024-09-03](2024-09-03)
 
 ## Informations
  Christian Gößl
+
+## Journal
+- [X] **zim-insert-plantuml.sh**
+    - [X] Doing
+    - [X] Backlog
+
 ## Main Program
 
 *run-cell.sh*
 ```bash
-noweb.py -Rzim-insert-plantuml.sh zim-insert-plantuml.sh.md > zim-insert-plantuml.sh && echo 'fertig' 
+noweb.py -Rzim-insert-plantuml.sh zim-insert-plantuml.sh.md > zim-insert-plantuml.sh && echo 'zim-insert-plantuml.sh' && date
 ```
 
 
 ```bash
 chmod u+x zim-insert-plantuml.sh && ln -sf /home/christian/Gedankenspeicher/Gedankenspeicherwiki/CodeFabrik/Gedankenspeicher-Coding/zim-insert-plantuml.sh ~/.local/bin/zim-insert-plantuml.sh && echo 'fertig'
- ```
+```
 
 *zim-insert-plantuml.sh*
 ```bash
@@ -34,8 +37,8 @@ abfrage=$(yad --title="New plantuml?" --text="Necessary Informations:" \
 if [ ! $? -eq 1 ];
 then
     Filename=$(echo $abfrage | cut -s -d "~" -f 1)
-    echo -e "{{../${Filename}.png?width=500}}\n![](${Filename}.png?)\n"
-    echo -e "\n*{Filename}.plantuml*"
+    echo -e "{{../Notedia-${Filename}.png?width=500}}\n![](Notedia-${Filename}.png?)\n"
+    echo -e "\n*Notedia-{$Filename}.plantuml*"
     echo -e "\`\`\`pl"
     echo -e "@startuml\n allowmixing\n"
     echo -e "@enduml"
@@ -43,6 +46,6 @@ then
     echo -e "\`\`\`\n\n"
     echo -e "*run-cell.sh*"
     echo -e "\`\`\`bash"
-    echo -e "noweb.py -R${Filename}.plantuml $(basename ${File}) > ${Filename}.plantuml && plantuml ${Filename}.plantuml && gwenview ${Filename}.png 2>/dev/null \n\`\`\`"
+    echo -e "noweb.py -RNotedia-${Filename}.plantuml $(basename ${File}) > Notedia-${Filename}.plantuml && plantuml Notedia-${Filename}.plantuml && gwenview Notedia-${Filename}.png 2>/dev/null \n\`\`\`"
 fi
 ```

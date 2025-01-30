@@ -15,7 +15,7 @@ Created [2024-10-09](2024-10-09)
 
 *run-cell.sh*
 ```bash
-noweb.py -Rmake-run-cell.sh make-run-cell.sh.md > make-run-cell.sh && echo 'fertig'
+noweb.py -Rmake-run-cell.sh make-run-cell.sh.md > temp-make-run-cell.sh && cp make-run-cell.sh old-make-run-cell.sh && mv temp-make-run-cell.sh make-run-cell.sh && chmod u+x make-run-cell.sh && echo 'make-run-cell.sh' && date
 ```
 
 
@@ -26,5 +26,7 @@ chmod u+x make-run-cell.sh && ln -sf /home/christian/Gedankenspeicher/Gedankensp
 *make-run-cell.sh*
 ```bash
 #!/bin/bash
-noweb.py -Rrun-cell.sh "$1" > run-cell.sh && chmod u+x run-cell.sh && ./run-cell.sh
+echo "#!/bin/bash" > run-cell.sh
+echo "# $(date)" >> run-cell.sh
+noweb.py -Rrun-cell.sh "$1" >> run-cell.sh && chmod u+x run-cell.sh && ./run-cell.sh
 ```

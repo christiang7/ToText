@@ -6,9 +6,16 @@ Only for Downloads for the firefox webbrowser
 
 Kommando zum Extrahieren des Scripts
 
+
+# WIRD NICHT MEHR GENUTZT
+
+
+
+
+
 *run-cell.sh*
 ```bash
-noweb.py -Rttdown ttdown.md > ttdown && echo 'fertig'
+noweb.py -Rttdown ttdown.md > ttdown && echo "ttdown" && date
 ```
 
 ## Main program
@@ -21,6 +28,7 @@ extens=${f##*.}
 name=$(basename "$f" .$extens)
 source=$(echo "$2")
 folder=$(echo ~/Gedankenspeicher/Output/)
+additiontext="$(yt-dlp --get-description ${source})"
 
 abfrage=$(yad --title="Diese Datei eine TXT hinzufügen" --text="Noch etwas hinzufügen?" \
 	--form --width 500 --separator="~" --item-separator=","  \
@@ -36,10 +44,20 @@ then
 	tags=$(echo $abfrage | cut -s -d "~" -f 3)
 	additiontext=$(echo $abfrage | cut -s -d "~" -f 4)
 
-	File=$(echo "$Newname"."$extens" | sed 's/ /_/g' | sed 's/:/;/g'| sed -e "s/'/_/g" | sed 's/\"//g'|  sed 's/&/n/g' | sed 's/\///g' | sed 's/|//g' | sed 's/\[/(/g' | sed 's/\]/)/g' | sed 's/@/at/g')
+	File=$(echo "$Newname"."$extens" | sed 's/ /_/g' | sed 's/:/;/g'| sed -e "s/'/_/g" | sed 's/\"//g'|  sed 's/&/n/g' | sed 's/\///g' | sed 's/|//g' | sed 's/\[/(/g' | sed 's/\]/)/g' | sed 's/@/at/g' | sed 's/｜/-/g' | sed 's/：/;/g')
 	mv "$1" "$folder""$File"
 	#File=$(echo "$1" | sed 's/ /_/g' | sed 's/:/;/g'| sed -e "s/'/_/g" | sed 's/\"//g' |  sed 's/&/n/g' | sed 's/|//g' | sed 's/\[/(/g' | sed 's/\]/)/g' | sed 's/@/at/g')
 	#mv "$1" "$File"
+	#name=$(echo "$name" | sed 's/ /\\ /g' | sed 's/&/\\&/g')
+	filename=$(basename "$File" .$extens)
+	echo $(pwd)
+	echo "$name.vtt"
+	echo "$filename".vtt
+	mv "$folder$name.en.vtt" "$folder""$filename".en.vtt
+	mv "$folder$name.de.vtt" "$folder""$filename".de.vtt
+	mv "$folder$name.en.srt" "$folder""$filename".en.srt
+	mv "$folder$name.de.srt" "$folder""$filename".de.srt
+
 	f=$(basename "$File")
 
 	#f=$(basename "$1")
@@ -56,15 +74,21 @@ then
 	#mv "$folder""$File"-px.png "$folder""$File".png
 	convert "$folder""$File".png "$folder""$File".avif
 	rm "$folder""$File".png
-	echo -e "\n$additiontext\n" >> "$folder""$File".md
 	echo "{{../$f.avif?width=500}}" >> "$folder""$File".md
-	yt-dlp --get-description "$source" >> "$folder""$File".md
+	echo -e "\n$additiontext\n" >> "$folder""$File".md
+	#yt-dlp --get-description "$source" >> "$folder""$File".md
 	#echo "$3" >> "$File".md
 	#kate "$File".md 2>/dev/null &
-
+	echo -e "\n*$filename.en.vtt*" >> "$folder""$File".md
+	echo -e "\`\`\`bash" >> "$folder""$File".md
+	cat "$folder""$filename".en.vtt >> "$folder""$File".md
+	echo -e "\`\`\`" >> "$folder""$File".md
+	echo -e "\n*$filename.de.vtt*" >> "$folder""$File".md
+	echo -e "\`\`\`bash" >> "$folder""$File".md
+	cat "$folder""$filename".de.vtt >> "$folder""$File".md
+	echo -e "\`\`\`" >> "$folder""$File".md
+	echo -e "\n*run-cell.sh*" >> "$folder""$File".md
+	echo -e "\`\`\`bash" >> "$folder""$File".md
+	echo -e "noweb.py -R$filename.de.vtt $File.md > $filename.de.vtt \n noweb.py -R$filename.en.vtt $File.md > $filename.en.vtt \n echo '$File' && date \n\`\`\`\n\n" >> "$folder""$File".md
 fi
 ```
-
-
-
-

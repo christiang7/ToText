@@ -1,10 +1,11 @@
 #! /bin/bash
 
+
 request=$(yad --title="Notes or archiv" --text="Something to add?" \
 	--form --width 500 --separator="~" --item-separator=","  \
 	--field="Quelle:":CB \
 	--field="Weiteres":TXT \
-	"Spass,NeuNotiz,Heute,Physik,Mathematik,Philosophie,Naturwissenschaften_und_Instrumentarien,CodeFabrik,Zettelkasten" "")
+	"Spass,NeuNotiz,Heute,Physik,Mathematik,Blogging,Philosophie,Naturwissenschaften_und_Instrumentarien,CodeFabrik,Zettelkasten" "")
 choose=$(echo $request | cut -s -d "~" -f 1)
 additiontext=$(echo $request | cut -s -d "~" -f 2)
 if [ ! $? -eq 1 ];
@@ -21,7 +22,7 @@ then
 			--field="Source:":CBE \
 			--field="Tags:" \
 			--field="Something else":TXT \
-			"Spass,Physik,Mathematik,Philosophie,Naturwissenschaften_und_Instrumentarien,CodeFabrik,Zettelkasten" "Topicname" "Internet,Christian Gößl," "" "$additiontext")
+			"Spass,Physik,Mathematik,Blogging,Philosophie,CodeFabrik,Zettelkasten" "Topicname" "Internet,Christian Gößl," "" "$additiontext")
 
 		if [ ! $? -eq 1 ];
 		then
@@ -36,6 +37,8 @@ then
 				Physik) folder=$(echo "/home/christian/Gedankenspeicher/Gedankenspeicherwiki/Physik")
 					l=37;;
 				Mathematik) folder=$(echo "/home/christian/Gedankenspeicher/Gedankenspeicherwiki/Mathematik")
+					l=37;;
+				Blogging) folder=$(echo "/home/christian/Gedankenspeicher/Gedankenspeicherwiki/Blogging")
 					l=37;;
 				Philosophie) folder=$(echo "/home/christian/Gedankenspeicher/Gedankenspeicherwiki/Philosophie")
 					l=37;;
@@ -68,22 +71,24 @@ then
 		;;
 	*)
 		case ${choose} in
-			Spass) file=$(echo "/home/christian/Gedankenspeicher/Gedankenspeicherwiki/Spaß_Stream/1»Spaß_Stream_Archiv.md")
+			Spass) file=$(echo "/home/christian/Gedankenspeicher/Gedankenspeicherwiki/Spaß_Stream/0»Journal_1_Spaß_Stream.md")
 				l=5;;
-			Zettelkasten) file=$(echo "/home/christian/Gedankenspeicher/Gedankenspeicherwiki/Zettelkasten/1»Pfad_Zettelkasten_Archiv.md")
+			Zettelkasten) file=$(echo "/home/christian/Gedankenspeicher/Gedankenspeicherwiki/Zettelkasten/0»Journal_Zettelkasten.md")
 				l=5;;
 			Heute) tabs2zim.sh $additiontext
 				exit
 				;;
-			Physik) file=$(echo "/home/christian/Gedankenspeicher/Gedankenspeicherwiki/Physik/1»Physik_Archiv.md")
+			Physik) file=$(echo "/home/christian/Gedankenspeicher/Gedankenspeicherwiki/Physik/0»Journal_Physik.md")
 				l=5;;
-			Mathematik) file=$(echo "/home/christian/Gedankenspeicher/Gedankenspeicherwiki/Mathematik/1»Mathematik_Archiv.md")
+			Mathematik) file=$(echo "/home/christian/Gedankenspeicher/Gedankenspeicherwiki/Mathematik/0»Journal_Mathematik.md")
 				l=5;;
-			Philosophie) file=$(echo "/home/christian/Gedankenspeicher/Gedankenspeicherwiki/Philosophie/1»Philosophie_Archiv.md")
+			Blogging) file=$(echo "/home/christian/Gedankenspeicher/Gedankenspeicherwiki/Blogging/0»Journal_Blogging.md")
 				l=5;;
-			Naturwissenschaften_und_Instrumentarien) file=$(echo "/home/christian/Gedankenspeicher/Gedankenspeicherwiki/Naturwissenschaften_und_Instrumentarien/1»Naturwissenschaften_und_Instrumentarien_Archiv.md")
+			Philosophie) file=$(echo "/home/christian/Gedankenspeicher/Gedankenspeicherwiki/Philosophie/0»Journal_Philosophie.md")
 				l=5;;
-			CodeFabrik) file=$(echo "/home/christian/Gedankenspeicher/Gedankenspeicherwiki/CodeFabrik/1»CodeFabrik_Archiv.md")
+			Naturwissenschaften_und_Instrumentarien) file=$(echo "/home/christian/Gedankenspeicher/Gedankenspeicherwiki/Naturwissenschaften_und_Instrumentarien/0»Journal_Naturwissenschaften_und_Instrumentarien.md")
+				l=5;;
+			CodeFabrik) file=$(echo "/home/christian/Gedankenspeicher/Gedankenspeicherwiki/CodeFabrik/0»Journal_1_CodeFabrik.md")
 				l=5;;
 		esac
 		#echo $tabs
@@ -122,3 +127,5 @@ then
 		;;
 	esac
 fi
+
+@

@@ -37,7 +37,7 @@ https://overflow.adminforge.de/exchange/tex/questions/200310/break-lines-in-mint
 
 *run-cell.sh*
 ```bash
-noweb.py -Rtemplate-tex.sh template-tex.sh.md > template-tex.sh && echo 'fertig' 
+noweb.py -Rtemplate-tex.sh template-tex.sh.md > template-tex.sh && echo 'template-tex.sh' && date
 ```
 
 
@@ -198,7 +198,7 @@ echo -e "\n## Programming" >> "${File}".md
 
 echo -e "\n*run-cell.sh*" >> "${File}".md
 echo -e "\`\`\`bash" >> "${File}".md
-echo -e "noweb.py -R${File}.${extens} ${File}.md > ${File}.${extens} && noweb.py -R${File}.tex ${File}.md > ${File}.tex && pdflatex -shell-escape ${File}.tex && echo 'fertig' \n\`\`\`" >> "${File}".md
+echo -e "noweb.py -R${File}.${extens} ${File}.md > ${File}.${extens} && noweb.py -R${File}.tex ${File}.md > ${File}.tex && pdflatex -shell-escape ${File}.tex && echo '${File}.tex' && date \n\`\`\`" >> "${File}".md
 
 echo -e "\n*${File}.${extens}*" >> "${File}".md
 echo -e "\`\`\`${extens}" >> "${File}".md
@@ -207,7 +207,7 @@ echo -e "\n\`\`\`" >> "${File}".md
 echo -e "\n## Latex File\n" >> "${File}".md
 
 echo -e "\n\`\`\`bash" >> "${File}".md
-echo -e "noweb.py -R${File}.tex ${File}.md > ${File}.tex && pdflatex -shell-escape ${File}.tex && xournalpp ${File}.pdf 2>/dev/null  \n\`\`\`\n\n" >> "${File}".md
+echo -e "noweb.py -R${File}.tex ${File}.md > ${File}.tex && pdflatex -shell-escape ${File}.tex && echo '${File}.tex' && date && xournalpp ${File}.pdf 2>/dev/null & \n\`\`\`\n\n" >> "${File}".md
 
 echo -e "*${File}.tex*" >> "${File}".md
 echo -e "\`\`\`latex" >> "${File}".md
@@ -248,7 +248,7 @@ echo -e "\n## Latex File\n" >> "${File}".md
 
 echo -e "\n*run-cell.sh*" >> "${File}".md
 echo -e "\`\`\`bash" >> "${File}".md
-echo -e "noweb.py -R${File}.tex ${File}.md > ${File}.tex && pdflatex -shell-escape ${File}.tex && xournalpp ${File}.pdf 2>/dev/null  \n\`\`\`\n\n" >> "${File}".md
+echo -e "noweb.py -R${File}.tex ${File}.md > ${File}.tex && pdflatex -shell-escape ${File}.tex && echo '${File}.tex' && date && xournalpp ${File}.pdf 2>/dev/null &\n\`\`\`\n\n" >> "${File}".md
 
 echo -e "*${File}.tex*" >> "${File}".md
 echo -e "\`\`\`latex" >> "${File}".md
@@ -284,7 +284,7 @@ echo -e "\n## Latex File\n" >> "${File}".md
 
 echo -e "\n*run-cell.sh*" >> "${File}".md
 echo -e "\`\`\`bash" >> "${File}".md
-echo -e "noweb.py -R${File}.tex ${File}.md > ${File}.tex && pdflatex -shell-escape ${File}.tex && xournalpp ${File}.pdf 2>/dev/null  \n\`\`\`\n\n" >> "${File}".md
+echo -e "noweb.py -R${File}.tex ${File}.md > ${File}.tex && pdflatex -shell-escape ${File}.tex && echo '${File}.tex' && date && xournalpp ${File}.pdf 2>/dev/null & \n\`\`\`\n\n" >> "${File}".md
 
 echo -e "*${File}.tex*" >> "${File}".md
 echo -e "\`\`\`latex" >> "${File}".md
@@ -313,7 +313,7 @@ echo -e "\n## Latex File\n" >> "${File}".md
 
 echo -e "\n*run-cell.sh*" >> "${File}".md
 echo -e "\`\`\`bash" >> "${File}".md
-echo -e "noweb.py -R${File}.tex ${File}.md > ${File}.tex && pdflatex -shell-escape ${File}.tex && xournalpp ${File}.pdf 2>/dev/null & \n\`\`\`\n\n" >> "${File}".md
+echo -e "noweb.py -R${File}.tex ${File}.md > ${File}.tex && pdflatex -shell-escape ${File}.tex && echo '${File}.tex' && date && xournalpp ${File}.pdf 2>/dev/null & \n\`\`\`\n\n" >> "${File}".md
 
 echo -e "*${File}.tex*" >> "${File}".md
 echo -e "\`\`\`latex" >> "${File}".md
@@ -346,7 +346,7 @@ echo -e "\n## Latex File\n" >> "${File}".md
 
 echo -e "\n*run-cell.sh*" >> "${File}".md
 echo -e "\`\`\`bash" >> "${File}".md
-echo -e "noweb.py -R${File}.tex ${File}.md > ${File}.tex && pdflatex -shell-escape ${File}.tex && xournalpp ${File}.pdf 2>/dev/null & \n\`\`\`\n\n" >> "${File}".md
+echo -e "noweb.py -R${File}.tex ${File}.md > ${File}.tex && pdflatex -shell-escape ${File}.tex && echo '${File}.tex' && date && xournalpp ${File}.pdf 2>/dev/null & \n\`\`\`\n\n" >> "${File}".md
 
 echo -e "*${File}.tex*" >> "${File}".md
 echo -e "\`\`\`latex" >> "${File}".md
