@@ -24,7 +24,7 @@ do
     #zip -r $maffFileName.zip "$maffFileName"
     zip -r "$maffFileName".zip "$folder"
     mv "$maffFileName".zip "$maffFileName".maff
-    #ttn $maffFileName.maff
+    #tt $maffFileName.maff
     echo "Content-Type: text/x-zim-wiki" >> "$maffFileName".maff.md
     echo "Wiki-Format: zim 0.6" >> "$maffFileName".maff.md
     echo "====== $maffFileName.maff ======" >> "$maffFileName".maff.md

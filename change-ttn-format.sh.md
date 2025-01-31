@@ -19,10 +19,6 @@ noweb.py -Rchange-ttn-format.sh change-ttn-format.sh.md > change-ttn-format.sh &
 ```
 
 
-```bash
-chmod u+x change-ttn-format.sh && ln -sf /home/christian/Gedankenspeicher/Gedankenspeicherwiki/CodeFabrik/Gedankenspeicher-Coding/change-ttn-format.sh ~/.local/bin/change-ttn-format.sh && echo 'fertig'
- ```
-
 *change-ttn-format.sh*
 ```bash
 #!/bin/bash

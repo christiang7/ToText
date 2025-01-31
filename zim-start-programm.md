@@ -1,14 +1,14 @@
 # zim-start-programm
 Created Dienstag [Zettelkasten:2022:10:11]()
-Backlink [GedankenspeicherCoding](../GedankenspeicherCoding.md)
 
 - [X] **zim-start-programm**
 
+*run-cell.sh*
+```bash
+noweb.py -Rzim-start-programm.sh zim-start-programm.md > zim-start-programm.sh && echo 'fertig'
+```
 
-  ``noweb.py -Rzim-start-programm.sh zim-start-programm.md > zim-start-programm.sh && echo 'fertig'``
 
-
-``chmod u+x zim-start-programm.sh && ln -sf /home/christian/Gedankenspeicher/Gedankenspeicherwiki/Zettelkasten/Gedankenwanderung/Programme/zim-start-programm.sh ~/.local/bin/zim-start-programm.sh && echo 'fertig'``
 
 *zim-start-programm.sh*
 ```bash

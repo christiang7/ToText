@@ -4,7 +4,10 @@ Backlink [GedankenspeicherCoding](../GedankenspeicherCoding.md)
 
 - [X] **instadown**
 
-  ``noweb.py -Rinstadown instadown.md > instadown && chmod u+x instadown && echo 'fertig'``
+*run-cell.sh*
+```bash
+noweb.py -Rinstadown instadown.md > instadown && chmod u+x instadown && echo 'fertig'
+```
 
 
 
@@ -14,7 +17,7 @@ Backlink [GedankenspeicherCoding](../GedankenspeicherCoding.md)
 folder=$(date +"/home/christian/Gedankenspeicher/Gedankenspeicherwiki/Zettelkasten/%Y/%m/%d")
 mkdir -p $folder
 cd $folder
-gallery-dl --no-mtime --exec "ttn {} '$1' " -D "$folder" "$1" &
-ttn $File $1
+gallery-dl --no-mtime --exec "tt {} '$1' " -D "$folder" "$1" &
+tt $File $1
 ```
 

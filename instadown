@@ -1,0 +1,6 @@
+#!/bin/bash
+folder=$(date +"/home/christian/Gedankenspeicher/Gedankenspeicherwiki/Zettelkasten/%Y/%m/%d")
+mkdir -p $folder
+cd $folder
+gallery-dl --no-mtime --exec "tt {} '$1' " -D "$folder" "$1" &
+tt $File $1

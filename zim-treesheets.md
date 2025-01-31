@@ -4,8 +4,8 @@ Backlink [CodeFabrik:GedankenspeicherCoding](../GedankenspeicherCoding.md)
 
 - [X] **zim-treesheets**
 
-
-  ```bash
+*run-cell.sh*
+```bash
 noweb.py -Rzim-treesheets.sh zim-treesheets.md > zim-treesheets.sh && echo 'fertig'
 ```
 
@@ -42,7 +42,7 @@ then
   filename=$(echo "$Newname" | sed 's/ /_/g' | sed 's/:/;/g'| sed -e "s/'/_/g" | sed 's/\"//g')
   cp ~/Gedankenspeicher/Vorlagen/Vorlage-10-10.cts "$filename".cts
   cp ~/Gedankenspeicher/Vorlagen/Vorlage-10-10.png "$filename".cts.png
-  treesheets "$filename".cts && ttn "$filename".cts
+  treesheets "$filename".cts && tt "$filename".cts
 fi
 ```
 

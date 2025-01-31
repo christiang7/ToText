@@ -22,6 +22,6 @@ noweb.py -Rfirefox-maff-export-txt firefox-maff-export-txt.md > firefox-maff-exp
 File=$(echo "$1" | sed 's/ /_/g' | sed 's/:/;/g'| sed -e "s/'/_/g" | sed 's/\"//g')
 folder=$(unzip -Z -1 "$1" '*/')
 unzip "$1"
-ttn "$1" && cat $folder'index.rdf' >> "$File".md && rm -r $folder
+tt "$1" && cat $folder'index.rdf' >> "$File".md && rm -r $folder
 ```
 

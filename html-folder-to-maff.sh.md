@@ -30,11 +30,6 @@ make script:
 noweb.py -Rhtml-folder-to-maff.sh html-folder-to-maff.sh.md > html-folder-to-maff.sh && echo 'fertig' 
 ```
 
-
-```bash
-chmod u+x html-folder-to-maff.sh && ln -sf /home/christian/Gedankenspeicher/Gedankenspeicherwiki/CodeFabrik/Gedankenspeicher-Coding/html-folder-to-maff.sh ~/.local/bin/html-folder-to-maff.sh && echo 'fertig'
- ```
-
 *html-folder-to-maff.sh*
 ```bash
 #!/bin/bash
@@ -71,7 +66,7 @@ maffFileName=$(echo "$htmlFileName-$folder")
 #zip -r $maffFileName.zip "$maffFileName"
 zip -r "$maffFileName".zip "$folder"
 mv "$maffFileName".zip "$maffFileName".maff
-#ttn $maffFileName.maff
+#tt $maffFileName.maff
 ```
 
 

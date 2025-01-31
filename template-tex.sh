@@ -64,7 +64,7 @@ then
 
 		echo -e "\n*run-cell.sh*" >> "${File}".md
 		echo -e "\`\`\`bash" >> "${File}".md
-		echo -e "noweb.py -R${File}.tex ${File}.md > ${File}.tex && pdflatex -shell-escape ${File}.tex && echo '${File}.tex' && date && xournalpp ${File}.pdf 2>/dev/null &\n\`\`\`\n\n" >> "${File}".md
+		echo -e "noweb.py -R${File}.tex ${File}.md > ${File}.tex && pdflatex -synctex=1 -interaction=nonstopmode -shell-escape ${File}.tex && echo '${File}.tex' && date && xournalpp ${File}.pdf 2>/dev/null &\n\`\`\`\n\n" >> "${File}".md
 
 		echo -e "*${File}.tex*" >> "${File}".md
 		echo -e "\`\`\`latex" >> "${File}".md
@@ -93,7 +93,7 @@ then
 
 		echo -e "\n*run-cell.sh*" >> "${File}".md
 		echo -e "\`\`\`bash" >> "${File}".md
-		echo -e "noweb.py -R${File}.tex ${File}.md > ${File}.tex && pdflatex -shell-escape ${File}.tex && echo '${File}.tex' && date && xournalpp ${File}.pdf 2>/dev/null & \n\`\`\`\n\n" >> "${File}".md
+		echo -e "noweb.py -R${File}.tex ${File}.md > ${File}.tex && pdflatex -synctex=1 -interaction=nonstopmode -shell-escape ${File}.tex && echo '${File}.tex' && date && xournalpp ${File}.pdf 2>/dev/null & \n\`\`\`\n\n" >> "${File}".md
 
 		echo -e "*${File}.tex*" >> "${File}".md
 		echo -e "\`\`\`latex" >> "${File}".md
@@ -119,7 +119,7 @@ then
 
 		echo -e "\n*run-cell.sh*" >> "${File}".md
 		echo -e "\`\`\`bash" >> "${File}".md
-		echo -e "noweb.py -R${File}.tex ${File}.md > ${File}.tex && pdflatex -shell-escape ${File}.tex && echo '${File}.tex' && date && xournalpp ${File}.pdf 2>/dev/null & \n\`\`\`\n\n" >> "${File}".md
+		echo -e "noweb.py -R${File}.tex ${File}.md > ${File}.tex && pdflatex -synctex=1 -interaction=nonstopmode -shell-escape ${File}.tex && echo '${File}.tex' && date && xournalpp ${File}.pdf 2>/dev/null & \n\`\`\`\n\n" >> "${File}".md
 
 		echo -e "*${File}.tex*" >> "${File}".md
 		echo -e "\`\`\`latex" >> "${File}".md
@@ -149,7 +149,7 @@ then
 
 		echo -e "\n*run-cell.sh*" >> "${File}".md
 		echo -e "\`\`\`bash" >> "${File}".md
-		echo -e "noweb.py -R${File}.tex ${File}.md > ${File}.tex && pdflatex -shell-escape ${File}.tex && echo '${File}.tex' && date && xournalpp ${File}.pdf 2>/dev/null & \n\`\`\`\n\n" >> "${File}".md
+		echo -e "noweb.py -R${File}.tex ${File}.md > ${File}.tex && pdflatex -synctex=1 -interaction=nonstopmode -shell-escape ${File}.tex && echo '${File}.tex' && date && xournalpp ${File}.pdf 2>/dev/null & \n\`\`\`\n\n" >> "${File}".md
 
 		echo -e "*${File}.tex*" >> "${File}".md
 		echo -e "\`\`\`latex" >> "${File}".md
@@ -203,7 +203,7 @@ then
 			echo -e "\n## Latex File\n" >> "${File}".md
 
 			echo -e "\n\`\`\`bash" >> "${File}".md
-			echo -e "noweb.py -R${File}.tex ${File}.md > ${File}.tex && pdflatex -shell-escape ${File}.tex && echo '${File}.tex' && date && xournalpp ${File}.pdf 2>/dev/null & \n\`\`\`\n\n" >> "${File}".md
+			echo -e "noweb.py -R${File}.tex ${File}.md > ${File}.tex && pdflatex -synctex=1 -interaction=nonstopmode -shell-escape ${File}.tex && echo '${File}.tex' && date && xournalpp ${File}.pdf 2>/dev/null & \n\`\`\`\n\n" >> "${File}".md
 
 			echo -e "*${File}.tex*" >> "${File}".md
 			echo -e "\`\`\`latex" >> "${File}".md

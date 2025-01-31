@@ -6,7 +6,7 @@
 Verschiebung von tex Dateien in einen gesammelten Ordner
 
 ## Features
-* Integration ins [GedankenspeicherCoding:ttn](./ttn.md) Programm
+* Integration ins [GedankenspeicherCoding:](./.tt.md) Programm
 * Dateiname wird mit korrigiert
 
 

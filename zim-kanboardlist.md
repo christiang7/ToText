@@ -14,11 +14,6 @@ einfügen von einer Standard Kanboardliste für zim-wiki
 noweb.py -Rzim-kanboardlist.sh zim-kanboardlist.md > zim-kanboardlist.sh && echo 'fertig'
 ```
 
-
-```bash
-chmod u+x zim-kanboardlist.sh && ln -sf ~/Gedankenspeicher/Gedankenspeicherwiki/CodeFabrik/GedankenspeicherCoding/zim-kanboardlist.sh ~/.local/bin/zim-kanboardlist.sh && echo 'fertig'
-```
-
 ## Main program
 
 *zim-kanboardlist.sh*

@@ -1,6 +1,5 @@
 # ttrename
 Created Dienstag [Zettelkasten:2022:06:14]()
-Backlink [GedankenspeicherCoding](../GedankenspeicherCoding.md)
 
 - [X] **ttrename**
     - [X] Doing

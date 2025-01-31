@@ -15,9 +15,6 @@ Quoting with Anchors and Links. The quoted text ist formated as verbatim text.
 noweb.py -Rzim-quotes-copy.sh zim-quotes-copy.md > zim-quotes-copy.sh && echo 'fertig'
 ```
 
-```bash
-chmod u+x zim-quotes-copy.sh && ln -sf /home/christian/Gedankenspeicher/KanDo/GedankenspeicherEinrichtung/GedankenspeicherCoding/zim-quotes-copy.sh ~/.local/bin/zim-quotes-copy.sh && echo 'fertig'
-```
 
 *zim-quotes-copy.sh*
 ```bash

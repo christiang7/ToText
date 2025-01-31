@@ -13,8 +13,6 @@ Beispiel
   ``noweb.py -Rcreate-today-link.sh create-today-link.md > create-today-link.sh && echo 'fertig'``
 
 
-``chmod u+x create-today-link.sh && ln -sf ~/Gedankenspeicher/Gedankenspeicherwiki/CodeFabrik/GedakenspeicherCoding/create-today-link.sh ~/.local/bin/create-today-link.sh && echo 'fertig'``
-
 
 *create-today-link.sh*
 ```bash

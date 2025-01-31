@@ -18,10 +18,6 @@ noweb.py -Rzim-xournal.sh zim-xournal.md > zim-xournal.sh && echo 'fertig'
 ```
 
 
-```bash
-chmod u+x zim-xournal.sh && ln -sf /home/christian/Gedankenspeicher/Gedankenspeicherwiki/Zettelkasten/ZetteL/CodeFabrik/GedankenspeicherCoding/zim-xournal.sh ~/.local/bin/zim-xournal.sh && echo 'fertig'
-```
-
 
 *zim-xournal.sh*
 ```bash
