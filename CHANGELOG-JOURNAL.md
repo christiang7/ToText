@@ -27,6 +27,7 @@
 
 ### 2025-02-01
 - [X] publish on github
+- [X] moved all scripts to Scripts folder
 - [X] using a config file for the path and variables
 	- [X] create config dir
 	- [X] set standard variables
