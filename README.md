@@ -1,6 +1,37 @@
 # ToText tt
 
-## Features
+## Description
+The project called ToText is a collection of bash scripts for using an annotation system with **md** files. It builds upon the desktop wiki [GitHub - zim-desktop-wiki/zim-desktop-wiki: Main repository of the zim desktop wiki project](https://github.com/zim-desktop-wiki/zim-desktop-wiki). The **md** files are describing every given file on your file system. The created **md** file is showing up in zim. So you can search and annotate a file in zim wiki. Some scripts connect zim with the file manager [dolphin]([Dolphin - KDE Applications](https://apps.kde.org/dolphin/)) and the web browser [firefox](https://www.mozilla.org/en-US/firefox/new/). The scripts are working on Linux machines like Ubuntu, Archlinux, Fedora, Suse. The ToText uses the following tools:
+
+- wget
+
+- xidel
+
+- scrot
+
+- sed
+
+- zenity and yad
+
+- firefox addon external application
+
+- firefox addon zim clip
+
+- noweb - noweb.py repository
+
+- mypaint
+
+- krita
+
+- xournalpp
+
+- yt-dlp
+
+- mpv player
+
+The scipts starts with the shortcut tt for ToText. 
+
+## Journal
 
 - [X] Backlog
 	- [ ] rewrite [ttdm] with [ttnm]
@@ -11,7 +42,8 @@
 	- [ ] [ttam](ttam)
 	- [ ] xournal Programmstarter so, dass automatisch thumbnail
 	aktualisiert wird und von einer pdf als Notizen abgespeichert wird
-	- [ ] rewrite i everything in english
+	- [ ] rewrite everything in english
+	- [ ] links for used tools in README file
 - [X] Planning (2)
 	- [ ] replace zenity with yad
 - [X] Doing (2)
@@ -34,9 +66,7 @@
 		- [X] template for rechnung
 		- [X] template for Bewerbung
 
-### 2024-02-13 Zusammenlegung der Scripte tts und ttn
-Zusammenlegung von tts und ttn als Option einfügen, ob Datei geöffnet werden soll danach oder nicht
-tts ist gelöscht
+### 2024-02-13 combined scripts tts und ttn
 
 ### ttvidc corrected to markdown
 ttvidc corrected to markdown and you can choose both files
@@ -56,44 +86,13 @@ Custom tool for open file in zim.
 Creation of template-calculation and zim-template-calculation.
 
 ### 2023-06-22 Insert date later and open folder zim
-Custom tool [zim-date-later]() für einsetzen von "<2277-11-11" Datum für später lesen
+Custom tool [zim-date-later]() for insert "<2277-11-11" date for read later function
 Custom tool for open in zim the folder of the containing file.
 
 ### 2023-06-21 Zim Quoting
 The program [zim-quoting-copy]() can copy a marked line. The marked line gets an anchor. The copied text can be pasted at the desired position of pages.
 
-### 2023-05-25 Kanboardliste Dateheadlines
-[kanboardlist.md](kanboardlist.md) Programm zum Einfügen von Kanboardlisten in zim wiki
-[zim-dateheadlines.md](zim-dateheadlines.md) Einfügen von Überschriften mit Datum im zim-wiki
+### 2023-05-25 Kanboardlist and Dateheadlines
+[kanboardlist.md](kanboardlist.md) insert Kanboardlists in zim wiki
+[zim-dateheadlines.md](zim-dateheadlines.md) insert date headlines in zim-wiki
 
-
-## Description
-The project called ToText is a collection of scripts for using an annotation system with **md** files. It builds upon the desktop wiki [GitHub - zim-desktop-wiki/zim-desktop-wiki: Main repository of the zim desktop wiki project](https://github.com/zim-desktop-wiki/zim-desktop-wiki). The **md** files are describing every given file on your file system. The created **md** file is showing up in zim. So you can search and annotate a file in zim wiki. Some scripts connect zim with the file manager perhaps [dolphin]([Dolphin - KDE Applications](https://apps.kde.org/dolphin/)) and the web browser [firefox](https://www.mozilla.org/en-US/firefox/new/). The scripts are working on Linux machines like Ubuntu, Archlinux, Fedora, Suse. The ToText uses the following tools:
-
-- wget
-
-- xidel
-
-- scrot
-
-- sed
-
-- zenity and yad
-
-- firefox addon application
-
-- firefox addon zim clip
-
-- noweb - noweb.py repository
-
-- mypaint
-
-- krita
-
-- xournalpp
-
-- yt-dlp
-
-- mpv player
-
-The scipts starts with the shortcut tt for ToText. 
