@@ -61,13 +61,49 @@ function Timestamps(){
 
 #*create-note}}
 
+#*Markdown-file-description}}
+
 ```
 
 ### file description
 
 using ``file-description`` function with the parameters as following
 ```bash
-    file-description p1 p2 p3 p4 p5
+    file-description p1 p2 p3 p4 p5 p6
+    p1 - folder
+    p2 - cleaned filename
+    p3 - tags
+    p4 - source
+    p5 - additiontext
+    p6 - picture
+```
+
+*file-description*
+```bash
+function file-description(){
+    folder=$1
+    File=$2
+    tags=$3
+    source=$4
+    additiontext=$5
+    picture=$6
+    Wikiprev "$folder" "$File"
+    Timestamps "$folder" "$File"
+    echo "$tags" >> "$folder"/"$File".md
+    echo "**[[../$File]]**" >> "$folder"/"$File".md
+    if [[ ! $picture == "" ]]
+    then
+        echo "{{../$File.avif?width=500}}" >> "$folder"/"$File".md
+    fi
+    echo -e "$source\n$additiontext\n" >> "$folder"/"$File".md
+}
+```
+
+### Markdown file description
+
+using ``Markdown-file-description`` function with the parameters as following
+```bash
+    Markdown-file-description p1 p2 p3 p4 p5
     p1 - folder
     p2 - cleaned filename
     p3 - tags
@@ -75,17 +111,16 @@ using ``file-description`` function with the parameters as following
     p5 - additiontext
 ```
 
-*file-description*
+*Markdown-file-description*
 ```bash
-function file-description(){
-    Wikiprev "$1" "$2"
-    Timestamps "$1" "$2"
+function Markdown-file-description(){
+    Markdownprev "$1" "$2"
+    echo "Text creation time: [%Y-%m-%d]($(date +"$journalPage/%Y/%m/%d")) Modification time: [%Y-%m-%d]($(date +"$journalPage/%Y/%m/%d" -r "$File"))" >> "$1"/"$2".md
     echo "$3" >> "$1"/"$2".md
-    echo "**[[../$2]]**" >> "$1"/"$2".md
+    echo "**["$2"]] **" >> "$1"/"$2".md
     echo -e "$4\n$5\n" >> "$1"/"$2".md
 }
 ```
-
 
 ### create note
 

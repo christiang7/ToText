@@ -24,61 +24,42 @@ noweb.py -Rzim-xournal.sh zim-xournal.md > zim-xournal.sh && echo 'fertig'
 #!/bin/bash
 source config.sh; # load the config library functions
 journalPage="$(config_get journalPage)"
+source tt-lib.sh;
 
-File=$(echo "$1" | sed 's/ /_/g' | sed 's/:/;/g'| sed -e "s/'/_/g" | sed 's/\"//g')
-filetxt=${File%.*}
-filetxtname=$(basename "$File" .md)
-filedate=$(date +"%Y-%m-%d")
-source="Christian Gößl"
-par="$(echo $2)"
-#if [[ "Notiz" != "$par" ]];
-#then
-#    additontext="$2-$filetxtname"
-#else
-#    additontext="$2"
-#    echo ifNotiz >> log.md
-#fi
-additontext="$filetxtname"
-Newname=$(zenity --entry \
-    --width 500 \
-    --title "Type new filename" \
-    --text "Enter new filename" \
-    --entry-text "$2-$filedate-$additontext")
-if [ ! "$Newname" = "" ];
+File=$1
+par=$2
+if [[ $par == "" ]];
 then
-    mkdir -p "$filetxtname"
-    cd "$filetxtname"
-    filename=$(echo "$Newname" | sed 's/ /_/g' | sed 's/:/;/g'| sed -e "s/'/_/g" | sed 's/\"//g')
+    par="Note"
+fi
+filepath=${File%.*}
+foldername=$(basename "$File" .md)
+File=$(cleanName "$foldername")
+name="${par}-$(date +%Y-%m-%d)-$File"
+abfrage=$(yad --title="Zim xournalpp note" --text="Type new filename" \
+	--form --width 500 --separator="~" --item-separator=","  \
+    --field="Name" \
+	--field="Tags" \
+	--field="Quelle:":CBE \
+	--field="Weiteres":TXT \
+	"${name}" "" "Christian Gößl,Internet," "")
+
+if [ ! $? -eq 1 ];
+then
+    name=$(echo $abfrage | cut -s -d "~" -f 1)
+	tags=$(echo $abfrage | cut -s -d "~" -f 2)
+	source=$(echo $abfrage | cut -s -d "~" -f 3)
+	additiontext=$(echo $abfrage | cut -s -d "~" -f 4)
+
+    mkdir -p "$foldername"
+    cd "$foldername"
+    filename=$(cleanName "$name")
     File=$(echo "$filename".xopp)
     xournalpp "$filename".xopp && xournalpp "$File" -p "$filename".pdf
     if [ "Unterrichtsnotiz" != "$par" ];
     then
-        #*Zim template}}
+        file-description "$(pwd)" "$File" "@Document $tags" "$source" "$additiontext"
     fi
 fi
 ```
 
-### Markdown template
-
-*Markdown template*
-```bash
-echo "# $File" >> "$File".md
-echo "Text creation time: $(date +"[[$journalPage/%Y/%m/%d|%Y-%m-%d]]") Modification time: $(date +"[[$journalPage/%Y/%m/%d|%Y-%m-%d]]" -r "$File")" >> "$File".md
-echo "- [X] **[["$filename".xopp]] **" >> "$File".md
-echo "$source" >> "$File".md
-```
-
-*Zim template*
-```bash
-echo "Content-Type: text/x-zim-wiki" >> "$File".md
-echo "Wiki-Format: zim 0.6" >> "$File".md
-echo "====== $File ======" >> "$File".md
-echo "Text creation time: $(date +"[[$journalPage:%Y:%m:%d|%Y-%m-%d]]") Modification time: $(date +"[[$journalPage:%Y:%m:%d|%Y-%m-%d]]" -r "$File")" >> "$File".md
-echo "[*] **[[../"$filename".xopp]] **" >> "$File".md
-echo "$source" >> "$File".md
-#ttpdf "$filename".pdf
-#echo -e "{{../$File.avif?width=500}}\n" >> "$File".md
-#xournalpp --export-range=1 "$File" -i "$File".png
-#convert "$File".png "$File".avif
-#rm "$File".png
-```

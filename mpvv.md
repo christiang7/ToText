@@ -18,8 +18,10 @@ hier das Programm
 source config.sh; # load the config library functions
 journalPage="$(config_get journalPage)"
 tempInputDir="$(config_get tempInputDir)"
-echo "$1"
+source tt-lib.sh;
+
 website="$1"
+echo "$website"
 yt="$(echo "$website" | grep youtube)"
 twitch="$(echo "$website" | grep twitch)"
 alttwitch="$(echo "$website" | grep safetwitch)"
@@ -47,7 +49,7 @@ then
 elif [[ ! $invidious == "" ]];
 then
 	links2 -dump ${website} &
-	file=$(yt-dlp --print filename -s -i "${website}" -o '%(title)s.%(ext)s')
+	ofile=$(yt-dlp --print filename -s -i "${website}" -o '%(title)s.%(ext)s')
 	profile="invidious"
 elif [[ ! $aeon == "" || ! "$vimeo" = "" ]];
 then
@@ -60,7 +62,6 @@ else
 	profile="normal"
 fi
 echo $profile
-# --restrict-filenames
 
 file=$(echo "$ofile" | sed 's/ /_/g' | sed 's/:/;/g'| sed -e "s/'/_/g" | sed 's/\"//g'|  sed 's/&/n/g' | sed 's/\///g' | sed 's/|//g' | sed 's/\[/(/g' | sed 's/\]/)/g' | sed 's/@/at/g' | sed 's/｜/-/g' | sed 's/：/;/g' | sed 's/？/ß/g')
 
@@ -76,48 +77,41 @@ mpv --profile="$profile" --screenshot-template="Screenshot-$file-%P" "$website"
 
 *temp-video-description*
 ```bash
+
 f=$file
 extens=${f##*.}
 name=$(basename "$f" .$extens)
-folder="$tempInputDir/"
+folder="$tempInputDir"
 source=$website
 File=$(echo "$name"."$extens" | sed 's/ /_/g' | sed 's/:/;/g'| sed -e "s/'/_/g" | sed 's/\"//g'|  sed 's/&/n/g' | sed 's/\///g' | sed 's/|//g' | sed 's/\[/(/g' | sed 's/\]/)/g' | sed 's/@/at/g' | sed 's/｜/-/g' | sed 's/：/;/g')
 
-if [ ! -f "$folder""$File.md" ]
+if [ ! -f "$folder"/"$File.md" ]
 then
 	additiontext="$(yt-dlp --get-description ${source})"
-	if [[ ! $twitch == "" ]]
+	if [[ $twitch == "" ]]
 	then
 		yt-dlp --sub-langs "en,de" --write-sub --write-auto-sub --sub-format "vtt" --skip-download -i ${source} -o "$tempInputDir/%(title)s.%(ext)s"
 		filename=$(basename "$File" .$extens)
 		name=$(basename "$ofile" .$extens)
-		mv "$folder$name".en.vtt "$folder""$filename".en.vtt
-		mv "$folder$name.de.vtt" "$folder""$filename".de.vtt
-		mv "$folder$name.en.srt" "$folder""$filename".en.srt
-		mv "$folder$name.de.srt" "$folder""$filename".de.srt
+		mv "$folder/$name".en.vtt "$folder"/"$filename".en.vtt
+		mv "$folder/$name.de.vtt" "$folder"/"$filename".de.vtt
+		mv "$folder/$name.en.srt" "$folder"/"$filename".en.srt
+		mv "$folder/$name.de.srt" "$folder"/"$filename".de.srt
 	fi
 
-	f=$(basename "$File")
+	file-description "$folder" "$File" "@VIDEO $tags" "$source" "$additiontext" "pic"
 
-	touch "$folder""$File".md
-	echo "Content-Type: text/x-zim-wiki" >> "$folder""$File".md
-	echo "Wiki-Format: zim 0.6" >> "$folder""$File".md
-	echo "====== $f ======" >> "$folder""$File".md
-	echo "Text date:$(date +"[[$journalPage:%Y:%m:%d|%Y-%m-%d]]") Modi date:$(date +"[[$journalPage:%Y:%m:%d|%Y-%m-%d]]")" >> "$folder""$File".md
-	echo "[*] @VIDEO $tags **[[../$f]]** $source" >> "$folder""$File".md
-	echo "{{../$f.avif?width=500}}" >> "$folder""$File".md
-	echo -e "\n$additiontext\n" >> "$folder""$File".md
-	echo -e "\n*$filename.en.vtt*" >> "$folder""$File".md
-	echo -e "\`\`\`bash" >> "$folder""$File".md
-	cat "$folder""$filename".en.vtt >> "$folder""$File".md
-	echo -e "\`\`\`" >> "$folder""$File".md
-	echo -e "\n*$filename.de.vtt*" >> "$folder""$File".md
-	echo -e "\`\`\`bash" >> "$folder""$File".md
-	cat "$folder""$filename".de.vtt >> "$folder""$File".md
-	echo -e "\`\`\`" >> "$folder""$File".md
-	echo -e "\n*run-cell.sh*" >> "$folder""$File".md
-	echo -e "\`\`\`bash" >> "$folder""$File".md
-	echo -e "noweb.py -R$filename.de.vtt $File.md > $filename.de.vtt \nnoweb.py -R$filename.en.vtt $File.md > $filename.en.vtt \n echo '$File' && date \n\`\`\`\n\n" >> "$folder""$File".md
+	echo -e "\n*$filename.en.vtt*" >> "$folder"/"$File".md
+	echo -e "\`\`\`bash" >> "$folder"/"$File".md
+	cat "$folder""$filename".en.vtt >> "$folder"/"$File".md
+	echo -e "\`\`\`" >> "$folder"/"$File".md
+	echo -e "\n*$filename.de.vtt*" >> "$folder"/"$File".md
+	echo -e "\`\`\`bash" >> "$folder"/"$File".md
+	cat "$folder""$filename".de.vtt >> "$folder"/"$File".md
+	echo -e "\`\`\`" >> "$folder"/"$File".md
+	echo -e "\n*run-cell.sh*" >> "$folder"/"$File".md
+	echo -e "\`\`\`bash" >> "$folder"/"$File".md
+	echo -e "noweb.py -R$filename.de.vtt $File.md > $filename.de.vtt \nnoweb.py -R$filename.en.vtt $File.md > $filename.en.vtt \n echo '$File' && date \n\`\`\`\n\n" >> "$folder"/"$File".md
 
 fi
 ```

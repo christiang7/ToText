@@ -48,9 +48,12 @@ The scipts starts with the shortcut tt for ToText.
 - [X] Doing (2)
 	- [ ] connect programs with libraries
 		- [X] shell library for cleaning filenames
-		- [ ] shell library for markdown template
-		- [ ] shell library for zim template
-		- [ ] template function for nodes for files and usable with library inclusion
+		- [X] shell library for markdown template
+		- [X] shell library for zim template
+		- [X] template function for nodes for files and usable with library inclusion
+		- [ ] pdf function
+		- [ ] video function
+		- [ ] rewrite them
 
 ### 2025-02-01
 - [X] publish on github

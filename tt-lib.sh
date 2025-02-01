@@ -77,11 +77,21 @@ function ttex(){
 
 
 function file-description(){
-    Wikiprev "$1" "$2"
-    Timestamps "$1" "$2"
-    echo "$3" >> "$1"/"$2".md
-    echo "**[[../$2]]**" >> "$1"/"$2".md
-    echo -e "$4\n$5\n" >> "$1"/"$2".md
+    folder=$1
+    File=$2
+    tags=$3
+    source=$4
+    additiontext=$5
+    picture=$6
+    Wikiprev "$folder" "$File"
+    Timestamps "$folder" "$File"
+    echo "$tags" >> "$folder"/"$File".md
+    echo "**[[../$File]]**" >> "$folder"/"$File".md
+    if [[ ! $picture == "" ]]
+    then
+        echo "{{../$File.avif?width=500}}" >> "$folder"/"$File".md
+    fi
+    echo -e "$source\n$additiontext\n" >> "$folder"/"$File".md
 }
 
 function ttpic(){
@@ -102,5 +112,13 @@ function create-note(){
     echo -e "$4\n$5\n" >> "${folder}"/"${File}".md
     echo -e "==== Journal ====\n" >> "${folder}"/"${File}".md
     echo -e "=== $(date +"[[$journalPage:%Y:%m:%d|%Y-%m-%d]]") ===" >> "${folder}"/"${File}".md
+}
+
+function Markdown-file-description(){
+    Markdownprev "$1" "$2"
+    echo "Text creation time: [%Y-%m-%d]($(date +"$journalPage/%Y/%m/%d")) Modification time: [%Y-%m-%d]($(date +"$journalPage/%Y/%m/%d" -r "$File"))" >> "$1"/"$2".md
+    echo "$3" >> "$1"/"$2".md
+    echo "**["$2"]] **" >> "$1"/"$2".md
+    echo -e "$4\n$5\n" >> "$1"/"$2".md
 }
 
