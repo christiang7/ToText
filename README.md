@@ -35,36 +35,35 @@ The scipts starts with the shortcut tt for ToText.
 
 - [X] Backlog
 	- [ ] rewrite [ttdm] with [ttnm]
-	- [ ] bei der Verschiebung und Umbenennung von zim Seiten
-	die zim Funktion umschreiben, so dass auch andere Dateien
-	mit verschoben werden können
 	- [ ] custom tool for insert page.section in file
 	- [ ] [ttam](ttam)
 	- [ ] xournal Programmstarter so, dass automatisch thumbnail
 	aktualisiert wird und von einer pdf als Notizen abgespeichert wird
 	- [ ] rewrite everything in english
 	- [ ] links for used tools in README file
+	- [ ] make a website for tt
+	- [ ] write blog post for website
 - [X] Planning (2)
 	- [ ] replace zenity with yad
 - [X] Doing (2)
-	- [ ] publish on github
-	- [ ] Programme über libraries verbinden
+	- [ ] connect programs with libraries
 		- [X] shell library for cleaning filenames
 		- [ ] shell library for markdown template
 		- [ ] shell library for zim template
 		- [ ] template function for nodes for files and usable with library inclusion
 
 ### 2025-02-01
-	- [X] using a config file for the path and variables
-		- [X] create config dir
-		- [X] set standard variables
-		- [X] script for reading config file
-		- [X] rewrite programs for standard variables
+- [X] publish on github
+- [X] using a config file for the path and variables
+	- [X] create config dir
+	- [X] set standard variables
+	- [X] script for reading config file
+	- [X] rewrite programs for standard variables
 
 ### 2024-08-08 template tex
-	- [X] template-tex
-		- [X] template for rechnung
-		- [X] template for Bewerbung
+- [X] template-tex
+	- [X] template for rechnung
+	- [X] template for Bewerbung
 
 ### 2024-02-13 combined scripts tts und ttn
 
@@ -75,7 +74,7 @@ ttvidc corrected to markdown and you can choose both files
 
 ### 2023-10-29 created programms template-tex.sh and texstudio-noweb-py.sh
 created program template-tex.sh like template-calculation
-texstudio behavior for markdown files with noweb, compilation and so on changed with script [texstudio-noweb-py.sh]
+texstudio behavior for markdown files with noweb, compilation and so on changed with script [texstudio-noweb-py.sh](texstudio-noweb-py.sh)
 
 ### 2023-07-03 wayland paste in zim
 custom tool for insert clipboard of wayland

@@ -4,27 +4,30 @@ Backlink [GedankenspeicherCoding](../GedankenspeicherCoding.md)
 
 - [X] **ttncc**
 
-
+*run-cell.sh*
 ```bash
 noweb.py -Rttncc ttncc.md > ttncc && chmod u+x ttncc && echo 'fertig'
 ```
 
-
+using ``ttncc`` function with the parameters as following
+```bash
+    ttncc p1 p2
+    p1 - old file
+    p2 - new target file
+```
   
 *ttncc*
 ```bash
 #!/bin/bash
-File=$(echo "$2" | sed 's/ /_/g' | sed 's/:/;/g'| sed -e "s/'/_/g" | sed 's/\"//g')
+source tt-lib.sh;
+
+File=$(cleanName "$2")
 oldFile=$(basename "$1")
 f=$(basename "$File")
 filename=${f%.*} #only the filename
 extens=${f##*.}
 function Opentxt(){
 	kate "$File".md 2>/dev/null &
-}
-
-function Wikiprev(){
-	touch "$File".md
 }
 
 if [[ pdf == $extens ]]

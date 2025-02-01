@@ -46,15 +46,9 @@ function ttex(){
     mv "$filename".* "$folder"/"$foldertex"/ #
     #touch "$foldertex".md #
     WikiMarkprev "$folder" "$foldertex"
-    #echo "Content-Type: text/x-zim-wiki" >> "$foldertex".md
-    #echo "Wiki-Format: zim 0.6" >> "$foldertex".md
-    #echo "# $filename" >> "$foldertex".md
     Timestamps "$folder" "$foldertex"
-    #echo "Text date: $(date +"[[$journalPage:%Y:%m:%d|%Y-%m-%d]]") Modi date: $(date +"[[$journalPage:%Y:%m:%d|%Y-%m-%d]]" -r "$foldertex"/"$filename".tex)" >> "$foldertex".md
     echo "@LATEX $tags" >> "$folder"/"$foldertex".md
-    #echo "- [X] **$folder **" >> "$foldertex".md #
     echo -e "[[./$filename.md]]\n[[./$filename.tex]]\n[[./$filename.pdf]]" >> "$folder"/"$foldertex".md
-    #echo "Modification time: $(date +"[[$journalPage:%Y:%m:%d|%Y-%m-%d]]" -r "$folder"/"$foldertex"/"$File")" >> "$folder".md
     echo -e "$source\n$additiontext" >> "$folder"/"$foldertex".md
     # latex file in markdown
     echo -e "# ${filename}.tex" >> "$folder"/"$foldertex"/"${filename}".md
@@ -81,4 +75,32 @@ function ttex(){
     #kate "$folder".md 2>/dev/null &
 }
 
+
+function file-description(){
+    Wikiprev "$1" "$2"
+    Timestamps "$1" "$2"
+    echo "$3" >> "$1"/"$2".md
+    echo "**[[../$2]]**" >> "$1"/"$2".md
+    echo -e "$4\n$5\n" >> "$1"/"$2".md
+}
+
+function ttpic(){
+    File=$(cleanName "$2")
+    file-description "$1" "$File" "@BILD $3" "$4" "$5"
+    echo "{{../$File?width=500}}" >> "$1"/"$File".md
+}
+
+function create-note(){
+    folder=$1
+    title=$2
+    File=$(cleanName "$title")
+    mkdir -p "${folder}"/"${File}"
+    echo "Content-Type: text/x-zim-wiki" > "${folder}"/"${File}".md
+    echo "Wiki-Format: zim 0.6" >> "${folder}"/"${File}".md
+    echo -e "====== ${title} ======" >> "${folder}"/"${File}".md
+    echo -e "$3" >> "${folder}"/"${File}".md
+    echo -e "$4\n$5\n" >> "${folder}"/"${File}".md
+    echo -e "==== Journal ====\n" >> "${folder}"/"${File}".md
+    echo -e "=== $(date +"[[$journalPage:%Y:%m:%d|%Y-%m-%d]]") ===" >> "${folder}"/"${File}".md
+}
 

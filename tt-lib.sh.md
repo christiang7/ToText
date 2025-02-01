@@ -55,7 +55,90 @@ function Timestamps(){
 
 #*ttex}}
 
+#*file-description}}
+
+#*ttpic}}
+
+#*create-note}}
+
 ```
+
+### file description
+
+using ``file-description`` function with the parameters as following
+```bash
+    file-description p1 p2 p3 p4 p5
+    p1 - folder
+    p2 - cleaned filename
+    p3 - tags
+    p4 - source
+    p5 - additiontext
+```
+
+*file-description*
+```bash
+function file-description(){
+    Wikiprev "$1" "$2"
+    Timestamps "$1" "$2"
+    echo "$3" >> "$1"/"$2".md
+    echo "**[[../$2]]**" >> "$1"/"$2".md
+    echo -e "$4\n$5\n" >> "$1"/"$2".md
+}
+```
+
+
+### create note
+
+using ``create-note`` function with the parameters as following
+```bash
+    create-note p1 p2 p3 p4 p5
+    p1 - folder
+    p2 - title
+    p3 - tags
+    p4 - source
+    p5 - additiontext
+```
+
+*create-note*
+```bash
+function create-note(){
+    folder=$1
+    title=$2
+    File=$(cleanName "$title")
+    mkdir -p "${folder}"/"${File}"
+    echo "Content-Type: text/x-zim-wiki" > "${folder}"/"${File}".md
+    echo "Wiki-Format: zim 0.6" >> "${folder}"/"${File}".md
+    echo -e "====== ${title} ======" >> "${folder}"/"${File}".md
+    echo -e "$3" >> "${folder}"/"${File}".md
+    echo -e "$4\n$5\n" >> "${folder}"/"${File}".md
+    echo -e "==== Journal ====\n" >> "${folder}"/"${File}".md
+    echo -e "=== $(date +"[[$journalPage:%Y:%m:%d|%Y-%m-%d]]") ===" >> "${folder}"/"${File}".md
+}
+```
+
+
+### ttpic
+
+using ``ttpic`` function with the parameters as following
+```bash
+    ttpic p1 p2 p3 p4 p5
+    p1 - folder
+    p2 - file - picture
+    p3 - tags
+    p4 - source
+    p5 - additiontext
+```
+
+*ttpic*
+```bash
+function ttpic(){
+    File=$(cleanName "$2")
+    file-description "$1" "$File" "@BILD $3" "$4" "$5"
+    echo "{{../$File?width=500}}" >> "$1"/"$File".md
+}
+```
+
+
 
 ### ttex
 
@@ -90,15 +173,9 @@ function ttex(){
     mv "$filename".* "$folder"/"$foldertex"/ #
     #touch "$foldertex".md #
     WikiMarkprev "$folder" "$foldertex"
-    #echo "Content-Type: text/x-zim-wiki" >> "$foldertex".md
-    #echo "Wiki-Format: zim 0.6" >> "$foldertex".md
-    #echo "# $filename" >> "$foldertex".md
     Timestamps "$folder" "$foldertex"
-    #echo "Text date: $(date +"[[$journalPage:%Y:%m:%d|%Y-%m-%d]]") Modi date: $(date +"[[$journalPage:%Y:%m:%d|%Y-%m-%d]]" -r "$foldertex"/"$filename".tex)" >> "$foldertex".md
     echo "@LATEX $tags" >> "$folder"/"$foldertex".md
-    #echo "- [X] **$folder **" >> "$foldertex".md #
     echo -e "[[./$filename.md]]\n[[./$filename.tex]]\n[[./$filename.pdf]]" >> "$folder"/"$foldertex".md
-    #echo "Modification time: $(date +"[[$journalPage:%Y:%m:%d|%Y-%m-%d]]" -r "$folder"/"$foldertex"/"$File")" >> "$folder".md
     echo -e "$source\n$additiontext" >> "$folder"/"$foldertex".md
     # latex file in markdown
     echo -e "# ${filename}.tex" >> "$folder"/"$foldertex"/"${filename}".md

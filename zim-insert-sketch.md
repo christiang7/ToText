@@ -4,6 +4,7 @@ Backlink [GedankenspeicherCoding](../GedankenspeicherCoding.md)
 
 - [X] **zim-insert-sketch**
 
+*run-cell.sh*
 ```bash
 noweb.py -Rzim-insert-sketch.sh zim-insert-sketch.md > zim-insert-sketch.sh && echo 'fertig'
 ```
@@ -11,6 +12,9 @@ noweb.py -Rzim-insert-sketch.sh zim-insert-sketch.md > zim-insert-sketch.sh && e
 *zim-insert-sketch.sh*
 ```bash
 #!/bin/bash
+source config.sh; # load the config library functions
+source tt-lib.sh;
+
 #if zenity --question --text="Möchten Sie eine neue Skizze anfertigen?"
 #then
 File=$(echo "$1" | sed 's/ /_/g' | sed 's/:/;/g'| sed -e "s/'/_/g" | sed 's/\"//g')
@@ -24,11 +28,12 @@ Newname=$(zenity --entry \
 	--entry-text "_${datum}")
 if [ ! "$Newname" = "" ];
 then
-	filename=$(echo "$Newname" | sed 's/ /_/g' | sed 's/:/;/g'| sed -e "s/'/_/g" | sed 's/\"//g')
+	filename=$(cleanName "$Newname")
+	#filename=$(echo "$Newname" | sed 's/ /_/g' | sed 's/:/;/g'| sed -e "s/'/_/g" | sed 's/\"//g')
 	mkdir -p "$filetxt"
 	cd "$filetxt"
 	mypaint "$filename".png
-	ttpic "$filename".png
+	ttpic "$filetxt" "$filename".png "" "" ""
 	echo -e "[[+${filename}.png]]"
 	echo {{"$filename".png?width=500}}
 fi

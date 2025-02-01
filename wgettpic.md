@@ -15,6 +15,7 @@ noweb.py -Rwgettpic wgettpic.md > wgettpic && chmod u+x wgettpic && echo 'fertig
 #!/bin/bash
 source config.sh; # load the config library functions
 journalDir="$(config_get journalDir)"
+source tt-lib.sh;
 
 Orig=$(basename "$1")
 f=$(basename "$Orig")
@@ -48,14 +49,14 @@ then
     then
         Newname=$(echo "$origname")
     fi
+    File=$(cleanName "$Newname.$extens" )
 
-    File=$(echo "$Newname"."$extens" | sed 's/ /_/g' | sed 's/:/;/g'| sed -e "s/'/_/g" | sed 's/\"//g'|  sed 's/&/n/g' | sed 's/\///g' | sed 's/|//g' | sed 's/\[/(/g' | sed 's/\]/)/g' | sed 's/@/at/g')
     mv "$f" "$File"
 
     convert "$File" "$Newname".avif
     rm "$File"
 
-    ttpic "${Newname}.avif" "$source" "$tags" "$additiontext"
+    ttpic "$folder" "${Newname}.avif" "$tags" "$source" "$additiontext"
 
 fi
 ```

@@ -14,6 +14,7 @@ noweb.py -Rttd ttd.md > ttd && chmod u+x ttd && echo 'fertig'
 #!/bin/bash
 source config.sh; # load the config library functions
 journalPage="$(config_get journalPage)"
+source tt-lib.sh;
 
 folder="$1"
 folder=$(echo $folder | sed 's/\///g')
@@ -73,7 +74,7 @@ do
 		elif [[ JPEG == $extens || jpg == $extens || png == $extens || webp == $extens || jpeg == $extens || svg == $extens ]] && [[ -z $extenspdf && -z $extensxopp && -z $extensmp4 && -z $extensmov && -z $extensflv && -z $extensmkv ]]
 		then
 			#echo pic
-			ttpic "$folder"/"$g" "$source" "$tags" "$additiontext" 
+			ttpic "$folder" "$g" "$source" "$tags" "$additiontext"
 			#echo yes
 		elif [[ mp4 == $extens || mov == $extens || mkv == $extens || flv = $extens ]]
 		then
