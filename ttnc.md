@@ -4,7 +4,7 @@ Backlink [GedankenspeicherCoding](../GedankenspeicherCoding.md)
 
 - [X] **ttnc**
 
-
+*run-cell.sh*
 ```bash
 noweb.py -Rttnc ttnc.md > ttnc && chmod u+x ttnc && echo 'fertig'
 ```
@@ -12,6 +12,9 @@ noweb.py -Rttnc ttnc.md > ttnc && chmod u+x ttnc && echo 'fertig'
 *ttnc*
 ```bash
 #!/bin/bash
+source config.sh; # load the config library functions
+journalPage="$(config_get journalPage)"
+
 File=$(echo "$1" | sed 's/ /_/g' | sed 's/:/;/g'| sed -e "s/'/_/g" | sed 's/\"//g')
 f=$(basename "$1")
 filename=${f%.*} #only the filename
@@ -31,9 +34,9 @@ function Wikiprev(){
 
 function Timestamps(){
 	echo "Text creation time:" >> "$File".md
-	date +"[[Zettelkasten:%Y:%m:%d]]">> "$File".md
+	date +"[[$journalPage:%Y:%m:%d]]">> "$File".md
 	echo "Modification time:" >> "$File".md
-	date +"[[Zettelkasten:%Y:%m:%d]]" -r "$f" >> "$File".md
+	date +"[[$journalPage:%Y:%m:%d]]" -r "$f" >> "$File".md
 }
 
 if [[ pdf == $extens ]]
@@ -86,9 +89,9 @@ then
 		sed -i "1 iWiki-Format: zim 0.6" "$File"
 		sed -i "1 iContent-Type: text/x-zim-wiki" "$File"
 		echo "Text creation time:" >> "$File"
-		date +"[[Zettelkasten:%Y:%m:%d]]">> "$File"
+		date +"[[$journalPage:%Y:%m:%d]]">> "$File"
 		echo "Modification time:" >> "$File"
-		date +"[[Zettelkasten:%Y:%m:%d]]" -r "$filename" >> "$File"
+		date +"[[$journalPage:%Y:%m:%d]]" -r "$filename" >> "$File"
 		echo -e "\n$2\n" >> "$File"
 	fi
 	kate "$File" 2>/dev/null &

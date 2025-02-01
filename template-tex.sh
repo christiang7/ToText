@@ -1,4 +1,7 @@
 #!/bin/bash
+source config.sh; # load the config library functions
+journalPage="$(config_get journalPage)"
+templateDir="$(config_get templateDir)"
 
 if [[ ! -e "$1" ]]
 then
@@ -36,15 +39,15 @@ then
 
 	foldertex="$File"_tex
 	mkdir -p "$foldertex"
-	cp ~/Gedankenspeicher/Vorlagen/general-preamble.tex "$foldertex"/general-preamble.tex
-	cp ~/Gedankenspeicher/Vorlagen/color-symbols.tex "$foldertex"/color-symbols.tex
+	cp $templateDir/general-preamble.tex "$foldertex"/general-preamble.tex
+	cp $templateDir/color-symbols.tex "$foldertex"/color-symbols.tex
 	cd "$foldertex"
 
 	#Filename="$File"
 	#File="$File".tex
 
 	echo -e "====== $foldertex ======" >> ../"$foldertex".md
-	echo -e "Created $(date +"[[Zettelkasten:%Y:%m:%d|%Y-%m-%d]]")" >> ../"$foldertex".md
+	echo -e "Created $(date +"[[$journalPage:%Y:%m:%d|%Y-%m-%d]]")" >> ../"$foldertex".md
 	echo -e "[*] ** $foldertex **" >> ../"$foldertex".md
 	echo -e "Folder for the latex file" >> ../"$foldertex".md
 	echo -e "[[./"${File}".md]]\n[[./"${File}".tex]]\n[[./"${File}".pdf]]" >> ../"$foldertex".md
@@ -97,7 +100,7 @@ then
 
 		echo -e "*${File}.tex*" >> "${File}".md
 		echo -e "\`\`\`latex" >> "${File}".md
-		cat /home/christian/Gedankenspeicher/Vorlagen/Rechnung-Vorlage.tex >> "${File}".md
+		cat $templateDir/Rechnung-Vorlage.tex >> "${File}".md
 		# echo -e "\n@" >> "${File}".md
 		echo -e "\`\`\`" >> "${File}".md
 
@@ -153,7 +156,7 @@ then
 
 		echo -e "*${File}.tex*" >> "${File}".md
 		echo -e "\`\`\`latex" >> "${File}".md
-		cat /home/christian/Gedankenspeicher/Vorlagen/Schreiben-Vorlagen.tex >> "${File}".md
+		cat $templateDir/Schreiben-Vorlagen.tex >> "${File}".md
 		# echo -e "\n@" >> "${File}".md
 		echo -e "\`\`\`" >> "${File}".md
 

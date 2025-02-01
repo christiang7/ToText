@@ -12,6 +12,7 @@ Backlink [CodeFabrik:GedankenspeicherCoding](../GedankenspeicherCoding.md)
 	
 Korrektur von Videos die aus der Mediathek oder anderen Quellen heruntergeladen wurden
 
+*run-cell.sh*
 ```bash
 noweb.py -Rttvidc ttvidc.md > ttvidc && chmod u+x ttvidc && echo 'fertig'
 ```
@@ -19,6 +20,9 @@ noweb.py -Rttvidc ttvidc.md > ttvidc && chmod u+x ttvidc && echo 'fertig'
 *ttvidc*
 ```bash
 #!/bin/bash
+source config.sh; # load the config library functions
+journalPage="$(config_get journalPage)"
+
 f=$(basename "$1")
 oldfilename=${f%.*}
 File=$(echo "$f" | sed 's/ /_/g' | sed 's/:/;/g'| sed -e "s/'/_/g" | sed 's/\"//g')
@@ -39,7 +43,7 @@ then
     sed -i "1 iContent-Type: text/x-zim-wiki" "$filename".mp4.md
     sed -i "2 iWiki-Format: zim 0.6" "$filename".mp4.md
     sed -i "3 i====== $filename.mp4 ======" "$filename".mp4.md
-    sed -i "4 iText creation time: $(date +"[[Zettelkasten:%Y:%m:%d]]") Modification time: $(date +"[[Zettelkasten:%Y:%m:%d]]" -r "$filename".mp4)" "$filename".mp4.md
+    sed -i "4 iText creation time: $(date +"[[$journalPage:%Y:%m:%d]]") Modification time: $(date +"[[$journalPage:%Y:%m:%d]]" -r "$filename".mp4)" "$filename".mp4.md
     sed -i "5 i@ARCHIV2 @VIDEO " "$filename".mp4.md
     sed -i "6 i[*] **[[../"$filename".mp4]]**" "$filename".mp4.md
     #sed -i "7 i" "$filename".mp4.md

@@ -9,13 +9,18 @@ Projekt ist erfüllt durch die wgett Programme
 ist das Testprojekt dafür
 
 
-
-``noweb.py -Rwgettwpdf wgettwpdf.md > wgettwpdf && chmod u+x wgettwpdf && echo 'fertig'``
+*run-cell.sh*
+```bash
+noweb.py -Rwgettwpdf wgettwpdf.md > wgettwpdf && chmod u+x wgettwpdf && echo 'fertig'
+```
 
 *wgettwpdf*
 ```bash
 #!/bin/bash
-folder=$(date +"/home/christian/Gedankenspeicher/Gedankenspeicherwiki/Zettelkasten/%Y/%m/%d")
+source config.sh; # load the config library functions
+journalDir="$(config_get journalDir)"
+
+folder=$(date +"$journalDir/%Y/%m/%d")
 mkdir -p $folder
 cd $folder
 7z a www.plasma-mobile.org www.plasma-mobile.org/

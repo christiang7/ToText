@@ -7,25 +7,23 @@ Backlink [GedankenspeicherCoding](../GedankenspeicherCoding.md)
 
 Program for linking files to the assets folder
 
-
+*run-cell.sh*
 ```bash
 noweb.py -Rtta.sh tta.md > tta.sh && echo 'fertig'
 ```
 
 
-```bash
-chmod u+x tta.sh && ln -sf /home/christian/Gedankenspeicher/Gedankenspeicherwiki/CodeFabrik/GedankenspeicherCoding/tta.sh ~/.local/bin/tta.sh && echo 'fertig'
-```
-
 *tta.sh*
 ```bash
 #!/usr/bin/env bash
+source config.sh; # load the config library functions
+GedankenspeicherwikiDir="$(config_get GedankenspeicherwikiDir)"
 
 #wikipath=$(xclip -selection clipboard -o)
 wikipath="$(wl-paste -n)"
 #filepath=$(xclip -selection clipboard -o | sed "s,:,/,g" | sed "s, ,_,g")
 filepath="$(wl-paste -n | sed "s,:,/,g" | sed "s, ,_,g")"
-filepath=$(echo ~/Gedankenspeicher/Gedankenspeicherwiki/$filepath)
+filepath=$(echo $GedankenspeicherwikiDir/$filepath)
 
 destinationfolder=$(readlink -f -n "$1")
 destinationfolder="${destinationfolder%.*}"

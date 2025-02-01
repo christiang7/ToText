@@ -15,13 +15,9 @@ There exist options to choose in which place the tabs should be stored.
 
 ## Program
 
+*run-cell.sh*
 ```bash
 noweb.py -Rrss-feed-reinsert.sh rss-feed-reinsert.md > rss-feed-reinsert.sh && echo 'fertig'
-```
-
-
-```bash
-chmod u+x rss-feed-reinsert.sh && ln -sf /home/christian/Gedankenspeicher/Gedankenspeicherwiki/CodeFabrik/GedankenspeicherCoding/rss-feed-reinsert.sh ~/.local/bin/rss-feed-reinsert.sh && echo 'fertig'
 ```
 
 
@@ -30,6 +26,8 @@ chmod u+x rss-feed-reinsert.sh && ln -sf /home/christian/Gedankenspeicher/Gedank
 *rss-feed-reinsert.sh*
 ```bash
 #!/bin/bash
+source config.sh; # load the config library functions
+GedankenspeicherwikiDir="$(config_get GedankenspeicherwikiDir)"
 
 #*request}}
 ```
@@ -50,21 +48,21 @@ fi
 *choose*
 ```bash
 case ${choose} in
-   Spass) rssfile=$(echo "/home/christian/Gedankenspeicher/Gedankenspeicherwiki/Spaß_Stream/Spass_Stream-rss.md")
+   Spass) rssfile=$(echo "$GedankenspeicherwikiDir/Spaß_Stream/Spass_Stream-rss.md")
 	  ;;
-   Assets) rssfile=$(echo "/home/christian/Gedankenspeicher/Gedankenspeicherwiki/Assets/Assets-rss.md")
+   Assets) rssfile=$(echo "$GedankenspeicherwikiDir/Zettelkasten/Zettelkasten-rss.md")
 	  ;;
-   Physik) rssfile=$(echo "/home/christian/Gedankenspeicher/Gedankenspeicherwiki/Physik/Physik-rss.md")
+   Physik) rssfile=$(echo "$GedankenspeicherwikiDir/Physik/Physik-rss.md")
 	  ;;
-   Mathematik) rssfile=$(echo "/home/christian/Gedankenspeicher/Gedankenspeicherwiki/Mathematik/Mathematik-rss.md")
+   Mathematik) rssfile=$(echo "$GedankenspeicherwikiDir/Mathematik/Mathematik-rss.md")
 	  ;;
-   Philosophie) rssfile=$(echo "/home/christian/Gedankenspeicher/Gedankenspeicherwiki/Philosophie/Philosophie-rss.md")
+   Philosophie) rssfile=$(echo "$GedankenspeicherwikiDir/Philosophie/Philosophie-rss.md")
 	  ;;
-   Naturwissenschaften_und_Instrumentarien) rssfile=$(echo "/home/christian/Gedankenspeicher/Gedankenspeicherwiki/Naturwissenschaften_und_Instrumentarien/Naturwissenschaften_und_Instrumentarien-rss.md")
+   Naturwissenschaften_und_Instrumentarien) rssfile=$(echo "$GedankenspeicherwikiDir/Naturwissenschaften_und_Instrumentarien/Naturwissenschaften_und_Instrumentarien-rss.md")
 	  ;;
-   CodeFabrik) rssfile=$(echo "/home/christian/Gedankenspeicher/Gedankenspeicherwiki/CodeFabrik/CodeFabrik-rss.md")
+   CodeFabrik) rssfile=$(echo "$GedankenspeicherwikiDir/CodeFabrik/CodeFabrik-rss.md")
 	  ;;
-   Download) rssfile=$(echo "/home/christian/Gedankenspeicher/Gedankenspeicherwiki/CodeFabrik/Download-rss.md")
+   Download) rssfile=$(echo "$GedankenspeicherwikiDir/CodeFabrik/Download-rss.md")
 	  ;;
 esac
 ```
@@ -75,7 +73,7 @@ esac
 ```bash
 #*choose}}
 
-#rssfile=$(echo "/home/christian/Gedankenspeicher/Gedankenspeicherwiki/CodeFabrik/rss-source.rss")
+#rssfile=$(echo "$GedankenspeicherwikiDir/CodeFabrik/rss-source.rss")
 sed -i "$ d" $rssfile
 #tabs="$(xclip -selection clipboard -o)"
 tabs="$(wl-paste -n)"

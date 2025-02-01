@@ -18,10 +18,6 @@ noweb.py -Rmaff-md-cut.sh maff-md-cut.sh.md > maff-md-cut.sh && echo 'fertig'
 ```
 
 
-```bash
-chmod u+x maff-md-cut.sh && ln -sf /home/christian/Gedankenspeicher/Gedankenspeicherwiki/CodeFabrik/Gedankenspeicher-Coding/maff-md-cut.sh ~/.local/bin/maff-md-cut.sh && echo 'fertig'
- ```
-
 *maff-md-cut.sh*
 ```bash
 #!/bin/bash

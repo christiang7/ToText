@@ -19,20 +19,17 @@ Created [Zettelkasten:2023:03:06]()
 Program for moving files to the the main topic folders
 
 
-
+*run-cell.sh*
 ```bash
 noweb.py -Rttam.sh ttam.md > ttam.sh && echo 'fertig'
 ```
 
 
-```bash
-chmod u+x ttam.sh && ln -sf /home/christian/Gedankenspeicher/Gedankenspeicherwiki/CodeFabrik/GedankenspeicherCoding/ttam.sh ~/.local/bin/ttam.sh && echo 'fertig'
-```
-
 *ttam.sh*
 ```bash
 #!/usr/bin/env bash
-
+source config.sh; # load the config library functions
+GedankenspeicherwikiDir="$(config_get GedankenspeicherwikiDir)"
 
 chooseWhere=$(zenity --height 450 --list --radiolist --print-column ALL --hide-header --column "Checkbox" --column "What" TRUE Spass FALSE Assets FALSE KanDo FALSE Physik FALSE Mathematik FALSE Philosophie FALSE Naturwissenschaften_und_Instrumentarien FALSE CodeFabrik FALSE Zitat FALSE Lebenswerkstatt FALSE Kyudo FALSE HSP FALSE Zettelkasten)
 
@@ -50,33 +47,33 @@ then
 
 	#filename=${file%.*}
 	case ${chooseWhere} in
-	Spass) assetsfolder=$(echo "/home/christian/Gedankenspeicher/Gedankenspeicherwiki/Spaß_Stream")
+	Spass) assetsfolder=$(echo "$GedankenspeicherwikiDir/Spaß_Stream")
 		;;
-	Assets) assetsfolder=$(echo "/home/christian/Gedankenspeicher/Gedankenspeicherwiki/Assets")
+	Assets) assetsfolder=$(echo "$GedankenspeicherwikiDir/Assets")
 		;;
-	Physik) assetsfolder=$(echo "/home/christian/Gedankenspeicher/Gedankenspeicherwiki/Physik")
+	Physik) assetsfolder=$(echo "$GedankenspeicherwikiDir/Physik")
 		;;
-	Mathematik) assetsfolder=$(echo "/home/christian/Gedankenspeicher/Gedankenspeicherwiki/Mathematik")
+	Mathematik) assetsfolder=$(echo "$GedankenspeicherwikiDir/Mathematik")
 		;;
-	Philosophie) assetsfolder=$(echo "/home/christian/Gedankenspeicher/Gedankenspeicherwiki/Philosophie")
+	Philosophie) assetsfolder=$(echo "$GedankenspeicherwikiDir/Philosophie")
 		;;
-	Naturwissenschaften_und_Instrumentarien) assetsfolder=$(echo "/home/christian/Gedankenspeicher/Gedankenspeicherwiki/Naturwissenschaften_und_Instrumentarien")
+	Naturwissenschaften_und_Instrumentarien) assetsfolder=$(echo "$GedankenspeicherwikiDir/Naturwissenschaften_und_Instrumentarien")
 		;;
-	CodeFabrik) assetsfolder=$(echo "/home/christian/Gedankenspeicher/Gedankenspeicherwiki/CodeFabrik")
+	CodeFabrik) assetsfolder=$(echo "$GedankenspeicherwikiDir/CodeFabrik")
 		;;
-	Zettelkasten) assetsfolder=$(echo "/home/christian/Gedankenspeicher/Gedankenspeicherwiki/Zettelkasten")
+	Zettelkasten) assetsfolder=$(echo "$GedankenspeicherwikiDir/Zettelkasten")
 		;;
-	Zitat) assetsfolder=$(echo "/home/christian/Gedankenspeicher/Gedankenspeicherwiki/Zettelkasten/ZitaT")
+	Zitat) assetsfolder=$(echo "$GedankenspeicherwikiDir/Zettelkasten/ZitaT")
 		;;
-	Lebenswerkstatt) assetsfolder=$(echo "/home/christian/Gedankenspeicher/Gedankenspeicherwiki/Zettelkasten/Lebenswerkstatt")
+	Lebenswerkstatt) assetsfolder=$(echo "$GedankenspeicherwikiDir/Zettelkasten/Lebenswerkstatt")
 		;;
-	Kyudo) assetsfolder=$(echo "/home/christian/Gedankenspeicher/Gedankenspeicherwiki/Spaß_Stream/Kyudo")
+	Kyudo) assetsfolder=$(echo "$GedankenspeicherwikiDir/Spaß_Stream/Kyudo")
 		;;
-	HSP) assetsfolder=$(echo "/home/christian/Gedankenspeicher/Gedankenspeicherwiki/Spaß_Stream/Hochsensibilität")
+	HSP) assetsfolder=$(echo "$GedankenspeicherwikiDir/Spaß_Stream/Hochsensibilität")
 		;;
 	esac
 	#assetsfolder=$(echo ~/Gedankenspeicher/Gedankenspeicherwiki/Assets)
-	wikipath=$(echo $assetsfolder | sed "s,/home/christian/Gedankenspeicher/Gedankenspeicherwiki/,," | sed "s,/,:,g")
+	wikipath=$(echo $assetsfolder | sed "s,$GedankenspeicherwikiDir,," | sed "s,/,:,g")
 
 	mv "$folder"/"$filename" "$assetsfolder"/"$filename"
 	#mv "$folder"/"$file" "$assetsfolder"/"$file"

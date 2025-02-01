@@ -22,7 +22,7 @@ noweb.py -Rzim-template-calculation.sh zim-template-calculation.md > zim-templat
 
 
 ```bash
-chmod u+x zim-template-calculation.sh && ln -sf /home/christian/Gedankenspeicher/KanDo/GedankenspeicherEinrichtung/GedankenspeicherCoding/zim-template-calculation.sh ~/.local/bin/zim-template-calculation.sh && echo 'fertig'
+chmod u+x zim-template-calculation.sh && ln -sf $(pwd)/zim-template-calculation.sh ~/.local/bin/zim-template-calculation.sh && echo 'fertig'
  ```
 
 
@@ -44,6 +44,9 @@ Einstellungen vor dem Start des eigentlichen Programms, hier für ein Shell Scri
 *preamble*
 ```bash
 #!/bin/bash
+source config.sh; # load the config library functions
+journalPage="$(config_get journalPage)"
+
 ```
 
 ### Abruf wo sich die Datei befindet
@@ -140,7 +143,7 @@ then
 	folder="$Project"
 	#touch ../"$folder".md
 	echo -e "====== $ProjectName ======" >> ../"$folder".md
-	echo -e "Created $(date +"[[Zettelkasten:%Y:%m:%d|%Y-%m-%d]]")" >> ../"$folder".md
+	echo -e "Created $(date +"[[$journalPage:%Y:%m:%d|%Y-%m-%d]]")" >> ../"$folder".md
 	echo -e "[*] ** $folder **" >> ../"$folder".md
 fi
 ```
@@ -155,7 +158,7 @@ then
 	folder="$Project"
 	#touch ../"$folder".md
 	echo -e "# $ProjectName" >> ../"$folder".md
-	echo -e "Created $(date +"[[Zettelkasten/%Y/%m/%d|%Y-%m-%d]]")" >> ../"$folder".md
+	echo -e "Created $(date +"[[$journalPage/%Y/%m/%d|%Y-%m-%d]]")" >> ../"$folder".md
 	echo -e "- [X] ** $folder **" >> ../"$folder".md
 fi
 ```

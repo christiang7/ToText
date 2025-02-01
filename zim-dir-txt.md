@@ -7,7 +7,7 @@ Created Mittwoch [2022-06-15]()
 noweb.py -Rzim-dir-txt.sh zim-dir-txt.md > zim-dir-txt.sh && echo 'fertig'
  ```
    ```bash
-chmod u+x zim-dir-txt.sh && ln -sf /home/christian/Gedankenspeicher/Gedankenspeicherwiki/Zettelkasten/Gedankenwanderung/Programme/zim-dir-txt.sh ~/.local/bin/zim-dir-txt.sh && echo 'fertig'
+chmod u+x zim-dir-txt.sh && ln -sf $(pwd)/zim-dir-txt.sh ~/.local/bin/zim-dir-txt.sh && echo 'fertig'
 ```
 
 *zim-dir-txt.sh*

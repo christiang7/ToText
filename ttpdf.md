@@ -12,6 +12,9 @@ noweb.py -Rttpdf ttpdf.md > ttpdf && chmod u+x ttpdf && echo 'fertig'
 *ttpdf*
 ```bash
 #!/bin/bash
+source config.sh; # load the config library functions
+journalPage="$(config_get journalPage)"
+
 f=$(echo "$1" | sed 's/ /_/g' | sed 's/:/;/g'| sed -e "s/'/_/g" | sed 's/\"//g')
 File=$(basename "$f")
 
@@ -35,7 +38,7 @@ echo "Wiki-Format: zim 0.6" >> "$File".md
 
 #*zim-wiki}}
 
-echo "Text date: $(date +"[[Zettelkasten:%Y:%m:%d|%Y-%m-%d]]") Modi date: $(date +"[[Zettelkasten:%Y:%m:%d|%Y-%m-%d]]" -r "$folder"/"$File")" >> "$File".md
+echo "Text date: $(date +"[[$journalPage:%Y:%m:%d|%Y-%m-%d]]") Modi date: $(date +"[[$journalPage:%Y:%m:%d|%Y-%m-%d]]" -r "$folder"/"$File")" >> "$File".md
 echo "@ARTIKEL $3 " >> "$File".md
 echo "**[[./$File]] **" >> "$File".md
 echo -e "$2\n$4\n" >> "$File".md
@@ -59,10 +62,10 @@ echo "Wiki-Format: zim 0.6" >> "$File".md
 
 #*zim-wiki}}
 
-echo "Text date: $(date +"[[Zettelkasten:%Y:%m:%d|%Y-%m-%d]]") Modi date: $(date +"[[Zettelkasten:%Y:%m:%d|%Y-%m-%d]]" -r "$1")" >> "$File".md
+echo "Text date: $(date +"[[$journalPage:%Y:%m:%d|%Y-%m-%d]]") Modi date: $(date +"[[$journalPage:%Y:%m:%d|%Y-%m-%d]]" -r "$1")" >> "$File".md
 echo "@ARTIKEL $3 " >> "$File".md
 echo "**[[../$File]] **" >> "$File".md
-#echo "Modification time: $(date +"[[Zettelkasten:%Y:%m:%d|%Y-%m-%d]]" -r "$1")" >> "$File".md
+#echo "Modification time: $(date +"[[$journalPage:%Y:%m:%d|%Y-%m-%d]]" -r "$1")" >> "$File".md
 echo -e "$2\n$4\n" >> "$File".md
 #pdftoppm -r 90 -png -singlefile "$File" "$File"
 pdftoppm -png -singlefile "$File" "$File"

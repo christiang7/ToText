@@ -40,11 +40,6 @@ https://overflow.adminforge.de/exchange/tex/questions/200310/break-lines-in-mint
 noweb.py -Rtemplate-tex.sh template-tex.sh.md > template-tex.sh && echo 'template-tex.sh' && date
 ```
 
-
-```bash
-chmod u+x template-tex.sh && ln -sf /home/christian/Gedankenspeicher/KanDo/GedankenspeicherEinrichtung/GedankenspeicherCoding/template-tex.sh ~/.local/bin/template-tex.sh && echo 'fertig'
- ```
-
 *template-tex.sh*
 ```bash
 #*preamble}}
@@ -72,6 +67,9 @@ the first line is needed for shell scripts
 *preamble*
 ```bash
 #!/bin/bash
+source config.sh; # load the config library functions
+journalPage="$(config_get journalPage)"
+templateDir="$(config_get templateDir)"
 ```
 
 ### Request
@@ -112,8 +110,8 @@ then
 
 	foldertex="$File"_tex
 	mkdir -p "$foldertex"
-	cp ~/Gedankenspeicher/Vorlagen/general-preamble.tex "$foldertex"/general-preamble.tex
-	cp ~/Gedankenspeicher/Vorlagen/color-symbols.tex "$foldertex"/color-symbols.tex
+	cp $templateDir/general-preamble.tex "$foldertex"/general-preamble.tex
+	cp $templateDir/color-symbols.tex "$foldertex"/color-symbols.tex
 	cd "$foldertex"
 
 	#Filename="$File"
@@ -172,7 +170,7 @@ fi
 *description file*
 ```bash
 echo -e "====== $foldertex ======" >> ../"$foldertex".md
-echo -e "Created $(date +"[[Zettelkasten:%Y:%m:%d|%Y-%m-%d]]")" >> ../"$foldertex".md
+echo -e "Created $(date +"[[$journalPage:%Y:%m:%d|%Y-%m-%d]]")" >> ../"$foldertex".md
 echo -e "[*] ** $foldertex **" >> ../"$foldertex".md
 echo -e "Folder for the latex file" >> ../"$foldertex".md
 echo -e "[[./"${File}".md]]\n[[./"${File}".tex]]\n[[./"${File}".pdf]]" >> ../"$foldertex".md
@@ -288,7 +286,7 @@ echo -e "noweb.py -R${File}.tex ${File}.md > ${File}.tex && pdflatex -synctex=1 
 
 echo -e "*${File}.tex*" >> "${File}".md
 echo -e "\`\`\`latex" >> "${File}".md
-cat /home/christian/Gedankenspeicher/Vorlagen/Rechnung-Vorlage.tex >> "${File}".md
+cat $templateDir/Rechnung-Vorlage.tex >> "${File}".md
 # echo -e "\n@" >> "${File}".md
 echo -e "\`\`\`" >> "${File}".md
 
@@ -317,7 +315,7 @@ echo -e "noweb.py -R${File}.tex ${File}.md > ${File}.tex && pdflatex -synctex=1 
 
 echo -e "*${File}.tex*" >> "${File}".md
 echo -e "\`\`\`latex" >> "${File}".md
-cat /home/christian/Gedankenspeicher/Vorlagen/Schreiben-Vorlagen.tex >> "${File}".md
+cat $templateDir/Schreiben-Vorlagen.tex >> "${File}".md
 # echo -e "\n@" >> "${File}".md
 echo -e "\`\`\`" >> "${File}".md
 

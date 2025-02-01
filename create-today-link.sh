@@ -1,26 +1,31 @@
-	#!/bin/bash
-	folder=$(date +"/home/christian/Gedankenspeicher/Gedankenspeicherwiki/Zettelkasten/%Y/%m/%d")
-	foldermonth=$(date +"/home/christian/Gedankenspeicher/Gedankenspeicherwiki/Zettelkasten/%Y/%m/")
-	filetxt=$(basename folder)
-	#calendarfile=$(date +"%d")
-	#calendarfile=$calendarfile.md
-	#if [[ ! -e "$foldermonth"/"$calendarfile" ]]
-	#then
+#!/bin/bash
+source config.sh; # load the config library functions
+journalPage="$(config_get journalPage)"
+journalDir="$(config_get journalDir)"
+GedankenspeicherwikiDir="$(config_get GedankenspeicherwikiDir)"
+
+folder=$(date +"$journalDir/%Y/%m/%d")
+foldermonth=$(date +"$journalDir/%Y/%m/")
+filetxt=$(basename folder)
+#calendarfile=$(date +"%d")
+#calendarfile=$calendarfile.md
+#if [[ ! -e "$foldermonth"/"$calendarfile" ]]
+#then
 	#touch "$foldermonth"/"$calendarfile"
 	#echo "Content-Type: text/x-zim-wiki" >> "$foldermonth"/"$calendarfile"
 	#echo "Wiki-Format: zim 0.6" >> "$foldermonth"/"$calendarfile"
 	#date +"===== %A %d %b %Y =====" >> "$foldermonth"/"$calendarfile"
-	#date +"[[Zettelkasten:%Y:%W|Week %W]]" >> "$foldermonth"/"$calendarfile"
-	#date +"[[Zettelkasten:%Y:%m]]" >> "$foldermonth"/"$calendarfile"
+	#date +"[[$journalPage:%Y:%W|Week %W]]" >> "$foldermonth"/"$calendarfile"
+	#date +"[[$journalPage:%Y:%m]]" >> "$foldermonth"/"$calendarfile"
 	#echo -e ""  >> "$foldermonth"/"$calendarfile"
 	#date +"[*] ** %A %d %b %Y ** " >> "$foldermonth"/"$calendarfile"
-	#fi
-	mkdir -p $folder
-	echo $folder
-	rm -r /home/christian/Heute
-	ln -fs "$folder" ~/Heute
-	sed "/###/d" ~/Gedankenspeicher/Gedankenspeicherwiki/Zim-Arbeitsflaeche/Arbeitsflaeche.md > ~/Gedankenspeicher/Gedankenspeicherwiki/Zim-Arbeitsflaeche/Arbeitsflaeche.md.tmp
-	mv ~/Gedankenspeicher/Gedankenspeicherwiki/Zim-Arbeitsflaeche/Arbeitsflaeche.md.tmp ~/Gedankenspeicher/Gedankenspeicherwiki/Zim-Arbeitsflaeche/Arbeitsflaeche.md
-	sed -i "17 i### $(date +"[[Zettelkasten:%Y:%m:%d|Heute]]")" ~/Gedankenspeicher/Gedankenspeicherwiki/Zim-Arbeitsflaeche/Arbeitsflaeche.md
-	sed -i "18 i### $(date -d "yesterday" +"[[Zettelkasten:%Y:%m:%d|Gestern]]")" ~/Gedankenspeicher/Gedankenspeicherwiki/Zim-Arbeitsflaeche/Arbeitsflaeche.md
-	#ln -f "$folder".md ~/Gedankenspeicher/Gedankenspeicherwiki/Zettelkasten/Gedankenwanderung/Zim-Arbeitsflaeche/Heute.md
+#fi
+mkdir -p $folder
+echo $folder
+rm -r ~/Heute
+ln -fs "$folder" ~/Heute
+sed "/###/d" $GedankenspeicherwikiDir/Zim-Arbeitsflaeche/Arbeitsflaeche.md > $GedankenspeicherwikiDir/Zim-Arbeitsflaeche/Arbeitsflaeche.md.tmp
+mv $GedankenspeicherwikiDir/Zim-Arbeitsflaeche/Arbeitsflaeche.md.tmp $GedankenspeicherwikiDir/Zim-Arbeitsflaeche/Arbeitsflaeche.md
+sed -i "17 i### $(date +"[[$journalPage:%Y:%m:%d|Heute]]")" $GedankenspeicherwikiDir/Zim-Arbeitsflaeche/Arbeitsflaeche.md
+sed -i "18 i### $(date -d "yesterday" +"[[$journalPage:%Y:%m:%d|Gestern]]")" $GedankenspeicherwikiDir/Zim-Arbeitsflaeche/Arbeitsflaeche.md
+#ln -f "$folder".md $journalDir/Gedankenwanderung/Zim-Arbeitsflaeche/Heute.md

@@ -23,10 +23,16 @@ https://docs.kde.org/stable5/en/kate/kate/kate-application-plugin-external-tools
 noweb.py -Rtemplate-calculation.sh template-calculation.md > template-calculation.sh && echo 'template-calculation.sh' && date
 ```
 
+### Presets
 
+Einstellungen vor dem Start des eigentlichen Programms, hier für ein Shell Script ist diese Zeile notwendig
+
+*preamble*
 ```bash
-chmod u+x template-calculation.sh && ln -sf /home/christian/Gedankenspeicher/KanDo/GedankenspeicherEinrichtung/GedankenspeicherCoding/template-calculation.sh ~/.local/bin/template-calculation.sh && echo 'fertig'
- ```
+#!/bin/bash
+source tt-lib.sh
+
+```
 
 *template-calculation.sh*
 ```bash
@@ -56,14 +62,6 @@ else
 fi
 ```
 
-### Presets
-
-Einstellungen vor dem Start des eigentlichen Programms, hier für ein Shell Script ist diese Zeile notwendig
-
-*preamble*
-```bash
-#!/bin/bash
-```
 
 ### requests
 
@@ -85,7 +83,7 @@ then
 	source=$(echo $abfrage | cut -s -d "~" -f 3)
 	tags=$(echo $abfrage | cut -s -d "~" -f 4)
 	additiontext=$(echo $abfrage | cut -s -d "~" -f 5)
-	File=$(echo "$File" | sed 's/ /_/g' | sed 's/:/;/g'| sed -e "s/'/_/g" | sed 's/\"//g')
+	File=$(cleanName "$File")
 
 	case ${langname} in
 	cpp) extens="cpp"
@@ -146,7 +144,7 @@ then
 else
 	echo -e "noweb.py -R${Filename}.${extens} ${File}.md > ${Filename}.${extens} && echo '${Filename}.${extens}' && date \n\`\`\`" >> "${File}".md
 	echo -e "\n\n\`\`\`bash" >> "${File}".md
-	echo -e "chmod u+x ${Filename}.${extens} && ln -sf "${folder}"/${Filename}.${extens} ~/.local/bin/${Filename}.${extens} && echo 'fertig'\n \`\`\`" >> "${File}".md
+	echo -e "chmod u+x ${Filename}.${extens} && ln -sf '$(pwd)'/${Filename}.${extens} ~/.local/bin/${Filename}.${extens} && echo 'fertig'\n \`\`\`" >> "${File}".md
 fi
 echo -e "\n*${Filename}.${extens}*" >> "${File}".md
 echo -e "\`\`\`${langname}" >> "${File}".md

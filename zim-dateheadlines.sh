@@ -1,2 +1,6 @@
 #!/bin/bash
-echo -e "==== $(date +"[[Zettelkasten:%Y:%m:%d|%Y-%m-%d]]") "
+source config.sh; # load the config library functions
+journalPage="$(config_get journalPage)"
+
+echo -e "==== $(date +"[[$journalPage:%Y:%m:%d|%Y-%m-%d]]") "
+

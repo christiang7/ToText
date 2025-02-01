@@ -4,13 +4,19 @@ Backlink [GedankenspeicherCoding](../GedankenspeicherCoding.md)
 
 - [X] **ttnl**
 
-
-  ``noweb.py -Rttnl ttnl.md > ttnl && chmod u+x ttnl && echo 'fertig'``
+*run-cell.sh*
+```bash
+noweb.py -Rttnl ttnl.md > ttnl && chmod u+x ttnl && echo 'fertig'
+```
 
 *ttnl*
 ```bash
 #!/bin/bash
-folder=$(date +"/home/christian/Gedankenspeicher/Gedankenspeicherwiki/Zettelkasten/%Y/%m/%d" -r "$1")
+source config.sh; # load the config library functions
+journalDir="$(config_get journalDir)"
+journalPage="$(config_get journalPage)"
+
+folder=$(date +"$journalDir/%Y/%m/%d" -r "$1")
 mkdir -p $folder
 File=$(echo "$1" | sed 's/ /_/g' | sed 's/:/;/g'| sed -e "s/'/_/g" | sed 's/\"//g')
 #f=$(basename "$1")
@@ -35,9 +41,9 @@ function Wikiprev(){
 
 function Timestamps(){
 	echo "Text creation time:" >> "$File".md
-	date +"[[Zettelkasten:%Y:%m:%d]]">> "$File".md
+	date +"[[$journalPage:%Y:%m:%d]]">> "$File".md
 	echo "Modification time:" >> "$File".md
-	date +"[[Zettelkasten:%Y:%m:%d]]" -r "$f" >> "$File".md
+	date +"[[$journalPage:%Y:%m:%d]]" -r "$f" >> "$File".md
 }
 
 if [[ -f "$File".md ]]

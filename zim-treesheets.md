@@ -10,7 +10,7 @@ noweb.py -Rzim-treesheets.sh zim-treesheets.md > zim-treesheets.sh && echo 'fert
 ```
 
   ```bash
-chmod u+x zim-treesheets.sh && ln -sf /home/christian/Gedankenspeicher/Gedankenspeicherwiki/Zettelkasten/ZetteL/CodeFabrik/GedankenspeicherCoding/zim-treesheets.sh ~/.local/bin/zim-treesheets.sh && echo 'fertig'
+chmod u+x zim-treesheets.sh && ln -sf $(pwd)/zim-treesheets.sh ~/.local/bin/zim-treesheets.sh && echo 'fertig'
 ```
 
 exportierte Bilder wieder in die Textdatei einfügen mittels ocr
@@ -20,6 +20,9 @@ exportierte Bilder wieder in die Textdatei einfügen mittels ocr
 *zim-treesheets.sh*
 ```bash
 #!/bin/bash
+source config.sh; # load the config library functions
+templateDir="$(config_get templateDir)"
+
 if zenity --question --text="Möchten Sie Treesheets öffnen?"
 then
   File=$(echo "$1" | sed 's/ /_/g' | sed 's/:/;/g'| sed -e "s/'/_/g" | sed 's/\"//g')
@@ -40,8 +43,8 @@ then
         --text "Enter new filename" \
         --entry-text "$filedate-$additontext")
   filename=$(echo "$Newname" | sed 's/ /_/g' | sed 's/:/;/g'| sed -e "s/'/_/g" | sed 's/\"//g')
-  cp ~/Gedankenspeicher/Vorlagen/Vorlage-10-10.cts "$filename".cts
-  cp ~/Gedankenspeicher/Vorlagen/Vorlage-10-10.png "$filename".cts.png
+  cp $templateDir/Vorlage-10-10.cts "$filename".cts
+  cp $templateDir/Vorlagen/Vorlage-10-10.png "$filename".cts.png
   treesheets "$filename".cts && tt "$filename".cts
 fi
 ```

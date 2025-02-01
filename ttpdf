@@ -1,6 +1,10 @@
 #!/bin/bash
+source config.sh; # load the config library functions
+journalPage="$(config_get journalPage)"
+
 f=$(echo "$1" | sed 's/ /_/g' | sed 's/:/;/g'| sed -e "s/'/_/g" | sed 's/\"//g')
 File=$(basename "$f")
+
 folder=$(basename "$File" .pdf)
 echo $folder
 mkdir "$folder"
@@ -10,8 +14,10 @@ folder="$folder.pdf"
 touch "$File".md
 echo "Content-Type: text/x-zim-wiki" >> "$File".md
 echo "Wiki-Format: zim 0.6" >> "$File".md
+
 echo "====== $File ======" >> "$File".md
-echo "Text date: $(date +"[[Zettelkasten:%Y:%m:%d|%Y-%m-%d]]") Modi date: $(date +"[[Zettelkasten:%Y:%m:%d|%Y-%m-%d]]" -r "$folder"/"$File")" >> "$File".md
+
+echo "Text date: $(date +"[[$journalPage:%Y:%m:%d|%Y-%m-%d]]") Modi date: $(date +"[[$journalPage:%Y:%m:%d|%Y-%m-%d]]" -r "$folder"/"$File")" >> "$File".md
 echo "@ARTIKEL $3 " >> "$File".md
 echo "**[[./$File]] **" >> "$File".md
 echo -e "$2\n$4\n" >> "$File".md
@@ -22,3 +28,4 @@ echo -e "{{./$File.avif?width=500}}\n" >> "$File".md
 pdfinfo "$folder"/"$File" | grep Pages >> "$File".md
 echo -e "\n" >> "$File".md
 pdftotext -nopgbrk -enc UTF-8 -f 1 -l 1 "$folder"/"$File" ->> "$File".md
+

@@ -9,7 +9,7 @@ noweb.py -Rzim-dot-update.sh zim-dot-update.md > zim-dot-update.sh
 ```
 
 ```bash
-chmod u+x zim-dot-update.sh && ln -sf /home/christian/Gedankenspeicher/Gedankenspeicherwiki/Zettelkasten/Gedankenwanderung/Programme/zim-dot-update.sh ~/.local/bin/zim-dot-update.sh && echo 'fertig'
+chmod u+x zim-dot-update.sh && ln -sf $(pwd)/zim-dot-update.sh ~/.local/bin/zim-dot-update.sh && echo 'fertig'
 ```
 
 

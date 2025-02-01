@@ -15,6 +15,9 @@ hier das Programm
 *mpvv*
 ```bash
 #!/bin/bash
+source config.sh; # load the config library functions
+journalPage="$(config_get journalPage)"
+tempInputDir="$(config_get tempInputDir)"
 echo "$1"
 website="$1"
 yt="$(echo "$website" | grep youtube)"
@@ -59,12 +62,12 @@ fi
 echo $profile
 # --restrict-filenames
 
-file=$(echo "$ofile" | sed 's/ /_/g' | sed 's/:/;/g'| sed -e "s/'/_/g" | sed 's/\"//g'|  sed 's/&/n/g' | sed 's/\///g' | sed 's/|//g' | sed 's/\[/(/g' | sed 's/\]/)/g' | sed 's/@/at/g' | sed 's/｜/-/g' | sed 's/：/;/g')
+file=$(echo "$ofile" | sed 's/ /_/g' | sed 's/:/;/g'| sed -e "s/'/_/g" | sed 's/\"//g'|  sed 's/&/n/g' | sed 's/\///g' | sed 's/|//g' | sed 's/\[/(/g' | sed 's/\]/)/g' | sed 's/@/at/g' | sed 's/｜/-/g' | sed 's/：/;/g' | sed 's/？/ß/g')
 
 #*temp-video-description}}
 
 #DRI_PRIME=pci-0000_01_00_0 __VK_LAYER_NV_optimus=NVIDIA_only __GLX_VENDOR_LIBRARY_NAME=nvidia mpv --profile="$profile" "$website"
-echo "file:///home/christian/Gedankenspeicher/Alte-Inputs/$file".md
+echo "file://$tempInputDir/$file".md
 mpv --profile="$profile" --screenshot-template="Screenshot-$file-%P" "$website"
 
 
@@ -76,7 +79,7 @@ mpv --profile="$profile" --screenshot-template="Screenshot-$file-%P" "$website"
 f=$file
 extens=${f##*.}
 name=$(basename "$f" .$extens)
-folder=$(echo ~/Gedankenspeicher/Alte-Inputs/)
+folder="$tempInputDir/"
 source=$website
 File=$(echo "$name"."$extens" | sed 's/ /_/g' | sed 's/:/;/g'| sed -e "s/'/_/g" | sed 's/\"//g'|  sed 's/&/n/g' | sed 's/\///g' | sed 's/|//g' | sed 's/\[/(/g' | sed 's/\]/)/g' | sed 's/@/at/g' | sed 's/｜/-/g' | sed 's/：/;/g')
 
@@ -85,7 +88,7 @@ then
 	additiontext="$(yt-dlp --get-description ${source})"
 	if [[ ! $twitch == "" ]]
 	then
-		yt-dlp --sub-langs "en,de" --write-sub --write-auto-sub --sub-format "vtt" --skip-download -i ${source} -o "~/Gedankenspeicher/Alte-Inputs/%(title)s.%(ext)s"
+		yt-dlp --sub-langs "en,de" --write-sub --write-auto-sub --sub-format "vtt" --skip-download -i ${source} -o "$tempInputDir/%(title)s.%(ext)s"
 		filename=$(basename "$File" .$extens)
 		name=$(basename "$ofile" .$extens)
 		mv "$folder$name".en.vtt "$folder""$filename".en.vtt
@@ -100,7 +103,7 @@ then
 	echo "Content-Type: text/x-zim-wiki" >> "$folder""$File".md
 	echo "Wiki-Format: zim 0.6" >> "$folder""$File".md
 	echo "====== $f ======" >> "$folder""$File".md
-	echo "Text date:$(date +"[[Zettelkasten:%Y:%m:%d|%Y-%m-%d]]") Modi date:$(date +"[[Zettelkasten:%Y:%m:%d|%Y-%m-%d]]")" >> "$folder""$File".md
+	echo "Text date:$(date +"[[$journalPage:%Y:%m:%d|%Y-%m-%d]]") Modi date:$(date +"[[$journalPage:%Y:%m:%d|%Y-%m-%d]]")" >> "$folder""$File".md
 	echo "[*] @VIDEO $tags **[[../$f]]** $source" >> "$folder""$File".md
 	echo "{{../$f.avif?width=500}}" >> "$folder""$File".md
 	echo -e "\n$additiontext\n" >> "$folder""$File".md

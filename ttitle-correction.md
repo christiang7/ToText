@@ -37,7 +37,7 @@ noweb.py -Rttitle-correction.sh ttitle-correction.md > ttitle-correction.sh && e
 ```
 
 ```bash
-chmod u+x ttitle-correction.sh && ln -sf /home/christian/Gedankenspeicher/Gedankenspeicherwiki/CodeFabrik/GedankenspeicherCoding/ttitle-correction.sh ~/.local/bin/ttitle-correction.sh && echo 'fertig'
+chmod u+x ttitle-correction.sh && ln -sf $(pwd)/ttitle-correction.sh ~/.local/bin/ttitle-correction.sh && echo 'fertig'
 ```
 
 

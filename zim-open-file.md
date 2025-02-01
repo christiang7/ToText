@@ -18,7 +18,7 @@ noweb.py -Rzim-open-file.sh zim-open-file.md > zim-open-file.sh && echo 'fertig'
 
 
 ```bash
- chmod u+x zim-open-file.sh && ln -sf /home/christian/Gedankenspeicher/KanDo/GedankenspeicherEinrichtung/GedankenspeicherCoding/zim-open-file.sh ~/.local/bin/zim-open-file.sh && echo 'fertig'
+ chmod u+x zim-open-file.sh && ln -sf $(pwd)/zim-open-file.sh ~/.local/bin/zim-open-file.sh && echo 'fertig'
  ```
 
 ### Main Program

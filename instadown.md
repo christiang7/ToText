@@ -14,7 +14,9 @@ noweb.py -Rinstadown instadown.md > instadown && chmod u+x instadown && echo 'fe
 *instadown*
 ```bash
 #!/bin/bash
-folder=$(date +"/home/christian/Gedankenspeicher/Gedankenspeicherwiki/Zettelkasten/%Y/%m/%d")
+source config.sh; # load the config library functions
+journalDir="$(config_get journalDir)"
+folder=$(date +"$journalDir/%Y/%m/%d")
 mkdir -p $folder
 cd $folder
 gallery-dl --no-mtime --exec "tt {} '$1' " -D "$folder" "$1" &

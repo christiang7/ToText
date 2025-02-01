@@ -10,15 +10,24 @@ Für die Benutzung von Krita und der export in der Kommandozeile, weil Krita spe
 ``krita Vorlage-Notiz.kra --export --export-filename Vorlage-Notiz.avif``
 
 
+*run-cell.sh*
+```bash
+noweb.py -Rzim-insert-picture.sh zim-insert-picture.md > zim-insert-picture.sh && echo 'fertig'
+```
 
-``noweb.py -Rzim-insert-picture.sh zim-insert-picture.md > zim-insert-picture.sh && echo 'fertig'``
-
- ``chmod u+x zim-insert-picture.sh && ln -sf /home/christian/Gedankenspeicher/Gedankenspeicherwiki/CodeFabrik/GedankenspeicherCoding/zim-insert-picture.sh ~/.local/bin/zim-insert-picture.sh && echo 'fertig'``
+```bash
+chmod u+x zim-insert-picture.sh && ln -sf $(pwd)/zim-insert-picture.sh ~/.local/bin/zim-insert-picture.sh && echo 'fertig'
+```
 
 
 *zim-insert-picture.sh*
 ```bash
 #!/bin/bash
+source config.sh; # load the config library functions
+journalPage="$(config_get journalPage)"
+templateDir="$(config_get templateDir)"
+GedankenspeicherwikiDir="$(config_get GedankenspeicherwikiDir)"
+
 File=$(echo "$1" | sed 's/ /_/g' | sed 's/:/;/g'| sed -e "s/'/_/g" | sed 's/\"//g')
 filetxt=${File%.*}
 datum=$(date +"%Y-%m-%d--%H-%M-%S")
@@ -32,7 +41,7 @@ then
 	filename=$(echo "$Newname" | sed 's/ /_/g' | sed 's/:/;/g'| sed -e "s/'/_/g" | sed 's/\"//g')
 	mkdir -p "$filetxt"
 	cd "$filetxt"
-	cp ~/Gedankenspeicher/Gedankenspeicherwiki/Vorlagen/Vorlage-Notiz.kra "$filename".kra
+	cp $templateDir/Vorlage-Notiz.kra "$filename".kra
 	xterm -e "krita "$filename".kra"
 	krita "$filename".kra --export --export-filename "$filename".avif
 
@@ -42,8 +51,8 @@ then
 	echo "Wiki-Format: zim 0.6" >> "$File".md
 	echo "===== $File =====" >> "$File".md
 	echo "[*] @NOTIZ @BILD **[[../"$filename".kra]] Christian Gößl **" >> "$File".md
-	echo "Text creation time: $(date +"[[Zettelkasten:%Y:%m:%d]]")" >> "$File".md
-	echo "Modification time: $(date +"[[Zettelkasten:%Y:%m:%d]]" -r "$1")" >> "$File".md
+	echo "Text creation time: $(date +"[[$journalPage:%Y:%m:%d]]")" >> "$File".md
+	echo "Modification time: $(date +"[[$journalPage:%Y:%m:%d]]" -r "$1")" >> "$File".md
 	echo -e "\n" >> "$File".md
 	echo "{{../"$filename".avif?width=500}}" >> "$File".md
 	echo -e "\n" >> "$File".md

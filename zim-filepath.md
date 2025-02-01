@@ -16,13 +16,14 @@ Created Sonntag [2022-11-06]()
 
 ## Program
 
+*run-cell.sh*
 ```bash
 noweb.py -Rzim-filepath.sh zim-filepath.md > zim-filepath.sh && echo 'fertig'
 ```
 
 
 ```bash
-chmod u+x zim-filepath.sh && ln -sf /home/christian/Gedankenspeicher/Gedankenspeicherwiki/CodeFabrik/GedankenspeicherCoding/zim-filepath.sh ~/.local/bin/zim-filepath.sh && echo 'fertig'
+chmod u+x zim-filepath.sh && ln -sf $(pwd)/zim-filepath.sh ~/.local/bin/zim-filepath.sh && echo 'fertig'
 ```
 
 ## Main Program
@@ -30,9 +31,13 @@ chmod u+x zim-filepath.sh && ln -sf /home/christian/Gedankenspeicher/Gedankenspe
 *zim-filepath.sh*
 ```bash
 #!/bin/bash
+source config.sh; # load the config library functions
+homeDir="$(config_get homeDir)"
+GedankenspeicherwikiDir="$(config_get GedankenspeicherwikiDir)"
+
 file=$(readlink -f -n "$1")
-filepath=$(echo "${file%/*}" | sed "s,/home/christian,~,")
-wikipath=$(echo $filepath | sed "s,~/Gedankenspeicher/Gedankenspeicherwiki/,," | sed "s,/,:,g")
+filepath=$(echo "${file%/*}" | sed "s,$homeDir,~,")
+wikipath=$(echo $filepath | sed "s,$GedankenspeicherwikiDir,," | sed "s,/,:,g")
 FullFilename=$(basename $file .md)
 outputText="[[$filepath/$FullFilename]]\n[[$wikipath:$FullFilename]]"
 #echo -e $outputText

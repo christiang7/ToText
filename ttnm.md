@@ -13,6 +13,11 @@ noweb.py -Rttnm ttnm.md > ttnm && chmod u+x ttnm && echo 'fertig'
 *ttnm*
 ```bash
 #!/usr/bin/env bash
+source config.sh; # load the config library functions
+journalDir="$(config_get journalDir)"
+journalPage="$(config_get journalPage)"
+GedankenspeicherwikiDir="$(config_get GedankenspeicherwikiDir)"
+
 
 f=$(basename "$1")
 extens=${f##*.}
@@ -35,8 +40,8 @@ then
 	source=$(echo $abfrage | cut -s -d "~" -f 3)
 	tags=$(echo $abfrage | cut -s -d "~" -f 4)
 	additiontext=$(echo $abfrage | cut -s -d "~" -f 5)
-	#folder=/home/christian/Gedankenspeicher/Gedankenspeicherwiki/Assets
-    folder=$(date +"/home/christian/Gedankenspeicher/Gedankenspeicherwiki/Zettelkasten/%Y/%m/%d")
+	#folder=$GedankenspeicherwikiDir/Assets
+    folder=$(date +"$journalDir/%Y/%m/%d")
     mkdir -p $folder
 	File=$(echo "$Newname"."$extens" | sed 's/ /_/g' | sed 's/:/;/g'| sed -e "s/'/_/g" | sed 's/\"//g'|  sed 's/&/n/g' | sed 's/\///g' | sed 's/|//g' | sed 's/\[/(/g' | sed 's/\]/)/g' | sed 's/@/at/g')
 	Newname=$(echo "$Newname" | sed 's/ /_/g' | sed 's/:/;/g'| sed -e "s/'/_/g" | sed 's/\"//g'|  sed 's/&/n/g' | sed 's/\///g' | sed 's/|//g' | sed 's/\[/(/g' | sed 's/\]/)/g' | sed 's/@/at/g')
@@ -62,7 +67,7 @@ then
 	}
 
 	function Timestamps(){
-		echo "Text date: $(date +"[[Zettelkasten:%Y:%m:%d|%Y-%m-%d]]") File date: $(date +"[[Zettelkasten:%Y:%m:%d|%Y-%m-%d]]" -r "$File")" >> $folder/"$File".md
+		echo "Text date: $(date +"[[$journalPage:%Y:%m:%d|%Y-%m-%d]]") File date: $(date +"[[$journalPage:%Y:%m:%d|%Y-%m-%d]]" -r "$File")" >> $folder/"$File".md
 	}
 
 	#if [[ -f "$File".md ]] 
@@ -77,7 +82,7 @@ then
 			echo "Content-Type: text/x-zim-wiki" >> "$folder"/"$File".md
 			echo "Wiki-Format: zim 0.6" >> "$folder"/"$File".md
 			echo "====== $File ======" >> $folder/"$File".md
-			echo "Text date: $(date +"[[Zettelkasten:%Y:%m:%d|%Y-%m-%d]]") File date: $(date +"[[Zettelkasten:%Y:%m:%d|%Y-%m-%d]]" -r "$File")" >> "$folder"/"$File".md
+			echo "Text date: $(date +"[[$journalPage:%Y:%m:%d|%Y-%m-%d]]") File date: $(date +"[[$journalPage:%Y:%m:%d|%Y-%m-%d]]" -r "$File")" >> "$folder"/"$File".md
 			echo "@ARTIKEL $tags " >> "$folder"/"$File".md
 			echo "[*] **[[../$File]] **" >> "$folder"/"$File".md
 			echo -e "$source\n$additiontext\n" >> "$folder"/"$File".md
@@ -112,7 +117,7 @@ then
 			echo "Content-Type: text/x-zim-wiki" >> "$folder"/"$File".md
 			echo "Wiki-Format: zim 0.6" >> "$folder"/"$File".md
 			echo "====== $File ======" >> $folder/"$File".md
-			echo "Text date: $(date +"[[Zettelkasten:%Y:%m:%d|%Y-%m-%d]]") File date: $(date +"[[Zettelkasten:%Y:%m:%d|%Y-%m-%d]]" -r "$File")" >> "$folder"/"$File".md
+			echo "Text date: $(date +"[[$journalPage:%Y:%m:%d|%Y-%m-%d]]") File date: $(date +"[[$journalPage:%Y:%m:%d|%Y-%m-%d]]" -r "$File")" >> "$folder"/"$File".md
 			echo "@BILD $tags " >> "$folder"/"$File".md
 			echo "[*] **[[../$File]] **" >> "$folder"/"$File".md
 			echo -e "$source\n{{../$File?width=500}}" >> "$folder"/"$File".md
@@ -134,7 +139,7 @@ then
 			echo "Content-Type: text/x-zim-wiki" >> "$folder"/"$File".md
 			echo "Wiki-Format: zim 0.6" >> "$folder"/"$File".md
 			echo "====== $File ======" >> $folder/"$File".md
-			echo "Text date: $(date +"[[Zettelkasten:%Y:%m:%d|%Y-%m-%d]]") File date: $(date +"[[Zettelkasten:%Y:%m:%d|%Y-%m-%d]]" -r "$File")" >> "$folder"/"$File".md
+			echo "Text date: $(date +"[[$journalPage:%Y:%m:%d|%Y-%m-%d]]") File date: $(date +"[[$journalPage:%Y:%m:%d|%Y-%m-%d]]" -r "$File")" >> "$folder"/"$File".md
 			echo "@VIDEO $tags " >> "$folder"/"$File".md
 			echo "[*] **[[../$File]] **" >> "$folder"/"$File".md
 			echo -e "$source\n$additiontext\n" >> "$folder"/"$File".md
@@ -158,7 +163,7 @@ then
 			echo "Content-Type: text/x-zim-wiki" >> "$folder"/"$File".md
 			echo "Wiki-Format: zim 0.6" >> "$folder"/"$File".md
 			echo "====== $File ======" >> $folder/"$File".md
-			echo "Text date: $(date +"[[Zettelkasten:%Y:%m:%d|%Y-%m-%d]]") File date: $(date +"[[Zettelkasten:%Y:%m:%d|%Y-%m-%d]]" -r "$File")" >> "$folder"/"$File".md
+			echo "Text date: $(date +"[[$journalPage:%Y:%m:%d|%Y-%m-%d]]") File date: $(date +"[[$journalPage:%Y:%m:%d|%Y-%m-%d]]" -r "$File")" >> "$folder"/"$File".md
             echo "@ARTIKEL $tags " >> "$folder"/"$File".md
 			echo "[*] **[[../$File]] **" >> "$folder"/"$File".md
 			echo -e "$source\n$additiontext\n" >> "$folder"/"$File".md
@@ -210,7 +215,7 @@ then
 
 	#file=$(readlink -f -n "$folder"/"$File")
 	#filepath=$(echo "${file%/*}" | sed "s,/home/christian,~,")
-	#wikipath=$(echo $filepath | sed "s,~/Gedankenspeicher/Gedankenspeicherwiki/,," | sed "s,/,:,g")
+	#wikipath=$(echo $filepath | sed "s,GedankenspeicherwikiDir,," | sed "s,/,:,g")
 	#FullFilename=$(basename $file .md)
 	#echo -e "[[$filepath/$FullFilename]]\n[[$wikipath:$FullFilename]]" >> $folder/"$File".md
 

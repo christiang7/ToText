@@ -1,27 +1,30 @@
 #!/bin/bash
+source config.sh; # load the config library functions
+GedankenspeicherwikiDir="$(config_get GedankenspeicherwikiDir)"
+
 choose=$(zenity --height 350 --list --radiolist --print-column ALL --hide-header --column "Checkbox" --column "What" True Spass FALSE Assets FALSE Physik FALSE Mathematik FALSE Philosophie FALSE Naturwissenschaften_und_Instrumentarien FALSE CodeFabrik FALSE Download)
 if [ ! $? -eq 1 ];
 then
    case ${choose} in
-      Spass) rssfile=$(echo "/home/christian/Gedankenspeicher/Gedankenspeicherwiki/Spaß_Stream/Spass_Stream-rss.md")
+      Spass) rssfile=$(echo "$GedankenspeicherwikiDir/Spaß_Stream/Spass_Stream-rss.md")
    	  ;;
-      Assets) rssfile=$(echo "/home/christian/Gedankenspeicher/Gedankenspeicherwiki/Assets/Assets-rss.md")
+      Assets) rssfile=$(echo "$GedankenspeicherwikiDir/Zettelkasten/Zettelkasten-rss.md")
    	  ;;
-      Physik) rssfile=$(echo "/home/christian/Gedankenspeicher/Gedankenspeicherwiki/Physik/Physik-rss.md")
+      Physik) rssfile=$(echo "$GedankenspeicherwikiDir/Physik/Physik-rss.md")
    	  ;;
-      Mathematik) rssfile=$(echo "/home/christian/Gedankenspeicher/Gedankenspeicherwiki/Mathematik/Mathematik-rss.md")
+      Mathematik) rssfile=$(echo "$GedankenspeicherwikiDir/Mathematik/Mathematik-rss.md")
    	  ;;
-      Philosophie) rssfile=$(echo "/home/christian/Gedankenspeicher/Gedankenspeicherwiki/Philosophie/Philosophie-rss.md")
+      Philosophie) rssfile=$(echo "$GedankenspeicherwikiDir/Philosophie/Philosophie-rss.md")
    	  ;;
-      Naturwissenschaften_und_Instrumentarien) rssfile=$(echo "/home/christian/Gedankenspeicher/Gedankenspeicherwiki/Naturwissenschaften_und_Instrumentarien/Naturwissenschaften_und_Instrumentarien-rss.md")
+      Naturwissenschaften_und_Instrumentarien) rssfile=$(echo "$GedankenspeicherwikiDir/Naturwissenschaften_und_Instrumentarien/Naturwissenschaften_und_Instrumentarien-rss.md")
    	  ;;
-      CodeFabrik) rssfile=$(echo "/home/christian/Gedankenspeicher/Gedankenspeicherwiki/CodeFabrik/CodeFabrik-rss.md")
+      CodeFabrik) rssfile=$(echo "$GedankenspeicherwikiDir/CodeFabrik/CodeFabrik-rss.md")
    	  ;;
-      Download) rssfile=$(echo "/home/christian/Gedankenspeicher/Gedankenspeicherwiki/CodeFabrik/Download-rss.md")
+      Download) rssfile=$(echo "$GedankenspeicherwikiDir/CodeFabrik/Download-rss.md")
    	  ;;
    esac
 
-   #rssfile=$(echo "/home/christian/Gedankenspeicher/Gedankenspeicherwiki/CodeFabrik/rss-source.rss")
+   #rssfile=$(echo "$GedankenspeicherwikiDir/CodeFabrik/rss-source.rss")
    sed -i "$ d" $rssfile
    #tabs="$(xclip -selection clipboard -o)"
    tabs="$(wl-paste -n)"
@@ -44,6 +47,4 @@ then
    done
    echo "</channel>" >> $rssfile
    echo "</rss>" >> $rssfile
-
 fi
-

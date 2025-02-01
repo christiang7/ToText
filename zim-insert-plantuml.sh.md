@@ -23,7 +23,7 @@ noweb.py -Rzim-insert-plantuml.sh zim-insert-plantuml.sh.md > zim-insert-plantum
 
 
 ```bash
-chmod u+x zim-insert-plantuml.sh && ln -sf /home/christian/Gedankenspeicher/Gedankenspeicherwiki/CodeFabrik/Gedankenspeicher-Coding/zim-insert-plantuml.sh ~/.local/bin/zim-insert-plantuml.sh && echo 'fertig'
+chmod u+x zim-insert-plantuml.sh && ln -sf $(pwd)/zim-insert-plantuml.sh ~/.local/bin/zim-insert-plantuml.sh && echo 'fertig'
 ```
 
 *zim-insert-plantuml.sh*

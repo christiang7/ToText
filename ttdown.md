@@ -23,11 +23,15 @@ noweb.py -Rttdown ttdown.md > ttdown && echo "ttdown" && date
 *ttdown*
 ```bash
 #!/bin/bash
+source config.sh; # load the config library functions
+outputDir="$(config_get outputDir)"
+journalPage="$(config_get journalPage)"
+
 f=$(basename "$1")
 extens=${f##*.}
 name=$(basename "$f" .$extens)
 source=$(echo "$2")
-folder=$(echo ~/Gedankenspeicher/Output/)
+folder=$outputDir
 additiontext="$(yt-dlp --get-description ${source})"
 
 abfrage=$(yad --title="Diese Datei eine TXT hinzufügen" --text="Noch etwas hinzufügen?" \
@@ -66,9 +70,9 @@ then
 	echo "Content-Type: text/x-zim-wiki" >> "$folder""$File".md
 	echo "Wiki-Format: zim 0.6" >> "$folder""$File".md
 	echo "====== $f ======" >> "$folder""$File".md
-	echo "Text date:$(date +"[[Zettelkasten:%Y:%m:%d|%Y-%m-%d]]") Modi date:$(date +"[[Zettelkasten:%Y:%m:%d|%Y-%m-%d]]" -r "$folder""$File")" >> "$folder""$File".md
+	echo "Text date:$(date +"[[$journalPage:%Y:%m:%d|%Y-%m-%d]]") Modi date:$(date +"[[$journalPage:%Y:%m:%d|%Y-%m-%d]]" -r "$folder""$File")" >> "$folder""$File".md
 	echo "[*] @VIDEO $tags **[[../$f]]** $source" >> "$folder""$File".md
-	#echo "Modification time:$(date +"[[Zettelkasten:%Y:%m:%d]]" -r "$folder""$File")" >> "$folder""$File".md
+	#echo "Modification time:$(date +"[[$journalPage:%Y:%m:%d]]" -r "$folder""$File")" >> "$folder""$File".md
 	ffmpeg -loglevel quiet -ss 2 -i "$folder""$File" -t 1 -f image2 "$folder""$File".png
 	#convert "$folder""$File".png -resize 1200x1200 -quality 97 "$folder""$File"-px.png
 	#mv "$folder""$File"-px.png "$folder""$File".png

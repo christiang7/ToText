@@ -1,5 +1,6 @@
 #!/bin/bash
 
+
 yad --title="New calculation?" --text="\n Standalone File?\n"
 if [ ! $? -eq 1 ];
 then
@@ -81,7 +82,7 @@ then
   	else
   		echo -e "noweb.py -R${Filename}.${extens} ${File}.md > ${Filename}.${extens} && echo '${Filename}.${extens}' && date \n\`\`\`" >> "${File}".md
   		echo -e "\n\n\`\`\`bash" >> "${File}".md
-  		echo -e "chmod u+x ${Filename}.${extens} && ln -sf "${folder}"/${Filename}.${extens} ~/.local/bin/${Filename}.${extens} && echo 'fertig'\n \`\`\`" >> "${File}".md
+  		echo -e "chmod u+x ${Filename}.${extens} && ln -sf '$(pwd)'/${Filename}.${extens} ~/.local/bin/${Filename}.${extens} && echo 'fertig'\n \`\`\`" >> "${File}".md
   	fi
   	echo -e "\n*${Filename}.${extens}*" >> "${File}".md
   	echo -e "\`\`\`${langname}" >> "${File}".md

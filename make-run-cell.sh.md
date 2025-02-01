@@ -19,10 +19,6 @@ noweb.py -Rmake-run-cell.sh make-run-cell.sh.md > temp-make-run-cell.sh && cp ma
 ```
 
 
-```bash
-chmod u+x make-run-cell.sh && ln -sf /home/christian/Gedankenspeicher/Gedankenspeicherwiki/CodeFabrik/Gedankenspeicher-Coding/make-run-cell.sh ~/.local/bin/make-run-cell.sh && echo 'fertig'
- ```
-
 *make-run-cell.sh*
 ```bash
 #!/bin/bash

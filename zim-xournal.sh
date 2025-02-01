@@ -1,4 +1,7 @@
 #!/bin/bash
+source config.sh; # load the config library functions
+journalPage="$(config_get journalPage)"
+
 File=$(echo "$1" | sed 's/ /_/g' | sed 's/:/;/g'| sed -e "s/'/_/g" | sed 's/\"//g')
 filetxt=${File%.*}
 filetxtname=$(basename "$File" .md)
@@ -25,11 +28,12 @@ then
     filename=$(echo "$Newname" | sed 's/ /_/g' | sed 's/:/;/g'| sed -e "s/'/_/g" | sed 's/\"//g')
     File=$(echo "$filename".xopp)
     xournalpp "$filename".xopp && xournalpp "$File" -p "$filename".pdf
-    if [ "Unterrichtsnotiz" != "$par" ]; then
+    if [ "Unterrichtsnotiz" != "$par" ];
+    then
         echo "Content-Type: text/x-zim-wiki" >> "$File".md
         echo "Wiki-Format: zim 0.6" >> "$File".md
         echo "====== $File ======" >> "$File".md
-        echo "Text creation time: $(date +"[[Zettelkasten:%Y:%m:%d|%Y-%m-%d]]") Modification time: $(date +"[[Zettelkasten:%Y:%m:%d|%Y-%m-%d]]" -r "$File")" >> "$File".md
+        echo "Text creation time: $(date +"[[$journalPage:%Y:%m:%d|%Y-%m-%d]]") Modification time: $(date +"[[$journalPage:%Y:%m:%d|%Y-%m-%d]]" -r "$File")" >> "$File".md
         echo "[*] **[[../"$filename".xopp]] **" >> "$File".md
         echo "$source" >> "$File".md
         #ttpdf "$filename".pdf

@@ -5,18 +5,20 @@ Created Dienstag [Zettelkasten:2022:11:01](
 
 einen Zim Ordner mit txt Datei erstellen lassen irgendwo im Dateisystem
 
-  ```bash
+*run-cell.sh*
+```bash
 noweb.py -Rttne.sh ttne.md > ttne.sh  && echo 'fertig'
- ```
+```
 
  ```bash
-chmod u+x ttne.sh  && ln -sf /home/christian/Gedankenspeicher/Gedankenspeicherwiki/Zettelkasten/ZetteL/CadeFabrik/ttne.sh ~/.local/bin/ttne.sh && echo 'fertig'
+chmod u+x ttne.sh  && ln -sf $(pwd)/ttne.sh ~/.local/bin/ttne.sh && echo 'fertig'
   ```
 
 *ttne.sh*
 ```bash
 #!/usr/bin/env bash
-
+source config.sh; # load the config library functions
+journalPage="$(config_get journalPage)"
 
 if [[ ! -e "$1" ]] 
 then
@@ -60,8 +62,8 @@ then
   echo "Content-Type: text/x-zim-wiki" > "${folder}"/"${File}".md
   echo "Wiki-Format: zim 0.6" >> "${folder}"/"${File}".md
   echo -e "====== ${File} ======" >> "${folder}"/"${File}".md
-  echo -e "Created $(date +"%A") $(date +"[[Zettelkasten:%Y:%m:%d|%Y-%m-%d]]")" >> "${folder}"/"${File}".md
-  #echo -e "Backlink $([[Zettelkasten:%Y:%m:%d]])" >> "${folder}"/"${File}".md
+  echo -e "Created $(date +"%A") $(date +"[[$journalPage:%Y:%m:%d|%Y-%m-%d]]")" >> "${folder}"/"${File}".md
+  #echo -e "Backlink $([[$journalPage:%Y:%m:%d]])" >> "${folder}"/"${File}".md
   #echo -e "" >> "${folder}"/"${File}".md
   echo -e "${tags}" >> "${folder}"/"${File}".md
   echo -e "[*]  ** ${File} ** " >> "${folder}"/"${File}".md

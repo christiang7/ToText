@@ -10,13 +10,14 @@ Backlink [GedankenspeicherCoding](../GedankenspeicherCoding.md)
 noweb.py -Rttdm ttdm.md > ttdm && echo 'fertig'
 ```
 
-```bash
-chmod u+x ttdm && ln -sf /home/christian/Gedankenspeicher/Gedankenspeicherwiki/Zettelkasten/Gedankenwanderung/Programme/ttdm ~/.local/bin/ttdm && echo 'fertig'
-```
-
 *ttdm*
 ```bash
 #!/bin/bash
+source config.sh; # load the config library functions
+journalDir="$(config_get journalDir)"
+journalPage="$(config_get journalPage)"
+
+
 FolderSync=$(echo "$1" | sed 's/\///g')
 #ls --hide=*.md "$folder" > f
 list=$(find "$FolderSync"/)
@@ -28,7 +29,7 @@ do
 #while read f
 #do
 #echo $f
-	folder=$(date +"/home/christian/Gedankenspeicher/Gedankenspeicherwiki/Zettelkasten/%Y/%m/%d" -r "$f")
+	folder=$(date +"$journalDir/%Y/%m/%d" -r "$f")
 	mkdir -p "$folder"
 	g=$(basename "$f")
 	File=$(echo "$g" | sed 's/ /_/g' | sed 's/:/;/g' | sed -e "s/'/_/g" | sed 's/\"//g' | sed 's/&/n/g' | sed 's/\///g' | sed 's/|//g' | sed 's/\[/(/g' | sed 's/\]/)/g')
@@ -57,11 +58,11 @@ do
 	}
 
 	function Timestamps(){
-		echo "Text creation time: $(date +"[[Zettelkasten:%Y:%m:%d]]")" >> $folder/"$Filename".md
-		echo "Modification time: $(date +"[[Zettelkasten:%Y:%m:%d]]" -r "$File")" >> $folder/"$Filename".md
+		echo "Text creation time: $(date +"[[$journalPage:%Y:%m:%d]]")" >> $folder/"$Filename".md
+		echo "Modification time: $(date +"[[$journalPage:%Y:%m:%d]]" -r "$File")" >> $folder/"$Filename".md
 	}
 
-	foldermonth=$(date +"/home/christian/Gedankenspeicher/Gedankenspeicherwiki/Zettelkasten/%Y/%m" -r "$File")
+	foldermonth=$(date +"$journalDir/%Y/%m" -r "$File")
 	calendarfile=$(date +"%d" -r "$File")
 	calendarfile=$calendarfile.md
 	if [[ ! -e "$foldermonth"/"$calendarfile" ]]
@@ -70,8 +71,8 @@ do
 		echo "Content-Type: text/x-zim-wiki" >> "$foldermonth"/"$calendarfile"
 		echo "Wiki-Format: zim 0.6" >> "$foldermonth"/"$calendarfile"
 		date +"===== %A %d %b %Y =====" -r "$File" >> "$foldermonth"/"$calendarfile"
-		#date +"[[Zettelkasten:%Y:%W|Week %W]]" -r "$File" >> "$foldermonth"/"$calendarfile"
-		date +"[[Zettelkasten:%Y:%m]]" -r "$File" >> "$foldermonth"/"$calendarfile"
+		#date +"[[$journalPage:%Y:%W|Week %W]]" -r "$File" >> "$foldermonth"/"$calendarfile"
+		date +"[[$journalPage:%Y:%m]]" -r "$File" >> "$foldermonth"/"$calendarfile"
 		echo -e ""  >> "$foldermonth"/"$calendarfile"
 		date +"[*] ** %A %d %b %Y ** "  -r "$File" >> "$foldermonth"/"$calendarfile"
 	fi
@@ -92,8 +93,8 @@ do
 			echo "Content-Type: text/x-zim-wiki" >> "$folder"/"$Filename".md
 			echo "Wiki-Format: zim 0.6" >> "$folder"/"$Filename".md
 			echo "[*] @ARTIKEL $tags **[[../$Filename]] $source**" >> "$folder"/"$Filename".md
-			echo "Text creation time: $(date +"[[Zettelkasten:%Y:%m:%d]]")" >> "$folder"/"$Filename".md
-			echo "Modification time: $(date +"[[Zettelkasten:%Y:%m:%d]]" -r "$File")" >> "$folder"/"$Filename".md
+			echo "Text creation time: $(date +"[[$journalPage:%Y:%m:%d]]")" >> "$folder"/"$Filename".md
+			echo "Modification time: $(date +"[[$journalPage:%Y:%m:%d]]" -r "$File")" >> "$folder"/"$Filename".md
 			echo -e "\n" >> "$folder"/"$Filename".md
 			echo -e "$additiontext\n" >> "$folder"/"$Filename".md
 			echo -e "{{../$Filename.png?width=500}}\n" >> "$folder"/"$Filename".md
@@ -120,8 +121,8 @@ do
 			echo "Content-Type: text/x-zim-wiki" >> "$folder"/"$Filename".md
 			echo "Wiki-Format: zim 0.6" >> "$folder"/"$Filename".md
 			echo "[*] @BILD $tags **[[../$Filename]] $source**" >> "$folder"/"$Filename".md
-			echo "Text creation time: $(date +"[[Zettelkasten:%Y:%m:%d]]")" >> "$folder"/"$Filename".md
-			echo "Modification time: $(date +"[[Zettelkasten:%Y:%m:%d]]" -r "$File")" >> "$folder"/"$Filename".md
+			echo "Text creation time: $(date +"[[$journalPage:%Y:%m:%d]]")" >> "$folder"/"$Filename".md
+			echo "Modification time: $(date +"[[$journalPage:%Y:%m:%d]]" -r "$File")" >> "$folder"/"$Filename".md
 			echo -e "\n$additiontext" >> "$folder"/"$Filename".md
 			echo "{{../$Filename?width=500}}" >> "$folder"/"$Filename".md
 		else
@@ -140,8 +141,8 @@ do
 			echo "Content-Type: text/x-zim-wiki" >> "$folder"/"$Filename".md
 			echo "Wiki-Format: zim 0.6" >> "$folder"/"$Filename".md
 			echo "[*] @VIDEO $tags **[[../$Filename]] $source**" >> "$folder"/"$Filename".md
-			echo "Text creation time: $(date +"[[Zettelkasten:%Y:%m:%d]]")" >> "$folder"/"$Filename".md
-			echo "Modification time: $(date +"[[Zettelkasten:%Y:%m:%d]]" -r "$File")" >> "$folder"/"$Filename".md
+			echo "Text creation time: $(date +"[[$journalPage:%Y:%m:%d]]")" >> "$folder"/"$Filename".md
+			echo "Modification time: $(date +"[[$journalPage:%Y:%m:%d]]" -r "$File")" >> "$folder"/"$Filename".md
 			echo -e "\n" >> "$folder"/"$Filename".md
 			echo -e "$additiontext\n" >> "$folder"/"$Filename".md
 			echo -e "{{../$Filename.png?width=500}}\n" >> "$folder"/"$Filename".md

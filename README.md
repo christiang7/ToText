@@ -1,11 +1,9 @@
-# Gedankenspeicher - Focus - ToText tt
+# ToText tt
 
-- [X] Doing Interput (2)
-- [X] Doing (2)
-	- [ ] [ttdm] anpassen an [ttnm]
-- [X] Planning (2)
-	- [ ] überall yad Ersatz für zenity einfügen
+## Features
+
 - [X] Backlog
+	- [ ] rewrite [ttdm] with [ttnm]
 	- [ ] bei der Verschiebung und Umbenennung von zim Seiten
 	die zim Funktion umschreiben, so dass auch andere Dateien
 	mit verschoben werden können
@@ -13,10 +11,23 @@
 	- [ ] [ttam](ttam)
 	- [ ] xournal Programmstarter so, dass automatisch thumbnail
 	aktualisiert wird und von einer pdf als Notizen abgespeichert wird
-	- [ ] alles in english schreiben
+	- [ ] rewrite i everything in english
+- [X] Planning (2)
+	- [ ] replace zenity with yad
+- [X] Doing (2)
+	- [ ] publish on github
 	- [ ] Programme über libraries verbinden
+		- [X] shell library for cleaning filenames
+		- [ ] shell library for markdown template
+		- [ ] shell library for zim template
+		- [ ] template function for nodes for files and usable with library inclusion
 
-## Features
+### 2025-02-01
+	- [X] using a config file for the path and variables
+		- [X] create config dir
+		- [X] set standard variables
+		- [X] script for reading config file
+		- [X] rewrite programs for standard variables
 
 ### 2024-08-08 template tex
 	- [X] template-tex
@@ -57,7 +68,7 @@ The program [zim-quoting-copy]() can copy a marked line. The marked line gets an
 
 
 ## Description
-The project called Gedankenspeicher is a collection of scripts for using an annotation system with **md** files. It builds upon the desktop wiki [GitHub - zim-desktop-wiki/zim-desktop-wiki: Main repository of the zim desktop wiki project](https://github.com/zim-desktop-wiki/zim-desktop-wiki). The **md** files are describing every given file on your file system. The created **md** file is showing up in zim. So you can search and annotate a file in zim wiki. Some scripts connect zim with the file manager perhaps [dolphin]([Dolphin - KDE Applications](https://apps.kde.org/dolphin/)) and the web browser [firefox](https://www.mozilla.org/en-US/firefox/new/). The scripts are working on Linux machines like Ubuntu, Archlinux, Fedora, Suse. The Gedankenspeicher uses the following tools:
+The project called ToText is a collection of scripts for using an annotation system with **md** files. It builds upon the desktop wiki [GitHub - zim-desktop-wiki/zim-desktop-wiki: Main repository of the zim desktop wiki project](https://github.com/zim-desktop-wiki/zim-desktop-wiki). The **md** files are describing every given file on your file system. The created **md** file is showing up in zim. So you can search and annotate a file in zim wiki. Some scripts connect zim with the file manager perhaps [dolphin]([Dolphin - KDE Applications](https://apps.kde.org/dolphin/)) and the web browser [firefox](https://www.mozilla.org/en-US/firefox/new/). The scripts are working on Linux machines like Ubuntu, Archlinux, Fedora, Suse. The ToText uses the following tools:
 
 - wget
 
@@ -73,7 +84,7 @@ The project called Gedankenspeicher is a collection of scripts for using an anno
 
 - firefox addon zim clip
 
-- noweb
+- noweb - noweb.py repository
 
 - mypaint
 

@@ -12,6 +12,9 @@ noweb.py -Rttd ttd.md > ttd && chmod u+x ttd && echo 'fertig'
 *ttd*
 ```bash
 #!/bin/bash
+source config.sh; # load the config library functions
+journalPage="$(config_get journalPage)"
+
 folder="$1"
 folder=$(echo $folder | sed 's/\///g')
 #ls --hide=*.md "$folder" > f
@@ -55,7 +58,7 @@ do
 	}
 
 	function Timestamps(){
-		echo "Text creation time: $(date +"[[Zettelkasten:%Y:%m:%d|%Y-%m-%d]]") Modification time: $(date +"[[Zettelkasten:%Y:%m:%d|%Y-%m-%d]]" -r "$folder"/"$g")" >> "$folder"/"$File".md
+		echo "Text creation time: $(date +"[[$journalPage:%Y:%m:%d|%Y-%m-%d]]") Modification time: $(date +"[[$journalPage:%Y:%m:%d|%Y-%m-%d]]" -r "$folder"/"$g")" >> "$folder"/"$File".md
 		#echo "" >> "$folder"/"$File".md
 	}
 

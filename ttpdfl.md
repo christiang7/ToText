@@ -3,26 +3,32 @@
 - [X] **ttpdfl**
 
 Created Samstag [Zettelkasten:2021:06:05]()
-Backlink [GedankenspeicherCoding](../GedankenspeicherCoding.md)
 
-  ``noweb.py -Rttpdfl ttpdfl.md > ttpdfl && chmod u+x ttpdfl && echo 'fertig'``
+*run-cell.sh*
+```bash
+noweb.py -Rttpdfl ttpdfl.md > ttpdfl && chmod u+x ttpdfl && echo 'fertig'
+```
 
 
 *ttpdfl*
 ```bash
 #!/bin/bash
+source config.sh; # load the config library functions
+journalPage="$(config_get journalPage)"
+journalDir="$(config_get journalDir)"
+
 File=$(echo "$1" | sed 's/ /_/g' | sed 's/:/;/g'| sed -e "s/'/_/g" | sed 's/\"//g')
 f=$(basename "$1")
-folder=$(date +"/home/christian/Gedankenspeicher/Gedankenspeicherwiki/Zettelkasten/%Y/%m/%d" -r "$1")
+folder=$(date +"$journalDir/%Y/%m/%d" -r "$1")
 mkdir -p $folder
 touch "$File".md
 echo "Content-Type: text/x-zim-wiki" >> "$File".md
 echo "Wiki-Format: zim 0.6" >> "$File".md
 echo "[*] @ARTIKEL **[[../$f]]  $2**" >> "$File".md
 echo "Text creation time:" >> "$File".md
-date +"[[Zettelkasten:%Y:%m:%d]]">> "$File".md
+date +"[[$journalPage:%Y:%m:%d]]">> "$File".md
 echo "Modification time:" >> "$File".md
-date +"[[Zettelkasten:%Y:%m:%d]]" -r "$1" >> "$File".md
+date +"[[$journalPage:%Y:%m:%d]]" -r "$1" >> "$File".md
 echo -e "\n$2\n\n" >> "$File".md
 pdfinfo "$1" | grep Pages >> "$File".md
 echo -e "\n" >> "$File".md

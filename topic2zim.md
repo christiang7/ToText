@@ -38,16 +38,15 @@ https://www.linuxteck.com/sed-commands-in-linux/
 noweb.py -Rtopic2zim.sh topic2zim.md > topic2zim.sh && echo 'topic2zim.sh' && date
 ```
 
-```bash
-chmod u+x topic2zim.sh && ln -sf /home/christian/Gedankenspeicher/Gedankenspeicherwiki/Zettelkasten/ZetteL/CodeFabrik/GedankenspeicherCoding/topic2zim.sh ~/.local/bin/topic2zim.sh && echo 'fertig'
-```
-
-
 ### Main program
 
 *topic2zim.sh*
 ```bash
 #! /bin/bash
+source config.sh; # load the config library functions
+journalDir="$(config_get journalDir)"
+journalPage="$(config_get journalPage)"
+GedankenspeicherwikiDir="$(config_get GedankenspeicherwikiDir)"
 
 #*request}}
 
@@ -104,21 +103,21 @@ then
 	tags=$(echo $request | cut -s -d "~" -f 4)
 	additiontext=$(echo $request | cut -s -d "~" -f 5)
 	case ${chooseWhere} in
-		Spass) folder=$(echo "/home/christian/Gedankenspeicher/Gedankenspeicherwiki/Spaß_Stream")
+		Spass) folder=$(echo "$GedankenspeicherwikiDir/Spaß_Stream")
 			l=37;;
-		Physik) folder=$(echo "/home/christian/Gedankenspeicher/Gedankenspeicherwiki/Physik")
+		Physik) folder=$(echo "$GedankenspeicherwikiDir/Physik")
 			l=37;;
-		Mathematik) folder=$(echo "/home/christian/Gedankenspeicher/Gedankenspeicherwiki/Mathematik")
+		Mathematik) folder=$(echo "$GedankenspeicherwikiDir/Mathematik")
 			l=37;;
-		Blogging) folder=$(echo "/home/christian/Gedankenspeicher/Gedankenspeicherwiki/Blogging")
+		Blogging) folder=$(echo "$GedankenspeicherwikiDir/Blogging")
 			l=37;;
-		Philosophie) folder=$(echo "/home/christian/Gedankenspeicher/Gedankenspeicherwiki/Philosophie")
+		Philosophie) folder=$(echo "$GedankenspeicherwikiDir/Philosophie")
 			l=37;;
-		Naturwissenschaften_und_Instrumentarien) folder=$(echo "/home/christian/Gedankenspeicher/Gedankenspeicherwiki/Naturwissenschaften_und_Instrumentarien")
+		Naturwissenschaften_und_Instrumentarien) folder=$(echo "$GedankenspeicherwikiDir/Naturwissenschaften_und_Instrumentarien")
 			l=37;;
-		CodeFabrik) folder=$(echo "/home/christian/Gedankenspeicher/Gedankenspeicherwiki/CodeFabrik")
+		CodeFabrik) folder=$(echo "$GedankenspeicherwikiDir/CodeFabrik")
 			l=37;;
-		Zettelkasten) folder=$(echo "/home/christian/Gedankenspeicher/Gedankenspeicherwiki/Zettelkasten")
+		Zettelkasten) folder=$(echo "$GedankenspeicherwikiDir/Zettelkasten")
 			l=37;;
 	esac
 
@@ -142,12 +141,12 @@ fi
 echo "Content-Type: text/x-zim-wiki" > "${folder}"/"${topicfile}"
 echo "Wiki-Format: zim 0.6" >> "${folder}"/"${topicfile}"
 echo -e "====== ${topic} ======" >> "${folder}"/"${topicfile}"
-echo -e "Created $(date +"[[Zettelkasten:%Y:%m:%d|%Y-%m-%d]]")" >> "${folder}"/"${topicfile}"
+echo -e "Created $(date +"[[$journalPage:%Y:%m:%d|%Y-%m-%d]]")" >> "${folder}"/"${topicfile}"
 #echo -e "" >> "${folder}"/"${topicfile}"
 echo -e "[*] ${tags} ** ${topic} ** [[$(basename ${folder})]] " >> "${folder}"/"${topicfile}"
 echo -e "\n${additiontext}" >> "${folder}"/"${topicfile}"
 echo -e "\n${tabs}" >> "${folder}"/"${topicfile}"
-echo -e "		[*] $(date +"[[Zettelkasten:%Y:%m:%d|%Y-%m-%d]]")" >> "${folder}".md
+echo -e "		[*] $(date +"[[$journalPage:%Y:%m:%d|%Y-%m-%d]]")" >> "${folder}".md
 echo -e "			[*] [[+$(basename ${topicfile} .md)|${topic}]]" >> "$folder".md
 ```
 
@@ -158,12 +157,12 @@ echo -e "			[*] [[+$(basename ${topicfile} .md)|${topic}]]" >> "$folder".md
 *markdown template*
 ```bash
 echo -e "# ${topic}" >> "${folder}"/"${topicfile}"
-echo -e "Created $(date +"[[Zettelkasten/%Y/%m/%d|%Y-%m-%d]]")" >> "${folder}"/"${topicfile}"
+echo -e "Created $(date +"[[$journalPage/%Y/%m/%d|%Y-%m-%d]]")" >> "${folder}"/"${topicfile}"
 #echo -e "" >> "${folder}"/"${topicfile}"
 echo -e "- [X] ${tags} ** ${topic} ** [[$(basename ${folder})]] " >> "${folder}"/"${topicfile}"
 echo -e "\n${additiontext}" >> "${folder}"/"${topicfile}"
 echo -e "\n${tabs}" >> "${folder}"/"${topicfile}"
-echo -e "		- [X] $(date +"[[Zettelkasten/%Y/%m/%d|%Y-%m-%d]]")" >> "${folder}".md
+echo -e "		- [X] $(date +"[[$journalPage/%Y/%m/%d|%Y-%m-%d]]")" >> "${folder}".md
 echo -e "			- [X] [[/$(basename ${topicfile} .md)|${topic}]]" >> "$folder".md
 ```
 
@@ -172,30 +171,30 @@ echo -e "			- [X] [[/$(basename ${topicfile} .md)|${topic}]]" >> "$folder".md
 *tabs to topics*
 ```bash
 case ${choose} in
-	Spass) file=$(echo "/home/christian/Gedankenspeicher/Gedankenspeicherwiki/Spaß_Stream/0»Journal_1_Spaß_Stream.md")
+	Spass) file=$(echo "$GedankenspeicherwikiDir/Spaß_Stream/0»Journal_1_Spaß_Stream.md")
 		l=5;;
-	Zettelkasten) file=$(echo "/home/christian/Gedankenspeicher/Gedankenspeicherwiki/Zettelkasten/0»Journal_Zettelkasten.md")
+	Zettelkasten) file=$(echo "$GedankenspeicherwikiDir/Zettelkasten/0»Journal_Zettelkasten.md")
 		l=5;;
 	Heute) tabs2zim.sh $additiontext
 		exit
 		;;
-	Physik) file=$(echo "/home/christian/Gedankenspeicher/Gedankenspeicherwiki/Physik/0»Journal_Physik.md")
+	Physik) file=$(echo "$GedankenspeicherwikiDir/Physik/0»Journal_Physik.md")
 		l=5;;
-	Mathematik) file=$(echo "/home/christian/Gedankenspeicher/Gedankenspeicherwiki/Mathematik/0»Journal_Mathematik.md")
+	Mathematik) file=$(echo "$GedankenspeicherwikiDir/Mathematik/0»Journal_Mathematik.md")
 		l=5;;
-	Blogging) file=$(echo "/home/christian/Gedankenspeicher/Gedankenspeicherwiki/Blogging/0»Journal_Blogging.md")
+	Blogging) file=$(echo "$GedankenspeicherwikiDir/Blogging/0»Journal_Blogging.md")
 		l=5;;
-	Philosophie) file=$(echo "/home/christian/Gedankenspeicher/Gedankenspeicherwiki/Philosophie/0»Journal_Philosophie.md")
+	Philosophie) file=$(echo "$GedankenspeicherwikiDir/Philosophie/0»Journal_Philosophie.md")
 		l=5;;
-	Naturwissenschaften_und_Instrumentarien) file=$(echo "/home/christian/Gedankenspeicher/Gedankenspeicherwiki/Naturwissenschaften_und_Instrumentarien/0»Journal_Naturwissenschaften_und_Instrumentarien.md")
+	Naturwissenschaften_und_Instrumentarien) file=$(echo "$GedankenspeicherwikiDir/Naturwissenschaften_und_Instrumentarien/0»Journal_Naturwissenschaften_und_Instrumentarien.md")
 		l=5;;
-	CodeFabrik) file=$(echo "/home/christian/Gedankenspeicher/Gedankenspeicherwiki/CodeFabrik/0»Journal_1_CodeFabrik.md")
+	CodeFabrik) file=$(echo "$GedankenspeicherwikiDir/CodeFabrik/0»Journal_1_CodeFabrik.md")
 		l=5;;
 esac
 #echo $tabs
-today=$(date +"[[Zettelkasten:%Y:%m:%d|%Y-%m-%d]]")
+today=$(date +"[[$journalPage:%Y:%m:%d|%Y-%m-%d]]")
 
-## today=$(date +"[[Zettelkasten/%Y/%m/%d|%Y-%m-%d]]")
+## today=$(date +"[[$journalPage/%Y/%m/%d|%Y-%m-%d]]")
 
 sed -i "${l}i
 " "$file"

@@ -12,6 +12,9 @@ noweb.py -Rttpic ttpic.md > ttpic && chmod u+x ttpic && echo 'fertig'
 *ttpic*
 ```bash
 #!/bin/bash
+source config.sh; # load the config library functions
+journalPage="$(config_get journalPage)"
+
 File=$(echo "$1" | sed 's/ /_/g' | sed 's/:/;/g'| sed -e "s/'/_/g" | sed 's/\"//g')
 #f=$(basename "$1")
 touch "$File".md
@@ -20,10 +23,10 @@ echo "Wiki-Format: zim 0.6" >> "$File".md
 
 #*zim-wiki}}
 
-echo "Text date: $(date +"[[Zettelkasten:%Y:%m:%d|%Y-%m-%d]]") Modi date: $(date +"[[Zettelkasten:%Y:%m:%d|%Y-%m-%d]]" -r "$1")" >> "$File".md
+echo "Text date: $(date +"[[$journalPage:%Y:%m:%d|%Y-%m-%d]]") Modi date: $(date +"[[$journalPage:%Y:%m:%d|%Y-%m-%d]]" -r "$1")" >> "$File".md
 echo "@BILD $3 " >> "$File".md
 echo "**[[../$File]] **" >> "$File".md
-#echo "Modification time: $(date +"[[Zettelkasten:%Y:%m:%d|%Y-%m-%d]]" -r "$1")" >> "$File".md
+#echo "Modification time: $(date +"[[$journalPage:%Y:%m:%d|%Y-%m-%d]]" -r "$1")" >> "$File".md
 echo -e "$2\n" >> "$File".md
 echo "{{../$File?width=500}}" >> "$File".md
 echo -e "\n$4" >> "$File".md

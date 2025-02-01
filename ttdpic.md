@@ -15,6 +15,9 @@ noweb.py -Rttdpic ttdpic.md > ttdpic && chmod u+x ttdpic && echo 'fertig'
 *ttdpic*
 ```bash
 #!/bin/bash
+source config.sh; # load the config library functions
+journalPage="$(config_get journalPage)"
+
 ls --hide=*.md "$1" > f
 while read f
 do
@@ -26,9 +29,9 @@ do
   echo "===== $filetxt =====" >> "$1"/"$filetxt".md
   echo "[*] @BILD **[[../$filename]] $2**" >> "$1"/"$filetxt".md
   echo "Text creation time:" >> "$1"/"$filetxt".md
-  date +"[[Zettelkasten:%Y:%m:%d]]" >> "$1"/"$filetxt".md
+  date +"[[$journalPage:%Y:%m:%d]]" >> "$1"/"$filetxt".md
   echo "Modification time:" >> "$1"/"$filetxt".md
-  date +"[[Zettelkasten:%Y:%m:%d]]" -r "$1"/"$filename" >> "$1"/"$filetxt".md
+  date +"[[$journalPage:%Y:%m:%d]]" -r "$1"/"$filename" >> "$1"/"$filetxt".md
   echo "{{../$filename?width=500}}" >> "$1"/"$filetxt".md
   echo -e "\n$2\n" >> "$1"/"$filetxt".md
 done < f

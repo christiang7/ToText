@@ -19,10 +19,6 @@ noweb.py -Rtexstudio-noweb-py.sh texstudio-noweb-py.sh.md > texstudio-noweb-py.s
 ```
 
 
-```bash
-chmod u+x texstudio-noweb-py.sh && ln -sf /home/christian/Gedankenspeicher/KanDo/GedankenspeicherEinrichtung/GedankenspeicherCoding/texstudio-noweb-py.sh ~/.local/bin/texstudio-noweb-py.sh && echo 'fertig'
- ```
-
 *texstudio-noweb-py.sh*
 ```bash
 #!/bin/bash

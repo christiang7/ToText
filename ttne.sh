@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
-
+source config.sh; # load the config library functions
+journalPage="$(config_get journalPage)"
 
 if [[ ! -e "$1" ]]
 then
@@ -43,8 +44,8 @@ then
   echo "Content-Type: text/x-zim-wiki" > "${folder}"/"${File}".md
   echo "Wiki-Format: zim 0.6" >> "${folder}"/"${File}".md
   echo -e "====== ${File} ======" >> "${folder}"/"${File}".md
-  echo -e "Created $(date +"%A") $(date +"[[Zettelkasten:%Y:%m:%d|%Y-%m-%d]]")" >> "${folder}"/"${File}".md
-  #echo -e "Backlink $([[Zettelkasten:%Y:%m:%d]])" >> "${folder}"/"${File}".md
+  echo -e "Created $(date +"%A") $(date +"[[$journalPage:%Y:%m:%d|%Y-%m-%d]]")" >> "${folder}"/"${File}".md
+  #echo -e "Backlink $([[$journalPage:%Y:%m:%d]])" >> "${folder}"/"${File}".md
   #echo -e "" >> "${folder}"/"${File}".md
   echo -e "${tags}" >> "${folder}"/"${File}".md
   echo -e "[*]  ** ${File} ** " >> "${folder}"/"${File}".md

@@ -16,7 +16,7 @@ Open in zim the folder of the containing file.
 
 
 ```bash
- chmod u+x zim-open-up.sh && ln -sf /home/christian/Gedankenspeicher/KanDo/GedankenspeicherEinrichtung/GedankenspeicherCoding/zim-open-up.sh ~/.local/bin/zim-open-up.sh && echo 'fertig'
+ chmod u+x zim-open-up.sh && ln -sf $(pwd)/zim-open-up.sh ~/.local/bin/zim-open-up.sh && echo 'fertig'
  ```
 
 

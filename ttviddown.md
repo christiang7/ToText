@@ -7,12 +7,19 @@ Backlink [GedankenspeicherCoding](../GedankenspeicherCoding.md)
 
  ``youtube-dl --exec "ttdown {} [HREF] '[SELECTIONTEXT]' " [HREF]`` 
 
-  ``noweb.py -Rttviddown ttviddown.md > ttviddown && chmod u+x ttviddown && echo 'fertig'``
+
+*run-cell.sh*
+```bash
+noweb.py -Rttviddown ttviddown.md > ttviddown && chmod u+x ttviddown && echo 'fertig'
+```
 
 *ttviddown*
 ```bash
 #!/bin/bash
-File=$(date +"/home/christian/Gedankenspeicher/Gedankenspeicherwiki/Zettelkasten/%Y/%m/%d.md" -r "$1")
+source config.sh; # load the config library functions
+journalDir="$(config_get journalDir)"
+
+File=$(date +"$journalDir/%Y/%m/%d.md" -r "$1")
 f=$(basename "$1")
 touch "$File"
 echo -e "\n" >> "$File"

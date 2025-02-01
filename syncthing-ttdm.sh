@@ -1,4 +1,9 @@
 #!/bin/bash
+source config.sh; # load the config library functions
+journalDir="$(config_get journalDir)"
+journalPage="$(config_get journalPage)"
+OutputDir="$(config_get OutputDir)"
+GedankenspeicherwikiDir="$(config_get GedankenspeicherwikiDir)"
 FolderSync=$(echo "$1")
 #ls --hide=*.md "$folder" > f
 list=$(find "$FolderSync" -mtime +2)
@@ -17,7 +22,7 @@ do
 	#while read f
 	#do
 	#echo $f
-	folder=$(date +"/home/christian/Gedankenspeicher/Gedankenspeicherwiki/Zettelkasten/%Y/%m/%d" -r "$f")
+	folder=$(date +"$journalDir/%Y/%m/%d" -r "$f")
 	mkdir -p "$folder"
 	g=$(basename "$f")
 	File=$(echo "$g" | sed 's/ /_/g' | sed 's/:/;/g' | sed -e "s/'/_/g" | sed 's/\"//g' | sed 's/&/n/g' | sed 's/\///g' | sed 's/|//g' | sed 's/\[/(/g' | sed 's/\]/)/g')
@@ -47,11 +52,11 @@ do
 	}
 
 	function Timestamps(){
-		echo "Text creation time: $(date +"[[Zettelkasten:%Y:%m:%d]]")" >> $folder/"$Filename".md
-		echo "Modification time: $(date +"[[Zettelkasten:%Y:%m:%d]]" -r "$File")" >> $folder/"$Filename".md
+		echo "Text creation time: $(date +"[[$journalPage:%Y:%m:%d]]")" >> $folder/"$Filename".md
+		echo "Modification time: $(date +"[[$journalPage:%Y:%m:%d]]" -r "$File")" >> $folder/"$Filename".md
 	}
 
-	foldermonth=$(date +"/home/christian/Gedankenspeicher/Gedankenspeicherwiki/Zettelkasten/%Y/%m" -r "$File")
+	foldermonth=$(date +"$journalDir/%Y/%m" -r "$File")
 	calendarfile=$(date +"%d" -r "$File")
 	calendarfile=$calendarfile.md
 	if [[ ! -e "$foldermonth"/"$calendarfile" ]]
@@ -60,8 +65,8 @@ do
 		echo "Content-Type: text/x-zim-wiki" >> "$foldermonth"/"$calendarfile"
 		echo "Wiki-Format: zim 0.6" >> "$foldermonth"/"$calendarfile"
 		date +"===== %A %d %b %Y =====" -r "$File" >> "$foldermonth"/"$calendarfile"
-		#date +"[[Zettelkasten:%Y:Week %W|Week %W]]" -r "$File" >> "$foldermonth"/"$calendarfile"
-		date +"[[Zettelkasten:%Y:%m]]" -r "$File" >> "$foldermonth"/"$calendarfile"
+		#date +"[[$journalPage:%Y:Week %W|Week %W]]" -r "$File" >> "$foldermonth"/"$calendarfile"
+		date +"[[$journalPage:%Y:%m]]" -r "$File" >> "$foldermonth"/"$calendarfile"
 		echo -e ""  >> "$foldermonth"/"$calendarfile"
 		date +"[*] ** %A %d %b %Y ** "  -r "$File" >> "$foldermonth"/"$calendarfile"
 	fi
@@ -83,8 +88,8 @@ do
 			echo "Wiki-Format: zim 0.6" >> "$folder"/"$Filename".md
 			echo "===== $Filename =====" >> $folder/"$Filename".md
 			echo "[*] @ARTIKEL $tags **[[../$Filename]] $source**" >> "$folder"/"$Filename".md
-			echo "Text creation time: $(date +"[[Zettelkasten:%Y:%m:%d]]")" >> "$folder"/"$Filename".md
-			echo "Modification time: $(date +"[[Zettelkasten:%Y:%m:%d]]" -r "$File")" >> "$folder"/"$Filename".md
+			echo "Text creation time: $(date +"[[$journalPage:%Y:%m:%d]]")" >> "$folder"/"$Filename".md
+			echo "Modification time: $(date +"[[$journalPage:%Y:%m:%d]]" -r "$File")" >> "$folder"/"$Filename".md
 			echo -e "\n" >> "$folder"/"$Filename".md
 			echo -e "$additiontext\n" >> "$folder"/"$Filename".md
 			echo -e "{{../$Filename.png?width=500}}\n" >> "$folder"/"$Filename".md
@@ -102,7 +107,7 @@ do
 		echo -e "{{$Filename.png?width=500}}" >> "$foldermonth"/"$calendarfile"
 		echo "cd $folder"
 		mv "$File" $folder/"$Filename"
-	elif [[ jpg == $extens || png == $extens || webp == $extens || jpeg == $extens || avif == $extens || svg == $extens ]]
+	elif [[ jpg == $extens | png == $extens || webp == $extens || jpeg == $extens || avif == $extens || svg == $extens ]]
 	then
 		#echo pic
 		if [[ ! -e "$Filename".md ]]
@@ -112,8 +117,8 @@ do
 			echo "Wiki-Format: zim 0.6" >> "$folder"/"$Filename".md
 			echo "===== $Filename =====" >> $folder/"$Filename".md
 			echo "[*] @BILD $tags **[[../$Filename]] $source**" >> "$folder"/"$Filename".md
-			echo "Text creation time: $(date +"[[Zettelkasten:%Y:%m:%d]]")" >> "$folder"/"$Filename".md
-			echo "Modification time: $(date +"[[Zettelkasten:%Y:%m:%d]]" -r "$File")" >> "$folder"/"$Filename".md
+			echo "Text creation time: $(date +"[[$journalPage:%Y:%m:%d]]")" >> "$folder"/"$Filename".md
+			echo "Modification time: $(date +"[[$journalPage:%Y:%m:%d]]" -r "$File")" >> "$folder"/"$Filename".md
 			echo -e "\n$additiontext" >> "$folder"/"$Filename".md
 			echo "{{../$Filename?width=500}}" >> "$folder"/"$Filename".md
 		else
@@ -123,9 +128,9 @@ do
 		echo -e "\n[[+$Filename]]" >> "$foldermonth"/"$calendarfile"
 		echo -e "{{$Filename?width=500}}" >> "$foldermonth"/"$calendarfile"
 		mv "$File" $folder/"$Filename"
-	elif [[ mp4 == $extens || mov == $extens || mkv == $extens || flv = $extens ]]
+	elif [[ mp4 == $extens | mov == $extens || mkv == $extens || flv = $extens ]]
 	then
-		folder=~/Gedankenspeicher/Arbeitsflaeche/Archiv-Verschiebung/
+		folder=$OutputDir
 		if [[ ! -e "$File".md ]]
 		then
 			touch "$folder"/"$Filename".md
@@ -133,8 +138,8 @@ do
 			echo "Wiki-Format: zim 0.6" >> "$folder"/"$Filename".md
 			echo "===== $Filename =====" >> $folder/"$Filename".md
 			echo "[*] @VIDEO $tags **[[../$Filename]] $source**" >> "$folder"/"$Filename".md
-			echo "Text creation time: $(date +"[[Zettelkasten:%Y:%m:%d]]")" >> "$folder"/"$Filename".md
-			echo "Modification time: $(date +"[[Zettelkasten:%Y:%m:%d]]" -r "$File")" >> "$folder"/"$Filename".md
+			echo "Text creation time: $(date +"[[$journalPage:%Y:%m:%d]]")" >> "$folder"/"$Filename".md
+			echo "Modification time: $(date +"[[$journalPage:%Y:%m:%d]]" -r "$File")" >> "$folder"/"$Filename".md
 			echo -e "\n" >> "$folder"/"$Filename".md
 			echo -e "$additiontext\n" >> "$folder"/"$Filename".md
 			echo -e "{{../$Filename.png?width=500}}\n" >> "$folder"/"$Filename".md

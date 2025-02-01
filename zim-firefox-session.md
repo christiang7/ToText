@@ -20,7 +20,7 @@ Backlink [GedankenspeicherCoding](../GedankenspeicherCoding.md)
 noweb.py -Rzim-firefox-session.sh zim-firefox-session.md > zim-firefox-session.sh
 ```
 ```bash
-chmod u+x zim-firefox-session.sh && ln -sf /home/christian/Gedankenspeicher/Gedankenspeicherwiki/Zettelkasten/Gedankenwanderung/Programme/zim-firefox-session.sh ~/.local/bin/zim-firefox-session.sh && echo 'fertig'
+chmod u+x zim-firefox-session.sh && ln -sf $(pwd)/zim-firefox-session.sh ~/.local/bin/zim-firefox-session.sh && echo 'fertig'
 ```
 
 *zim-firefox-session.sh*

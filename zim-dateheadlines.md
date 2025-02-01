@@ -15,12 +15,14 @@ noweb.py -Rzim-dateheadlines.sh zim-dateheadlines.md > zim-dateheadlines.sh && e
 
 
 ```bash
-chmod u+x zim-dateheadlines.sh && ln -sf ~/Gedankenspeicher/Gedankenspeicherwiki/CodeFabrik/GedankenspeicherCoding/zim-dateheadlines.sh ~/.local/bin/zim-dateheadlines.sh && echo 'fertig'
+chmod u+x zim-dateheadlines.sh && ln -sf $(pwd)/zim-dateheadlines.sh ~/.local/bin/zim-dateheadlines.sh && echo 'fertig'
 ```
 
 *zim-dateheadlines.sh*
 ```bash
 #!/bin/bash
+source config.sh; # load the config library functions
+journalPage="$(config_get journalPage)"
 
 #*dateheadlines}}
 
@@ -30,10 +32,10 @@ simples einfügen der Überschrift mit einem Datum
 
 *dateheadlines*
 ```bash
-echo -e "==== $(date +"[[Zettelkasten:%Y:%m:%d|%Y-%m-%d]]") "
+echo -e "==== $(date +"[[$journalPage:%Y:%m:%d|%Y-%m-%d]]") "
 ```
 
 *dateheadlines markdown*
 ```bash
-echo -e "## $(date +"[[Zettelkasten/%Y/%m/%d|%Y-%m-%d]]") "
+echo -e "## $(date +"[[$journalPage/%Y/%m/%d|%Y-%m-%d]]") "
 ```

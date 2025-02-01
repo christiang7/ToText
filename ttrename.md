@@ -40,7 +40,7 @@ noweb.py -Rttrename ttrename.md > ttrename && echo 'fertig'
 ```
 
 ```bash
-chmod u+x ttrename && ln -sf /home/christian/Gedankenspeicher/Gedankenspeicherwiki/Zettelkasten/Gedankenwanderung/Programme/ttrename ~/.local/bin/ttrename && echo 'fertig'
+chmod u+x ttrename && ln -sf $(pwd)/ttrename ~/.local/bin/ttrename && echo 'fertig'
 ```
 
 *ttrename*

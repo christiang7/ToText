@@ -9,12 +9,18 @@ Mi 23. Dez 15:48:55 CET 2020
  
  There is a problem with the firefox addon external application
 
-``noweb.py -Rwebpage-pdf webpage-pdf.md > webpage-pdf && chmod u+x webpage-pdf && echo 'fertig'``
+*run-cell.sh*
+```bash
+noweb.py -Rwebpage-pdf webpage-pdf.md > webpage-pdf && chmod u+x webpage-pdf && echo 'fertig'
+```
 
 *webpage-pdf*
 ```bash
 #!/bin/bash
-folder=$(date +"/home/christian/Gedankenspeicher/Gedankenspeicherwiki/Zettelkasten/%Y/%m/%d")
+source config.sh; # load the config library functions
+journalDir="$(config_get journalDir)"
+
+folder=$(date +"$journalDir/%Y/%m/%d")
 mkdir -p $folder
 File=$(echo "$2" | sed 's/:/;/g')
 wkhtmltoimage --enable-javascript --images "$1" $folder/"$File".png

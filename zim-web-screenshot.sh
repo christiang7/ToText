@@ -1,16 +1,20 @@
 #! /bin/bash
-  if zenity --question --text="Möchten Sie dieses Programm ein Screenshot aufnehmen?"
-  then
+source config.sh; # load the config library functions
+journalPage="$(config_get journalPage)"
+journalDir="$(config_get journalDir)"
+
+if zenity --question --text="Möchten Sie Screenshot aufnehmen?"
+then
     url="$1"
     selecttext="$2"
     #urltitle=$(wget -qO- "$url" | perl -l -0777 -ne 'print $1 if /<title.*?>\s*(.*?)\s*<\/title/si' | recode html..)
     urltitle=$(xidel -s "$url" --css title | tr -d '\n')
-    folder=$(date +"/home/christian/Gedankenspeicher/Gedankenspeicherwiki/Zettelkasten/%Y/%m/%d")
+    folder=$(date +"$journalDir/%Y/%m/%d")
     mkdir -p $folder
     filename=$(echo "Web-Screenshot-$urltitle" | sed 's/ /_/g' | sed 's/\//_/g' | sed 's/?/__/g' | sed 's/:/;/g'| sed -e "s/'/_/g" | sed 's/\"//g' | sed 's/\&/n/g' | sed -e "s/|//g" | sed 's/\[/(/g' | sed 's/\]/)/g')
     File="$filename".png
     scrot "$folder"/"$File" -s
-    foldermonth=$(date +"/home/christian/Gedankenspeicher/Gedankenspeicherwiki/Zettelkasten/%Y/%m")
+    foldermonth=$(date +"$journalDir/%Y/%m")
     calendarfile=$(date +"%d")
     calendarfile=$calendarfile.md
     if [[ ! -e "$foldermonth"/"$calendarfile" ]]
@@ -19,8 +23,8 @@
         echo "Content-Type: text/x-zim-wiki" >> "$foldermonth"/"$calendarfile"
         echo "Wiki-Format: zim 0.6" >> "$foldermonth"/"$calendarfile"
         date +"===== %A %d %b %Y =====" >> "$foldermonth"/"$calendarfile"
-        #date +"[[:Zettelkasten:%Y:Week %W|Week %W]]" >> "$foldermonth"/"$calendarfile"
-        date +"[[Zettelkasten:%Y:%m]]" >> "$foldermonth"/"$calendarfile"
+        #date +"[[$journalPage:%Y:Week %W|Week %W]]" >> "$foldermonth"/"$calendarfile"
+        date +"[[$journalPage:%Y:%m]]" >> "$foldermonth"/"$calendarfile"
         echo -e ""  >> "$foldermonth"/"$calendarfile"
         date +"[*] ** %A %d %b %Y ** " >> "$foldermonth"/"$calendarfile"
     fi
@@ -40,8 +44,8 @@
     echo "Wiki-Format: zim 0.6" >> "$folder"/"$File".md
     echo "===== $File =====" >> "$folder"/"$File".md
     echo "[*] @BILD @Webseite @Screenshot $tags **[[../$File]] $url**" >> "$folder"/"$File".md
-    echo "Text creation time: $(date +"[[Zettelkasten:%Y:%m:%d]]")" >> "$folder"/"$File".md
-    echo "Modification time: $(date +"[[Zettelkasten:%Y:%m:%d]]" -r "$folder"/"$File")" >> "$folder"/"$File".md
+    echo "Text creation time: $(date +"[[$journalPage:%Y:%m:%d]]")" >> "$folder"/"$File".md
+    echo "Modification time: $(date +"[[$journalPage:%Y:%m:%d]]" -r "$folder"/"$File")" >> "$folder"/"$File".md
     echo -e "\n" >> "$folder"/"$File".md
     echo "{{../$File}}" >> "$folder"/"$File".md
     echo "$additiontext" >> "$folder"/"$File".md
@@ -54,4 +58,4 @@
     echo -e "$url" >> "$foldermonth"/"$calendarfile"
     echo -e "[[+$File]]" >> "$foldermonth"/"$calendarfile"
     echo -e "{{$File}}" >> "$foldermonth"/"$calendarfile"
-  fi
+fi
