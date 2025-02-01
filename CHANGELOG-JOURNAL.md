@@ -23,7 +23,7 @@
 		- [X] template function for nodes for files and usable with library inclusion
 		- [ ] pdf function
 		- [ ] video function
-		- [ ] rewrite them
+		- [ ] rewrite programs
 
 ### 2025-02-01
 - [X] publish on github
