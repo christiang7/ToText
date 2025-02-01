@@ -36,13 +36,15 @@ The scipts starts with the shortcut tt for ToText.
 - [X] Backlog
 	- [ ] rewrite [ttdm] with [ttnm]
 	- [ ] custom tool for insert page.section in file
-	- [ ] [ttam](ttam)
-	- [ ] xournal Programmstarter so, dass automatisch thumbnail
-	aktualisiert wird und von einer pdf als Notizen abgespeichert wird
+	- [ ] automatic thumbnail update for xournalpp files
 	- [ ] rewrite everything in english
 	- [ ] links for used tools in README file
 	- [ ] make a website for tt
 	- [ ] write blog post for website
+	- [ ] move files to folder, but for pictures not.
+		- [X] pdf files
+		- [X] tex files
+		- [ ] video files
 - [X] Planning (2)
 	- [ ] replace zenity with yad
 - [X] Doing (2)
