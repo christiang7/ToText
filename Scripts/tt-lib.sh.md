@@ -31,7 +31,7 @@ source config.sh
 journalPage="$(config_get journalPage)"
 
 function cleanName () {
-    echo "$1" | sed 's/ /_/g' | sed 's/:/;/g'| sed -e "s/'/_/g" | sed 's/\"//g'|  sed 's/&/n/g' | sed 's/\///g' | sed 's/|//g' | sed 's/\[/(/g' | sed 's/\]/)/g' | sed 's/@/at/g' | sed 's/：/;/g' | sed 's/？/ß/g' | sed "s/|/;/g" | sed "s/·/;/g" | sed "s/💤/;/g" | sed 's/｜/-/g'
+    echo "$1" | sed 's/ /_/g' | sed 's/:/;/g'| sed -e "s/'/_/g" | sed 's/\"//g'|  sed 's/&/n/g' | sed 's/\///g' | sed 's/|//g' | sed 's/\[/(/g' | sed 's/\]/)/g' | sed 's/@/at/g' | sed 's/：/;/g' | sed 's/？/ß/g' | sed "s/|/;/g" | sed "s/·/;/g" | sed "s/💤/;/g" | sed "s/｜/-/g" | sed "s/?/ß/g"
 }
 function Wikiprev(){
     echo "Content-Type: text/x-zim-wiki" >> "$1"/"$2".md
@@ -50,7 +50,7 @@ function Markdownprev(){
 }
 
 function Timestamps(){
-    echo "Text date: $(date +"[[$journalPage:%Y:%m:%d|%Y-%m-%d]]") Modi date: $(date +"[[$journalPage:%Y:%m:%d|%Y-%m-%d]]" -r "$1"/"$2")" >> "$1"/"$2".md
+    echo "Text date: $(date +"[[$journalPage:%Y:%m:%d|%Y-%m-%d]]") Modi date: $(date +"[[$journalPage:%Y:%m:%d|%Y-%m-%d]]" -r "$3"/"$2")" >> "$1"/"$2".md
 }
 
 #*ttex}}
@@ -92,6 +92,7 @@ function file-description(){
     additiontext=$5
     picture=$6
     folderSwitch=$7
+    filefolder=$folder
     if [[ ! $folderSwitch == "" ]]
     then
         extens=${File##*.}
@@ -103,9 +104,14 @@ function file-description(){
         filefolder="$filefolder.$extens"
     fi
     Wikiprev "$folder" "$File"
-    Timestamps "$folder" "$File"
+    Timestamps "$folder" "$File" "$filefolder"
     echo "$tags" >> "$folder"/"$File".md
-    echo "**[[./$File]]**" >> "$folder"/"$File".md
+    if [[ ! $folderSwitch == "" ]]
+    then
+        echo "**[[./$File]]**" >> "$folder"/"$File".md
+    else
+        echo "**[[../$File]]**" >> "$folder"/"$File".md
+    fi
     if [[ ! $picture == "" ]]
     then
         if [[ ! $folderSwitch == "" ]]

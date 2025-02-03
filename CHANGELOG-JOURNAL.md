@@ -9,7 +9,6 @@
 	- [ ] make a website for tt
 	- [ ] write blog post for website
 	- [ ] write wiki of how to use the scripts
-	- [ ] option for tt execute without yad request
 - [X] Planning (2)
 	- [ ] replace zenity with yad
 - [X] Doing (2)
@@ -19,10 +18,12 @@
 		- [X] shell library for zim template
 		- [X] template function for nodes for files and usable with library inclusion
 		- [ ] pdf function
-		- [ ] video function
+		- [X] video function
 		- [ ] rewrite programs
+	- [ ] option for tt execute without yad request
 
 ### 2025-02-03
+- [X] all video related scripts are connected via ttvid function
 - [X] move files to folder, but for pictures and music not.
 	- [X] pdf files
 	- [X] tex files

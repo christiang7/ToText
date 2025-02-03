@@ -44,11 +44,12 @@ noweb.py -Rtt tt.md > tt && chmod u+x tt && echo 'tt' && date
 
 using ``tt`` function with the parameters as following
 ```bash
-    tt p1 p2 p3 p4
+    tt p1 p2 p3 p4 p5
     p1 - file
     p2 - tags
     p3 - source
     p4 - additiontext
+    p5 - switch for not using yad
 ```
 
 
@@ -65,6 +66,7 @@ Filename=${f%.*}
 folder=$(dirname "$(realpath "$1")")
 Unterricht=$(echo $File | grep -o Unterrichtsnotiz)
 File=$(cleanName "$f")
+yadSwitch=$5
 
 line=$(head -n 1 "$Filename".md)
 
@@ -73,7 +75,7 @@ then
 	echo $line
 	if [[ "$line" != "Content-Type: text/x-zim-wiki" ]]
 		then
-		#echo falsch
+		# just via cat program correcting like in the video function ttvid
 		ttnc "$f"
 	fi
 	xdg-open "$File" &
@@ -87,34 +89,44 @@ else
         tags="$3"
         additiontext="$4"
     fi
-    abfrage=$(yad --title="Dieser Datei eine TXT hinzufügen" --text="Noch etwas hinzufügen?" \
-	--form --width 500 --separator="~" --item-separator=","  \
-    --field="Name" \
-	--field="Quelle:":CBE \
-	--field="Tags" \
-	--field="Bild behalten:":CB \
-	--field="Datei anzeigen:":CB \
-	--field="Weiteres":TXT \
-	"$Filename" "$source,Internet,Christian Gößl" "$tags" "Yes,No" "No,Yes" "$additiontext")
+    if [[ $yadSwitch == "" ]]
+    then
+		abfrage=$(yad --title="Create md file" --text="Anything to add?" \
+		--form --width 500 --separator="~" --item-separator=","  \
+		--field="Name" \
+		--field="Source:":CBE \
+		--field="Tags" \
+		--field="Keep picture:":CB \
+		--field="Show file:":CB \
+		--field="Something more":TXT \
+		"$Filename" "$source,Internet,Christian Gößl" "$tags" "Yes,No" "No,Yes" "$additiontext")
+    fi
 fi
 
 if [ ! $? -eq 1 ];
 then
-    Newname=$(echo $abfrage | cut -s -d "~" -f 1)
-	if [[ $extens == $f ]]
+    if [[ $yadSwitch == "" ]]
     then
-        File=$(cleanName "$Newname")
-    else
-        File=$(cleanName "$Newname.$extens")
-    fi
+		Newname=$(echo $abfrage | cut -s -d "~" -f 1)
+		if [[ $extens == $f ]]
+		then
+			File=$(cleanName "$Newname")
+		else
+			File=$(cleanName "$Newname.$extens")
+		fi
+		source=$(echo $abfrage | cut -s -d "~" -f 2)
+		tags=$(echo $abfrage | cut -s -d "~" -f 3)
+		origpic=$(echo $abfrage | cut -s -d "~" -f 4)
+		showfile=$(echo $abfrage | cut -s -d "~" -f 5)
+		additiontext=$(echo $abfrage | cut -s -d "~" -f 6)
+	else
+		source="$2"
+        tags="$3"
+        additiontext="$4"
+		origpic="yes"
+		showfile="no"
+	fi
 	mv "$folder"/"$f" "$folder"/"$File"
-
-	source=$(echo $abfrage | cut -s -d "~" -f 2)
-	tags=$(echo $abfrage | cut -s -d "~" -f 3)
-	origpic=$(echo $abfrage | cut -s -d "~" -f 4)
-	showfile=$(echo $abfrage | cut -s -d "~" -f 5)
-	additiontext=$(echo $abfrage | cut -s -d "~" -f 6)
-
 	extens=${File##*.}
 	Filename=${File%.*}
 	extenspdf=$(echo "$folder"/"$File" | grep -o pdf)
@@ -139,10 +151,7 @@ then
 		fi
 	elif [[ mp4 == $extens || mov == $extens || mkv == $extens || flv = $extens || ogv = $extens ]]
 	then
-		#ffmpeg -loglevel quiet -ss 2 -i "$folder"/"$File"  -t 1 -f image2 "$folder"/"$File".png
 		ttvid "$folder" "$File" "$tags" "$source" "$additiontext" "$f" "yes"
-		#convert "$folder"/"$File".png -resize 1200x1200 "$folder"/"$File"/"$File".avif
-		#rm "$folder"/"$File".png
 	elif [[ epub == $extens ]]
 	then
 		file-description "$folder" "$File" "@Ebook $tags" "$source" "$additiontext" "" "yes"
