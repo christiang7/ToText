@@ -27,8 +27,8 @@ File=$(basename "$f")
 *pdf with folder*
 ```bash
 folder=$(basename "$File" .pdf)
-echo $folder
-mkdir "$folder"
+#echo $folder
+mkdir -p "$folder"
 mv "$File" "$folder"/"$File"
 mv "$folder" "$folder.pdf"
 folder="$folder.pdf"

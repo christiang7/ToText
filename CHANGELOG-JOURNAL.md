@@ -9,11 +9,6 @@
 	- [ ] make a website for tt
 	- [ ] write blog post for website
 	- [ ] write wiki of how to use the scripts
-	- [ ] move files to folder, but for pictures not.
-		- [X] pdf files
-		- [X] tex files
-		- [ ] video files
-		- [ ] other files
 - [X] Planning (2)
 	- [ ] replace zenity with yad
 - [X] Doing (2)
@@ -26,6 +21,12 @@
 		- [ ] video function
 		- [ ] rewrite programs
 
+### 2025-02-03
+- [X] move files to folder, but for pictures and music not.
+	- [X] pdf files
+	- [X] tex files
+	- [X] video files
+	- [X] other files
 ### 2025-02-01
 - [X] publish on github
 - [X] moved all scripts to Scripts folder

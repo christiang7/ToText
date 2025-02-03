@@ -83,13 +83,29 @@ function file-description(){
     source=$4
     additiontext=$5
     picture=$6
+    folderSwitch=$7
+    if [[ ! $folderSwitch == "" ]]
+    then
+        extens=${File##*.}
+        Filename=${File%.*}
+        filefolder=$Filename
+        mkdir -p "$filefolder"
+        mv "$File" "$filefolder"/"$File"
+        mv "$filefolder" "$filefolder.$extens"
+        filefolder="$filefolder.$extens"
+    fi
     Wikiprev "$folder" "$File"
     Timestamps "$folder" "$File"
     echo "$tags" >> "$folder"/"$File".md
     echo "**[[../$File]]**" >> "$folder"/"$File".md
     if [[ ! $picture == "" ]]
     then
-        echo "{{../$File.avif?width=500}}" >> "$folder"/"$File".md
+        if [[ ! $folderSwitch == "" ]]
+        then
+            echo "{{./$File.avif?width=500}}" >> "$folder"/"$File".md
+        else
+            echo "{{../$File.avif?width=500}}" >> "$folder"/"$File".md
+        fi
     fi
     echo -e "$source\n$additiontext\n" >> "$folder"/"$File".md
 }
