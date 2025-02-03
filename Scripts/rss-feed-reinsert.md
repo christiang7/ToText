@@ -28,7 +28,7 @@ noweb.py -Rrss-feed-reinsert.sh rss-feed-reinsert.md > rss-feed-reinsert.sh && e
 #!/bin/bash
 source config.sh; # load the config library functions
 GedankenspeicherwikiDir="$(config_get GedankenspeicherwikiDir)"
-
+source tt-lib.sh;
 #*request}}
 ```
 
@@ -84,7 +84,7 @@ head -n -1 $rssfile > tmp.txt && mv tmp.txt $rssfile
 for (( i=1 ; i<=$lines ; i=i+2 ));
 do
 	  title=$(sed -n "${i}p" <(echo "$tabs"))
-	  title=$(echo "$title" | sed 's/\//-/g' | sed 's/:/;/g' | sed 's/&/;/g' | sed "s/|/;/g" | sed "s/·/;/g" | sed "s/💤/;/g")
+	  title=$(cleanName "$title")
 	  l="$( echo $(($i+1)) )"
 	  element=$(sed -n "${l}p" <(echo "$tabs"))
 	  echo "<item>" >> $rssfile

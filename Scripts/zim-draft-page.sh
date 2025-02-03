@@ -4,15 +4,11 @@ journalPage="$(config_get journalPage)"
 inputDir="$(config_get inputDir)"
 tempInputDir="$(config_get tempInputDir)"
 templateDir="$(config_get templateDir)"
+source tt-lib.sh
 
+file-description "$(pwd)" "$(date +"Draft_%Y-%m-%d".xopp)" "" "" ""
 
-filenamexopp=$(date +"Draft_%Y-%m-%d".xopp)
-touch "${filenamexopp}".md
-echo "Content-Type: text/x-zim-wiki" > "${filenamexopp}".md
-echo "Wiki-Format: zim 0.6" >> "${filenamexopp}".md
-echo -e "====== $(date +"Draft %Y-%m-%d") ======" >> "${filenamexopp}".md
-echo -e "Created $(date +"[[$journalPage:%Y:%m:%d|%Y-%m-%d]]")" >> "${filenamexopp}".md
-echo -e "[*] **[[../$filenamexopp]]** \n\n" >> "${filenamexopp}".md
+#create-note "$(pwd)" "$(date +"Draft page %Y-%m-%d")" "" "" ""
 
 oldfilename=$(date -d "yesterday 13:00" +"Draft_page_%Y-%m-%d")
 oldfilenamexopp=$(date -d "yesterday 13:00" +"Draft_%Y-%m-%d".xopp)

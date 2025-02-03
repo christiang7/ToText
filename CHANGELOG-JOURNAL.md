@@ -13,6 +13,7 @@
 		- [X] pdf files
 		- [X] tex files
 		- [ ] video files
+		- [ ] other files
 - [X] Planning (2)
 	- [ ] replace zenity with yad
 - [X] Doing (2)

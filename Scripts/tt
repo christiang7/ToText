@@ -49,9 +49,9 @@ then
     Newname=$(echo $abfrage | cut -s -d "~" -f 1)
 	if [[ $extens == $f ]]
     then
-        File=$(echo "$Newname" | sed 's/ /_/g' | sed 's/:/;/g'| sed -e "s/'/_/g" | sed 's/\"//g'|  sed 's/&/n/g' | sed 's/\///g' | sed 's/|//g' | sed 's/\[/(/g' | sed 's/\]/)/g' | sed 's/@/at/g')
+        File=$(cleanName "$Newname")
     else
-        File=$(echo "$Newname"."$extens" | sed 's/ /_/g' | sed 's/:/;/g'| sed -e "s/'/_/g" | sed 's/\"//g'|  sed 's/&/n/g' | sed 's/\///g' | sed 's/|//g' | sed 's/\[/(/g' | sed 's/\]/)/g' | sed 's/@/at/g')
+        File=$(cleanName "$Newname.$extens")
     fi
 	mv "$folder"/"$f" "$folder"/"$File"
 

@@ -33,6 +33,8 @@ chmod u+x zim-draft-page.sh && ln -sf $(pwd)/zim-draft-page.sh ~/.local/bin/zim-
 
 #*create xopp template}}
 
+#*create page template}}
+
 #*move page}}
 
 ```
@@ -49,7 +51,7 @@ journalPage="$(config_get journalPage)"
 inputDir="$(config_get inputDir)"
 tempInputDir="$(config_get tempInputDir)"
 templateDir="$(config_get templateDir)"
-
+source tt-lib.sh
 ```
 
 ### Template for draft page
@@ -57,13 +59,7 @@ templateDir="$(config_get templateDir)"
 
 *create page template*
 ```bash
-filename=$(date +"Draft_page_%Y-%m-%d")
-touch "${filename}".md
-echo "Content-Type: text/x-zim-wiki" > "${filename}".md
-echo "Wiki-Format: zim 0.6" >> "${filename}".md
-echo -e "====== $(date +"Draft page %Y-%m-%d") ======" >> "${filename}".md
-echo -e "Created $(date +"[[$journalPage:%Y:%m:%d|%Y-%m-%d]]")" >> "${filename}".md
-echo -e "[*]  **$(date +"Draft page %Y-%m-%d")** \n\n" >> "${filename}".md
+#create-note "$(pwd)" "$(date +"Draft page %Y-%m-%d")" "" "" ""
 ```
 
 
@@ -71,13 +67,7 @@ echo -e "[*]  **$(date +"Draft page %Y-%m-%d")** \n\n" >> "${filename}".md
 
 *create xopp template*
 ```bash
-filenamexopp=$(date +"Draft_%Y-%m-%d".xopp)
-touch "${filenamexopp}".md
-echo "Content-Type: text/x-zim-wiki" > "${filenamexopp}".md
-echo "Wiki-Format: zim 0.6" >> "${filenamexopp}".md
-echo -e "====== $(date +"Draft %Y-%m-%d") ======" >> "${filenamexopp}".md
-echo -e "Created $(date +"[[$journalPage:%Y:%m:%d|%Y-%m-%d]]")" >> "${filenamexopp}".md
-echo -e "[*] **[[../$filenamexopp]]** \n\n" >> "${filenamexopp}".md
+file-description "$(pwd)" "$(date +"Draft_%Y-%m-%d".xopp)" "" "" ""
 ```
 
 

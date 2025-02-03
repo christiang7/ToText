@@ -63,7 +63,7 @@ else
 fi
 echo $profile
 
-file=$(echo "$ofile" | sed 's/ /_/g' | sed 's/:/;/g'| sed -e "s/'/_/g" | sed 's/\"//g'|  sed 's/&/n/g' | sed 's/\///g' | sed 's/|//g' | sed 's/\[/(/g' | sed 's/\]/)/g' | sed 's/@/at/g' | sed 's/｜/-/g' | sed 's/：/;/g' | sed 's/？/ß/g')
+file=$(cleanName "$ofile")
 
 #*temp-video-description}}
 
@@ -83,7 +83,7 @@ extens=${f##*.}
 name=$(basename "$f" .$extens)
 folder="$tempInputDir"
 source=$website
-File=$(echo "$name"."$extens" | sed 's/ /_/g' | sed 's/:/;/g'| sed -e "s/'/_/g" | sed 's/\"//g'|  sed 's/&/n/g' | sed 's/\///g' | sed 's/|//g' | sed 's/\[/(/g' | sed 's/\]/)/g' | sed 's/@/at/g' | sed 's/｜/-/g' | sed 's/：/;/g')
+File=$(cleanName "$name.$extens")
 
 if [ ! -f "$folder"/"$File.md" ]
 then

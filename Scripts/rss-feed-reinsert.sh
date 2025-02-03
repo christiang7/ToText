@@ -1,7 +1,7 @@
 #!/bin/bash
 source config.sh; # load the config library functions
 GedankenspeicherwikiDir="$(config_get GedankenspeicherwikiDir)"
-
+source tt-lib.sh;
 choose=$(zenity --height 350 --list --radiolist --print-column ALL --hide-header --column "Checkbox" --column "What" True Spass FALSE Assets FALSE Physik FALSE Mathematik FALSE Philosophie FALSE Naturwissenschaften_und_Instrumentarien FALSE CodeFabrik FALSE Download)
 if [ ! $? -eq 1 ];
 then
@@ -35,7 +35,7 @@ then
    for (( i=1 ; i<=$lines ; i=i+2 ));
    do
    	  title=$(sed -n "${i}p" <(echo "$tabs"))
-   	  title=$(echo "$title" | sed 's/\//-/g' | sed 's/:/;/g' | sed 's/&/;/g' | sed "s/|/;/g" | sed "s/·/;/g" | sed "s/💤/;/g")
+   	  title=$(cleanName "$title")
    	  l="$( echo $(($i+1)) )"
    	  element=$(sed -n "${l}p" <(echo "$tabs"))
    	  echo "<item>" >> $rssfile

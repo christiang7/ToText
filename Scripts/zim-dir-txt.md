@@ -2,20 +2,22 @@
 Created Mittwoch [2022-06-15]()
 - [X] **zim-dir-txt**
 
-
-  ```bash
+*run-cell.sh*
+```bash
 noweb.py -Rzim-dir-txt.sh zim-dir-txt.md > zim-dir-txt.sh && echo 'fertig'
- ```
-   ```bash
+```
+
+```bash
 chmod u+x zim-dir-txt.sh && ln -sf $(pwd)/zim-dir-txt.sh ~/.local/bin/zim-dir-txt.sh && echo 'fertig'
 ```
 
 *zim-dir-txt.sh*
 ```bash
 #! /bin/bash
+source tt-lib.sh
 if zenity --question --text="Möchten Sie dieses Programm: ttd ausführen?"
 then
-    File=$(echo "$1" | sed 's/ /_/g' | sed 's/:/;/g'| sed -e "s/'/_/g" | sed 's/\"//g')
+    File=$(cleanName "$1")
     filename=${File%.*}
     mkdir -p "$filename"
     ttd "$filename"

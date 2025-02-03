@@ -4,7 +4,7 @@ source tt-lib.sh;
 
 #if zenity --question --text="Möchten Sie eine neue Skizze anfertigen?"
 #then
-File=$(echo "$1" | sed 's/ /_/g' | sed 's/:/;/g'| sed -e "s/'/_/g" | sed 's/\"//g')
+File=$(cleanName "$1")
 filetxt=${File%.*}
 
 datum=$(date +"%Y-%m-%d--%H-%M-%S")

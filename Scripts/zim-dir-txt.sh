@@ -1,7 +1,8 @@
 #! /bin/bash
+source tt-lib.sh
 if zenity --question --text="Möchten Sie dieses Programm: ttd ausführen?"
 then
-    File=$(echo "$1" | sed 's/ /_/g' | sed 's/:/;/g'| sed -e "s/'/_/g" | sed 's/\"//g')
+    File=$(cleanName "$1")
     filename=${File%.*}
     mkdir -p "$filename"
     ttd "$filename"

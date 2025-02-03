@@ -3,8 +3,6 @@
 - [X] **wgettpdf**
 
 Created Freitag [Zettelkasten:2021:04:30]()
-Backlink [GedankenspeicherCoding](../GedankenspeicherCoding.md)
- [wget-download-firefox](./wget-download-firefox.md)
 
 *run-cell.sh*
 ```bash

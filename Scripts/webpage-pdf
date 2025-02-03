@@ -1,10 +1,12 @@
 #!/bin/bash
 source config.sh; # load the config library functions
 journalDir="$(config_get journalDir)"
+source tt-lib.sh
 
 folder=$(date +"$journalDir/%Y/%m/%d")
 mkdir -p $folder
-File=$(echo "$2" | sed 's/:/;/g')
+
+File=$(cleanName "$2")
 wkhtmltoimage --enable-javascript --images "$1" $folder/"$File".png
 ttpdf $folder/"$File".png "$1"
 

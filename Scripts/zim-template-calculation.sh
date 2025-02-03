@@ -1,7 +1,7 @@
 #!/bin/bash
 source config.sh; # load the config library functions
 journalPage="$(config_get journalPage)"
-
+source tt-lib.sh
 
 if [[ -e "$1" ]]
 then
@@ -34,9 +34,9 @@ then
 	source=$(echo $abfrage | cut -s -d "~" -f 4)
 	tags=$(echo $abfrage | cut -s -d "~" -f 5)
 	additiontext=$(echo $abfrage | cut -s -d "~" -f 6)
-	File=$(echo "$File" | sed 's/ /_/g' | sed 's/:/;/g'| sed -e "s/'/_/g" | sed 's/\"//g')
+	File=$(cleanName "$File")
     ProjectName="$Project"
-    Project=$(echo "$Project" | sed 's/ /_/g' | sed 's/:/;/g'| sed -e "s/'/_/g" | sed 's/\"//g')
+    Project=$(cleanName "$Project")
 
 	mkdir -p "$Project"
     cd "$Project"
