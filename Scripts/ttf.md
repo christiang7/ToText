@@ -4,8 +4,7 @@ Backlink [CodeFabrik]()
 
 - [X] **ttf**
 
-
-Ordner für die txt Datei erzeugen
+Create folder for txt file
 
   ``noweb.py -Rttf ttf.md > ttf && chmod u+x ttf && echo 'fertig'``
 

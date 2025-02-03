@@ -20,9 +20,9 @@
 		- [ ] pdf function
 		- [X] video function
 		- [ ] rewrite programs
-	- [ ] option for tt execute without yad request
 
 ### 2025-02-03
+- [X] option for tt execute without yad request
 - [X] all video related scripts are connected via ttvid function
 - [X] move files to folder, but for pictures and music not.
 	- [X] pdf files
