@@ -63,13 +63,13 @@ else
 fi
 echo $profile
 
-file=$(cleanName "$ofile")
+File=$(cleanName "$ofile")
 
 #*temp-video-description}}
 
 #DRI_PRIME=pci-0000_01_00_0 __VK_LAYER_NV_optimus=NVIDIA_only __GLX_VENDOR_LIBRARY_NAME=nvidia mpv --profile="$profile" "$website"
-echo "file://$tempInputDir/$file".md
-mpv --profile="$profile" --screenshot-template="Screenshot-$file-%P" "$website"
+echo "file://$tempInputDir/$File".md
+mpv --profile="$profile" --screenshot-template="Screenshot-$File-%P" "$website"
 
 
 ```
@@ -78,40 +78,12 @@ mpv --profile="$profile" --screenshot-template="Screenshot-$file-%P" "$website"
 *temp-video-description*
 ```bash
 
-f=$file
-extens=${f##*.}
-name=$(basename "$f" .$extens)
-folder="$tempInputDir"
-source=$website
-File=$(cleanName "$name.$extens")
+name=${File%.*}
+extens=${File##*.}
+#folder=$tempInputDir
 
 if [ ! -f "$folder"/"$File.md" ]
 then
-	additiontext="$(yt-dlp --get-description ${source})"
-	if [[ $twitch == "" ]]
-	then
-		yt-dlp --sub-langs "en,de" --write-sub --write-auto-sub --sub-format "vtt" --skip-download -i ${source} -o "$tempInputDir/%(title)s.%(ext)s"
-		filename=$(basename "$File" .$extens)
-		name=$(basename "$ofile" .$extens)
-		mv "$folder/$name".en.vtt "$folder"/"$filename".en.vtt
-		mv "$folder/$name.de.vtt" "$folder"/"$filename".de.vtt
-		mv "$folder/$name.en.srt" "$folder"/"$filename".en.srt
-		mv "$folder/$name.de.srt" "$folder"/"$filename".de.srt
-	fi
-
-	file-description "$folder" "$File" "@VIDEO $tags" "$source" "$additiontext" "pic"
-
-	echo -e "\n*$filename.en.vtt*" >> "$folder"/"$File".md
-	echo -e "\`\`\`bash" >> "$folder"/"$File".md
-	cat "$folder""$filename".en.vtt >> "$folder"/"$File".md
-	echo -e "\`\`\`" >> "$folder"/"$File".md
-	echo -e "\n*$filename.de.vtt*" >> "$folder"/"$File".md
-	echo -e "\`\`\`bash" >> "$folder"/"$File".md
-	cat "$folder""$filename".de.vtt >> "$folder"/"$File".md
-	echo -e "\`\`\`" >> "$folder"/"$File".md
-	echo -e "\n*run-cell.sh*" >> "$folder"/"$File".md
-	echo -e "\`\`\`bash" >> "$folder"/"$File".md
-	echo -e "noweb.py -R$filename.de.vtt $File.md > $filename.de.vtt \nnoweb.py -R$filename.en.vtt $File.md > $filename.en.vtt \n echo '$File' && date \n\`\`\`\n\n" >> "$folder"/"$File".md
-
+	ttvid "$tempInputDir" "$File" "$tags" "$website" "$additiontext" "$ofile" "yes" "yes"
 fi
 ```

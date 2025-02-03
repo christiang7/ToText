@@ -64,13 +64,11 @@ extens=${f##*.}
 Filename=${f%.*}
 folder=$(dirname "$(realpath "$1")")
 Unterricht=$(echo $File | grep -o Unterrichtsnotiz)
+File=$(cleanName "$f")
 
 line=$(head -n 1 "$Filename".md)
 
-if [[ -e "$Filename".md && ! -d "$Filename" ]];
-then
-	ttvidc "$f"
-elif [[ -e "$File".md ]]
+if [[ -e "$File".md ]]
 then
 	echo $line
 	if [[ "$line" != "Content-Type: text/x-zim-wiki" ]]
@@ -117,7 +115,6 @@ then
 	showfile=$(echo $abfrage | cut -s -d "~" -f 5)
 	additiontext=$(echo $abfrage | cut -s -d "~" -f 6)
 
-	f=$(basename "$folder"/"$File")
 	extens=${File##*.}
 	Filename=${File%.*}
 	extenspdf=$(echo "$folder"/"$File" | grep -o pdf)
@@ -142,14 +139,10 @@ then
 		fi
 	elif [[ mp4 == $extens || mov == $extens || mkv == $extens || flv = $extens || ogv = $extens ]]
 	then
-		if [[ -e "$Filename".md && ! -d "$Filename" ]];
-			then
-			ttvidc "$folder"/"$File"
-		fi
-		ffmpeg -loglevel quiet -ss 2 -i "$folder"/"$File"  -t 1 -f image2 "$folder"/"$File".png
-		file-description "$folder" "$File" "@VIDEO $tags" "$source" "$additiontext" "pic" "yes"
-		convert "$folder"/"$File".png -resize 1200x1200 "$folder"/"$File"/"$File".avif
-		rm "$folder"/"$File".png
+		#ffmpeg -loglevel quiet -ss 2 -i "$folder"/"$File"  -t 1 -f image2 "$folder"/"$File".png
+		ttvid "$folder" "$File" "$tags" "$source" "$additiontext" "$f" "yes"
+		#convert "$folder"/"$File".png -resize 1200x1200 "$folder"/"$File"/"$File".avif
+		#rm "$folder"/"$File".png
 	elif [[ epub == $extens ]]
 	then
 		file-description "$folder" "$File" "@Ebook $tags" "$source" "$additiontext" "" "yes"
@@ -181,7 +174,7 @@ then
 	elif [[ mp3 == $extens || webm == $extens || flac == $extens || aac = $extens || ogg = $extens || weba = $extens || wav = $extens || aiff = $extens ]]
 	then
 		file-description "$folder" "$File" "@Musik $tags" "$source" "$additiontext"
-	elif [[ $extens == $f ]]
+	elif [[ $extens == $File ]]
 	then
 		file-description "$folder" "$File" "$tags" "$source" "$additiontext"
 	elif [[ $extens == docx || $extens == doc  || $extens == odt || $extens == ods || $extens == xls || $extens == xlsx || $extens == ppt || $extens == pptx || $extens == odp ]]

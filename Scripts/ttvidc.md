@@ -22,10 +22,12 @@ noweb.py -Rttvidc ttvidc.md > ttvidc && chmod u+x ttvidc && echo 'fertig'
 #!/bin/bash
 source config.sh; # load the config library functions
 journalPage="$(config_get journalPage)"
+source tt-lib.sh
+
 
 f=$(basename "$1")
 oldfilename=${f%.*}
-File=$(echo "$f" | sed 's/ /_/g' | sed 's/:/;/g'| sed -e "s/'/_/g" | sed 's/\"//g')
+File=$(cleanName "$f")
 extens=${f##*.} #only the extension of the file
 filename=${File%.*} #only the filename
 
@@ -47,9 +49,9 @@ then
     sed -i "5 i@ARCHIV2 @VIDEO " "$filename".mp4.md
     sed -i "6 i[*] **[[../"$filename".mp4]]**" "$filename".mp4.md
     #sed -i "7 i" "$filename".mp4.md
-    ffmpeg -loglevel quiet -ss 2 -i "$filename".mp4  -t 1 -f image2 "$filename".png
+    #ffmpeg -loglevel quiet -ss 2 -i "$filename".mp4  -t 1 -f image2 "$filename".png
     #convert "$filename".png -resize 1200x1200 "$filename".avif
-    sed -i "7 i{{../$filename.png?width=500}}" "$filename".mp4.md
+    #sed -i "7 i{{../$filename.avif?width=500}}" "$filename".mp4.md
 fi
 ```
 

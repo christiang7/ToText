@@ -9,6 +9,7 @@
 	- [ ] make a website for tt
 	- [ ] write blog post for website
 	- [ ] write wiki of how to use the scripts
+	- [ ] option for tt execute without yad request
 - [X] Planning (2)
 	- [ ] replace zenity with yad
 - [X] Doing (2)

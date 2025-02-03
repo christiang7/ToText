@@ -89,15 +89,15 @@ function file-description(){
         extens=${File##*.}
         Filename=${File%.*}
         filefolder=$Filename
-        mkdir -p "$filefolder"
-        mv "$File" "$filefolder"/"$File"
-        mv "$filefolder" "$filefolder.$extens"
+        mkdir -p $folder/"$filefolder"
+        mv $folder/"$File" $folder/"$filefolder"/"$File"
+        mv $folder/"$filefolder" $folder/"$File"
         filefolder="$filefolder.$extens"
     fi
     Wikiprev "$folder" "$File"
     Timestamps "$folder" "$File"
     echo "$tags" >> "$folder"/"$File".md
-    echo "**[[../$File]]**" >> "$folder"/"$File".md
+    echo "**[[./$File]]**" >> "$folder"/"$File".md
     if [[ ! $picture == "" ]]
     then
         if [[ ! $folderSwitch == "" ]]
@@ -137,4 +137,62 @@ function Markdown-file-description(){
     echo "**["$2"]] **" >> "$1"/"$2".md
     echo -e "$4\n$5\n" >> "$1"/"$2".md
 }
+
+function ttvid(){
+    folder=$1
+    File=$2
+    tags=$3
+    source=$4
+    additiontext=$5
+    ofile=$6
+    folderSwitch=$7
+    downloadSwitch=$8
+    name=${File%.*}
+    extens=${File##*.}
+    oname=${ofile%.*}
+    if [[ ! $folderSwitch == "" ]]
+    then
+        fileFolder=$folder/$File
+    else
+        fileFolder=$folder
+    fi
+    if [[ ! $downloadSwitch == "" ]]
+    then
+        additiontext="$(yt-dlp --get-description ${source})"
+        file-description "$folder" "$File" "@VIDEO $tags" "$source" "$additiontext" "pic" "$folderSwitch"
+        yt-dlp -q --sub-langs "en,de" --write-sub --write-thumbnail --write-auto-sub --sub-format "vtt" --skip-download -i ${source} -o "$folder/%(title)s.%(ext)s"
+        mv "$folder/$oname".en.vtt "$filefolder"/"$name".en.vtt
+        mv "$folder/$oname".de.vtt "$filefolder"/"$name".de.vtt
+        convert "$folder/$oname.webp" "$filefolder"/"$File".avif
+        rm "$folder/$oname.webp"
+        subtitlefile1="$name".en.vtt
+        subtitlefile2="$name".de.vtt
+    else
+		file-description "$folder" "$File" "@VIDEO $tags" "$source" "$additiontext" "pic" "$folderSwitch"
+		# cat the old text file to the new one, then we do not need the vidc script
+		cat ${oname}.txt >> "$folder"/"$File".md
+		rm ${oname}.txt
+		ffmpeg -loglevel quiet -ss 2 -i "$filefolder"/"$File"  -t 1 -f image2 "$folder"/"$File".png
+        convert "$folder"/"$File".png -resize 1200x1200 "$filefolder"/"$File".avif
+		rm "$folder"/"$File".png
+        ffmpeg -i "$folder"/"${oname}.srt" "$filefolder"/"${name}.vtt"
+        mv "$folder"/"${oname}.ttml" "$filefolder"/"${name}.ttml"
+        rm "$folder"/"${name}.srt"
+        subtitlefile1=${name}.vtt
+        subtitlefile2=${name}.ttml
+    fi
+
+	echo -e "\n*$subtitlefile1*" >> "$folder"/"$File".md
+	echo -e "\`\`\`bash" >> "$folder"/"$File".md
+	cat "$filefolder"/"$subtitlefile1" >> "$folder"/"$File".md
+	echo -e "\`\`\`" >> "$folder"/"$File".md
+	echo -e "\n*$subtitlefile2*" >> "$folder"/"$File".md
+	echo -e "\`\`\`bash" >> "$folder"/"$File".md
+	cat "$filefolder"/"$subtitlefile2" >> "$folder"/"$File".md
+	echo -e "\`\`\`" >> "$folder"/"$File".md
+	echo -e "\n*run-cell.sh*" >> "$folder"/"$File".md
+	echo -e "\`\`\`bash" >> "$folder"/"$File".md
+	echo -e "noweb.py -R$subtitlefile1 $File.md > $subtitlefile1 \nnoweb.py -R$subtitlefile2 $File.md > $subtitlefile2 \n echo '$File' && date \n\`\`\`\n\n" >> "$folder"/"$File".md
+}
+
 
