@@ -33,7 +33,8 @@ Hier sind die Dolpin ServiceMenüs
 - [X] WEB Bash Conditional Statements - OSTechNix https://ostechnix.com/bash-conditional-statements/
 
 
-
+Preserve image's modification time with mogrify/imagemagick | AnonymousOverflow
+https://overflow.adminforge.de/exchange/unix/questions/431836/preserve-images-modification-time-with-mogrify-imagemagick
 
 ## Program
 
@@ -49,7 +50,7 @@ using ``tt`` function with the parameters as following
     p2 - tags
     p3 - source
     p4 - additiontext
-    p5 - switch for not using yad
+    p5 - switch for using yad or not
 ```
 
 
@@ -67,12 +68,13 @@ folder=$(dirname "$(realpath "$1")")
 Unterricht=$(echo $File | grep -o Unterrichtsnotiz)
 File=$(cleanName "$f")
 yadSwitch=$5
-
-line=$(head -n 1 "$Filename".md)
+#folder=$(echo $folder | sed "s/ /\ /g")
+echo $folder
 
 if [[ -e "$File".md ]]
 then
-	echo $line
+	line=$(head -n 1 "$Filename".md)
+	#echo $line
 	if [[ "$line" != "Content-Type: text/x-zim-wiki" ]]
 		then
 		# just via cat program correcting like in the video function ttvid
@@ -138,13 +140,13 @@ then
 
 	if [[ pdf == $extens ]]
 	then
-		ttpdf "$folder"/"$File" "$source" "@Document $tags" "$additiontext"
+		ttpdf "$folder" "$File" "$source" "$tags" "$additiontext" "yes"
 	elif [[ jpg == $extens || PNG == $extens || JPEG == $extens || png == $extens || webp == $extens || jpeg == $extens || avif == $extens ]] && [[ -z $extenspdf && -z $extensxopp && -z $extensmp4 && -z $extensmov && -z $extensflv && -z $extensmkv ]]
 	then
 		# || tif == $extens || tiff == $extens
 		convert "$folder"/"$File" "$folder"/"$Filename".avif
+		touch -r "$File" "$Filename".avif # make the original modification time
 		ttpic "$folder" "$Filename".avif "$source" "$tags" "$additiontext"
-		#mv "$Filename".avif
 		if [[ $origpic == "No" ]];
 		then
 			rm "$File"

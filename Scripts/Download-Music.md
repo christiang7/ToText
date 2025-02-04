@@ -28,7 +28,7 @@ if [[ ! "$yt" = "" ]];
 then
     text="$(yt-dlp --get-description ${website})"
     text="$(echo -e "${text}" | sed 's/\"//g')"
-    yt-dlp --no-mtime --exec "tt {} \"${website}\" \"@Lied\" \"${text} \" " -o "$musicDir/%(title)s.%(ext)s" -f '251/140' -i "${website}"
+    yt-dlp --no-mtime --exec "tt {} \"${website}\" \"@Lied\" \"${text} \" " -o "$musicDir/%(title)s.%(ext)s" --embed-thumbnail -f '251/140' -i "${website}"
 else
     text=$(links2 -dump ${website})
     text="$(echo -e "${text}" | sed 's/\"//g')"

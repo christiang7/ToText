@@ -1,8 +1,8 @@
-# ttnm
+# ttm
 Angelegt Montag [Zettelkasten:2021:05:03]()
 Backlink [GedankenspeicherCoding](../GedankenspeicherCoding.md)
 
-- [X] **ttnm**
+- [X] **ttm**
 	- [ ] epub correction
 
 *run-cell.sh*

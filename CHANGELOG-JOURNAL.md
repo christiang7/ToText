@@ -17,11 +17,14 @@
 		- [X] shell library for markdown template
 		- [X] shell library for zim template
 		- [X] template function for nodes for files and usable with library inclusion
-		- [ ] pdf function
+		- [X] pdf function
 		- [X] video function
 		- [ ] rewrite programs
+			- [ ] rewrite ttm
+			- [ ] rewrite ttdm
 
 ### 2025-02-03
+- [X] rewrite ttd with the tt script
 - [X] option for tt execute without yad request
 - [X] all video related scripts are connected via ttvid function
 - [X] move files to folder, but for pictures and music not.

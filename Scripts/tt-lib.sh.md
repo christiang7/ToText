@@ -65,6 +65,7 @@ function Timestamps(){
 
 #*ttvid}}
 
+#*ttpdf}}
 
 ```
 
@@ -92,19 +93,20 @@ function file-description(){
     additiontext=$5
     picture=$6
     folderSwitch=$7
-    filefolder=$folder
+    fileFolder=$folder
+    echo $folder
     if [[ ! $folderSwitch == "" ]]
     then
         extens=${File##*.}
         Filename=${File%.*}
-        filefolder=$Filename
-        mkdir -p $folder/"$filefolder"
-        mv $folder/"$File" $folder/"$filefolder"/"$File"
-        mv $folder/"$filefolder" $folder/"$File"
-        filefolder="$filefolder.$extens"
+        fileFolder=$Filename
+        mkdir -p "$folder"/"$fileFolder"
+        mv "$folder"/"$File" "$folder"/"$fileFolder"/"$File"
+        mv "$folder"/"$fileFolder" "$folder"/"$File"
+        fileFolder="$fileFolder.$extens"
     fi
     Wikiprev "$folder" "$File"
-    Timestamps "$folder" "$File" "$filefolder"
+    Timestamps "$folder" "$File" "$fileFolder"
     echo "$tags" >> "$folder"/"$File".md
     if [[ ! $folderSwitch == "" ]]
     then
@@ -239,9 +241,9 @@ function ttvid(){
         additiontext="$(yt-dlp --get-description ${source})"
         file-description "$folder" "$File" "@VIDEO $tags" "$source" "$additiontext" "pic" "$folderSwitch"
         yt-dlp -q --sub-langs "en,de" --write-sub --write-thumbnail --write-auto-sub --sub-format "vtt" --skip-download -i ${source} -o "$folder/%(title)s.%(ext)s"
-        mv "$folder/$oname".en.vtt "$filefolder"/"$name".en.vtt
-        mv "$folder/$oname".de.vtt "$filefolder"/"$name".de.vtt
-        convert "$folder/$oname.webp" "$filefolder"/"$File".avif
+        mv "$folder/$oname".en.vtt "$fileFolder"/"$name".en.vtt
+        mv "$folder/$oname".de.vtt "$fileFolder"/"$name".de.vtt
+        convert "$folder/$oname.webp" "$fileFolder"/"$File".avif
         rm "$folder/$oname.webp"
         subtitlefile1="$name".en.vtt
         subtitlefile2="$name".de.vtt
@@ -250,11 +252,11 @@ function ttvid(){
 		# cat the old text file to the new one, then we do not need the vidc script
 		cat ${oname}.txt >> "$folder"/"$File".md
 		rm ${oname}.txt
-		ffmpeg -loglevel quiet -ss 2 -i "$filefolder"/"$File"  -t 1 -f image2 "$folder"/"$File".png
-        convert "$folder"/"$File".png -resize 1200x1200 "$filefolder"/"$File".avif
+		ffmpeg -loglevel quiet -ss 2 -i "$fileFolder"/"$File"  -t 1 -f image2 "$folder"/"$File".png
+        convert "$folder"/"$File".png -resize 1200x1200 "$fileFolder"/"$File".avif
 		rm "$folder"/"$File".png
-        ffmpeg -i "$folder"/"${oname}.srt" "$filefolder"/"${name}.vtt"
-        mv "$folder"/"${oname}.ttml" "$filefolder"/"${name}.ttml"
+        ffmpeg -i "$folder"/"${oname}.srt" "$fileFolder"/"${name}.vtt"
+        mv "$folder"/"${oname}.ttml" "$fileFolder"/"${name}.ttml"
         rm "$folder"/"${name}.srt"
         subtitlefile1=${name}.vtt
         subtitlefile2=${name}.ttml
@@ -262,11 +264,11 @@ function ttvid(){
 
 	echo -e "\n*$subtitlefile1*" >> "$folder"/"$File".md
 	echo -e "\`\`\`bash" >> "$folder"/"$File".md
-	cat "$filefolder"/"$subtitlefile1" >> "$folder"/"$File".md
+	cat "$fileFolder"/"$subtitlefile1" >> "$folder"/"$File".md
 	echo -e "\`\`\`" >> "$folder"/"$File".md
 	echo -e "\n*$subtitlefile2*" >> "$folder"/"$File".md
 	echo -e "\`\`\`bash" >> "$folder"/"$File".md
-	cat "$filefolder"/"$subtitlefile2" >> "$folder"/"$File".md
+	cat "$fileFolder"/"$subtitlefile2" >> "$folder"/"$File".md
 	echo -e "\`\`\`" >> "$folder"/"$File".md
 	echo -e "\n*run-cell.sh*" >> "$folder"/"$File".md
 	echo -e "\`\`\`bash" >> "$folder"/"$File".md
@@ -280,26 +282,38 @@ using ``ttpdf`` function with the parameters as following
 ```bash
     ttpdf p1 p2 p3 p4 p5
     p1 - folder
-    p2 - file - picture
+    p2 - file - pdf
     p3 - tags
     p4 - source
     p5 - additiontext
+    p6 - folder switch
 ```
 
 *ttpdf*
 ```bash
 function ttpdf(){
+    folder=$1
     File=$(cleanName "$2")
-    file-description "$1" "$File" "@Document $3" "$4" "$5" "pic" "yes"
+    tags=$3
+    source=$4
+    additiontext=$5
+    folderSwitch=$6
+    name=${File%.*}
+    extens=${File##*.}
+    if [[ ! $folderSwitch == "" ]]
+    then
+        fileFolder="$folder"/"$File"
+    else
+        fileFolder="$folder"
+    fi
+    file-description "$folder" "$File" "@Document $tags" "$source" "$additiontext" "pic" "$folderSwitch"
 
-    folder=$(basename "$File" .pdf)
-
-    pdftoppm -png -singlefile "$folder"/"$File" "$folder"/"$File"
-    convert "$folder"/"$File".png -resize 800x800 "$folder"/"$File".avif
-    rm "$folder"/"$File".png
-    pdfinfo "$folder"/"$File" | grep Pages >> "$File".md
+    pdftoppm -png -singlefile "$fileFolder"/"$File" "$fileFolder"/"$File"
+    convert "$fileFolder"/"$File".png -resize 1200x1200 "$fileFolder"/"$File".avif
+    rm "$fileFolder"/"$File".png
+    pdfinfo "$fileFolder"/"$File" | grep Pages >> "$File".md
     echo -e "\n" >> "$File".md
-    pdftotext -nopgbrk -enc UTF-8 -f 1 -l 1 "$folder"/"$File" ->> "$File".md
+    pdftotext -nopgbrk -enc UTF-8 -f 1 -l 1 "$fileFolder"/"$File" ->> "$File".md
 
 }
 ```
@@ -338,7 +352,7 @@ function ttex(){
     mv "$filename".* "$folder"/"$foldertex"/ #
     #touch "$foldertex".md #
     WikiMarkprev "$folder" "$foldertex"
-    Timestamps "$folder" "$foldertex"
+    Timestamps "$folder" "$foldertex"  "$folder/$foldertex"
     echo "@LATEX $tags" >> "$folder"/"$foldertex".md
     echo -e "[[./$filename.md]]\n[[./$filename.tex]]\n[[./$filename.pdf]]" >> "$folder"/"$foldertex".md
     echo -e "$source\n$additiontext" >> "$folder"/"$foldertex".md

@@ -10,7 +10,8 @@ folder=$(dirname "$(realpath "$1")")
 Unterricht=$(echo $File | grep -o Unterrichtsnotiz)
 File=$(cleanName "$f")
 yadSwitch=$5
-
+#folder=$(echo $folder | sed "s/ /\ /g")
+echo $folder
 line=$(head -n 1 "$Filename".md)
 
 if [[ -e "$File".md ]]
@@ -81,11 +82,12 @@ then
 
 	if [[ pdf == $extens ]]
 	then
-		ttpdf "$folder"/"$File" "$source" "@Document $tags" "$additiontext"
+		ttpdf "$folder" "$File" "$source" "$tags" "$additiontext" "yes"
 	elif [[ jpg == $extens || PNG == $extens || JPEG == $extens || png == $extens || webp == $extens || jpeg == $extens || avif == $extens ]] && [[ -z $extenspdf && -z $extensxopp && -z $extensmp4 && -z $extensmov && -z $extensflv && -z $extensmkv ]]
 	then
 		# || tif == $extens || tiff == $extens
 		convert "$folder"/"$File" "$folder"/"$Filename".avif
+		touch -r "$File" "$Filename".avif
 		ttpic "$folder" "$Filename".avif "$source" "$tags" "$additiontext"
 		#mv "$Filename".avif
 		if [[ $origpic == "No" ]];
