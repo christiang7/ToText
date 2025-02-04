@@ -18,13 +18,16 @@
 		- [X] shell library for zim template
 		- [X] template function for nodes for files and usable with library inclusion
 		- [X] pdf function
+		- [ ] position of picture in ttpic above text
 		- [X] video function
 		- [ ] rewrite programs
-			- [ ] rewrite ttm
 			- [ ] rewrite ttdm
 
-### 2025-02-03
+### 2025-02-04
+- [X] rewrite ttm
 - [X] rewrite ttd with the tt script
+
+### 2025-02-03
 - [X] option for tt execute without yad request
 - [X] all video related scripts are connected via ttvid function
 - [X] move files to folder, but for pictures and music not.

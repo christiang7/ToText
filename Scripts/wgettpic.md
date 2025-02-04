@@ -18,18 +18,16 @@ journalDir="$(config_get journalDir)"
 source tt-lib.sh;
 
 Orig=$(basename "$1")
-f=$(basename "$Orig")
 origname=${Orig%.*} #only the filename
 extens=${Orig##*.}
-Newname=${Orig%.*}
 
-abfrage=$(yad --title="Download Picture" --text="Noch etwas hinzufügen?" \
+abfrage=$(yad --title="Download Picture" --text="Sonething to add?" \
     --form --separator="~" --item-separator="," \
-    --field="Anderer Name:" \
-    --field="Quelle:" \
+    --field="Another name:" \
+    --field="Source:" \
     --field="Tags:" \
-    --field="Weiteres:":TXT \
-    "$Newname" "$1" "" "")
+    --field="Something more:":TXT \
+    "$origname" "$1" "" "")
 
 if [ ! $? -eq 1 ];
 then
@@ -42,21 +40,17 @@ then
     folder=$(date +"$journalDir/%Y/%m/%d")
     mkdir -p $folder
     cd $folder
+
     File=$(wget --no-use-server-timestamps --user-agent="Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:88.0)" --no-check-certificate "$1" 2>&1 | tee /dev/tty | grep gespeichert | cut -d ' ' -f 3 | sed -e 's/[^A-Za-z0-9._-]//g')
 
 
     if [ "$Newname" == ""  ];
     then
-        Newname=$(echo "$origname")
+        Newname=$origname
     fi
-    File=$(cleanName "$Newname.$extens" )
+    File="$Newname".$extens
 
-    mv "$f" "$File"
-
-    convert "$File" "$Newname".avif
-    rm "$File"
-
-    ttpic "$folder" "${Newname}.avif" "$tags" "$source" "$additiontext"
+    tt "${File}" "$tags" "$source" "$additiontext" "no"
 
 fi
 ```

@@ -1,4 +1,4 @@
-# ttne
+# ttnf
 Created Dienstag [Zettelkasten:2022:11:01](
 - [X] **ttne** [README]()
 
@@ -7,14 +7,14 @@ einen Zim Ordner mit txt Datei erstellen lassen irgendwo im Dateisystem
 
 *run-cell.sh*
 ```bash
-noweb.py -Rttne.sh ttne.md > ttne.sh  && echo 'fertig'
+noweb.py -Rttnf.sh ttnf.md > ttnf.sh  && echo 'fertig'
 ```
 
  ```bash
-chmod u+x ttne.sh  && ln -sf $(pwd)/ttne.sh ~/.local/bin/ttne.sh && echo 'fertig'
+chmod u+x ttnf.sh  && ln -sf $(pwd)/ttnf.sh ~/.local/bin/ttnf.sh && echo 'fertig'
   ```
 
-*ttne.sh*
+*ttnf.sh*
 ```bash
 #!/usr/bin/env bash
 source config.sh; # load the config library functions

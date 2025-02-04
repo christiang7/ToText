@@ -12,11 +12,11 @@ File=$(cleanName "$f")
 yadSwitch=$5
 #folder=$(echo $folder | sed "s/ /\ /g")
 echo $folder
-line=$(head -n 1 "$Filename".md)
 
 if [[ -e "$File".md ]]
 then
-	echo $line
+	line=$(head -n 1 "$Filename".md)
+	#echo $line
 	if [[ "$line" != "Content-Type: text/x-zim-wiki" ]]
 		then
 		# just via cat program correcting like in the video function ttvid
@@ -87,9 +87,8 @@ then
 	then
 		# || tif == $extens || tiff == $extens
 		convert "$folder"/"$File" "$folder"/"$Filename".avif
-		touch -r "$File" "$Filename".avif
+		touch -r "$File" "$Filename".avif # make the original modification time
 		ttpic "$folder" "$Filename".avif "$source" "$tags" "$additiontext"
-		#mv "$Filename".avif
 		if [[ $origpic == "No" ]];
 		then
 			rm "$File"
