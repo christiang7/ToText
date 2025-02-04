@@ -1,8 +1,7 @@
 # mpvv
-Created Samstag [[Zettelkasten:2021:04:24]]
-[*] **@ArcPROGRAMM @VIDEO mpvv**
+Created Samstag [[2021:04:24]]
 
-Hiermit kann man mittels mpv und youtube-dl Videos abspielen und im Terminal die Video Beschreibung anzeigen lassen.
+Playing videos from websites with used tools mpv and yt-dlp
 
 *run-cell.sh*
 ```bash
@@ -68,7 +67,7 @@ File=$(cleanName "$ofile")
 #*temp-video-description}}
 
 #DRI_PRIME=pci-0000_01_00_0 __VK_LAYER_NV_optimus=NVIDIA_only __GLX_VENDOR_LIBRARY_NAME=nvidia mpv --profile="$profile" "$website"
-echo "file://$tempInputDir/$File".md
+echo -e "\nfile://$tempInputDir/$File".md
 mpv --profile="$profile" --screenshot-template="Screenshot-$File-%P" "$website"
 
 
@@ -80,7 +79,6 @@ mpv --profile="$profile" --screenshot-template="Screenshot-$File-%P" "$website"
 
 name=${File%.*}
 extens=${File##*.}
-#folder=$tempInputDir
 
 if [ ! -f "$folder"/"$File.md" ]
 then

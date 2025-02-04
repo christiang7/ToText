@@ -1,3 +1,3 @@
 #!/bin/bash
-# Di 4. Feb 02:47:10 CET 2025
-noweb.py -Rttm ttm.md > ttm && chmod u+x ttm && echo 'fertig'
+# Di 4. Feb 21:04:23 CET 2025
+noweb.py -Rmpvv mpvv.md > mpvv && echo 'mpvv' && date

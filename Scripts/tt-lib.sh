@@ -3,7 +3,7 @@ source config.sh
 journalPage="$(config_get journalPage)"
 
 function cleanName () {
-    echo "$1" | sed 's/ /_/g' | sed 's/:/;/g'| sed -e "s/'/_/g" | sed 's/\"//g'|  sed 's/&/n/g' | sed 's/\///g' | sed 's/|//g' | sed 's/\[/(/g' | sed 's/\]/)/g' | sed 's/@/at/g' | sed 's/：/;/g' | sed 's/？/ß/g' | sed "s/|/;/g" | sed "s/·/;/g" | sed "s/💤/;/g" | sed "s/｜/-/g" | sed "s/?/ß/g"
+    echo "$1" | sed 's/ /_/g' | sed 's/:/;/g'| sed -e "s/'/_/g" | sed 's/\"//g'|  sed 's/&/n/g' | sed 's/\///g' | sed 's/|//g' | sed 's/\[/(/g' | sed 's/\]/)/g' | sed 's/@/at/g' | sed 's/：/;/g' | sed 's/？/ß/g' | sed "s/|/;/g" | sed "s/·/;/g" | sed "s/💤/;/g" | sed "s/｜/-/g" | sed "s/?/ß/g" | sed "s/!/;/g" | sed "s/¦/;/g"
 }
 function Wikiprev(){
     echo "Content-Type: text/x-zim-wiki" >> "$1"/"$2".md
@@ -26,10 +26,10 @@ function Timestamps(){
 }
 
 function ttex(){
-    folder=$1
-    filename=$(basename "$folder"/"$2" .tex)
-    f=$(basename "$3" .tex)
-    foldertex="$filename"_tex
+    local folder=$1
+    local filename=$(basename "$folder"/"$2" .tex)
+    local f=$(basename "$3" .tex)
+    local foldertex="$filename"_tex
     mkdir -p "$foldertex" #
     mv "$f".pdf "$filename".pdf
     mv "$f".log "$filename".log
@@ -77,24 +77,23 @@ function ttex(){
 
 
 function file-description(){
-    folder=$1
-    File=$2
-    tags=$3
-    source=$4
-    additiontext=$5
-    picture=$6
-    folderSwitch=$7
-    fileFolder=$folder
-    echo $folder
+    local folder=$1
+    local File=$2
+    local tags=$3
+    local source=$4
+    local additiontext=$5
+    local picture=$6
+    local folderSwitch=$7
+    local fileFolder=$folder
     if [[ ! $folderSwitch == "" ]]
     then
-        extens=${File##*.}
-        Filename=${File%.*}
-        fileFolder=$Filename
+        local extens=${File##*.}
+        local Filename=${File%.*}
+        local fileFolder=$Filename
         mkdir -p "$folder"/"$fileFolder"
         mv "$folder"/"$File" "$folder"/"$fileFolder"/"$File"
         mv "$folder"/"$fileFolder" "$folder"/"$File"
-        fileFolder="$fileFolder.$extens"
+        local fileFolder="$fileFolder.$extens"
     fi
     Wikiprev "$folder" "$File"
     Timestamps "$folder" "$File" "$fileFolder"
@@ -118,15 +117,15 @@ function file-description(){
 }
 
 function ttpic(){
-    File=$(cleanName "$2")
+    local File=$(cleanName "$2")
     file-description "$1" "$File" "@BILD $3" "$4" "$5"
     echo "{{../$File?width=500}}" >> "$1"/"$File".md
 }
 
 function create-note(){
-    folder=$1
-    title=$2
-    File=$(cleanName "$title")
+    local folder=$1
+    local title=$2
+    local File=$(cleanName "$title")
     mkdir -p "${folder}"/"${File}"
     echo "Content-Type: text/x-zim-wiki" > "${folder}"/"${File}".md
     echo "Wiki-Format: zim 0.6" >> "${folder}"/"${File}".md
@@ -146,30 +145,30 @@ function Markdown-file-description(){
 }
 
 function ttvid(){
-    folder=$1
-    File=$2
-    tags=$3
-    source=$4
-    additiontext=$5
-    ofile=$6
-    folderSwitch=$7
-    downloadSwitch=$8
-    name=${File%.*}
-    extens=${File##*.}
-    oname=${ofile%.*}
+    local folder=$1
+    local File=$2
+    local tags=$3
+    local source=$4
+    local additiontext=$5
+    local ofile=$6
+    local folderSwitch=$7
+    local downloadSwitch=$8
+    local name=${File%.*}
+    local extens=${File##*.}
+    local oname=${ofile%.*}
     if [[ ! $folderSwitch == "" ]]
     then
-        fileFolder=$folder/$File
+        local fileFolder="$folder"/"$File"
     else
-        fileFolder=$folder
+        local fileFolder="$folder"
     fi
     if [[ ! $downloadSwitch == "" ]]
     then
         additiontext="$(yt-dlp --get-description ${source})"
         file-description "$folder" "$File" "@VIDEO $tags" "$source" "$additiontext" "pic" "$folderSwitch"
         yt-dlp -q --sub-langs "en,de" --write-sub --write-thumbnail --write-auto-sub --sub-format "vtt" --skip-download -i ${source} -o "$folder/%(title)s.%(ext)s"
-        mv "$folder/$oname".en.vtt "$fileFolder"/"$name".en.vtt
-        mv "$folder/$oname".de.vtt "$fileFolder"/"$name".de.vtt
+        mv "$folder"/"$oname".en.vtt "$fileFolder"/"$name".en.vtt
+        mv "$folder"/"$oname".de.vtt "$fileFolder"/"$name".de.vtt
         convert "$folder/$oname.webp" "$fileFolder"/"$File".avif
         rm "$folder/$oname.webp"
         subtitlefile1="$name".en.vtt
@@ -203,19 +202,19 @@ function ttvid(){
 }
 
 function ttpdf(){
-    folder=$1
-    File=$(cleanName "$2")
-    tags=$3
-    source=$4
-    additiontext=$5
-    folderSwitch=$6
-    name=${File%.*}
-    extens=${File##*.}
+    local folder=$1
+    local File=$(cleanName "$2")
+    local tags=$3
+    local source=$4
+    local additiontext=$5
+    local folderSwitch=$6
+    local name=${File%.*}
+    local extens=${File##*.}
     if [[ ! $folderSwitch == "" ]]
     then
-        fileFolder="$folder"/"$File"
+        local fileFolder="$folder"/"$File"
     else
-        fileFolder="$folder"
+        local fileFolder="$folder"
     fi
     file-description "$folder" "$File" "@Document $tags" "$source" "$additiontext" "pic" "$folderSwitch"
 

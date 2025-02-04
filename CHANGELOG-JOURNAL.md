@@ -9,22 +9,20 @@
 	- [ ] make a website for tt
 	- [ ] write blog post for website
 	- [ ] write wiki of how to use the scripts
+	- [ ] mit git bestimmte Versionen und Tags verwenden, um bestimmte Zustände von Dateien wiederzugeben und daraus einen Realease machen,
+	gibt es Wege diese Lokal zu speichern?
+	- [ ] combine ttex with template-tex and template-calculation, using the same template
 - [X] Planning (2)
 	- [ ] replace zenity with yad
 - [X] Doing (2)
-	- [ ] connect programs with libraries
-		- [X] shell library for cleaning filenames
-		- [X] shell library for markdown template
-		- [X] shell library for zim template
-		- [X] template function for nodes for files and usable with library inclusion
-		- [X] pdf function
-		- [ ] position of picture in ttpic above text
-		- [X] video function
-		- [ ] rewrite programs
-			- [ ] rewrite ttdm
+	- [ ] position of picture in ttpic above text
+	- [ ] rewrite programs
+		- [ ] rewrite ttdm
+		- [ ] integrate ttnc in tt because is just one code line
+			- [ ] > rename ttncc to ttc
 
 ### 2025-02-04
-- [X] rewrite ttm
+- [X] rewrite ttm and ttncc
 - [X] rewrite ttd with the tt script
 
 ### 2025-02-03
@@ -35,6 +33,16 @@
 	- [X] tex files
 	- [X] video files
 	- [X] other files
+
+### 2025-02-02
+- [X] connect programs with libraries
+	- [X] shell library for cleaning filenames
+	- [X] shell library for markdown template
+	- [X] shell library for zim template
+	- [X] template function for nodes for files and usable with library inclusion
+	- [X] pdf function
+	- [X] video function
+
 ### 2025-02-01
 - [X] publish on github
 - [X] moved all scripts to Scripts folder

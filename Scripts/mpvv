@@ -52,7 +52,6 @@ File=$(cleanName "$ofile")
 
 name=${File%.*}
 extens=${File##*.}
-#folder=$tempInputDir
 
 if [ ! -f "$folder"/"$File.md" ]
 then
@@ -60,7 +59,7 @@ then
 fi
 
 #DRI_PRIME=pci-0000_01_00_0 __VK_LAYER_NV_optimus=NVIDIA_only __GLX_VENDOR_LIBRARY_NAME=nvidia mpv --profile="$profile" "$website"
-echo "file://$tempInputDir/$File".md
+echo -e "\nfile://$tempInputDir/$File".md
 mpv --profile="$profile" --screenshot-template="Screenshot-$File-%P" "$website"
 
 
