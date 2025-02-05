@@ -1,6 +1,7 @@
 # Changelog-Journal
 
 - [X] Backlog
+	- [ ] mit ``git`` bestimmte Versionen und Tags verwenden, um bestimmte Zustände von Dateien wiederzugeben und daraus einen Release machen, 	gibt es Wege diese Lokal zu speichern?
 	- [ ] automatic thumbnail update for ``xournalpp`` files
 	- [ ] rewrite everything in english
 	- [ ] links for used tools in ``README`` file
@@ -8,17 +9,16 @@
 	- [ ] write blog post for website
 	- [ ] write wiki of how to use the scripts
 	- [ ] integrate plotting in ``zim`` and or ``markdown`` with ``noweb.py``, maybe ``python`` or ``sage``
-	- [ ] mit ``git`` bestimmte Versionen und Tags verwenden, um bestimmte Zustände von Dateien wiederzugeben und daraus einen Release machen,
-	gibt es Wege diese Lokal zu speichern?
 	- [ ] combine ``ttex`` function with ``template-tex`` script, using the same template in ``tt-lib.sh``
-	- [ ] integrate markdown template ``template-calculation`` script
+	- [ ] integrate markdown template in ``template-calculation`` script
+	- [ ] ``tt`` with real path of file not the terminal path, ``realpath`` program not working, using the real path of the ``.desktop`` file with ``tt $f``
 - [X] Planning (2)
-	- [ ] replace ``zenity`` with ``yad``
 	- [ ] rewrite ``ttdm``
 - [X] Doing (2)
-	- [ ] ``tt`` with real path of file not the terminal path, ``realpath`` program not working, using the real path of the ``.desktop`` file with ``tt $f``
 
 ### 2025-02-05
+- [X] combine ``ttrename`` with ``tti`` and renamed to tt-change
+- [X] replace ``zenity`` with ``yad``
 - [X] create example ``.desktop`` files in the repo and home with ``noweb.py`` file format
 	- [X] new folder
 	- [X] all used ``.desktop`` files in repo with link to service folder

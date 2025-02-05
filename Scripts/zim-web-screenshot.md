@@ -31,8 +31,10 @@ chmod u+x zim-web-screenshot.sh && ln -sf $(pwd)/zim-web-screenshot.sh ~/.local/
 source config.sh; # load the config library functions
 journalPage="$(config_get journalPage)"
 journalDir="$(config_get journalDir)"
+source tt-lib.sh
 
-if zenity --question --text="Möchten Sie Screenshot aufnehmen?"
+yad --title="Take screenshot?" --text="\n Taking screenshot\n"
+if [ ! $? -eq 1 ];
 then
     url="$1"
     selecttext="$2"
@@ -57,16 +59,13 @@ then
         echo -e ""  >> "$foldermonth"/"$calendarfile"
         date +"[*] ** %A %d %b %Y ** " >> "$foldermonth"/"$calendarfile"
     fi
-    tags=$(zenity --entry \
-          --width 500 \
-          --title "Noch Schlagwörter hinzufügen?" \
-          --text "Noch Schlagwörter hinzufügen?" \
-          --entry-text "$3")
-    additiontext=$(zenity --entry \
-          --width 500 \
-          --title "Noch etwas hinzufügen?" \
-          --text "Noch etwas hinzufügen?" \
-          --entry-text "$4")
+    abfrage=$(yad --title="Add meta data" --text="Something to add?" \
+		--form --width 500 --separator="~" --item-separator=","  \
+		--field="Tags" \
+		--field="Something more":TXT \
+		"$tags" "$additiontext")
+		tags=$(echo $abfrage | cut -s -d "~" -f 1)
+		additiontext=$(echo $abfrage | cut -s -d "~" -f 2)
     touch "$File".md
     mv "$File".md "$folder"/"$File".md
     echo "Content-Type: text/x-zim-wiki" >> "$folder"/"$File".md

@@ -41,23 +41,16 @@ Terminal=true
 Exec=ttop %n 2>&1 | tee /home/christian/.config/tt/log
 
 [Desktop Action CorrectTxtFile]
-Name=ttnc only for folders
+Name=ttc only for folders
 Icon=video
 Terminal=true
-Exec=ttnc %n 2>&1 | tee /home/christian/.config/tt/log
+Exec=ttc %n 2>&1 | tee /home/christian/.config/tt/log
 
 [Desktop Action MakeFolder]
 Name=ttf
 Icon=video
 Terminal=true
 Exec=ttf %n 2>&1 | tee /home/christian/.config/tt/log
-
-[Desktop Action InsertFile]
-Name=tti
-Icon=video
-Terminal=true
-#Icon=application-x-java
-Exec=tti %n 2>&1 | tee /home/christian/.config/tt/log
 
 [Desktop Action ChangeFormat]
 Name=change-ttn-format.sh

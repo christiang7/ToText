@@ -1,7 +1,7 @@
-# ttrename
+# tt-change
 Created Dienstag [Zettelkasten:2022:06:14]()
 
-- [X] **ttrename**
+- [X] **tt-change**
     - [X] Doing
     - [X] Backlog
 	- [ ] Anpassung bei beliebigen Dateinamen mit doppelten oder keiner Dateiendung
@@ -35,15 +35,16 @@ https://ostechnix.com/zenity-create-gui-dialog-boxes-in-bash-scripts/
 
 ## Main program
 
+*run-cell.sh*
 ```bash
-noweb.py -Rttrename ttrename.md > ttrename && echo 'fertig'
+noweb.py -Rtt-change tt-change.md > tt-change && echo 'fertig'
 ```
 
 ```bash
-chmod u+x ttrename && ln -sf $(pwd)/ttrename ~/.local/bin/ttrename && echo 'fertig'
+chmod u+x tt-change && ln -sf $(pwd)/tt-change ~/.local/bin/tt-change && echo 'fertig'
 ```
 
-*ttrename*
+*tt-change*
 ```bash
 #!/bin/bash
 source config.sh; # load the config library functions
@@ -66,27 +67,20 @@ extens3=${filename2##*.} # and the original file extension
 #echo "${filename2}"
 if [[ $extens2 == md ]]
 then
-	Newname=$(zenity --entry \
-       --width 500 \
-       --title "Type new filename" \
-       --text "Enter new filename" \
-       --entry-text "$(basename ${filename2} .$extens3)")
-abfrage=$(yad --title="Enter new filename" --text="Type new filename" \
+    abfrage=$(yad --title="Enter new filename" --text="Type new filename" \
 		--form --width 500 --separator="~" --item-separator=","  \
 		--field="Name" \
-		"$(basename ${filename2} .$extens3)")
-
-if [ ! $? -eq 1 ];
-then
-	Newname=$(echo $abfrage | cut -s -d "~" -f 1)
-	source=$(echo $abfrage | cut -s -d "~" -f 2)
-	tags=$(echo $abfrage | cut -s -d "~" -f 3)
-	additiontext=$(echo $abfrage | cut -s -d "~" -f 4)
-
-
+		--field="Source:":CBE \
+		--field="Tags" \
+		--field="Something more":TXT \
+		"$(basename ${filename2} .$extens3)" "Christian Gößl,Internet," "" "")
     if [ ! $? -eq 1 ];
     then
-        Newname=$(echo "$Newname" | sed 's/ /_/g' | sed 's/:/;/g'| sed -e "s/'/_/g" | sed 's/\"//g')
+        Newname=$(echo $abfrage | cut -s -d "~" -f 1)
+        Newname=$(cleanName "$Newname")
+        source=$(echo $abfrage | cut -s -d "~" -f 2)
+        tags=$(echo $abfrage | cut -s -d "~" -f 3)
+        additiontext=$(echo $abfrage | cut -s -d "~" -f 4)
         mv "$filename2" "$Newname"."$extens3"
         mv "${filename2%.*}" "$Newname"
         mv "${filename2%.*}"_files "$Newname"_files
@@ -96,17 +90,28 @@ then
         mv "$filename2".avif "$Newname"."$extens3".avif
         mv "$File2" "$Newname"."$extens3".md
         ttc "$filename2" "$Newname"."$extens3"
+        sed -i "3 s/\*\*\[\[../$tags\*\*\[\[../" "$Newname"."$extens3".md
+        sed -i "4 s/\*\*\[\[../$tags\*\*\[\[../" "$Newname"."$extens3".md
+        sed -i "3 s/\]\]/\]\] ${source}/" "$Newname"."$extens3".md
+        sed -i "4 s/\]\]/\]\] ${source}/" "$Newname"."$extens3".md
+        sed -i "s/\[\[..\/\]\]/\[\[..\/\]\]\n $additiontext/" "$Newname"."$extens3".md
         echo "$Newname"."$extens3"
     fi
-else 
-	Newname=$(zenity --entry \
-       --width 500 \
-       --title "Type new filename" \
-       --text "Enter new filename" \
-       --entry-text "$filename")
+else
+    abfrage=$(yad --title="Enter new filename" --text="Type new filename" \
+		--form --width 500 --separator="~" --item-separator=","  \
+		--field="Name" \
+		--field="Source:":CBE \
+		--field="Tags" \
+		--field="Something more":TXT \
+		"$filename" "Christian Gößl,Internet," "" "")
     if [ ! $? -eq 1 ];
     then
-        Newname=$(echo "$Newname" | sed 's/ /_/g' | sed 's/:/;/g'| sed -e "s/'/_/g" | sed 's/\"//g')
+        Newname=$(echo $abfrage | cut -s -d "~" -f 1)
+        Newname=$(cleanName "$Newname")
+        source=$(echo $abfrage | cut -s -d "~" -f 2)
+        tags=$(echo $abfrage | cut -s -d "~" -f 3)
+        additiontext=$(echo $abfrage | cut -s -d "~" -f 4)
         mv "$f" "$Newname"."$extens"
         mv "$f" "$Newname"
         mv "${f%.*}" "$Newname"
@@ -117,6 +122,11 @@ else
         mv "$f".avif "$Newname"."$extens".avif
         mv "$File".md "$Newname"."$extens".md
         ttc "$f" "$Newname"."$extens"
+        sed -i "3 s/\*\*\[\[../$tags\*\*\[\[../" "$Newname"."$extens".md
+        sed -i "4 s/\*\*\[\[../$tags\*\*\[\[../" "$Newname"."$extens".md
+        sed -i "3 s/\]\]/\]\] ${source}/" "$Newname"."$extens".md
+        sed -i "4 s/\]\]/\]\] ${source}/" "$Newname"."$extens".md
+        sed -i "s/\[\[..\/\]\]/\[\[..\/\]\]\n $additiontext/" "$Newname"."$extens".md
         echo "$Newname"."$extens"
     fi
 fi

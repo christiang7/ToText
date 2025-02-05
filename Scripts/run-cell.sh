@@ -1,3 +1,3 @@
 #!/bin/bash
-# Mi 5. Feb 16:55:37 CET 2025
-noweb.py -Rzim-dot-create.sh zim-dot-create.md > zim-dot-create.sh && chmod u+x zim-dot-create.sh && date
+# Mi 5. Feb 18:31:36 CET 2025
+noweb.py -Rtt-change tt-change.md > tt-change && echo 'fertig'

@@ -9,7 +9,7 @@ Backlink [CodeFabrik:GedankenspeicherCoding](../GedankenspeicherCoding.md)
 noweb.py -Rzim-treesheets.sh zim-treesheets.md > zim-treesheets.sh && echo 'fertig'
 ```
 
-  ```bash
+```bash
 chmod u+x zim-treesheets.sh && ln -sf $(pwd)/zim-treesheets.sh ~/.local/bin/zim-treesheets.sh && echo 'fertig'
 ```
 
@@ -22,10 +22,12 @@ exportierte Bilder wieder in die Textdatei einfügen mittels ocr
 #!/bin/bash
 source config.sh; # load the config library functions
 templateDir="$(config_get templateDir)"
+source tt-lib.sh
 
-if zenity --question --text="Möchten Sie Treesheets öffnen?"
+yad --title="Open treesheets?" --text="\n Open treesheets\n"
+if [ ! $? -eq 1 ];
 then
-  File=$(echo "$1" | sed 's/ /_/g' | sed 's/:/;/g'| sed -e "s/'/_/g" | sed 's/\"//g')
+  File=$(cleanName "$1")
   filetxt=${File%.*}
   mkdir -p "$filetxt"
   cd "$filetxt"
@@ -37,15 +39,21 @@ then
   else
       additontext="$2-$filetxtname"
   fi
-  Newname=$(zenity --entry \
-        --width 500 \
-        --title "Type new filename" \
-        --text "Enter new filename" \
-        --entry-text "$filedate-$additontext")
-  filename=$(echo "$Newname" | sed 's/ /_/g' | sed 's/:/;/g'| sed -e "s/'/_/g" | sed 's/\"//g')
-  cp $templateDir/Vorlage-10-10.cts "$filename".cts
-  cp $templateDir/Vorlagen/Vorlage-10-10.png "$filename".cts.png
-  treesheets "$filename".cts && tt "$filename".cts
+  abfrage=$(yad --title="Enter new filename" --text="Type new filename" \
+		--form --width 500 --separator="~" --item-separator=","  \
+		--field="Name" \
+		"$filedate-$additontext")
+  if [ ! $? -eq 1 ];
+  then
+      filename=$(echo $abfrage | cut -s -d "~" -f 1)
+      filename=$(cleanName "$filename")
+      if [ ! "$filename" = "" ];
+      then
+        cp $templateDir/Vorlage-10-10.cts "$filename".cts
+        cp $templateDir/Vorlagen/Vorlage-10-10.png "$filename".cts.png
+        treesheets "$filename".cts && tt "$filename".cts
+      fi
+  fi
 fi
 ```
 

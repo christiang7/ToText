@@ -47,24 +47,11 @@ Terminal=true
 #Icon=application-x-java
 Exec=tt %n 2>&1 | tee /home/christian/.config/tt/log
 
-[Desktop Action ZettelLinkFile]
-Name=ttnl
-Icon=image
-Terminal=true
-Exec=ttnl %n 2>&1 | tee /home/christian/.config/tt/log
-
 [Desktop Action ZettelMoveFile]
 Name=ttm
 Icon=audio
 Terminal=true
 Exec=ttm %n 2>&1 | tee /home/christian/.config/tt/log
-
-[Desktop Action CorrectFile]
-Name=ttncc
-Icon=video
-Terminal=true
-#Icon=application-x-java
-Exec=ttncc %n 2>&1 | tee /home/christian/.config/tt/log
 
 [Desktop Action DeleteFile]
 Name=ttdel
@@ -78,13 +65,7 @@ Name=ttrename
 Icon=video
 Terminal=true
 #Icon=application-x-java
-Exec=ttrename %n 2>&1 | tee /home/christian/.config/tt/log
+Exec=tt-change %n 2>&1 | tee /home/christian/.config/tt/log
 
-[Desktop Action InsertFile]
-Name=tti
-Icon=video
-Terminal=true
-#Icon=application-x-java
-Exec=tti %n 2>&1 | tee /home/christian/.config/tt/log
 
 ```
