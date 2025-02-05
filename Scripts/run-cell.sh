@@ -1,3 +1,3 @@
 #!/bin/bash
-# Di 4. Feb 21:04:23 CET 2025
-noweb.py -Rmpvv mpvv.md > mpvv && echo 'mpvv' && date
+# Mi 5. Feb 01:28:42 CET 2025
+noweb.py -Rtt tt.md > tt && chmod u+x tt && echo 'tt' && date

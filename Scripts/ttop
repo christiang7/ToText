@@ -2,4 +2,4 @@
 f=$(basename "$1")
 extens=${f##*.} #only the extension of the file
 filename=${f%.*} #only the filename
-xdg-open "$filename" 2>/dev/null &
+xdg-open "$filename"/"$filename" # 2>/dev/null &

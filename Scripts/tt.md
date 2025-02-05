@@ -61,16 +61,19 @@ source config.sh; # load the config library functions
 journalPage="$(config_get journalPage)"
 source tt-lib.sh;
 
-f=$(basename "$1")
-extens=${f##*.}
-Filename=${f%.*}
-folder=$(dirname "$(realpath "$1")")
+echo $1
+#ofile="$1"
+ofile=$(basename "$1")
+folder=$(dirname "$(realpath "$ofile")")
+#ofile=$(basename "$file")
+echo $ofile
+extens=${ofile##*.}
+Filename=${ofile%.*}
+#folder=$(pwd)
 Unterricht=$(echo $File | grep -o Unterrichtsnotiz)
-File=$(cleanName "$f")
+File=$(cleanName "$ofile")
 yadSwitch=$5
-#folder=$(echo $folder | sed "s/ /\ /g")
 echo $folder
-
 if [[ -e "$File".md ]]
 then
 	line=$(head -n 1 "$Filename".md)
@@ -78,7 +81,7 @@ then
 	if [[ "$line" != "Content-Type: text/x-zim-wiki" ]]
 		then
 		# just via cat program correcting like in the video function ttvid
-		ttnc "$f"
+		ttnc "$ofile"
 	fi
 	xdg-open "$File" &
 else
@@ -110,7 +113,7 @@ then
     if [[ $yadSwitch == "" ]]
     then
 		Newname=$(echo $abfrage | cut -s -d "~" -f 1)
-		if [[ $extens == $f ]]
+		if [[ $extens == $ofile ]]
 		then
 			File=$(cleanName "$Newname")
 		else
@@ -128,7 +131,7 @@ then
 		origpic="yes"
 		showfile="no"
 	fi
-	mv "$folder"/"$f" "$folder"/"$File"
+	mv "$folder"/"$ofile" "$folder"/"$File"
 	extens=${File##*.}
 	Filename=${File%.*}
 	extenspdf=$(echo "$folder"/"$File" | grep -o pdf)
@@ -153,7 +156,7 @@ then
 		fi
 	elif [[ mp4 == $extens || mov == $extens || mkv == $extens || flv = $extens || ogv = $extens ]]
 	then
-		ttvid "$folder" "$File" "$tags" "$source" "$additiontext" "$f" "yes"
+		ttvid "$folder" "$File" "$tags" "$source" "$additiontext" "$ofile" "yes"
 	elif [[ epub == $extens ]]
 	then
 		file-description "$folder" "$File" "@Ebook $tags" "$source" "$additiontext" "" "yes"
@@ -175,7 +178,7 @@ then
 		file-description "$folder" "$File" "@Treesheets $tags" "$source" "$additiontext" "" "yes"
 	elif [[ tex == $extens ]]
 	then
-		ttex "$folder" "$File" "$f"
+		ttex "$folder" "$File" "$ofile"
 	elif [[ $extens == xopp ]]
 	then
 		xournalpp --export-range=1 "$folder"/"$File" -i "$folder"/"$File".png

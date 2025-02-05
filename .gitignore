@@ -2,3 +2,4 @@
 *.kate-swp
 run-cell.sh
 config
+log

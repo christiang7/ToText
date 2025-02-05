@@ -1,13 +1,16 @@
 # ttop
 Created Dienstag [Zettelkasten:2022:03:15]()
-Backlink [GedankenspeicherCoding](../GedankenspeicherCoding.md)
 
 - [X] **ttop**
 
 
-Öffne die annotierte Datei
+Open annotated file
 
-  ``noweb.py -Rttop ttop.md > ttop && chmod u+x ttop && echo 'fertig'``
+
+*run-cell.sh*
+```bash
+noweb.py -Rttop ttop.md > ttop && chmod u+x ttop && echo 'fertig'
+````
 
 *ttop*
 ```bash
@@ -15,6 +18,6 @@ Backlink [GedankenspeicherCoding](../GedankenspeicherCoding.md)
 f=$(basename "$1")
 extens=${f##*.} #only the extension of the file
 filename=${f%.*} #only the filename
-xdg-open "$filename" 2>/dev/null &
+xdg-open "$filename"/"$filename" # 2>/dev/null &
 ```
 

@@ -22,7 +22,7 @@ function Markdownprev(){
 }
 
 function Timestamps(){
-    echo "Text date: $(date +"[[$journalPage:%Y:%m:%d|%Y-%m-%d]]") Modi date: $(date +"[[$journalPage:%Y:%m:%d|%Y-%m-%d]]" -r "$3"/"$2")" >> "$1"/"$2".md
+    echo "Text date: $(date +"[[$journalPage:%Y:%m:%d|%Y-%m-%d]]") Modi date: $(date +"[[$journalPage:%Y:%m:%d|%Y-%m-%d]]" -r "$1"/"$3"/"$2")" >> "$1"/"$2".md
 }
 
 function ttex(){
@@ -112,6 +112,8 @@ function file-description(){
         else
             echo "{{../$File.avif?width=500}}" >> "$folder"/"$File".md
         fi
+    else
+        echo "{{./$File?width=500}}" >> "$folder"/"$File".md
     fi
     echo -e "$source\n$additiontext\n" >> "$folder"/"$File".md
 }
@@ -119,7 +121,7 @@ function file-description(){
 function ttpic(){
     local File=$(cleanName "$2")
     file-description "$1" "$File" "@BILD $3" "$4" "$5"
-    echo "{{../$File?width=500}}" >> "$1"/"$File".md
+    #echo "{{../$File?width=500}}" >> "$1"/"$File".md
 }
 
 function create-note(){
@@ -171,21 +173,21 @@ function ttvid(){
         mv "$folder"/"$oname".de.vtt "$fileFolder"/"$name".de.vtt
         convert "$folder/$oname.webp" "$fileFolder"/"$File".avif
         rm "$folder/$oname.webp"
-        subtitlefile1="$name".en.vtt
-        subtitlefile2="$name".de.vtt
+        local subtitlefile1="$name".en.vtt
+        local subtitlefile2="$name".de.vtt
     else
 		file-description "$folder" "$File" "@VIDEO $tags" "$source" "$additiontext" "pic" "$folderSwitch"
 		# cat the old text file to the new one, then we do not need the vidc script
-		cat ${oname}.txt >> "$folder"/"$File".md
-		rm ${oname}.txt
+		cat "$folder"/${oname}.txt >> "$folder"/"$File".md
+		rm "$folder"/${oname}.txt
 		ffmpeg -loglevel quiet -ss 2 -i "$fileFolder"/"$File"  -t 1 -f image2 "$folder"/"$File".png
         convert "$folder"/"$File".png -resize 1200x1200 "$fileFolder"/"$File".avif
 		rm "$folder"/"$File".png
         ffmpeg -i "$folder"/"${oname}.srt" "$fileFolder"/"${name}.vtt"
         mv "$folder"/"${oname}.ttml" "$fileFolder"/"${name}.ttml"
         rm "$folder"/"${name}.srt"
-        subtitlefile1=${name}.vtt
-        subtitlefile2=${name}.ttml
+        local subtitlefile1=${name}.vtt
+        local subtitlefile2=${name}.ttml
     fi
 
 	echo -e "\n*$subtitlefile1*" >> "$folder"/"$File".md
@@ -221,9 +223,9 @@ function ttpdf(){
     pdftoppm -png -singlefile "$fileFolder"/"$File" "$fileFolder"/"$File"
     convert "$fileFolder"/"$File".png -resize 1200x1200 "$fileFolder"/"$File".avif
     rm "$fileFolder"/"$File".png
-    pdfinfo "$fileFolder"/"$File" | grep Pages >> "$File".md
-    echo -e "\n" >> "$File".md
-    pdftotext -nopgbrk -enc UTF-8 -f 1 -l 1 "$fileFolder"/"$File" ->> "$File".md
+    pdfinfo "$fileFolder"/"$File" | grep Pages >> "$folder"/"$File".md
+    echo -e "\n" >> "$folder"/"$File".md
+    pdftotext -nopgbrk -enc UTF-8 -f 1 -l 1 "$fileFolder"/"$File" ->> "$folder"/"$File".md
 
 }
 
