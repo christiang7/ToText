@@ -3,7 +3,7 @@ source config.sh; # load the config library functions
 journalPage="$(config_get journalPage)"
 source tt-lib.sh;
 
-echo $1
+echo "$1"
 #ofile="$1"
 ofile=$(basename "$1")
 folder=$(dirname "$(realpath "$ofile")")
@@ -18,13 +18,6 @@ yadSwitch=$5
 echo $folder
 if [[ -e "$File".md ]]
 then
-	line=$(head -n 1 "$Filename".md)
-	#echo $line
-	if [[ "$line" != "Content-Type: text/x-zim-wiki" ]]
-		then
-		# just via cat program correcting like in the video function ttvid
-		ttnc "$ofile"
-	fi
 	xdg-open "$File" &
 else
     if [[ $(echo $Filename | grep -o Unterrichtsnotiz) == Unterrichtsnotiz || $(echo $Filename | grep -o Unterrichtsnotizen) == Unterrichtsnotizen || $(echo $Filename | grep -o Unterricht) == Unterricht ]]
@@ -38,7 +31,7 @@ else
     fi
     if [[ $yadSwitch == "" ]]
     then
-		abfrage=$(yad --title="Create md file" --text="Anything to add?" \
+		abfrage=$(yad --title="Create md file" --text="Something to add?" \
 		--form --width 500 --separator="~" --item-separator=","  \
 		--field="Name" \
 		--field="Source:":CBE \

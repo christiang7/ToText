@@ -4,6 +4,7 @@ Backlink [GedankenspeicherCoding](../GedankenspeicherCoding.md)
 
 - [X] **zim-dot-update**
 
+*run-cell.sh*
 ```bash
 noweb.py -Rzim-dot-update.sh zim-dot-update.md > zim-dot-update.sh
 ```
@@ -16,7 +17,8 @@ chmod u+x zim-dot-update.sh && ln -sf $(pwd)/zim-dot-update.sh ~/.local/bin/zim-
 *zim-dot-update.sh*
 ```bash
 #! /bin/bash
-if zenity --question --text="Möchten Sie das Diagramm aktualisieren?"
+yad --title="Update dot diagram in zim?" --text="\n Update dot diagram in zim\n"
+if [ ! $? -eq 1 ];
 then
     File=$(echo "$1" | sed 's/ /_/g' | sed 's/:/;/g'| sed -e "s/'/_/g" | sed 's/\"//g')
     filename=${File%.*}

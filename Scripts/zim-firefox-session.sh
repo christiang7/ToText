@@ -1,5 +1,6 @@
 #!/bin/bash
-if zenity --question --text="Möchten Sie die Links in Firefox öffnen?"
+yad --title="Open links in firefox?" --text="\n All selected links will be send to firefox\n"
+if [ ! $? -eq 1 ];
 then
     #text="$(xclip -o)"
     text="$(wl-paste -n)"

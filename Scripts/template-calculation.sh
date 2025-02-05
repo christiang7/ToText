@@ -1,4 +1,5 @@
 #!/bin/bash
+source tt-lib.sh
 
 
 yad --title="New calculation?" --text="\n Standalone File?\n"
@@ -20,11 +21,11 @@ then
   abfrage=$(yad --title="New calculation?" --text="Necessary Informations:" \
   	--form --width 500 --separator="~" --item-separator=","  \
   	--field="Filename" \
-  	--field="Shortname for language":CB \
+  	--field="Shortname for language":CBE \
   	--field="Author":CBE \
   	--field="Tags":CBE \
   	--field="Description":TXT \
-  	"$File" "cpp,python,julia,html,css,javascript,bash,lua,plantuml,typst,other" "Christian Gößl,Internet" ",physic,math" "$additiontext")
+  	"$File" "cpp,python,julia,html,css,javascript,bash,lua,plantuml,typst," "Christian Gößl,Internet" ",physic,math" "$additiontext")
   if [ ! $? -eq 1 ];
   then
   	File=$(echo $abfrage | cut -s -d "~" -f 1)
@@ -32,7 +33,7 @@ then
   	source=$(echo $abfrage | cut -s -d "~" -f 3)
   	tags=$(echo $abfrage | cut -s -d "~" -f 4)
   	additiontext=$(echo $abfrage | cut -s -d "~" -f 5)
-  	File=$(echo "$File" | sed 's/ /_/g' | sed 's/:/;/g'| sed -e "s/'/_/g" | sed 's/\"//g')
+  	File=$(cleanName "$File")
 
   	case ${langname} in
   	cpp) extens="cpp"
@@ -55,7 +56,7 @@ then
   		;;
   	typst) extens="typ"
   		;;
-  	other) extens="other"
+  	*) extens="${langname}"
   		;;
   	esac
   	Filename="$File"

@@ -2,26 +2,33 @@
 source config.sh; # load the config library functions
 source tt-lib.sh;
 
-#if zenity --question --text="Möchten Sie eine neue Skizze anfertigen?"
-#then
 File=$(cleanName "$1")
 filetxt=${File%.*}
 
 datum=$(date +"%Y-%m-%d--%H-%M-%S")
-Newname=$(zenity --entry \
-	--width 500 \
-	--title "Type new filename" \
-	--text "Enter new filename" \
-	--entry-text "_${datum}")
-if [ ! "$Newname" = "" ];
+abfrage=$(yad --title="Insert sketch" --text="Something to add?" \
+		--form --width 500 --separator="~" --item-separator=","  \
+		--field="Name" \
+		--field="Source:":CBE \
+		--field="Tags" \
+		--field="Something more":TXT \
+		"_${datum}" "Christian Gößl,Internet," "" "")
+
+if [ ! $? -eq 1 ];
 then
-	filename=$(cleanName "$Newname")
-	#filename=$(echo "$Newname" | sed 's/ /_/g' | sed 's/:/;/g'| sed -e "s/'/_/g" | sed 's/\"//g')
-	mkdir -p "$filetxt"
-	cd "$filetxt"
-	mypaint "$filename".png
-	ttpic "$filetxt" "$filename".png "" "" ""
-	echo -e "[[+${filename}.png]]"
-	echo {{"$filename".png?width=500}}
+	Newname=$(echo $abfrage | cut -s -d "~" -f 1)
+	source=$(echo $abfrage | cut -s -d "~" -f 2)
+	tags=$(echo $abfrage | cut -s -d "~" -f 3)
+	additiontext=$(echo $abfrage | cut -s -d "~" -f 4)
+	if [ ! "$Newname" = "" ];
+	then
+		filename=$(cleanName "$Newname")
+		mkdir -p "$filetxt"
+		cd "$filetxt"
+		mypaint "$filename".png
+		ttpic "$filetxt" "$filename".png "$source" "$tags" "$additiontext"
+		echo -e "[[+${filename}.png]]"
+		echo {{"$filename".png?width=500}}
+	fi
 fi
 #fi

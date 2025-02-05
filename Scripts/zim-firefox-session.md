@@ -16,6 +16,7 @@ Backlink [GedankenspeicherCoding](../GedankenspeicherCoding.md)
 ``STRINGTEST="clipboard content"``
 ``echo "${STRINGTEST[0]}" | sed '5q;d' | head -n1 | cut -d " " -f1``
 
+*run-cell.sh*
 ```bash
 noweb.py -Rzim-firefox-session.sh zim-firefox-session.md > zim-firefox-session.sh
 ```
@@ -26,7 +27,8 @@ chmod u+x zim-firefox-session.sh && ln -sf $(pwd)/zim-firefox-session.sh ~/.loca
 *zim-firefox-session.sh*
 ```bash
 #!/bin/bash
-if zenity --question --text="Möchten Sie die Links in Firefox öffnen?"
+yad --title="Open links in firefox?" --text="\n All selected links will be send to firefox\n"
+if [ ! $? -eq 1 ];
 then
     #text="$(xclip -o)"
     text="$(wl-paste -n)"

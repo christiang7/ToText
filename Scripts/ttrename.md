@@ -46,9 +46,12 @@ chmod u+x ttrename && ln -sf $(pwd)/ttrename ~/.local/bin/ttrename && echo 'fert
 *ttrename*
 ```bash
 #!/bin/bash
+source config.sh; # load the config library functions
+source tt-lib.sh;
 
 #case of input file is the original file
-File=$(echo "$1" | sed 's/ /_/g' | sed 's/:/;/g'| sed -e "s/'/_/g" | sed 's/\"//g')
+File=$(cleanName "$1")
+#File=$(echo "$1" | sed 's/ /_/g' | sed 's/:/;/g'| sed -e "s/'/_/g" | sed 's/\"//g')
 f=$(basename "$1")
 extens=${f##*.}
 filename=${f%.*}
@@ -68,6 +71,19 @@ then
        --title "Type new filename" \
        --text "Enter new filename" \
        --entry-text "$(basename ${filename2} .$extens3)")
+abfrage=$(yad --title="Enter new filename" --text="Type new filename" \
+		--form --width 500 --separator="~" --item-separator=","  \
+		--field="Name" \
+		"$(basename ${filename2} .$extens3)")
+
+if [ ! $? -eq 1 ];
+then
+	Newname=$(echo $abfrage | cut -s -d "~" -f 1)
+	source=$(echo $abfrage | cut -s -d "~" -f 2)
+	tags=$(echo $abfrage | cut -s -d "~" -f 3)
+	additiontext=$(echo $abfrage | cut -s -d "~" -f 4)
+
+
     if [ ! $? -eq 1 ];
     then
         Newname=$(echo "$Newname" | sed 's/ /_/g' | sed 's/:/;/g'| sed -e "s/'/_/g" | sed 's/\"//g')
@@ -79,7 +95,7 @@ then
         mv "$filename2".png "$Newname"."$extens3".png
         mv "$filename2".avif "$Newname"."$extens3".avif
         mv "$File2" "$Newname"."$extens3".md
-        ttncc "$filename2" "$Newname"."$extens3"
+        ttc "$filename2" "$Newname"."$extens3"
         echo "$Newname"."$extens3"
     fi
 else 
@@ -100,7 +116,7 @@ else
         mv "$f".png "$Newname"."$extens".png
         mv "$f".avif "$Newname"."$extens".avif
         mv "$File".md "$Newname"."$extens".md
-        ttncc "$f" "$Newname"."$extens"
+        ttc "$f" "$Newname"."$extens"
         echo "$Newname"."$extens"
     fi
 fi

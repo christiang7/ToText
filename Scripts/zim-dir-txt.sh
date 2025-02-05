@@ -1,6 +1,7 @@
 #! /bin/bash
 source tt-lib.sh
-if zenity --question --text="Möchten Sie dieses Programm: ttd ausführen?"
+yad --title="Execute ttd?" --text="\n All files in folder will get description files\n"
+if [ ! $? -eq 1 ];
 then
     File=$(cleanName "$1")
     filename=${File%.*}

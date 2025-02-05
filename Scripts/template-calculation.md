@@ -71,11 +71,11 @@ fi
 abfrage=$(yad --title="New calculation?" --text="Necessary Informations:" \
 	--form --width 500 --separator="~" --item-separator=","  \
 	--field="Filename" \
-	--field="Shortname for language":CB \
+	--field="Shortname for language":CBE \
 	--field="Author":CBE \
 	--field="Tags":CBE \
 	--field="Description":TXT \
-	"$File" "cpp,python,julia,html,css,javascript,bash,lua,plantuml,typst,other" "Christian Gößl,Internet" ",physic,math" "$additiontext")
+	"$File" "cpp,python,julia,html,css,javascript,bash,lua,plantuml,typst," "Christian Gößl,Internet" ",physic,math" "$additiontext")
 if [ ! $? -eq 1 ];
 then
 	File=$(echo $abfrage | cut -s -d "~" -f 1)
@@ -106,7 +106,7 @@ then
 		;;
 	typst) extens="typ"
 		;;
-	other) extens="other"
+	*) extens="${langname}"
 		;;
 	esac
 	Filename="$File"
@@ -144,7 +144,7 @@ then
 else
 	echo -e "noweb.py -R${Filename}.${extens} ${File}.md > ${Filename}.${extens} && echo '${Filename}.${extens}' && date \n\`\`\`" >> "${File}".md
 	echo -e "\n\n\`\`\`bash" >> "${File}".md
-	echo -e "chmod u+x ${Filename}.${extens} && ln -sf '$(pwd)'/${Filename}.${extens} ~/.local/bin/${Filename}.${extens} && echo 'fertig'\n \`\`\`" >> "${File}".md
+	echo -e "chmod u+x ${Filename}.${extens} && ln -sf \$(pwd)/${Filename}.${extens} ~/.local/bin/${Filename}.${extens} && echo 'fertig'\n \`\`\`" >> "${File}".md
 fi
 echo -e "\n*${Filename}.${extens}*" >> "${File}".md
 echo -e "\`\`\`${langname}" >> "${File}".md

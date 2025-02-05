@@ -1,0 +1,51 @@
+# tt.desktop
+Created [2025-02-05](2025-02-05)
+
+- [X] **tt.desktop**
+    - [X] Doing
+    - [X] Backlog
+
+## Features
+
+
+
+## Informations
+ Christian Gößl
+## Main Program
+
+
+*run-cell.sh*
+```bash
+noweb.py -Rtt.desktop tt.desktop.md > tt.desktop && echo 'tt.desktop' && date 
+chmod u+x tt.desktop && ln -sf $(pwd)/tt.desktop ~/.local/share/kservices5/ServiceMenus/tt.desktop && echo 'fertig'
+```
+
+
+```bash
+ ```
+
+*tt.desktop*
+```bash
+[Desktop Entry]
+Type=Service
+X-KDE-ServiceTypes=KonqPopupMenu/Plugin
+MimeType=application/*;audio/*;video/*;image/*;inode/directory;message/rfc822;text/html;text/x-tex;
+Actions=maketxtnoyad;
+#maketxt;
+X-KDE-Priority=TopLevel
+Terminal=true
+
+[Desktop Action maketxtnoyad]
+Name=tt
+Icon=video
+Terminal=true
+#Icon=application-x-java
+Exec=tt %n "" "" "" "no" 2>&1 | tee /home/christian/.config/tt/log
+
+[Desktop Action maketxt]
+Name=tt with yad
+Icon=video
+Terminal=true
+#Icon=application-x-java
+Exec=tt %n 2>&1 | tee /home/christian/.config/tt/log
+```

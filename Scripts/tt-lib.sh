@@ -113,7 +113,7 @@ function file-description(){
             echo "{{../$File.avif?width=500}}" >> "$folder"/"$File".md
         fi
     else
-        echo "{{./$File?width=500}}" >> "$folder"/"$File".md
+        echo "{{../$File?width=500}}" >> "$folder"/"$File".md
     fi
     echo -e "$source\n$additiontext\n" >> "$folder"/"$File".md
 }

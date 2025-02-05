@@ -3,9 +3,6 @@ source config.sh; # load the config library functions
 journalDir="$(config_get journalDir)"
 journalPage="$(config_get journalPage)"
 
-#if zenity --question --text="Möchten Sie die Links in Firefox öffnen?"
-#then
-
 additiontext=$(echo $1)
 if [ ! $? -eq 1 ];
 then

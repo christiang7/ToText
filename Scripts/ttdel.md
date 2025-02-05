@@ -18,7 +18,8 @@ noweb.py -Rttdel ttdel.md > ttdel && echo 'fertig'
 *ttdel*
 ```bash
 #!/bin/bash
-if zenity --question --text="Wirklich löschen?"
+yad --title="Delete files?" --text="\n Delete description file and original file \n"
+if [ ! $? -eq 1 ];
 then 
 	File=$(echo "$1" | sed 's/ /_/g' | sed 's/:/;/g'| sed -e "s/'/_/g" | sed 's/\"//g')
 

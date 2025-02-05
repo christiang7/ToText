@@ -1,25 +1,30 @@
 # Changelog-Journal
 
 - [X] Backlog
-	- [ ] rewrite [ttdm] with [ttnm]
-	- [ ] custom tool for insert page.section in file
 	- [ ] automatic thumbnail update for ``xournalpp`` files
 	- [ ] rewrite everything in english
-	- [ ] links for used tools in README file
+	- [ ] links for used tools in ``README`` file
 	- [ ] make a website for ToText scripts
 	- [ ] write blog post for website
 	- [ ] write wiki of how to use the scripts
-	- [ ] create example ``.desktop`` files in the repo and home with ``noweb.py`` file format
+	- [ ] integrate plotting in ``zim`` and or ``markdown`` with ``noweb.py``, maybe ``python`` or ``sage``
 	- [ ] mit ``git`` bestimmte Versionen und Tags verwenden, um bestimmte Zustände von Dateien wiederzugeben und daraus einen Release machen,
 	gibt es Wege diese Lokal zu speichern?
-	- [ ] combine ``ttex`` function with ``template-tex`` and ``template-calculation`` scripts, using the same template in ``tt-lib.sh``
+	- [ ] combine ``ttex`` function with ``template-tex`` script, using the same template in ``tt-lib.sh``
+	- [ ] integrate markdown template ``template-calculation`` script
 - [X] Planning (2)
 	- [ ] replace ``zenity`` with ``yad``
 	- [ ] rewrite ``ttdm``
 - [X] Doing (2)
 	- [ ] ``tt`` with real path of file not the terminal path, ``realpath`` program not working, using the real path of the ``.desktop`` file with ``tt $f``
-	- [ ] integrate ``ttnc`` in ``tt`` because is just one code line
-		- [ ] > rename ``ttncc`` to ``ttc``
+
+### 2025-02-05
+- [X] create example ``.desktop`` files in the repo and home with ``noweb.py`` file format
+	- [X] new folder
+	- [X] all used ``.desktop`` files in repo with link to service folder
+- [X] deleted ``ttnc`` not used
+	- [X] > rename ``ttncc`` to ``ttc``
+	- [X] insert ttc in ttrename
 
 ### 2025-02-04
 - [X] position of picture in ``ttpic`` above text
@@ -86,7 +91,7 @@ Custom tool for open in ``zim`` the folder of the containing file.
 The program [zim-quoting-copy]() can copy a marked line. The marked line gets an anchor. The copied text can be pasted at the desired position of pages.
 
 ### 2023-05-25 Kanboardlist and Dateheadlines
-[kanboardlist.md](kanboardlist.md) insert Kanboardlists in zim wiki
-[zim-dateheadlines.md](zim-dateheadlines.md) insert date headlines in zim-wiki
+[kanboardlist.md](kanboardlist.md) insert Kanboardlists in ``zim-wiki``
+[zim-dateheadlines.md](zim-dateheadlines.md) insert date headlines in ``zim-wiki``
 
 

@@ -1,0 +1,90 @@
+# tt-tools.desktop
+Created [2025-02-05](2025-02-05)
+
+- [X] **tt-tools.desktop**
+    - [X] Doing
+    - [X] Backlog
+
+## Features
+
+
+
+## Informations
+ Christian Gößl
+## Main Program
+
+
+*run-cell.sh*
+```bash
+noweb.py -Rtt-tools.desktop tt-tools.desktop.md > tt-tools.desktop && echo 'tt-tools.desktop' && date 
+chmod u+x tt-tools.desktop && ln -sf $(pwd)/tt-tools.desktop ~/.local/share/kservices5/ServiceMenus/tt-tools.desktop && echo 'fertig'
+```
+
+
+*tt-tools.desktop*
+```bash
+[Desktop Entry]
+Type=Service
+X-KDE-ServiceTypes=KonqPopupMenu/Plugin
+MimeType=application/*;audio/*;video/*;image/*;inode/directory;message/rfc822;text/html;text/x-tex;
+Actions=ZettelMoveFile;DeleteFile;RenameFile;maketxt;
+#ZettelLinkFile;
+X-KDE-Priority=TopLevel
+X-KDE-Submenu=tt-tools
+Terminal=true
+
+[Desktop Action maketxtnoyad]
+Name=tt
+Icon=video
+Terminal=true
+#Icon=application-x-java
+Exec=tt %n "" "" "" "no" 2>&1 | tee /home/christian/.config/tt/log
+
+[Desktop Action maketxt]
+Name=tt with yad
+Icon=video
+Terminal=true
+#Icon=application-x-java
+Exec=tt %n 2>&1 | tee /home/christian/.config/tt/log
+
+[Desktop Action ZettelLinkFile]
+Name=ttnl
+Icon=image
+Terminal=true
+Exec=ttnl %n 2>&1 | tee /home/christian/.config/tt/log
+
+[Desktop Action ZettelMoveFile]
+Name=ttm
+Icon=audio
+Terminal=true
+Exec=ttm %n 2>&1 | tee /home/christian/.config/tt/log
+
+[Desktop Action CorrectFile]
+Name=ttncc
+Icon=video
+Terminal=true
+#Icon=application-x-java
+Exec=ttncc %n 2>&1 | tee /home/christian/.config/tt/log
+
+[Desktop Action DeleteFile]
+Name=ttdel
+Icon=video
+Terminal=true
+#Icon=application-x-java
+Exec=ttdel %n 2>&1 | tee /home/christian/.config/tt/log
+
+[Desktop Action RenameFile]
+Name=ttrename
+Icon=video
+Terminal=true
+#Icon=application-x-java
+Exec=ttrename %n 2>&1 | tee /home/christian/.config/tt/log
+
+[Desktop Action InsertFile]
+Name=tti
+Icon=video
+Terminal=true
+#Icon=application-x-java
+Exec=tti %n 2>&1 | tee /home/christian/.config/tt/log
+
+```
