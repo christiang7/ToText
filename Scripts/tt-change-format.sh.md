@@ -1,7 +1,7 @@
-# change-ttn-format.sh
+# tt-change-format.sh
 Created [2024-10-09](2024-10-09)
 
-- [X] **change-ttn-format.sh**
+- [X] **tt-change-format.sh**
     - [X] Doing
     - [X] Backlog
 
@@ -15,11 +15,11 @@ Created [2024-10-09](2024-10-09)
 
 *run-cell.sh*
 ```bash
-noweb.py -Rchange-ttn-format.sh change-ttn-format.sh.md > change-ttn-format.sh && echo 'fertig' 
+noweb.py -Rtt-change-format.sh tt-change-format.sh.md > tt-change-format.sh && echo 'fertig'
 ```
 
 
-*change-ttn-format.sh*
+*tt-change-format.sh*
 ```bash
 #!/bin/bash
 File=$(basename "$1")
@@ -35,6 +35,8 @@ mv "$Filename.avif" "$folder"/"$Filename.avif"
 mv "$Filename.png" "$folder"/"$Filename.png"
 mv "$name.de.vtt" "$folder"/"$Filename.de.vtt"
 mv "$name.en.vtt" "$folder"/"$Filename.en.vtt"
+mv "$name.ttml" "$folder"/"$Filename.ttml"
+mv "$name.vtt" "$folder"/"$Filename.vtt"
 mv "${Filename%.*}" "$folder"/"$Filename"
 mv "${Filename%.*}"_files "$folder"/"$Filename"_files
 mv "${Filename%.*}"-Dateien "$folder"/"$Filename"-Dateien

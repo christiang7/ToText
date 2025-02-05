@@ -27,7 +27,7 @@ chmod u+x tt-tools.desktop && ln -sf $(pwd)/tt-tools.desktop ~/.local/share/kser
 Type=Service
 X-KDE-ServiceTypes=KonqPopupMenu/Plugin
 MimeType=application/*;audio/*;video/*;image/*;inode/directory;message/rfc822;text/html;text/x-tex;
-Actions=ZettelMoveFile;DeleteFile;RenameFile;maketxt;
+Actions=ZettelMoveFile;DeleteFile;maketxt;
 #ZettelLinkFile;
 X-KDE-Priority=TopLevel
 X-KDE-Submenu=tt-tools
@@ -59,13 +59,6 @@ Icon=video
 Terminal=true
 #Icon=application-x-java
 Exec=ttdel %n 2>&1 | tee /home/christian/.config/tt/log
-
-[Desktop Action RenameFile]
-Name=ttrename
-Icon=video
-Terminal=true
-#Icon=application-x-java
-Exec=tt-change %n 2>&1 | tee /home/christian/.config/tt/log
 
 
 ```

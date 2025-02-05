@@ -8,15 +8,17 @@
 	- [ ] make a website for ToText scripts
 	- [ ] write blog post for website
 	- [ ] write wiki of how to use the scripts
-	- [ ] integrate plotting in ``zim`` and or ``markdown`` with ``noweb.py``, maybe ``python`` or ``sage``
-	- [ ] combine ``ttex`` function with ``template-tex`` script, using the same template in ``tt-lib.sh``
 	- [ ] integrate markdown template in ``template-calculation`` script
 	- [ ] ``tt`` with real path of file not the terminal path, ``realpath`` program not working, using the real path of the ``.desktop`` file with ``tt $f``
-- [X] Planning (2)
 	- [ ] rewrite ``ttdm``
+	- [ ] combine ``tt-change`` with ``ttc``
+		- [ ] also change video files with subtitles
 - [X] Doing (2)
+	- [ ] integrate plotting in ``zim`` and or ``markdown`` with ``noweb.py``, maybe ``python`` or ``sage``
+	- [ ] combine ``ttex`` function with ``template-tex`` script, using the same template in ``tt-lib.sh``
 
 ### 2025-02-05
+- [X] ``tt-change`` with folders
 - [X] combine ``ttrename`` with ``tti`` and renamed to tt-change
 - [X] replace ``zenity`` with ``yad``
 - [X] create example ``.desktop`` files in the repo and home with ``noweb.py`` file format

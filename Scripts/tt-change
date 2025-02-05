@@ -33,14 +33,18 @@ then
         source=$(echo $abfrage | cut -s -d "~" -f 2)
         tags=$(echo $abfrage | cut -s -d "~" -f 3)
         additiontext=$(echo $abfrage | cut -s -d "~" -f 4)
-        mv "$filename2" "$Newname"."$extens3"
-        mv "${filename2%.*}" "$Newname"
-        mv "${filename2%.*}"_files "$Newname"_files
-        mv "${filename2%.*}"-Dateien "$Newname"-Dateien
-        mv "${filename2%.*}"_Dateien "$Newname"_Dateien
-        mv "$filename2".png "$Newname"."$extens3".png
-        mv "$filename2".avif "$Newname"."$extens3".avif
+        mv "$filename2"/"$filename2" "$filename2"/"$Newname"."$extens3"
+        mv "$filename2"/"${filename2%.*}" "$filename2"/"$Newname"
+        mv "$filename2"/"${filename2%.*}"_files "$filename2"/"$Newname"_files
+        mv "$filename2"/"${filename2%.*}"-Dateien "$filename2"/"$Newname"-Dateien
+        mv "$filename2"/"${filename2%.*}"_Dateien "$filename2"/"$Newname"_Dateien
+        mv "$filename2"/"$filename2".png "$filename2"/"$Newname"."$extens3".png
+        mv "$filename2"/"$filename2".avif "$filename2"/"$Newname"."$extens3".avif
+        mv "$filename2"/"${filename2%.*}".de.vtt "$filename2"/"$Newname".de.vtt
+        mv "$filename2"/"${filename2%.*}".en.vtt "$filename2"/"$Newname".en.vtt
+        mv "$filename2"/"${filename2%.*}".ttml "$filename2"/"$Newname".ttml
         mv "$File2" "$Newname"."$extens3".md
+        mv "$filename2" "$Newname"."$extens3"
         ttc "$filename2" "$Newname"."$extens3"
         sed -i "3 s/\*\*\[\[../$tags\*\*\[\[../" "$Newname"."$extens3".md
         sed -i "4 s/\*\*\[\[../$tags\*\*\[\[../" "$Newname"."$extens3".md

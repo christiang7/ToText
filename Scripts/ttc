@@ -4,7 +4,7 @@ source tt-lib.sh;
 oldFile=$(basename "$1")
 File=$(basename "$2")
 File=$(cleanName "$File")
-#filename=${File%.*} #only the filename
+filename=${File%.*} #only the filename
 extens=${File##*.}
 
 sed -i "1 s/$oldFile/$File/" "$File".md
@@ -13,6 +13,7 @@ sed -i "3 s/$oldFile/$File/g" "$File".md
 sed -i "4 s/$oldFile/$File/g" "$File".md
 sed -i "5 s/$oldFile/$File/g" "$File".md
 sed -i "6 s/$oldFile/$File/g" "$File".md
+sed -i "s/$filename/$filename/g" "$File".md
 if [[ pdf == $extens ]]
 then
 	#Wikiprev

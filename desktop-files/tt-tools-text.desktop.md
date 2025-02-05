@@ -30,7 +30,7 @@ chmod u+x tt-tools-text.desktop && ln -sf $(pwd)/tt-tools-text.desktop ~/.local/
 Type=Service
 X-KDE-ServiceTypes=KonqPopupMenu/Plugin
 MimeType=text/*;
-Actions=CorrectTxtFile;MakeFolder;ChangeFormat;DeleteFile;
+Actions=MakeFolder;ChangeFormat;DeleteFile;RenameFile;
 X-KDE-Priority=TopLevel
 X-KDE-Submenu=tt-tools
 
@@ -40,24 +40,18 @@ Icon=audio
 Terminal=true
 Exec=ttop %n 2>&1 | tee /home/christian/.config/tt/log
 
-[Desktop Action CorrectTxtFile]
-Name=ttc only for folders
-Icon=video
-Terminal=true
-Exec=ttc %n 2>&1 | tee /home/christian/.config/tt/log
-
 [Desktop Action MakeFolder]
-Name=ttf
+Name=ttf make folder for text file
 Icon=video
 Terminal=true
 Exec=ttf %n 2>&1 | tee /home/christian/.config/tt/log
 
 [Desktop Action ChangeFormat]
-Name=change-ttn-format.sh
+Name=tt-change-format.sh
 Icon=video
 Terminal=true
 #Icon=application-x-java
-Exec=change-ttn-format.sh %n 2>&1 | tee /home/christian/.config/tt/log
+Exec=tt-change-format.sh %n 2>&1 | tee /home/christian/.config/tt/log
 
 [Desktop Action DeleteFile]
 Name=ttdel
@@ -65,5 +59,12 @@ Icon=video
 Terminal=true
 #Icon=application-x-java
 Exec=ttdel %n 2>&1 | tee /home/christian/.config/tt/log
+
+[Desktop Action RenameFile]
+Name=tt-change rename files and add meta data
+Icon=video
+Terminal=true
+#Icon=application-x-java
+Exec=tt-change %n 2>&1 | tee /home/christian/.config/tt/log
 
 ```
