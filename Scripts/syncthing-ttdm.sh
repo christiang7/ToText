@@ -3,7 +3,7 @@ source config.sh; # load the config library functions
 journalDir="$(config_get journalDir)"
 journalPage="$(config_get journalPage)"
 OutputDir="$(config_get OutputDir)"
-GedankenspeicherwikiDir="$(config_get GedankenspeicherwikiDir)"
+wikiDir="$(config_get wikiDir)"
 FolderSync=$(echo "$1")
 #ls --hide=*.md "$folder" > f
 list=$(find "$FolderSync" -mtime +2)

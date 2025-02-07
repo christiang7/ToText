@@ -1,6 +1,5 @@
 # zim-index
 Created Donnerstag [Zettelkasten:2022:06:30]()
-Backlink [GedankenspeicherCoding](../GedankenspeicherCoding.md)
 
 - [X] **zim-index**
 

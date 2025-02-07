@@ -27,7 +27,7 @@ noweb.py -Rrss-feed-reinsert.sh rss-feed-reinsert.md > rss-feed-reinsert.sh && e
 ```bash
 #!/bin/bash
 source config.sh; # load the config library functions
-GedankenspeicherwikiDir="$(config_get GedankenspeicherwikiDir)"
+wikiDir="$(config_get wikiDir)"
 source tt-lib.sh;
 #*request}}
 ```
@@ -48,21 +48,21 @@ fi
 *choose*
 ```bash
 case ${choose} in
-   Spass) rssfile=$(echo "$GedankenspeicherwikiDir/Spaß_Stream/Spass_Stream-rss.md")
+   Spass) rssfile=$(echo "$wikiDir/Spaß_Stream/Spass_Stream-rss.md")
 	  ;;
-   Assets) rssfile=$(echo "$GedankenspeicherwikiDir/Zettelkasten/Zettelkasten-rss.md")
+   Assets) rssfile=$(echo "$wikiDir/Zettelkasten/Zettelkasten-rss.md")
 	  ;;
-   Physik) rssfile=$(echo "$GedankenspeicherwikiDir/Physik/Physik-rss.md")
+   Physik) rssfile=$(echo "$wikiDir/Physik/Physik-rss.md")
 	  ;;
-   Mathematik) rssfile=$(echo "$GedankenspeicherwikiDir/Mathematik/Mathematik-rss.md")
+   Mathematik) rssfile=$(echo "$wikiDir/Mathematik/Mathematik-rss.md")
 	  ;;
-   Philosophie) rssfile=$(echo "$GedankenspeicherwikiDir/Philosophie/Philosophie-rss.md")
+   Philosophie) rssfile=$(echo "$wikiDir/Philosophie/Philosophie-rss.md")
 	  ;;
-   Naturwissenschaften_und_Instrumentarien) rssfile=$(echo "$GedankenspeicherwikiDir/Naturwissenschaften_und_Instrumentarien/Naturwissenschaften_und_Instrumentarien-rss.md")
+   Naturwissenschaften_und_Instrumentarien) rssfile=$(echo "$wikiDir/Naturwissenschaften_und_Instrumentarien/Naturwissenschaften_und_Instrumentarien-rss.md")
 	  ;;
-   CodeFabrik) rssfile=$(echo "$GedankenspeicherwikiDir/CodeFabrik/CodeFabrik-rss.md")
+   CodeFabrik) rssfile=$(echo "$wikiDir/CodeFabrik/CodeFabrik-rss.md")
 	  ;;
-   Download) rssfile=$(echo "$GedankenspeicherwikiDir/CodeFabrik/Download-rss.md")
+   Download) rssfile=$(echo "$wikiDir/CodeFabrik/Download-rss.md")
 	  ;;
 esac
 ```
@@ -73,7 +73,7 @@ esac
 ```bash
 #*choose}}
 
-#rssfile=$(echo "$GedankenspeicherwikiDir/CodeFabrik/rss-source.rss")
+#rssfile=$(echo "$wikiDir/CodeFabrik/rss-source.rss")
 sed -i "$ d" $rssfile
 #tabs="$(xclip -selection clipboard -o)"
 tabs="$(wl-paste -n)"

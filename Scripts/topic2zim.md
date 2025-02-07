@@ -46,7 +46,7 @@ noweb.py -Rtopic2zim.sh topic2zim.md > topic2zim.sh && echo 'topic2zim.sh' && da
 source config.sh; # load the config library functions
 journalDir="$(config_get journalDir)"
 journalPage="$(config_get journalPage)"
-GedankenspeicherwikiDir="$(config_get GedankenspeicherwikiDir)"
+wikiDir="$(config_get wikiDir)"
 
 #*request}}
 
@@ -103,21 +103,21 @@ then
 	tags=$(echo $request | cut -s -d "~" -f 4)
 	additiontext=$(echo $request | cut -s -d "~" -f 5)
 	case ${chooseWhere} in
-		Spass) folder=$(echo "$GedankenspeicherwikiDir/Spaß_Stream")
+		Spass) folder=$(echo "$wikiDir/Spaß_Stream")
 			l=37;;
-		Physik) folder=$(echo "$GedankenspeicherwikiDir/Physik")
+		Physik) folder=$(echo "$wikiDir/Physik")
 			l=37;;
-		Mathematik) folder=$(echo "$GedankenspeicherwikiDir/Mathematik")
+		Mathematik) folder=$(echo "$wikiDir/Mathematik")
 			l=37;;
-		Blogging) folder=$(echo "$GedankenspeicherwikiDir/Blogging")
+		Blogging) folder=$(echo "$wikiDir/Blogging")
 			l=37;;
-		Philosophie) folder=$(echo "$GedankenspeicherwikiDir/Philosophie")
+		Philosophie) folder=$(echo "$wikiDir/Philosophie")
 			l=37;;
-		Naturwissenschaften_und_Instrumentarien) folder=$(echo "$GedankenspeicherwikiDir/Naturwissenschaften_und_Instrumentarien")
+		Naturwissenschaften_und_Instrumentarien) folder=$(echo "$wikiDir/Naturwissenschaften_und_Instrumentarien")
 			l=37;;
-		CodeFabrik) folder=$(echo "$GedankenspeicherwikiDir/CodeFabrik")
+		CodeFabrik) folder=$(echo "$wikiDir/CodeFabrik")
 			l=37;;
-		Zettelkasten) folder=$(echo "$GedankenspeicherwikiDir/Zettelkasten")
+		Zettelkasten) folder=$(echo "$wikiDir/Zettelkasten")
 			l=37;;
 	esac
 
@@ -171,24 +171,24 @@ echo -e "			- [X] [[/$(basename ${topicfile} .md)|${topic}]]" >> "$folder".md
 *tabs to topics*
 ```bash
 case ${choose} in
-	Spass) file=$(echo "$GedankenspeicherwikiDir/Spaß_Stream/0»Journal_1_Spaß_Stream.md")
+	Spass) file=$(echo "$wikiDir/Spaß_Stream/0»Journal_1_Spaß_Stream.md")
 		l=5;;
-	Zettelkasten) file=$(echo "$GedankenspeicherwikiDir/Zettelkasten/0»Journal_Zettelkasten.md")
+	Zettelkasten) file=$(echo "$wikiDir/Zettelkasten/0»Journal_Zettelkasten.md")
 		l=5;;
 	Heute) tabs2zim.sh $additiontext
 		exit
 		;;
-	Physik) file=$(echo "$GedankenspeicherwikiDir/Physik/0»Journal_Physik.md")
+	Physik) file=$(echo "$wikiDir/Physik/0»Journal_Physik.md")
 		l=5;;
-	Mathematik) file=$(echo "$GedankenspeicherwikiDir/Mathematik/0»Journal_Mathematik.md")
+	Mathematik) file=$(echo "$wikiDir/Mathematik/0»Journal_Mathematik.md")
 		l=5;;
-	Blogging) file=$(echo "$GedankenspeicherwikiDir/Blogging/0»Journal_Blogging.md")
+	Blogging) file=$(echo "$wikiDir/Blogging/0»Journal_Blogging.md")
 		l=5;;
-	Philosophie) file=$(echo "$GedankenspeicherwikiDir/Philosophie/0»Journal_Philosophie.md")
+	Philosophie) file=$(echo "$wikiDir/Philosophie/0»Journal_Philosophie.md")
 		l=5;;
-	Naturwissenschaften_und_Instrumentarien) file=$(echo "$GedankenspeicherwikiDir/Naturwissenschaften_und_Instrumentarien/0»Journal_Naturwissenschaften_und_Instrumentarien.md")
+	Naturwissenschaften_und_Instrumentarien) file=$(echo "$wikiDir/Naturwissenschaften_und_Instrumentarien/0»Journal_Naturwissenschaften_und_Instrumentarien.md")
 		l=5;;
-	CodeFabrik) file=$(echo "$GedankenspeicherwikiDir/CodeFabrik/0»Journal_1_CodeFabrik.md")
+	CodeFabrik) file=$(echo "$wikiDir/CodeFabrik/0»Journal_1_CodeFabrik.md")
 		l=5;;
 esac
 #echo $tabs

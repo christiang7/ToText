@@ -244,8 +244,12 @@ function ttvid(){
         yt-dlp -q --sub-langs "en,de" --write-sub --write-thumbnail --write-auto-sub --sub-format "vtt" --skip-download -i ${source} -o "$folder/%(title)s.%(ext)s"
         mv "$folder"/"$oname".en.vtt "$fileFolder"/"$name".en.vtt
         mv "$folder"/"$oname".de.vtt "$fileFolder"/"$name".de.vtt
+        convert "$folder/$oname.jpg" "$fileFolder"/"$File".avif
+        convert "$folder/$oname.jpeg" "$fileFolder"/"$File".avif
         convert "$folder/$oname.webp" "$fileFolder"/"$File".avif
         rm "$folder/$oname.webp"
+        rm "$folder/$oname.jpg"
+        rm "$folder/$oname.jpeg"
         local subtitlefile1="$name".en.vtt
         local subtitlefile2="$name".de.vtt
     else

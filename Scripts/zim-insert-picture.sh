@@ -2,7 +2,7 @@
 source config.sh; # load the config library functions
 journalPage="$(config_get journalPage)"
 templateDir="$(config_get templateDir)"
-GedankenspeicherwikiDir="$(config_get GedankenspeicherwikiDir)"
+wikiDir="$(config_get wikiDir)"
 source tt-lib.sh
 
 File=$(cleanName "$1")

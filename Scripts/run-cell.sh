@@ -1,3 +1,3 @@
 #!/bin/bash
-# Mi 5. Feb 19:04:25 CET 2025
-noweb.py -Rtt-change-format.sh tt-change-format.sh.md > tt-change-format.sh && echo 'fertig'
+# Fr 7. Feb 13:35:35 CET 2025
+noweb.py -Rtt-lib.sh tt-lib.sh.md > tt-lib.sh && echo 'tt-lib.sh' && date

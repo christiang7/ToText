@@ -23,7 +23,7 @@ noweb.py -Rcreate-today-link.sh create-today-link.md > create-today-link.sh && e
 source config.sh; # load the config library functions
 journalPage="$(config_get journalPage)"
 journalDir="$(config_get journalDir)"
-GedankenspeicherwikiDir="$(config_get GedankenspeicherwikiDir)"
+wikiDir="$(config_get wikiDir)"
 
 folder=$(date +"$journalDir/%Y/%m/%d")
 foldermonth=$(date +"$journalDir/%Y/%m/")
@@ -45,10 +45,10 @@ mkdir -p $folder
 echo $folder
 rm -r ~/Heute
 ln -fs "$folder" ~/Heute
-sed "/###/d" $GedankenspeicherwikiDir/Zim-Arbeitsflaeche/Arbeitsflaeche.md > $GedankenspeicherwikiDir/Zim-Arbeitsflaeche/Arbeitsflaeche.md.tmp
-mv $GedankenspeicherwikiDir/Zim-Arbeitsflaeche/Arbeitsflaeche.md.tmp $GedankenspeicherwikiDir/Zim-Arbeitsflaeche/Arbeitsflaeche.md
-sed -i "17 i### $(date +"[[$journalPage:%Y:%m:%d|Heute]]")" $GedankenspeicherwikiDir/Zim-Arbeitsflaeche/Arbeitsflaeche.md
-sed -i "18 i### $(date -d "yesterday" +"[[$journalPage:%Y:%m:%d|Gestern]]")" $GedankenspeicherwikiDir/Zim-Arbeitsflaeche/Arbeitsflaeche.md
+sed "/###/d" $wikiDir/Zim-Arbeitsflaeche/Arbeitsflaeche.md > $wikiDir/Zim-Arbeitsflaeche/Arbeitsflaeche.md.tmp
+mv $wikiDir/Zim-Arbeitsflaeche/Arbeitsflaeche.md.tmp $wikiDir/Zim-Arbeitsflaeche/Arbeitsflaeche.md
+sed -i "17 i### $(date +"[[$journalPage:%Y:%m:%d|Heute]]")" $wikiDir/Zim-Arbeitsflaeche/Arbeitsflaeche.md
+sed -i "18 i### $(date -d "yesterday" +"[[$journalPage:%Y:%m:%d|Gestern]]")" $wikiDir/Zim-Arbeitsflaeche/Arbeitsflaeche.md
 #ln -f "$folder".md $journalDir/Gedankenwanderung/Zim-Arbeitsflaeche/Heute.md
 ```
 

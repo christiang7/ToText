@@ -1,8 +1,6 @@
 # webpage-pdf
-
-- [X] **[../webpage-pdf](./webpage-pdf)**
-
 Text creation time: So 27. Dez 22:00:40 CET 2020 Modification time: Mi 23. Dez 15:48:55 CET 2020
+
  
  There is a problem with the firefox addon external application
 

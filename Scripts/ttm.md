@@ -12,7 +12,7 @@ noweb.py -Rttm ttm.md > ttm && chmod u+x ttm && echo 'fertig'
 source config.sh; # load the config library functions
 journalDir="$(config_get journalDir)"
 journalPage="$(config_get journalPage)"
-GedankenspeicherwikiDir="$(config_get GedankenspeicherwikiDir)"
+wikiDir="$(config_get wikiDir)"
 source tt-lib.sh
 
 

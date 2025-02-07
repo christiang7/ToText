@@ -1,11 +1,8 @@
 # zim-insert-picture
 Created Donnerstag [Zettelkasten:2022:12:29]()
-Backlink [GedankenspeicherCoding](../GedankenspeicherCoding.md)
-
-- [X] @NOTIZ @PROGRAMM @SCRIPT  **zim-insert-picture.sh**
 
 
-Für die Benutzung von Krita und der export in der Kommandozeile, weil Krita speichert die Layer Einstellungen nicht in der Datei ab.
+For using ``Krita`` and export in commandline, because ``Krita`` does not save layer information in file.
 
 ``krita Vorlage-Notiz.kra --export --export-filename Vorlage-Notiz.avif``
 
@@ -26,7 +23,7 @@ chmod u+x zim-insert-picture.sh && ln -sf $(pwd)/zim-insert-picture.sh ~/.local/
 source config.sh; # load the config library functions
 journalPage="$(config_get journalPage)"
 templateDir="$(config_get templateDir)"
-GedankenspeicherwikiDir="$(config_get GedankenspeicherwikiDir)"
+wikiDir="$(config_get wikiDir)"
 source tt-lib.sh
 
 File=$(cleanName "$1")

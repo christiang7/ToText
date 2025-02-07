@@ -35,8 +35,8 @@ then
 		--field="Tags" \
 		--field="Something more":TXT \
 		"$tags" "$additiontext")
-		tags=$(echo $abfrage | cut -s -d "~" -f 1)
-		additiontext=$(echo $abfrage | cut -s -d "~" -f 2)
+    tags=$(echo $abfrage | cut -s -d "~" -f 1)
+    additiontext=$(echo $abfrage | cut -s -d "~" -f 2)
     touch "$File".md
     mv "$File".md "$folder"/"$File".md
     echo "Content-Type: text/x-zim-wiki" >> "$folder"/"$File".md
