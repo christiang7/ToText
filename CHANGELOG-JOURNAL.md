@@ -13,12 +13,12 @@
 	- [ ] rewrite [ttdm]
 	- [ ] combine [tt-change] with [ttc]
 		- [ ] also change video files with subtitles
-	- [ ] [Download-Video.sh] make possible for downloading from other websites then [youtube]
 - [X] Doing (2)
 	- [ ] integrate plotting in [zim] and or [markdown] with [noweb.py], maybe [python] or [sage]
 	- [ ] combine ``ttex`` function with [template-tex] script, using the same template in [tt-lib.sh]
 
 ### 2025-02-07
+- [X] [Download-Video.sh] make possible for downloading from other websites then [youtube], but sites like arte tv not working correctly, using mediatekview
 - [X] change variables name to more understandable names in config file
 - [X] rename [Download-Video-Select.sh] to [Download-Video.sh]
 

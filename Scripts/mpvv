@@ -15,7 +15,6 @@ vimeo="$(echo "$website" | grep vimeo)"
 if [[ ! $yt == "" ]];
 then
 	yt-dlp --get-description "$website" &
-	ofile=$(yt-dlp -f "311+234/232+234/612+234/[height<780]+ba" --print filename -s -i "${website}" -o '%(title)s.%(ext)s')
 	profile="youtube"
 	#website="https://iv.melmac.space/watch?v="
 elif [[ ! $alttwitch == "" ]];
@@ -23,28 +22,24 @@ then
 	videoid=$(basename $website)
 	website="https://www.twitch.tv/videos/${videoid}"
 	links2 -dump ${website} &
-	ofile=$(yt-dlp -f "720p30/720p60/720p50/720/720p/720p-0/720p-1/1080p/1080" --print filename -s -i "${website}" -o '%(title)s.%(ext)s')
 	profile="twitch"
 elif [[ ! $twitch == "" ]];
 then
 	links2 -dump ${website} &
-	ofile=$(yt-dlp -f "720p30/720p60/720p50/720/720p/720p-0/720p-1/1080p/1080" --print filename -s -i "${website}" -o '%(title)s.%(ext)s')
 	profile="twitch"
 elif [[ ! $invidious == "" ]];
 then
 	links2 -dump ${website} &
-	ofile=$(yt-dlp --print filename -s -i "${website}" -o '%(title)s.%(ext)s')
 	profile="invidious"
 elif [[ ! $aeon == "" || ! "$vimeo" = "" ]];
 then
 	links2 -dump ${website} &
-	ofile=$(yt-dlp --print filename -s -i "${website}" -o '%(title)s.%(ext)s')
 	profile="normal"
 else
 	links2 -dump ${website} &
-	ofile=$(yt-dlp --print filename -s "${website}" -o '%(title)s.%(ext)s')
 	profile="normal"
 fi
+ofile=$(yt-dlp --print filename -s "${website}" -o '%(title)s.%(ext)s')
 echo $profile
 
 File=$(cleanName "$ofile")

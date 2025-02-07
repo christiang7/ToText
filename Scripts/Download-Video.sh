@@ -6,9 +6,39 @@ outputDir="$(config_get outputDir)"
 website="$1"
 echo "$website"
 
-yt-dlp --no-mtime --write-thumbnail --fixup force -f "311+234/232+234/612+234/[height<780]+ba" --add-chapters --sub-langs "en,de" --write-sub --write-auto-sub --sub-format "vtt" --external-downloader aria2c --http-chunk-size 5M --downloader-args aria2c:"-c -j 2 -s 2 -x 4 -k 50M" -o "$outputDir/%(title)s.%(ext)s" -i "${website}"
+yt="$(echo "$website" | grep youtube)"
+twitch="$(echo "$website" | grep twitch)"
+alttwitch="$(echo "$website" | grep safetwitch)"
+invidious="$(echo "$website" | grep invidious)"
+aeon="$(echo "$website" | grep aeon)"
+vimeo="$(echo "$website" | grep vimeo)"
+if [[ ! $yt == "" ]];
+then
+	format="311+234/232+234/612+234/[height<780]+ba"
+elif [[ ! $alttwitch == "" ]];
+then
+	videoid=$(basename $website)
+	website="https://www.twitch.tv/videos/${videoid}"
+	format="720p30/720p60/720p50/720/720p/720p-0/720p-1/1080p/1080"
+elif [[ ! $twitch == "" ]];
+then
+	format="720p30/720p60/720p50/720/720p/720p-0/720p-1/1080p/1080"
+elif [[ ! $invidious == "" ]];
+then
+	videoid=$(basename $website)
+	website="https://www.youtube/com/${videoid}"
+	format="311+234/232+234/612+234/[height<780]+ba"
+elif [[ ! $aeon == "" || ! "$vimeo" = "" ]];
+then
+	format="best[height<=800]"
+else
+	format="best[height<=800]/bv*[height<=780]+ba"
+fi
+echo $format
 
-ofile=$(yt-dlp -f "311+234/232+234/612+234/[height<780]+ba" --print filename -s "${website}" -o '%(title)s.%(ext)s')
+yt-dlp --no-mtime --write-thumbnail --fixup force -f "$format" --add-chapters --sub-langs "en,de" --write-sub --write-auto-sub --sub-format "vtt" --external-downloader aria2c --http-chunk-size 5M --downloader-args aria2c:"-c -j 2 -s 2 -x 4 -k 50M" -o "$outputDir/%(title)s.%(ext)s" -i "${website}"
+
+ofile=$(yt-dlp --print filename -s "${website}" -o '%(title)s.%(ext)s')
 extens=${ofile##*.}
 name=${ofile%.*}
 additiontext="$(yt-dlp --get-description ${website})"
