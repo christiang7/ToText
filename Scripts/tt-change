@@ -17,15 +17,57 @@ extens3=${filename2##*.} # and the original file extension
 #echo "${File2}"
 #echo $extens2
 #echo "${filename2}"
+
+function ttc(){
+    local oldFile=$(basename "$1")
+    local File=$(basename "$2")
+    local File=$(cleanName "$File")
+    local oldname=${oldFile%.*} #only the filename
+    local filename=${File%.*} #only the filename
+    local extens=${File##*.}
+
+    sed -i "1 s/$oldFile/$File/" "$File".md
+    sed -i "2 s/$oldFile/$File/" "$File".md
+    sed -i "3 s/$oldFile/$File/g" "$File".md
+    sed -i "4 s/$oldFile/$File/g" "$File".md
+    sed -i "5 s/$oldFile/$File/g" "$File".md
+    sed -i "6 s/$oldFile/$File/g" "$File".md
+    sed -i "s/$oldFile/$File/g" "$File".md
+    sed -i "s/$oldname/$filename/g" "$File".md
+    if [[ pdf == $extens ]]
+    then
+        #Wikiprev
+        rm "$oldFile".png
+        rm "$oldFile".avif
+        pdftoppm -png -singlefile "$File" "$File"
+        convert "$File".png -resize 1200x1200 "$File".avif
+        rm "$File".png
+        sed -i "s/$oldFile.png/$File.avif/g" "$File".md
+        sed -i "s/$oldFile.avif/$File.avif/g" "$File".md
+        #Opentxt
+    elif [[ mp4 == $extens || mov == $extens || mkv == $extens || flv = $extens  ]]
+    then
+        mv "$oldFile".png "$File".png
+        mv "$oldFile".avif "$File".avif
+        sed -i "s/$oldFile.png/$File.avif/g" "$File".md
+        sed -i "s/$oldFile.avif/$File.avif/g" "$File".md
+        sed -i "s/\*$oldFile.en.vtt\*/\*$File.en.vtt\*/g" "$File".md
+        sed -i "s/\*$oldFile.de.vtt\*/\*$File.de.vtt\*/g" "$File".md
+        sed -i "s/\*$oldFile.ttml\*/\*$File.ttml\*/g" "$File".md
+        #Wikiprev
+        #Opentxt
+    fi
+}
+
 if [[ $extens2 == md ]]
 then
     abfrage=$(yad --title="Enter new filename" --text="Type new filename" \
-		--form --width 500 --separator="~" --item-separator=","  \
-		--field="Name" \
-		--field="Source:":CBE \
-		--field="Tags" \
-		--field="Something more":TXT \
-		"$(basename ${filename2} .$extens3)" "Christian Gößl,Internet," "" "")
+        --form --width 500 --separator="~" --item-separator=","  \
+        --field="Name" \
+        --field="Source:":CBE \
+        --field="Tags" \
+        --field="Something more":TXT \
+        "$(basename ${filename2} .$extens3)" "Christian Gößl,Internet," "" "")
     if [ ! $? -eq 1 ];
     then
         Newname=$(echo $abfrage | cut -s -d "~" -f 1)
@@ -53,14 +95,15 @@ then
         sed -i "s/\[\[..\/\]\]/\[\[..\/\]\]\n $additiontext/" "$Newname"."$extens3".md
         echo "$Newname"."$extens3"
     fi
+
 else
     abfrage=$(yad --title="Enter new filename" --text="Type new filename" \
-		--form --width 500 --separator="~" --item-separator=","  \
-		--field="Name" \
-		--field="Source:":CBE \
-		--field="Tags" \
-		--field="Something more":TXT \
-		"$filename" "Christian Gößl,Internet," "" "")
+        --form --width 500 --separator="~" --item-separator=","  \
+        --field="Name" \
+        --field="Source:":CBE \
+        --field="Tags" \
+        --field="Something more":TXT \
+        "$filename" "Christian Gößl,Internet," "" "")
     if [ ! $? -eq 1 ];
     then
         Newname=$(echo $abfrage | cut -s -d "~" -f 1)
@@ -86,3 +129,4 @@ else
         echo "$Newname"."$extens"
     fi
 fi
+

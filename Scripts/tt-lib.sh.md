@@ -355,12 +355,14 @@ function ttex(){
     mv "$f".sbl "$filename".sbl
     mv "$f".ist "$filename".ist
     mv "$filename".* "$folder"/"$foldertex"/ #
+
     #touch "$foldertex".md #
     WikiMarkprev "$folder" "$foldertex"
     Timestamps "$folder" "$foldertex"  "$folder/$foldertex"
     echo "@LATEX $tags" >> "$folder"/"$foldertex".md
     echo -e "[[./$filename.md]]\n[[./$filename.tex]]\n[[./$filename.pdf]]" >> "$folder"/"$foldertex".md
     echo -e "$source\n$additiontext" >> "$folder"/"$foldertex".md
+
     # latex file in markdown
     echo -e "# ${filename}.tex" >> "$folder"/"$foldertex"/"${filename}".md
     echo -e "Created [$(date +%Y-%m-%d)]()\n" >> "$folder"/"$foldertex"/"${filename}".md

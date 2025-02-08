@@ -46,25 +46,25 @@ aeon="$(echo "$website" | grep aeon)"
 vimeo="$(echo "$website" | grep vimeo)"
 if [[ ! $yt == "" ]];
 then
-	format="311+234/232+234/612+234/[height<780]+ba"
+	format="311+234/232+234/612+234/[height<780][ext=mp4]+ba"
 elif [[ ! $alttwitch == "" ]];
 then
 	videoid=$(basename $website)
 	website="https://www.twitch.tv/videos/${videoid}"
-	format="720p30/720p60/720p50/720/720p/720p-0/720p-1/1080p/1080"
+	format="720p30/720p60/720p50/720/720p/720p-0/720p-1/1080p/1080/best/[ext=mp4]"
 elif [[ ! $twitch == "" ]];
 then
-	format="720p30/720p60/720p50/720/720p/720p-0/720p-1/1080p/1080"
+	format="720p30/720p60/720p50/720/720p/720p-0/720p-1/1080p/1080/best[ext=mp4]"
 elif [[ ! $invidious == "" ]];
 then
 	videoid=$(basename $website)
 	website="https://www.youtube/com/${videoid}"
-	format="311+234/232+234/612+234/[height<780]+ba"
+	format="311+234/232+234/612+234/[height<780][ext=mp4]+ba"
 elif [[ ! $aeon == "" || ! "$vimeo" = "" ]];
 then
-	format="best[height<=800]"
+	format="best[height<=800][ext=mp4]"
 else
-	format="best[height<=800]/bv*[height<=780]+ba"
+	format="best[height<=800]/bv*[height<=780][ext=mp4]+ba"
 fi
 echo $format
 

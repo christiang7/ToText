@@ -54,7 +54,7 @@ else
 	links2 -dump ${website} &
 	profile="normal"
 fi
-ofile=$(yt-dlp --print filename -s "${website}" -o '%(title)s.%(ext)s')
+ofile=$(yt-dlp -f "[ext=mp4]" --print filename -s "${website}" -o '%(title)s.%(ext)s')
 echo $profile
 
 File=$(cleanName "$ofile")
@@ -75,7 +75,7 @@ mpv --profile="$profile" --screenshot-template="Screenshot-$File-%P" "$website"
 name=${File%.*}
 extens=${File##*.}
 
-if [ ! -f "$folder"/"$File.md" ]
+if [[ ! -f "$tempInputDir"/"$File.md" ]]
 then
 	ttvid "$tempInputDir" "$File" "$tags" "$website" "$additiontext" "$ofile" "yes" "yes"
 fi

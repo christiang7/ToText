@@ -11,11 +11,13 @@
 	- [ ] integrate markdown template in [template-calculation] script
 	- [ ] [tt] with real path of file not the terminal path, ``realpath`` program not working, using the real path of the [.desktop] file with ``tt $f``
 	- [ ] rewrite [ttdm]
-	- [ ] combine [tt-change] with [ttc]
-		- [ ] also change video files with subtitles
 - [X] Doing (2)
 	- [ ] integrate plotting in [zim] and or [markdown] with [noweb.py], maybe [python] or [sage]
 	- [ ] combine ``ttex`` function with [template-tex] script, using the same template in [tt-lib.sh]
+
+### 2025-02-08
+- [X] combine [tt-change] with [ttc]
+	- [X] also change video files with subtitles
 
 ### 2025-02-07
 - [X] [Download-Video.sh] make possible for downloading from other websites then [youtube], but sites like arte tv not working correctly, using mediatekview

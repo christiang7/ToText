@@ -18,12 +18,12 @@ abfrage=$(yad --title="New Latex File" --text="Necessary Informations:" \
 	--form --width 500 --separator="~" --item-separator=","  \
 	--field="Filename:" \
 	--field="Which template:":CB \
-	--field="Shortname for language":CB \
+	--field="Shortname for language":CBE \
 	--field="Author:":CBE \
 	--field="Tags:":CBE \
 	--field="Git init?":CB \
 	--field="Description:":TXT \
-	"Filename" "Programming,normal,Rechnung,Schreiben,Bewerbung" "cpp,python,julia,html,css,javascript,bash,lua,other" "Christian Gößl,Internet" ",physic,math" "No,Yes" "$additiontext")
+	"Filename" "Programming,normal,Rechnung,Schreiben,Bewerbung" "cpp,python,julia,html,css,javascript,bash,lua, " "Christian Gößl,Internet" ",physic,math" "No,Yes" "$additiontext")
 
 if [ ! $? -eq 1 ];
 then
