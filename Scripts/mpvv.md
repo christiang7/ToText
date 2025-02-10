@@ -1,5 +1,5 @@
 # mpvv
-Created Samstag [[2021:04:24]]
+Created Samstag 2021:04:24
 
 Playing videos from websites with used tools mpv and yt-dlp
 
@@ -55,13 +55,17 @@ else
 	profile="normal"
 fi
 ofile=$(yt-dlp -f "[ext=mp4]" --print filename -s "${website}" -o '%(title)s.%(ext)s')
+if [[ $ofile == "" ]]
+then
+	ofile=$(basename "${website}")
+fi
 echo $profile
 
 File=$(cleanName "$ofile")
 
 #*temp-video-description}}
 
-#DRI_PRIME=pci-0000_01_00_0 __VK_LAYER_NV_optimus=NVIDIA_only __GLX_VENDOR_LIBRARY_NAME=nvidia mpv --profile="$profile" "$website"
+#DRI_PRIME=pci-0000_01_00_0 __VK_LAYER_NV_optimus=NVIDIA_only__ GLX_VENDOR_LIBRARY_NAME=nvidia mpv --profile="$profile" "$website"
 echo -e "\nfile://$tempInputDir/$File".md
 mpv --profile="$profile" --screenshot-template="Screenshot-$File-%P" "$website"
 

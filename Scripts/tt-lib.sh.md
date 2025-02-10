@@ -93,16 +93,16 @@ function file-description(){
     local additiontext=$5
     local picture=$6
     local folderSwitch=$7
-    local fileFolder=$folder
+    local fileFolder=
     if [[ ! $folderSwitch == "" ]]
     then
         local extens=${File##*.}
         local Filename=${File%.*}
-        local fileFolder=$Filename
+        fileFolder=$Filename
         mkdir -p "$folder"/"$fileFolder"
         mv "$folder"/"$File" "$folder"/"$fileFolder"/"$File"
         mv "$folder"/"$fileFolder" "$folder"/"$File"
-        local fileFolder="$fileFolder.$extens"
+        fileFolder="$fileFolder.$extens"
     fi
     Wikiprev "$folder" "$File"
     Timestamps "$folder" "$File" "$fileFolder"
@@ -333,6 +333,13 @@ using ``ttex`` function with the parameters as following
     p2 - cleaned filename
     p3 - original file
 ```
+
+process
+- input
+- move to tex folder
+- make note file
+- make description file of tex file
+    - input tex file
 
 *ttex*
 ```bash

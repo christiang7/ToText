@@ -77,7 +77,7 @@ yt-dlp --no-mtime --write-thumbnail --fixup force -f "$format" --add-chapters --
 
 *create note file*
 ```bash
-ofile=$(yt-dlp --print filename -s "${website}" -o '%(title)s.%(ext)s')
+ofile=$(yt-dlp -f "[ext=mp4]" --print filename -s "${website}" -o '%(title)s.%(ext)s')
 extens=${ofile##*.}
 name=${ofile%.*}
 additiontext="$(yt-dlp --get-description ${website})"

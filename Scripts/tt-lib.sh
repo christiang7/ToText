@@ -44,12 +44,14 @@ function ttex(){
     mv "$f".sbl "$filename".sbl
     mv "$f".ist "$filename".ist
     mv "$filename".* "$folder"/"$foldertex"/ #
+
     #touch "$foldertex".md #
     WikiMarkprev "$folder" "$foldertex"
     Timestamps "$folder" "$foldertex"  "$folder/$foldertex"
     echo "@LATEX $tags" >> "$folder"/"$foldertex".md
     echo -e "[[./$filename.md]]\n[[./$filename.tex]]\n[[./$filename.pdf]]" >> "$folder"/"$foldertex".md
     echo -e "$source\n$additiontext" >> "$folder"/"$foldertex".md
+
     # latex file in markdown
     echo -e "# ${filename}.tex" >> "$folder"/"$foldertex"/"${filename}".md
     echo -e "Created [$(date +%Y-%m-%d)]()\n" >> "$folder"/"$foldertex"/"${filename}".md
@@ -84,7 +86,7 @@ function file-description(){
     local additiontext=$5
     local picture=$6
     local folderSwitch=$7
-    local fileFolder=$folder
+    local fileFolder=
     if [[ ! $folderSwitch == "" ]]
     then
         local extens=${File##*.}
@@ -93,7 +95,7 @@ function file-description(){
         mkdir -p "$folder"/"$fileFolder"
         mv "$folder"/"$File" "$folder"/"$fileFolder"/"$File"
         mv "$folder"/"$fileFolder" "$folder"/"$File"
-        local fileFolder="$fileFolder.$extens"
+        fileFolder="$fileFolder.$extens"
     fi
     Wikiprev "$folder" "$File"
     Timestamps "$folder" "$File" "$fileFolder"

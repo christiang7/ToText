@@ -1,8 +1,6 @@
 # Changelog-Journal
 
 - [X] Backlog
-	- [ ] mit [git] bestimmte Versionen und Tags verwenden, um bestimmte Zustände von Dateien wiederzugeben und daraus einen Release machen, 	gibt es Wege diese Lokal zu speichern?
-	- [ ] automatic thumbnail update for [xournalpp] files
 	- [ ] rewrite everything in english
 	- [ ] links for used tools in [README] file
 	- [ ] make a website for [ToTexT] scripts
@@ -15,9 +13,38 @@
 	- [ ] integrate plotting in [zim] and or [markdown] with [noweb.py], maybe [python] or [sage]
 	- [ ] combine ``ttex`` function with [template-tex] script, using the same template in [tt-lib.sh]
 
+Plotting - Tutorial
+https://doc.sagemath.org/html/en/tutorial/tour_plotting.html
+SageMath: saving picture of graph to a file | AnonymousOverflow
+https://overflow.adminforge.de/questions/70979154/sagemath-saving-picture-of-graph-to-a-file
+Coding in Python for Sage - Developer Guide
+https://doc.sagemath.org/html/en/developer/coding_in_python.html
+Tutorial: Programming in Python and Sage - Thematic Tutorials
+https://doc.sagemath.org/html/en/thematic_tutorials/tutorial-programming-python.html
+
+
+### 2025-02-09 Draft of html 2 markdown
+
+Procedure
+- using the [download tool] for saving a website in a [zip] file
+- then extract
+- then convert [html] to [markdown]
+- then have a folder with the original version and a annotated version of the website
+
+GitHub - opengovsg/pdf2md: A PDF to Markdown converter
+https://github.com/opengovsg/pdf2md
+GitHub - suntong/html2md: HTML to Markdown converter
+https://github.com/suntong/html2md
+GitHub - opendatalab/MinerU: A high-quality tool for convert PDF to Markdown and JSON.一站式开源高质量数据提取工具，将PDF转换成Markdown和JSON格式。
+https://github.com/opendatalab/MinerU
+
+
 ### 2025-02-08
 - [X] combine [tt-change] with [ttc]
 	- [X] also change video files with subtitles
+
+GitHub - Osndok/zim-plugin-append: Makes adding text to Zim pages from the command line (or another unix process) possible without further user interaction.
+https://github.com/Osndok/zim-plugin-append
 
 ### 2025-02-07
 - [X] [Download-Video.sh] make possible for downloading from other websites then [youtube], but sites like arte tv not working correctly, using mediatekview
@@ -44,6 +71,9 @@
 - [X] rewrite [ttd] with the [tt] script
 - [X] logging in the [.desktop] files enabled, in folder ``~/.config/tt/``
 
+Writing errors and output to a text file and Console | AnonymousOverflow
+https://overflow.adminforge.de/questions/3008545/writing-errors-and-output-to-a-text-file-and-console
+
 ### 2025-02-03
 - [X] option for [tt] execute without ``yad`` request
 - [X] all ``video`` related scripts are connected via ``ttvid`` function
@@ -62,6 +92,8 @@
 	- [X] pdf function
 	- [X] video function
 
+Use config file for my shell script | AnonymousOverflow
+https://overflow.adminforge.de/exchange/unix/questions/175648/use-config-file-for-my-shell-script#331965
 ### 2025-02-01
 - [X] publish on [github]
 - [X] moved all [scripts] to [Scripts] folder
