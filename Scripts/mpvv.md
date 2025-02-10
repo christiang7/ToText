@@ -54,10 +54,11 @@ else
 	links2 -dump ${website} &
 	profile="normal"
 fi
-ofile=$(yt-dlp -f "[ext=mp4]" --print filename -s "${website}" -o '%(title)s.%(ext)s')
+ofile=$(yt-dlp --print filename -s "${website}" -o '%(title)s').mp4
+#ofile=${ofile%.*}.mp4
 if [[ $ofile == "" ]]
 then
-	ofile=$(basename "${website}")
+	ofile=$(basename "${website}").mp4
 fi
 echo $profile
 
