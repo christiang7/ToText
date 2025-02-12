@@ -24,8 +24,9 @@ abfrage=$(yad --title="New Project calculation" --text="Necessary Informations:"
 	--field="Shortname for language":CB \
 	--field="Author":CBE \
 	--field="Tags":CBE \
+	--field="Git init?":CB \
 	--field="Description":TXT \
-	"$Project" "$File" "$langName" "Christian Gößl,Internet" ",physic,math" "$additiontext")
+	"$Project" "$File" "$langName" "Christian Gößl,Internet" ",physic,math" "Yes,No" "$additiontext")
 if [ ! $? -eq 1 ];
 then
 	Project=$(echo $abfrage | cut -s -d "~" -f 1)
@@ -33,7 +34,8 @@ then
 	langname=$(echo $abfrage | cut -s -d "~" -f 3)
 	source=$(echo $abfrage | cut -s -d "~" -f 4)
 	tags=$(echo $abfrage | cut -s -d "~" -f 5)
-	additiontext=$(echo $abfrage | cut -s -d "~" -f 6)
+	gitinit=$(echo $abfrage | cut -s -d "~" -f 6)
+	additiontext=$(echo $abfrage | cut -s -d "~" -f 7)
 	File=$(cleanName "$File")
     ProjectName="$Project"
     Project=$(cleanName "$Project")
@@ -53,12 +55,14 @@ then
 
 	program-template "$folder/$Project" "${File}"
 
-    cd "$folder/$Project"
-    git init
-    git add README.md
-    git add "${File}".md
-    git add ${Filename}.${extens}
-    git commit -a -m "init git"
-
+	if [[ $gitinit == "Yes" ]];
+	then
+		cd "$folder/$Project"
+		git init
+		git add README.md
+		git add "${File}".md
+		git add ${Filename}.${extens}
+		git commit -a -m "init git"
+	fi
 fi
 

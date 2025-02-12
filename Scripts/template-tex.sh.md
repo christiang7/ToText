@@ -161,7 +161,7 @@ Creation of template
 
 cp "$templateDir"/programming-template.tex "$folder"/"$foldertex"/"${File}"
 
-tex-description "$folder" "${File}" "$foldertex" "$additiontext\n\\\begin{minted}[linenos=true,bgcolor=lightgraycolor,numberblanklines=true,showspaces=false,breaklines=true]{${langname}}\n#*${File}}}\n\\\end{minted}" "#*run program}}"
+tex-description "$folder" "${File}" "$foldertex" "$additiontext\n\\\begin{minted}[linenos=true,bgcolor=lightgraycolor,numberblanklines=true,showspaces=false,breaklines=true]{${langname}}\n#*${filename}.${extens}}}\n\\\end{minted}" "#*run program}}"
 
 program-template "$folder/$foldertex" "${filename}.${extens}" "${filename}.tex"
 

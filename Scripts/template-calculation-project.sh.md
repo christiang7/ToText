@@ -1,4 +1,4 @@
-# zim-template-calculation
+# template-calculation-project
 Created [2023-06-25]()
 math
 - [X] **zim-template-calculation** [README.md](README.md)
@@ -17,17 +17,17 @@ math
 
 *run-cell.sh*
 ```bash
-noweb.py -Rzim-template-calculation.sh zim-template-calculation.md > zim-template-calculation.sh && echo 'fertig'
+noweb.py -Rtemplate-calculation-project.sh template-calculation-project.sh.md > template-calculation-project.sh && date
 ```
 
 
 ```bash
-chmod u+x zim-template-calculation.sh && ln -sf $(pwd)/zim-template-calculation.sh ~/.local/bin/zim-template-calculation.sh && echo 'fertig'
+chmod u+x template-calculation-project.sh && ln -sf $(pwd)/template-calculation-project.sh ~/.local/bin/template-calculation-project.sh && echo 'fertig'
  ```
 
 
 
-*zim-template-calculation.sh*
+*template-calculation-project.sh*
 ```bash
 #*preamble}}
 
@@ -81,8 +81,9 @@ abfrage=$(yad --title="New Project calculation" --text="Necessary Informations:"
 	--field="Shortname for language":CB \
 	--field="Author":CBE \
 	--field="Tags":CBE \
+	--field="Git init?":CB \
 	--field="Description":TXT \
-	"$Project" "$File" "$langName" "Christian Gößl,Internet" ",physic,math" "$additiontext")
+	"$Project" "$File" "$langName" "Christian Gößl,Internet" ",physic,math" "Yes,No" "$additiontext")
 if [ ! $? -eq 1 ];
 then
 	Project=$(echo $abfrage | cut -s -d "~" -f 1)
@@ -90,7 +91,8 @@ then
 	langname=$(echo $abfrage | cut -s -d "~" -f 3)
 	source=$(echo $abfrage | cut -s -d "~" -f 4)
 	tags=$(echo $abfrage | cut -s -d "~" -f 5)
-	additiontext=$(echo $abfrage | cut -s -d "~" -f 6)
+	gitinit=$(echo $abfrage | cut -s -d "~" -f 6)
+	additiontext=$(echo $abfrage | cut -s -d "~" -f 7)
 	File=$(cleanName "$File")
     ProjectName="$Project"
     Project=$(cleanName "$Project")
@@ -110,8 +112,10 @@ then
 
 	program-template "$folder/$Project" "${File}"
 
-    #*git init}}
-
+	if [[ $gitinit == "Yes" ]];
+	then
+		#*git init}}
+	fi
 fi
 ```
 
