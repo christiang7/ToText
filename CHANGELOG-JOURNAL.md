@@ -8,7 +8,6 @@
 	- [ ] write [wiki] of how to use the scripts
 	- [ ] [tt] with real path of file not the terminal path, ``realpath`` program not working, using the real path of the [.desktop] file with ``tt $f``
 	- [ ] integrate plotting in [zim] and or [markdown] with [noweb.py], maybe [python] or [sage]
-	- [ ] rewrite [ttdm]
 - [X] Doing (2)
 
 Plotting - Tutorial
@@ -21,6 +20,7 @@ Tutorial: Programming in Python and Sage - Thematic Tutorials
 https://doc.sagemath.org/html/en/thematic_tutorials/tutorial-programming-python.html
 
 ### 2025-02-12
+- [X] no rewrite of [ttdm], deleted
 - [X] remake latex template for Apply in [template-apply.sh]
 - [X] rewrite [zim-template-calculation.sh] with [tt-lib.sh]
 - [X] combined request of language name of [template-tex.sh], [template-calculation.sh] and [zim-template-calculation.sh]
