@@ -45,7 +45,6 @@ Einstellungen vor dem Start des eigentlichen Programms, hier für ein Shell Scri
 ```bash
 #!/bin/bash
 source config.sh; # load the config library functions
-journalPage="$(config_get journalPage)"
 langName="$(config_get langName)"
 source tt-lib.sh
 ```

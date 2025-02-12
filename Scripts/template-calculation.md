@@ -62,7 +62,7 @@ then
 
 		;;
 	Project)
-		zim-template-calculation.sh "$1"
+		template-calculation-project.sh "$1"
 		;;
 	esac
 fi

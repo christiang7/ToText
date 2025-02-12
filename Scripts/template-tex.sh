@@ -5,6 +5,8 @@ templateDir="$(config_get templateDir)"
 langName="$(config_get langName)"
 source tt-lib.sh;
 
+yadSwitch=$2
+
 if [[ ! -e "$1" ]]
 then
 	folder=$(pwd)
@@ -12,30 +14,42 @@ else
 	filetxt=$(readlink -f -n "$1")
 	folder=${filetxt%.*}
 	mkdir -p "$folder"
+	cd "$folder"
 fi
-#cd $folder
 
-
-abfrage=$(yad --title="New Latex File" --text="Necessary Informations:" \
-	--form --width 500 --separator="~" --item-separator=","  \
-	--field="Filename:" \
-	--field="Which template:":CB \
-	--field="Shortname for language":CBE \
-	--field="Author:":CBE \
-	--field="Tags:":CBE \
-	--field="Git init?":CB \
-	--field="Description:":TXT \
-	"" "Programming,normal,Rechnung,Schreiben,Bewerbung" "$langName" "Christian Gößl,Internet" ",physic,math" "No,Yes" "$additiontext")
-
+if [[ $yadSwitch == "" ]]
+then
+	abfrage=$(yad --title="New Latex File" --text="Necessary Informations:" \
+		--form --width 500 --separator="~" --item-separator=","  \
+		--field="Filename:" \
+		--field="Which template:":CB \
+		--field="Shortname for language":CBE \
+		--field="Author:":CBE \
+		--field="Tags:":CBE \
+		--field="Git init?":CB \
+		--field="Description:":TXT \
+		"" "Programming,normal,Rechnung,Schreiben" "$langName" "Christian Gößl,Internet" ",physic,math" "No,Yes" "$additiontext")
+fi
 if [ ! $? -eq 1 ];
 then
-	filename=$(echo $abfrage | cut -s -d "~" -f 1)
-	template=$(echo $abfrage | cut -s -d "~" -f 2)
-	langname=$(echo $abfrage | cut -s -d "~" -f 3)
-	source=$(echo $abfrage | cut -s -d "~" -f 4)
-	tags=$(echo $abfrage | cut -s -d "~" -f 5)
-	gitinit=$(echo $abfrage | cut -s -d "~" -f 6)
-	additiontext=$(echo $abfrage | cut -s -d "~" -f 7)
+	if [[ $yadSwitch == "" ]]
+    then
+		filename=$(echo $abfrage | cut -s -d "~" -f 1)
+		template=$(echo $abfrage | cut -s -d "~" -f 2)
+		langname=$(echo $abfrage | cut -s -d "~" -f 3)
+		source=$(echo $abfrage | cut -s -d "~" -f 4)
+		tags=$(echo $abfrage | cut -s -d "~" -f 5)
+		gitinit=$(echo $abfrage | cut -s -d "~" -f 6)
+		additiontext=$(echo $abfrage | cut -s -d "~" -f 7)
+	else
+		filename=$3
+		template=$4
+		tags=$5
+		source=$6
+		additiontext=$7
+		gitinit=$8
+		langname=$9
+	fi
 	title="$filename"
 	filename=$(cleanName "$filename")
 	#folder=.
@@ -67,11 +81,6 @@ then
 		tex-description "$folder" "${File}" "$foldertex" "$additiontext"
 
 			;;
-        Bewerbung)
-		cp "$templateDir"/normal-template.tex "$folder"/"$foldertex"/"${File}"
-
-		tex-description "$folder" "${File}" "$foldertex" "$additiontext"
-            ;;
 		Schreiben)
 		cp "$templateDir"/Schreiben-template.tex "$folder"/"$foldertex"/"${File}"
 
@@ -85,7 +94,6 @@ then
 		tex-description "$folder" "${File}" "$foldertex" "$additiontext\n\\\begin{minted}[linenos=true,bgcolor=lightgraycolor,numberblanklines=true,showspaces=false,breaklines=true]{${langname}}\n#*${filename}.${extens}}}\n\\\end{minted}" "#*run program}}"
 
 		program-template "$folder/$foldertex" "${filename}.${extens}" "${filename}.tex"
-
 
 			;;
 	esac

@@ -35,6 +35,20 @@ https://overflow.adminforge.de/exchange/tex/questions/200310/break-lines-in-mint
 
 ## Main Program
 
+using ``template-tex.sh`` with the parameters as following
+```bash
+    template-tex.sh p1 p2 p3 p4 p5 p6 p7 p8
+    p1 - folder
+    p2 - yad Switch
+    p3 - filename
+    p4 - template
+    p5 - tags
+    p6 - source
+    p7 - additiontext
+    p8 - git init
+    p9 - langname
+```
+
 *run-cell.sh*
 ```bash
 noweb.py -Rtemplate-tex.sh template-tex.sh.md > template-tex.sh && echo 'template-tex.sh' && date
@@ -44,6 +58,8 @@ noweb.py -Rtemplate-tex.sh template-tex.sh.md > template-tex.sh && echo 'templat
 ```bash
 #*preamble}}
 
+yadSwitch=$2
+
 if [[ ! -e "$1" ]]
 then
 	folder=$(pwd)
@@ -51,8 +67,8 @@ else
 	filetxt=$(readlink -f -n "$1")
 	folder=${filetxt%.*}
 	mkdir -p "$folder"
+	cd "$folder"
 fi
-#cd $folder
 
 #*Main}}
 
@@ -87,7 +103,7 @@ abfrage=$(yad --title="New Latex File" --text="Necessary Informations:" \
 	--field="Tags:":CBE \
 	--field="Git init?":CB \
 	--field="Description:":TXT \
-	"" "Programming,normal,Rechnung,Schreiben,Bewerbung" "$langName" "Christian Gößl,Internet" ",physic,math" "No,Yes" "$additiontext")
+	"" "Programming,normal,Rechnung,Schreiben" "$langName" "Christian Gößl,Internet" ",physic,math" "No,Yes" "$additiontext")
 ```
 
 ### Main
@@ -95,18 +111,30 @@ abfrage=$(yad --title="New Latex File" --text="Necessary Informations:" \
 
 *Main*
 ```bash
-
-#*request}}
-
+if [[ $yadSwitch == "" ]]
+then
+	#*request}}
+fi
 if [ ! $? -eq 1 ];
 then
-	filename=$(echo $abfrage | cut -s -d "~" -f 1)
-	template=$(echo $abfrage | cut -s -d "~" -f 2)
-	langname=$(echo $abfrage | cut -s -d "~" -f 3)
-	source=$(echo $abfrage | cut -s -d "~" -f 4)
-	tags=$(echo $abfrage | cut -s -d "~" -f 5)
-	gitinit=$(echo $abfrage | cut -s -d "~" -f 6)
-	additiontext=$(echo $abfrage | cut -s -d "~" -f 7)
+	if [[ $yadSwitch == "" ]]
+    then
+		filename=$(echo $abfrage | cut -s -d "~" -f 1)
+		template=$(echo $abfrage | cut -s -d "~" -f 2)
+		langname=$(echo $abfrage | cut -s -d "~" -f 3)
+		source=$(echo $abfrage | cut -s -d "~" -f 4)
+		tags=$(echo $abfrage | cut -s -d "~" -f 5)
+		gitinit=$(echo $abfrage | cut -s -d "~" -f 6)
+		additiontext=$(echo $abfrage | cut -s -d "~" -f 7)
+	else
+		filename=$3
+		template=$4
+		tags=$5
+		source=$6
+		additiontext=$7
+		gitinit=$8
+		langname=$9
+	fi
 	title="$filename"
 	filename=$(cleanName "$filename")
 	#folder=.
@@ -133,9 +161,6 @@ then
         Rechnung)
 		#*Rechnung tex template}}
 			;;
-        Bewerbung)
-		#*Bewerbung tex template}}
-            ;;
 		Schreiben)
 		#*Schreiben tex template}}
             ;;
@@ -164,7 +189,6 @@ cp "$templateDir"/programming-template.tex "$folder"/"$foldertex"/"${File}"
 tex-description "$folder" "${File}" "$foldertex" "$additiontext\n\\\begin{minted}[linenos=true,bgcolor=lightgraycolor,numberblanklines=true,showspaces=false,breaklines=true]{${langname}}\n#*${filename}.${extens}}}\n\\\end{minted}" "#*run program}}"
 
 program-template "$folder/$foldertex" "${filename}.${extens}" "${filename}.tex"
-
 
 ```
 
@@ -204,19 +228,6 @@ cp "$templateDir"/Schreiben-template.tex "$folder"/"$foldertex"/"${File}"
 tex-description "$folder" "${File}" "$foldertex" "$additiontext"
 
 ```
-
-
-### create Bewerbung template
-
-Creation of Bewerbung template
-
-*Bewerbung tex template*
-```bash
-cp "$templateDir"/normal-template.tex "$folder"/"$foldertex"/"${File}"
-
-tex-description "$folder" "${File}" "$foldertex" "$additiontext"
-```
-
 
 
 ### git versioning
