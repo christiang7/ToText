@@ -1,3 +1,3 @@
 #!/bin/bash
-# Mi 12. Feb 17:58:28 CET 2025
-noweb.py -Rtt-lib.sh tt-lib.sh.md > tt-lib.sh && echo 'tt-lib.sh' && date
+# Mi 12. Feb 21:12:43 CET 2025
+noweb.py -Rtt tt.md > tt && chmod u+x tt && echo 'tt' && date

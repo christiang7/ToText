@@ -38,27 +38,33 @@ langName="$(config_get langName)"
 ```bash
 #*preamble}}
 
-yad --title="New calculation?" --text="\n Standalone File?\n"
+typ=$(yad --title="New calculation?" --text="Necessary Informations:" \
+	--form --width 500 --separator="" --item-separator=","  \
+	--field="Type of calculation":CB \
+	"Standalone File,Project")
 if [ ! $? -eq 1 ];
 then
-  if [[ ! -e "$1" ]]
-  then
-	folder=$(pwd)
-	#echo $folder
-  else
-	filetxt=$(readlink -f -n "$1")
-	folder=${filetxt%.*}
-	#echo $folder
-	mkdir -p "$folder"
-  fi
-  File="Filename"
-  cd $folder
+	if [[ ! -e "$1" ]]
+	then
+		folder=$(pwd)
+		#echo $folder
+	else
+		filetxt=$(readlink -f -n "$1")
+		folder=${filetxt%.*}
+		#echo $folder
+		mkdir -p "$folder"
+	fi
+	case ${typ} in
+	"Standalone File")
+		File="Filename"
 
-  #*requests}}
+		#*requests}}
 
-else
-  zim-template-calculation.sh "$1"
-  #echo 2
+		;;
+	Project)
+		zim-template-calculation.sh "$1"
+		;;
+	esac
 fi
 ```
 

@@ -13,7 +13,7 @@ else
 	folder=${filetxt%.*}
 	mkdir -p "$folder"
 fi
-cd $folder
+#cd $folder
 
 
 abfrage=$(yad --title="New Latex File" --text="Necessary Informations:" \
@@ -38,7 +38,7 @@ then
 	additiontext=$(echo $abfrage | cut -s -d "~" -f 7)
 	title="$filename"
 	filename=$(cleanName "$filename")
-	folder=.
+	#folder=.
 
 	foldertex="$filename"_tex
 	mkdir -p "$foldertex"

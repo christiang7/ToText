@@ -31,9 +31,9 @@ chmod u+x zim-template-calculation.sh && ln -sf $(pwd)/zim-template-calculation.
 ```bash
 #*preamble}}
 
-#*Abruf txt Datei Ordner}}
+#*check files}}
 
-#*Abfragen}}
+#*request}}
 
 ```
 
@@ -50,11 +50,11 @@ langName="$(config_get langName)"
 source tt-lib.sh
 ```
 
-### Abruf wo sich die Datei befindet
+### Check files
 
 Den Ordner erstellen, wo die neue Datei gespeichert werden soll. Dabei wird der Pfad der Datei genommen und für die späteren Links gespeichert
 
-*Abruf txt Datei Ordner*
+*check files*
 ```bash
 if [[ -e "$1" ]]
 then
@@ -65,15 +65,14 @@ else
     #Project="Projectname"
     folder=$(pwd)
 fi
-echo $folder
-cd $folder
+#echo $folder
 File="Filename"
 Project="Projectname"
 ```
 
-### Abfrage was genau angelegt werden soll
+### Request and main program
 
-*Abfragen*
+*request*
 ```bash
 abfrage=$(yad --title="New Project calculation" --text="Necessary Informations:" \
 	--form --width 500 --separator="~" --item-separator=","  \
@@ -96,117 +95,35 @@ then
     ProjectName="$Project"
     Project=$(cleanName "$Project")
 
-	mkdir -p "$Project"
-    cd "$Project"
-
     extens="$(get-extens ${langname})"
 
     Filename="$File"
     File="$File"."${extens}"
 
-    #*Using zim}}
+	mkdir -p "$Project"
 
-    #*readme file}}
+	create-note "$folder" "$Project" "$tags" "$source" "$additiontext"
 
-    #*calculation template}}
+	markdown-description-program "$folder/$Project" "README"
+
+	markdown-description-program "$folder/$Project" "${File}"
+
+	program-template "$folder/$Project" "${File}"
 
     #*git init}}
 
 fi
 ```
 
-### Using zim?
-When the program is used not for zim pages, then we create a zim file.
-
-*Using zim*
-```bash
-if [[ ! -e ../"$Project".md ]]
-then
-	folder="$Project"
-	#touch ../"$folder".md
-	echo -e "====== $ProjectName ======" >> ../"$folder".md
-	echo -e "Created $(date +"[[$journalPage:%Y:%m:%d|%Y-%m-%d]]")" >> ../"$folder".md
-	echo -e "[*] ** $folder **" >> ../"$folder".md
-fi
-```
-
-### Using Markdown?
-When the program is used not for zim pages, then we create a zim file.
-
-*Using markdown*
-```bash
-if [[ ! -e ../"$Project".md ]]
-then
-	folder="$Project"
-	#touch ../"$folder".md
-	echo -e "# $ProjectName" >> ../"$folder".md
-	echo -e "Created $(date +"[[$journalPage/%Y/%m/%d|%Y-%m-%d]]")" >> ../"$folder".md
-	echo -e "- [X] ** $folder **" >> ../"$folder".md
-fi
-```
-
-### create README file
-
-
-*readme file*
-```bash
-echo -e "# README" >> "README".md
-echo -e "Created [$(date +%Y-%m-%d)]()\n" >> "README".md
-echo -e "${tags} " >> "README".md
-echo -e "- [X] **${ProjectName}** " >> "README".md
-echo -e "    - [X] Done" >> "README".md
-echo -e "    - [X] Doing Interput" >> "README".md
-echo -e "    - [X] Doing" >> "README".md
-echo -e "       - [ ] [${File}](${File}.md)" >> "README".md
-echo -e "    - [X] Next" >> "README".md
-echo -e "    - [X] Planning" >> "README".md
-echo -e "    - [X] Backlog" >> "README".md
-echo -e "\n## Features" >> "README".md
-echo -e "\n## Description" >> "README".md
-echo -e "\n${additiontext}" >> "README".md
-```
-
-
-### create Template
-
-Die Erzeugung des templates
-
-*calculation template*
-```bash
-echo -e "# ${File}" >> "${File}".md
-echo -e "Created [$(date +%Y-%m-%d)]()\n" >> "${File}".md
-echo -e "${tags} " >> "${File}".md
-echo -e "- [X] **${File}** [README](README.md)" >> "${File}".md
-echo -e "    - [X] Doing" >> "${File}".md
-echo -e "    - [X] Backlog" >> "${File}".md
-echo -e "       - [ ] " >> "${File}".md
-echo -e "\n## Features" >> "${File}".md
-echo -e "\n## Informations" >> "${File}".md
-
-echo -e "\n## Main Program" >> "${File}".md
-
-echo -e "*run-cell.sh*" >> "${File}".md
-echo -e "\`\`\`bash" >> "${File}".md
-echo -e "noweb.py -R${Filename}.${extens} ${File}.md > ${Filename}.${extens} && echo 'fertig' \n\`\`\`" >> "${File}".md
-
-echo -e "\n\n\`\`\`bash" >> "${File}".md
-echo -e "chmod u+x ${Filename}.${extens} && ln -sf "$folder"/${Filename}.${extens} ~/.local/bin/${Filename}.${extens} && echo 'fertig'\n \`\`\`" >> "${File}".md
-
-echo -e "\n*${Filename}.${extens}*" >> "${File}".md
-echo -e "\`\`\`${langname}" >> "${File}".md
-# echo -e "\n@" >> "${File}".md
-echo -e "\`\`\`" >> "${File}".md
-
-touch ${Filename}.${extens}
-```
-
 ### git versioning
 
 *git init*
 ```bash
+cd "$folder/$Project"
 git init
 git add README.md
 git add "${File}".md
 git add ${Filename}.${extens}
 git commit -a -m "init git"
 ```
+

@@ -11,7 +11,6 @@
 	- [ ] integrate plotting in [zim] and or [markdown] with [noweb.py], maybe [python] or [sage]
 - [X] Doing (2)
 	- [ ] remake latex template for Bewerbung in [tex-template.sh]
-	- [ ] rewrite [zim-template-calculation.sh] with [tt-lib.sh]
 
 Plotting - Tutorial
 https://doc.sagemath.org/html/en/tutorial/tour_plotting.html
@@ -23,6 +22,7 @@ Tutorial: Programming in Python and Sage - Thematic Tutorials
 https://doc.sagemath.org/html/en/thematic_tutorials/tutorial-programming-python.html
 
 ### 2025-02-12
+- [X] rewrite [zim-template-calculation.sh] with [tt-lib.sh]
 - [X] combined request of language name of [template-tex.sh], [template-calculation.sh] and [zim-template-calculation.sh]
 - [X] [template-tex.sh] and [template-calculation.sh] using the same functions of [tt-lib.sh]
 - [X] combine ``ttex`` function with [template-tex.sh] script, using the same template in [tt-lib.sh]

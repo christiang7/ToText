@@ -13,8 +13,7 @@ else
     #Project="Projectname"
     folder=$(pwd)
 fi
-echo $folder
-cd $folder
+#echo $folder
 File="Filename"
 Project="Projectname"
 
@@ -39,70 +38,27 @@ then
     ProjectName="$Project"
     Project=$(cleanName "$Project")
 
-	mkdir -p "$Project"
-    cd "$Project"
-
     extens="$(get-extens ${langname})"
 
     Filename="$File"
     File="$File"."${extens}"
 
-    if [[ ! -e ../"$Project".md ]]
-    then
-    	folder="$Project"
-    	#touch ../"$folder".md
-    	echo -e "====== $ProjectName ======" >> ../"$folder".md
-    	echo -e "Created $(date +"[[$journalPage:%Y:%m:%d|%Y-%m-%d]]")" >> ../"$folder".md
-    	echo -e "[*] ** $folder **" >> ../"$folder".md
-    fi
+	mkdir -p "$Project"
 
-    echo -e "# README" >> "README".md
-    echo -e "Created [$(date +%Y-%m-%d)]()\n" >> "README".md
-    echo -e "${tags} " >> "README".md
-    echo -e "- [X] **${ProjectName}** " >> "README".md
-    echo -e "    - [X] Done" >> "README".md
-    echo -e "    - [X] Doing Interput" >> "README".md
-    echo -e "    - [X] Doing" >> "README".md
-    echo -e "       - [ ] [${File}](${File}.md)" >> "README".md
-    echo -e "    - [X] Next" >> "README".md
-    echo -e "    - [X] Planning" >> "README".md
-    echo -e "    - [X] Backlog" >> "README".md
-    echo -e "\n## Features" >> "README".md
-    echo -e "\n## Description" >> "README".md
-    echo -e "\n${additiontext}" >> "README".md
+	create-note "$folder" "$Project" "$tags" "$source" "$additiontext"
 
-    echo -e "# ${File}" >> "${File}".md
-    echo -e "Created [$(date +%Y-%m-%d)]()\n" >> "${File}".md
-    echo -e "${tags} " >> "${File}".md
-    echo -e "- [X] **${File}** [README](README.md)" >> "${File}".md
-    echo -e "    - [X] Doing" >> "${File}".md
-    echo -e "    - [X] Backlog" >> "${File}".md
-    echo -e "       - [ ] " >> "${File}".md
-    echo -e "\n## Features" >> "${File}".md
-    echo -e "\n## Informations" >> "${File}".md
+	markdown-description-program "$folder/$Project" "README"
 
-    echo -e "\n## Main Program" >> "${File}".md
+	markdown-description-program "$folder/$Project" "${File}"
 
-    echo -e "*run-cell.sh*" >> "${File}".md
-    echo -e "\`\`\`bash" >> "${File}".md
-    echo -e "noweb.py -R${Filename}.${extens} ${File}.md > ${Filename}.${extens} && echo 'fertig' \n\`\`\`" >> "${File}".md
+	program-template "$folder/$Project" "${File}"
 
-    echo -e "\n\n\`\`\`bash" >> "${File}".md
-    echo -e "chmod u+x ${Filename}.${extens} && ln -sf "$folder"/${Filename}.${extens} ~/.local/bin/${Filename}.${extens} && echo 'fertig'\n \`\`\`" >> "${File}".md
-
-    echo -e "\n*${Filename}.${extens}*" >> "${File}".md
-    echo -e "\`\`\`${langname}" >> "${File}".md
-    # echo -e "\n@" >> "${File}".md
-    echo -e "\`\`\`" >> "${File}".md
-
-    touch ${Filename}.${extens}
-
+    cd "$folder/$Project"
     git init
     git add README.md
     git add "${File}".md
     git add ${Filename}.${extens}
     git commit -a -m "init git"
-    ```
 
 fi
 
