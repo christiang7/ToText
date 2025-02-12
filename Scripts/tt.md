@@ -149,6 +149,8 @@ then
 		fi
 	elif [[ mp4 == $extens || mov == $extens || mkv == $extens || flv = $extens || ogv = $extens ]]
 	then
+		echo "$additiontext"
+		echo "$ofile"
 		ttvid "$folder" "$File" "$tags" "$source" "$additiontext" "$ofile" "yes"
 	elif [[ epub == $extens ]]
 	then
@@ -178,7 +180,7 @@ then
 		file-description "$folder" "$File" "@Document $tags" "$source" "$additiontext" "pic" "yes"
 		convert "$folder"/"$File".png "$folder"/"$File"/"$File".avif
 		rm "$folder"/"$File".png
-	elif [[ mp3 == $extens || webm == $extens || flac == $extens || aac = $extens || ogg = $extens || weba = $extens || wav = $extens || aiff = $extens ]]
+	elif [[ mp3 == $extens || webm == $extens || flac == $extens || aac = $extens || ogg = $extens || weba = $extens || wav = $extens || aiff = $extens || m4a = $extens ]]
 	then
 		file-description "$folder" "$File" "@Musik $tags" "$source" "$additiontext"
 	elif [[ $extens == $File ]]

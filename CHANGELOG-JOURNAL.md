@@ -6,12 +6,12 @@
 	- [ ] make a website for [ToTexT] scripts
 	- [ ] write blog post for website
 	- [ ] write [wiki] of how to use the scripts
-	- [ ] integrate markdown template in [template-calculation] script
 	- [ ] [tt] with real path of file not the terminal path, ``realpath`` program not working, using the real path of the [.desktop] file with ``tt $f``
 	- [ ] rewrite [ttdm]
-- [X] Doing (2)
 	- [ ] integrate plotting in [zim] and or [markdown] with [noweb.py], maybe [python] or [sage]
-	- [ ] combine ``ttex`` function with [template-tex] script, using the same template in [tt-lib.sh]
+- [X] Doing (2)
+	- [ ] remake latex template for Bewerbung in [tex-template.sh]
+	- [ ] rewrite [zim-template-calculation.sh] with [tt-lib.sh]
 
 Plotting - Tutorial
 https://doc.sagemath.org/html/en/tutorial/tour_plotting.html
@@ -22,8 +22,13 @@ https://doc.sagemath.org/html/en/developer/coding_in_python.html
 Tutorial: Programming in Python and Sage - Thematic Tutorials
 https://doc.sagemath.org/html/en/thematic_tutorials/tutorial-programming-python.html
 
+### 2025-02-12
+- [X] combined request of language name of [template-tex.sh], [template-calculation.sh] and [zim-template-calculation.sh]
+- [X] [template-tex.sh] and [template-calculation.sh] using the same functions of [tt-lib.sh]
+- [X] combine ``ttex`` function with [template-tex.sh] script, using the same template in [tt-lib.sh]
+- [X] integrate markdown template in [template-calculation.sh] script
 
-### 2025-02-09 Draft of html 2 markdown
+### 2025-02-09 Draft of html to markdown
 
 Procedure
 - using the [download tool] for saving a website in a [zip] file

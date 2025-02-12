@@ -1,6 +1,7 @@
 #!/bin/bash
 source config.sh; # load the config library functions
 journalPage="$(config_get journalPage)"
+langName="$(config_get langName)"
 source tt-lib.sh
 
 if [[ -e "$1" ]]
@@ -25,7 +26,7 @@ abfrage=$(yad --title="New Project calculation" --text="Necessary Informations:"
 	--field="Author":CBE \
 	--field="Tags":CBE \
 	--field="Description":TXT \
-	"$Project" "$File" "cpp,python,julia,html,css,bash,javascript,lua,other" "Christian Gößl,Internet" ",physic,math" "$additiontext")
+	"$Project" "$File" "$langName" "Christian Gößl,Internet" ",physic,math" "$additiontext")
 if [ ! $? -eq 1 ];
 then
 	Project=$(echo $abfrage | cut -s -d "~" -f 1)
@@ -41,26 +42,7 @@ then
 	mkdir -p "$Project"
     cd "$Project"
 
-	case ${langname} in
-	cpp) extens="cpp"
-		;;
-	python) extens="py"
-		;;
-    julia) extens="jl"
-		;;
-    html) extens="html"
-		;;
-    css) extens="css"
-		;;
-    javascript) extens="js"
-		;;
-    bash) extens="sh"
-		;;
-    lua) extens="lua"
-		;;
-    other) extens="other"
-		;;
-    esac
+    extens="$(get-extens ${langname})"
 
     Filename="$File"
     File="$File"."${extens}"

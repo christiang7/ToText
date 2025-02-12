@@ -31,7 +31,7 @@ Einstellungen vor dem Start des eigentlichen Programms, hier für ein Shell Scri
 ```bash
 #!/bin/bash
 source tt-lib.sh
-
+langName="$(config_get langName)"
 ```
 
 *template-calculation.sh*
@@ -75,7 +75,7 @@ abfrage=$(yad --title="New calculation?" --text="Necessary Informations:" \
 	--field="Author":CBE \
 	--field="Tags":CBE \
 	--field="Description":TXT \
-	"$File" "cpp,python,julia,html,css,javascript,bash,lua,plantuml,typst," "Christian Gößl,Internet" ",physic,math" "$additiontext")
+	"$File" "$langName" "Christian Gößl,Internet" ",physic,math" "$additiontext")
 if [ ! $? -eq 1 ];
 then
 	File=$(echo $abfrage | cut -s -d "~" -f 1)
@@ -85,30 +85,8 @@ then
 	additiontext=$(echo $abfrage | cut -s -d "~" -f 5)
 	File=$(cleanName "$File")
 
-	case ${langname} in
-	cpp) extens="cpp"
-		;;
-	python) extens="py"
-		;;
-	julia) extens="jl"
-		;;
-	html) extens="html"
-		;;
-	css) extens="css"
-		;;
-	javascript) extens="js"
-		;;
-	bash) extens="sh"
-		;;
-	lua) extens="lua"
-		;;
-	plantuml) extens="plantuml" langname="pl"
-		;;
-	typst) extens="typ"
-		;;
-	*) extens="${langname}"
-		;;
-	esac
+	extens="$(get-extens ${langname})"
+
 	Filename="$File"
 	File="$File"."${extens}"
 
@@ -121,42 +99,13 @@ fi
 
 Creating template
 
+
 *create Template*
 ```bash
-echo -e "# ${File}" >> "${File}".md
-echo -e "Created [$(date +%Y-%m-%d)]($(date +%Y-%m-%d))" >> "${File}".md
-echo -e "${tags}" >> "${File}".md
-echo -e "- [X] **${File}**" >> "${File}".md
-echo -e "    - [X] Doing" >> "${File}".md
-echo -e "    - [X] Backlog" >> "${File}".md
-echo -e "\n## Features" >> "${File}".md
-echo -e "\n${additiontext}" >> "${File}".md
-echo -e "\n## Informations" >> "${File}".md
-echo -e " ${source}\n## Main Program\n\n" >> "${File}".md
-echo -e "*run-cell.sh*" >> "${File}".md
-echo -e "\`\`\`bash" >> "${File}".md
-if  [[ $extens == "plantuml" ]]
-then
-	echo -e "noweb.py -R${Filename}.${extens} ${File}.md > ${Filename}.${extens} && plantuml ${Filename}.${extens} && echo '${Filename}.${extens}' && date && gwenview ${Filename}.png 2>/dev/null \n\`\`\`" >> "${File}".md
-elif [[ $extens == "typst" ]]
-then
-	echo -e "noweb.py -R${Filename}.${extens} ${File}.md > ${Filename}.${extens} && typst compile --format pdf ${Filename}.${extens} && echo '${Filename}.${extens}' && date && xournalpp ${Filename}.pdf 2>/dev/null & \n\`\`\`" >> "${File}".md
-else
-	echo -e "noweb.py -R${Filename}.${extens} ${File}.md > ${Filename}.${extens} && echo '${Filename}.${extens}' && date \n\`\`\`" >> "${File}".md
-	echo -e "\n\n\`\`\`bash" >> "${File}".md
-	echo -e "chmod u+x ${Filename}.${extens} && ln -sf \$(pwd)/${Filename}.${extens} ~/.local/bin/${Filename}.${extens} && echo 'fertig'\n \`\`\`" >> "${File}".md
-fi
-echo -e "\n*${Filename}.${extens}*" >> "${File}".md
-echo -e "\`\`\`${langname}" >> "${File}".md
-if  [[ $extens == "plantuml" ]]
-then
-  echo -e "@startuml\n" >> "${File}".md
-  echo -e "@enduml" >> "${File}".md
-elif [[ $extens == "sh" ]]
-then
-  echo -e "#!/bin/bash" >> "${File}".md
-fi
-echo -e "\n" >> "${File}".md
-echo -e "\`\`\`" >> "${File}".md
-touch ${File}
+
+markdown-description-program "$folder" "${Filename}.${extens}"
+
+program-template "$folder" "${Filename}.${extens}"
+
 ```
+

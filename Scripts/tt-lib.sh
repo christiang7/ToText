@@ -3,12 +3,7 @@ source config.sh
 journalPage="$(config_get journalPage)"
 
 function cleanName () {
-    echo "$1" | sed 's/ /_/g' | sed 's/:/;/g'| sed -e "s/'/_/g" | sed 's/\"//g'|  sed 's/&/n/g' | sed 's/\///g' | sed 's/|//g' | sed 's/\[/(/g' | sed 's/\]/)/g' | sed 's/@/at/g' | sed 's/：/;/g' | sed 's/？/ß/g' | sed "s/|/;/g" | sed "s/·/;/g" | sed "s/💤/;/g" | sed "s/｜/-/g" | sed "s/?/ß/g" | sed "s/!/;/g" | sed "s/¦/;/g"
-}
-function Wikiprev(){
-    echo "Content-Type: text/x-zim-wiki" >> "$1"/"$2".md
-    echo "Wiki-Format: zim 0.6" >> "$1"/"$2".md
-    echo "====== $2 ======" >> "$1"/"$2".md
+    echo "$1" | sed 's/ /_/g' | sed 's/:/;/g'| sed -e "s/'/_/g" | sed 's/\"//g'|  sed 's/&/n/g' | sed 's/\///g' | sed 's/|//g' | sed 's/\[/(/g' | sed 's/\]/)/g' | sed 's/@/at/g' | sed 's/：/;/g' | sed 's/？/ß/g' | sed "s/|/;/g" | sed "s/·/;/g" | sed "s/💤/;/g" | sed "s/｜/-/g" | sed "s/?/ß/g" | sed "s/!/;/g" | sed "s/¦/;/g" | sed "s/⧸/-/g"
 }
 
 function WikiMarkprev(){
@@ -25,9 +20,133 @@ function Timestamps(){
     echo "Text date: $(date +"[[$journalPage:%Y:%m:%d|%Y-%m-%d]]") Modi date: $(date +"[[$journalPage:%Y:%m:%d|%Y-%m-%d]]" -r "$1"/"$3"/"$2")" >> "$1"/"$2".md
 }
 
+function Wikiprev(){
+    echo "Content-Type: text/x-zim-wiki" >> "$1"/"$2".md
+    echo "Wiki-Format: zim 0.6" >> "$1"/"$2".md
+    echo "====== $3 ======" >> "$1"/"$2".md
+}
+
+function get-extens(){
+    langname=$1
+    case ${langname} in
+        cpp) extens="cpp"
+            ;;
+        python) extens="py"
+            ;;
+        julia) extens="jl"
+            ;;
+        html) extens="html"
+            ;;
+        css) extens="css"
+            ;;
+        javascript) extens="js"
+            ;;
+        bash) extens="sh"
+            ;;
+        lua) extens="lua"
+            ;;
+        plantuml) extens="plantuml" langname="pl"
+            ;;
+        typst) extens="typ"
+            ;;
+        *) extens="${langname}"
+            ;;
+    esac
+    echo "${extens}"
+}
+
+function markdown-description-program(){
+    local folder=$1
+    local File=$2
+    #local filename=${File%.*}
+    #local foldertex=$3
+    echo -e "# ${File}" >> "$folder"/"${File}".md
+    echo -e "Created [$(date +%Y-%m-%d)]()\n" >> "$folder"/"${File}".md
+    echo -e "\n## Description" >> "$folder"/"${File}".md
+    echo -e "\n## Journal" >> "$folder"/"${File}".md
+    echo -e " - [X] Doing" >> "$folder"/"${File}".md
+    echo -e " - [X] Backlog" >> "$folder"/"${File}".md
+    echo -e "    - [ ] " >> "$folder"/"${File}".md
+}
+
+function program-template(){
+    local folder=$1
+    local File=$(cleanName "$2")
+    local outFile=$(cleanName "$3")
+    if [[ $outFile == "" ]]
+    then
+        outFile=${File}
+    fi
+    #local tags=$3
+    #local source=$4
+    #local additiontext=$5
+    local Filename=${File%.*}
+    local extens=${File##*.}
+    local outFilename=${outFile%.*}
+    local outextens=${outFile##*.}
+    if [[ $outextens == "tex" ]]
+    then
+        touch "$folder"/${File}
+        outFile=${outFilename}
+        echo -e " \n## Main Program\n\n" >> "$folder"/"${outFile}".md
+        echo -e "*run program*" >> "$folder"/"${outFile}".md
+    else
+        touch "$folder"/${outFile}
+        echo -e " \n## Main Program\n\n" >> "$folder"/"${outFile}".md
+        echo -e "*run-cell.sh*" >> "$folder"/"${outFile}".md
+    fi
+    echo -e "\`\`\`bash" >> "$folder"/"${outFile}".md
+    if  [[ $extens == "plantuml" ]]
+    then
+        echo -e "noweb.py -R${Filename}.${extens} ${outFile}.md > ${Filename}.${extens} && plantuml ${Filename}.${extens} && echo '${Filename}.${extens}' && date && gwenview ${Filename}.png 2>/dev/null \n\`\`\`" >> "$folder"/"${outFile}".md
+    elif [[ $extens == "typst" ]]
+    then
+        echo -e "noweb.py -R${Filename}.${extens} ${outFile}.md > ${Filename}.${extens} && typst compile --format pdf ${Filename}.${extens} && echo '${Filename}.${extens}' && date && xournalpp ${Filename}.pdf 2>/dev/null & \n\`\`\`" >> "$folder"/"${outFile}".md
+    else
+        echo -e "noweb.py -R${Filename}.${extens} ${outFile}.md > ${Filename}.${extens} && echo '${Filename}.${extens}' && date \n\`\`\`" >> "$folder"/"${outFile}".md
+        echo -e "\n\n\`\`\`bash" >> "$folder"/"${outFile}".md
+        echo -e "chmod u+x ${Filename}.${extens} && ln -sf \$(pwd)/${Filename}.${extens} ~/.local/bin/${Filename}.${extens} && echo 'fertig'\n \`\`\`" >> "$folder"/"${outFile}".md
+    fi
+        echo -e "\n*${Filename}.${extens}*" >> "$folder"/"${outFile}".md
+        echo -e "\`\`\`${langname}" >> "$folder"/"${outFile}".md
+    if  [[ $extens == "plantuml" ]]
+    then
+        echo -e "@startuml\n" >> "$folder"/"${outFile}".md
+        echo -e "@enduml" >> "$folder"/"${outFile}".md
+    elif [[ $extens == "sh" ]]
+    then
+        echo -e "#!/bin/bash" >> "$folder"/"${outFile}".md
+    fi
+    echo -e "\n" >> "$folder"/"${outFile}".md
+    echo -e "\`\`\`" >> "$folder"/"${outFile}".md
+}
+
+function tex-description(){
+    local folder=$1
+    local File=$2
+    local filename=${File%.*}
+    local foldertex=$3
+    local additiontext="$4"
+    local moreCommands="$5"
+    echo -e "\n## Latex File\n" >> "$folder"/"$foldertex"/"${filename}".md
+    echo -e "*${File}*" >> "$folder"/"$foldertex"/"${filename}".md
+    echo -e "\`\`\`tex" >> "$folder"/"$foldertex"/"${filename}".md
+    cat "$folder"/"$foldertex"/"${File}" >> "$folder"/"$foldertex"/"${filename}".md
+    sed -i "s/additiontext/$additiontext/g" "$folder"/"$foldertex"/"${filename}".md
+    echo -e "\n\`\`\`" >> "$folder"/"$foldertex"/"${filename}".md
+    echo -e "\n*run-cell.sh*" >> "$folder"/"$foldertex"/"${filename}".md
+    echo -e "\`\`\`bash" >> "$folder"/"$foldertex"/"${filename}".md
+    if [[ ! $moreCommands == "" ]]
+    then
+        echo -e "$moreCommands" >> "$folder"/"$foldertex"/"${filename}".md
+    fi
+    echo -e "noweb.py -R${File} ${filename}.md > ${File} && pdflatex -synctex=1 -interaction=nonstopmode -shell-escape ${File} && date && xdg-open ${filename}.pdf 2>/dev/null \n\`\`\`\n\n" >> "$folder"/"$foldertex"/"${filename}".md
+}
+
 function ttex(){
     local folder=$1
-    local filename=$(basename "$folder"/"$2" .tex)
+    local File=$(basename "$2")
+    local filename=${File%.*}
     local f=$(basename "$3" .tex)
     local foldertex="$filename"_tex
     mkdir -p "$foldertex" #
@@ -43,34 +162,13 @@ function ttex(){
     mv "$f".bcf "$filename".bcf
     mv "$f".sbl "$filename".sbl
     mv "$f".ist "$filename".ist
-    mv "$filename".* "$folder"/"$foldertex"/ #
+    mv "$filename".* "$folder"/"$foldertex"/
 
-    #touch "$foldertex".md #
-    WikiMarkprev "$folder" "$foldertex"
-    Timestamps "$folder" "$foldertex"  "$folder/$foldertex"
-    echo "@LATEX $tags" >> "$folder"/"$foldertex".md
-    echo -e "[[./$filename.md]]\n[[./$filename.tex]]\n[[./$filename.pdf]]" >> "$folder"/"$foldertex".md
-    echo -e "$source\n$additiontext" >> "$folder"/"$foldertex".md
+    create-note "$folder" "$foldertex" "@LATEX $tags" "" "[[./$filename.md]]\n[[./$filename.tex]]\n[[./$filename.pdf]]"
 
-    # latex file in markdown
-    echo -e "# ${filename}.tex" >> "$folder"/"$foldertex"/"${filename}".md
-    echo -e "Created [$(date +%Y-%m-%d)]()\n" >> "$folder"/"$foldertex"/"${filename}".md
-    #echo -e "- [X] **${filename}.tex** " >> "$foldertex"/"${filename}".md
-    echo -e " - [X] Doing" >> "$folder"/"$foldertex"/"${filename}".md
-    echo -e " - [X] Backlog" >> "$folder"/"$foldertex"/"${filename}".md
-    echo -e "    - [ ] " >> "$folder"/"$foldertex"/"${filename}".md
-    echo -e "\n## Features" >> "$folder"/"$foldertex"/"${filename}".md
-    echo -e "\n## Informations" >> "$folder"/"$foldertex"/"${filename}".md
-    echo -e "\n## Latex File\n" >> "$folder"/"$foldertex"/"${filename}".md
+    markdown-description-program "$folder/$foldertex" "${filename}.tex"
 
-    echo -e "\n*run-cell.sh*" >> "$folder"/"$foldertex"/"${filename}".md
-    echo -e "\`\`\`bash" >> "$folder"/"$foldertex"/"${filename}".md
-    echo -e "noweb.py -R${filename}.tex ${filename}.md > ${filename}.tex && pdflatex ${filename}.tex && xdg-open ${filename}.pdf 2>/dev/null \n\`\`\`\n\n" >> "$folder"/"$foldertex"/"${filename}".md
-    echo -e "*${filename}.tex*" >> "$folder"/"$foldertex"/"${filename}".md
-    echo -e "\`\`\`tex" >> "$folder"/"$foldertex"/"${filename}".md
-    cat "$folder"/"$foldertex"/"${filename}".tex >> "$folder"/"$foldertex"/"${filename}".md
-    # echo -e "\n@" >> "$foldertex"/"${filename}".md
-    echo -e "\n\`\`\`" >> "$folder"/"$foldertex"/"${filename}".md
+    tex-description "$folder" "${File}" "$foldertex"
 
     #ln -s "$folder"/"$folder"/"$File" "$folder"/"$File"
     #ln -s "$folder"/"$filename".pdf "$filename".pdf
@@ -91,13 +189,13 @@ function file-description(){
     then
         local extens=${File##*.}
         local Filename=${File%.*}
-        local fileFolder=$Filename
+        fileFolder=$Filename
         mkdir -p "$folder"/"$fileFolder"
         mv "$folder"/"$File" "$folder"/"$fileFolder"/"$File"
         mv "$folder"/"$fileFolder" "$folder"/"$File"
         fileFolder="$fileFolder.$extens"
     fi
-    Wikiprev "$folder" "$File"
+    Wikiprev "$folder" "$File" "$File"
     Timestamps "$folder" "$File" "$fileFolder"
     echo "$tags" >> "$folder"/"$File".md
     if [[ ! $folderSwitch == "" ]]
@@ -131,9 +229,7 @@ function create-note(){
     local title=$2
     local File=$(cleanName "$title")
     mkdir -p "${folder}"/"${File}"
-    echo "Content-Type: text/x-zim-wiki" > "${folder}"/"${File}".md
-    echo "Wiki-Format: zim 0.6" >> "${folder}"/"${File}".md
-    echo -e "====== ${title} ======" >> "${folder}"/"${File}".md
+    Wikiprev "$folder" "$File" "$title"
     echo -e "$3" >> "${folder}"/"${File}".md
     echo -e "$4\n$5\n" >> "${folder}"/"${File}".md
     echo -e "==== Journal ====\n" >> "${folder}"/"${File}".md
@@ -153,7 +249,7 @@ function ttvid(){
     local File=$2
     local tags=$3
     local source=$4
-    local additiontext=$5
+    local additiontext="$5"
     local ofile=$6
     local folderSwitch=$7
     local downloadSwitch=$8
@@ -173,25 +269,25 @@ function ttvid(){
         yt-dlp -q --sub-langs "en,de" --write-sub --write-thumbnail --write-auto-sub --sub-format "vtt" --skip-download -i ${source} -o "$folder/%(title)s.%(ext)s"
         mv "$folder"/"$oname".en.vtt "$fileFolder"/"$name".en.vtt
         mv "$folder"/"$oname".de.vtt "$fileFolder"/"$name".de.vtt
-        convert "$folder/$oname.jpg" "$fileFolder"/"$File".avif
-        convert "$folder/$oname.jpeg" "$fileFolder"/"$File".avif
-        convert "$folder/$oname.webp" "$fileFolder"/"$File".avif
-        rm "$folder/$oname.webp"
-        rm "$folder/$oname.jpg"
-        rm "$folder/$oname.jpeg"
+        convert "$folder"/"$oname".jpg "$fileFolder"/"$File".avif
+        convert "$folder"/"$oname".jpeg "$fileFolder"/"$File".avif
+        convert "$folder"/"$oname".webp "$fileFolder"/"$File".avif
+        rm "$folder"/"$oname".webp
+        rm "$folder"/"$oname".jpg
+        rm "$folder"/"$oname".jpeg
         local subtitlefile1="$name".en.vtt
         local subtitlefile2="$name".de.vtt
     else
 		file-description "$folder" "$File" "@VIDEO $tags" "$source" "$additiontext" "pic" "$folderSwitch"
 		# cat the old text file to the new one, then we do not need the vidc script
-		cat "$folder"/${oname}.txt >> "$folder"/"$File".md
-		rm "$folder"/${oname}.txt
+		cat "$folder"/"${oname}".txt >> "$folder"/"$File".md
+		rm "$folder"/"${oname}".txt
 		ffmpeg -loglevel quiet -ss 2 -i "$fileFolder"/"$File"  -t 1 -f image2 "$folder"/"$File".png
         convert "$folder"/"$File".png -resize 1200x1200 "$fileFolder"/"$File".avif
 		rm "$folder"/"$File".png
-        ffmpeg -i "$folder"/"${oname}.srt" "$fileFolder"/"${name}.vtt"
-        mv "$folder"/"${oname}.ttml" "$fileFolder"/"${name}.ttml"
-        rm "$folder"/"${name}.srt"
+        ffmpeg -i "$folder"/"${oname}".srt "$fileFolder"/"${name}".vtt
+        mv "$folder"/"${oname}".ttml "$fileFolder"/"${name}".ttml
+        rm "$folder"/"${name}".srt
         local subtitlefile1=${name}.vtt
         local subtitlefile2=${name}.ttml
     fi
