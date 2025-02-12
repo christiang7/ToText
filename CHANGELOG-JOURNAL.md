@@ -1,12 +1,12 @@
 # Changelog-Journal
 
 - [X] Backlog
-	- [ ] rewrite everything in english
-	- [ ] links for used tools in [README] file
-	- [ ] make a website for [ToTexT] scripts
-	- [ ] write blog post for website
-	- [ ] write [wiki] of how to use the scripts
 	- [ ] [tt] with real path of file not the terminal path, ``realpath`` program not working, using the real path of the [.desktop] file with ``tt $f``
+	- [ ] rewrite everything in english
+	- [ ] make a website for [ToTexT] scripts
+	- [ ] write blog post for [website]
+	- [ ] make [website] with [wiki] of how to use the scripts
+		- [ ] links for used tools in [README] file
 	- [ ] integrate plotting in [zim] and or [markdown] with [noweb.py], maybe [python] or [sage]
 - [X] Doing (2)
 

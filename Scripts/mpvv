@@ -58,8 +58,7 @@ then
 	ttvid "$tempInputDir" "$File" "$tags" "$website" "$additiontext" "$ofile" "yes" "yes"
 fi
 
-#DRI_PRIME=pci-0000_01_00_0 __VK_LAYER_NV_optimus=NVIDIA_only__ GLX_VENDOR_LIBRARY_NAME=nvidia mpv --profile="$profile" "$website"
 echo -e "\nfile://$tempInputDir/$File".md
+#DRI_PRIME=pci-0000_01_00_0 __VK_LAYER_NV_optimus=NVIDIA_only__ GLX_VENDOR_LIBRARY_NAME=nvidia mpv --profile="$profile" "$website"
 mpv --profile="$profile" --screenshot-template="Screenshot-$File-%P" "$website"
-
 

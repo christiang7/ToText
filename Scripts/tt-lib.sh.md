@@ -571,9 +571,6 @@ function ttex(){
 
     tex-description "$folder" "${File}" "$foldertex"
 
-    #ln -s "$folder"/"$folder"/"$File" "$folder"/"$File"
-    #ln -s "$folder"/"$filename".pdf "$filename".pdf
-    #kate "$folder".md 2>/dev/null &
 }
 
 ```
