@@ -7,7 +7,7 @@
 	- [ ] write blog post for [website]
 	- [ ] make [website] with [wiki] of how to use the scripts
 		- [ ] links for used tools in [README] file
-	- [ ] integrate plotting in [zim] and or [markdown] with [noweb.py], maybe [python] or [sage]
+	- [ ] integrate plotting in [zim] and or [markdown] with [noweb.py], maybe [python], [gnuplot] (very easy) or [sage]
 - [X] Doing (2)
 
 Plotting - Tutorial
@@ -31,7 +31,7 @@ https://doc.sagemath.org/html/en/thematic_tutorials/tutorial-programming-python.
 ### 2025-02-09 Draft of html to markdown
 
 Procedure
-- using the [download tool] for saving a website in a [zip] file
+- using a [download tool] for saving a website in a [zip] file
 - then extract
 - then convert [html] to [markdown]
 - then have a folder with the original version and a annotated version of the website

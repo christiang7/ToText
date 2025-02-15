@@ -21,8 +21,6 @@ chmod u+x tt-tools-text.desktop && ln -sf $(pwd)/tt-tools-text.desktop ~/.local/
 ```
 
 
-```bash
- ```
 
 *tt-tools-text.desktop*
 ```bash
@@ -30,7 +28,7 @@ chmod u+x tt-tools-text.desktop && ln -sf $(pwd)/tt-tools-text.desktop ~/.local/
 Type=Service
 X-KDE-ServiceTypes=KonqPopupMenu/Plugin
 MimeType=text/*;
-Actions=MakeFolder;ChangeFormat;DeleteFile;RenameFile;
+Actions=MakeFolder;ChangeFormat;DeleteFile;RenameFile;MoveFile;
 X-KDE-Priority=TopLevel
 X-KDE-Submenu=tt-tools
 
@@ -66,5 +64,13 @@ Icon=video
 Terminal=true
 #Icon=application-x-java
 Exec=tt-change %n 2>&1 | tee /home/christian/.config/tt/log
+
+[Desktop Action MoveFile]
+Name=ttm move file to today
+Icon=video
+Terminal=true
+#Icon=application-x-java
+Exec=ttm %n 2>&1 | tee /home/christian/.config/tt/log
+
 
 ```

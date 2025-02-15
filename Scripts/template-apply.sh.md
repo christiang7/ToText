@@ -88,7 +88,7 @@ abfrage=$(yad --title="New Apply" --text="Necessary Informations:" \
 	"$Apply" "Christian Gößl,Internet" ",physic,math" "Yes,No" "$additiontext")
 if [ ! $? -eq 1 ];
 then
-	Applyname=$(echo $abfrage | cut -s -d "~" -f 1)
+	Applyname=2»$(echo $abfrage | cut -s -d "~" -f 1)
 	langname=$(echo $abfrage | cut -s -d "~" -f 2)
 	source=$(echo $abfrage | cut -s -d "~" -f 3)
 	tags=$(echo $abfrage | cut -s -d "~" -f 4)

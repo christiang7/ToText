@@ -3,7 +3,7 @@ source config.sh
 journalPage="$(config_get journalPage)"
 
 function cleanName () {
-    echo "$1" | sed 's/ /_/g' | sed 's/:/;/g'| sed -e "s/'/_/g" | sed 's/\"//g'|  sed 's/&/n/g' | sed 's/\///g' | sed 's/|//g' | sed 's/\[/(/g' | sed 's/\]/)/g' | sed 's/@/at/g' | sed 's/：/;/g' | sed 's/？/ß/g' | sed "s/|/;/g" | sed "s/·/;/g" | sed "s/💤/;/g" | sed "s/｜/-/g" | sed "s/?/ß/g" | sed "s/!/;/g" | sed "s/¦/;/g" | sed "s/⧸/-/g"
+    echo "$1" | sed 's/ /_/g' | sed 's/:/;/g'| sed -e "s/'/_/g" | sed 's/\"//g'|  sed 's/&/n/g' | sed 's/\///g' | sed 's/|//g' | sed 's/\[/(/g' | sed 's/\]/)/g' | sed 's/@/at/g' | sed 's/：/;/g' | sed 's/？/ß/g' | sed "s/|/;/g" | sed "s/·/;/g" | sed "s/💤/;/g" | sed "s/｜/-/g" | sed "s/?/ß/g" | sed "s/!/;/g" | sed "s/¦/;/g" | sed "s/⧸/-/g" | sed "s/~/-/g"
 }
 
 function WikiMarkprev(){
@@ -88,11 +88,11 @@ function program-template(){
     then
         touch "$folder"/${File}
         outFile=${outFilename}
-        echo -e " \n## Main Program\n\n" >> "$folder"/"${outFile}".md
+        echo -e " \n## ${extens} program\n\n" >> "$folder"/"${outFile}".md
         echo -e "*run program*" >> "$folder"/"${outFile}".md
     else
         touch "$folder"/${outFile}
-        echo -e " \n## Main Program\n\n" >> "$folder"/"${outFile}".md
+        echo -e " \n## ${extens} program\n\n" >> "$folder"/"${outFile}".md
         echo -e "*run-cell.sh*" >> "$folder"/"${outFile}".md
     fi
     echo -e "\`\`\`bash" >> "$folder"/"${outFile}".md
@@ -170,9 +170,6 @@ function ttex(){
 
     tex-description "$folder" "${File}" "$foldertex"
 
-    #ln -s "$folder"/"$folder"/"$File" "$folder"/"$File"
-    #ln -s "$folder"/"$filename".pdf "$filename".pdf
-    #kate "$folder".md 2>/dev/null &
 }
 
 
@@ -272,9 +269,11 @@ function ttvid(){
         convert "$folder"/"$oname".jpg "$fileFolder"/"$File".avif
         convert "$folder"/"$oname".jpeg "$fileFolder"/"$File".avif
         convert "$folder"/"$oname".webp "$fileFolder"/"$File".avif
+        convert "$folder"/"$oname".png "$fileFolder"/"$File".avif
         rm "$folder"/"$oname".webp
         rm "$folder"/"$oname".jpg
         rm "$folder"/"$oname".jpeg
+        rm "$folder"/"$oname".png
         local subtitlefile1="$name".en.vtt
         local subtitlefile2="$name".de.vtt
     else
