@@ -10,10 +10,10 @@ for restricting the filename for the downloads in ``yt-dlp``
 ``--restrict-filenames``
 
 ```bash
-yt-dlp --no-mtime --fixup force -f "[height<=740]" --exec "ttdown {} ${website}" -o '$outputDir/%(title)s.%(ext)s' -i "${website}"
+yt-dlp --no-mtime --fixup force -f "[height<=740]" --exec "ttdown {} ${website}" -o "$outputDir/%(title)s.%(ext)s" -i "${website}"
 
 #sleep 50
-yt-dlp --no-mtime --exec 'ttdown {} '[HREF]' [SELECTIONTEXT]' -o "$outputDir/%(title)s.%(ext)s" "[HREF]"
+yt-dlp --no-mtime --exec 'ttdown {} '[HREF]' '[SELECTIONTEXT]'' -o "$outputDir/%(title)s.%(ext)s" "[HREF]"
 ```
 
 ## main program

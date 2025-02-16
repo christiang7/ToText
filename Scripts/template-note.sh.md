@@ -1,20 +1,20 @@
-# ttnf
+# template-note
 Created Dienstag [Zettelkasten:2022:11:01](
-- [X] **ttne** [README]()
+- [X] **template-note** [README]()
 
 
-einen Zim Ordner mit txt Datei erstellen lassen irgendwo im Dateisystem
+Create note with a folder
 
 *run-cell.sh*
 ```bash
-noweb.py -Rttnf.sh ttnf.md > ttnf.sh  && echo 'fertig'
+noweb.py -Rtemplate-note.sh template-note.sh.md > template-note.sh  && echo 'fertig'
 ```
 
- ```bash
-chmod u+x ttnf.sh  && ln -sf $(pwd)/ttnf.sh ~/.local/bin/ttnf.sh && echo 'fertig'
-  ```
+```bash
+chmod u+x template-note.sh  && ln -sf $(pwd)/template-note.sh ~/.local/bin/template-note.sh && echo 'fertig'
+```
 
-*ttnf.sh*
+*template-note.sh*
 ```bash
 #!/usr/bin/env bash
 source config.sh; # load the config library functions

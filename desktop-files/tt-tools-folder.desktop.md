@@ -26,7 +26,7 @@ chmod u+x tt-tools-folder.desktop && ln -sf $(pwd)/tt-tools-folder.desktop ~/.lo
 Type=Service
 X-KDE-ServiceTypes=KonqPopupMenu/Plugin
 MimeType=inode/directory;
-Actions=AnnotateAllFolder;AnnotateAllMoveFolder;
+Actions=AnnotateAllFolder;
 X-KDE-Priority=TopLevel
 X-KDE-Submenu=tt-folder
 
@@ -35,12 +35,5 @@ Name=ttd
 Name[de]=ttd
 Icon=audio
 Exec=ttd %n
-
-[Desktop Action AnnotateAllMoveFolder]
-Name=ttdm
-Name[de]=ttdm
-Icon=audio
-Exec=ttdm %n
-
 
 ```

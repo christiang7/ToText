@@ -2,15 +2,15 @@
 Type=Service
 X-KDE-ServiceTypes=KonqPopupMenu/Plugin
 MimeType=inode/directory;
-Actions=CreateFoldertxt;template_tex;template_calc;
+Actions=template_note;template_tex;template_calc;
 X-KDE-Priority=TopLevel
 X-KDE-Submenu=tt-template
 
-[Desktop Action CreateFoldertxt]
-Name=ttnf.sh create folder txt
-Name[de]=ttnf.sh Ordner mit txt Datei erzeugen
+[Desktop Action template_note]
+Name=template-note.sh create note with folder
+Name[de]=template-note.sh erstelle Notiz mit Ordner
 Icon=audio
-Exec=ttnf.sh %n
+Exec=template-note.sh %n
 
 [Desktop Action template_tex]
 Name=template-tex.sh
