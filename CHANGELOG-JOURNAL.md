@@ -3,21 +3,24 @@
 - [X] Backlog
 	- [ ] [tt] with real path of file not the terminal path, ``realpath`` program not working, using the real path of the [.desktop] file with ``tt $f``
 	- [ ] rewrite everything in english
-	- [ ] make a website for [ToTexT] scripts
 	- [ ] write blog post for [website]
-	- [ ] rewrite [tt-lib.sh] with [subshell]
-		- [ ] use output formats in the external tools
-	- [ ] make [website] with [wiki] of how to use the scripts
-		- [ ] links for used tools in [README] file
+	- [ ] rewrite [tt-lib.sh] with [subshell] for optional output
 - [X] Doing (2)
+	- [ ] write [documentation]
+		- [ ] [install instructions] in README
+			- [ ] make [script] for that
+		- [ ] describe main application 
+			- [ ] which [script] do what
+		- [ ] explain possible [workflows] with used [scripts]
+		- [ ] make [website] 
 
 
 
 ### 2025-02-16
 - [X] rewrite [topic2zim.sh]
-	- [X] rename [topic2zim.sh] to [tabs2topicsh]
+	- [X] rename [topic2zim.sh] to [tabs2topic.sh]
 - [X] rename [tabs2zim.sh] to [tabs2today.sh]
-- [X] integrate plotting in [zim] and or [markdown] with [noweb.py], maybe [python], [gnuplot] (very easy) or [sage]
+- [X] integrate plotting in [zim] and or [markdown] with [noweb.py] and [gnuplot]
 - [X] integrate mermaid diagrams
 - [X] combine [zim-insert-plantuml.sh] with [insert-code.sh]
 
