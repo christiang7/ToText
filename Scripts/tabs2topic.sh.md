@@ -2,7 +2,7 @@
 Created Dienstag [Zettelkasten:2022:10:25]()
 Backlink [GedankenspeicherCoding](../GedankenspeicherCoding.md)
 
-- [X] **topic2zim**
+- [X] **tabs2topic**
 	- [X] Doing
 	- [X] Backlog
 
@@ -144,7 +144,7 @@ case ${choose} in
 		l=5;;
 	Zettelkasten) file=$(echo "$wikiDir/Zettelkasten/0»Journal_Zettelkasten.md")
 		l=5;;
-	Heute) tabs2zim.sh $additiontext
+	Heute) tabs2today.sh $additiontext
 		exit
 		;;
 	Physik) file=$(echo "$wikiDir/Physik/0»Journal_Physik.md")

@@ -18,6 +18,7 @@ noweb.py -Rtabs2today.sh tabs2today.sh.md > tabs2today.sh && echo 'fertig'
 source config.sh; # load the config library functions
 journalDir="$(config_get journalDir)"
 journalPage="$(config_get journalPage)"
+source tt-lib.sh
 
 additiontext=$(echo $1)
 if [ ! $? -eq 1 ]; 
@@ -30,7 +31,7 @@ then
   if [[ ! -e "$foldermonth"/"$calendarfile" ]] 
   then
 	touch "$foldermonth"/"$calendarfile"
-	#*zim template}}
+	#*note template}}
   fi
   echo -e "\n${additiontext}\n${text}" >> "$foldermonth"/"$calendarfile"
 
@@ -38,26 +39,10 @@ fi
 ```
 
 
-#### zim template
+#### note template
 
-*zim template*
+*note template*
 ```bash
-echo "Content-Type: text/x-zim-wiki" >> "$foldermonth"/"$calendarfile"
-echo "Wiki-Format: zim 0.6" >> "$foldermonth"/"$calendarfile"
-#date +"====== %A %d %b %Y ======" >> "$foldermonth"/"$calendarfile"
-echo -e "====== $(date +"%A %Y-%m-%d") ======" >> "$foldermonth"/"$calendarfile"
-#date +"[[$journalPage:%Y:Week %W|Week %W]]">> "$foldermonth"/"$calendarfile"
-#date +"[[$journalPage:%Y:%m]]" >> "$foldermonth"/"$calendarfile"
-#echo -e ""  >> "$foldermonth"/"$calendarfile"
-#date +"[*] ** %A %d %b %Y ** " >> "$foldermonth"/"$calendarfile"
+Wikiprev "$(date +"%A %Y-%m-%d")"  >> "$foldermonth"/"$calendarfile"
 echo -e "$(date +"[[$journalPage:%Y:%m|%Y-%m]]")" >> "$foldermonth"/"$calendarfile"
-```
-
-
-#### markdown template
-
-*markdown template*
-```bash
-echo -e "# $(date +"%A %Y-%m-%d")" >> "$foldermonth"/"$calendarfile"
-echo -e "$(date +"[[$journalPage/%Y/%m|%Y-%m]]")" >> "$foldermonth"/"$calendarfile"
 ```
