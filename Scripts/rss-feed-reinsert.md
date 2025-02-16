@@ -8,7 +8,7 @@ Created [2023-06-07]()
 
 ## Featuress
 
-This program can only save web articles not files for read it later.
+This program can only save web articles, not files for read it later.
 There exist options to choose in which place the tabs should be stored.
 
 ## Infos
