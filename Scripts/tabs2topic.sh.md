@@ -1,4 +1,4 @@
-# topic2zim
+# tabs2topic
 Created Dienstag [Zettelkasten:2022:10:25]()
 Backlink [GedankenspeicherCoding](../GedankenspeicherCoding.md)
 
@@ -8,7 +8,7 @@ Backlink [GedankenspeicherCoding](../GedankenspeicherCoding.md)
 
 ## Features
 
-Combination with the program [tabs2zim](tabs2zim.md).
+Combination with the program [tabs2today](tabs2today.md).
 You can add tabs from browser in a specific page you choose.
 
 
@@ -35,12 +35,12 @@ https://www.linuxteck.com/sed-commands-in-linux/
 
 *run-cell.sh*
 ```bash
-noweb.py -Rtopic2zim.sh topic2zim.md > topic2zim.sh && echo 'topic2zim.sh' && date
+noweb.py -Rtabs2topic.sh tabs2topic.sh.md > tabs2topic.sh && echo 'tabs2topic.sh' && date
 ```
 
 ### Main program
 
-*topic2zim.sh*
+*tabs2topic.sh*
 ```bash
 #! /bin/bash
 source config.sh; # load the config library functions
@@ -50,7 +50,6 @@ wikiDir="$(config_get wikiDir)"
 
 #*request}}
 
-@
 ```
 
 ### Request
@@ -123,48 +122,18 @@ then
 
 	if [[ ! "$topic" = "" ]];
 	then
-		topicfile="$(echo "${topic}" | sed 's/ /_/g' | sed 's/:/;/g' | sed -e "s/'/_/g" | sed 's/\"//g'|  sed 's/&/n/g' | sed 's/|//g' | sed 's/\[/(/g' | sed 's/\]/)/g' | sed 's/@/at/g' | sed 's/¦//g' | sed 's/?/.ß/g').md"
-		topicfilename=$(basename "$topicfile" .md)
+		topicfilename=$(cleanName "${topic}")
+		topicfile="${topicfilename}.md"
 		touch "${folder}"/"${topicfile}"
 		mkdir -p "${folder}"/"${topicfilename}"
-		#*zim template}}
+		create-note "$folder" "${topicfilename}" "$tags" "$source" "$additiontext" >> "$folder"/"${topicfile}"
+		echo -e "\n${tabs}" >> "${folder}"/"${topicfile}"
+		echo -e "	[*] $(date +"[[$journalPage:%Y:%m:%d|%Y-%m-%d]]")" >> "${folder}".md
+		echo -e "		[*] [[+$(basename ${topicfile} .md)|${topic}]]" >> "${folder}".md
 	fi
 fi
 ```
 
-
-#### zim template
-
-
-*zim template*
-```bash
-echo "Content-Type: text/x-zim-wiki" > "${folder}"/"${topicfile}"
-echo "Wiki-Format: zim 0.6" >> "${folder}"/"${topicfile}"
-echo -e "====== ${topic} ======" >> "${folder}"/"${topicfile}"
-echo -e "Created $(date +"[[$journalPage:%Y:%m:%d|%Y-%m-%d]]")" >> "${folder}"/"${topicfile}"
-#echo -e "" >> "${folder}"/"${topicfile}"
-echo -e "[*] ${tags} ** ${topic} ** [[$(basename ${folder})]] " >> "${folder}"/"${topicfile}"
-echo -e "\n${additiontext}" >> "${folder}"/"${topicfile}"
-echo -e "\n${tabs}" >> "${folder}"/"${topicfile}"
-echo -e "		[*] $(date +"[[$journalPage:%Y:%m:%d|%Y-%m-%d]]")" >> "${folder}".md
-echo -e "			[*] [[+$(basename ${topicfile} .md)|${topic}]]" >> "$folder".md
-```
-
-
-#### markdown template
-
-
-*markdown template*
-```bash
-echo -e "# ${topic}" >> "${folder}"/"${topicfile}"
-echo -e "Created $(date +"[[$journalPage/%Y/%m/%d|%Y-%m-%d]]")" >> "${folder}"/"${topicfile}"
-#echo -e "" >> "${folder}"/"${topicfile}"
-echo -e "- [X] ${tags} ** ${topic} ** [[$(basename ${folder})]] " >> "${folder}"/"${topicfile}"
-echo -e "\n${additiontext}" >> "${folder}"/"${topicfile}"
-echo -e "\n${tabs}" >> "${folder}"/"${topicfile}"
-echo -e "		- [X] $(date +"[[$journalPage/%Y/%m/%d|%Y-%m-%d]]")" >> "${folder}".md
-echo -e "			- [X] [[/$(basename ${topicfile} .md)|${topic}]]" >> "$folder".md
-```
 
 ### Tabs to topics
 
@@ -194,8 +163,6 @@ esac
 #echo $tabs
 today=$(date +"[[$journalPage:%Y:%m:%d|%Y-%m-%d]]")
 
-## today=$(date +"[[$journalPage/%Y/%m/%d|%Y-%m-%d]]")
-
 sed -i "${l}i
 " "$file"
 element=""
@@ -206,8 +173,8 @@ do
 	echo "$element"
 	if (($i % 2 != 0));
 	then
-		element=$(echo "${element}" | sed 's/\//-/g' | sed 's/:/;/g' | sed 's/:/;/g' | sed "s/|/;/g" | sed "s/·/;/g" | sed "s/💤/;/g")
-		#title=$(echo "${title}" | sed 's/\//-/g' | sed 's/:/;/g' | sed "s/|/;/g" | sed "s/·/;/g" | sed "s/💤/;/g")
+		element=$(cleanName "${element}")
+		#title=$(cleanName "${title}")
 		echo "$element"
 	fi
 	#echo ${i}

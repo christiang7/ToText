@@ -56,20 +56,14 @@ then
 
 			if [[ ! "$topic" = "" ]];
 			then
-				topicfile="$(echo "${topic}" | sed 's/ /_/g' | sed 's/:/;/g' | sed -e "s/'/_/g" | sed 's/\"//g'|  sed 's/&/n/g' | sed 's/|//g' | sed 's/\[/(/g' | sed 's/\]/)/g' | sed 's/@/at/g' | sed 's/¦//g' | sed 's/?/.ß/g').md"
-				topicfilename=$(basename "$topicfile" .md)
+				topicfilename=$(cleanName "${topic}")
+				topicfile="${topicfilename}.md"
 				touch "${folder}"/"${topicfile}"
 				mkdir -p "${folder}"/"${topicfilename}"
-				echo "Content-Type: text/x-zim-wiki" > "${folder}"/"${topicfile}"
-				echo "Wiki-Format: zim 0.6" >> "${folder}"/"${topicfile}"
-				echo -e "====== ${topic} ======" >> "${folder}"/"${topicfile}"
-				echo -e "Created $(date +"[[$journalPage:%Y:%m:%d|%Y-%m-%d]]")" >> "${folder}"/"${topicfile}"
-				#echo -e "" >> "${folder}"/"${topicfile}"
-				echo -e "[*] ${tags} ** ${topic} ** [[$(basename ${folder})]] " >> "${folder}"/"${topicfile}"
-				echo -e "\n${additiontext}" >> "${folder}"/"${topicfile}"
+				create-note "$folder" "${topicfilename}" "$tags" "$source" "$additiontext" >> "$folder"/"${topicfile}"
 				echo -e "\n${tabs}" >> "${folder}"/"${topicfile}"
-				echo -e "		[*] $(date +"[[$journalPage:%Y:%m:%d|%Y-%m-%d]]")" >> "${folder}".md
-				echo -e "			[*] [[+$(basename ${topicfile} .md)|${topic}]]" >> "$folder".md
+				echo -e "	[*] $(date +"[[$journalPage:%Y:%m:%d|%Y-%m-%d]]")" >> "${folder}".md
+				echo -e "		[*] [[+$(basename ${topicfile} .md)|${topic}]]" >> "${folder}".md
 			fi
 		fi
 		;;
@@ -98,8 +92,6 @@ then
 		#echo $tabs
 		today=$(date +"[[$journalPage:%Y:%m:%d|%Y-%m-%d]]")
 
-		## today=$(date +"[[$journalPage/%Y/%m/%d|%Y-%m-%d]]")
-
 		sed -i "${l}i
 		" "$file"
 		element=""
@@ -110,8 +102,8 @@ then
 			echo "$element"
 			if (($i % 2 != 0));
 			then
-				element=$(echo "${element}" | sed 's/\//-/g' | sed 's/:/;/g' | sed 's/:/;/g' | sed "s/|/;/g" | sed "s/·/;/g" | sed "s/💤/;/g")
-				#title=$(echo "${title}" | sed 's/\//-/g' | sed 's/:/;/g' | sed "s/|/;/g" | sed "s/·/;/g" | sed "s/💤/;/g")
+				element=$(cleanName "${element}")
+				#title=$(cleanName "${title}")
 				echo "$element"
 			fi
 			#echo ${i}
@@ -132,4 +124,3 @@ then
 	esac
 fi
 
-@

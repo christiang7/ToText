@@ -1,18 +1,18 @@
-# tabs2zim
+# tabs2today
 Created Dienstag [Zettelkasten:2022:10:25]()
 
-- [X] **tabs2zim**
+- [X] **tabs2today**
 	- [X] Doing
 	- [X] Backlog
 
 
 *run-cell.sh*
 ```bash
-noweb.py -Rtabs2zim.sh tabs2zim.md > tabs2zim.sh && echo 'fertig'
+noweb.py -Rtabs2today.sh tabs2today.sh.md > tabs2today.sh && echo 'fertig'
 ```
 
 
-*tabs2zim.sh*
+*tabs2today.sh*
 ```bash
 #! /bin/bash
 source config.sh; # load the config library functions

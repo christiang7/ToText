@@ -14,9 +14,12 @@
 
 
 ### 2025-02-16
-	- [X] integrate plotting in [zim] and or [markdown] with [noweb.py], maybe [python], [gnuplot] (very easy) or [sage]
-	- [X] integrate mermaid diagrams
-	- [X] combine [zim-insert-plantuml.sh] with [insert-code.sh]
+- [X] rewrite [topic2zim.sh]
+	- [X] rename [topic2zim.sh] to [tabs2topicsh]
+- [X] rename [tabs2zim.sh] to [tabs2today.sh]
+- [X] integrate plotting in [zim] and or [markdown] with [noweb.py], maybe [python], [gnuplot] (very easy) or [sage]
+- [X] integrate mermaid diagrams
+- [X] combine [zim-insert-plantuml.sh] with [insert-code.sh]
 
 Plotting - Tutorial
 https://doc.sagemath.org/html/en/tutorial/tour_plotting.html
