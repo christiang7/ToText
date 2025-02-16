@@ -14,7 +14,7 @@ Created [2025-02-13]()
 
 procedure
 - [yad] request for insert code block 
-- using ``program-template`` function from [[tt-lib.sh]]
+- using ``template-code`` function from [[tt-lib.sh]]
 
 
 *run-cell.sh*
@@ -45,13 +45,14 @@ abfrage=$(yad --title="Insert code?" --text="Necessary Informations:" \
 	--form --width 500 --separator="~" --item-separator=","  \
 	--field="Filename" \
 	--field="Shortname for language":CBE \
-	--field="Description":TXT \
-	"" "$langName" "")
+	--field="Add to existing code":CB \
+	"" "$langName" ",yes")
 if [ ! $? -eq 1 ];
 then
 	File=$(echo $abfrage | cut -s -d "~" -f 1)
 	langname=$(echo $abfrage | cut -s -d "~" -f 2)
-	additiontext=$(echo $abfrage | cut -s -d "~" -f 3)
+	add=$(echo $abfrage | cut -s -d "~" -f 3)
+
 	File=$(cleanName "$File")
 
 	extens="$(get-extens ${langname})"
@@ -60,7 +61,7 @@ then
 	File="$File"."${extens}"
 	
 	
-	program-template "." "${Filename}.${extens}" "${txtfilename}"
+	template-code "." "${Filename}.${extens}" "${txtfilename}" "$add"
 	
 fi
 ```

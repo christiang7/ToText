@@ -112,7 +112,7 @@ Creating template
 
 markdown-description-program "${Filename}.${extens}" >> "$folder"/"${Filename}.${extens}".md
 
-program-template "$folder" "${Filename}.${extens}" >> "$folder"/"${Filename}.${extens}".md
+template-code "$folder" "${Filename}.${extens}" >> "$folder"/"${Filename}.${extens}".md
 
 ```
 

@@ -93,7 +93,7 @@ then
 
 		tex-description "$folder" "${File}" "$foldertex" "$additiontext\n\\\begin{minted}[linenos=true,bgcolor=lightgraycolor,numberblanklines=true,showspaces=false,breaklines=true]{${langname}}\n#*${filename}.${extens}}}\n\\\end{minted}" "#*run code}}" >> "$folder"/"$foldertex"/"${filename}".md
 
-		program-template "$folder/$foldertex" "${filename}.${extens}" "${filename}.tex" "yes" >> "$folder"/"$foldertex"/"${filename}".md
+		template-code "$folder/$foldertex" "${filename}.${extens}" "${filename}.tex" "yes" >> "$folder"/"$foldertex"/"${filename}".md
 
 			;;
 	esac

@@ -2,7 +2,7 @@
 source config.sh
 journalPage="$(config_get journalPage)"
 
-function cleanName () {
+function cleanName(){
     echo "$1" | sed 's/ /_/g' | sed 's/:/;/g'| sed -e "s/'/_/g" | sed 's/\"//g'|  sed 's/&/n/g' | sed 's/\///g' | sed 's/|//g' | sed 's/\[/(/g' | sed 's/\]/)/g' | sed 's/@/at/g' | sed 's/：/;/g' | sed 's/？/ß/g' | sed "s/|/;/g" | sed "s/·/;/g" | sed "s/💤/;/g" | sed "s/｜/-/g" | sed "s/?/ß/g" | sed "s/!/;/g" | sed "s/¦/;/g" | sed "s/⧸/-/g" | sed "s/~/-/g"
 }
 
@@ -72,7 +72,7 @@ function markdown-description-program(){
     echo -e " - [X] Doing"
 }
 
-function program-template(){
+function template-code(){
     local folder=$1
     local File=$(cleanName "$2")
     local outFile=$(cleanName "$3")
@@ -101,7 +101,7 @@ function program-template(){
     then
         echo -e "{{./${Filename}.png}}"
 	fi
-    echo -e " \n## ${extens} Code\n\n"
+    echo -e " \n## ${extens} code\n\n"
     echo -e "$codeHead"
     echo -e "\`\`\`bash"
     case ${extens} in
@@ -113,7 +113,7 @@ function program-template(){
             echo -e "noweb.py -R${Filename}.${extens} ${outFile}.md > ${Filename}.${extens} && typst compile --format pdf ${Filename}.${extens} && echo '${Filename}.${extens}' && date && xournalpp ${Filename}.pdf 2>/dev/null & \n\`\`\`"
             ;;
         plt)
-            echo -e "noweb.py -R${Filename}.${extens} ${outFile}.md > "${outFile}"/${Filename}.${extens} && gnuplot "${outFile}"/${Filename}.${extens} && echo '${Filename}.${extens}' && date \n\`\`\`"
+            echo -e "noweb.py -R${Filename}.${extens} ${outFile}.md > "${outFile}"/${Filename}.${extens} && gnuplot "${outFile}"/${Filename}.${extens} -p \n\`\`\`"
             ;;
         mmd)
             echo -e "noweb.py -R${Filename}.${extens} ${outFile}.md > "${outFile}"/${Filename}.${extens} && mermaid-cli.sh "${outFile}"/${Filename}.${extens} && echo '${Filename}.${extens}' && date && gwenview "${outFile}"/${Filename}.png 2>/dev/null \n\`\`\`"
@@ -149,7 +149,7 @@ function program-template(){
             echo "set xlabel 'x'"
             echo "#set logscale y"
             echo "set term png"
-            echo "set output sprintf('${Filename}.png')"
+            echo "set output sprintf('"${outFile}"/${Filename}.png')"
             echo "plot  lt rgb 'blue'"
             echo "#plot "data.txt" using ($1):($2) title '1' lt rgb 'blue', "data.txt" using ($1):($3) title '2' lt rgb 'red', "data.txt" using ($1):($4) title '3' lt rgb 'green'"
             echo "set term qt"

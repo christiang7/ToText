@@ -109,7 +109,7 @@ then
 
 	markdown-description-program "${File}" >> "$folder/$Project"/"${File}".md
 
-	program-template "$folder/$Project" "${File}" >> "$folder"/"$Project"/"${File}".md
+	template-code "$folder/$Project" "${File}" >> "$folder"/"$Project"/"${File}".md
 
 	if [[ $gitinit == "Yes" ]];
 	then

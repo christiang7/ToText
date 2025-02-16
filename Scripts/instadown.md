@@ -1,6 +1,5 @@
 # instadown
 Created Samstag [Zettelkasten:2022:04:09]()
-Backlink [GedankenspeicherCoding](../GedankenspeicherCoding.md)
 
 - [X] **instadown**
 

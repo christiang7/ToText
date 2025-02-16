@@ -31,23 +31,13 @@ chmod u+x tt-lib.sh && ln -sf $(pwd)/tt-lib.sh ~/.local/bin/tt-lib.sh && echo 'f
 source config.sh
 journalPage="$(config_get journalPage)"
 
-function cleanName () {
-    echo "$1" | sed 's/ /_/g' | sed 's/:/;/g'| sed -e "s/'/_/g" | sed 's/\"//g'|  sed 's/&/n/g' | sed 's/\///g' | sed 's/|//g' | sed 's/\[/(/g' | sed 's/\]/)/g' | sed 's/@/at/g' | sed 's/：/;/g' | sed 's/？/ß/g' | sed "s/|/;/g" | sed "s/·/;/g" | sed "s/💤/;/g" | sed "s/｜/-/g" | sed "s/?/ß/g" | sed "s/!/;/g" | sed "s/¦/;/g" | sed "s/⧸/-/g" | sed "s/~/-/g"
-}
+#*cleanName}}
 
-function WikiMarkprev(){
-    echo "Content-Type: text/x-zim-wiki"
-    echo "Wiki-Format: zim 0.6"
-    echo "# $1 "
-}
+#*WikiMarkprev}}
 
-function Markdownprev(){
-    echo "# $1 "
-}
+#*Markdownprev}}
 
-function Timestamps(){
-    echo "Text date: $(date +"[[$journalPage:%Y:%m:%d|%Y-%m-%d]]") Modi date: $(date +"[[$journalPage:%Y:%m:%d|%Y-%m-%d]]" -r "$1"/"$3"/"$2")"
-}
+#*Timestamps}}
 
 #*Wikiprev}}
 
@@ -55,7 +45,7 @@ function Timestamps(){
 
 #*markdown-description-program}}
 
-#*program-template}}
+#*template-code}}
 
 #*tex-description}}
 
@@ -74,13 +64,85 @@ function Timestamps(){
 #*ttpdf}}
 
 ```
+### cleanName
+
+using ``cleanName`` function with the parameters as following
+```bash
+    cleanName p1
+    p1 - filename
+    output - text
+```
+
+*cleanName*
+```bash
+function cleanName(){
+    echo "$1" | sed 's/ /_/g' | sed 's/:/;/g'| sed -e "s/'/_/g" | sed 's/\"//g'|  sed 's/&/n/g' | sed 's/\///g' | sed 's/|//g' | sed 's/\[/(/g' | sed 's/\]/)/g' | sed 's/@/at/g' | sed 's/：/;/g' | sed 's/？/ß/g' | sed "s/|/;/g" | sed "s/·/;/g" | sed "s/💤/;/g" | sed "s/｜/-/g" | sed "s/?/ß/g" | sed "s/!/;/g" | sed "s/¦/;/g" | sed "s/⧸/-/g" | sed "s/~/-/g"
+}
+```
+
+
+### WikiMarkprev
+
+using ``WikiMarkprev`` function with the parameters as following
+```bash
+    WikiMarkprev p1
+    p1 - filename
+    output - text
+```
+
+*WikiMarkprev*
+```bash
+function WikiMarkprev(){
+    echo "Content-Type: text/x-zim-wiki"
+    echo "Wiki-Format: zim 0.6"
+    echo "# $1 "
+}
+```
+
+
+### Markdownprev
+
+using ``Markdownprev`` function with the parameters as following
+```bash
+    Markdownprev p1
+    p1 - filename
+    output - text
+```
+
+*Markdownprev*
+```bash
+function Markdownprev(){
+    echo "# $1 "
+}
+```
+
+
+### Timestamps
+
+using ``Timestamps`` function with the parameters as following
+```bash
+    Timestamps p1 p2 p3
+    p1 - folder
+    p2 - cleaned filename
+    p3 - file folder 
+    output - text
+```
+
+*Timestamps*
+```bash
+function Timestamps(){
+    echo "Text date: $(date +"[[$journalPage:%Y:%m:%d|%Y-%m-%d]]") Modi date: $(date +"[[$journalPage:%Y:%m:%d|%Y-%m-%d]]" -r "$1"/"$3"/"$2")"
+}
+```
+
 
 ### Wikiprev
 
 using ``Wikiprev`` function with the parameters as following
 ```bash
-    ttex p1
+    Wikiprev p1
     p1 - title or cleaned File
+    output - text
 ```
 
 *Wikiprev*
@@ -100,6 +162,7 @@ using ``get-extens`` function with the parameters as following
 ```bash
     get-extens p1
     p1 - programming language name
+    output - extension of file
 ```
 
 *get-extens*
@@ -153,6 +216,7 @@ using ``file-description`` function with the parameters as following
     p5 - additiontext
     p6 - picture
     p7 - folder switch
+    output - text
 ```
 
 *file-description*
@@ -210,6 +274,7 @@ using ``Markdown-description-file`` function with the parameters as following
     p3 - tags
     p4 - source
     p5 - additiontext
+    output - text
 ```
 
 *Markdown-description-file*
@@ -233,6 +298,7 @@ using ``create-note`` function with the parameters as following
     p3 - tags
     p4 - source
     p5 - additiontext
+    output - text
 ```
 
 *create-note*
@@ -262,6 +328,7 @@ using ``ttpic`` function with the parameters as following
     p3 - tags
     p4 - source
     p5 - additiontext
+    output - text
 ```
 
 *ttpic*
@@ -285,6 +352,7 @@ using ``ttvid`` function with the parameters as following
     p6 - video not cleaned filename
     p7 - folder switch
     p8 - Download switch
+    output - text
 ```
 
 *ttvid*
@@ -364,6 +432,7 @@ using ``ttpdf`` function with the parameters as following
     p4 - source
     p5 - additiontext
     p6 - folder switch
+    output - text
 ```
 
 *ttpdf*
@@ -395,20 +464,21 @@ function ttpdf(){
 ```
 
 
-### Program template function
+### Code template function
 
-using ``program-template`` function with the parameters as following
+using ``template-code`` function with the parameters as following
 ```bash
-    program-template p1 p2 p3 p4
+    template-code p1 p2 p3 p4
     p1 - folder
     p2 - file
     p3 - output file
     p4 - switchCode
+    output - text
 ```
 
-*program-template*
+*template-code*
 ```bash
-function program-template(){
+function template-code(){
     local folder=$1
     local File=$(cleanName "$2")
     local outFile=$(cleanName "$3")
@@ -437,7 +507,7 @@ function program-template(){
     then
         echo -e "{{./${Filename}.png}}"
 	fi
-    echo -e " \n## ${extens} Code\n\n"
+    echo -e " \n## ${extens} code\n\n"
     echo -e "$codeHead"
     echo -e "\`\`\`bash"
     case ${extens} in
@@ -449,7 +519,7 @@ function program-template(){
             echo -e "noweb.py -R${Filename}.${extens} ${outFile}.md > ${Filename}.${extens} && typst compile --format pdf ${Filename}.${extens} && echo '${Filename}.${extens}' && date && xournalpp ${Filename}.pdf 2>/dev/null & \n\`\`\`"
             ;;
         plt) 
-            echo -e "noweb.py -R${Filename}.${extens} ${outFile}.md > "${outFile}"/${Filename}.${extens} && gnuplot "${outFile}"/${Filename}.${extens} && echo '${Filename}.${extens}' && date \n\`\`\`"
+            echo -e "noweb.py -R${Filename}.${extens} ${outFile}.md > "${outFile}"/${Filename}.${extens} && gnuplot "${outFile}"/${Filename}.${extens} -p \n\`\`\`"
             ;;
         mmd) 
             echo -e "noweb.py -R${Filename}.${extens} ${outFile}.md > "${outFile}"/${Filename}.${extens} && mermaid-cli.sh "${outFile}"/${Filename}.${extens} && echo '${Filename}.${extens}' && date && gwenview "${outFile}"/${Filename}.png 2>/dev/null \n\`\`\`"
@@ -485,7 +555,7 @@ function program-template(){
             echo "set xlabel 'x'"
             echo "#set logscale y"
             echo "set term png"
-            echo "set output sprintf('${Filename}.png')"
+            echo "set output sprintf('"${outFile}"/${Filename}.png')"
             echo "plot  lt rgb 'blue'"
             echo "#plot "data.txt" using ($1):($2) title '1' lt rgb 'blue', "data.txt" using ($1):($3) title '2' lt rgb 'red', "data.txt" using ($1):($4) title '3' lt rgb 'green'"
             echo "set term qt"
@@ -503,6 +573,7 @@ using ``markdown-description-program`` function with the parameters as following
 ```bash
     markdown-description-program p1
     p1 - cleaned file
+    output - text
 ```
 
 
@@ -532,6 +603,7 @@ using ``tex-description`` function with the parameters as following
     p3 - tex folder
     p4 - additiontext
     p5 - insert more commands
+    output - text
 ```
 
 
@@ -570,9 +642,10 @@ using ``ttex`` function with the parameters as following
     p1 - folder
     p2 - cleaned file
     p3 - original file
+    output - text
 ```
 
-process
+procedure
 - input
 - move to tex folder
 - make note file
