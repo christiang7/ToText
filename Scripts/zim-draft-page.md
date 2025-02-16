@@ -67,7 +67,7 @@ source tt-lib.sh
 
 *create xopp template*
 ```bash
-file-description "$(pwd)" "$(date +"Draft_%Y-%m-%d".xopp)" "" "" ""
+file-description "$(pwd)" "$(date +"Draft_%Y-%m-%d".xopp)" "" "" "" >> "$(pwd)"/"$(date +"Draft_%Y-%m-%d".xopp)"
 ```
 
 

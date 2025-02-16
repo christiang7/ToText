@@ -38,7 +38,7 @@ then
 		mkdir -p "$filetxt"
 		cd "$filetxt"
 		mypaint "$filename".png
-		ttpic "$filetxt" "$filename".png "$source" "$tags" "$additiontext"
+		ttpic "$filetxt" "$filename".png "$source" "$tags" "$additiontext" >> "$filetxt"/"$filename".png
 		echo -e "[[+${filename}.png]]"
 		echo {{"$filename".png?width=500}}
 	fi

@@ -1,6 +1,5 @@
 #!/bin/bash
 source config.sh; # load the config library functions
-journalPage="$(config_get journalPage)"
 langName="$(config_get langName)"
 source tt-lib.sh
 
@@ -47,13 +46,13 @@ then
 
 	mkdir -p "$Project"
 
-	create-note "$folder" "$Project" "$tags" "$source" "$additiontext"
+	create-note "$folder" "$Project" "$tags" "$source" "$additiontext" >> "$folder"/"$Project".md
 
-	markdown-description-program "$folder/$Project" "README"
+	markdown-description-program "README" >> "$folder/$Project"/"README".md
 
-	markdown-description-program "$folder/$Project" "${File}"
+	markdown-description-program "${File}" >> "$folder/$Project"/"${File}".md
 
-	program-template "$folder/$Project" "${File}"
+	program-template "$folder/$Project" "${File}" >> "$folder"/"$Project"/"${File}".md
 
 	if [[ $gitinit == "Yes" ]];
 	then

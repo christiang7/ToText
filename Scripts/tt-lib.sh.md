@@ -36,17 +36,17 @@ function cleanName () {
 }
 
 function WikiMarkprev(){
-    echo "Content-Type: text/x-zim-wiki" >> "$1"/"$2".md
-    echo "Wiki-Format: zim 0.6" >> "$1"/"$2".md
-    echo "# $2 " >> "$1"/"$2".md
+    echo "Content-Type: text/x-zim-wiki"
+    echo "Wiki-Format: zim 0.6"
+    echo "# $1 "
 }
 
 function Markdownprev(){
-    echo "# $2 " >> "$1"/"$2".md
+    echo "# $1 "
 }
 
 function Timestamps(){
-    echo "Text date: $(date +"[[$journalPage:%Y:%m:%d|%Y-%m-%d]]") Modi date: $(date +"[[$journalPage:%Y:%m:%d|%Y-%m-%d]]" -r "$1"/"$3"/"$2")" >> "$1"/"$2".md
+    echo "Text date: $(date +"[[$journalPage:%Y:%m:%d|%Y-%m-%d]]") Modi date: $(date +"[[$journalPage:%Y:%m:%d|%Y-%m-%d]]" -r "$1"/"$3"/"$2")"
 }
 
 #*Wikiprev}}
@@ -67,7 +67,7 @@ function Timestamps(){
 
 #*create-note}}
 
-#*Markdown-file-description}}
+#*Markdown-description-file}}
 
 #*ttvid}}
 
@@ -79,18 +79,16 @@ function Timestamps(){
 
 using ``Wikiprev`` function with the parameters as following
 ```bash
-    ttex p1 p2 p3
-    p1 - folder
-    p2 - cleaned File
-    p3 - title or cleaned File
+    ttex p1
+    p1 - title or cleaned File
 ```
 
 *Wikiprev*
 ```bash
 function Wikiprev(){
-    echo "Content-Type: text/x-zim-wiki" >> "$1"/"$2".md
-    echo "Wiki-Format: zim 0.6" >> "$1"/"$2".md
-    echo "====== $3 ======" >> "$1"/"$2".md
+    echo "Content-Type: text/x-zim-wiki"
+    echo "Wiki-Format: zim 0.6"
+    echo "====== $1 ======"
 }
 ```
 
@@ -128,6 +126,10 @@ function get-extens(){
         plantuml) extens="plantuml" langname="pl"
             ;;
         typst) extens="typ"
+            ;;
+        gnuplot) extens="plt"
+            ;;
+        mermaid) extens="mmd"
             ;;
         *) extens="${langname}"
             ;;
@@ -174,35 +176,35 @@ function file-description(){
         mv "$folder"/"$fileFolder" "$folder"/"$File"
         fileFolder="$fileFolder.$extens"
     fi
-    Wikiprev "$folder" "$File" "$File"
+    Wikiprev "$File"
     Timestamps "$folder" "$File" "$fileFolder"
-    echo "$tags" >> "$folder"/"$File".md
+    echo "$tags"
     if [[ ! $folderSwitch == "" ]]
     then
-        echo "**[[./$File]]**" >> "$folder"/"$File".md
+        echo "**[[./$File]]**"
     else
-        echo "**[[../$File]]**" >> "$folder"/"$File".md
+        echo "**[[../$File]]**"
     fi
     if [[ ! $picture == "" ]]
     then
         if [[ ! $folderSwitch == "" ]]
         then
-            echo "{{./$File.avif?width=500}}" >> "$folder"/"$File".md
+            echo "{{./$File.avif?width=500}}"
         else
-            echo "{{../$File.avif?width=500}}" >> "$folder"/"$File".md
+            echo "{{../$File.avif?width=500}}"
         fi
     else
-        echo "{{../$File?width=500}}" >> "$folder"/"$File".md
+        echo "{{../$File?width=500}}"
     fi
-    echo -e "$source\n$additiontext\n" >> "$folder"/"$File".md
+    echo -e "$source\n$additiontext\n"
 }
 ```
 
-### Markdown file description
+### Markdown description file
 
-using ``Markdown-file-description`` function with the parameters as following
+using ``Markdown-description-file`` function with the parameters as following
 ```bash
-    Markdown-file-description p1 p2 p3 p4 p5
+    Markdown-description-file p1 p2 p3 p4 p5
     p1 - folder
     p2 - cleaned filename
     p3 - tags
@@ -210,14 +212,14 @@ using ``Markdown-file-description`` function with the parameters as following
     p5 - additiontext
 ```
 
-*Markdown-file-description*
+*Markdown-description-file*
 ```bash
-function Markdown-file-description(){
+function Markdown-description-file(){
     Markdownprev "$1" "$2"
-    echo "Text creation time: [%Y-%m-%d]($(date +"$journalPage/%Y/%m/%d")) Modification time: [%Y-%m-%d]($(date +"$journalPage/%Y/%m/%d" -r "$File"))" >> "$1"/"$2".md
-    echo "$3" >> "$1"/"$2".md
-    echo "**["$2"]] **" >> "$1"/"$2".md
-    echo -e "$4\n$5\n" >> "$1"/"$2".md
+    echo "Text creation time: [%Y-%m-%d]($(date +"$journalPage/%Y/%m/%d")) Modification time: [%Y-%m-%d]($(date +"$journalPage/%Y/%m/%d" -r "$File"))"
+    echo "$3"
+    echo "**["$2"]] **"
+    echo -e "$4\n$5\n"
 }
 ```
 
@@ -240,11 +242,11 @@ function create-note(){
     local title=$2
     local File=$(cleanName "$title")
     mkdir -p "${folder}"/"${File}"
-    Wikiprev "$folder" "$File" "$title"
-    echo -e "$3" >> "${folder}"/"${File}".md
-    echo -e "$4\n$5\n" >> "${folder}"/"${File}".md
-    echo -e "==== Journal ====\n" >> "${folder}"/"${File}".md
-    echo -e "=== $(date +"[[$journalPage:%Y:%m:%d|%Y-%m-%d]]") ===" >> "${folder}"/"${File}".md
+    Wikiprev "$title"
+    echo -e "$3"
+    echo -e "$4\n$5\n"
+    echo -e "==== Journal ====\n"
+    echo -e "=== $(date +"[[$journalPage:%Y:%m:%d|%Y-%m-%d]]") ==="
 }
 ```
 
@@ -252,6 +254,7 @@ function create-note(){
 ### ttpic
 
 using ``ttpic`` function with the parameters as following
+
 ```bash
     ttpic p1 p2 p3 p4 p5
     p1 - folder
@@ -259,14 +262,13 @@ using ``ttpic`` function with the parameters as following
     p3 - tags
     p4 - source
     p5 - additiontext
-```*program-template*
+```
 
 *ttpic*
 ```bash
 function ttpic(){
     local File=$(cleanName "$2")
     file-description "$1" "$File" "@BILD $3" "$4" "$5"
-    #echo "{{../$File?width=500}}" >> "$1"/"$File".md
 }
 ```
 
@@ -308,7 +310,7 @@ function ttvid(){
     if [[ ! $downloadSwitch == "" ]]
     then
         additiontext="$(yt-dlp --get-description ${source})"
-        file-description "$folder" "$File" "@VIDEO $tags" "$source" "$additiontext" "pic" "$folderSwitch"
+        file-description "$folder" "$File" "@VIDEO $tags" "$source" "$additiontext" "pic" "$folderSwitch" >> "$folder"/"$File"
         yt-dlp -q --sub-langs "en,de" --write-sub --write-thumbnail --write-auto-sub --sub-format "vtt" --skip-download -i ${source} -o "$folder/%(title)s.%(ext)s"
         mv "$folder"/"$oname".en.vtt "$fileFolder"/"$name".en.vtt
         mv "$folder"/"$oname".de.vtt "$fileFolder"/"$name".de.vtt
@@ -323,7 +325,7 @@ function ttvid(){
         local subtitlefile1="$name".en.vtt
         local subtitlefile2="$name".de.vtt
     else
-		file-description "$folder" "$File" "@VIDEO $tags" "$source" "$additiontext" "pic" "$folderSwitch"
+		file-description "$folder" "$File" "@VIDEO $tags" "$source" "$additiontext" "pic" "$folderSwitch" >> "$folder"/"$File"
 		# cat the old text file to the new one, then we do not need the vidc script
 		cat "$folder"/"${oname}".txt >> "$folder"/"$File".md
 		rm "$folder"/"${oname}".txt
@@ -386,10 +388,9 @@ function ttpdf(){
     pdftoppm -png -singlefile "$fileFolder"/"$File" "$fileFolder"/"$File"
     convert "$fileFolder"/"$File".png -resize 1200x1200 "$fileFolder"/"$File".avif
     rm "$fileFolder"/"$File".png
-    pdfinfo "$fileFolder"/"$File" | grep Pages >> "$folder"/"$File".md
-    echo -e "\n" >> "$folder"/"$File".md
-    pdftotext -nopgbrk -enc UTF-8 -f 1 -l 1 "$fileFolder"/"$File" ->> "$folder"/"$File".md
-
+    pdfinfo "$fileFolder"/"$File" | grep Pages
+    echo -e "\n"
+    pdftotext -nopgbrk -enc UTF-8 -f 1 -l 1 "$fileFolder"/"$File" -
 }
 ```
 
@@ -398,10 +399,11 @@ function ttpdf(){
 
 using ``program-template`` function with the parameters as following
 ```bash
-    program-template p1 p2 p3 
+    program-template p1 p2 p3 p4
     p1 - folder
     p2 - file
     p3 - output file
+    p4 - switchCode
 ```
 
 *program-template*
@@ -410,6 +412,7 @@ function program-template(){
     local folder=$1
     local File=$(cleanName "$2")
     local outFile=$(cleanName "$3")
+    local switchCode=$4
     if [[ $outFile == "" ]]
     then
         outFile=${File}
@@ -421,70 +424,101 @@ function program-template(){
     local extens=${File##*.}
     local outFilename=${outFile%.*}
     local outextens=${outFile##*.}
-    if [[ $outextens == "tex" ]]
+    if [[ ! $switchCode == "" ]]
     then
-        touch "$folder"/${File}
+        #touch "$folder"/${File}
         outFile=${outFilename}
-        echo -e " \n## ${extens} program\n\n" >> "$folder"/"${outFile}".md
-        echo -e "*run program*" >> "$folder"/"${outFile}".md
+        codeHead="*run code*"
     else
-        touch "$folder"/${outFile}
-        echo -e " \n## ${extens} program\n\n" >> "$folder"/"${outFile}".md
-        echo -e "*run-cell.sh*" >> "$folder"/"${outFile}".md
+        #touch "$folder"/${outFile}
+        codeHead="*run-cell.sh*"
     fi
-    echo -e "\`\`\`bash" >> "$folder"/"${outFile}".md
-    if  [[ $extens == "plantuml" ]]
+    if  [[ $extens == "plantuml" || $extens == "plt" || $extens == "mmd" ]]
     then
-        echo -e "noweb.py -R${Filename}.${extens} ${outFile}.md > ${Filename}.${extens} && plantuml ${Filename}.${extens} && echo '${Filename}.${extens}' && date && gwenview ${Filename}.png 2>/dev/null \n\`\`\`" >> "$folder"/"${outFile}".md
-    elif [[ $extens == "typst" ]]
-    then
-        echo -e "noweb.py -R${Filename}.${extens} ${outFile}.md > ${Filename}.${extens} && typst compile --format pdf ${Filename}.${extens} && echo '${Filename}.${extens}' && date && xournalpp ${Filename}.pdf 2>/dev/null & \n\`\`\`" >> "$folder"/"${outFile}".md
-    else
-        echo -e "noweb.py -R${Filename}.${extens} ${outFile}.md > ${Filename}.${extens} && echo '${Filename}.${extens}' && date \n\`\`\`" >> "$folder"/"${outFile}".md
-        echo -e "\n\n\`\`\`bash" >> "$folder"/"${outFile}".md
-        echo -e "chmod u+x ${Filename}.${extens} && ln -sf \$(pwd)/${Filename}.${extens} ~/.local/bin/${Filename}.${extens} && echo 'fertig'\n \`\`\`" >> "$folder"/"${outFile}".md
-    fi
-        echo -e "\n*${Filename}.${extens}*" >> "$folder"/"${outFile}".md
-        echo -e "\`\`\`${langname}" >> "$folder"/"${outFile}".md
-    if  [[ $extens == "plantuml" ]]
-    then
-        echo -e "@startuml\n" >> "$folder"/"${outFile}".md
-        echo -e "@enduml" >> "$folder"/"${outFile}".md
-    elif [[ $extens == "sh" ]]
-    then
-        echo -e "#!/bin/bash" >> "$folder"/"${outFile}".md
-    fi
-    echo -e "\n" >> "$folder"/"${outFile}".md
-    echo -e "\`\`\`" >> "$folder"/"${outFile}".md
+        echo -e "{{./${Filename}.png}}"
+	fi
+    echo -e " \n## ${extens} Code\n\n"
+    echo -e "$codeHead"
+    echo -e "\`\`\`bash"
+    case ${extens} in
+        plantuml)
+            mkdir -p 
+            echo -e "noweb.py -R${Filename}.${extens} ${outFile}.md > "${outFile}"/${Filename}.${extens} && plantuml "${outFile}"/${Filename}.${extens} && echo '${Filename}.${extens}' && date && gwenview "${outFile}"/${Filename}.png 2>/dev/null \n\`\`\`"
+            ;;
+        typst) 
+            echo -e "noweb.py -R${Filename}.${extens} ${outFile}.md > ${Filename}.${extens} && typst compile --format pdf ${Filename}.${extens} && echo '${Filename}.${extens}' && date && xournalpp ${Filename}.pdf 2>/dev/null & \n\`\`\`"
+            ;;
+        plt) 
+            echo -e "noweb.py -R${Filename}.${extens} ${outFile}.md > "${outFile}"/${Filename}.${extens} && gnuplot "${outFile}"/${Filename}.${extens} && echo '${Filename}.${extens}' && date \n\`\`\`"
+            ;;
+        mmd) 
+            echo -e "noweb.py -R${Filename}.${extens} ${outFile}.md > "${outFile}"/${Filename}.${extens} && mermaid-cli.sh "${outFile}"/${Filename}.${extens} && echo '${Filename}.${extens}' && date && gwenview "${outFile}"/${Filename}.png 2>/dev/null \n\`\`\`"
+            ;;
+        *) 
+            echo -e "noweb.py -R${Filename}.${extens} ${outFile}.md > ${Filename}.${extens} && echo '${Filename}.${extens}' && date \n\`\`\`"
+            echo -e "\n\n\`\`\`bash"
+            echo -e "chmod u+x ${Filename}.${extens} && ln -sf \$(pwd)/${Filename}.${extens} ~/.local/bin/${Filename}.${extens} && echo 'fertig'\n \`\`\`"
+            ;;
+    esac
+    echo -e "\n*${Filename}.${extens}*"
+    echo -e "\`\`\`${langname}"
+    case ${extens} in
+        sh) 
+            echo -e "#!/bin/bash"
+            ;;
+        plantuml) 
+            echo -e "@startuml\n allowmixing\n"
+            echo -e "@enduml"
+            ;;
+        mmd)
+            echo "graph TD"
+            echo "    accTitle: My title here"
+            echo "    accDescr: My description here"
+            echo "    A[Enter Chart Definition] --> B(Preview)"
+            ;;
+        plt) 
+            echo "reset"
+            echo "set grid"
+            echo "#set yrange [:]"
+            echo "#set xrange [:]"
+            echo "set ylabel 'y'"
+            echo "set xlabel 'x'"
+            echo "#set logscale y"
+            echo "set term png"
+            echo "set output sprintf('${Filename}.png')"
+            echo "plot  lt rgb 'blue'"
+            echo "#plot "data.txt" using ($1):($2) title '1' lt rgb 'blue', "data.txt" using ($1):($3) title '2' lt rgb 'red', "data.txt" using ($1):($4) title '3' lt rgb 'green'"
+            echo "set term qt"
+            echo "replot"
+            ;;
+    esac
+    echo -e "\n"
+    echo -e "\`\`\`"
 }
 ```
-
-
 
 ### markdown description program
 
 using ``markdown-description-program`` function with the parameters as following
 ```bash
-    markdown-description-program p1 p2 p3
-    p1 - folder
-    p2 - cleaned file
+    markdown-description-program p1
+    p1 - cleaned file
 ```
 
 
 *markdown-description-program*
 ```bash
 function markdown-description-program(){
-    local folder=$1
-    local File=$2
+    local File=$1
     #local filename=${File%.*}
     #local foldertex=$3
-    echo -e "# ${File}" >> "$folder"/"${File}".md
-    echo -e "Created [$(date +%Y-%m-%d)]()\n" >> "$folder"/"${File}".md
-    echo -e "\n## Description" >> "$folder"/"${File}".md
-    echo -e "\n## Journal" >> "$folder"/"${File}".md
-    echo -e " - [X] Doing" >> "$folder"/"${File}".md
-    echo -e " - [X] Backlog" >> "$folder"/"${File}".md
-    echo -e "    - [ ] " >> "$folder"/"${File}".md
+    echo -e "# ${File}"
+    echo -e "Created [$(date +%Y-%m-%d)]()\n"
+    echo -e "\n## Description"
+    echo -e "\n## Journal"
+    echo -e " - [X] Backlog"
+    echo -e "    - [ ] "
+    echo -e " - [X] Doing"
 }
 ```
 
@@ -510,19 +544,19 @@ function tex-description(){
     local foldertex=$3
     local additiontext="$4"
     local moreCommands="$5"
-    echo -e "\n## Latex File\n" >> "$folder"/"$foldertex"/"${filename}".md
-    echo -e "*${File}*" >> "$folder"/"$foldertex"/"${filename}".md
-    echo -e "\`\`\`tex" >> "$folder"/"$foldertex"/"${filename}".md
+    echo -e "\n## Latex File\n"
+    echo -e "*${File}*"
+    echo -e "\`\`\`tex"
     cat "$folder"/"$foldertex"/"${File}" >> "$folder"/"$foldertex"/"${filename}".md
     sed -i "s/additiontext/$additiontext/g" "$folder"/"$foldertex"/"${filename}".md
-    echo -e "\n\`\`\`" >> "$folder"/"$foldertex"/"${filename}".md
-    echo -e "\n*run-cell.sh*" >> "$folder"/"$foldertex"/"${filename}".md
-    echo -e "\`\`\`bash" >> "$folder"/"$foldertex"/"${filename}".md
+    echo -e "\n\`\`\`"
+    echo -e "\n*run-cell.sh*"
+    echo -e "\`\`\`bash"
     if [[ ! $moreCommands == "" ]]
     then
-        echo -e "$moreCommands" >> "$folder"/"$foldertex"/"${filename}".md
+        echo -e "$moreCommands"
     fi
-    echo -e "noweb.py -R${File} ${filename}.md > ${File} && pdflatex -synctex=1 -interaction=nonstopmode -shell-escape ${File} && date && xdg-open ${filename}.pdf 2>/dev/null \n\`\`\`\n\n" >> "$folder"/"$foldertex"/"${filename}".md
+    echo -e "noweb.py -R${File} ${filename}.md > ${File} && pdflatex -synctex=1 -interaction=nonstopmode -shell-escape ${File} && date && xdg-open ${filename}.pdf 2>/dev/null \n\`\`\`\n\n"
 }
 ```
 
@@ -568,11 +602,11 @@ function ttex(){
     mv "$f".ist "$filename".ist
     mv "$filename".* "$folder"/"$foldertex"/
 
-    create-note "$folder" "$foldertex" "@LATEX $tags" "" "[[./$filename.md]]\n[[./$filename.tex]]\n[[./$filename.pdf]]"
+    create-note "$folder" "$foldertex" "@LATEX $tags" "" "[[./$filename.md]]\n[[./$filename.tex]]\n[[./$filename.pdf]]" >> "$folder/$foldertex".md
 
-    markdown-description-program "$folder/$foldertex" "${filename}.tex"
+    markdown-description-program "${filename}" >> "$folder/$foldertex"/"${filename}".md
 
-    tex-description "$folder" "${File}" "$foldertex"
+    tex-description "$folder" "${File}" "$foldertex" >> "$folder"/"$foldertex"/"${filename}".md
 
 }
 

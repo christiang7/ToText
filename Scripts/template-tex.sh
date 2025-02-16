@@ -64,52 +64,44 @@ then
 		add="[[./"${filename}".${extens}]]\n"
 	fi
 
-	create-note "$folder" "$foldertex" "@LATEX $tags" "" "$add[[./$filename.md]]\n[[./$filename.tex]]\n[[./$filename.pdf]]"
+	create-note "$folder" "$foldertex" "@LATEX $tags" "" "$add[[./$filename.md]]\n[[./$filename.tex]]\n[[./$filename.pdf]]" >> "$folder"/"$foldertex".md
 
-	markdown-description-program "$folder/$foldertex" "${filename}"
+	markdown-description-program "${filename}" >> "$folder"/"$foldertex"/"${filename}".md
 
 	File="${filename}.tex"
 	case ${template} in
 		normal)
 		cp "$templateDir"/normal-template.tex "$folder"/"$foldertex"/"${File}"
 
-		tex-description "$folder" "${File}" "$foldertex" "$additiontext"
+		tex-description "$folder" "${File}" "$foldertex" "$additiontext" >> "$folder"/"$foldertex"/"${filename}".md
 			;;
         Rechnung)
 		cp "$templateDir"/Rechnung-template.tex "$folder"/"$foldertex"/"${File}"
 
-		tex-description "$folder" "${File}" "$foldertex" "$additiontext"
+		tex-description "$folder" "${File}" "$foldertex" "$additiontext" >> "$folder"/"$foldertex"/"${filename}".md
 
 			;;
 		Schreiben)
 		cp "$templateDir"/Schreiben-template.tex "$folder"/"$foldertex"/"${File}"
 
-		tex-description "$folder" "${File}" "$foldertex" "$additiontext"
+		tex-description "$folder" "${File}" "$foldertex" "$additiontext" >> "$folder"/"$foldertex"/"${filename}".md
 
             ;;
 		Programming)
 
 		cp "$templateDir"/programming-template.tex "$folder"/"$foldertex"/"${File}"
 
-		tex-description "$folder" "${File}" "$foldertex" "$additiontext\n\\\begin{minted}[linenos=true,bgcolor=lightgraycolor,numberblanklines=true,showspaces=false,breaklines=true]{${langname}}\n#*${filename}.${extens}}}\n\\\end{minted}" "#*run program}}"
+		tex-description "$folder" "${File}" "$foldertex" "$additiontext\n\\\begin{minted}[linenos=true,bgcolor=lightgraycolor,numberblanklines=true,showspaces=false,breaklines=true]{${langname}}\n#*${filename}.${extens}}}\n\\\end{minted}" "#*run code}}" >> "$folder"/"$foldertex"/"${filename}".md
 
-		program-template "$folder/$foldertex" "${filename}.${extens}" "${filename}.tex"
+		program-template "$folder/$foldertex" "${filename}.${extens}" "${filename}.tex" "yes" >> "$folder"/"$foldertex"/"${filename}".md
 
 			;;
 	esac
 	if [[ $gitinit == "Yes" ]];
 	then
 		cd "$foldertex"
-
 		git init
-		git add "${filename}".md
-		git add "${filename}".tex
-		if [[ $template == "programming" ]];
-		then
-			git add ${filename}.${extens}
-		fi
-		git add general-preamble.tex
-		git add color-symbols.tex
+		git add *
 		git commit -a -m "init git"
 	fi
 

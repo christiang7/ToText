@@ -58,7 +58,7 @@ then
     xournalpp "$filename".xopp && xournalpp "$File" -p "$filename".pdf
     if [ "Unterrichtsnotiz" != "$par" ];
     then
-        file-description "$(pwd)" "$File" "@Document $tags" "$source" "$additiontext"
+        file-description "$(pwd)" "$File" "@Document $tags" "$source" "$additiontext" >> "$(pwd)"/"$File"
     fi
 fi
 ```

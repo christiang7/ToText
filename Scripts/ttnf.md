@@ -44,7 +44,7 @@ then
 	source=$(echo $abfrage | cut -s -d "~" -f 3)
 	additiontext=$(echo $abfrage | cut -s -d "~" -f 4)
 
-    create-note "${folder}" "${name}" "$tags" "$source" "$additiontext"
+    create-note "${folder}" "${name}" "$tags" "$source" "$additiontext" >> "${folder}"/"${name}".md
 fi
 ```
 

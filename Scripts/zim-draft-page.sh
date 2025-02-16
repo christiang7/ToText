@@ -6,7 +6,7 @@ tempInputDir="$(config_get tempInputDir)"
 templateDir="$(config_get templateDir)"
 source tt-lib.sh
 
-file-description "$(pwd)" "$(date +"Draft_%Y-%m-%d".xopp)" "" "" ""
+file-description "$(pwd)" "$(date +"Draft_%Y-%m-%d".xopp)" "" "" "" >> "$(pwd)"/"$(date +"Draft_%Y-%m-%d".xopp)"
 
 #create-note "$(pwd)" "$(date +"Draft page %Y-%m-%d")" "" "" ""
 

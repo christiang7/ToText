@@ -1,4 +1,5 @@
 #!/bin/bash
+source config.sh
 source tt-lib.sh
 langName="$(config_get langName)"
 
@@ -45,9 +46,9 @@ then
 			File="$File"."${extens}"
 
 
-			markdown-description-program "$folder" "${Filename}.${extens}"
+			markdown-description-program "${Filename}.${extens}" >> "$folder"/"${Filename}.${extens}".md
 
-			program-template "$folder" "${Filename}.${extens}"
+			program-template "$folder" "${Filename}.${extens}" >> "$folder"/"${Filename}.${extens}".md
 
 
 		fi

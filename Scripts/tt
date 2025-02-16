@@ -78,13 +78,13 @@ then
 
 	if [[ pdf == $extens ]]
 	then
-		ttpdf "$folder" "$File" "$source" "$tags" "$additiontext" "yes"
+		ttpdf "$folder" "$File" "$source" "$tags" "$additiontext" "yes" >> "$folder"/"$File"
 	elif [[ jpg == $extens || PNG == $extens || JPEG == $extens || png == $extens || webp == $extens || jpeg == $extens || avif == $extens ]] && [[ -z $extenspdf && -z $extensxopp && -z $extensmp4 && -z $extensmov && -z $extensflv && -z $extensmkv ]]
 	then
 		# || tif == $extens || tiff == $extens
 		convert "$folder"/"$File" "$folder"/"$Filename".avif
 		touch -r "$File" "$Filename".avif # make the original modification time
-		ttpic "$folder" "$Filename".avif "$source" "$tags" "$additiontext"
+		ttpic "$folder" "$Filename".avif "$source" "$tags" "$additiontext" >> "$folder"/"$Filename".avif
 		if [[ $origpic == "No" ]];
 		then
 			rm "$File"
@@ -96,15 +96,15 @@ then
 		ttvid "$folder" "$File" "$tags" "$source" "$additiontext" "$ofile" "yes"
 	elif [[ epub == $extens ]]
 	then
-		file-description "$folder" "$File" "@Ebook $tags" "$source" "$additiontext" "" "yes"
+		file-description "$folder" "$File" "@Ebook $tags" "$source" "$additiontext" "" "yes" >> "$folder"/"$File".md
 		einfo "$folder"/"$File" >> "$folder"/"$File".md
 	elif [[ eml == $extens ]]
 	then
-		file-description "$folder" "$File" "@Email $tags" "$source" "$additiontext" "" "yes"
+		file-description "$folder" "$File" "@Email $tags" "$source" "$additiontext" "" "yes" >> "$folder"/"$File".md
 		cat "$folder"/"$File" >> "$folder"/"$File".md
 	elif [[ maff == $extens ]]
 	then
-		file-description "$folder" "$File" "@Web $tags" "$source" "$additiontext" "" "yes"
+		file-description "$folder" "$File" "@Web $tags" "$source" "$additiontext" "" "yes" >> "$folder"/"$File".md
 		folder2=$(unzip -Z -1 "$Filename" '*/')
 		echo -e " $source $(cat $folder2'index.dat' | grep source | cut -f 2)\n$additiontext\n" >> "$folder"/"$File".md
 		cat $folder2'index.rdf' >> "$folder"/"$File".md
@@ -112,30 +112,30 @@ then
 		rm -r $folder2
 	elif [[ cts == $extens ]]
 	then
-		file-description "$folder" "$File" "@Treesheets $tags" "$source" "$additiontext" "" "yes"
+		file-description "$folder" "$File" "@Treesheets $tags" "$source" "$additiontext" "" "yes" >> "$folder"/"$File".md
 	elif [[ tex == $extens ]]
 	then
 		ttex "$folder" "$File" "$ofile"
 	elif [[ $extens == xopp ]]
 	then
 		xournalpp --export-range=1 "$folder"/"$File" -i "$folder"/"$File".png
-		file-description "$folder" "$File" "@Document $tags" "$source" "$additiontext" "pic" "yes"
+		file-description "$folder" "$File" "@Document $tags" "$source" "$additiontext" "pic" "yes" >> "$folder"/"$File".md
 		convert "$folder"/"$File".png "$folder"/"$File"/"$File".avif
 		rm "$folder"/"$File".png
 	elif [[ mp3 == $extens || webm == $extens || flac == $extens || aac = $extens || ogg = $extens || weba = $extens || wav = $extens || aiff = $extens || m4a = $extens ]]
 	then
-		file-description "$folder" "$File" "@Musik $tags" "$source" "$additiontext"
+		file-description "$folder" "$File" "@Musik $tags" "$source" "$additiontext" >> "$folder"/"$File".md
 	elif [[ $extens == $File ]]
 	then
-		file-description "$folder" "$File" "$tags" "$source" "$additiontext"
+		file-description "$folder" "$File" "$tags" "$source" "$additiontext" >> "$folder"/"$File".md
 	elif [[ $extens == docx || $extens == doc  || $extens == odt || $extens == ods || $extens == xls || $extens == xlsx || $extens == ppt || $extens == pptx || $extens == odp ]]
 	then
-		file-description "$folder" "$File" "@Document $tags" "$source" "$additiontext"
+		file-description "$folder" "$File" "@Document $tags" "$source" "$additiontext" >> "$folder"/"$File".md
 	#elif [[ -n $extenspdf | -n $extensxopp || -z $extensmp4 || -z $extensmov || -z $extensflv || -z $extensmkv ]]
 	#then
 	#	echo "tue nichts"
 	else
-		file-description "$folder" "$File" "$tags" "$source" "$additiontext" "" "yes"
+		file-description "$folder" "$File" "$tags" "$source" "$additiontext" "" "yes" >> "$folder"/"$File".md
 	fi
 
 fi

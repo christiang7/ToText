@@ -5,10 +5,18 @@
 	- [ ] rewrite everything in english
 	- [ ] make a website for [ToTexT] scripts
 	- [ ] write blog post for [website]
+	- [ ] rewrite [tt-lib.sh] with [subshell]
+		- [ ] use output formats in the external tools
 	- [ ] make [website] with [wiki] of how to use the scripts
 		- [ ] links for used tools in [README] file
-	- [ ] integrate plotting in [zim] and or [markdown] with [noweb.py], maybe [python], [gnuplot] (very easy) or [sage]
 - [X] Doing (2)
+
+
+
+### 2025-02-16
+	- [X] integrate plotting in [zim] and or [markdown] with [noweb.py], maybe [python], [gnuplot] (very easy) or [sage]
+	- [X] integrate mermaid diagrams
+	- [X] combine [zim-insert-plantuml.sh] with [insert-code.sh]
 
 Plotting - Tutorial
 https://doc.sagemath.org/html/en/tutorial/tour_plotting.html

@@ -99,9 +99,9 @@ then
 
 	mkdir -p "$Apply"
 
-    create-note "$folder" "$Apply" "$tags" "$source" "$additiontext"
+    create-note "$folder" "$Apply" "$tags" "$source" "$additiontext" >> "$folder"/"$Apply".md
 
-    markdown-description-program "$folder/$Apply" "README"
+    markdown-description-program "README" >> "$folder/$Apply"/"README".md
 
     template-tex.sh "$folder/$Apply" "no" "cover-letter" "Schreiben"
 
@@ -124,9 +124,7 @@ fi
 ```bash
 cd "$folder/$Apply"
 git init
-git add README.md
-git add "${File}".md
-git add ${Filename}.${extens}
+git add *
 git commit -a -m "init git"
 ```
 

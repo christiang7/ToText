@@ -46,8 +46,11 @@ for (( i=$lines ; i>=1 ; i-- ));
 do
 	element=$(sed -n "${i}p" <(echo "$list"))
 	echo "$element"
+	
     #*maff file creation}}
+    
     #*description file}}
+    
 done
 ```
 
@@ -57,10 +60,12 @@ done
 folder="$element"
 folder=$(echo $folder | sed 's/\///g')
 echo $folder
+
 #htmlFile=$(ls -1 "$folder" | grep "\.html ")
 htmlFile=$(find "$folder" -type f -iname "*.html")
 htmlFile=$(basename "$htmlFile")
 echo $htmlFile
+
 htmlFileName=$(basename "$htmlFile" .html)
 mv "$folder"/"$htmlFile" "$folder"/index.html
 touch "$folder"/index.dat "$folder"/index.rdf
@@ -70,13 +75,12 @@ maffFileName=$(echo "$htmlFileName-$folder")
 #zip -r $maffFileName.zip "$maffFileName"
 zip -r "$maffFileName".zip "$folder"
 mv "$maffFileName".zip "$maffFileName".maff
-#tt $maffFileName.maff
 ```
 
 
 *description file*
 ```bash
-file-description "$(pwd)" "$maffFileName".maff
+file-description "$(pwd)" "$maffFileName".maff >> "$(pwd)"/"$maffFileName".maff
 folder2=$(unzip -Z -1 "$maffFileName.maff" '*/')
 cat $folder2'index.rdf' >> "$maffFileName".maff.md
 ```

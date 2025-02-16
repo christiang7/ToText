@@ -30,6 +30,7 @@ Einstellungen vor dem Start des eigentlichen Programms, hier für ein Shell Scri
 *preamble*
 ```bash
 #!/bin/bash
+source config.sh
 source tt-lib.sh
 langName="$(config_get langName)"
 ```
@@ -109,9 +110,9 @@ Creating template
 *create Template*
 ```bash
 
-markdown-description-program "$folder" "${Filename}.${extens}"
+markdown-description-program "${Filename}.${extens}" >> "$folder"/"${Filename}.${extens}".md
 
-program-template "$folder" "${Filename}.${extens}"
+program-template "$folder" "${Filename}.${extens}" >> "$folder"/"${Filename}.${extens}".md
 
 ```
 

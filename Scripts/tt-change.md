@@ -182,7 +182,6 @@ function ttc(){
     sed -i "s/$oldname/$filename/g" "$File".md
     if [[ pdf == $extens ]]
     then
-        #Wikiprev
         rm "$oldFile".png
         rm "$oldFile".avif
         pdftoppm -png -singlefile "$File" "$File"
@@ -200,7 +199,6 @@ function ttc(){
         sed -i "s/\*$oldFile.en.vtt\*/\*$File.en.vtt\*/g" "$File".md
         sed -i "s/\*$oldFile.de.vtt\*/\*$File.de.vtt\*/g" "$File".md
         sed -i "s/\*$oldFile.ttml\*/\*$File.ttml\*/g" "$File".md
-        #Wikiprev
         #Opentxt
     fi
 }
