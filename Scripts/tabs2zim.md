@@ -1,6 +1,5 @@
 # tabs2zim
 Created Dienstag [Zettelkasten:2022:10:25]()
-Backlink [GedankenspeicherCoding](../GedankenspeicherCoding.md)
 
 - [X] **tabs2zim**
 	- [X] Doing

@@ -300,7 +300,7 @@ function ttvid(){
     if [[ ! $downloadSwitch == "" ]]
     then
         additiontext="$(yt-dlp --get-description ${source})"
-        file-description "$folder" "$File" "@VIDEO $tags" "$source" "$additiontext" "pic" "$folderSwitch" >> "$folder"/"$File"
+        file-description "$folder" "$File" "@VIDEO $tags" "$source" "$additiontext" "pic" "$folderSwitch"
         yt-dlp -q --sub-langs "en,de" --write-sub --write-thumbnail --write-auto-sub --sub-format "vtt" --skip-download -i ${source} -o "$folder/%(title)s.%(ext)s"
         mv "$folder"/"$oname".en.vtt "$fileFolder"/"$name".en.vtt
         mv "$folder"/"$oname".de.vtt "$fileFolder"/"$name".de.vtt
@@ -315,9 +315,9 @@ function ttvid(){
         local subtitlefile1="$name".en.vtt
         local subtitlefile2="$name".de.vtt
     else
-		file-description "$folder" "$File" "@VIDEO $tags" "$source" "$additiontext" "pic" "$folderSwitch" >> "$folder"/"$File"
+		file-description "$folder" "$File" "@VIDEO $tags" "$source" "$additiontext" "pic" "$folderSwitch"
 		# cat the old text file to the new one, then we do not need the vidc script
-		cat "$folder"/"${oname}".txt >> "$folder"/"$File".md
+		cat "$folder"/"${oname}".txt
 		rm "$folder"/"${oname}".txt
 		ffmpeg -loglevel quiet -ss 2 -i "$fileFolder"/"$File"  -t 1 -f image2 "$folder"/"$File".png
         convert "$folder"/"$File".png -resize 1200x1200 "$fileFolder"/"$File".avif
@@ -329,17 +329,17 @@ function ttvid(){
         local subtitlefile2=${name}.ttml
     fi
 
-	echo -e "\n*$subtitlefile1*" >> "$folder"/"$File".md
-	echo -e "\`\`\`bash" >> "$folder"/"$File".md
-	cat "$fileFolder"/"$subtitlefile1" >> "$folder"/"$File".md
-	echo -e "\`\`\`" >> "$folder"/"$File".md
-	echo -e "\n*$subtitlefile2*" >> "$folder"/"$File".md
-	echo -e "\`\`\`bash" >> "$folder"/"$File".md
-	cat "$fileFolder"/"$subtitlefile2" >> "$folder"/"$File".md
-	echo -e "\`\`\`" >> "$folder"/"$File".md
-	echo -e "\n*run-cell.sh*" >> "$folder"/"$File".md
-	echo -e "\`\`\`bash" >> "$folder"/"$File".md
-	echo -e "noweb.py -R$subtitlefile1 $File.md > $subtitlefile1 \nnoweb.py -R$subtitlefile2 $File.md > $subtitlefile2 \n echo '$File' && date \n\`\`\`\n\n" >> "$folder"/"$File".md
+	echo -e "\n*$subtitlefile1*"
+	echo -e "\`\`\`bash"
+	cat "$fileFolder"/"$subtitlefile1"
+	echo -e "\`\`\`"
+	echo -e "\n*$subtitlefile2*"
+	echo -e "\`\`\`bash"
+	cat "$fileFolder"/"$subtitlefile2"
+	echo -e "\`\`\`"
+	echo -e "\n*run-cell.sh*"
+	echo -e "\`\`\`bash"
+	echo -e "noweb.py -R$subtitlefile1 $File.md > $subtitlefile1 \nnoweb.py -R$subtitlefile2 $File.md > $subtitlefile2 \n echo '$File' && date \n\`\`\`\n\n"
 }
 
 function ttpdf(){

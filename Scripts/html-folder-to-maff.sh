@@ -32,7 +32,7 @@ do
     zip -r "$maffFileName".zip "$folder"
     mv "$maffFileName".zip "$maffFileName".maff
 
-    file-description "$(pwd)" "$maffFileName".maff >> "$(pwd)"/"$maffFileName".maff
+    file-description "$(pwd)" "$maffFileName".maff >> "$(pwd)"/"$maffFileName".maff.md
     folder2=$(unzip -Z -1 "$maffFileName.maff" '*/')
     cat $folder2'index.rdf' >> "$maffFileName".maff.md
 

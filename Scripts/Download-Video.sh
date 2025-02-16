@@ -61,7 +61,7 @@ then
 
 	mv "$outputDir"/"$ofile" "$outputDir"/"$File"
 
-	ttvid "$outputDir" "$File" "$tags" "$source" "$additiontext" "$ofile" "yes" "yes"
+	ttvid "$outputDir" "$File" "$tags" "$source" "$additiontext" "$ofile" "yes" "yes" >> "$outputDir"/"$File".md
 fi
 
 

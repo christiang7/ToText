@@ -78,22 +78,20 @@ then
 
 	if [[ pdf == $extens ]]
 	then
-		ttpdf "$folder" "$File" "$source" "$tags" "$additiontext" "yes" >> "$folder"/"$File"
+		ttpdf "$folder" "$File" "$source" "$tags" "$additiontext" "yes" >> "$folder"/"$File".md
 	elif [[ jpg == $extens || PNG == $extens || JPEG == $extens || png == $extens || webp == $extens || jpeg == $extens || avif == $extens ]] && [[ -z $extenspdf && -z $extensxopp && -z $extensmp4 && -z $extensmov && -z $extensflv && -z $extensmkv ]]
 	then
 		# || tif == $extens || tiff == $extens
 		convert "$folder"/"$File" "$folder"/"$Filename".avif
 		touch -r "$File" "$Filename".avif # make the original modification time
-		ttpic "$folder" "$Filename".avif "$source" "$tags" "$additiontext" >> "$folder"/"$Filename".avif
+		ttpic "$folder" "$Filename".avif "$source" "$tags" "$additiontext" >> "$folder"/"$Filename".avif.md
 		if [[ $origpic == "No" ]];
 		then
 			rm "$File"
 		fi
 	elif [[ mp4 == $extens || mov == $extens || mkv == $extens || flv = $extens || ogv = $extens ]]
 	then
-		echo "$additiontext"
-		echo "$ofile"
-		ttvid "$folder" "$File" "$tags" "$source" "$additiontext" "$ofile" "yes"
+		ttvid "$folder" "$File" "$tags" "$source" "$additiontext" "$ofile" "yes" >> "$folder"/"$File".md
 	elif [[ epub == $extens ]]
 	then
 		file-description "$folder" "$File" "@Ebook $tags" "$source" "$additiontext" "" "yes" >> "$folder"/"$File".md

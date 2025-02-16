@@ -81,6 +81,6 @@ extens=${File##*.}
 
 if [[ ! -f "$tempInputDir"/"$File.md" ]]
 then
-	ttvid "$tempInputDir" "$File" "$tags" "$website" "$additiontext" "$ofile" "yes" "yes"
+	ttvid "$tempInputDir" "$File" "$tags" "$website" "$additiontext" "$ofile" "yes" "yes" >> "$tempInputDir"/"$File".md
 fi
 ```
