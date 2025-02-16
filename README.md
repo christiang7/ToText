@@ -39,8 +39,8 @@ The ToText uses the following tools:
 Download the repository with 
 
 ```bash
-git clone 
-cd totext
+git clone https://github.com/christiang7/ToText.git
+cd ToText
 ```
 
 Create a folder under the ``.config`` folder in your home ``/home/username/``
