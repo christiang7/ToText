@@ -38,7 +38,7 @@ echo $format
 
 yt-dlp --no-mtime --write-thumbnail --fixup force -f "$format" --add-chapters --sub-langs "en,de" --write-sub --write-auto-sub --sub-format "vtt" --external-downloader aria2c --http-chunk-size 5M --downloader-args aria2c:"-c -j 2 -s 2 -x 4 -k 50M" -o "$outputDir/%(title)s.%(ext)s" -i "${website}"
 
-ofile=$(yt-dlp -f "[ext=mp4]" --print filename -s "${website}" -o '%(title)s.%(ext)s')
+ofile=$(yt-dlp --print filename -s "${website}" -o '%(title)s').mp4
 extens=${ofile##*.}
 name=${ofile%.*}
 additiontext="$(yt-dlp --get-description ${website})"
