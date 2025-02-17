@@ -3,6 +3,24 @@ Created [Zettelkasten:2023:03:02]()
 
 - [X] **zim-insert-sketch**
 
+## documentation
+
+For using ``Krita`` and export in commandline, because ``Krita`` does not save layer information in file.
+
+```bash
+krita Vorlage-Notiz.kra --export --export-filename Vorlage-Notiz.avif
+```
+
+```bash
+cp $templateDir/Vorlage-Notiz.kra "$filename".kra
+xterm -e "krita "$filename".kra"
+krita "$filename".kra --export --export-filename "$filename".avif
+
+```
+
+## code
+
+
 *run-cell.sh*
 ```bash
 noweb.py -Rzim-insert-sketch.sh zim-insert-sketch.md > zim-insert-sketch.sh && echo 'fertig'
@@ -17,14 +35,14 @@ source tt-lib.sh;
 File=$(cleanName "$1")
 filetxt=${File%.*}
 
-datum=$(date +"%Y-%m-%d--%H-%M-%S")
+date=$(date +"%Y-%m-%d--%H-%M-%S")
 abfrage=$(yad --title="Insert sketch" --text="Something to add?" \
 		--form --width 500 --separator="~" --item-separator=","  \
 		--field="Name" \
 		--field="Source:":CBE \
 		--field="Tags" \
 		--field="Something more":TXT \
-		"_${datum}" "Christian Gößl,Internet," "" "")
+		"_${date}" "Christian Gößl,Internet," "" "")
 
 if [ ! $? -eq 1 ];
 then
@@ -40,9 +58,8 @@ then
 		mypaint "$filename".png
 		ttpic "$filetxt" "$filename".png "$source" "$tags" "$additiontext" >> "$filetxt"/"$filename".png
 		echo -e "[[+${filename}.png]]"
-		echo {{"$filename".png?width=500}}
+		echo {{./"$filename".png?width=500}}
 	fi
 fi
-#fi
 ```
 

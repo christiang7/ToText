@@ -7,6 +7,7 @@
 	- [ ] write blog post for [website]
 	- [ ] rewrite [tt-lib.sh] with [subshell] for optional output
 - [X] Doing (2)
+	- [ ] cleaning not used scripts 
 	- [ ] write [documentation]
 		- [ ] [install instructions] in README
 			- [ ] make [script] for that
@@ -24,6 +25,7 @@ https://www.redhat.com/en/blog/arguments-options-bash-scripts
 
 
 ### 2025-02-16
+- [X] [zim-insert-picture] combined with [zim-insert-sketch]
 - [X] [zim-dot-create] and [zim-dot-update] deleted, because [insert-code] in combination with [noweb.py] makes it easier to handle diagrams
 - [X] combined [ttd] with [zim-dir-txt.sh] 
 - [X] rewrite [topic2zim.sh]
