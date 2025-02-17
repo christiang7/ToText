@@ -9,7 +9,7 @@ Created [2023-06-07]()
 ## Featuress
 
 This program can only save web articles, not files for read it later.
-There exist options to choose in which place the tabs should be stored.
+There are options to choose in which place the tabs should be stored.
 
 ## Infos
 
@@ -36,7 +36,10 @@ source tt-lib.sh;
 
 *request*
 ```bash
-choose=$(zenity --height 350 --list --radiolist --print-column ALL --hide-header --column "Checkbox" --column "What" True Spass FALSE Assets FALSE Physik FALSE Mathematik FALSE Philosophie FALSE Naturwissenschaften_und_Instrumentarien FALSE CodeFabrik FALSE Download)
+choose=$(yad --title="RSS insert" --text="Which topic?" \
+		--form --width 500 --separator="" --item-separator=","  \
+		--field="Show file:":CB \
+		"Spass,Physik,Mathematik,Philosophie,Naturwissenschaften_und_Instrumentarien,CodeFabrik,Download" )
 if [ ! $? -eq 1 ];
 then
    #*insert-feeds}}
@@ -73,11 +76,9 @@ esac
 ```bash
 #*choose}}
 
-#rssfile=$(echo "$wikiDir/CodeFabrik/rss-source.rss")
 sed -i "$ d" $rssfile
 #tabs="$(xclip -selection clipboard -o)"
 tabs="$(wl-paste -n)"
-#today=$(date +"[[Zettelkasten:%Y:%m:%d|%Y-%m-%d]]")
 lines="$(wc --lines <<< "$tabs")"
 #lines="$(echo $(($lines/2)))"
 head -n -1 $rssfile > tmp.txt && mv tmp.txt $rssfile

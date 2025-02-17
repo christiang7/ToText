@@ -30,7 +30,9 @@ for (( i=$lines ; i>=1 ; i-- ));
 do
 	element=$(sed -n "${i}p" <(echo "$list"))
 	#echo "$element"
+	
     #*maff file correction}}
+    
 done
 ```
 

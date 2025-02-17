@@ -1,12 +1,9 @@
 #!/bin/sh
-#for f in "$@"; do
-#  u=$(printf "%s" "$f" | sed "s|%|%25|g" | sed "s|?|%3F|g" | sed "s|#|%23|g")
-#  unzip -Z -1 "$f" '*/' | while read s; do
-#    [ -z ${s#*/} ] && cat "${u}/${s}index.rdf"
-#  done
-#done
+source tt-lib.sh
 
-File=$(echo "$1" | sed 's/ /_/g' | sed 's/:/;/g'| sed -e "s/'/_/g" | sed 's/\"//g')
+File=$(cleanName "$1")
 folder=$(unzip -Z -1 "$1" '*/')
 unzip "$1"
-tt "$1" && cat $folder'index.rdf' >> "$File".md && rm -r $folder
+tt "$1"
+cat $folder'index.rdf' >> "$File".md
+rm -r $folder

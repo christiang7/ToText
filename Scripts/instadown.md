@@ -18,7 +18,6 @@ journalDir="$(config_get journalDir)"
 folder=$(date +"$journalDir/%Y/%m/%d")
 mkdir -p $folder
 cd $folder
-gallery-dl --no-mtime --exec "tt {} '$1' " -D "$folder" "$1" &
-tt $File $1
+gallery-dl --no-mtime --exec "tt {} '$1' " -D "$folder" "$1"
 ```
 

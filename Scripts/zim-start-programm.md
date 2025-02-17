@@ -13,7 +13,7 @@ noweb.py -Rzim-start-programm.sh zim-start-programm.md > zim-start-programm.sh &
 *zim-start-programm.sh*
 ```bash
 #!/bin/bash
-yad --title="Esecute $1 program?" --text="\n Selected program will be executed\n"
+yad --title="Execute $1 program?" --text="\n Selected program will be executed\n"
 if [ ! $? -eq 1 ];
 then
   konsole -e "$1"

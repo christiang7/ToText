@@ -14,7 +14,7 @@ Created [2024-02-21](2024-02-21)
 ## Main Program
 
 make script:
-    - [x] list all elements of folder with help of the script ttd
+    - [x] list all elements of folder
     - [x] create files index.dat and index.rdf
     - [x] get file name of html file: "ls -1 | grep "\.html""
     - [x] rename html for to index html
@@ -22,7 +22,7 @@ make script:
     - [x] export content of html file to index.rdf with lynx "lynx -list_inline -dump index.html > index.rdf"
     - [x] make folder to a zip file
     - [x] rename zip file to maff
-    - [x] ttn of maff file
+    - [x] tt of maff file
 
 
 *run-cell.sh*
