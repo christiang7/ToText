@@ -60,66 +60,66 @@ then
 				topicfile="${topicfilename}.md"
 				touch "${folder}"/"${topicfile}"
 				mkdir -p "${folder}"/"${topicfilename}"
+
+				tabSessionName="2»websession_$(date +"%Y-%m-%d")"
+				if [[ ! -e "$folder"/"${topicfilename}"/"$tabSessionName.md" ]]
+				then
+					additiontext="$additiontext\n[[+$abSessionName]]"
+				fi
+				echo "$tabs" >> "$folder"/"${topicfilename}"/"$tabSessionName.md"
+
+				##### additiontext="$additiontext\n${tabs}"
+
 				create-note "$folder" "${topicfilename}" "$tags" "$source" "$additiontext" >> "$folder"/"${topicfile}"
-				echo -e "\n${tabs}" >> "${folder}"/"${topicfile}"
+
 				echo -e "	[*] $(date +"[[$journalPage:%Y:%m:%d|%Y-%m-%d]]")" >> "${folder}".md
 				echo -e "		[*] [[+$(basename ${topicfile} .md)|${topic}]]" >> "${folder}".md
 			fi
 		fi
 		;;
 	*)
+		######*tabs to topics}}
+
 		case ${choose} in
-			Spass) file=$(echo "$wikiDir/Spaß_Stream/0»Journal_1_Spaß_Stream.md")
+			Spass) folder=$(echo "$wikiDir/Spaß_Stream/0»Journal_1_Spaß_Stream")
 				l=5;;
-			Zettelkasten) file=$(echo "$wikiDir/Zettelkasten/0»Journal_Zettelkasten.md")
+			Zettelkasten) folder=$(echo "$wikiDir/Zettelkasten/0»Journal_Zettelkasten")
 				l=5;;
 			Heute) tabs2today.sh $additiontext
 				exit
 				;;
-			Physik) file=$(echo "$wikiDir/Physik/0»Journal_Physik.md")
+			Physik) folder=$(echo "$wikiDir/Physik/0»Journal_Physik")
 				l=5;;
-			Mathematik) file=$(echo "$wikiDir/Mathematik/0»Journal_Mathematik.md")
+			Mathematik) folder=$(echo "$wikiDir/Mathematik/0»Journal_Mathematik")
 				l=5;;
-			Blogging) file=$(echo "$wikiDir/Blogging/0»Journal_Blogging.md")
+			Blogging) folder=$(echo "$wikiDir/Blogging/0»Journal_Blogging")
 				l=5;;
-			Philosophie) file=$(echo "$wikiDir/Philosophie/0»Journal_Philosophie.md")
+			Philosophie) folder=$(echo "$wikiDir/Philosophie/0»Journal_Philosophie")
 				l=5;;
-			Naturwissenschaften_und_Instrumentarien) file=$(echo "$wikiDir/Naturwissenschaften_und_Instrumentarien/0»Journal_Naturwissenschaften_und_Instrumentarien.md")
+			Naturwissenschaften_und_Instrumentarien) folder=$(echo "$wikiDir/Naturwissenschaften_und_Instrumentarien/0»Journal_Naturwissenschaften_und_Instrumentarien")
 				l=5;;
-			CodeFabrik) file=$(echo "$wikiDir/CodeFabrik/0»Journal_1_CodeFabrik.md")
+			CodeFabrik) folder=$(echo "$wikiDir/CodeFabrik/0»Journal_1_CodeFabrik")
 				l=5;;
 		esac
-		#echo $tabs
 		today=$(date +"[[$journalPage:%Y:%m:%d|%Y-%m-%d]]")
 
-		sed -i "${l}i
-		" "$file"
-		element=""
-		lines="$(wc --lines <<< "$tabs")"
-		for (( i=$lines ; i>=1 ; i-- ));
-		do
-			element=$(sed -n "${i}p" <(echo "$tabs"))
-			echo "$element"
-			if (($i % 2 != 0));
-			then
-				element=$(cleanName "${element}")
-				#title=$(cleanName "${title}")
-				echo "$element"
-			fi
-			#echo ${i}
-			sed -i "${l} s,^,$element," "$file"
-			if [[ $i > 1 ]]
-			then
-				sed -i "${l}i
-				" "$file"
-			fi
-		done
-		sed -i "${l}i $additiontext" "$file"
-		sed -i "${l}i
-		" "$file"
-		sed -i "${l}s/^/==== $today ====/g" "$file"
-		sed -i "${l}i
-		" "$file"
+		tabSessionName="2»websession_$(date +"%Y-%m-%d")"
+		if [[ ! -e "$folder"/"$tabSessionName.md" ]]
+		then
+			mkdir -p "$folder"
+			file="$folder.md"
+			sed -i "${l}i
+			" "$file"
+			element=""
+			sed -i "${l}i $additiontext[[+$tabSessionName]]" "$file"
+			sed -i "${l}i
+			" "$file"
+			sed -i "${l}s/^/==== $today ====/g" "$file"
+			sed -i "${l}i
+			" "$file"
+		fi
+		echo "$tabs" >> "$folder"/"$tabSessionName.md"
+
 		;;
 	esac
 fi

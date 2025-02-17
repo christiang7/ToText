@@ -28,7 +28,7 @@ chmod u+x tt-tools-text.desktop && ln -sf $(pwd)/tt-tools-text.desktop ~/.local/
 Type=Service
 X-KDE-ServiceTypes=KonqPopupMenu/Plugin
 MimeType=text/*;
-Actions=MakeFolder;ChangeFormat;DeleteFile;RenameFile;MoveFile;
+Actions=MakeFolder;ChangeFormat;DeleteFile;RenameFile;MoveFile;OpenWebsession;
 X-KDE-Priority=TopLevel
 X-KDE-Submenu=tt-tools
 
@@ -73,4 +73,10 @@ Terminal=true
 Exec=ttm %n 2>&1 | tee /home/christian/.config/tt/log
 
 
+[Desktop Action OpenWebsession]
+Name=open-websession.sh
+Icon=video
+Terminal=true
+#Icon=application-x-java
+Exec=open-websession.sh %n 2>&1 | tee /home/christian/.config/tt/log
 ```

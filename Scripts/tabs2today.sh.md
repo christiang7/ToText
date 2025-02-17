@@ -20,26 +20,40 @@ journalDir="$(config_get journalDir)"
 journalPage="$(config_get journalPage)"
 source tt-lib.sh
 
-additiontext=$(echo $1)
+additiontext=$1
 if [ ! $? -eq 1 ]; 
 then
   #text="$(xclip -selection clipboard -o)"
   text="$(wl-paste -n)"
   foldermonth=$(date +"$journalDir/%Y/%m")
-  calendarfile=$(date +"%d")
-  calendarfile=${calendarfile}.md
+  calendarfilename=$(date +"%d")
+  calendarfile=${calendarfilename}.md
   if [[ ! -e "$foldermonth"/"$calendarfile" ]] 
   then
 	touch "$foldermonth"/"$calendarfile"
 	#*note template}}
   fi
   echo -e "\n${additiontext}\n${text}" >> "$foldermonth"/"$calendarfile"
-
+  #*tabsession to today}}
 fi
+```
+### tabsession to today
+
+*tabsession to today*
+```bash
+mkdir -p "$foldermonth"/"$calendarfilename"
+tabSessionName="2»websession_$(date +"%Y-%m-%d")"
+if [[ ! -e "$foldermonth"/"$calendarfilename"/"$tabSessionName".md ]] 
+then
+  echo -e "\n${additiontext}\n[[+$tabSessionName]]" >> "$foldermonth"/"$calendarfile"
+else
+  echo -e "\n${additiontext}" >> "$foldermonth"/"$calendarfile"
+fi 
+echo -e "${text}" >> "$foldermonth"/"$calendarfilename"/"$tabSessionName".md
 ```
 
 
-#### note template
+### note template
 
 *note template*
 ```bash

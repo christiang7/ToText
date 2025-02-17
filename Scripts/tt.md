@@ -142,7 +142,7 @@ then
 		# || tif == $extens || tiff == $extens
 		convert "$folder"/"$File" "$folder"/"$Filename".avif
 		touch -r "$File" "$Filename".avif # make the original modification time
-		ttpic "$folder" "$Filename".avif "$source" "$tags" "$additiontext" >> "$folder"/"$Filename".avif.md
+		ttpic "$folder" "$Filename".avif "$source" "$tags" "$additiontext"  >> "$folder"/"$Filename".avif.md
 		if [[ $origpic == "No" ]];
 		then
 			rm "$File"

@@ -74,7 +74,10 @@ then
 		#*new note}}
 		;;
 	*)
-		#*tabs to topics}}
+		######*tabs to topics}}
+		
+		#*tabsession to topics}}
+		
 		;;
 	esac
 fi
@@ -126,14 +129,76 @@ then
 		topicfile="${topicfilename}.md"
 		touch "${folder}"/"${topicfile}"
 		mkdir -p "${folder}"/"${topicfilename}"
+		
+		#*tabsession to note}}
+		
+		##### additiontext="$additiontext\n${tabs}"
+				
 		create-note "$folder" "${topicfilename}" "$tags" "$source" "$additiontext" >> "$folder"/"${topicfile}"
-		echo -e "\n${tabs}" >> "${folder}"/"${topicfile}"
+		
 		echo -e "	[*] $(date +"[[$journalPage:%Y:%m:%d|%Y-%m-%d]]")" >> "${folder}".md
 		echo -e "		[*] [[+$(basename ${topicfile} .md)|${topic}]]" >> "${folder}".md
 	fi
 fi
 ```
 
+### Tabs in sessions to note
+
+*tabsession to note*
+```bash
+tabSessionName="2»websession_$(date +"%Y-%m-%d")"
+if [[ ! -e "$folder"/"${topicfilename}"/"$tabSessionName.md" ]]
+then
+	additiontext="$additiontext\n[[+$abSessionName]]"
+fi
+echo "$tabs" >> "$folder"/"${topicfilename}"/"$tabSessionName.md"
+```
+
+
+### Tabs in sessions to topics
+
+*tabsession to topics*
+```bash
+case ${choose} in
+	Spass) folder=$(echo "$wikiDir/Spaß_Stream/0»Journal_1_Spaß_Stream")
+		l=5;;
+	Zettelkasten) folder=$(echo "$wikiDir/Zettelkasten/0»Journal_Zettelkasten")
+		l=5;;
+	Heute) tabs2today.sh $additiontext
+		exit
+		;;
+	Physik) folder=$(echo "$wikiDir/Physik/0»Journal_Physik")
+		l=5;;
+	Mathematik) folder=$(echo "$wikiDir/Mathematik/0»Journal_Mathematik")
+		l=5;;
+	Blogging) folder=$(echo "$wikiDir/Blogging/0»Journal_Blogging")
+		l=5;;
+	Philosophie) folder=$(echo "$wikiDir/Philosophie/0»Journal_Philosophie")
+		l=5;;
+	Naturwissenschaften_und_Instrumentarien) folder=$(echo "$wikiDir/Naturwissenschaften_und_Instrumentarien/0»Journal_Naturwissenschaften_und_Instrumentarien")
+		l=5;;
+	CodeFabrik) folder=$(echo "$wikiDir/CodeFabrik/0»Journal_1_CodeFabrik")
+		l=5;;
+esac
+today=$(date +"[[$journalPage:%Y:%m:%d|%Y-%m-%d]]")
+
+tabSessionName="2»websession_$(date +"%Y-%m-%d")"
+if [[ ! -e "$folder"/"$tabSessionName.md" ]]
+then
+	mkdir -p "$folder"
+	file="$folder.md"
+	sed -i "${l}i
+	" "$file"
+	element=""
+	sed -i "${l}i $additiontext[[+$tabSessionName]]" "$file"
+	sed -i "${l}i
+	" "$file"
+	sed -i "${l}s/^/==== $today ====/g" "$file"
+	sed -i "${l}i
+	" "$file"
+fi
+echo "$tabs" >> "$folder"/"$tabSessionName.md"
+```
 
 ### Tabs to topics
 

@@ -1,8 +1,7 @@
-# zim-firefox-session
+# open-websession
 Created Sonntag [Zettelkasten:2022:10:16]()
-Backlink [GedankenspeicherCoding](../GedankenspeicherCoding.md)
 
-- [X] **zim-firefox-session**
+- [X] **open-websession**
 
 
 <https://www.ecosia.org/search?q=bash%20list%20output%20first%20line%20element&addon=firefox&addonversion=4.1.0&method=topbar> | bash list output first line element - Ecosia - Web
@@ -18,23 +17,31 @@ Backlink [GedankenspeicherCoding](../GedankenspeicherCoding.md)
 
 *run-cell.sh*
 ```bash
-noweb.py -Rzim-firefox-session.sh zim-firefox-session.md > zim-firefox-session.sh
+noweb.py -Ropen-websession.sh open-websession.sh.md > open-websession.sh && date
 ```
 
 
 ```bash
-chmod u+x zim-firefox-session.sh && ln -sf $(pwd)/zim-firefox-session.sh ~/.local/bin/zim-firefox-session.sh && echo 'fertig'
+chmod u+x open-websession.sh && ln -sf $(pwd)/open-websession.sh ~/.local/bin/open-websession.sh && echo 'fertig'
 ```
 
 
-*zim-firefox-session.sh*
+*open-websession.sh*
 ```bash
 #!/bin/bash
-yad --title="Open links in firefox?" --text="\n All selected links will be send to firefox\n"
+typ=$(yad --title="Open links?"  \
+	--form --width 500 --separator="" --item-separator=","  \
+	--field="Source":CB \
+	"File,Copied")
 if [ ! $? -eq 1 ];
 then
     #text="$(xclip -o)"
-    text="$(wl-paste -n)"
+    if [[ $typ == "File" ]]
+    then
+        text="$(cat $1)"
+    else
+        text="$(wl-paste -n)"
+    fi
     #echo $text
     element=""
     lines="$(wc --lines <<< "$text")"

@@ -1,9 +1,17 @@
 #!/bin/bash
-yad --title="Open links in firefox?" --text="\n All selected links will be send to firefox\n"
+typ=$(yad --title="Open links?"  \
+	--form --width 500 --separator="" --item-separator=","  \
+	--field="Source":CB \
+	"File,Copied")
 if [ ! $? -eq 1 ];
 then
     #text="$(xclip -o)"
-    text="$(wl-paste -n)"
+    if [[ $typ == "File" ]]
+    then
+        text="$(cat $1)"
+    else
+        text="$(wl-paste -n)"
+    fi
     #echo $text
     element=""
     lines="$(wc --lines <<< "$text")"

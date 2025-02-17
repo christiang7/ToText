@@ -121,7 +121,7 @@ function template-code(){
         *)
             echo -e "noweb.py -R${Filename}.${extens} ${outFile}.md > ${Filename}.${extens} && echo '${Filename}.${extens}' && date \n\`\`\`"
             echo -e "\n\n\`\`\`bash"
-            echo -e "chmod u+x ${Filename}.${extens} && ln -sf \$(pwd)/${Filename}.${extens} ~/.local/bin/${Filename}.${extens} && echo 'fertig'\n \`\`\`"
+            echo -e "chmod u+x ${Filename}.${extens} && ln -sf \$(pwd)/${Filename}.${extens} ~/.local/bin/${Filename}.${extens} && echo 'fertig'\n\`\`\`"
             ;;
     esac
     echo -e "\n*${Filename}.${extens}*"
@@ -248,8 +248,6 @@ function file-description(){
         else
             echo "{{../$File.avif?width=500}}"
         fi
-    else
-        echo "{{../$File?width=500}}"
     fi
     echo -e "$source\n$additiontext\n"
 }
@@ -257,6 +255,7 @@ function file-description(){
 function ttpic(){
     local File=$(cleanName "$2")
     file-description "$1" "$File" "@BILD $3" "$4" "$5"
+    echo "{{../$File?width=500}}"
 }
 
 function create-note(){

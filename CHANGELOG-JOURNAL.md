@@ -4,10 +4,10 @@
 	- [ ] [tt] with real path of file not the terminal path, ``realpath`` program not working, using the real path of the [.desktop] file with ``tt $f``
 	- [ ] rewrite everything in english
 	- [ ] using builtin [shell options] for [scripts]
+	- [ ] cleaning not used scripts 
 	- [ ] write blog post for [website]
 	- [ ] rewrite [tt-lib.sh] with [subshell] for optional output
 - [X] Doing (2)
-	- [ ] cleaning not used scripts 
 	- [ ] write [documentation]
 		- [ ] [install instructions] in README
 			- [ ] make [script] for that
@@ -23,6 +23,15 @@ https://www.dev-insider.de/bash-scripting-mit-optionen-und-parametern-a-4af6b57c
 Adding arguments and options to your Bash scripts 
 https://www.redhat.com/en/blog/arguments-options-bash-scripts
 
+### 2025-02-17
+- [X] use websession for [tabs2topics] like in [save-websession.sh] 
+	- [X] apply to new note with tabs
+- [X] save and open web session with [zim-firefox-session]
+	- [X] [script] for save a web session in a [markdown file] 
+	- [X] rewrite [zim-firefox-session] for opening saved sessions from file, not selection
+	- [X] option for copied and a file
+	- [X] renamed [zim-firefox-session] to [open-websession]
+	- [X] make a [.desktop file] for using in dolphin 
 
 ### 2025-02-16
 - [X] [zim-insert-picture] combined with [zim-insert-sketch]

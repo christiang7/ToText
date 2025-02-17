@@ -61,4 +61,5 @@ Terminal=true
 Exec=ttdel %n 2>&1 | tee /home/christian/.config/tt/log
 
 
+
 ```
