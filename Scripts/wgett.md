@@ -1,10 +1,8 @@
 # wgett
+Created Donnerstag [Zettelkasten:2021:04:29]()
 
 - [X] **wgett**
 
-Created Donnerstag [Zettelkasten:2021:04:29]()
-Backlink [GedankenspeicherCoding](../GedankenspeicherCoding.md)
- [wget-download-firefox](./wget-download-firefox.md)
 
 *run-cell.sh*
 ```bash

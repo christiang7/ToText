@@ -24,6 +24,7 @@ https://www.redhat.com/en/blog/arguments-options-bash-scripts
 
 
 ### 2025-02-16
+- [X] combined [ttd] with [zim-dir-txt.sh] 
 - [X] rewrite [topic2zim.sh]
 	- [X] rename [topic2zim.sh] to [tabs2topic.sh]
 - [X] rename [tabs2zim.sh] to [tabs2today.sh]

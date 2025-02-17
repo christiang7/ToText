@@ -1,6 +1,5 @@
 # zim-xournal
 Created Mittwoch [Zettelkasten:2022:06:29]()
-Backlink [CodeFabrik:GedankenspeicherCoding](../GedankenspeicherCoding.md)
 
 - [X] **zim-xournal**
 

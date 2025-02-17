@@ -1,8 +1,11 @@
 #!/bin/bash
+source config.sh; # load the config library functions
+source tt-lib.sh;
+
 yad --title="Delete files?" --text="\n Delete description file and original file \n"
 if [ ! $? -eq 1 ];
 then
-	File=$(echo "$1" | sed 's/ /_/g' | sed 's/:/;/g'| sed -e "s/'/_/g" | sed 's/\"//g')
+	File=$(cleanName "$1")
 
 	File2=$(basename "$1")
 	extens2=${File2##*.}

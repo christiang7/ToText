@@ -1,13 +1,11 @@
 # ttdel
 Created Dienstag [Zettelkasten:2022:06:14]()
-Backlink [GedankenspeicherCoding](../GedankenspeicherCoding.md)
 
 - [X] **ttdel**
 
 
 
 ## Features
-- Verzeichnisse löschbar
 
 *run-cell.sh*
 ```bash
@@ -18,10 +16,13 @@ noweb.py -Rttdel ttdel.md > ttdel && echo 'fertig'
 *ttdel*
 ```bash
 #!/bin/bash
+source config.sh; # load the config library functions
+source tt-lib.sh;
+
 yad --title="Delete files?" --text="\n Delete description file and original file \n"
 if [ ! $? -eq 1 ];
 then 
-	File=$(echo "$1" | sed 's/ /_/g' | sed 's/:/;/g'| sed -e "s/'/_/g" | sed 's/\"//g')
+	File=$(cleanName "$1")
 
 	File2=$(basename "$1")
 	extens2=${File2##*.}
