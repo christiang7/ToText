@@ -3,7 +3,7 @@ source config.sh
 journalPage="$(config_get journalPage)"
 
 function cleanName(){
-    echo "$1" | sed 's/ /_/g' | sed 's/:/;/g'| sed -e "s/'/_/g" | sed 's/\"//g'|  sed 's/&/n/g' | sed 's/\///g' | sed 's/|//g' | sed 's/\[/(/g' | sed 's/\]/)/g' | sed 's/@/at/g' | sed 's/：/;/g' | sed 's/？/ß/g' | sed "s/|/;/g" | sed "s/·/;/g" | sed "s/💤/;/g" | sed "s/｜/-/g" | sed "s/?/ß/g" | sed "s/!/;/g" | sed "s/¦/;/g" | sed "s/⧸/-/g" | sed "s/~/-/g"
+    echo "$1" | sed 's/ /_/g' | sed 's/:/;/g'| sed -e "s/'/_/g" | sed 's/\"//g'|  sed 's/&/n/g' | sed 's/\///g' | sed 's/|//g' | sed 's/\[/(/g' | sed 's/\]/)/g' | sed 's/@/at/g' | sed 's/：/;/g' | sed 's/？/ß/g' | sed "s/|/;/g" | sed "s/·/;/g" | sed "s/💤/;/g" | sed "s/｜/-/g" | sed "s/?/ß/g" | sed "s/!/;/g" | sed "s/¦/;/g" | sed "s/⧸/-/g" | sed "s/~/-/g"  | sed "s/—/-/g"
 }
 
 function WikiMarkprev(){
@@ -221,9 +221,9 @@ function file-description(){
     local picture=$6
     local folderSwitch=$7
     local fileFolder=
+    local extens=${File##*.}
     if [[ ! $folderSwitch == "" ]]
     then
-        local extens=${File##*.}
         local Filename=${File%.*}
         fileFolder=$Filename
         mkdir -p "$folder"/"$fileFolder"
@@ -245,6 +245,9 @@ function file-description(){
         if [[ ! $folderSwitch == "" ]]
         then
             echo "{{./$File.avif?width=500}}"
+        elif [[ jpg == $extens || PNG == $extens || JPEG == $extens || png == $extens || webp == $extens || jpeg == $extens || avif == $extens ]]
+        then
+            echo "{{../${File%.*}.avif?width=500}}"
         else
             echo "{{../$File.avif?width=500}}"
         fi
@@ -254,8 +257,7 @@ function file-description(){
 
 function ttpic(){
     local File=$(cleanName "$2")
-    file-description "$1" "$File" "@BILD $3" "$4" "$5"
-    echo "{{../$File?width=500}}"
+    file-description "$1" "$File" "@BILD $3" "$4" "$5" "yes"
 }
 
 function create-note(){
