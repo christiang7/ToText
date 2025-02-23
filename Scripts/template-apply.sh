@@ -43,6 +43,10 @@ then
 
     template-tex.sh "$folder/$Apply" "no" "cover-letter" "Schreiben"
 
+    cp "$templateDir"/Research_Statement_tex/general-preamble.tex "$folder"/"$Apply"/Research_Statement_tex/general-preamble.tex
+
+    cp "$templateDir"/Research_Statement_tex/color-symbols.tex "$folder"/"$Apply"/Research_Statement_tex/color-symbols.tex
+
     cp -r "$templateDir"/Bewerbungen/CV_tex "$folder"/"$Apply"/CV_tex
 
     cp -r "$templateDir"/Bewerbungen/Research_Statement_tex "$folder"/"$Apply"/Research_Statement_tex

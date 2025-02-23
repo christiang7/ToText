@@ -52,7 +52,7 @@ mkdir -p ~/.config/tt
 Copy the ``config-example`` file to your ``.config`` folder
 
 ```bash
-cp config-example ~/.config/tt/config
+cp configs/config-example ~/.config/tt/config
 ```
 
 and fill in your path you need. 
@@ -60,7 +60,7 @@ and fill in your path you need.
 Copy the ``config-mpv-example`` to your ``mpv`` config folder
 
 ```bash
-cp config-mpv-example ~/.config/mpv/config
+cp configs/config-mpv-example ~/.config/mpv/config
 ```
 
 Copy all [.desktop] files to the dolphin service folder

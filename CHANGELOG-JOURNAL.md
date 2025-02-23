@@ -1,20 +1,30 @@
 # Changelog-Journal
 
-- [x] Backlog
-	- [ ] [tt] with real path of file not the terminal path, `realpath` program not working, using the real path of the [.desktop] file with `tt $f`
-	- [ ] rewrite everything in english
-	- [ ] using builtin [shell options] for [scripts]
-	- [ ] cleaning not used scripts 
-	- [ ] write blog post for [website]
-	- [ ] rewrite [tt-lib.sh] with [subshell] for optional output
-- [x] Doing (2)
-	- [ ] write [documentation]
-		- [x] [install instructions] in README
-			- [ ] make [script] for that
-		- [ ] describe main application 
-			- [ ] which [script] do what
-		- [ ] explain possible [workflows] with used [scripts]
-		- [ ] make [website] 
+![](CHANGELOG-JOURNAL/kanboard.png)
+
+*kanboard.plantuml*
+```plantuml
+@startwbs
++ tasks
+ + Backlog
+  - [ ] [tt] with real path of file not the terminal path, `realpath` program not working, using the real path of the [.desktop] file with `tt $f`
+  - [ ] rewrite everything in english
+  - [ ] delete not used scripts 
+  - [ ] write blog post for [website]
+  - [ ] using builtin [shell options] for [scripts]
+  - [ ] rewrite [tt-lib.sh] with [subshell] for optional output
+ + Doing (2)
+  - [ ] write [documentation]
+   - [x] [install instructions] in README
+   - [ ] make [script] for that
+  - [ ] make overview page about the used tools, use for structuring the desktop files
+   - [ ] describe main application 
+    - [ ] which [script] do what
+   - [ ] explain possible [workflows] with used [scripts]
+   - [ ] make [website] 
+@endwbs
+```
+
 
 Redirecting output from a function block to a file in Linux | AnonymousOverflow 
 https://ao.ngn.tf/questions/18095152/redirecting-output-from-a-function-block-to-a-file-in-linux
@@ -177,4 +187,9 @@ The program [zim-quoting-copy]() can copy a marked line. The marked line gets an
 [kanboardlist.md](kanboardlist.md) insert Kanboardlists in `zim-wiki`
 [zim-dateheadlines.md](zim-dateheadlines.md) insert date headlines in `zim-wiki`
 
+### create kanboard
 
+*run-cell.sh*
+```bash
+noweb.py -Rkanboard.plantuml CHANGELOG-JOURNAL.md > CHANGELOG-JOURNAL/kanboard.plantuml && plantuml CHANGELOG-JOURNAL/kanboard.plantuml && echo 'kanboard.plantuml' && date && gwenview CHANGELOG-JOURNAL/kanboard.png 2>/dev/null 
+```

@@ -8,7 +8,6 @@ folder=${txtfile%.*}
 txtfile=$(basename "$txtfile")
 txtfilename=${txtfile%.*}
 #echo $folder
-mkdir -p "$folder"
 
 abfrage=$(yad --title="Insert code?" --text="Necessary Informations:" \
 	--form --width 500 --separator="~" --item-separator=","  \
@@ -18,6 +17,7 @@ abfrage=$(yad --title="Insert code?" --text="Necessary Informations:" \
 	"" "$langName" ",yes")
 if [ ! $? -eq 1 ];
 then
+	mkdir -p "$folder"
 	File=$(echo $abfrage | cut -s -d "~" -f 1)
 	langname=$(echo $abfrage | cut -s -d "~" -f 2)
 	add=$(echo $abfrage | cut -s -d "~" -f 3)

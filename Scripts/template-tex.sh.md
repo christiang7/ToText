@@ -1,9 +1,8 @@
 # template-tex.sh
 Created [2023-10-29]()
 
- [README.md](README.md)
-- [X] Doing
-- [X] Backlog
+- [x] Doing
+- [x] Backlog
 
 ## Features
 

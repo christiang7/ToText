@@ -67,9 +67,9 @@ function markdown-description-program(){
     echo -e "Created [$(date +%Y-%m-%d)]()\n"
     echo -e "\n## Description"
     echo -e "\n## Journal"
-    echo -e " - [X] Backlog"
+    echo -e " - [x] Backlog"
     echo -e "    - [ ] "
-    echo -e " - [X] Doing"
+    echo -e " - [x] Doing"
 }
 
 function template-code(){
@@ -99,14 +99,14 @@ function template-code(){
     fi
     if  [[ $extens == "plantuml" || $extens == "plt" || $extens == "mmd" ]]
     then
-        echo -e "{{./${Filename}.png}}"
+        echo -e "{{./${Filename}.png?width=500}}"
 	fi
     echo -e " \n## ${extens} code\n\n"
     echo -e "$codeHead"
     echo -e "\`\`\`bash"
     case ${extens} in
         plantuml)
-            mkdir -p
+            mkdir -p "${outFile}"
             echo -e "noweb.py -R${Filename}.${extens} ${outFile}.md > "${outFile}"/${Filename}.${extens} && plantuml "${outFile}"/${Filename}.${extens} && echo '${Filename}.${extens}' && date && gwenview "${outFile}"/${Filename}.png 2>/dev/null \n\`\`\`"
             ;;
         typst)
@@ -156,7 +156,6 @@ function template-code(){
             echo "replot"
             ;;
     esac
-    echo -e "\n"
     echo -e "\`\`\`"
 }
 

@@ -5,9 +5,9 @@ Created [2025-02-17]()
 ## Description
 
 ## Journal
- - [X] Backlog
+ - [x] Backlog
     - [ ] 
- - [X] Doing
+ - [x] Doing
  
 ## sh code
 

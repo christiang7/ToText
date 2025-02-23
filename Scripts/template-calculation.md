@@ -1,9 +1,9 @@
 # template-calculation
 Created [2023-06-25]()
  math
-- [X] **template-calculation** [README.md](README.md)
-	- [X] Doing
-	- [X] Backlog
+- [x] **template-calculation** [README.md](README.md)
+	- [x] Doing
+	- [x] Backlog
 
 ## Features
 
