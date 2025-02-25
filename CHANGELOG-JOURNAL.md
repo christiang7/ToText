@@ -194,5 +194,12 @@ The program [zim-quoting-copy]() can copy a marked line. The marked line gets an
 
 *run-cell.sh*
 ```bash
+###*website preview}}
 noweb.py -Rkanboard.plantuml CHANGELOG-JOURNAL.md > CHANGELOG-JOURNAL/kanboard.plantuml && plantuml CHANGELOG-JOURNAL/kanboard.plantuml && echo 'kanboard.plantuml' && date && gwenview CHANGELOG-JOURNAL/kanboard.png 2>/dev/null 
 ```
+
+*website preview*
+```bash
+python3 -m http.server 3000
+```
+
