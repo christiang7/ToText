@@ -21,7 +21,6 @@
     - [ ] describe main application 
      - [ ] which [script] do what
     - [ ] explain possible [workflows] with used [scripts]
-    - [ ] make [website] 
 @endwbs
 ```
 
@@ -34,6 +33,7 @@ Adding arguments and options to your Bash scripts
 https://www.redhat.com/en/blog/arguments-options-bash-scripts
 
 ### 2025-02-25
+  - [x] make [website] 
   - [x] insert in [scripts] the `author` variable from [config file]
    - [x] insert in [example-config]
 ### 2025-02-17
