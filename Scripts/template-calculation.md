@@ -33,6 +33,7 @@ Einstellungen vor dem Start des eigentlichen Programms, hier für ein Shell Scri
 source config.sh
 source tt-lib.sh
 langName="$(config_get langName)"
+author="$(config_get author)"
 ```
 
 *template-calculation.sh*
@@ -82,7 +83,7 @@ abfrage=$(yad --title="New calculation?" --text="Necessary Informations:" \
 	--field="Author":CBE \
 	--field="Tags":CBE \
 	--field="Description":TXT \
-	"$File" "$langName" "Christian Gößl,Internet" ",physic,math" "$additiontext")
+	"$File" "$langName" "$author,Internet" ",physic,math" "$additiontext")
 if [ ! $? -eq 1 ];
 then
 	File=$(echo $abfrage | cut -s -d "~" -f 1)

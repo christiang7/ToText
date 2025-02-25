@@ -1,15 +1,15 @@
 # zim-quotes-copy
 Created [[2023-06-21]]
 
-- [X]  **zim-quotes-copy**  [README.md](README.md)
-    - [X] Doing
-    - [X] Backlog
+- [x]  **zim-quotes-copy** 
+    - [x] Doing
+    - [x] Backlog
 
 ## Features
 
 Works in X11 and Wayland.
 
-Quoting with Anchors and Links. The quoted text ist formated as verbatim text.
+Quoting with Anchors and Links. The quoted text is formated as verbatim text.
 
 *run-cell.sh*
 ```bash

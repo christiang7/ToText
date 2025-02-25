@@ -1,9 +1,9 @@
 # tabs2today
 Created Dienstag [Zettelkasten:2022:10:25]()
 
-- [X] **tabs2today**
-	- [X] Doing
-	- [X] Backlog
+- [x] **tabs2today**
+	- [x] Doing
+	- [x] Backlog
 
 
 *run-cell.sh*

@@ -1,9 +1,9 @@
 # html-folder-to-maff.sh
 Created [2024-02-21](2024-02-21)
 
-- [X] **html-folder-to-maff.sh**
-    - [X] Doing
-    - [X] Backlog
+- [x] **html-folder-to-maff.sh**
+    - [x] Doing
+    - [x] Backlog
 
 ## Features
 

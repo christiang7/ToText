@@ -1,9 +1,9 @@
 # tt-change-format.sh
 Created [2024-10-09](2024-10-09)
 
-- [X] **tt-change-format.sh**
-    - [X] Doing
-    - [X] Backlog
+- [x] **tt-change-format.sh**
+    - [x] Doing
+    - [x] Backlog
 
 ## Features
 

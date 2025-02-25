@@ -86,6 +86,7 @@ source config.sh; # load the config library functions
 journalPage="$(config_get journalPage)"
 templateDir="$(config_get templateDir)"
 langName="$(config_get langName)"
+author="$(config_get author)"
 source tt-lib.sh;
 ```
 
@@ -102,7 +103,7 @@ abfrage=$(yad --title="New Latex File" --text="Necessary Informations:" \
 	--field="Tags:":CBE \
 	--field="Git init?":CB \
 	--field="Description:":TXT \
-	"" "Programming,normal,Rechnung,Schreiben" "$langName" "Christian Gößl,Internet" ",physic,math" "No,Yes" "$additiontext")
+	"" "Programming,normal,Rechnung,Schreiben" "$langName" "$author,Internet" ",physic,math" "No,Yes" "$additiontext")
 ```
 
 ### Main

@@ -1,6 +1,6 @@
 # zim-script
 
-- [X] @ArcVORLAGE @ArcPROGRAMM @SCRIPT @Zim  **zim-script**  !!
+- [x] @ArcVORLAGE @ArcPROGRAMM @SCRIPT @Zim  **zim-script**  !!
 
 Created Samstag 17 April 2021 [17.04.2021]()
 
@@ -19,17 +19,17 @@ zim-script.sh %t
 Mit ``%t`` wird der ausgewählte Text als Kommando ausgeführt vom Script
 
 
-- [X] WEB terminal - Execute a command in a separate konsole then let users type commands - Unix & Linux Stack Exchange
+ terminal - Execute a command in a separate konsole then let users type commands - Unix & Linux Stack Exchange
  <https://unix.stackexchange.com/questions/613274/execute-a-command-in-a-separate-konsole-then-let-users-type-commands>
 
-- [X] WEB bash - Run commands in a terminal, then let me type more commands - Unix & Linux Stack Exchange
+ bash - Run commands in a terminal, then let me type more commands - Unix & Linux Stack Exchange
  <https://unix.stackexchange.com/questions/234247/run-commands-in-a-terminal-then-let-me-type-more-commands>
 
 
-- [X] WEB pass a command as an argument to bash script - Stack Overflow
+ pass a command as an argument to bash script - Stack Overflow
  <https://stackoverflow.com/questions/15749618/pass-a-command-as-an-argument-to-bash-script>
 
-- [X] WEB shell - Redirect stderr and stdout in Bash - Stack Overflow
+ shell - Redirect stderr and stdout in Bash - Stack Overflow
  <https://stackoverflow.com/questions/637827/redirect-stderr-and-stdout-in-bash>
 
 

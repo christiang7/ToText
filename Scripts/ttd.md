@@ -1,6 +1,6 @@
 # ttd
 [Zettelkasten:2021:04:22]()
-- [X] **[../ttd](./ttd)**
+- [x] **[../ttd](./ttd)**
 Create for all files in a folder text files automaticly.
 
 *run-cell.sh*

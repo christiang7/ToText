@@ -1,9 +1,9 @@
 # ttop.desktop
 Created [2025-02-05](2025-02-05)
 
-- [X] **ttop.desktop**
-    - [X] Doing
-    - [X] Backlog
+- [x] **ttop.desktop**
+    - [x] Doing
+    - [x] Backlog
 
 ## Features
 

@@ -27,10 +27,14 @@ Hier sind die Dolpin ServiceMenüs
 [KDE-Servicemenüs › Wiki › ubuntuusers-de]()
 
 
-- [X] WEB How to get File Name and extension in bash|shell script programming https://www.w3schools.io/terminal/bash-extract-file-extension/
-- [X] WEB Bash Scripting - How to check If File Exists - GeeksforGeeks https://www.geeksforgeeks.org/bash-scripting-how-to-check-if-file-exists/
-- [X] WEB Zenity - Create GUI Dialog Boxes In Bash Scripts - OSTechNix https://ostechnix.com/zenity-create-gui-dialog-boxes-in-bash-scripts/
-- [X] WEB Bash Conditional Statements - OSTechNix https://ostechnix.com/bash-conditional-statements/
+WEB How to get File Name and extension in bash|shell script programming 
+https://www.w3schools.io/terminal/bash-extract-file-extension/
+WEB Bash Scripting - How to check If File Exists - GeeksforGeeks 
+https://www.geeksforgeeks.org/bash-scripting-how-to-check-if-file-exists/
+WEB Zenity - Create GUI Dialog Boxes In Bash Scripts - OSTechNix 
+https://ostechnix.com/zenity-create-gui-dialog-boxes-in-bash-scripts/
+WEB Bash Conditional Statements - OSTechNix 
+https://ostechnix.com/bash-conditional-statements/
 
 
 Preserve image's modification time with mogrify/imagemagick | AnonymousOverflow
@@ -60,27 +64,28 @@ using ``tt`` function with the parameters as following
 source config.sh; # load the config library functions
 journalPage="$(config_get journalPage)"
 source tt-lib.sh;
+author="$(config_get author)"
 
-echo "$1"
+#echo "$1"
 #ofile="$1"
 ofile=$(basename "$1")
 folder=$(dirname "$(realpath "$ofile")")
 #ofile=$(basename "$file")
-echo $ofile
+#echo $ofile
 extens=${ofile##*.}
 Filename=${ofile%.*}
 #folder=$(pwd)
 Unterricht=$(echo $File | grep -o Unterrichtsnotiz)
 File=$(cleanName "$ofile")
 yadSwitch=$5
-echo $folder
+#echo $folder
 if [[ -e "$File".md ]]
 then
 	xdg-open "$File" &
 else
     if [[ $(echo $Filename | grep -o Unterrichtsnotiz) == Unterrichtsnotiz || $(echo $Filename | grep -o Unterrichtsnotizen) == Unterrichtsnotizen || $(echo $Filename | grep -o Unterricht) == Unterricht ]]
     then
-        source="Christian Gößl"
+        source="$author"
         tags="@Unterricht @Nachhilfe"
     else
         source="$2"
@@ -97,7 +102,7 @@ else
 		--field="Keep picture:":CB \
 		--field="Show file:":CB \
 		--field="Something more":TXT \
-		"$Filename" "$source,Internet,Christian Gößl" "$tags" "Yes,No" "No,Yes" "$additiontext")
+		"$Filename" "$source,Internet,$author" "$tags" "Yes,No" "No,Yes" "$additiontext")
     fi
 fi
 

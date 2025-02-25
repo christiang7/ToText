@@ -1,18 +1,19 @@
 #!/bin/bash
 source config.sh; # load the config library functions
 source tt-lib.sh;
+author="$(config_get author)"
 
 File=$(cleanName "$1")
 filetxt=${File%.*}
 
-datum=$(date +"%Y-%m-%d--%H-%M-%S")
+date=$(date +"%Y-%m-%d--%H-%M-%S")
 abfrage=$(yad --title="Insert sketch" --text="Something to add?" \
 		--form --width 500 --separator="~" --item-separator=","  \
 		--field="Name" \
 		--field="Source:":CBE \
 		--field="Tags" \
 		--field="Something more":TXT \
-		"_${datum}" "Christian Gößl,Internet," "" "")
+		"_${date}" "$author,Internet," "" "")
 
 if [ ! $? -eq 1 ];
 then
@@ -28,7 +29,6 @@ then
 		mypaint "$filename".png
 		ttpic "$filetxt" "$filename".png "$source" "$tags" "$additiontext" >> "$filetxt"/"$filename".png
 		echo -e "[[+${filename}.png]]"
-		echo {{"$filename".png?width=500}}
+		echo {{./"$filename".png?width=500}}
 	fi
 fi
-#fi

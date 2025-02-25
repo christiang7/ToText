@@ -1,21 +1,19 @@
 # tt-change
 Created Dienstag [Zettelkasten:2022:06:14]()
 
-- [X] **tt-change**
-    - [X] Doing
-    - [X] Backlog
+- [x] **tt-change**
+    - [x] Doing
+    - [x] Backlog
 
 
 
 ## Informations
 
-- [X] Anpassung auch für Ordner erledigt
+- [x] Anpassung auch für Ordner erledigt
 
-
-
-- [X] WEB bash - Extract string from brackets - Stack Overflow
-
+WEB bash - Extract string from brackets - Stack Overflow
 https://stackoverflow.com/questions/7209629/extract-string-from-brackets
+
 to extract the file from the txt file to correct the name
 ```bash
 echo "string1 [[string2]] string3 string4" | sed 's/.*\[\[\([^]]*\)\]\].*/\1/g'
@@ -26,8 +24,7 @@ cat Archery.pdf.md | tr '\n' ' ' | cut -d "[" -f4 | cut -d "]" -f1 | sed "s/..\/
 ```
 
 
-- [X] WEB Zenity - Create GUI Dialog Boxes In Bash Scripts - OSTechNix
-
+WEB Zenity - Create GUI Dialog Boxes In Bash Scripts - OSTechNix
 https://ostechnix.com/zenity-create-gui-dialog-boxes-in-bash-scripts/
 
 
@@ -47,6 +44,7 @@ chmod u+x tt-change && ln -sf $(pwd)/tt-change ~/.local/bin/tt-change && echo 'f
 #!/bin/bash
 source config.sh; # load the config library functions
 source tt-lib.sh;
+author="$(config_get author)"
 
 #case of input file is the original file
 File=$(cleanName "$1")
@@ -85,7 +83,7 @@ abfrage=$(yad --title="Enter new filename" --text="Type new filename" \
     --field="Source:":CBE \
     --field="Tags" \
     --field="Something more":TXT \
-    "$(basename ${filename2} .$extens3)" "Christian Gößl,Internet," "" "")
+    "$(basename ${filename2} .$extens3)" "$author,Internet," "" "")
 if [ ! $? -eq 1 ];
 then
     Newname=$(echo $abfrage | cut -s -d "~" -f 1)
@@ -126,7 +124,7 @@ abfrage=$(yad --title="Enter new filename" --text="Type new filename" \
     --field="Source:":CBE \
     --field="Tags" \
     --field="Something more":TXT \
-    "$filename" "Christian Gößl,Internet," "" "")
+    "$filename" "$author,Internet," "" "")
 if [ ! $? -eq 1 ];
 then
     Newname=$(echo $abfrage | cut -s -d "~" -f 1)

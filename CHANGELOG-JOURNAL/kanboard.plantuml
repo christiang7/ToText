@@ -1,7 +1,7 @@
 @startwbs
 + tasks
  + Backlog
-  - [ ] [tt] with real path of file not the terminal path, `realpath` program not working, using the real path of the [.desktop] file with `tt $f`
+  - [ ] [tt] with real path of file not the terminal path, `realpath` \n program not working, using the real path of the [.desktop] file with `tt $f`
   - [ ] rewrite everything in english
   - [ ] delete not used scripts
   - [ ] write blog post for [website]
@@ -9,11 +9,11 @@
   - [ ] rewrite [tt-lib.sh] with [subshell] for optional output
  + Doing (2)
   - [ ] write [documentation]
-   - [x] [install instructions] in README
-   - [ ] make [script] for that
-  - [ ] make overview page about the used tools, use for structuring the desktop files
-   - [ ] describe main application
-    - [ ] which [script] do what
-   - [ ] explain possible [workflows] with used [scripts]
-   - [ ] make [website]
+   - [x] [install instructions] in [README]
+    - [ ] make [script] for that
+   - [ ] make overview page about used tools,\n use for structuring the desktop files
+    - [ ] describe main application
+     - [ ] which [script] do what
+    - [ ] explain possible [workflows] with used [scripts]
+    - [ ] make [website]
 @endwbs

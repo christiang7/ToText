@@ -1,7 +1,7 @@
 # ttop
 Created Dienstag [Zettelkasten:2022:03:15]()
 
-- [X] **ttop**
+- [x] **ttop**
 
 
 Open annotated file

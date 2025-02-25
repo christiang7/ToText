@@ -1,9 +1,9 @@
 # tt-tools-text.desktop
 Created [2025-02-05](2025-02-05)
 
-- [X] **tt-tools-text.desktop**
-    - [X] Doing
-    - [X] Backlog
+- [x] **tt-tools-text.desktop**
+    - [x] Doing
+    - [x] Backlog
 
 ## Features
 

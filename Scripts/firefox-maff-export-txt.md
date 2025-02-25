@@ -1,7 +1,7 @@
 # firefox-maff-export-txt
 Created Freitag [Zettelkasten:2022:05:20]()
 
-- [X] **firefox-maff-export-txt**
+- [x] **firefox-maff-export-txt**
 
 ```bash
 for f in "$@"; do

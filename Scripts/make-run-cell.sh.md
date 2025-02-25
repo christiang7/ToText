@@ -1,9 +1,9 @@
 # make-run-cell.sh
 Created [2024-10-09](2024-10-09)
 
-- [X] **make-run-cell.sh**
-    - [X] Doing
-    - [X] Backlog
+- [x] **make-run-cell.sh**
+    - [x] Doing
+    - [x] Backlog
 
 ## Features
 

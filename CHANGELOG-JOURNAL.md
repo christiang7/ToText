@@ -7,7 +7,7 @@
 @startwbs
 + tasks
  + Backlog
-  - [ ] [tt] with real path of file not the terminal path, `realpath` program not working, using the real path of the [.desktop] file with `tt $f`
+  - [ ] [tt] with real path of file not the terminal path, `realpath` \n program not working, using the real path of the [.desktop] file with `tt $f`
   - [ ] rewrite everything in english
   - [ ] delete not used scripts 
   - [ ] write blog post for [website]
@@ -15,13 +15,13 @@
   - [ ] rewrite [tt-lib.sh] with [subshell] for optional output
  + Doing (2)
   - [ ] write [documentation]
-   - [x] [install instructions] in README
-   - [ ] make [script] for that
-  - [ ] make overview page about the used tools, use for structuring the desktop files
-   - [ ] describe main application 
-    - [ ] which [script] do what
-   - [ ] explain possible [workflows] with used [scripts]
-   - [ ] make [website] 
+   - [x] [install instructions] in [README]
+    - [ ] make [script] for that
+   - [ ] make overview page about used tools,\n use for structuring the desktop files
+    - [ ] describe main application 
+     - [ ] which [script] do what
+    - [ ] explain possible [workflows] with used [scripts]
+    - [ ] make [website] 
 @endwbs
 ```
 
@@ -33,6 +33,9 @@ https://www.dev-insider.de/bash-scripting-mit-optionen-und-parametern-a-4af6b57c
 Adding arguments and options to your Bash scripts 
 https://www.redhat.com/en/blog/arguments-options-bash-scripts
 
+### 2025-02-25
+  - [x] insert in [scripts] the `author` variable from [config file]
+   - [x] insert in [example-config]
 ### 2025-02-17
 - [x] use websession for [tabs2topics] like in [save-websession.sh] 
 	- [x] apply to new note with tabs

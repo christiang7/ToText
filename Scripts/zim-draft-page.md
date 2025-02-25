@@ -1,9 +1,9 @@
 # zim-draft-page
 Created [2023-09-19]()
 
-- [X]  **zim-draft-page** Christian Gößl [README.md](README.md)
-	- [X] Doing
-	- [X] Backlog
+- [x]  **zim-draft-page** Christian Gößl [README.md](README.md)
+	- [x] Doing
+	- [x] Backlog
 
 ## Features
 

@@ -2,6 +2,7 @@
 source config.sh
 source tt-lib.sh
 langName="$(config_get langName)"
+author="$(config_get author)"
 
 typ=$(yad --title="New calculation?" --text="Necessary Informations:" \
 	--form --width 500 --separator="" --item-separator=","  \
@@ -30,7 +31,7 @@ then
 			--field="Author":CBE \
 			--field="Tags":CBE \
 			--field="Description":TXT \
-			"$File" "$langName" "Christian Gößl,Internet" ",physic,math" "$additiontext")
+			"$File" "$langName" "$author,Internet" ",physic,math" "$additiontext")
 		if [ ! $? -eq 1 ];
 		then
 			File=$(echo $abfrage | cut -s -d "~" -f 1)

@@ -1,9 +1,9 @@
 # config.sh.sh
 Created [2025-02-01](2025-02-01)
 
-- [X] **config.sh.sh**
-    - [X] Doing
-    - [X] Backlog
+- [x] **config.sh.sh**
+    - [x] Doing
+    - [x] Backlog
 
 ## Features
 

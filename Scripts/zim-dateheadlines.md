@@ -1,8 +1,8 @@
 # zim-dateheadlines
 Created [2023-05-25]()
-- [X]  **zim-dateheadlines**  [README.md](README.md)
-   - [X] Doing
-   - [X] Backlog
+- [x]  **zim-dateheadlines**  [README.md](README.md)
+   - [x] Doing
+   - [x] Backlog
 
 ## Features
 

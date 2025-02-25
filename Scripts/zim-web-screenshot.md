@@ -1,7 +1,7 @@
 # zim-web-screenshot
 Created Freitag [Zettelkasten:2022:10:07]()
 
-- [X] **zim-web-screenshot**
+- [x] **zim-web-screenshot**
 
 
 [Zettelkasten:2022:05:01:Screenshots in Firefox offener tabs]()

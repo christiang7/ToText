@@ -1,6 +1,7 @@
 #!/bin/bash
 source config.sh; # load the config library functions
 langName="$(config_get langName)"
+author="$(config_get author)"
 source tt-lib.sh
 
 if [[ -e "$1" ]]
@@ -25,7 +26,7 @@ abfrage=$(yad --title="New Project calculation" --text="Necessary Informations:"
 	--field="Tags":CBE \
 	--field="Git init?":CB \
 	--field="Description":TXT \
-	"$Project" "$File" "$langName" "Christian Gößl,Internet" ",physic,math" "Yes,No" "$additiontext")
+	"$Project" "$File" "$langName" "$author,Internet" ",physic,math" "Yes,No" "$additiontext")
 if [ ! $? -eq 1 ];
 then
 	Project=$(echo $abfrage | cut -s -d "~" -f 1)

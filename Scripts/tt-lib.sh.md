@@ -1,9 +1,9 @@
 # tt-lib.sh
 Created [2025-02-01](2025-02-01)
 
-- [X] **tt-lib.sh**
-    - [X] Doing
-    - [X] Backlog
+- [x] **tt-lib.sh**
+    - [x] Doing
+    - [x] Backlog
 
 ## Features
 

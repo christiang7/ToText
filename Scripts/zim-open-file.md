@@ -1,9 +1,9 @@
 # zim-open-file
 Created [2023-06-25]()
-- [X]  **zim-open-file**  [README.md](README.md)
-    - [X] Doing
+- [x]  **zim-open-file**  [README.md](README.md)
+    - [x] Doing
         - [ ] Problem with files in zim with german Umlaute
-    - [X] Backlog
+    - [x] Backlog
 
 
 ## Features

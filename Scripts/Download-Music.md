@@ -1,7 +1,7 @@
 # Download-Music
 Created Dienstag [Zettelkasten:2022:10:18]()
 
-- [X] **Download-Music**
+- [x] **Download-Music**
 
 For dumping the website, but it is not good formated
 ```bash

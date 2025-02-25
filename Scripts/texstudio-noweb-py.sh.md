@@ -2,9 +2,9 @@
 Created [2023-10-30]()
 
 
-- [X] **texstudio-noweb-py.sh** [README.md](README.md)
-    - [X] Doing
-    - [X] Backlog
+- [x] **texstudio-noweb-py.sh** [README.md](README.md)
+    - [x] Doing
+    - [x] Backlog
 
 ## Features
 

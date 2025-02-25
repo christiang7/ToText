@@ -1,7 +1,7 @@
 # zim-insert-sketch
 Created [Zettelkasten:2023:03:02]()
 
-- [X] **zim-insert-sketch**
+- [x] **zim-insert-sketch**
 
 ## documentation
 
@@ -31,6 +31,7 @@ noweb.py -Rzim-insert-sketch.sh zim-insert-sketch.md > zim-insert-sketch.sh && e
 #!/bin/bash
 source config.sh; # load the config library functions
 source tt-lib.sh;
+author="$(config_get author)"
 
 File=$(cleanName "$1")
 filetxt=${File%.*}
@@ -42,7 +43,7 @@ abfrage=$(yad --title="Insert sketch" --text="Something to add?" \
 		--field="Source:":CBE \
 		--field="Tags" \
 		--field="Something more":TXT \
-		"_${date}" "Christian Gößl,Internet," "" "")
+		"_${date}" "$author,Internet," "" "")
 
 if [ ! $? -eq 1 ];
 then

@@ -1,7 +1,7 @@
 # ttitle-correction
 Created [Zettelkasten:2023:04:18]
 
-- [X] **ttitle-correction**
+- [x] **ttitle-correction**
 
 ## Informations
 
@@ -14,19 +14,19 @@ sed -i "3 s/\[\*/===== ansansa =====\\n\[\*/" 1681834707295.avif.md
 in all cases it has to be done in 3th and 4th line
 
 
-- [X] WEB sed find replace or add if nothing is found
+ sed find replace or add if nothing is found
 
  https://code.whatever.social/questions/22796157/sed-find-replace-or-add-if-nothing-is-found
 
-- [X] WEB bash - Use sed command to apply a condition to check if a pattern has been matched - Ask Ubuntu
+ bash - Use sed command to apply a condition to check if a pattern has been matched - Ask Ubuntu
 
  https://askubuntu.com/questions/635048/use-sed-command-to-apply-a-condition-to-check-if-a-pattern-has-been-matched
 
-- [X] WEB Numbering lines matching the pattern using sed
+ Numbering lines matching the pattern using sed
 
  https://code.whatever.social/questions/10577256/numbering-lines-matching-the-pattern-using-sed
 
-- [X] WEB How can I check the first character in a string in Bash or Unix shell?
+ How can I check the first character in a string in Bash or Unix shell?
 
  https://code.whatever.social/questions/18488270/how-can-i-check-the-first-character-in-a-string-in-bash-or-unix-shell
 

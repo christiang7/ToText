@@ -2,6 +2,7 @@
 source config.sh; # load the config library functions
 journalPage="$(config_get journalPage)"
 source tt-lib.sh;
+author="$(config_get author)"
 
 File=$1
 par=$2
@@ -19,7 +20,7 @@ abfrage=$(yad --title="Zim xournalpp note" --text="Type new filename" \
 	--field="Tags" \
 	--field="Quelle:":CBE \
 	--field="Weiteres":TXT \
-	"${name}" "" "Christian Gößl,Internet," "")
+	"${name}" "" "$author,Internet," "")
 
 if [ ! $? -eq 1 ];
 then

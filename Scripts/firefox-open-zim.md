@@ -1,7 +1,7 @@
 # firefox-open-zim
 Created Montag [Zettelkasten:2022:12:19]()
 
-- [X] @Firefox @Zim @Wiki  **firefox-open-zim**
+- [x] @Firefox @Zim @Wiki  **firefox-open-zim**
 
 
 

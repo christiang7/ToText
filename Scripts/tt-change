@@ -1,6 +1,7 @@
 #!/bin/bash
 source config.sh; # load the config library functions
 source tt-lib.sh;
+author="$(config_get author)"
 
 #case of input file is the original file
 File=$(cleanName "$1")
@@ -36,7 +37,6 @@ function ttc(){
     sed -i "s/$oldname/$filename/g" "$File".md
     if [[ pdf == $extens ]]
     then
-        #Wikiprev
         rm "$oldFile".png
         rm "$oldFile".avif
         pdftoppm -png -singlefile "$File" "$File"
@@ -54,7 +54,6 @@ function ttc(){
         sed -i "s/\*$oldFile.en.vtt\*/\*$File.en.vtt\*/g" "$File".md
         sed -i "s/\*$oldFile.de.vtt\*/\*$File.de.vtt\*/g" "$File".md
         sed -i "s/\*$oldFile.ttml\*/\*$File.ttml\*/g" "$File".md
-        #Wikiprev
         #Opentxt
     fi
 }
@@ -67,7 +66,7 @@ then
         --field="Source:":CBE \
         --field="Tags" \
         --field="Something more":TXT \
-        "$(basename ${filename2} .$extens3)" "Christian Gößl,Internet," "" "")
+        "$(basename ${filename2} .$extens3)" "$author,Internet," "" "")
     if [ ! $? -eq 1 ];
     then
         Newname=$(echo $abfrage | cut -s -d "~" -f 1)
@@ -103,7 +102,7 @@ else
         --field="Source:":CBE \
         --field="Tags" \
         --field="Something more":TXT \
-        "$filename" "Christian Gößl,Internet," "" "")
+        "$filename" "$author,Internet," "" "")
     if [ ! $? -eq 1 ];
     then
         Newname=$(echo $abfrage | cut -s -d "~" -f 1)

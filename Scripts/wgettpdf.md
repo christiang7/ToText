@@ -1,6 +1,6 @@
 # wgettpdf
 
-- [X] **wgettpdf**
+- [x] **wgettpdf**
 
 Created Freitag [Zettelkasten:2021:04:30]()
 

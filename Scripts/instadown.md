@@ -1,7 +1,7 @@
 # instadown
 Created Samstag [Zettelkasten:2022:04:09]()
 
-- [X] **instadown**
+- [x] **instadown**
 
 *run-cell.sh*
 ```bash

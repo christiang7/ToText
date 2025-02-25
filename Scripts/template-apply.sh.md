@@ -53,6 +53,7 @@ Load configuration files
 #!/bin/bash
 source config.sh; # load the config library functions
 templateDir="$(config_get templateDir)"
+author="$(config_get author)"
 source tt-lib.sh
 ```
 
@@ -85,7 +86,7 @@ abfrage=$(yad --title="New Apply" --text="Necessary Informations:" \
 	--field="Tags":CBE \
 	--field="Git init?":CB \
 	--field="Description":TXT \
-	"$Apply" "Christian Gößl,Internet" ",physic,math" "Yes,No" "$additiontext")
+	"$Apply" "$author,Internet" ",physic,math" "Yes,No" "$additiontext")
 if [ ! $? -eq 1 ];
 then
 	Applyname=2»$(echo $abfrage | cut -s -d "~" -f 1)

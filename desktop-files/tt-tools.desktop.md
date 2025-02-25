@@ -1,9 +1,9 @@
 # tt-tools.desktop
 Created [2025-02-05](2025-02-05)
 
-- [X] **tt-tools.desktop**
-    - [X] Doing
-    - [X] Backlog
+- [x] **tt-tools.desktop**
+    - [x] Doing
+    - [x] Backlog
 
 ## Features
 
@@ -27,8 +27,7 @@ chmod u+x tt-tools.desktop && ln -sf $(pwd)/tt-tools.desktop ~/.local/share/kser
 Type=Service
 X-KDE-ServiceTypes=KonqPopupMenu/Plugin
 MimeType=application/*;audio/*;video/*;image/*;inode/directory;message/rfc822;text/html;text/x-tex;
-Actions=ZettelMoveFile;DeleteFile;maketxt;
-#ZettelLinkFile;
+Actions=ttMoveFile;ttDeleteFile;Maketxt;
 X-KDE-Priority=TopLevel
 X-KDE-Submenu=tt-tools
 Terminal=true
@@ -40,20 +39,20 @@ Terminal=true
 #Icon=application-x-java
 Exec=tt %n "" "" "" "no" 2>&1 | tee /home/christian/.config/tt/log
 
-[Desktop Action maketxt]
+[Desktop Action Maketxt]
 Name=tt with yad
 Icon=video
 Terminal=true
 #Icon=application-x-java
 Exec=tt %n 2>&1 | tee /home/christian/.config/tt/log
 
-[Desktop Action ZettelMoveFile]
+[Desktop Action ttMoveFile]
 Name=ttm
 Icon=audio
 Terminal=true
 Exec=ttm %n 2>&1 | tee /home/christian/.config/tt/log
 
-[Desktop Action DeleteFile]
+[Desktop Action ttDeleteFile]
 Name=ttdel
 Icon=video
 Terminal=true

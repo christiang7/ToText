@@ -1,9 +1,9 @@
 # tt-tools-template.desktop
 Created [2025-02-05](2025-02-05)
 
-- [X] **tt-tools-template.desktop**
-    - [X] Doing
-    - [X] Backlog
+- [x] **tt-tools-template.desktop**
+    - [x] Doing
+    - [x] Backlog
 
 ## Features
 

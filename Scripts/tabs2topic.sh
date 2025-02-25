@@ -3,7 +3,7 @@ source config.sh; # load the config library functions
 journalDir="$(config_get journalDir)"
 journalPage="$(config_get journalPage)"
 wikiDir="$(config_get wikiDir)"
-
+author="$(config_get author)"
 
 request=$(yad --title="Notes or archiv" --text="Something to add?" \
 	--form --width 500 --separator="~" --item-separator=","  \
@@ -26,7 +26,7 @@ then
 			--field="Source:":CBE \
 			--field="Tags:" \
 			--field="Something else":TXT \
-			"Spass,Physik,Mathematik,Blogging,Philosophie,CodeFabrik,Zettelkasten" "Topicname" "Internet,Christian Gößl," "" "$additiontext")
+			"Spass,Physik,Mathematik,Blogging,Philosophie,CodeFabrik,Zettelkasten" "Topicname" "Internet,$author," "" "$additiontext")
 
 		if [ ! $? -eq 1 ];
 		then

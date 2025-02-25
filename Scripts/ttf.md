@@ -2,7 +2,7 @@
 Created Freitag [Zettelkasten:2022:05:20]()
 Backlink [CodeFabrik]()
 
-- [X] **ttf**
+- [x] **ttf**
 
 Create folder for txt file
 

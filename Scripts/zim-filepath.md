@@ -1,15 +1,15 @@
 # zim-filepath
 Created Sonntag [2022-11-06]()
-- [X] **zim-filepath** [README](README.md)
+- [x] **zim-filepath** [README](README.md)
 
 
 ## Information
 
-- [X] WEB bash - Readlink - How to crop full path? - Stack Overflow
+ bash - Readlink - How to crop full path? - Stack Overflow
 
  <https://stackoverflow.com/questions/26341845/readlink-how-to-crop-full-path>
 
-- [X] WEB readlink() — Read the value of a symbolic link - IBM Documentation
+ readlink() — Read the value of a symbolic link - IBM Documentation
 
  <https://www.ibm.com/docs/en/zos/2.4.0?topic=functions-readlink-read-value-symbolic-link>
 

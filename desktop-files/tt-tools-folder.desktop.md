@@ -1,9 +1,9 @@
 # tt-tools-folder.desktop
 Created [2025-02-05](2025-02-05)
 
-- [X] **tt-tools-folder.desktop**
-    - [X] Doing
-    - [X] Backlog
+- [x] **tt-tools-folder.desktop**
+    - [x] Doing
+    - [x] Backlog
 
 ## Features
 

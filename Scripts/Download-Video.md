@@ -1,6 +1,6 @@
 # Download-Video
 Created Dienstag [Zettelkasten:2022:10:18]()
-- [X] **Download-Video**
+- [x] **Download-Video**
 
 
 
@@ -81,6 +81,7 @@ ofile=$(yt-dlp --print filename -s "${website}" -o '%(title)s').mp4
 extens=${ofile##*.}
 name=${ofile%.*}
 additiontext="$(yt-dlp --get-description ${website})"
+author="$(config_get author)"
 
 abfrage=$(yad --title="Create text file" --text="Something to add?" \
 	--form --width 500 --separator="~" --item-separator=","  \
@@ -88,7 +89,7 @@ abfrage=$(yad --title="Create text file" --text="Something to add?" \
 	--field="Quelle:":CBE \
 	--field="Tags" \
 	--field="Weiteres":TXT \
-	"$name" "$website,Internet,Christian Gößl" "$tags" "$additiontext")
+	"$name" "$website,Internet,$author" "$tags" "$additiontext")
 if [ ! $? -eq 1 ];
 then
 	Newname=$(echo $abfrage | cut -s -d "~" -f 1)

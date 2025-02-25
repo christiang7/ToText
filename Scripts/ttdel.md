@@ -1,7 +1,7 @@
 # ttdel
 Created Dienstag [Zettelkasten:2022:06:14]()
 
-- [X] **ttdel**
+- [x] **ttdel**
 
 
 

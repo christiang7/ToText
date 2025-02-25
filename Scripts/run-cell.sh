@@ -1,5 +1,4 @@
 #!/bin/bash
-# Mo 24. Feb 00:23:19 CET 2025
+# Di 25. Feb 12:26:20 CET 2025
 export CHROME_DEVEL_SANDBOX=/usr/local/sbin/chrome-devel-sandbox
-noweb.py -Rtt-lib.sh tt-lib.sh.md > tt-lib.sh && echo 'tt-lib.sh' && date
-
+noweb.py -Rzim-insert-sketch.sh zim-insert-sketch.md > zim-insert-sketch.sh && echo 'fertig'

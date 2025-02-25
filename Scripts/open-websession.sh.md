@@ -1,7 +1,7 @@
 # open-websession
 Created Sonntag [Zettelkasten:2022:10:16]()
 
-- [X] **open-websession**
+- [x] **open-websession**
 
 
 <https://www.ecosia.org/search?q=bash%20list%20output%20first%20line%20element&addon=firefox&addonversion=4.1.0&method=topbar> | bash list output first line element - Ecosia - Web

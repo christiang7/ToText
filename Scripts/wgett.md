@@ -1,7 +1,7 @@
 # wgett
 Created Donnerstag [Zettelkasten:2021:04:29]()
 
-- [X] **wgett**
+- [x] **wgett**
 
 
 *run-cell.sh*

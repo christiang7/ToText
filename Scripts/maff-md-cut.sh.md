@@ -1,9 +1,9 @@
 # maff-md-cut.sh
 Created [2024-03-15](2024-03-15)
 
-- [X] **maff-md-cut.sh**
-    - [X] Doing
-    - [X] Backlog
+- [x] **maff-md-cut.sh**
+    - [x] Doing
+    - [x] Backlog
 
 ## Features
 

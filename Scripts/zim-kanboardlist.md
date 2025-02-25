@@ -1,8 +1,8 @@
 # zim-kanboardlist
 Created 2023-05-25
-- [X]  **zim-kanboardlist**  [README.md](README.md)
-   - [X] Doing
-   - [X] Backlog
+- [x]  **zim-kanboardlist**  [README.md](README.md)
+   - [x] Doing
+   - [x] Backlog
 
 ## Features
 einfügen von einer Standard Kanboardliste für zim-wiki

@@ -1,9 +1,9 @@
 # tt.desktop
 Created [2025-02-05](2025-02-05)
 
-- [X] **tt.desktop**
-    - [X] Doing
-    - [X] Backlog
+- [x] **tt.desktop**
+    - [x] Doing
+    - [x] Backlog
 
 ## Features
 

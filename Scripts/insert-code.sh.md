@@ -5,8 +5,8 @@ Created [2025-02-13]()
 ## Description
 
 ## Journal
- - [X] Doing
- - [X] Backlog
+ - [x] Doing
+ - [x] Backlog
     - [ ] 
  
 ## Main Program
