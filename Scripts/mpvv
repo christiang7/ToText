@@ -60,5 +60,5 @@ fi
 
 echo -e "\nfile://$tempInputDir/$File".md
 #DRI_PRIME=pci-0000_01_00_0 __VK_LAYER_NV_optimus=NVIDIA_only__ GLX_VENDOR_LIBRARY_NAME=nvidia mpv --profile="$profile" "$website"
+#DRI_PRIME=pci-0000_01_00_0 __VK_LAYER_NV_optimus=NVIDIA_only__ GLX_VENDOR_LIBRARY_NAME=nvidia mpv --profile="$profile" --screenshot-template="Screenshot-$File-%P" "$website"
 mpv --profile="$profile" --screenshot-template="Screenshot-$File-%P" "$website"
-

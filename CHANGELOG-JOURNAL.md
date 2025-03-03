@@ -25,12 +25,12 @@
 ```
 
 
-Redirecting output from a function block to a file in Linux | AnonymousOverflow 
-https://ao.ngn.tf/questions/18095152/redirecting-output-from-a-function-block-to-a-file-in-linux
-Bash-Scripting mit Optionen und Parametern 
-https://www.dev-insider.de/bash-scripting-mit-optionen-und-parametern-a-4af6b57c5165b887f8386ae1fbaa7efe/
-Adding arguments and options to your Bash scripts 
-https://www.redhat.com/en/blog/arguments-options-bash-scripts
+Redirecting output from a function block to a file in Linux | AnonymousOverflow  
+https://ao.ngn.tf/questions/18095152/redirecting-output-from-a-function-block-to-a-file-in-linux  
+Bash-Scripting mit Optionen und Parametern  
+https://www.dev-insider.de/bash-scripting-mit-optionen-und-parametern-a-4af6b57c5165b887f8386ae1fbaa7efe/  
+Adding arguments and options to your Bash scripts  
+https://www.redhat.com/en/blog/arguments-options-bash-scripts  
 
 ### 2025-02-25
   - [x] make [website] 
@@ -114,8 +114,8 @@ https://github.com/Osndok/zim-plugin-append
 	- [x] new folder
 	- [x] all used [.desktop] files in [repo] with link to service folder
 - [x] deleted [ttnc] not used
-	- [x] > rename [ttncc] to [ttc]
-	- [x] > insert [ttc] in [ttrename]
+	- [x] -> rename [ttncc] to [ttc]
+	- [x] -> insert [ttc] in [ttrename]
 
 ### 2025-02-04
 - [x] position of picture in `ttpic` above text

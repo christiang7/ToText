@@ -1,4 +1,4 @@
 #!/bin/bash
-# Di 25. Feb 12:26:20 CET 2025
+# Fr 28. Feb 22:22:26 CET 2025
 export CHROME_DEVEL_SANDBOX=/usr/local/sbin/chrome-devel-sandbox
-noweb.py -Rzim-insert-sketch.sh zim-insert-sketch.md > zim-insert-sketch.sh && echo 'fertig'
+noweb.py -Rmpvv mpvv.md > mpvv && echo 'mpvv' && date

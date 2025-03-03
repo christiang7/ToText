@@ -18,38 +18,38 @@
 
 ## Template scripts
 
-[template-calculation.sh]
+[template-calculation.sh](Scripts/template-calculation.md)
 
-[template-calculation-project.sh]
+[template-calculation-project.sh](Scripts/template-calculation-project.sh.md)
 
-[template-note.sh]
+[template-note.sh](Scripts/template-note.sh.md)
 
-[template-tex.sh]
+[template-tex.sh](Scripts/template-tex.sh.md)
 
-[template-apply.sh]
+[template-apply.sh](Scripts/template-apply.sh.md)
 
-[insert-code.sh]
+[insert-code.sh](Scripts/insert-code.sh.md)
 
-[zim-xournal.sh]
+[zim-xournal.sh](Scripts/zim-xournal.md)
 
 ## Work with internet
 
-[tabs2today.sh]
+[tabs2today.sh](Scripts/tabs2today.sh.md)
 
-[tabs2topics.sh]
+[tabs2topics.sh](Scripts/tabs2topics.sh.md)
 
-[save-websession.sh]
+[save-websession.sh](Scripts/save-websession.sh.md)
 
-[open-websession.sh]
+[open-websession.sh](Scripts/open-websession.sh.md)
 
-[Download-Video.sh]
+[Download-Video.sh](Scripts/Download-Video.md)
 
-[Download-Music.sh]
+[Download-Music.sh](Scripts/Download-Music.md)
 
-[wgettpic.sh]
+[wgettpic.sh](Scripts/wgettpic.md)
 
 ## More related scripts
 
-[mpvv]
+[mpvv](Scripts/mpvv.md)
 
-[texstudion-noweb-py.sh]
+[texstudio-noweb-py.sh](Scripts/texstudio-noweb-py.sh.md)
