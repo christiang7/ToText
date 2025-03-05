@@ -12,6 +12,7 @@
   - [ ] write blog post for [website]
   - [ ] using builtin [shell options] for [scripts]
   - [ ] rewrite [tt-lib.sh] with [subshell] for optional output
+  - [ ] latex `template files` in a separate folder [templates] 
  + Doing (2)
   - [ ] write [documentation]
    - [x] [install instructions] in [README]
