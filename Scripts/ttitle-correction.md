@@ -1,5 +1,5 @@
 # ttitle-correction
-Created [Zettelkasten:2023:04:18]
+Created [2023:04:18]
 
 - [x] **ttitle-correction**
 

@@ -2,8 +2,8 @@
 
 - [x] @ArcPROGRAMM @Zim @VIDEO **zim-mpvv**
 
-Created Samstag [Zettelkasten:2021:04:24]()
-Backlink [Zettelkasten:2021:04:24]()
+Created Samstag [2021:04:24]()
+Backlink [2021:04:24]()
 
 Kommando zum Extrahieren des Scripts
 

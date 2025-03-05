@@ -1,5 +1,5 @@
 # ttf
-Created Freitag [Zettelkasten:2022:05:20]()
+Created Freitag [2022:05:20]()
 Backlink [CodeFabrik]()
 
 - [x] **ttf**

@@ -1,5 +1,5 @@
 # open-websession
-Created Sonntag [Zettelkasten:2022:10:16]()
+Created Sonntag [2022:10:16]()
 
 - [x] **open-websession**
 

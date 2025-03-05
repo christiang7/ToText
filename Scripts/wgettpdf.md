@@ -2,7 +2,7 @@
 
 - [x] **wgettpdf**
 
-Created Freitag [Zettelkasten:2021:04:30]()
+Created Freitag [2021:04:30]()
 
 *run-cell.sh*
 ```bash

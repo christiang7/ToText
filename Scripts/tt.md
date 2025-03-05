@@ -1,5 +1,5 @@
 # tt
-Text creation time: [Zettelkasten:2021:04:29]() Modification time: [Zettelkasten:2021:01:04]() File date: [Zettelkasten:2021:04:24]()
+Text creation time: [2021:04:29]() Modification time: [2021:01:04]() File date: [2021:04:24]()
 
 Das ist das Skript zum erstellen von Textdateien für andere uneditierbare Dateien
 

@@ -1,5 +1,5 @@
 # tabs2today
-Created Dienstag [Zettelkasten:2022:10:25]()
+Created Dienstag [2022:10:25]()
 
 - [x] **tabs2today**
 	- [x] Doing

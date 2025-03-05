@@ -1,5 +1,5 @@
 # zim-start-programm
-Created Dienstag [Zettelkasten:2022:10:11]()
+Created Dienstag [2022:10:11]()
 
 - [x] **zim-start-programm**
 

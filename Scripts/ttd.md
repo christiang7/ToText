@@ -1,5 +1,5 @@
 # ttd
-[Zettelkasten:2021:04:22]()
+[2021:04:22]()
 - [x] **[../ttd](./ttd)**
 Create for all files in a folder text files automaticly.
 

@@ -1,5 +1,5 @@
 # template-note
-Created Dienstag [Zettelkasten:2022:11:01](
+Created Dienstag [2022:11:01]()
 - [x] **template-note** [README]()
 
 

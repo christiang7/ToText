@@ -1,5 +1,5 @@
 # zim-xournal
-Created Mittwoch [Zettelkasten:2022:06:29]()
+Created Mittwoch [2022:06:29]()
 
 - [x] **zim-xournal**
 

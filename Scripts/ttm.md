@@ -1,5 +1,5 @@
 # ttm
-[Zettelkasten:2021:05:03]()
+[2021:05:03]()
 
 *run-cell.sh*
 ```bash

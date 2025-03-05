@@ -1,5 +1,5 @@
 # wgettpic
-Created Donnerstag [Zettelkasten:2021:04:29]()
+Created Donnerstag [2021:04:29]()
 
 
 *run-cell.sh*

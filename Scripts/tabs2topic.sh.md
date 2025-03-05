@@ -1,5 +1,5 @@
 # tabs2topic
-Created Dienstag [Zettelkasten:2022:10:25]()
+Created Dienstag [2022:10:25]()
 Backlink [GedankenspeicherCoding](../GedankenspeicherCoding.md)
 
 - [x] **tabs2topic**

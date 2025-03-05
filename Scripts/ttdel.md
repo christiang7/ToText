@@ -1,5 +1,5 @@
 # ttdel
-Created Dienstag [Zettelkasten:2022:06:14]()
+Created Dienstag [2022:06:14]()
 
 - [x] **ttdel**
 

@@ -1,5 +1,5 @@
 # Download-Video
-Created Dienstag [Zettelkasten:2022:10:18]()
+Created Dienstag [2022:10:18]()
 - [x] **Download-Video**
 
 

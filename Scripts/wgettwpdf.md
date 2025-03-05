@@ -2,7 +2,7 @@
 
 - [x]  @AkPROGRAMM **wgettwpdf**
 
-Angelegt Donnerstag [Zettelkasten:2021:05:20]()
+Angelegt Donnerstag [2021:05:20]()
 Backlink [GedankenspeicherCoding](../GedankenspeicherCoding.md)
 
 Projekt ist erfüllt durch die wgett Programme

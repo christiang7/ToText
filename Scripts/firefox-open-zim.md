@@ -1,5 +1,5 @@
 # firefox-open-zim
-Created Montag [Zettelkasten:2022:12:19]()
+Created Montag [2022:12:19]()
 
 - [x] @Firefox @Zim @Wiki  **firefox-open-zim**
 

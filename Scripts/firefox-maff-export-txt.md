@@ -1,5 +1,5 @@
 # firefox-maff-export-txt
-Created Freitag [Zettelkasten:2022:05:20]()
+Created Freitag [2022:05:20]()
 
 - [x] **firefox-maff-export-txt**
 

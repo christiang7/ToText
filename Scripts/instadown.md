@@ -1,5 +1,5 @@
 # instadown
-Created Samstag [Zettelkasten:2022:04:09]()
+Created Samstag [2022:04:09]()
 
 - [x] **instadown**
 
