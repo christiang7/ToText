@@ -11,28 +11,22 @@ Terminal=true
 Name=tt
 Icon=video
 Terminal=true
-#Icon=application-x-java
-Exec=tt %f "" "" "" "no" 2>&1 | tee /home/christian/.config/tt/log
+Exec=tt %f "" "" "" "no" 2>&1 | tee ~/.config/tt/log
 
 [Desktop Action Maketxt]
 Name=tt with yad
 Icon=video
 Terminal=true
-#Icon=application-x-java
-Exec=tt %f 2>&1 | tee /home/christian/.config/tt/log
+Exec=tt %f 2>&1 | tee ~/.config/tt/log
 
 [Desktop Action ttMoveFile]
 Name=ttm
 Icon=audio
 Terminal=true
-Exec=ttm %f 2>&1 | tee /home/christian/.config/tt/log
+Exec=ttm %f 2>&1 | tee ~/.config/tt/log
 
 [Desktop Action ttDeleteFile]
 Name=ttdel
 Icon=video
 Terminal=true
-#Icon=application-x-java
-Exec=ttdel %f 2>&1 | tee /home/christian/.config/tt/log
-
-
-
+Exec=ttdel %f 2>&1 | tee ~/.config/tt/log

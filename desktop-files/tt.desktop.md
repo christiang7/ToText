@@ -39,13 +39,11 @@ Terminal=true
 Name=tt
 Icon=video
 Terminal=true
-#Icon=application-x-java
-Exec=tt %f "" "" "" "no" 2>&1 | tee /home/christian/.config/tt/log
+Exec=tt %f "" "" "" "no" 2>&1 | tee ~/.config/tt/log
 
 [Desktop Action maketxt]
 Name=tt with yad
 Icon=video
 Terminal=true
-#Icon=application-x-java
-Exec=tt %f 2>&1 | tee /home/christian/.config/tt/log
+Exec=tt %f 2>&1 | tee ~/.config/tt/log
 ```

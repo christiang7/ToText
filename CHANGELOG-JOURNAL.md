@@ -31,6 +31,9 @@ https://www.dev-insider.de/bash-scripting-mit-optionen-und-parametern-a-4af6b57c
 Adding arguments and options to your Bash scripts  
 https://www.redhat.com/en/blog/arguments-options-bash-scripts
 
+### 2025-03-05
+  - [x] substitute `log file` location with `~` in [.desktop files]
+
 ### 2025-03-04
   - [x] [tt] with real path of file not the terminal path, `realpath` \n program not working, using the real path of the [.desktop] file with `tt $f`
 

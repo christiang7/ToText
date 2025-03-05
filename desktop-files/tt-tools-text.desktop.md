@@ -36,47 +36,43 @@ X-KDE-Submenu=tt-tools
 Name=ttop
 Icon=audio
 Terminal=true
-Exec=ttop %f 2>&1 | tee /home/christian/.config/tt/log
+Exec=ttop %f 2>&1 | tee ~/.config/tt/log
 
 [Desktop Action MakeFolder]
 Name=ttf make folder for text file
 Icon=video
 Terminal=true
-Exec=ttf %f 2>&1 | tee /home/christian/.config/tt/log
+Exec=ttf %f 2>&1 | tee ~/.config/tt/log
 
 [Desktop Action ChangeFormat]
 Name=tt-change-format.sh
 Icon=video
 Terminal=true
 #Icon=application-x-java
-Exec=tt-change-format.sh %f 2>&1 | tee /home/christian/.config/tt/log
+Exec=tt-change-format.sh %f 2>&1 | tee ~/.config/tt/log
 
 [Desktop Action DeleteFile]
 Name=ttdel
 Icon=video
 Terminal=true
-#Icon=application-x-java
-Exec=ttdel %f 2>&1 | tee /home/christian/.config/tt/log
+Exec=ttdel %f 2>&1 | tee ~/.config/tt/log
 
 [Desktop Action RenameFile]
 Name=tt-change rename files and add meta data
 Icon=video
 Terminal=true
-#Icon=application-x-java
-Exec=tt-change %f 2>&1 | tee /home/christian/.config/tt/log
+Exec=tt-change %f 2>&1 | tee ~/.config/tt/log
 
 [Desktop Action MoveFile]
 Name=ttm move file to today
 Icon=video
 Terminal=true
-#Icon=application-x-java
-Exec=ttm %f 2>&1 | tee /home/christian/.config/tt/log
+Exec=ttm %f 2>&1 | tee ~/.config/tt/log
 
 
 [Desktop Action OpenWebsession]
 Name=open-websession.sh
 Icon=video
 Terminal=true
-#Icon=application-x-java
 Exec=open-websession.sh %f 2>&1 | tee /home/christian/.config/tt/log
 ```
