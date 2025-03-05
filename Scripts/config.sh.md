@@ -1,7 +1,7 @@
-# config.sh.sh
+# config.sh
 Created [2025-02-01](2025-02-01)
 
-- [x] **config.sh.sh**
+- [x] **config.sh**
     - [x] Doing
     - [x] Backlog
 
