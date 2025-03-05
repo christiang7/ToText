@@ -15,7 +15,7 @@
  + Doing (2)
   - [ ] write [documentation]
    - [x] [install instructions] in [README]
-    - [ ] make [script] for that
+    - [x] make [script] for that
    - [ ] make overview page about used tools,\n use for structuring the desktop files
     - [ ] describe main application 
      - [ ] which [script] do what
@@ -38,6 +38,7 @@ https://www.redhat.com/en/blog/arguments-options-bash-scripts
   - [x] make [website] 
   - [x] insert in [scripts] the `author` variable from [config file]
    - [x] insert in [example-config]
+
 ### 2025-02-17
 - [x] use websession for [tabs2topics] like in [save-websession.sh] 
 	- [x] apply to new note with tabs
