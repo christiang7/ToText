@@ -27,7 +27,7 @@ then
   folder=$(pwd)
   echo $folder
 else
-  folder=$(echo "$1")
+  folder=$(basename "$1")
   echo $folder
 fi
 

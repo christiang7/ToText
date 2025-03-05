@@ -34,6 +34,6 @@ X-KDE-Submenu=tt-folder
 Name=ttd
 Name[de]=ttd
 Icon=audio
-Exec=ttd %n
+Exec=ttd %f
 
 ```

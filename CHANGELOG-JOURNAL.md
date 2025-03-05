@@ -7,7 +7,6 @@
 @startwbs
 + tasks
  + Backlog
-  - [ ] [tt] with real path of file not the terminal path, `realpath` \n program not working, using the real path of the [.desktop] file with `tt $f`
   - [ ] rewrite everything in english
   - [ ] delete not used scripts 
   - [ ] write blog post for [website]
@@ -31,6 +30,9 @@ Bash-Scripting mit Optionen und Parametern
 https://www.dev-insider.de/bash-scripting-mit-optionen-und-parametern-a-4af6b57c5165b887f8386ae1fbaa7efe/
 Adding arguments and options to your Bash scripts  
 https://www.redhat.com/en/blog/arguments-options-bash-scripts
+
+### 2025-03-04
+  - [x] [tt] with real path of file not the terminal path, `realpath` \n program not working, using the real path of the [.desktop] file with `tt $f`
 
 ### 2025-02-25
   - [x] make [website] 

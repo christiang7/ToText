@@ -1,7 +1,6 @@
 @startwbs
 + tasks
  + Backlog
-  - [ ] [tt] with real path of file not the terminal path, `realpath` \n program not working, using the real path of the [.desktop] file with `tt $f`
   - [ ] rewrite everything in english
   - [ ] delete not used scripts
   - [ ] write blog post for [website]

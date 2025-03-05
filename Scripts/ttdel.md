@@ -22,7 +22,9 @@ source tt-lib.sh;
 yad --title="Delete files?" --text="\n Delete description file and original file \n"
 if [ ! $? -eq 1 ];
 then 
-	File=$(cleanName "$1")
+	File=$(basename "$1")
+	
+	File=$(cleanName "$File")
 
 	File2=$(basename "$1")
 	extens2=${File2##*.}

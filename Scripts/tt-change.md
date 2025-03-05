@@ -47,7 +47,8 @@ source tt-lib.sh;
 author="$(config_get author)"
 
 #case of input file is the original file
-File=$(cleanName "$1")
+File=$(basename "$1")
+File=$(cleanName "$File")
 #File=$(echo "$1" | sed 's/ /_/g' | sed 's/:/;/g'| sed -e "s/'/_/g" | sed 's/\"//g')
 f=$(basename "$1")
 extens=${f##*.}

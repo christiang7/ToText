@@ -35,7 +35,7 @@ X-KDE-Submenu=tt-template
 Name=template-note.sh create note with folder
 Name[de]=template-note.sh erstelle Notiz mit Ordner
 Icon=audio
-Exec=template-note.sh %n
+Exec=template-note.sh %f
 
 [Desktop Action template_tex]
 Name=template-tex.sh

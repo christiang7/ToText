@@ -17,12 +17,12 @@ then
 	mv $f "$folder"/$f
 	mv "$name" "$folder"/"$name"
 else
-	abfrage=$(yad --title="Der Datei eine TXT hinzufügen?" --text="Noch etwas hinzufügen?" \
+	abfrage=$(yad --title="Move file to today page?" --text="Something to add?" \
 		--form --separator="~" --item-separator="," \
 		--field="Name:" \
-		--field="Quelle:" \
+		--field="Source:" \
 		--field="Tags:" \
-		--field="Weiteres:":TXT \
+		--field="Something more:":TXT \
 		"$name" "$2" "" "")
 
 	if [ ! $? -eq 1 ];

@@ -34,5 +34,5 @@ X-KDE-Priority=TopLevel
 Name=ttop
 Icon=audio
 Terminal=true
-Exec=ttop %n 2>&1 | tee /home/christian/.config/tt/log
+Exec=ttop %f 2>&1 | tee /home/christian/.config/tt/log
 ```
