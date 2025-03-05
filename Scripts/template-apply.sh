@@ -63,7 +63,3 @@ then
 	fi
 fi
 
-
-### git versioning
-
-
