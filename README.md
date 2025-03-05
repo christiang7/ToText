@@ -91,7 +91,6 @@ The script file of the used installation steps.
 *install.sh*
 ```bash
 #!/bin/bash
-#*Download repository}}
 #*create tt config folder}}
 #*copy tt config}}
 #*copy mpv config}}

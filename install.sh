@@ -1,6 +1,4 @@
 #!/bin/bash
-git clone https://github.com/christiang7/ToText.git
-cd ToText
 mkdir -p ~/.config/tt
 cp configs/config-example ~/.config/tt/config
 cp configs/config-mpv-example ~/.config/mpv/config
