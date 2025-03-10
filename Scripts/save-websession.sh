@@ -1,6 +1,6 @@
 #!/bin/bash
 source tt-lib.sh
-inputDir="$(config_get inputDir)"
+inputDir="$(config_get wikiDir)"/Atelier
 
 filename=$(yad --title="Save websession?" --text="\nSave copied tabs\n" \
 	--form --width 500 --separator="" --item-separator=","  \

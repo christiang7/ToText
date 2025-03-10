@@ -53,7 +53,7 @@ then
         text="$(wl-paste -n)"
         lines="$(wc --lines <<< "${text}")"
     fi
-    echo $text
+    #echo $text
     element=""
     firstcharacters=${text:0:4}
     #echo $firstcharacters

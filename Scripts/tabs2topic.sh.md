@@ -48,6 +48,7 @@ journalDir="$(config_get journalDir)"
 journalPage="$(config_get journalPage)"
 wikiDir="$(config_get wikiDir)"
 author="$(config_get author)"
+source tt-lib.sh
 #*request}}
 
 ```
@@ -130,11 +131,12 @@ then
 		touch "${folder}"/"${topicfile}"
 		mkdir -p "${folder}"/"${topicfilename}"
 		
-		#*tabsession to note}}
 		
 		##### additiontext="$additiontext\n${tabs}"
 				
 		create-note "$folder" "${topicfilename}" "$tags" "$source" "$additiontext" >> "$folder"/"${topicfile}"
+		
+		#*tabsession to note}}
 		
 		echo -e "	[*] $(date +"[[$journalPage:%Y:%m:%d|%Y-%m-%d]]")" >> "${folder}".md
 		echo -e "		[*] [[+$(basename ${topicfile} .md)|${topic}]]" >> "${folder}".md
@@ -149,7 +151,8 @@ fi
 tabSessionName="2»websession_$(date +"%Y-%m-%d")"
 if [[ ! -e "$folder"/"${topicfilename}"/"$tabSessionName.md" ]]
 then
-	additiontext="$additiontext\n[[+$abSessionName]]"
+	#additiontext="$additiontext\n[[+$tabSessionName]]"
+	echo "[[+$tabSessionName]]" >> "$folder"/"${topicfile}"
 fi
 echo "$tabs" >> "$folder"/"${topicfilename}"/"$tabSessionName.md"
 ```
