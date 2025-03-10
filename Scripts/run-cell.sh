@@ -1,4 +1,4 @@
 #!/bin/bash
-# Mi 5. Mär 15:42:17 CET 2025
+# Mo 10. Mär 16:18:56 CET 2025
 export CHROME_DEVEL_SANDBOX=/usr/local/sbin/chrome-devel-sandbox
-noweb.py -Rtemplate-apply.sh template-apply.sh.md > template-apply.sh && echo 'template-apply.sh' && date
+noweb.py -Ropen-websession.sh open-websession.sh.md > open-websession.sh && date

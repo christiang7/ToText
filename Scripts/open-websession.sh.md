@@ -3,14 +3,22 @@ Created Sonntag [2022:10:16]()
 
 - [x] **open-websession**
 
-
-<https://www.ecosia.org/search?q=bash%20list%20output%20first%20line%20element&addon=firefox&addonversion=4.1.0&method=topbar> | bash list output first line element - Ecosia - Web
-<https://stackoverflow.com/questions/885620/in-bash-how-can-i-print-the-first-n-elements-of-a-list> | syntax - In bash, how can I print the first n elements of a list? - Stack Overflow
-<https://unix.stackexchange.com/questions/205022/bash-assigning-the-first-line-of-a-variable-to-a-variable> | bash: Assigning the first line of a variable to a variable - Unix & Linux Stack Exchange
-<https://www.ecosia.org/search?q=get%20first%20element%20of%20string%20bash&addon=firefox&addonversion=4.1.0&method=topbar> | get first element of string bash - Ecosia - Web
-<https://unix.stackexchange.com/questions/65932/how-to-get-the-first-word-of-a-string> | bash - How to get the first word of a string? - Unix & Linux Stack Exchange
-<https://stackoverflow.com/questions/6022384/bash-tool-to-get-nth-line-from-a-file> | shell - Bash tool to get nth line from a file - Stack Overflow
-<https://stackoverflow.com/questions/38602587/bash-for-loop-output-index-number-and-element> | arrays - bash + for loop + output index number and element - Stack Overflow
+bash list output first line element - Ecosia - Web  
+https://www.ecosia.org/search?q=bash%20list%20output%20first%20line%20element&addon=firefox&addonversion=4.1.0&method=topbare  
+syntax - In bash, how can I print the first n elements of a list? - Stack Overflow  
+https://stackoverflow.com/questions/885620/in-bash-how-can-i-print-the-first-n-elements-of-a-liste  
+bash: Assigning the first line of a variable to a variable - Unix & Linux Stack Exchange  
+https://unix.stackexchange.com/questions/205022/bash-assigning-the-first-line-of-a-variable-to-a-variable  
+get first element of string bash - Ecosia - Web  
+https://www.ecosia.org/search?q=get%20first%20element%20of%20string%20bash&addon=firefox&addonversion=4.1.0&method=topbar  
+bash - How to get the first word of a string? - Unix & Linux Stack Exchange  
+https://unix.stackexchange.com/questions/65932/how-to-get-the-first-word-of-a-string  
+shell - Bash tool to get nth line from a file - Stack Overflow  
+https://stackoverflow.com/questions/6022384/bash-tool-to-get-nth-line-from-a-file  
+arrays - bash + for loop + output index number and element - Stack Overflow  
+https://stackoverflow.com/questions/38602587/bash-for-loop-output-index-number-and-element  
+How to preserve line breaks when storing command output to a variable? [duplicate] | AnonymousOverflow  
+https://ao.bloat.cat/questions/22101778/how-to-preserve-line-breaks-when-storing-command-output-to-a-variable  
 
 ``STRINGTEST="clipboard content"``
 ``echo "${STRINGTEST[0]}" | sed '5q;d' | head -n1 | cut -d " " -f1``
@@ -38,40 +46,54 @@ then
     #text="$(xclip -o)"
     if [[ $typ == "File" ]]
     then
-        text="$(cat $1)"
+        #text="$(cat $1)"
+        text="$1"
+        lines="$(wc --lines <<< "$(cat ${text})")"
     else
         text="$(wl-paste -n)"
+        lines="$(wc --lines <<< "${text}")"
     fi
-    #echo $text
+    echo $text
     element=""
-    lines="$(wc --lines <<< "$text")"
     firstcharacters=${text:0:4}
     #echo $firstcharacters
     #echo $lines
-    if [ "$firstcharacters" = "http" ];
+    if [[ "$firstcharacters" == "http" ]]
     then
         #echo 'http'
         for (( i=1 ; i<=$lines ; i++ ));
         do
-            #element+=" $(echo "${text[0]}" | sed "${i}q;d" | head -n1 | cut -d " " -f1)"
-            element=" $(echo "${text[0]}" | sed "${i}q;d" | head -n1 | cut -d " " -f1)"
-            #echo "$element"
-            #echo ${i}
-            firefox --new-tab "$element"
+            if (($i % 2 == 1));
+            then
+                #element="$(echo "${text[0]}" | sed "${i}q;d" | head -n1 | cut -d " " -f1)"
+                if [[ $typ == "File" ]]
+                then
+                    element="$(cat "${text}" | sed "${i}q;d")"
+                else
+                    #element="$(echo "${text[0]}" | sed "${j}q;d" | head -n1 | cut -d " " -f2)"
+                    element="$(echo "${text}" | sed "${i}q;d")"
+                fi
+                echo "$element"
+                #echo "$((($i % 2)))"
+                firefox --new-tab "$element"
+            fi
         done
-        #echo "firefox $element"
-        #firefox --new-tab "$element"
     else
         #echo 'no http'
         for (( j=1 ; j<=$lines ; j++ ));
         do
             if (($j % 2 == 0));
             then
-            #element+=" $(echo "${text[0]}" | sed "${i}q;d" | head -n1 | cut -d " " -f1)"
-            element=" $(echo "${text[0]}" | sed "${j}q;d" | head -n1 | cut -d " " -f2)"
-            echo "$element"
-            #echo ${j}
-            firefox --new-tab "$element"
+                if [[ $typ == "File" ]]
+                then
+                    element="$(cat "${text}" | sed "${j}q;d")"
+                else
+                    #element="$(echo "${text[0]}" | sed "${j}q;d" | head -n1 | cut -d " " -f2)"
+                    element="$(echo "${text}" | sed "${j}q;d")"
+                fi
+                #echo "$element"
+                #echo ${j}
+                firefox --new-tab "$element"
             fi
         done
     fi
