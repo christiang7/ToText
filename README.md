@@ -23,7 +23,7 @@ The ToText uses the following tools:
 
 ## Installation
 
-You can install the script by the [install.sh](install.sh) script by simply execute the script or go to the [Execute installation steps](#execute-installation-steps) section and run the commands by your self, additionally it explains the [install.sh](install.sh) scripts steps.
+You can install the script by the [install.sh](#install-script) script by simply execute the script or go to the [Execute installation steps](#execute-installation-steps) section and run the commands by your self, additionally it explains the [install.sh](#install-script) scripts steps.
 
 
 ### Run install script
@@ -65,14 +65,14 @@ Copy the `config-mpv-example` to your `mpv` config folder
 cp configs/config-mpv-example ~/.config/mpv/config
 ```
 
-Copy all [.desktop] files to the dolphin service folder
+Copy all `.desktop` files to the dolphin service folder
 
 *copy .desktop files*
 ```bash
 cp -r desktop-files/*.desktop ~/.local/share/kservices5/ServiceMenus/*.desktop
 ```
 
-Copy all scripts to the local [bin] folder
+Copy all scripts to the local `bin` folder
 
 *copy script files*
 ```bash
