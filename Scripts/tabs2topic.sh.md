@@ -14,22 +14,22 @@ You can add tabs from browser in a specific page you choose.
 
 ## Infos
 
-WEB keyboard shortcuts - How do I cut a line in KDE Kate? - Super User
-https://superuser.com/questions/1080876/how-do-i-cut-a-line-in-kde-kate
-WEB How to Safely Exit from Bash Scripts | Baeldung on Linux
-https://www.baeldung.com/linux/safely-exit-scripts
+WEB keyboard shortcuts - How do I cut a line in KDE Kate? - Super User  
+https://superuser.com/questions/1080876/how-do-i-cut-a-line-in-kde-kate  
+WEB How to Safely Exit from Bash Scripts | Baeldung on Linux  
+https://www.baeldung.com/linux/safely-exit-scripts  
 
 
 WEB sed Substitution With Variables | Baeldung on Linux
 
-https://www.baeldung.com/linux/sed-substitution-variables
+https://www.baeldung.com/linux/sed-substitution-variables  
 
-WEB Using sed With a Literal String Instead of an Input File | Baeldung on Linux
-https://www.baeldung.com/linux/sed-with-string
+WEB Using sed With a Literal String Instead of an Input File | Baeldung on Linux  
+https://www.baeldung.com/linux/sed-with-string  
 
-WEB 12 Useful 'sed' Commands In Linux | LinuxTeck
+WEB 12 Useful 'sed' Commands In Linux | LinuxTeck  
 
-https://www.linuxteck.com/sed-commands-in-linux/
+https://www.linuxteck.com/sed-commands-in-linux/  
 
 ## Program
 
@@ -38,7 +38,7 @@ https://www.linuxteck.com/sed-commands-in-linux/
 noweb.py -Rtabs2topic.sh tabs2topic.sh.md > tabs2topic.sh && echo 'tabs2topic.sh' && date
 ```
 
-### Main program
+### tabs2topic.sh
 
 *tabs2topic.sh*
 ```bash
@@ -202,6 +202,10 @@ then
 fi
 echo "$tabs" >> "$folder"/"$tabSessionName.md"
 ```
+
+
+
+
 
 ### Tabs to topics
 

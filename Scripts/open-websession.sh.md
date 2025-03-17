@@ -33,7 +33,7 @@ noweb.py -Ropen-websession.sh open-websession.sh.md > open-websession.sh && date
 chmod u+x open-websession.sh && ln -sf $(pwd)/open-websession.sh ~/.local/bin/open-websession.sh && echo 'fertig'
 ```
 
-
+### open-websession
 *open-websession.sh*
 ```bash
 #!/bin/bash
@@ -55,49 +55,21 @@ then
     fi
     #echo $text
     element=""
-    firstcharacters=${text:0:4}
-    #echo $firstcharacters
-    #echo $lines
-    if [[ "$firstcharacters" == "http" ]]
-    then
-        #echo 'http'
-        for (( i=1 ; i<=$lines ; i++ ));
-        do
-            if (($i % 2 == 1));
-            then
-                #element="$(echo "${text[0]}" | sed "${i}q;d" | head -n1 | cut -d " " -f1)"
-                if [[ $typ == "File" ]]
-                then
-                    element="$(cat "${text}" | sed "${i}q;d")"
-                else
-                    #element="$(echo "${text[0]}" | sed "${j}q;d" | head -n1 | cut -d " " -f2)"
-                    element="$(echo "${text}" | sed "${i}q;d")"
-                fi
-                echo "$element"
-                #echo "$((($i % 2)))"
-                firefox --new-tab "$element"
-            fi
-        done
-    else
-        #echo 'no http'
-        for (( j=1 ; j<=$lines ; j++ ));
-        do
-            if (($j % 2 == 0));
-            then
-                if [[ $typ == "File" ]]
-                then
-                    element="$(cat "${text}" | sed "${j}q;d")"
-                else
-                    #element="$(echo "${text[0]}" | sed "${j}q;d" | head -n1 | cut -d " " -f2)"
-                    element="$(echo "${text}" | sed "${j}q;d")"
-                fi
-                #echo "$element"
-                #echo ${j}
-                firefox --new-tab "$element"
-            fi
-        done
-    fi
-
+    for (( i=1 ; i<=$lines ; i++ ));
+    do
+        if [[ $typ == "File" ]]
+        then
+            element="$(cat "${text}" | sed "${i}q;d")"
+        else
+            #element="$(echo "${text[0]}" | sed "${j}q;d" | head -n1 | cut -d " " -f2)"
+            element="$(echo "${text}" | sed "${i}q;d")"
+        fi
+        #echo "$element"
+        if [[ "${element:0:4}" == "http" ]]
+        then
+            firefox --new-tab "$element"
+        fi
+    done
 fi
 ```
 

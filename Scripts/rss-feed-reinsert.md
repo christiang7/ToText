@@ -21,7 +21,7 @@ noweb.py -Rrss-feed-reinsert.sh rss-feed-reinsert.md > rss-feed-reinsert.sh && e
 ```
 
 
-### Main program
+### rss-feed-reinsert.sh
 
 *rss-feed-reinsert.sh*
 ```bash

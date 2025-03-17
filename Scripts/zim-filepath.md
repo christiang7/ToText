@@ -26,7 +26,7 @@ noweb.py -Rzim-filepath.sh zim-filepath.md > zim-filepath.sh && echo 'fertig'
 chmod u+x zim-filepath.sh && ln -sf $(pwd)/zim-filepath.sh ~/.local/bin/zim-filepath.sh && echo 'fertig'
 ```
 
-## Main Program
+## zim-filepath.sh
 
 *zim-filepath.sh*
 ```bash

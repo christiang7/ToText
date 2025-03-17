@@ -18,6 +18,7 @@ noweb.py -Rzim-dateheadlines.sh zim-dateheadlines.md > zim-dateheadlines.sh && e
 chmod u+x zim-dateheadlines.sh && ln -sf $(pwd)/zim-dateheadlines.sh ~/.local/bin/zim-dateheadlines.sh && echo 'fertig'
 ```
 
+### zim-dateheadlines.sh
 *zim-dateheadlines.sh*
 ```bash
 #!/bin/bash
@@ -28,12 +29,15 @@ journalPage="$(config_get journalPage)"
 
 ```
 
+### dateheadlines
 simples einfügen der Überschrift mit einem Datum
 
 *dateheadlines*
 ```bash
 echo -e "==== $(date +"[[$journalPage:%Y:%m:%d|%Y-%m-%d]]") "
 ```
+
+### dateheadlines markdown
 
 *dateheadlines markdown*
 ```bash

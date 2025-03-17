@@ -2,6 +2,7 @@
 
 ![](CHANGELOG-JOURNAL/kanboard.png)
 
+### kanboard.plantuml
 *kanboard.plantuml*
 ```plantuml
 @startwbs
@@ -26,11 +27,11 @@
 
 
 Redirecting output from a function block to a file in Linux | AnonymousOverflow  
-https://ao.ngn.tf/questions/18095152/redirecting-output-from-a-function-block-to-a-file-in-linux
+https://ao.ngn.tf/questions/18095152/redirecting-output-from-a-function-block-to-a-file-in-linux  
 Bash-Scripting mit Optionen und Parametern  
-https://www.dev-insider.de/bash-scripting-mit-optionen-und-parametern-a-4af6b57c5165b887f8386ae1fbaa7efe/
+https://www.dev-insider.de/bash-scripting-mit-optionen-und-parametern-a-4af6b57c5165b887f8386ae1fbaa7efe/  
 Adding arguments and options to your Bash scripts  
-https://www.redhat.com/en/blog/arguments-options-bash-scripts
+https://www.redhat.com/en/blog/arguments-options-bash-scripts  
 
 ### 2025-03-05
   - [x] substitute `log file` location with `~` in [.desktop files]
@@ -64,14 +65,14 @@ https://www.redhat.com/en/blog/arguments-options-bash-scripts
 - [x] integrate mermaid diagrams
 - [x] combined [zim-insert-plantuml.sh] with [insert-code.sh]
 
-Plotting - Tutorial
-https://doc.sagemath.org/html/en/tutorial/tour_plotting.html
-SageMath: saving picture of graph to a file | AnonymousOverflow
-https://overflow.adminforge.de/questions/70979154/sagemath-saving-picture-of-graph-to-a-file
-Coding in Python for Sage - Developer Guide
-https://doc.sagemath.org/html/en/developer/coding_in_python.html
-Tutorial: Programming in Python and Sage - Thematic Tutorials
-https://doc.sagemath.org/html/en/thematic_tutorials/tutorial-programming-python.html
+Plotting - Tutorial  
+https://doc.sagemath.org/html/en/tutorial/tour_plotting.html  
+SageMath: saving picture of graph to a file | AnonymousOverflow  
+https://overflow.adminforge.de/questions/70979154/sagemath-saving-picture-of-graph-to-a-file  
+Coding in Python for Sage - Developer Guide  
+https://doc.sagemath.org/html/en/developer/coding_in_python.html  
+Tutorial: Programming in Python and Sage - Thematic Tutorials  
+https://doc.sagemath.org/html/en/thematic_tutorials/tutorial-programming-python.html  
 
 ### 2025-02-12
 - [x] no rewrite of [ttdm], deleted
@@ -90,12 +91,12 @@ Procedure
 - then convert [html] to [markdown]
 - then have a folder with the original version and a annotated version of the website
 
-GitHub - opengovsg/pdf2md: A PDF to Markdown converter
-https://github.com/opengovsg/pdf2md
-GitHub - suntong/html2md: HTML to Markdown converter
-https://github.com/suntong/html2md
-GitHub - opendatalab/MinerU: A high-quality tool for convert PDF to Markdown and JSON.一站式开源高质量数据提取工具，将PDF转换成Markdown和JSON格式。
-https://github.com/opendatalab/MinerU
+GitHub - opengovsg/pdf2md: A PDF to Markdown converter  
+https://github.com/opengovsg/pdf2md  
+GitHub - suntong/html2md: HTML to Markdown converter  
+https://github.com/suntong/html2md  
+GitHub - opendatalab/MinerU: A high-quality tool for convert PDF to Markdown and JSON.一站式开源高质量数据提取工具，将PDF转换成Markdown和JSON格式。  
+https://github.com/opendatalab/MinerU  
 
 
 ### 2025-02-08
@@ -130,8 +131,8 @@ https://github.com/Osndok/zim-plugin-append
 - [x] rewrite [ttd] with the [tt] script
 - [x] logging in the [.desktop] files enabled, in folder `~/.config/tt/`
 
-Writing errors and output to a text file and Console | AnonymousOverflow
-https://overflow.adminforge.de/questions/3008545/writing-errors-and-output-to-a-text-file-and-console
+Writing errors and output to a text file and Console | AnonymousOverflow  
+https://overflow.adminforge.de/questions/3008545/writing-errors-and-output-to-a-text-file-and-console  
 
 ### 2025-02-03
 - [x] option for [tt] execute without `yad` request
@@ -151,8 +152,8 @@ https://overflow.adminforge.de/questions/3008545/writing-errors-and-output-to-a-
 	- [x] `ttpdf` function
 	- [x] `ttvid` function
 
-Use config file for my shell script | AnonymousOverflow
-https://overflow.adminforge.de/exchange/unix/questions/175648/use-config-file-for-my-shell-script#331965
+Use config file for my shell script | AnonymousOverflow  
+https://overflow.adminforge.de/exchange/unix/questions/175648/use-config-file-for-my-shell-script#331965  
 ### 2025-02-01
 - [x] publish on [github]
 - [x] moved all [scripts] to [Scripts] folder

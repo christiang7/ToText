@@ -40,7 +40,7 @@ noweb.py -Rttitle-correction.sh ttitle-correction.md > ttitle-correction.sh && e
 chmod u+x ttitle-correction.sh && ln -sf $(pwd)/ttitle-correction.sh ~/.local/bin/ttitle-correction.sh && echo 'fertig'
 ```
 
-
+### ttitle-correction.sh
 *ttitle-correction.sh*
 ```bash
 #!/bin/bash
