@@ -12,6 +12,8 @@ Created Montag [2022:12:19]()
 noweb.py -Rfirefox-open-zim.sh firefox-open-zim.md > firefox-open-zim.sh && echo 'fertig'
 ```
 
+### firefox-open-zim.sh
+
 *firefox-open-zim.sh*
 ```bash
 #!/bin/sh

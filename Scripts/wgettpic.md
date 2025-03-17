@@ -7,6 +7,8 @@ Created Donnerstag [2021:04:29]()
 noweb.py -Rwgettpic wgettpic.md > wgettpic && chmod u+x wgettpic && echo 'fertig'
 ```
 
+### wgettpic
+
 *wgettpic*
 ```bash
 #!/bin/bash

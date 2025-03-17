@@ -8,7 +8,7 @@
 #vo=vaapi
 #hwdec=auto-copy
 #hwdec-codecs=all
-#ytdl_path=/home/christian/.local/bin/yt-dlp
+#ytdl_path=~/.local/bin/yt-dlp
 save-position-on-quit=yes
 keep-open=always
 force-seekable=yes
@@ -22,7 +22,7 @@ af=lavfi=[loudnorm=I=-16:TP=-3:LRA=4]
 [youtube]
 #screenshot-template="%x-%P-%#01n"
 screenshot-format=avif
-screenshot-dir=/home/christian/Alte-Inputs/
+screenshot-dir=~/Alte-Inputs/
 ### youtube formats only m3u8 with avc1 are working properly, no vp9 no https, ether slow or not starting
 #ytdl-format='bv*[height<=780][fps<=30]+ba/b'
 #ytdl-format='22/best'
@@ -40,14 +40,14 @@ hwdec=vaapi
 save-position-on-quit=yes
 keep-open=always
 #force-seekable=yes
-script-opts-append=ytdl_hook-ytdl_path=/home/christian/.local/bin/yt-dlp
+script-opts-append=ytdl_hook-ytdl_path=~/.local/bin/yt-dlp
 write-filename-in-watch-later-config
 af=lavfi=[loudnorm=I=-16:TP=-3:LRA=4]
 
 [invidious]
 #screenshot-template="%f - %P (%#01n)"
 screenshot-format=avif
-screenshot-dir=/home/christian/Alte-Inputs/
+screenshot-dir=~/Alte-Inputs/
 ytdl-format="140+298/140+136/best[height<=800][protocol=m3u8]"
 #ytdl-format="[height<760]"
 #ytdl-format='bv*[height<780][fps<=50]+ba/b'
@@ -61,14 +61,14 @@ hwdec=vaapi
 save-position-on-quit=yes
 keep-open=always
 force-seekable=yes
-script-opts-append=ytdl_hook-ytdl_path=/home/christian/.local/bin/yt-dlp
+script-opts-append=ytdl_hook-ytdl_path=~/.local/bin/yt-dlp
 write-filename-in-watch-later-config
 af=lavfi=[loudnorm=I=-16:TP=-3:LRA=4]
 
 [twitch]
 #screenshot-template="%F - [%P] (%#01n)"
 screenshot-format=avif
-screenshot-dir=/home/christian/Alte-Inputs/
+screenshot-dir=~/Alte-Inputs/
 ytdl-format='720p30/720p60/720p50/720/720p/720p-0/720p-1/1080p/1080/best[height<=800]'
 #ytdl-format='bv*[height<780][fps<=50]+ba/b'
 ytdl-raw-options-append=external-downloader=aria2c
@@ -79,14 +79,14 @@ hwdec=vaapi
 save-position-on-quit=yes
 keep-open=always
 force-seekable=yes
-script-opts-append=ytdl_hook-ytdl_path=/home/christian/.local/bin/yt-dlp
+script-opts-append=ytdl_hook-ytdl_path=~/.local/bin/yt-dlp
 write-filename-in-watch-later-config
 af=lavfi=[loudnorm=I=-16:TP=-3:LRA=4]
 
 [normal]
 #screenshot-template="%F - [%P] (%#01n)"
 screenshot-format=avif
-screenshot-dir=/home/christian/Alte-Inputs/
+screenshot-dir=~/Alte-Inputs/
 hwdec=vaapi
 #ytdl-format='[height<760][fps<=60]+ba'
 #ytdl-format='[height<760]+ba'
@@ -100,7 +100,7 @@ player-operation-mode=pseudo-gui
 save-position-on-quit=yes
 keep-open=always
 force-seekable=yes
-script-opts-append=ytdl_hook-ytdl_path=/home/christian/.local/bin/yt-dlp
+script-opts-append=ytdl_hook-ytdl_path=~/.local/bin/yt-dlp
 write-filename-in-watch-later-config
 af=lavfi=[loudnorm=I=-16:TP=-3:LRA=4]
 
@@ -120,6 +120,6 @@ ytdl-format='[height<760][fps<=50]+ba/b'
 save-position-on-quit=yes
 keep-open=always
 force-seekable=yes
-script-opts-append=ytdl_hook-ytdl_path=/home/christian/.local/bin/yt-dlp
+script-opts-append=ytdl_hook-ytdl_path=~/.local/bin/yt-dlp
 write-filename-in-watch-later-config
 af=lavfi=[loudnorm=I=-16:TP=-3:LRA=4]

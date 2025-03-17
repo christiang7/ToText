@@ -27,7 +27,10 @@ noweb.py -Rconfig.sh config.sh.md > config.sh && echo 'config.sh' && date
 
 ```bash
 chmod u+x config.sh && ln -sf $(pwd)/config.sh ~/.local/bin/config.sh && echo 'fertig'
- ```
+```
+ 
+
+### config.sh
 
 *config.sh*
 ```bash

@@ -75,7 +75,6 @@ fi
 
 ### requests
 
-
 *requests*
 ```bash
 abfrage=$(yad --title="New calculation?" --text="Necessary Informations:" \

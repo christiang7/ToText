@@ -103,8 +103,8 @@ https://github.com/opendatalab/MinerU
 - [x] combine [tt-change] with [ttc]
 	- [x] also change video files with subtitles
 
-GitHub - Osndok/zim-plugin-append: Makes adding text to Zim pages from the command line (or another unix process) possible without further user interaction.
-https://github.com/Osndok/zim-plugin-append
+GitHub - Osndok/zim-plugin-append: Makes adding text to Zim pages from the command line (or another unix process) possible without further user interaction.  
+https://github.com/Osndok/zim-plugin-append  
 
 ### 2025-02-07
 - [x] [Download-Video.sh] make possible for downloading from other websites then [youtube], but sites like arte tv not working correctly, using mediatekview
@@ -206,6 +206,7 @@ The program [zim-quoting-copy]() can copy a marked line. The marked line gets an
 noweb.py -Rkanboard.plantuml CHANGELOG-JOURNAL.md > CHANGELOG-JOURNAL/kanboard.plantuml && plantuml CHANGELOG-JOURNAL/kanboard.plantuml && echo 'kanboard.plantuml' && date && gwenview CHANGELOG-JOURNAL/kanboard.png 2>/dev/null 
 ```
 
+### website preview
 *website preview*
 ```bash
 python3 -m http.server 3000

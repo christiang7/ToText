@@ -13,22 +13,24 @@ Created [2024-02-21](2024-02-21)
  Christian Gößl
 ## Main Program
 
-make script:
-    - [x] list all elements of folder
-    - [x] create files index.dat and index.rdf
-    - [x] get file name of html file: "ls -1 | grep "\.html""
-    - [x] rename html for to index html
-    - [x] name of maff file is "name of html file-number of folder"
-    - [x] export content of html file to index.rdf with lynx "lynx -list_inline -dump index.html > index.rdf"
-    - [x] make folder to a zip file
-    - [x] rename zip file to maff
-    - [x] tt of maff file
+procedure
+- [x] list all elements of folder
+- [x] create files index.dat and index.rdf
+- [x] get file name of html file: "ls -1 | grep "\.html""
+- [x] rename html for to index html
+- [x] name of maff file is "name of html file-number of folder"
+- [x] export content of html file to index.rdf with lynx "lynx -list_inline -dump index.html > index.rdf"
+- [x] make folder to a zip file
+- [x] rename zip file to maff
+- [x] tt of maff file
 
 
 *run-cell.sh*
 ```bash
 noweb.py -Rhtml-folder-to-maff.sh html-folder-to-maff.sh.md > html-folder-to-maff.sh && echo 'fertig' 
 ```
+
+### html-folder-to-maff.sh
 
 *html-folder-to-maff.sh*
 ```bash
@@ -54,6 +56,7 @@ do
 done
 ```
 
+### maff file creation
 
 *maff file creation*
 ```bash
@@ -77,6 +80,7 @@ zip -r "$maffFileName".zip "$folder"
 mv "$maffFileName".zip "$maffFileName".maff
 ```
 
+### description file
 
 *description file*
 ```bash
