@@ -23,7 +23,7 @@ The ToText uses the following tools:
 
 ## Installation
 
-You can install the script by the `install.sh` script by simply execute the script or go to the **Execute installation steps** section and run the commands by your self, additionally it explains the `install.sh` scripts steps.
+You can install the script by the [install.sh](install.sh) script by simply execute the script or go to the [Execute installation steps](#execute-installation-steps) section and run the commands by your self, additionally it explains the [install.sh](install.sh) scripts steps.
 
 
 ### Run install script
