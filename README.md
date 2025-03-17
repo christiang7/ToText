@@ -34,6 +34,8 @@ chmod u+x install.sh && ./install.sh
 
 ### Execute installation steps
 
+#### Download repository
+
 Download the repository with 
 
 *Download repository*
@@ -42,12 +44,16 @@ git clone https://github.com/christiang7/ToText.git
 cd ToText
 ```
 
+#### create tt config folder
+
 Create a folder under the `.config` folder in your home `/home/username/`
 
 *create tt config folder*
 ```bash
 mkdir -p ~/.config/tt
 ```
+
+#### copy tt config
 
 Copy the `config-example` file to your `.config` folder
 
@@ -58,6 +64,8 @@ cp configs/config-example ~/.config/tt/config
 
 and fill in your path you need. 
 
+#### copy mpv config
+
 Copy the `config-mpv-example` to your `mpv` config folder
 
 *copy mpv config*
@@ -65,12 +73,16 @@ Copy the `config-mpv-example` to your `mpv` config folder
 cp configs/config-mpv-example ~/.config/mpv/config
 ```
 
+#### copy .desktop files
+
 Copy all `.desktop` files to the dolphin service folder
 
 *copy .desktop files*
 ```bash
 cp -r desktop-files/*.desktop ~/.local/share/kservices5/ServiceMenus/*.desktop
 ```
+
+#### copy script files
 
 Copy all scripts to the local `bin` folder
 
