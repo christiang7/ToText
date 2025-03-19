@@ -229,7 +229,7 @@ function file-description(){
         mv "$folder"/"$File" "$folder"/"$fileFolder"/"$File"
         mv "$folder"/"$fileFolder" "$folder"/"$File"
         fileFolder="$fileFolder.$extens"
-    fi/home/christian/miniforge3/lib/python3.12/site-packages/ttconv/tt.py
+    fi
     Wikiprev "$File"
     Timestamps "$folder" "$File" "$fileFolder"
     echo "$tags"
