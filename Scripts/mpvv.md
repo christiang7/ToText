@@ -9,8 +9,6 @@ noweb.py -Rmpvv mpvv.md > mpvv && echo 'mpvv' && date
 ```
 
 
-hier das Programm
-
 
 ### mpvv
 
@@ -23,6 +21,7 @@ tempInputDir="$(config_get tempInputDir)"
 source tt-lib.sh;
 
 website="$1"
+noPlayback="$2"
 echo "$website"
 yt="$(echo "$website" | grep youtube)"
 twitch="$(echo "$website" | grep twitch)"
@@ -72,7 +71,12 @@ File=$(cleanName "$ofile")
 echo -e "\nfile://$tempInputDir/$File".md
 #DRI_PRIME=pci-0000_01_00_0 __VK_LAYER_NV_optimus=NVIDIA_only__ GLX_VENDOR_LIBRARY_NAME=nvidia mpv --profile="$profile" "$website"
 #DRI_PRIME=pci-0000_01_00_0 __VK_LAYER_NV_optimus=NVIDIA_only__ GLX_VENDOR_LIBRARY_NAME=nvidia mpv --profile="$profile" --screenshot-template="Screenshot-$File-%P" "$website"
-mpv --profile="$profile" --screenshot-template="Screenshot-$File-%P" "$website"
+if [[ $noPlayback == "" ]]
+then
+	mpv --profile="$profile" --screenshot-template="Screenshot-$File-%P" "$website"
+else
+	kate "$tempInputDir/$File".md
+fi
 ```
 
 ### temp-video-description

@@ -156,7 +156,7 @@ function template-code(){
             echo "replot"
             ;;
     esac
-    echo -e "\`\`\`"
+    echo -e "\n\`\`\`"
 }
 
 function tex-description(){
@@ -229,7 +229,7 @@ function file-description(){
         mv "$folder"/"$File" "$folder"/"$fileFolder"/"$File"
         mv "$folder"/"$fileFolder" "$folder"/"$File"
         fileFolder="$fileFolder.$extens"
-    fi
+    fi/home/christian/miniforge3/lib/python3.12/site-packages/ttconv/tt.py
     Wikiprev "$File"
     Timestamps "$folder" "$File" "$fileFolder"
     echo "$tags"
@@ -316,7 +316,7 @@ function ttvid(){
         local subtitlefile2="$name".de.vtt
     else
 		file-description "$folder" "$File" "@VIDEO $tags" "$source" "$additiontext" "pic" "$folderSwitch"
-		# cat the old text file to the new one, then we do not need the vidc script
+		# cat the old text file to the new one, then we do not need the ttvidc script
 		cat "$folder"/"${oname}".txt
 		rm "$folder"/"${oname}".txt
 		ffmpeg -loglevel quiet -ss 2 -i "$fileFolder"/"$File"  -t 1 -f image2 "$folder"/"$File".png

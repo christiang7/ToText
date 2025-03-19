@@ -1,4 +1,5 @@
 #!/bin/bash
-# Di 11. Mär 18:59:50 CET 2025
+# Mi 19. Mär 23:53:56 CET 2025
 export CHROME_DEVEL_SANDBOX=/usr/local/sbin/chrome-devel-sandbox
-noweb.py -Rsee-it-later.sh see-it-later.sh.md > see-it-later.sh && echo 'see-it-later.sh' && date
+noweb.py -Rtt-lib.sh tt-lib.sh.md > tt-lib.sh && echo 'tt-lib.sh' && date
+
