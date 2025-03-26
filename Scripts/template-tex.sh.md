@@ -104,7 +104,7 @@ abfrage=$(yad --title="New Latex File" --text="Necessary Informations:" \
 	--field="Tags:":CBE \
 	--field="Git init?":CB \
 	--field="Description:":TXT \
-	"" "Programming,normal,Rechnung,Schreiben" "$langName" "$author,Internet" ",physic,math" "No,Yes" "$additiontext")
+	"" "Programming,normal,Rechnung,Schreiben" "$langName" "$author,Internet" ",physic,math" "No,Yes" "")
 ```
 
 ### Main
@@ -143,7 +143,7 @@ then
 	foldertex="$filename"_tex
 	mkdir -p "$foldertex"
 	cp $templateDir/general-preamble.tex "$foldertex"/general-preamble.tex
-	cp $templateDir/color-symbols.tex "$foldertex"/color-symbols.tex
+	cp $templateDir/color-style.tex "$foldertex"/color-style.tex
 	if [[ ${template} == "Programming" ]]
 	then
 		extens="$(get-extens ${langname})"

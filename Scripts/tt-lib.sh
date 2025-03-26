@@ -170,7 +170,6 @@ function tex-description(){
     echo -e "*${File}*"
     echo -e "\`\`\`tex"
     cat "$folder"/"$foldertex"/"${File}" >> "$folder"/"$foldertex"/"${filename}".md
-    sed -i "s/additiontext/$additiontext/g" "$folder"/"$foldertex"/"${filename}".md
     echo -e "\n\`\`\`"
     echo -e "\n*run-cell.sh*"
     echo -e "\`\`\`bash"
@@ -179,6 +178,7 @@ function tex-description(){
         echo -e "$moreCommands"
     fi
     echo -e "noweb.py -R${File} ${filename}.md > ${File} && pdflatex -synctex=1 -interaction=nonstopmode -shell-escape ${File} && date && xdg-open ${filename}.pdf 2>/dev/null \n\`\`\`\n\n"
+    sed -i "s/additiontext/$additiontext/g" "$folder"/"$foldertex"/"${filename}".md
 }
 
 function ttex(){

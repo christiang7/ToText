@@ -46,7 +46,7 @@ then
 
     cp "$templateDir"/Research_Statement_tex/general-preamble.tex "$folder"/"$Apply"/Research_Statement_tex/general-preamble.tex
 
-    cp "$templateDir"/Research_Statement_tex/color-symbols.tex "$folder"/"$Apply"/Research_Statement_tex/color-symbols.tex
+    cp "$templateDir"/Research_Statement_tex/color-style.tex "$folder"/"$Apply"/Research_Statement_tex/color-style.tex
 
     cp -r "$templateDir"/Bewerbungen/CV_tex "$folder"/"$Apply"/CV_tex
 
