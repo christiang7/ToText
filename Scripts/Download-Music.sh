@@ -45,4 +45,5 @@ then
     file-description "$musicDir" "$File" "@Musik $tags" "$source" "$text" >> "$musicDir"/"$File".md
 fi
 
+notify-send -a "Music Download finished" "Music $File" "$(cat ~/.config/tt/log)"
 #sleep 5

@@ -198,7 +198,7 @@ then
 	else
 		file-description "$folder" "$File" "$tags" "$source" "$additiontext" "" "yes" >> "$folder"/"$File".md
 	fi
-
+	notify-send -a "tt finished" "tt $File" "$(cat ~/.config/tt/log)"
 fi
 
 if [[ $showfile == "Yes" ]];
@@ -218,5 +218,6 @@ then
         xdg-open "$File" 2>/dev/null &
     fi
 fi
+
 ```
 

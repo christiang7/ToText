@@ -125,5 +125,6 @@ then
 
 		;;
 	esac
+	notify-send -a "tabs2topic finished" "tabs2topic" "$(cat ~/.config/tt/log)"
 fi
 

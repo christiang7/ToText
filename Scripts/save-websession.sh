@@ -11,4 +11,5 @@ then
    filename=$(cleanName "$filename")
    echo "$inputDir"/"$filename".md
    echo "$(wl-paste -n)" >> "$inputDir"/"$filename".md
+   notify-send -a "save-websession finished" "$filename" "$(cat ~/.config/tt/log)"
 fi

@@ -72,6 +72,8 @@ yt-dlp --no-mtime --fixup force -f "$format" --add-chapters --external-downloade
 
 #*create note file}}
 
+notify-send -a "Video Download finished" "Video $File" "$(cat ~/.config/tt/log)"
+
 ```
 
 ### create note file

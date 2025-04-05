@@ -66,3 +66,5 @@ then
 fi
 
 
+notify-send -a "Video Download finished" "Video $File" "$(cat ~/.config/tt/log)"
+
