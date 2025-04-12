@@ -286,7 +286,7 @@ using ``Markdown-description-file`` function with the parameters as following
 function Markdown-description-file(){
     Markdownprev "$1" "$2"
     #echo "Text creation time: [%Y-%m-%d]($(date +"$journalPage/%Y/%m/%d")) Modification time: [%Y-%m-%d]($(date +"$journalPage/%Y/%m/%d" -r "$File"))"
-    echo "Text creation time: %Y-%m-%d Modification time: %Y-%m-%d"
+    echo "Text creation time: $(date +"%Y-%m-%d") Modification time: $(date +"%Y-%m-%d")"
     echo "$3"
     echo "**["$2"]] **"
     echo -e "$4\n$5\n"
@@ -588,6 +588,7 @@ function markdown-description-program(){
     local File=$1
     #local filename=${File%.*}
     #local foldertex=$3
+    echo -e "===== ${File} ====="
     echo -e "# ${File}"
     #echo -e "Created [$(date +%Y-%m-%d)]()\n"
     echo -e "Created $(date +%Y-%m-%d)\n"

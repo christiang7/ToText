@@ -8,6 +8,7 @@
 @startwbs
 + tasks
  + Backlog
+  - [ ] Anpassung bei beliebigen Dateinamen mit doppelten oder keiner Dateiendung
   - [ ] rewrite everything in english
   - [ ] delete not used scripts 
   - [ ] write blog post for [website]()
@@ -17,11 +18,11 @@
  + Doing (2)
   - [ ] write [documentation]()
    - [ ] make overview page about used tools,\n use for structuring the desktop files
-    - [ ] describe main application 
-     - [ ] which [script]() do what
-    - [ ] explain possible [workflows]() with used [scripts]()
+	- [ ] describe main application 
+	 - [ ] which [script]() do what
+	- [ ] explain possible [workflows]() with used [scripts]()
    - [x] [install instructions] in [README]()
-    - [x] make [script]() for that
+	- [x] make [script]() for that
 @endwbs
 ```
 
@@ -197,6 +198,49 @@ The program [zim-quoting-copy]() can copy a marked line. The marked line gets an
 ### 2023-05-25 Kanboardlist and Dateheadlines
 [kanboardlist.md](kanboardlist.md) insert Kanboardlists in `zim-wiki`
 [zim-dateheadlines.md](zim-dateheadlines.md) insert date headlines in `zim-wiki`
+
+**ToText  🜄** 
+
+ToText wird ein fortlaufendes Projekt sein. Es wird mit der Zeit wachsen und irgendwann mal wirklich den Status fertig haben.
+Aber ich denke man kann immer irgendetwas optimieren bzw etwas noch vereinfachen oder in Zukunft werden neue Workflows hinzukommen. 
+Daran wird sich dieses Projekt richten bzw es ist zu einem VERA geworden. 
+
+die Idee es mit Dateiattributen zu machen geht leider nicht, weil sie schnell kaputt gehen also von Programmen überschrieben werden
+[[2»Dateien mit Kommentaren versehen:0»InRef]]
+
+=== Programmname ===
+Der Name für das Programm soll sein: **Focus**
+
+inspiriert von dem Spiel Horizon Zero Dawn
+[*] WEB Focus | Horizon Wiki | Fandom 
+ https://horizon.fandom.com/wiki/Focus
+[*] WEB Subordinate Functions | Horizon Wiki | Fandom 
+ https://horizon.fandom.com/wiki/Subordinate_Functions
+[*] WEB Focus effect | Horizon Wiki | Fandom 
+ https://horizon.fandom.com/wiki/Focus_effect
+[*] WEB DEMETER | Horizon Wiki | Fandom 
+ https://horizon.fandom.com/wiki/DEMETER
+
+
+[*] WEB ARTIKEL  **DEMETER**  https://horizon.fandom.com/wiki/DEMETER
+The classical Greek spelling of DEMETER begins with the Greek letter Delta. This letter is represented as an equilateral triangle; the same shape surrounds each Metal Flower.
+**-- tags:  --**
+
+[[Control Game Icons:0»InRef]]
+
+
+mein Anfang
+[[CodeFabrik:file2txt.sh]]
+
+[*] WEB GUI-Dialoge im Terminal - GNU-Linux.ch 
+ https://gnulinux.ch/gui-dialoge-im-terminal
+
+Hier sind alle benötigten Programme für eine Arbeit mit dem Zettelkasten und Dateien vorhanden
+
+
+und der Service Menu Ordner
+[[CodeFabrik:2»KDE-Servicemenüs wiki ubuntuusers-de:0»InRef]]
+
 
 ### create kanboard
 
