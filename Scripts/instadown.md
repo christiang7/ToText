@@ -3,7 +3,7 @@ Created Samstag [2022:04:09]()
 
 - [x] **instadown**
 
-*run-cell.sh*
+*make.sh*
 ```bash
 noweb.py -Rinstadown instadown.md > instadown && chmod u+x instadown && echo 'fertig'
 ```

@@ -15,7 +15,7 @@ math
 
 ## Main Program
 
-*run-cell.sh*
+*make.sh*
 ```bash
 noweb.py -Rtemplate-calculation-project.sh template-calculation-project.sh.md > template-calculation-project.sh && date
 ```

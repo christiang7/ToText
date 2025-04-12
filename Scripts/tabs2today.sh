@@ -24,6 +24,7 @@ then
   if [[ ! -e "$foldermonth"/"$calendarfilename"/"$tabSessionName".md ]]
   then
     echo -e "\n${additiontext}\n[[+$tabSessionName]]" >> "$foldermonth"/"$calendarfile"
+    echo -e "===== $tabSessionName =====" >> "$foldermonth"/"$calendarfilename"/"$tabSessionName".md
   else
     echo -e "\n${additiontext}" >> "$foldermonth"/"$calendarfile"
   fi

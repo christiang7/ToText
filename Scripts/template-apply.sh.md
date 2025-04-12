@@ -22,7 +22,7 @@ procedure
 - link Attachments
 
 
-*run-cell.sh*
+*make.sh*
 ```bash
 noweb.py -Rtemplate-apply.sh template-apply.sh.md > template-apply.sh && echo 'template-apply.sh' && date 
 ```

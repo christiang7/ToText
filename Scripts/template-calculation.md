@@ -18,7 +18,7 @@ https://docs.kde.org/stable5/en/kate/kate/kate-application-plugin-external-tools
 
 ## Main Program
 
-*run-cell.sh*
+*make.sh*
 ```bash
 noweb.py -Rtemplate-calculation.sh template-calculation.md > template-calculation.sh && echo 'template-calculation.sh' && date
 ```

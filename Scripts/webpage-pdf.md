@@ -4,7 +4,7 @@ Text creation time: So 27. Dez 22:00:40 CET 2020 Modification time: Mi 23. Dez 1
  
  There is a problem with the firefox addon external application
 
-*run-cell.sh*
+*make.sh*
 ```bash
 noweb.py -Rwebpage-pdf webpage-pdf.md > webpage-pdf && chmod u+x webpage-pdf && echo 'fertig'
 ```

@@ -25,7 +25,7 @@ procedure
 - [x] tt of maff file
 
 
-*run-cell.sh*
+*make.sh*
 ```bash
 noweb.py -Rhtml-folder-to-maff.sh html-folder-to-maff.sh.md > html-folder-to-maff.sh && echo 'fertig' 
 ```

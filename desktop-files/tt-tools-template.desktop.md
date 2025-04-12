@@ -14,7 +14,7 @@ Created [2025-02-05](2025-02-05)
 ## Main Program
 
 
-*run-cell.sh*
+*make.sh*
 ```bash
 noweb.py -Rtt-tools-template.desktop tt-tools-template.desktop.md > tt-tools-template.desktop && echo 'tt-tools-template.desktop' && date 
 chmod u+x tt-tools-template.desktop && ln -sf $(pwd)/tt-tools-template.desktop ~/.local/share/kservices5/ServiceMenus/tt-tools-template.desktop && echo 'fertig'

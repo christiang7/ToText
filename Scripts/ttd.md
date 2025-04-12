@@ -3,7 +3,7 @@
 - [x] **[../ttd](./ttd)**
 Create for all files in a folder text files automaticly.
 
-*run-cell.sh*
+*make.sh*
 ```bash
 noweb.py -Rttd ttd.md > ttd && chmod u+x ttd && echo 'fertig'
 ```

@@ -14,9 +14,10 @@ if [ ! $? -eq 1 ];
 then
    sessionfile=$(cleanName "$sessionfile")
    mkdir -p "$filetxt"
-
+   echo "===== $sessionfile =====" >> "$filetxt"/"$sessionfile".md
    echo "$(wl-paste -n)" >> "$filetxt"/"$sessionfile".md
-   echo -e "==== $(date +"[[$journalPage:%Y:%m:%d|%Y-%m-%d]]") "
+   #echo -e "==== $(date +"[[$journalPage:%Y:%m:%d|%Y-%m-%d]]") "
+   echo -e "==== $(date +"%Y-%m-%d") "
    echo "[[+$sessionfile]]"
    #notify-send -a "insert-websession finished" "$filename" "$(cat ~/.config/tt/log)"
 fi

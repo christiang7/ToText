@@ -5,7 +5,7 @@ Created Dienstag [2022:11:01]()
 
 Create note with a folder
 
-*run-cell.sh*
+*make.sh*
 ```bash
 noweb.py -Rtemplate-note.sh template-note.sh.md > template-note.sh  && echo 'fertig'
 ```

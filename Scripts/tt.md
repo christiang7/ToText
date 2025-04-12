@@ -42,7 +42,7 @@ https://overflow.adminforge.de/exchange/unix/questions/431836/preserve-images-mo
 
 ## Program
 
-*run-cell.sh*
+*make.sh*
 ```bash
 noweb.py -Rtt tt.md > tt && chmod u+x tt && echo 'tt' && date
 ```

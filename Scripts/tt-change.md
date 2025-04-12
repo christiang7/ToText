@@ -30,7 +30,7 @@ https://ostechnix.com/zenity-create-gui-dialog-boxes-in-bash-scripts/
 
 ## Main program
 
-*run-cell.sh*
+*make.sh*
 ```bash
 noweb.py -Rtt-change tt-change.md > tt-change && date
 ```

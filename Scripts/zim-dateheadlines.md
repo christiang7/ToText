@@ -8,7 +8,7 @@ Created [2023-05-25]()
 
 
 
-*run-cell.sh*
+*make.sh*
 ```bash
 noweb.py -Rzim-dateheadlines.sh zim-dateheadlines.md > zim-dateheadlines.sh && echo 'fertig'
 ```
@@ -34,7 +34,8 @@ simples einfügen der Überschrift mit einem Datum
 
 *dateheadlines*
 ```bash
-echo -e "==== $(date +"[[$journalPage:%Y:%m:%d|%Y-%m-%d]]") "
+#echo -e "==== $(date +"[[$journalPage:%Y:%m:%d|%Y-%m-%d]]") "
+echo -e "==== $(date +"%Y-%m-%d") "
 ```
 
 ### dateheadlines markdown

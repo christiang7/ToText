@@ -11,7 +11,7 @@ Created [2023-06-25]()
 
 ## Program
 
-*run-cell.sh*
+*make.sh*
 ```bash
 noweb.py -Rzim-open-file.sh zim-open-file.md > zim-open-file.sh && echo 'fertig'
 ```

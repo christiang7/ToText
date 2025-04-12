@@ -4,7 +4,7 @@ Created Donnerstag [2021:04:29]()
 - [x] **wgett**
 
 
-*run-cell.sh*
+*make.sh*
 ```bash
 noweb.py -Rwgett wgett.md > wgett && chmod u+x wgett && echo 'fertig'
 ```

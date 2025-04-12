@@ -3,16 +3,16 @@
  + Backlog
   - [ ] rewrite everything in english
   - [ ] delete not used scripts
-  - [ ] write blog post for [website]
-  - [ ] using builtin [shell options] for [scripts]
-  - [ ] rewrite [tt-lib.sh] with [subshell] for optional output
-  - [ ] latex `template files` in a separate folder [templates]
+  - [ ] write blog post for [website]()
+  - [ ] using builtin `shell options` for [scripts]()
+  - [ ] rewrite [tt-lib.sh]() with [subshell]() for optional output
+  - [ ] latex `template files` in a separate folder [templates]()
  + Doing (2)
-  - [ ] write [documentation]
+  - [ ] write [documentation]()
    - [ ] make overview page about used tools,\n use for structuring the desktop files
     - [ ] describe main application
-     - [ ] which [script] do what
-    - [ ] explain possible [workflows] with used [scripts]
-   - [x] [install instructions] in [README]
-    - [x] make [script] for that
+     - [ ] which [script]() do what
+    - [ ] explain possible [workflows]() with used [scripts]()
+   - [x] [install instructions] in [README]()
+    - [x] make [script]() for that
 @endwbs

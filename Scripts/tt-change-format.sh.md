@@ -13,7 +13,7 @@ Created [2024-10-09](2024-10-09)
  Christian Gößl
 ## Main Program
 
-*run-cell.sh*
+*make.sh*
 ```bash
 noweb.py -Rtt-change-format.sh tt-change-format.sh.md > tt-change-format.sh && echo 'fertig'
 ```

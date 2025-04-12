@@ -17,7 +17,7 @@ procedure
 - using ``template-code`` function from [[tt-lib.sh]]
 
 
-*run-cell.sh*
+*make.sh*
 ```bash
 noweb.py -Rinsert-code.sh insert-code.sh.md > insert-code.sh && echo 'insert-code.sh' && date 
 ```

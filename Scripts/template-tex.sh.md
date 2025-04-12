@@ -48,7 +48,7 @@ using ``template-tex.sh`` with the parameters as following
     p9 - langname
 ```
 
-*run-cell.sh*
+*make.sh*
 ```bash
 noweb.py -Rtemplate-tex.sh template-tex.sh.md > template-tex.sh && echo 'template-tex.sh' && date
 ```

@@ -7,7 +7,7 @@ Created Dienstag [2022:06:14]()
 
 ## Features
 
-*run-cell.sh*
+*make.sh*
 ```bash
 noweb.py -Rttdel ttdel.md > ttdel && echo 'fertig'
 ```

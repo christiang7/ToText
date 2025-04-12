@@ -2,7 +2,7 @@
 Created Donnerstag [2021:04:29]()
 
 
-*run-cell.sh*
+*make.sh*
 ```bash
 noweb.py -Rwgettpic wgettpic.md > wgettpic && chmod u+x wgettpic && echo 'fertig'
 ```

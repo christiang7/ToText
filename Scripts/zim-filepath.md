@@ -16,7 +16,7 @@ Created Sonntag [2022-11-06]()
 
 ## Program
 
-*run-cell.sh*
+*make.sh*
 ```bash
 noweb.py -Rzim-filepath.sh zim-filepath.md > zim-filepath.sh && echo 'fertig'
 ```

@@ -9,7 +9,7 @@ Projekt ist erfüllt durch die wgett Programme
 ist das Testprojekt dafür
 
 
-*run-cell.sh*
+*make.sh*
 ```bash
 noweb.py -Rwgettwpdf wgettwpdf.md > wgettwpdf && chmod u+x wgettwpdf && echo 'fertig'
 ```

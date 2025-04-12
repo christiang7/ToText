@@ -6,7 +6,7 @@ Backlink [CodeFabrik]()
 
 Create folder for txt file
 
-*run-cell.sh*
+*make.sh*
 ```bash
 noweb.py -Rttf ttf.md > ttf && chmod u+x ttf && echo 'fertig'
 ```

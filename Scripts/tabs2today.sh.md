@@ -6,7 +6,7 @@ Created Dienstag [2022:10:25]()
 	- [x] Backlog
 
 
-*run-cell.sh*
+*make.sh*
 ```bash
 noweb.py -Rtabs2today.sh tabs2today.sh.md > tabs2today.sh && echo 'fertig'
 ```
@@ -38,8 +38,9 @@ then
   #*tabsession to today}}
 fi
 ```
-### tabsession to today
 
+### tabsession to today
+{{{code: lang="sh" linenumbers="True"
 *tabsession to today*
 ```bash
 mkdir -p "$foldermonth"/"$calendarfilename"
@@ -47,12 +48,13 @@ tabSessionName="2»websession_$(date +"%Y-%m-%d")"
 if [[ ! -e "$foldermonth"/"$calendarfilename"/"$tabSessionName".md ]] 
 then
   echo -e "\n${additiontext}\n[[+$tabSessionName]]" >> "$foldermonth"/"$calendarfile"
+  echo -e "===== $tabSessionName =====" >> "$foldermonth"/"$calendarfilename"/"$tabSessionName".md
 else
   echo -e "\n${additiontext}" >> "$foldermonth"/"$calendarfile"
 fi 
 echo -e "${text}" >> "$foldermonth"/"$calendarfilename"/"$tabSessionName".md
 ```
-
+}}}
 
 ### note template
 

@@ -21,13 +21,14 @@ krita "$filename".kra --export --export-filename "$filename".avif
 ## code
 
 
-*run-cell.sh*
+*make.sh*
 ```bash
 noweb.py -Rzim-insert-sketch.sh zim-insert-sketch.md > zim-insert-sketch.sh && echo 'fertig'
 ```
 
 ### zim-insert-sketch.sh
 
+{{{code: lang="sh" linenumbers="True"
 *zim-insert-sketch.sh*
 ```bash
 #!/bin/bash
@@ -65,4 +66,4 @@ then
 	fi
 fi
 ```
-
+}}}

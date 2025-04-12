@@ -23,7 +23,7 @@ https://ao.bloat.cat/questions/22101778/how-to-preserve-line-breaks-when-storing
 ``STRINGTEST="clipboard content"``
 ``echo "${STRINGTEST[0]}" | sed '5q;d' | head -n1 | cut -d " " -f1``
 
-*run-cell.sh*
+*make.sh*
 ```bash
 noweb.py -Ropen-websession.sh open-websession.sh.md > open-websession.sh && date
 ```

@@ -14,7 +14,7 @@ Christian Gößl
 ## Main Program
 
 
-*run-cell.sh*
+*make.sh*
 ```bash
 noweb.py -Rtt-lib.sh tt-lib.sh.md > tt-lib.sh && echo 'tt-lib.sh' && date 
 
@@ -133,9 +133,10 @@ using ``Timestamps`` function with the parameters as following
 *Timestamps*
 ```bash
 function Timestamps(){
-    echo "Text date: $(date +"[[$journalPage:%Y:%m:%d|%Y-%m-%d]]") Modi date: $(date +"[[$journalPage:%Y:%m:%d|%Y-%m-%d]]" -r "$1"/"$3"/"$2")"
+    echo "Text date: $(date +"%Y-%m-%d") Modi date: $(date +"%Y-%m-%d" -r "$1"/"$3"/"$2")"
 }
 ```
+echo "Text date: $(date +"[[$journalPage:%Y:%m:%d|%Y-%m-%d]]") Modi date: $(date +"[[$journalPage:%Y:%m:%d|%Y-%m-%d]]" -r "$1"/"$3"/"$2")"
 
 
 ### Wikiprev
@@ -284,7 +285,8 @@ using ``Markdown-description-file`` function with the parameters as following
 ```bash
 function Markdown-description-file(){
     Markdownprev "$1" "$2"
-    echo "Text creation time: [%Y-%m-%d]($(date +"$journalPage/%Y/%m/%d")) Modification time: [%Y-%m-%d]($(date +"$journalPage/%Y/%m/%d" -r "$File"))"
+    #echo "Text creation time: [%Y-%m-%d]($(date +"$journalPage/%Y/%m/%d")) Modification time: [%Y-%m-%d]($(date +"$journalPage/%Y/%m/%d" -r "$File"))"
+    echo "Text creation time: %Y-%m-%d Modification time: %Y-%m-%d"
     echo "$3"
     echo "**["$2"]] **"
     echo -e "$4\n$5\n"
@@ -315,7 +317,8 @@ function create-note(){
     echo -e "$3"
     echo -e "$4\n$5\n"
     echo -e "==== Journal ====\n"
-    echo -e "=== $(date +"[[$journalPage:%Y:%m:%d|%Y-%m-%d]]") ==="
+    #echo -e "=== $(date +"[[$journalPage:%Y:%m:%d|%Y-%m-%d]]") ==="
+    echo -e "=== $(date +"%Y-%m-%d") ==="
 }
 ```
 
@@ -418,7 +421,7 @@ function ttvid(){
 	echo -e "\`\`\`bash"
 	cat "$fileFolder"/"$subtitlefile2"
 	echo -e "\`\`\`"
-	echo -e "\n*run-cell.sh*"
+	echo -e "\n*make.sh*"
 	echo -e "\`\`\`bash"
 	echo -e "noweb.py -R$subtitlefile1 $File.md > $subtitlefile1 \nnoweb.py -R$subtitlefile2 $File.md > $subtitlefile2 \n echo '$File' && date \n\`\`\`\n\n"
 }
@@ -504,7 +507,7 @@ function template-code(){
         codeHead="*run code*"
     else
         #touch "$folder"/${outFile}
-        codeHead="*run-cell.sh*"
+        codeHead="*make.sh*"
     fi
     if  [[ $extens == "plantuml" || $extens == "plt" || $extens == "mmd" ]]
     then
@@ -586,7 +589,8 @@ function markdown-description-program(){
     #local filename=${File%.*}
     #local foldertex=$3
     echo -e "# ${File}"
-    echo -e "Created [$(date +%Y-%m-%d)]()\n"
+    #echo -e "Created [$(date +%Y-%m-%d)]()\n"
+    echo -e "Created $(date +%Y-%m-%d)\n"
     echo -e "\n## Description"
     echo -e "\n## Journal"
     echo -e " - [x] Backlog"
@@ -623,7 +627,7 @@ function tex-description(){
     echo -e "\`\`\`tex"
     cat "$folder"/"$foldertex"/"${File}" >> "$folder"/"$foldertex"/"${filename}".md
     echo -e "\n\`\`\`"
-    echo -e "\n*run-cell.sh*"
+    echo -e "\n*make.sh*"
     echo -e "\`\`\`bash"
     if [[ ! $moreCommands == "" ]]
     then

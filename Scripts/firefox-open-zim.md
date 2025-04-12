@@ -7,7 +7,7 @@ Created Montag [2022:12:19]()
 
 ``echo http://localhost:8080/Zettelkasten/Gedankenwanderung/Zim-Arbeitsflaeche.html | sed "s,http://localhost:8080/,," | sed "s,.html,,"  | sed "s,/,:,g"``
 
-*run-cell.sh*
+*make.sh*
 ```bash
 noweb.py -Rfirefox-open-zim.sh firefox-open-zim.md > firefox-open-zim.sh && echo 'fertig'
 ```

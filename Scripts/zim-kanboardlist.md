@@ -9,7 +9,7 @@ einfügen von einer Standard Kanboardliste für zim-wiki
 
 ## Program
 
-*run-cell.sh*
+*make.sh*
 ```bash
 noweb.py -Rzim-kanboardlist.sh zim-kanboardlist.md > zim-kanboardlist.sh && echo 'fertig'
 ```

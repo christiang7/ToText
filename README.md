@@ -112,7 +112,7 @@ The script file of the used installation steps.
 
 You can find the used code and documentation in the previous section [Execute installation steps](#execute-installation-steps)
 
-*run-cell.sh*
+*make.sh*
 ```bash
 noweb.py -Rinstall.sh README.md > install.sh && echo 'install.sh' && date 
 ```

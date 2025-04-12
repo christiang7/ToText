@@ -3,7 +3,7 @@ Created Samstag 2021:04:24
 
 Playing videos from websites with used tools mpv and yt-dlp
 
-*run-cell.sh*
+*make.sh*
 ```bash
 noweb.py -Rmpvv mpvv.md > mpvv && echo 'mpvv' && date
 ```

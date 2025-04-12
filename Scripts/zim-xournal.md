@@ -11,7 +11,7 @@ Created Mittwoch [2022:06:29]()
 
 ## Code
 
-*run-cell.sh*
+*make.sh*
 ```bash
 noweb.py -Rzim-xournal.sh zim-xournal.md > zim-xournal.sh && echo 'fertig'
 ```

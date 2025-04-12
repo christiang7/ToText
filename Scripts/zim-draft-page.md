@@ -17,7 +17,7 @@ https://overflow.hostux.net/questions/15374752/get-yesterdays-date-in-bash-on-li
 
 ## Main Program
 
-*run-cell.sh*
+*make.sh*
 ```bash
 noweb.py -Rzim-draft-page.sh zim-draft-page.md > zim-draft-page.sh && echo 'fertig' 
 ```

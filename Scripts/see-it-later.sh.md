@@ -20,7 +20,7 @@ procedure
 - insert information in see it later file
 
 
-*run-cell.sh*
+*make.sh*
 ```bash
 noweb.py -Rsee-it-later.sh see-it-later.sh.md > see-it-later.sh && echo 'see-it-later.sh' && date 
 ```

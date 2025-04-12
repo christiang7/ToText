@@ -72,10 +72,12 @@ then
 				then
 					#additiontext="$additiontext\n[[+$tabSessionName]]"
 					echo "[[+$tabSessionName]]" >> "$folder"/"${topicfile}"
+					echo "===== $tabSessionName =====" >> "$folder"/"${topicfilename}"/"$tabSessionName.md"
 				fi
 				echo "$tabs" >> "$folder"/"${topicfilename}"/"$tabSessionName.md"
 
-				echo -e "	[*] $(date +"[[$journalPage:%Y:%m:%d|%Y-%m-%d]]")" >> "${folder}".md
+				#echo -e "	[*] $(date +"[[$journalPage:%Y:%m:%d|%Y-%m-%d]]")" >> "${folder}".md
+				echo -e "	[*] $(date +"%Y-%m-%d")" >> "${folder}".md
 				echo -e "		[*] [[+$(basename ${topicfile} .md)|${topic}]]" >> "${folder}".md
 			fi
 		fi
@@ -104,7 +106,9 @@ then
 			CodeFabrik) folder=$(echo "$wikiDir/CodeFabrik/0»Journal_1_CodeFabrik")
 				l=5;;
 		esac
-		today=$(date +"[[$journalPage:%Y:%m:%d|%Y-%m-%d]]")
+		#today=$(date +"[[$journalPage:%Y:%m:%d|%Y-%m-%d]]")
+		today=$(date +"%Y-%m-%d")
+
 
 		tabSessionName="2»websession_$(date +"%Y-%m-%d")"
 		if [[ ! -e "$folder"/"$tabSessionName.md" ]]
@@ -120,6 +124,7 @@ then
 			sed -i "${l}s/^/==== $today ====/g" "$file"
 			sed -i "${l}i
 			" "$file"
+			echo "===== $tabSessionName =====" >> "$folder"/"$tabSessionName.md"
 		fi
 		echo "$tabs" >> "$folder"/"$tabSessionName.md"
 

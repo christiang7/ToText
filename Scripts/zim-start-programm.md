@@ -3,7 +3,7 @@ Created Dienstag [2022:10:11]()
 
 - [x] **zim-start-programm**
 
-*run-cell.sh*
+*make.sh*
 ```bash
 noweb.py -Rzim-start-programm.sh zim-start-programm.md > zim-start-programm.sh && echo 'fertig'
 ```

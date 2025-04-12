@@ -33,7 +33,7 @@ https://www.linuxteck.com/sed-commands-in-linux/
 
 ## Program
 
-*run-cell.sh*
+*make.sh*
 ```bash
 noweb.py -Rtabs2topic.sh tabs2topic.sh.md > tabs2topic.sh && echo 'tabs2topic.sh' && date
 ```
@@ -54,6 +54,9 @@ source tt-lib.sh
 ```
 
 ### Request
+
+
+
 
 *request*
 ```bash
@@ -87,7 +90,7 @@ fi
 
 ### new note creation
 
-
+{{{code: lang="sh" linenumbers="True"
 *new note*
 ```bash
 request=$(yad --title="Which topic" --text="Something to add?" \
@@ -139,14 +142,16 @@ then
 		
 		#*tabsession to note}}
 		
-		echo -e "	[*] $(date +"[[$journalPage:%Y:%m:%d|%Y-%m-%d]]")" >> "${folder}".md
+		#echo -e "	[*] $(date +"[[$journalPage:%Y:%m:%d|%Y-%m-%d]]")" >> "${folder}".md
+		echo -e "	[*] $(date +"%Y-%m-%d")" >> "${folder}".md
 		echo -e "		[*] [[+$(basename ${topicfile} .md)|${topic}]]" >> "${folder}".md
 	fi
 fi
 ```
+}}}
 
 ### Tabs in sessions to note
-
+{{{code: lang="sh" linenumbers="True"
 *tabsession to note*
 ```bash
 tabSessionName="2»websession_$(date +"%Y-%m-%d")"
@@ -154,6 +159,7 @@ if [[ ! -e "$folder"/"${topicfilename}"/"$tabSessionName.md" ]]
 then
 	#additiontext="$additiontext\n[[+$tabSessionName]]"
 	echo "[[+$tabSessionName]]" >> "$folder"/"${topicfile}"
+	echo "===== $tabSessionName =====" >> "$folder"/"${topicfilename}"/"$tabSessionName.md"
 fi
 echo "$tabs" >> "$folder"/"${topicfilename}"/"$tabSessionName.md"
 ```
@@ -184,7 +190,9 @@ case ${choose} in
 	CodeFabrik) folder=$(echo "$wikiDir/CodeFabrik/0»Journal_1_CodeFabrik")
 		l=5;;
 esac
-today=$(date +"[[$journalPage:%Y:%m:%d|%Y-%m-%d]]")
+#today=$(date +"[[$journalPage:%Y:%m:%d|%Y-%m-%d]]")
+today=$(date +"%Y-%m-%d")
+
 
 tabSessionName="2»websession_$(date +"%Y-%m-%d")"
 if [[ ! -e "$folder"/"$tabSessionName.md" ]]
@@ -200,15 +208,18 @@ then
 	sed -i "${l}s/^/==== $today ====/g" "$file"
 	sed -i "${l}i
 	" "$file"
+	echo "===== $tabSessionName =====" >> "$folder"/"$tabSessionName.md"
 fi
 echo "$tabs" >> "$folder"/"$tabSessionName.md"
 ```
-
+}}}
 
 
 
 
 ### Tabs to topics
+old not used anymore
+
 
 *tabs to topics*
 ```bash
@@ -234,7 +245,8 @@ case ${choose} in
 		l=5;;
 esac
 #echo $tabs
-today=$(date +"[[$journalPage:%Y:%m:%d|%Y-%m-%d]]")
+#today=$(date +"[[$journalPage:%Y:%m:%d|%Y-%m-%d]]")
+today=$(date +"%Y-%m-%d")
 
 sed -i "${l}i
 " "$file"
@@ -265,3 +277,4 @@ sed -i "${l}s/^/==== $today ====/g" "$file"
 sed -i "${l}i
 " "$file"
 ```
+

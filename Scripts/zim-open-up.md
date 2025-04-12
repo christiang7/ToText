@@ -9,7 +9,7 @@ Created 2023-06-22
 
 Open in zim the folder of the containing file.
 
-*run-cell.sh*
+*make.sh*
 ```bash
  noweb.py -Rzim-open-up.sh zim-open-up.md > zim-open-up.sh && echo 'fertig' 
 ```

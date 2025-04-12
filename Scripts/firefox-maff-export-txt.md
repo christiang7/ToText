@@ -12,7 +12,7 @@ for f in "$@"; do
 done
 ```
 
-*run-cell.sh*
+*make.sh*
 ```bash
 noweb.py -Rfirefox-maff-export-txt firefox-maff-export-txt.md > firefox-maff-export-txt && chmod u+x firefox-maff-export-txt && echo 'fertig'
 ```

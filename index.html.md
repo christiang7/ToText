@@ -19,7 +19,7 @@ python3 -m http.server 3000
 ## html code
 
 
-*run-cell.sh*
+*make.sh*
 ```bash
 noweb.py -Rindex.html index.html.md > index.html && echo 'index.html' && date 
 ```

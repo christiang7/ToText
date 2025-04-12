@@ -35,7 +35,7 @@ Mit ``%t`` wird der ausgewählte Text als Kommando ausgeführt vom Script
 
 ## Main program
 
-*run-cell.sh*
+*make.sh*
 ```bash
 noweb.py -Rzim-script.sh zim-script.md > zim-script.sh && echo 'fertig'
 ```

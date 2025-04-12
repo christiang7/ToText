@@ -19,7 +19,7 @@ https://overflow.adminforge.de/exchange/unix/questions/175648/use-config-file-fo
 ## Main Program
 
 
-*run-cell.sh*
+*make.sh*
 ```bash
 noweb.py -Rconfig.sh config.sh.md > config.sh && echo 'config.sh' && date
 ```

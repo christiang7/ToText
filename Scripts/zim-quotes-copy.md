@@ -11,7 +11,7 @@ Works in X11 and Wayland.
 
 Quoting with Anchors and Links. The quoted text is formated as verbatim text.
 
-*run-cell.sh*
+*make.sh*
 ```bash
 noweb.py -Rzim-quotes-copy.sh zim-quotes-copy.md > zim-quotes-copy.sh && echo 'fertig'
 ```

@@ -4,7 +4,7 @@
 
 Created Freitag [2021:04:30]()
 
-*run-cell.sh*
+*make.sh*
 ```bash
 noweb.py -Rwgettpdf wgettpdf.md > wgettpdf && chmod u+x wgettpdf && echo 'fertig'
 ```

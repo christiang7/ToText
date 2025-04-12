@@ -12,7 +12,7 @@ Created [2025-02-17]()
 ## sh code
 
 
-*run-cell.sh*
+*make.sh*
 ```bash
 noweb.py -Rsave-websession.sh save-websession.sh.md > save-websession.sh && echo 'save-websession.sh' && date 
 ```
@@ -37,6 +37,7 @@ if [ ! $? -eq 1 ];
 then
    filename=$(cleanName "$filename")
    echo "$inputDir"/"$filename".md
+   echo "===== $filename =====" >> "$inputDir"/"$filename".md
    echo "$(wl-paste -n)" >> "$inputDir"/"$filename".md
    notify-send -a "save-websession finished" "$filename" "$(cat ~/.config/tt/log)"
 fi

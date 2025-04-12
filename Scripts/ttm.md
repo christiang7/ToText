@@ -1,7 +1,7 @@
 # ttm
 [2021:05:03]()
 
-*run-cell.sh*
+*make.sh*
 ```bash
 noweb.py -Rttm ttm.md > ttm && chmod u+x ttm && echo 'fertig'
 ```
