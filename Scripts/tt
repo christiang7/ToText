@@ -83,8 +83,9 @@ then
 	elif [[ jpg == $extens || PNG == $extens || JPEG == $extens || png == $extens || webp == $extens || jpeg == $extens || avif == $extens ]] && [[ -z $extenspdf && -z $extensxopp && -z $extensmp4 && -z $extensmov && -z $extensflv && -z $extensmkv ]]
 	then
 		# || tif == $extens || tiff == $extens
+		extens=avif
 		convert "$folder"/"$File" "$folder"/"$Filename".avif
-		touch -r "$File" "$Filename".avif # make the original modification time
+		touch -r "$folder"/"$File" "$folder"/"$Filename".avif # make the original modification time
 		ttpic "$folder" "$Filename".avif "$source" "$tags" "$additiontext"  >> "$folder"/"$Filename".avif.md
 		if [[ $origpic == "No" ]];
 		then
@@ -121,7 +122,7 @@ then
 		file-description "$folder" "$File" "@Document $tags" "$source" "$additiontext" "pic" "yes" >> "$folder"/"$File".md
 		convert "$folder"/"$File".png "$folder"/"$File"/"$File".avif
 		rm "$folder"/"$File".png
-	elif [[ mp3 == $extens || webm == $extens || flac == $extens || aac = $extens || ogg = $extens || weba = $extens || wav = $extens || aiff = $extens || m4a = $extens ]]
+	elif [[ mp3 == $extens || webm == $extens || flac == $extens || aac = $extens || ogg = $extens || weba = $extens || wav = $extens || aiff = $extens || m4a = $extens || opus = $extens ]]
 	then
 		file-description "$folder" "$File" "@Musik $tags" "$source" "$additiontext" >> "$folder"/"$File".md
 	elif [[ $extens == $File ]]
@@ -136,6 +137,7 @@ then
 	else
 		file-description "$folder" "$File" "$tags" "$source" "$additiontext" "" "yes" >> "$folder"/"$File".md
 	fi
+	touch -r "$folder"/"$File" "$folder"/"$Filename".$extens.md
 	notify-send -a "tt finished" "tt $File" "$(cat ~/.config/tt/log)"
 fi
 

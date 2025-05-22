@@ -239,7 +239,7 @@ Hier sind alle benötigten Programme für eine Arbeit mit dem Zettelkasten und D
 
 
 und der Service Menu Ordner
-[[CodeFabrik:2»KDE-Servicemenüs wiki ubuntuusers-de:0»InRef]]
+[[CodeFabrik:2»KDE-Servicemenüs:0»InRef]]
 
 
 ### create kanboard

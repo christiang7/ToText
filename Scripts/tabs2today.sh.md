@@ -40,11 +40,10 @@ fi
 ```
 
 ### tabsession to today
-{{{code: lang="sh" linenumbers="True"
 *tabsession to today*
 ```bash
 mkdir -p "$foldermonth"/"$calendarfilename"
-tabSessionName="2»websession_$(date +"%Y-%m-%d")"
+tabSessionName="2»ws_$(date +"%Y-%m-%d")"
 if [[ ! -e "$foldermonth"/"$calendarfilename"/"$tabSessionName".md ]] 
 then
   echo -e "\n${additiontext}\n[[+$tabSessionName]]" >> "$foldermonth"/"$calendarfile"
@@ -54,7 +53,6 @@ else
 fi 
 echo -e "${text}" >> "$foldermonth"/"$calendarfilename"/"$tabSessionName".md
 ```
-}}}
 
 ### note template
 

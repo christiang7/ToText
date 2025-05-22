@@ -22,7 +22,7 @@ procedure
 
 *make.sh*
 ```bash
-noweb.py -Rsee-it-later.sh see-it-later.sh.md > see-it-later.sh && echo 'see-it-later.sh' && date 
+noweb.py -Rsee-it-later.sh see-it-later.sh.md > see-it-later.sh && echo 'see-it-later.sh' && date
 ```
 
 
@@ -39,15 +39,24 @@ source config.sh; # load the config library functions
 wikiDir="$(config_get wikiDir)"
 source tt-lib.sh;
 
-folder=${wikiDir}/Atelier/see-it-later
-mkdir -p $folder
-
 typ=$(yad --title="Which type?"  \
 	--form --width 500 --separator="" --item-separator=","  \
 	--field="Source":CB \
 	"Video,Music")
 if [ ! $? -eq 1 ];
 then
+   case ${typ} in
+   Video)
+      file="2»ws-2019-01-01-Video-Stream.md"
+   ;;
+   Music)
+      file="2»ws-2019-01-01-Musik-Stream.md"
+   ;;
+   esac
+   filename=$(basename $file .md)
+   folder=${wikiDir}/Atelier/"$filename"
+   mkdir -p $folder
+   
    text="$(wl-paste -n)"
    lines="$(wc --lines <<< "${text}")"
 
@@ -57,17 +66,18 @@ then
       website="$(echo "${text}" | sed "${i}q;d")"
       if [[ "${website:0:4}" == "http" ]]
       then
-         echo "$website" >> "$folder"/../see-it-later.md
+         echo "$website" >> "$folder"/../"$file"
          case ${typ} in
          Video)
-            #*Video list}}
+            ###*Video list}}
          ;;
          Music)
-            #*Music list}}
+            ###*Video list}}
+            ###*Music list}}
          ;;
          esac
       else
-         echo "# ${website}" >> "$folder"/../see-it-later.md
+         echo "## ${website}" >> "$folder"/../"$file"
       fi
    done
 fi
@@ -110,6 +120,19 @@ else
    #additiontext=$(links2 -dump ${website})
    additiontext=$(yt-dlp --get-description "$website")
 fi
+###*pictures}}
+
+echo "$additiontext" >> "$folder"/../"$file"
+notify-send -a "see-it-later.sh finished" "$file" "$(cat ~/.config/tt/log)"
+```
+
+*Music list*
+```bash
+
+```
+
+*pictures*
+```bash
 ofile=$(yt-dlp --print filename -s "${website}" -o '%(title)s').mp4
 oname=${ofile%.*}
 yt-dlp -q --write-thumbnail --skip-download -i ${website} -o "$folder/%(title)s"
@@ -123,18 +146,9 @@ rm "$folder"/"$oname".webp
 rm "$folder"/"$oname".jpg
 rm "$folder"/"$oname".jpeg
 #rm "$folder"/"$oname".png
-#echo "## ${File}" >> "$folder"/../see-it-later.md
-echo "![](see-it-later/${File}.png)" >> "$folder"/../see-it-later.md
-#echo "$website" >> "$folder"/../see-it-later.md
-echo "$additiontext" >> "$folder"/../see-it-later.md
+#echo "## ${File}" >> "$folder"/../"$filename"
+echo "![](see-it-later/${File}.png)" >> "$folder"/../"$filename"
+#echo "$website" >> "$folder"/../"$filename"
 ```
-
-*Music list*
-```bash
-
-```
-
-
-
 
 

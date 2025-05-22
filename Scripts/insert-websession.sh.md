@@ -22,7 +22,6 @@ noweb.py -Rinsert-websession.sh insert-websession.sh.md > insert-websession.sh &
 chmod u+x insert-websession.sh && ln -sf $(pwd)/insert-websession.sh ~/.local/bin/insert-websession.sh && echo 'fertig'
 ```
 
-{{{code: lang="sh" linenumbers="True"
 
 *insert-websession.sh*
 ```bash
@@ -37,12 +36,12 @@ File=$(cleanName "$1")
 sessionfile=$(yad --title="Insert websession?" --text="\nSave copied tabs\n" \
 	--form --width 500 --separator="" --item-separator=","  \
 	--field="Filename:" \
-	"2»websession_$(date +"%Y-%m-%d-%H-%M-%S")")
+	"2»ws_$(date +"%Y-%m-%d")")
 if [ ! $? -eq 1 ];
 then
    sessionfile=$(cleanName "$sessionfile")
    mkdir -p "$filetxt"
-   echo "===== $sessionfile =====" >> "$filetxt"/"$sessionfile".md
+   echo "====== $sessionfile ======" >> "$filetxt"/"$sessionfile".md
    echo "$(wl-paste -n)" >> "$filetxt"/"$sessionfile".md
    #echo -e "==== $(date +"[[$journalPage:%Y:%m:%d|%Y-%m-%d]]") "
    echo -e "==== $(date +"%Y-%m-%d") "
@@ -50,4 +49,3 @@ then
    #notify-send -a "insert-websession finished" "$filename" "$(cat ~/.config/tt/log)"
 fi
 ```
-}}}

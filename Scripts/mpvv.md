@@ -1,5 +1,5 @@
 # mpvv
-Created Samstag 2021:04:24
+Created Samstag 2021-04-24
 
 Playing videos from websites with used tools mpv and yt-dlp
 
@@ -31,7 +31,7 @@ aeon="$(echo "$website" | grep aeon)"
 vimeo="$(echo "$website" | grep vimeo)"
 if [[ ! $yt == "" ]];
 then
-	yt-dlp --get-description "$website" &
+	links2 -dump "$website" &
 	profile="youtube"
 	#website="https://iv.melmac.space/watch?v="
 elif [[ ! $alttwitch == "" ]];

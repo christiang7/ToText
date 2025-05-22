@@ -31,7 +31,7 @@ if [[ ! "$yt" = "" ]];
 then
     text="$(yt-dlp --get-description ${website})"
     #text="$(echo -e "${text}" | sed 's/\"//g')"
-    yt-dlp --no-mtime -o "$musicDir/%(title)s.%(ext)s" -f '251/140' -i "${website}"
+    yt-dlp --no-mtime -o "$musicDir/%(title)s.%(ext)s" -f "140/251" -i "${website}"
 else
     text=$(links2 -dump ${website})
     #text=$(echo -e "${text}")
@@ -39,7 +39,7 @@ else
 fi
 
 
-ofile=$(yt-dlp --print filename -s "${website}" -o "%(title)s.%(ext)s")
+ofile=$(yt-dlp --print filename -s "${website}" -f "140/251" -o "%(title)s.%(ext)s")
 extens=${ofile##*.}
 name=${ofile%.*}
 #additiontext="$(yt-dlp --get-description ${website})"

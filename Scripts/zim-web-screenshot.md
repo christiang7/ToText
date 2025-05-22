@@ -23,7 +23,6 @@ noweb.py -Rzim-web-screenshot.sh zim-web-screenshot.md > zim-web-screenshot.sh &
 ```bash
 chmod u+x zim-web-screenshot.sh && ln -sf $(pwd)/zim-web-screenshot.sh ~/.local/bin/zim-web-screenshot.sh && echo 'fertig'
 ```
-{{{code: lang="sh" linenumbers="True"
 *zim-web-screenshot.sh*
 ```bash
 #! /bin/bash
@@ -88,4 +87,3 @@ then
 	echo -e "{{$File}}" >> "$foldermonth"/"$calendarfile"
 fi
 ```
-}}}

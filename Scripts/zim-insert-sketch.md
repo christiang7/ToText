@@ -28,7 +28,6 @@ noweb.py -Rzim-insert-sketch.sh zim-insert-sketch.md > zim-insert-sketch.sh && e
 
 ### zim-insert-sketch.sh
 
-{{{code: lang="sh" linenumbers="True"
 *zim-insert-sketch.sh*
 ```bash
 #!/bin/bash
@@ -66,4 +65,3 @@ then
 	fi
 fi
 ```
-}}}

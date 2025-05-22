@@ -90,7 +90,6 @@ fi
 
 ### new note creation
 
-{{{code: lang="sh" linenumbers="True"
 *new note*
 ```bash
 request=$(yad --title="Which topic" --text="Something to add?" \
@@ -148,13 +147,11 @@ then
 	fi
 fi
 ```
-}}}
 
 ### Tabs in sessions to note
-{{{code: lang="sh" linenumbers="True"
 *tabsession to note*
 ```bash
-tabSessionName="2»websession_$(date +"%Y-%m-%d")"
+tabSessionName="2»ws_$(date +"%Y-%m-%d")"
 if [[ ! -e "$folder"/"${topicfilename}"/"$tabSessionName.md" ]]
 then
 	#additiontext="$additiontext\n[[+$tabSessionName]]"
@@ -194,7 +191,7 @@ esac
 today=$(date +"%Y-%m-%d")
 
 
-tabSessionName="2»websession_$(date +"%Y-%m-%d")"
+tabSessionName="2»ws_$(date +"%Y-%m-%d")"
 if [[ ! -e "$folder"/"$tabSessionName.md" ]]
 then
 	mkdir -p "$folder"
@@ -212,7 +209,6 @@ then
 fi
 echo "$tabs" >> "$folder"/"$tabSessionName.md"
 ```
-}}}
 
 
 

@@ -15,7 +15,7 @@ aeon="$(echo "$website" | grep aeon)"
 vimeo="$(echo "$website" | grep vimeo)"
 if [[ ! $yt == "" ]];
 then
-	yt-dlp --get-description "$website" &
+	links2 -dump "$website" &
 	profile="youtube"
 	#website="https://iv.melmac.space/watch?v="
 elif [[ ! $alttwitch == "" ]];

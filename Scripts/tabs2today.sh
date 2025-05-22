@@ -20,7 +20,7 @@ then
   fi
   echo -e "\n${additiontext}\n${text}" >> "$foldermonth"/"$calendarfile"
   mkdir -p "$foldermonth"/"$calendarfilename"
-  tabSessionName="2»websession_$(date +"%Y-%m-%d")"
+  tabSessionName="2»ws_$(date +"%Y-%m-%d")"
   if [[ ! -e "$foldermonth"/"$calendarfilename"/"$tabSessionName".md ]]
   then
     echo -e "\n${additiontext}\n[[+$tabSessionName]]" >> "$foldermonth"/"$calendarfile"

@@ -67,7 +67,7 @@ then
 
 				create-note "$folder" "${topicfilename}" "$tags" "$source" "$additiontext" >> "$folder"/"${topicfile}"
 
-				tabSessionName="2»websession_$(date +"%Y-%m-%d")"
+				tabSessionName="2»ws_$(date +"%Y-%m-%d")"
 				if [[ ! -e "$folder"/"${topicfilename}"/"$tabSessionName.md" ]]
 				then
 					#additiontext="$additiontext\n[[+$tabSessionName]]"
@@ -110,7 +110,7 @@ then
 		today=$(date +"%Y-%m-%d")
 
 
-		tabSessionName="2»websession_$(date +"%Y-%m-%d")"
+		tabSessionName="2»ws_$(date +"%Y-%m-%d")"
 		if [[ ! -e "$folder"/"$tabSessionName.md" ]]
 		then
 			mkdir -p "$folder"
