@@ -200,7 +200,7 @@ then
 		file-description "$folder" "$File" "$tags" "$source" "$additiontext" "" "yes" >> "$folder"/"$File".md
 	fi
 	touch -r "$folder"/"$File" "$folder"/"$Filename".$extens.md
-	notify-send -a "tt finished" "tt $File" "$(cat ~/.config/tt/log)"
+	notify-send -a "tt finished" "tt $File" 
 fi
 
 if [[ $showfile == "Yes" ]];

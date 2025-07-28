@@ -67,8 +67,9 @@ else
 	filetxt=$(readlink -f -n "$1")
 	folder=${filetxt%.*}
 	mkdir -p "$folder"
-	cd "$folder"
 fi
+cd "$folder"
+echo "$folder"
 
 #*Main}}
 

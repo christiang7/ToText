@@ -77,7 +77,7 @@ then
          ;;
          esac
       else
-         echo "## ${website}" >> "$folder"/../"$file"
+         echo "## ${website}- $(date +"%Y-%m-%d")" >> "$folder"/../"$file"
       fi
    done
 fi
@@ -123,7 +123,7 @@ fi
 ###*pictures}}
 
 echo "$additiontext" >> "$folder"/../"$file"
-notify-send -a "see-it-later.sh finished" "$file" "$(cat ~/.config/tt/log)"
+notify-send -a "see-it-later.sh finished" "$file"
 ```
 
 *Music list*

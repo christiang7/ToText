@@ -32,7 +32,7 @@ inputDir="$(config_get wikiDir)"/Atelier
 filename=$(yad --title="Save websession?" --text="\nSave copied tabs\n" \
 	--form --width 500 --separator="" --item-separator=","  \
 	--field="Filename:" \
-	"2»ws_$(date +"%Y-%m-%d")")
+	"2»ws-$(date +"%Y-%m-%d")")
 if [ ! $? -eq 1 ];
 then
    filename=$(cleanName "$filename")

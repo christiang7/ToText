@@ -14,7 +14,9 @@ aeon="$(echo "$website" | grep aeon)"
 vimeo="$(echo "$website" | grep vimeo)"
 if [[ ! $yt == "" ]];
 then
-	format="311+234/232+234/612+234/[height<780][ext=mp4]+ba"
+	format="bv*[height<=790][protocol^=m3u8][vcodec~='^((he|a)vc|h26[45])']+ba[protocol^=m3u8]/b[height<=790][protocol^=m3u8][vcodec~='^((he|a)vc|h26[45])']"
+	#format="(bv*+ba/b)[protocol^=m3u8][protocol!*=http][height<780][vcodec=av01]"
+	#format="bestvideo[protocol=m3u8]+bestaudio[protocol=m3u8]/best[protocol=m3u8]/311+234/232+234/612+234/bv*[height<780][ext=mp4]+ba"
 elif [[ ! $alttwitch == "" ]];
 then
 	videoid=$(basename $website)

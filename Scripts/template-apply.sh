@@ -15,7 +15,7 @@ else
     #Project="Projectname"
     folder=$(pwd)
 fi
-Apply=
+#Apply=
 
 abfrage=$(yad --title="New Apply" --text="Necessary Informations:" \
 	--form --width 500 --separator="~" --item-separator=","  \
@@ -24,10 +24,10 @@ abfrage=$(yad --title="New Apply" --text="Necessary Informations:" \
 	--field="Tags":CBE \
 	--field="Git init?":CB \
 	--field="Description":TXT \
-	"$Apply" "$author,Internet" ",physic,math" "Yes,No" "$additiontext")
+	"" "$author,Internet" ",physic,math" "Yes,No" "$additiontext")
 if [ ! $? -eq 1 ];
 then
-	Applyname=2»$(echo $abfrage | cut -s -d "~" -f 1)
+	Applyname=$(echo $abfrage | cut -s -d "~" -f 1)
 	langname=$(echo $abfrage | cut -s -d "~" -f 2)
 	source=$(echo $abfrage | cut -s -d "~" -f 3)
 	tags=$(echo $abfrage | cut -s -d "~" -f 4)

@@ -41,7 +41,7 @@ then
          ;;
          esac
       else
-         echo "## ${website}" >> "$folder"/../"$file"
+         echo "## ${website}- $(date +"%Y-%m-%d")" >> "$folder"/../"$file"
       fi
    done
 fi

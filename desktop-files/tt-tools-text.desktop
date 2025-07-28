@@ -43,9 +43,9 @@ Icon=video
 Terminal=true
 Exec=ttm %f 2>&1 | tee ~/.config/tt/log
 
-
 [Desktop Action OpenWebsession]
 Name=open-websession.sh
 Icon=video
 Terminal=true
-Exec=open-websession.sh %f 2>&1 | tee /home/christian/.config/tt/log
+Exec=open-websession.sh %f 2>&1 | tee ~/.config/tt/log
+

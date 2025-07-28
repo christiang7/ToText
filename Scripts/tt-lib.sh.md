@@ -78,7 +78,7 @@ using ``cleanName`` function with the parameters as following
 *cleanName*
 ```bash
 function cleanName(){
-    echo "$1" | sed 's/ /_/g' | sed 's/:/;/g'| sed -e "s/'/_/g" | sed 's/\"//g'|  sed 's/&/n/g' | sed 's/\///g' | sed 's/|//g' | sed 's/\[/(/g' | sed 's/\]/)/g' | sed 's/@/at/g' | sed 's/：/;/g' | sed 's/？/ß/g' | sed "s/|/;/g" | sed "s/·/;/g" | sed "s/💤/;/g" | sed "s/｜/-/g" | sed "s/?/ß/g" | sed "s/!/;/g" | sed "s/¦/;/g" | sed "s/⧸/-/g" | sed "s/~/-/g" | sed "s/—/-/g" | sed "s/#/;/g" | sed "s/!/;/g"
+    echo "$1" | sed 's/ /_/g' | sed 's/:/;/g'| sed -e "s/'/_/g" | sed 's/\"//g'|  sed 's/&/n/g' | sed 's/\///g' | sed 's/|//g' | sed 's/\[/(/g' | sed 's/\]/)/g' | sed 's/@/at/g' | sed 's/：/;/g' | sed 's/？/ß/g' | sed "s/|/;/g" | sed "s/·/;/g" | sed "s/💤/;/g" | sed "s/｜/-/g" | sed "s/?/ß/g" | sed "s/!/;/g" | sed "s/¦/;/g" | sed "s/⧸/-/g" | sed "s/~/-/g" | sed "s/—/-/g" | sed "s/#/;/g" | sed "s/!/;/g" | sed "s/\%/;/g"
 }
 ```
 
@@ -617,10 +617,10 @@ using ``tex-description`` function with the parameters as following
 *tex-description*
 ```bash
 function tex-description(){
-    local folder=$1
-    local File=$2
+    local folder="$1"
+    local File="$2"
     local filename=${File%.*}
-    local foldertex=$3
+    local foldertex="$3"
     local additiontext="$4"
     local moreCommands="$5"
     echo -e "\n## Latex File\n"
@@ -634,8 +634,9 @@ function tex-description(){
     then
         echo -e "$moreCommands"
     fi
-    echo -e "noweb.py -R${File} ${filename}.md > ${File} && pdflatex -synctex=1 -interaction=nonstopmode -shell-escape ${File} && date && xdg-open ${filename}.pdf 2>/dev/null \n\`\`\`\n\n"
+    echo -e "noweb.py -R${File} ${filename}.md > ${File} && lualatex -interaction=nonstopmode -shell-escape ${File} && lualatex -interaction=nonstopmode -shell-escape ${File} && date && xdg-open ${filename}.pdf 2>/dev/null \n\`\`\`\n\n"
     sed -i "s/additiontext/$additiontext/g" "$folder"/"$foldertex"/"${filename}".md
+    sed -i "s/additiontext/$additiontext/g" "$folder"/"$foldertex"/"${filename}".tex
 }
 ```
 

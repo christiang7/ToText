@@ -11,14 +11,14 @@ then
     text="$(yt-dlp --get-description ${website})"
     #text="$(echo -e "${text}" | sed 's/\"//g')"
     yt-dlp --no-mtime -o "$musicDir/%(title)s.%(ext)s" -f "140/251" -i "${website}"
+	ofile=$(yt-dlp --print filename -s "${website}" -f "140/251" -o "%(title)s.%(ext)s")
 else
     text=$(links2 -dump ${website})
     #text=$(echo -e "${text}")
     yt-dlp --no-mtime -o "$musicDir/%(title)s.%(ext)s" --embed-thumbnail -f b --no-mtime --audio-quality 0 -i "${website}"
+	ofile=$(yt-dlp --print filename -s "${website}" -f b --audio-quality 0 -o "%(title)s.%(ext)s")
 fi
 
-
-ofile=$(yt-dlp --print filename -s "${website}" -f "140/251" -o "%(title)s.%(ext)s")
 extens=${ofile##*.}
 name=${ofile%.*}
 #additiontext="$(yt-dlp --get-description ${website})"

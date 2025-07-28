@@ -41,12 +41,12 @@ Exec=template-note.sh %f 2>&1 | tee ~/.config/tt/log
 Name=template-tex.sh
 Icon=video
 Terminal=true
-Exec=template-tex.sh 2>&1 | tee ~/.config/tt/log
+Exec=template-tex.sh %f 2>&1 | tee ~/.config/tt/log
 
 [Desktop Action template_calc]
 Name=template-calc or program
 Icon=video
 Terminal=true
-Exec=template-calculation.sh 2>&1 | tee ~/.config/tt/log
+Exec=template-calculation.sh %f 2>&1 | tee ~/.config/tt/log
 
 ```

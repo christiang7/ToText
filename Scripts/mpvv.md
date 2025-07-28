@@ -22,7 +22,6 @@ source tt-lib.sh;
 
 website="$1"
 noPlayback="$2"
-echo "$website"
 yt="$(echo "$website" | grep youtube)"
 twitch="$(echo "$website" | grep twitch)"
 alttwitch="$(echo "$website" | grep safetwitch)"
@@ -31,30 +30,45 @@ aeon="$(echo "$website" | grep aeon)"
 vimeo="$(echo "$website" | grep vimeo)"
 if [[ ! $yt == "" ]];
 then
-	links2 -dump "$website" &
+	#links2 -dump "$website" &
 	profile="youtube"
 	#website="https://iv.melmac.space/watch?v="
 elif [[ ! $alttwitch == "" ]];
 then
 	videoid=$(basename $website)
 	website="https://www.twitch.tv/videos/${videoid}"
-	links2 -dump ${website} &
+	#links2 -dump ${website} &
 	profile="twitch"
 elif [[ ! $twitch == "" ]];
 then
-	links2 -dump ${website} &
+	#links2 -dump ${website} &
 	profile="twitch"
 elif [[ ! $invidious == "" ]];
 then
-	links2 -dump ${website} &
+	#links2 -dump ${website} &
 	profile="invidious"
 elif [[ ! $aeon == "" || ! "$vimeo" = "" ]];
 then
-	links2 -dump ${website} &
+	#links2 -dump ${website} &
 	profile="normal"
 else
-	links2 -dump ${website} &
+	#links2 -dump ${website} &
 	profile="normal"
+fi
+links2 -dump "$website" &
+
+#DRI_PRIME=pci-0000_01_00_0 __VK_LAYER_NV_optimus=NVIDIA_only__ GLX_VENDOR_LIBRARY_NAME=nvidia mpv --profile="$profile" "$website"
+#DRI_PRIME=pci-0000_01_00_0 __VK_LAYER_NV_optimus=NVIDIA_only__ GLX_VENDOR_LIBRARY_NAME=nvidia mpv --profile="$profile" --screenshot-template="Screenshot-$File-%P" "$website"
+echo "$website"
+if [[ $noPlayback == "" ]]
+then
+	if [[ ! $yt == "" ]];
+	then
+		timeout 9s mpv --profile="$profile" --mute=yes --save-position-on-quit=no --screenshot-template="Screenshot-$File-%P" "$website"
+	fi
+	mpv --profile="$profile" --screenshot-template="Screenshot-$File-%P" "$website"
+else
+	kate "$tempInputDir/$File".md
 fi
 ofile=$(yt-dlp --print filename -s "${website}" -o '%(title)s').mp4
 #ofile=${ofile%.*}.mp4
@@ -69,15 +83,9 @@ File=$(cleanName "$ofile")
 #*temp-video-description}}
 
 echo -e "\nfile://$tempInputDir/$File".md
-#DRI_PRIME=pci-0000_01_00_0 __VK_LAYER_NV_optimus=NVIDIA_only__ GLX_VENDOR_LIBRARY_NAME=nvidia mpv --profile="$profile" "$website"
-#DRI_PRIME=pci-0000_01_00_0 __VK_LAYER_NV_optimus=NVIDIA_only__ GLX_VENDOR_LIBRARY_NAME=nvidia mpv --profile="$profile" --screenshot-template="Screenshot-$File-%P" "$website"
-if [[ $noPlayback == "" ]]
-then
-	mpv --profile="$profile" --screenshot-template="Screenshot-$File-%P" "$website"
-else
-	kate "$tempInputDir/$File".md
-fi
+
 ```
+
 
 ### temp-video-description
 *temp-video-description*
