@@ -184,7 +184,7 @@ then
 		file-description "$folder" "$File" "@Document $tags" "$source" "$additiontext" "pic" "yes" >> "$folder"/"$File".md
 		convert "$folder"/"$File".png "$folder"/"$File"/"$File".avif
 		rm "$folder"/"$File".png
-	elif [[ mp3 == $extens || webm == $extens || flac == $extens || aac = $extens || ogg = $extens || weba = $extens || wav = $extens || aiff = $extens || m4a = $extens || opus = $extens ]]
+	elif [[ mp3 == $extens || webm == $extens || flac == $extens || aac == $extens || ogg == $extens || weba == $extens || wav == $extens || aiff == $extens || m4a == $extens || opus == $extens ]]
 	then
 		file-description "$folder" "$File" "@Musik $tags" "$source" "$additiontext" >> "$folder"/"$File".md
 	elif [[ $extens == $File ]]
