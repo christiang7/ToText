@@ -32,6 +32,7 @@ if [[ ! $yt == "" ]];
 then
 	#links2 -dump "$website" &
 	profile="youtube"
+	yt-dlp --get-description ${website}
 	#website="https://iv.melmac.space/watch?v="
 elif [[ ! $alttwitch == "" ]];
 then
@@ -62,11 +63,15 @@ links2 -dump "$website" &
 echo "$website"
 if [[ $noPlayback == "" ]]
 then
-	if [[ ! $yt == "" ]];
-	then
-		timeout 9s mpv --profile="$profile" --mute=yes --save-position-on-quit=no --screenshot-template="Screenshot-$File-%P" "$website"
-	fi
-	mpv --profile="$profile" --screenshot-template="Screenshot-$File-%P" "$website"
+	#if [[ ! $yt == "" ]];
+	#then
+		#timeout 7s mpv --profile="$profile" --ytdl-format="bv*[height<=800][protocol^=m3u8][vcodec~='^((he|a)vc|h26[45])']+ba[protocol^=m3u8]/b[height<=790][protocol^=m3u8][vcodec~='^((he|a)vc|h26[45])']" --mute=yes --screenshot-template="Screenshot-$File-%P" "$website"
+	#	timeout 7s mpv --profile="$profile" --ytdl-format="bv*[height<=800][vcodec~='^((he|a)vc|h26[45])'][resolution=1280x720]+ba[ext=m4a]/b[height<=790][vcodec~='^((he|a)vc|h26[45])']" --mute=yes --screenshot-template="Screenshot-$File-%P" "$website"
+		# --save-position-on-quit=no
+	#fi
+	# --profile="$profile" 
+	mpv --profile="$profile" --screenshot-template="Screenshot-$File-%P" --ytdl-format="bv*[height<=800][vcodec~='^((he|a)vc|h26[45])'][resolution=1280x720]+ba[ext=m4a]/b[height<=790][vcodec~='^((he|a)vc|h26[45])']" "$website"
+	#mpv --screenshot-template="Screenshot-$File-%P" --ytdl-format="bv*[height<=800][protocol^=m3u8][vcodec~='^((he|a)vc|h26[45])']+ba[protocol^=m3u8]/b[height<=790][protocol^=m3u8][vcodec~='^((he|a)vc|h26[45])']" "$website"
 else
 	kate "$tempInputDir/$File".md
 fi

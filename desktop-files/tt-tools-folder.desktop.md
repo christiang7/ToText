@@ -17,7 +17,7 @@ Created [2025-02-05](2025-02-05)
 *make.sh*
 ```bash
 noweb.py -Rtt-tools-folder.desktop tt-tools-folder.desktop.md > tt-tools-folder.desktop && echo 'tt-tools-folder.desktop' && date 
-chmod u+x tt-tools-folder.desktop && ln -sf $(pwd)/tt-tools-folder.desktop ~/.local/share/kservices5/ServiceMenus/tt-tools-folder.desktop && echo 'fertig'
+chmod u+x tt-tools-folder.desktop && ln -sf $(pwd)/tt-tools-folder.desktop ~/.local/share/kservices5/ServiceMenus/tt-tools-folder.desktop && ln -sf $(pwd)/tt-tools-folder.desktop ~/.local/share/kio/servicemenus/tt-tools-folder.desktop && echo 'fertig'
 ```
 
 ### tt-tools-folder.desktop

@@ -17,7 +17,7 @@ Created [2025-02-05](2025-02-05)
 *make.sh*
 ```bash
 noweb.py -Rtt.desktop tt.desktop.md > tt.desktop && echo 'tt.desktop' && date 
-chmod u+x tt.desktop && ln -sf $(pwd)/tt.desktop ~/.local/share/kservices5/ServiceMenus/tt.desktop && echo 'fertig'
+chmod u+x tt.desktop && ln -sf $(pwd)/tt.desktop ~/.local/share/kservices5/ServiceMenus/tt.desktop && ln -sf $(pwd)/tt.desktop ~/.local/share/kio/servicemenus/tt.desktop && echo 'fertig'
 ```
 
 ### tt.desktop
