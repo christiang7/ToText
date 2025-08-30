@@ -44,7 +44,7 @@ https://overflow.adminforge.de/exchange/unix/questions/431836/preserve-images-mo
 
 *make.sh*
 ```bash
-noweb.py -Rtt tt.md > tt && chmod u+x tt && echo 'tt' && date
+noweb.py -Rtt tt.md > tt && chmod u+x tt && echo 'tt' && notify-send -a "Compilation" "" "$(date +"%Y-%m-%d") fertig"
 ```
 
 using ``tt`` function with the parameters as following

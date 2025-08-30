@@ -16,7 +16,7 @@ Christian Gößl
 
 *make.sh*
 ```bash
-noweb.py -Rtt-lib.sh tt-lib.sh.md > tt-lib.sh && echo 'tt-lib.sh' && date 
+noweb.py -Rtt-lib.sh tt-lib.sh.md > tt-lib.sh && echo 'tt-lib.sh' && notify-send -a "Compilation" "" "$(date +"%Y-%m-%d") fertig" 
 
 ```
 
@@ -423,7 +423,7 @@ function ttvid(){
 	echo -e "\`\`\`"
 	echo -e "\n*make.sh*"
 	echo -e "\`\`\`bash"
-	echo -e "noweb.py -R$subtitlefile1 $File.md > $subtitlefile1 \nnoweb.py -R$subtitlefile2 $File.md > $subtitlefile2 \n echo '$File' && date \n\`\`\`\n\n"
+	echo -e "noweb.py -R$subtitlefile1 $File.md > $subtitlefile1 \nnoweb.py -R$subtitlefile2 $File.md > $subtitlefile2 \n echo '$File' && notify-send -a "Compilation" "" "$(date +"%Y-%m-%d") fertig" \n\`\`\`\n\n"
 }
 ```
 
@@ -519,19 +519,19 @@ function template-code(){
     case ${extens} in
         plantuml)
             mkdir -p "${outFile}"
-            echo -e "noweb.py -R${Filename}.${extens} ${outFile}.md > "${outFile}"/${Filename}.${extens} && plantuml "${outFile}"/${Filename}.${extens} && echo '${Filename}.${extens}' && date && gwenview "${outFile}"/${Filename}.png 2>/dev/null \n\`\`\`"
+            echo -e "noweb.py -R${Filename}.${extens} ${outFile}.md > "${outFile}"/${Filename}.${extens} && plantuml "${outFile}"/${Filename}.${extens} && echo '${Filename}.${extens}' && notify-send -a "Compilation" "" "$(date +"%Y-%m-%d") fertig" && gwenview "${outFile}"/${Filename}.png 2>/dev/null \n\`\`\`"
             ;;
         typst) 
-            echo -e "noweb.py -R${Filename}.${extens} ${outFile}.md > ${Filename}.${extens} && typst compile --format pdf ${Filename}.${extens} && echo '${Filename}.${extens}' && date && xournalpp ${Filename}.pdf 2>/dev/null & \n\`\`\`"
+            echo -e "noweb.py -R${Filename}.${extens} ${outFile}.md > ${Filename}.${extens} && typst compile --format pdf ${Filename}.${extens} && echo '${Filename}.${extens}' && notify-send -a "Compilation" "" "$(date +"%Y-%m-%d") fertig" && xournalpp ${Filename}.pdf 2>/dev/null & \n\`\`\`"
             ;;
         plt) 
-            echo -e "noweb.py -R${Filename}.${extens} ${outFile}.md > "${outFile}"/${Filename}.${extens} && gnuplot "${outFile}"/${Filename}.${extens} -p \n\`\`\`"
+            echo -e "noweb.py -R${Filename}.${extens} ${outFile}.md > "${outFile}"/${Filename}.${extens} && notify-send -a "Compilation" "" "$(date +"%Y-%m-%d") fertig" && gnuplot "${outFile}"/${Filename}.${extens} -p \n\`\`\`"
             ;;
         mmd) 
-            echo -e "noweb.py -R${Filename}.${extens} ${outFile}.md > "${outFile}"/${Filename}.${extens} && mermaid-cli.sh "${outFile}"/${Filename}.${extens} && echo '${Filename}.${extens}' && date && gwenview "${outFile}"/${Filename}.png 2>/dev/null \n\`\`\`"
+            echo -e "noweb.py -R${Filename}.${extens} ${outFile}.md > "${outFile}"/${Filename}.${extens} && mermaid-cli.sh "${outFile}"/${Filename}.${extens} && echo '${Filename}.${extens}' && notify-send -a "Compilation" "" "$(date +"%Y-%m-%d") fertig" && gwenview "${outFile}"/${Filename}.png 2>/dev/null \n\`\`\`"
             ;;
         *) 
-            echo -e "noweb.py -R${Filename}.${extens} ${outFile}.md > ${Filename}.${extens} && echo '${Filename}.${extens}' && date \n\`\`\`"
+            echo -e "noweb.py -R${Filename}.${extens} ${outFile}.md > ${Filename}.${extens} && echo '${Filename}.${extens}' && notify-send -a "Compilation" "" "$(date +"%Y-%m-%d") fertig" \n\`\`\`"
             echo -e "\n\n\`\`\`bash"
             echo -e "chmod u+x ${Filename}.${extens} && ln -sf \$(pwd)/${Filename}.${extens} ~/.local/bin/${Filename}.${extens} && echo 'fertig'\n\`\`\`"
             ;;
@@ -634,7 +634,7 @@ function tex-description(){
     then
         echo -e "$moreCommands"
     fi
-    echo -e "noweb.py -R${File} ${filename}.md > ${File} && lualatex -interaction=nonstopmode -shell-escape ${File} && lualatex -interaction=nonstopmode -shell-escape ${File} && date && xdg-open ${filename}.pdf 2>/dev/null \n\`\`\`\n\n"
+    echo -e "noweb.py -R${File} ${filename}.md > ${File} && lualatex -interaction=nonstopmode -shell-escape ${File} && lualatex -interaction=nonstopmode -shell-escape ${File} && notify-send -a "Compilation" "" "$(date +"%Y-%m-%d") fertig" && xdg-open ${filename}.pdf 2>/dev/null \n\`\`\`\n\n"
     sed -i "s/additiontext/$additiontext/g" "$folder"/"$foldertex"/"${filename}".md
     sed -i "s/additiontext/$additiontext/g" "$folder"/"$foldertex"/"${filename}".tex
 }
