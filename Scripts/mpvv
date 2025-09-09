@@ -54,7 +54,13 @@ then
 		# --save-position-on-quit=no
 	#fi
 	# --profile="$profile"
-	mpv --profile="$profile" --screenshot-template="Screenshot-$File-%P" --ytdl-format="bv*[height<=800][vcodec~='^((he|a)vc|h26[45])'][resolution=1280x720]+ba[ext=m4a]/b[height<=790][vcodec~='^((he|a)vc|h26[45])']" "$website"
+	if [[ $profile == "normal" ]];
+	then
+		mpv --profile="$profile" --screenshot-template="Screenshot-$File-%P" "$website"
+	else
+		mpv --profile="$profile" --screenshot-template="Screenshot-$File-%P" --ytdl-format="bv*[height<=790][ext=mp4]+ba/b[height<=790][vcodec~='^((he|a)vc|h26[45])']" "$website"
+	fi
+	### mpv --profile="$profile" --screenshot-template="Screenshot-$File-%P" --ytdl-format="bv*[height<=800][vcodec~='^((he|a)vc|h26[45])'][resolution=1280x720]+ba[ext=m4a]/b[height<=790][vcodec~='^((he|a)vc|h26[45])']" "$website"
 	#mpv --screenshot-template="Screenshot-$File-%P" --ytdl-format="bv*[height<=800][protocol^=m3u8][vcodec~='^((he|a)vc|h26[45])']+ba[protocol^=m3u8]/b[height<=790][protocol^=m3u8][vcodec~='^((he|a)vc|h26[45])']" "$website"
 else
 	kate "$tempInputDir/$File".md

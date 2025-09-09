@@ -6,7 +6,7 @@ outputDir="$(config_get outputDir)"
 website="$1"
 echo "$website"
 
-yt="$(echo "$website" | grep youtube)"
+yt="$(echo "$website" | grep youtu)"
 twitch="$(echo "$website" | grep twitch)"
 alttwitch="$(echo "$website" | grep safetwitch)"
 invidious="$(echo "$website" | grep invidious)"
@@ -14,8 +14,8 @@ aeon="$(echo "$website" | grep aeon)"
 vimeo="$(echo "$website" | grep vimeo)"
 if [[ ! $yt == "" ]];
 then
-	###format="bv*[height<=790][protocol^=m3u8]+ba[protocol^=m3u8]/b[height<=790][protocol^=m3u8][vcodec~='^((he|a)vc|h26[45])']"
-	format="bv*[height<=800][vcodec~='^((he|a)vc|h26[45])'][resolution=1280x720]+ba[ext=m4a]/b[height<=800][vcodec~='^((he|a)vc|h26[45])']"
+	format="bv*[height<=790][ext=mp4]+ba/b[height<=790][vcodec~='^((he|a)vc|h26[45])']"
+	#format="bv*[height<=800][vcodec~='^((he|a)vc|h26[45])'][resolution=1280x720]+ba[ext=m4a]/b[height<=800][vcodec~='^((he|a)vc|h26[45])']"
 	#[vcodec~='^((he|a)vc|h26[45])']
 	#format="(bv*+ba/b)[protocol^=m3u8][protocol!*=http][height<780][vcodec=av01]"
 	#format="bestvideo[protocol=m3u8]+bestaudio[protocol=m3u8]/best[protocol=m3u8]/311+234/232+234/612+234/bv*[height<780][ext=mp4]+ba"
@@ -40,7 +40,7 @@ else
 fi
 echo $format
 
-yt-dlp --no-mtime --fixup force -f "$format" --add-chapters --external-downloader aria2c --http-chunk-size 5M --downloader-args aria2c:"-c -j 2 -s 2 -x 4 -k 50M" -o "$outputDir/%(title)s.%(ext)s" -i "${website}"
+yt-dlp --no-mtime --fixup force -f "$format" --merge-output mp4 --add-chapters --external-downloader aria2c --http-chunk-size 256k --downloader-args aria2c:"-c -j 8 -s 8 -x 8 -k 1M" -o "$outputDir/%(title)s.%(ext)s" -i "${website}"
 
 ofile=$(yt-dlp --print filename -s "${website}" -o '%(title)s').mp4
 extens=${ofile##*.}
