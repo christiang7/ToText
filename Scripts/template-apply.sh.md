@@ -98,7 +98,7 @@ then
 
     Apply=$(cleanName "$Applyname")
 
-	mkdir -p "$Apply"
+	mkdir -p "$folder"/"$Apply"
 
     create-note "$folder" "$Apply" "$tags" "$source" "$additiontext" >> "$folder"/"$Apply".md
 

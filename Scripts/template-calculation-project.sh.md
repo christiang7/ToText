@@ -102,7 +102,7 @@ then
     Filename="$File"
     File="$File"."${extens}"
 
-	mkdir -p "$Project"
+	mkdir -p "$folder"/"$Project"
 
 	create-note "$folder" "$Project" "$tags" "$source" "$additiontext" >> "$folder"/"$Project".md
 

@@ -36,7 +36,7 @@ then
 
     Apply=$(cleanName "$Applyname")
 
-	mkdir -p "$Apply"
+	mkdir -p "$folder"/"$Apply"
 
     create-note "$folder" "$Apply" "$tags" "$source" "$additiontext" >> "$folder"/"$Apply".md
 
@@ -44,11 +44,13 @@ then
 
     template-tex.sh "$folder/$Apply" "no" "cover-letter" "Schreiben"
 
-    cp "$templateDir"/Research_Statement_tex/general-preamble.tex "$folder"/"$Apply"/Research_Statement_tex/general-preamble.tex
+    #cp "$templateDir"/Research_Statement_tex/general-preamble.tex "$folder"/"$Apply"/Research_Statement_tex/general-preamble.tex
 
-    cp "$templateDir"/Research_Statement_tex/color-style.tex "$folder"/"$Apply"/Research_Statement_tex/color-style.tex
+    #cp "$templateDir"/Research_Statement_tex/color-style.tex "$folder"/"$Apply"/Research_Statement_tex/color-style.tex
 
     cp -r "$templateDir"/Bewerbungen/CV_tex "$folder"/"$Apply"/CV_tex
+
+    cp -r "$templateDir"/Bewerbungen/Lebenslauf_tex "$folder"/"$Apply"/Lebenslauf_tex
 
     cp -r "$templateDir"/Bewerbungen/Research_Statement_tex "$folder"/"$Apply"/Research_Statement_tex
 
