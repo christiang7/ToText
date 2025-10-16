@@ -15,6 +15,7 @@
   - [ ] using builtin `shell options` for [scripts]()
   - [ ] rewrite [tt-lib.sh]() with [subshell]() for optional output
   - [ ] latex `template files` in a separate folder [templates]() 
+  - [ ] Terminalabkürzung einführen für kate mit Journal öffnen
  + Doing (2)
   - [ ] write [documentation]()
    - [ ] make overview page about used tools,\n use for structuring the desktop files

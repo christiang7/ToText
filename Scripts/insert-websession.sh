@@ -9,7 +9,7 @@ folder=${File%.*}
 session=$(yad --title="Insert websession?" --text="\nSave copied tabs\n" \
 	--form --width 500 --separator="~" --item-separator=","  \
 	--field="Filename:" \
-	"2»ws_$(date +"%Y-%m-%d")")
+	"2»ws-$(date +"%Y-%m-%d")")
 if [ ! $? -eq 1 ];
 then
    sessionfile=$(echo "$session" | cut -s -d "~" -f 1)
