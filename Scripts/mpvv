@@ -75,14 +75,7 @@ echo $profile
 
 File=$(cleanName "$ofile")
 
+###*temp-video-description}}
 
-name=${File%.*}
-extens=${File##*.}
-
-if [[ ! -f "$tempInputDir"/"$File.md" ]]
-then
-	ttvid "$tempInputDir" "$File" "$tags" "$website" "$additiontext" "$ofile" "yes" "yes" >> "$tempInputDir"/"$File".md
-fi
-
-echo -e "\nfile://$tempInputDir/$File".md
+#echo -e "\nfile://$tempInputDir/$File".md
 

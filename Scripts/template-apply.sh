@@ -48,13 +48,13 @@ then
 
     #cp "$templateDir"/Research_Statement_tex/color-style.tex "$folder"/"$Apply"/Research_Statement_tex/color-style.tex
 
-    cp -r "$templateDir"/Bewerbungen/CV_tex "$folder"/"$Apply"/CV_tex
+    cp -r "$templateDir"/1»Bewerbungen/CV_tex "$folder"/"$Apply"/CV_tex
 
-    cp -r "$templateDir"/Bewerbungen/Lebenslauf_tex "$folder"/"$Apply"/Lebenslauf_tex
+    cp -r "$templateDir"/1»Bewerbungen/Lebenslauf_tex "$folder"/"$Apply"/Lebenslauf_tex
 
-    cp -r "$templateDir"/Bewerbungen/Research_Statement_tex "$folder"/"$Apply"/Research_Statement_tex
+    cp -r "$templateDir"/1»Bewerbungen/Research_Statement_tex "$folder"/"$Apply"/Research_Statement_tex
 
-    ln  -sf "$templateDir"/Bewerbungen/Attachments "$folder"/"$Apply"/Attachments
+    ln  -sf "$templateDir"/1»Bewerbungen/Attachments "$folder"/"$Apply"/Attachments
 
     if [[ $gitinit == "Yes" ]];
 	then

@@ -227,7 +227,7 @@ inspiriert von dem Spiel Horizon Zero Dawn
 The classical Greek spelling of DEMETER begins with the Greek letter Delta. This letter is represented as an equilateral triangle; the same shape surrounds each Metal Flower.
 **-- tags:  --**
 
-[[Control Game Icons:0»InRef]]
+[[1»Pfad Symbole Icons:Control Game Icons:0»InRef]]
 
 
 mein Anfang

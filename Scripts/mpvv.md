@@ -91,9 +91,9 @@ echo $profile
 
 File=$(cleanName "$ofile")
 
-#*temp-video-description}}
+###*temp-video-description}}
 
-echo -e "\nfile://$tempInputDir/$File".md
+#echo -e "\nfile://$tempInputDir/$File".md
 
 ```
 

@@ -29,8 +29,20 @@ chmod u+x insert-websession.sh && ln -sf $(pwd)/insert-websession.sh ~/.local/bi
 source tt-lib.sh
 journalPage="$(config_get journalPage)"
 
-File=$1
-folder=${File%.*}
+if [[ ! -e "$1" ]]
+then
+   folder=$(pwd)
+   cd "$folder"
+   echo "$folder"
+else
+	#filetxt=$(readlink -f -n "$1")
+	#folder=${filetxt%.*}
+	#mkdir -p "$folder"
+   File=$1
+   folder=${File%.*}
+   mkdir -p "$folder"
+   cd "$folder"
+fi
 #File=$(cleanName "$1")
 
 session=$(yad --title="Insert websession?" --text="\nSave copied tabs\n" \
@@ -42,7 +54,6 @@ then
    sessionfile=$(echo "$session" | cut -s -d "~" -f 1)
 
    sessionfile=$(cleanName "$sessionfile") 
-   mkdir -p "$folder"
    if [[ ! -e "$folder"/"$sessionfile".md ]]
    then
       echo -e "==== $(date +"%Y-%m-%d") "

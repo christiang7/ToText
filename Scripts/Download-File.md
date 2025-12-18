@@ -30,6 +30,8 @@ fi
 mkdir -p $folder
 cd $folder
 
+#origname=$(echo $origname | cut -s -d "?" -f 0)
+
 abfrage=$(yad --title="Download File" --text="Something to add?" \
     --form --separator="~" --item-separator="," \
     --field="Another name:" \
