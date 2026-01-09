@@ -28,7 +28,7 @@ chmod u+x tt-tools-text.desktop && ln -sf $(pwd)/tt-tools-text.desktop ~/.local/
 Type=Service
 X-KDE-ServiceTypes=KonqPopupMenu/Plugin
 MimeType=text/*;
-Actions=MakeFolder;ChangeFormat;DeleteFile;RenameFile;MoveFile;OpenWebsession;
+Actions=MakeFolder;ChangeFormat;DeleteFile;RenameFile;MoveFile;OpenWebsession;NowebSync;
 X-KDE-Priority=TopLevel
 X-KDE-Submenu=tt-tools
 
@@ -74,5 +74,11 @@ Name=open-websession.sh
 Icon=video
 Terminal=true
 Exec=open-websession.sh %f 2>&1 | tee ~/.config/tt/log
+
+[Desktop Action NowebSync]
+Name=noweb-sync.sh
+Icon=video
+Terminal=true
+Exec=noweb-sync.sh %f 2>&1 | tee ~/.config/tt/log
 
 ```

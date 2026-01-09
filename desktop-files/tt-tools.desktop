@@ -2,7 +2,7 @@
 Type=Service
 X-KDE-ServiceTypes=KonqPopupMenu/Plugin
 MimeType=application/*;audio/*;video/*;image/*;inode/directory;message/rfc822;text/html;text/x-tex;
-Actions=ttMoveFile;ttDeleteFile;Maketxt;DownloadFile;InsertWebsession;
+Actions=ttMoveFile;ttDeleteFile;Maketxt;DownloadFile;InsertWebsession;NowebSync;
 X-KDE-Priority=TopLevel
 X-KDE-Submenu=tt-tools
 Terminal=true
@@ -42,3 +42,10 @@ Name=Insert-Websession
 Icon=video
 Terminal=true
 Exec=insert-websession.sh %f 2>&1 | tee ~/.config/tt/log
+
+[Desktop Action NowebSync]
+Name=noweb-sync.sh
+Icon=video
+Terminal=true
+Exec=noweb-sync.sh %f 2>&1 | tee ~/.config/tt/log
+
