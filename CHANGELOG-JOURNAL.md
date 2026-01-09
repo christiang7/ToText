@@ -170,6 +170,14 @@ https://overflow.adminforge.de/exchange/unix/questions/175648/use-config-file-fo
 	- [x] template for [Rechnung]()
 	- [x] template for [Bewerbung]()
 
+
+mit yt-dlp das Transcript runterladen bzw die captions in english
+
+How to download only subtitles of videos using youtube-dl - Super User 
+https://superuser.com/questions/927523/how-to-download-only-subtitles-of-videos-using-youtube-dl
+GitHub - yt-dlp/yt-dlp: A youtube-dl fork with additional features and fixes 
+https://github.com/yt-dlp/yt-dlp
+
 ### 2024-02-13 combined scripts tts und ttn
 
 ### ttvidc corrected to markdown
