@@ -1,7 +1,7 @@
-# template-calculation
+# template-calculation.sh
 Created [2023-06-25]()
  math
-- [x] **template-calculation** [README.md](README.md)
+- [x] **template-calculation.sh** [README.md](README.md)
 	- [x] Doing
 	- [x] Backlog
 
@@ -20,7 +20,7 @@ https://docs.kde.org/stable5/en/kate/kate/kate-application-plugin-external-tools
 
 *make.sh*
 ```bash
-noweb.py -Rtemplate-calculation.sh template-calculation.md > template-calculation.sh && echo 'template-calculation.sh' && date
+noweb.py -Rtemplate-calculation.sh template-calculation.sh.md > template-calculation.sh && echo 'template-calculation.sh' && notify-send -a "Compilation template-calculation.sh" "" "$(date +"%Y-%m-%d") fertig"
 ```
 
 ### Presets
@@ -69,6 +69,7 @@ then
 		template-calculation-project.sh "$1"
 		;;
 	esac
+	notify-send -a "template-calculation.sh created $File" "" "$(date +"%Y-%m-%d") fertig"
 fi
 ```
 

@@ -59,6 +59,39 @@ function get-extens(){
     echo "${extens}"
 }
 
+function get-langname(){
+    extens="$1"
+    case ${extens} in
+        cpp) langname="cpp"
+            ;;
+        py) langname="python"
+            ;;
+        jl) langname="julia"
+            ;;
+        html) langname="html"
+            ;;
+        css) langname="css"
+            ;;
+        js) langname="javascript"
+            ;;
+        sh) langname="bash"
+            ;;
+        lua) langname="lua"
+            ;;
+        plantuml) langname="pl"
+            ;;
+        typ) langname="typst"
+            ;;
+        plt) langname="bash"
+            ;;
+        mmd) langname="mermaid"
+            ;;
+        *) langname="$extens"
+            ;;
+    esac
+    echo "${langname}"
+}
+
 function markdown-description-program(){
     local File=$1
     #local filename=${File%.*}
@@ -88,6 +121,7 @@ function template-code(){
     #local additiontext=$5
     local Filename=${File%.*}
     local extens=${File##*.}
+    local langname="$(get-langname $extens)"
     local outFilename=${outFile%.*}
     local outextens=${outFile##*.}
     if [[ ! $switchCode == "" ]]
@@ -103,61 +137,69 @@ function template-code(){
     then
         echo -e "{{./${Filename}.png?width=500}}"
 	fi
-    echo -e " \n## ${extens} code\n\n"
+    echo -e " \n## ${langname} code\n\n"
     echo -e "$codeHead"
     echo -e "\`\`\`bash"
     case ${extens} in
         plantuml)
             mkdir -p "${outFile}"
-            echo -e "noweb.py -R${Filename}.${extens} ${outFile}.md > "${outFile}"/${Filename}.${extens} && plantuml "${outFile}"/${Filename}.${extens} && echo '${Filename}.${extens}' && notify-send -a \"Compilation\" \"\" \"\$(date +\"%Y-%m-%d\") fertig\" && gwenview "${outFile}"/${Filename}.png 2>/dev/null \n\`\`\`"
+            echo -e "noweb.py -R${Filename}.${extens} ${outFile}.md > "${outFile}"/${Filename}.${extens} && plantuml "${outFile}"/${Filename}.${extens} && echo '${Filename}.${extens}' && notify-send -a \"Compilation of ${Filename}.${extens}\" \"\" \"\$(date +\"%Y-%m-%d\") fertig\" && gwenview "${outFile}"/${Filename}.png 2>/dev/null \n\`\`\`"
             ;;
         typst)
-            echo -e "noweb.py -R${Filename}.${extens} ${outFile}.md > ${Filename}.${extens} && typst compile --format pdf ${Filename}.${extens} && echo '${Filename}.${extens}' && notify-send -a \"Compilation\" \"\" \"\$(date +\"%Y-%m-%d\") fertig\" && xournalpp ${Filename}.pdf 2>/dev/null & \n\`\`\`"
+            echo -e "noweb.py -R${Filename}.${extens} ${outFile}.md > ${Filename}.${extens} && typst compile --format pdf ${Filename}.${extens} && echo '${Filename}.${extens}' && notify-send -a \"Compilation of ${Filename}.${extens}\" \"\" \"\$(date +\"%Y-%m-%d\") fertig\" && xournalpp ${Filename}.pdf 2>/dev/null & \n\`\`\`"
             ;;
         plt)
-            echo -e "noweb.py -R${Filename}.${extens} ${outFile}.md > "${outFile}"/${Filename}.${extens} && notify-send -a \"Compilation\" \"\" \"\$(date +\"%Y-%m-%d\") fertig\" && gnuplot "${outFile}"/${Filename}.${extens} -p \n\`\`\`"
+            echo -e "noweb.py -R${Filename}.${extens} ${outFile}.md > "${outFile}"/${Filename}.${extens} && notify-send -a \"Compilation of ${Filename}.${extens}\" \"\" \"\$(date +\"%Y-%m-%d\") fertig\" && gnuplot "${outFile}"/${Filename}.${extens} -p \n\`\`\`"
             ;;
         mmd)
-            echo -e "noweb.py -R${Filename}.${extens} ${outFile}.md > "${outFile}"/${Filename}.${extens} && mermaid-cli.sh "${outFile}"/${Filename}.${extens} && echo '${Filename}.${extens}' && notify-send -a \"Compilation\" \"\" \"\$(date +\"%Y-%m-%d\") fertig\" && gwenview "${outFile}"/${Filename}.png 2>/dev/null \n\`\`\`"
+            echo -e "noweb.py -R${Filename}.${extens} ${outFile}.md > "${outFile}"/${Filename}.${extens} && mermaid-cli.sh "${outFile}"/${Filename}.${extens} && echo '${Filename}.${extens}' && notify-send -a \"Compilation of ${Filename}.${extens}\" \"\" \"\$(date +\"%Y-%m-%d\") fertig\" && gwenview "${outFile}"/${Filename}.png 2>/dev/null \n\`\`\`"
             ;;
         *)
-            echo -e "noweb.py -R${Filename}.${extens} ${outFile}.md > ${Filename}.${extens} && echo '${Filename}.${extens}' && notify-send -a \"Compilation\" \"\" \"\$(date +\"%Y-%m-%d\") fertig\" \n\`\`\`"
+            echo -e "noweb.py -R${Filename}.${extens} ${outFile}.md > ${Filename}.${extens} && echo '${Filename}.${extens}' && notify-send -a \"Compilation of ${Filename}.${extens}\" \"\" \"\$(date +\"%Y-%m-%d\") fertig\" \n\`\`\`"
             echo -e "\n\n\`\`\`bash"
             echo -e "chmod u+x ${Filename}.${extens} && ln -sf \$(pwd)/${Filename}.${extens} ~/.local/bin/${Filename}.${extens} && echo 'fertig'\n\`\`\`"
             ;;
     esac
     echo -e "\n*${Filename}.${extens}*"
     echo -e "\`\`\`${langname}"
-    case ${extens} in
-        sh)
-            echo -e "#!/bin/bash"
-            ;;
-        plantuml)
-            echo -e "@startuml\n allowmixing\n"
-            echo -e "@enduml"
-            ;;
-        mmd)
-            echo "graph TD"
-            echo "    accTitle: My title here"
-            echo "    accDescr: My description here"
-            echo "    A[Enter Chart Definition] --> B(Preview)"
-            ;;
-        plt)
-            echo "reset"
-            echo "set grid"
-            echo "#set yrange [:]"
-            echo "#set xrange [:]"
-            echo "set ylabel 'y'"
-            echo "set xlabel 'x'"
-            echo "#set logscale y"
-            echo "set term png"
-            echo "set output sprintf('"${outFile}"/${Filename}.png')"
-            echo "plot  lt rgb 'blue'"
-            echo "#plot "data.txt" using ($1):($2) title '1' lt rgb 'blue', "data.txt" using ($1):($3) title '2' lt rgb 'red', "data.txt" using ($1):($4) title '3' lt rgb 'green'"
-            echo "set term qt"
-            echo "replot"
-            ;;
-    esac
+    if  [[ -e "$File" ]]
+    then
+        cat "$folder"/"$File" >> "$folder"/"$File".md
+    else
+        case ${extens} in
+            sh)
+                echo -e "#!/bin/bash" >> "$folder"/"$File"
+                ;;
+            plantuml)
+                echo -e "@startuml\n allowmixing\n" >> "$folder"/"$File"
+                echo -e "@enduml" >> "$folder"/"$File"
+                ;;
+            mmd)
+                echo "graph TD" >> "$folder"/"$File"
+                echo "    accTitle: My title here" >> "$folder"/"$File"
+                echo "    accDescr: My description here" >> "$folder"/"$File"
+                echo "    A[Enter Chart Definition] --> B(Preview)" >> "$folder"/"$File"
+                ;;
+            plt)
+                echo "reset" >> "$folder"/"$File"
+                echo "set grid" >> "$folder"/"$File"
+                echo "#set yrange [:]" >> "$folder"/"$File"
+                echo "#set xrange [:]" >> "$folder"/"$File"
+                echo "set ylabel 'y'" >> "$folder"/"$File"
+                echo "set xlabel 'x'" >> "$folder"/"$File"
+                echo "#set logscale y" >> "$folder"/"$File"
+                echo "set term png" >> "$folder"/"$File"
+                echo "set output sprintf('"${outFile}"/${Filename}.png')" >> "$folder"/"$File"
+                echo "plot  lt rgb 'blue'" >> "$folder"/"$File"
+                echo "#plot "data.txt" using ($1):($2) title '1' lt rgb 'blue', "data.txt" using ($1):($3) title '2' lt rgb 'red', "data.txt" using ($1):($4) title '3' lt rgb 'green'" >> "$folder"/"$File"
+                echo "set term qt" >> "$folder"/"$File"
+                echo "replot" >> "$folder"/"$File"
+                ;;
+            *)
+                touch "$folder"/"$File"
+        esac
+        cat "$folder"/"$File" >> "$folder"/"$File".md
+    fi
     echo -e "\n\`\`\`"
 }
 
@@ -171,16 +213,18 @@ function tex-description(){
     echo -e "\n## Latex File\n"
     echo -e "*${File}*"
     echo -e "\`\`\`tex"
-    cat "$folder"/"$foldertex"/"${File}" >> "$folder"/"$foldertex"/"${filename}".md
+    cat "$folder"/"$foldertex"/"${File}" >> "$folder"/"$foldertex"/"${filename}".tex.md
     echo -e "\n\`\`\`"
     echo -e "\n*make.sh*"
     echo -e "\`\`\`bash"
     if [[ ! $moreCommands == "" ]]
     then
         echo -e "$moreCommands"
+        echo -e "noweb.py -R${File} BUNDLE > ${File} && lualatex -interaction=nonstopmode -shell-escape ${File} && lualatex -interaction=nonstopmode -shell-escape ${File} && notify-send -a \"Compilation of ${File}\" \"\" \"\$(date +\"%Y-%m-%d\") fertig\" && xdg-open ${filename}.pdf 2>/dev/null \n\`\`\`\n\n"
+    else
+        echo -e "noweb.py -R${File} ${filename}.tex.md > ${File} && lualatex -interaction=nonstopmode -shell-escape ${File} && lualatex -interaction=nonstopmode -shell-escape ${File} && notify-send -a \"Compilation of ${File}\" \"\" \"\$(date +\"%Y-%m-%d\") fertig\" && xdg-open ${filename}.pdf 2>/dev/null \n\`\`\`\n\n"
     fi
-    echo -e "noweb.py -R${File} ${filename}.md > ${File} && lualatex -interaction=nonstopmode -shell-escape ${File} && lualatex -interaction=nonstopmode -shell-escape ${File} && notify-send -a \"Compilation\" \"\" \"\$(date +\"%Y-%m-%d\") fertig\" && xdg-open ${filename}.pdf 2>/dev/null \n\`\`\`\n\n"
-    sed -i "s/additiontext/$additiontext/g" "$folder"/"$foldertex"/"${filename}".md
+    sed -i "s/additiontext/$additiontext/g" "$folder"/"$foldertex"/"${filename}".tex.md
     sed -i "s/additiontext/$additiontext/g" "$folder"/"$foldertex"/"${filename}".tex
 }
 
@@ -207,9 +251,9 @@ function ttex(){
 
     create-note "$folder" "$foldertex" "@LATEX $tags" "" "[[./$filename.md]]\n[[./$filename.tex]]\n[[./$filename.pdf]]" >> "$folder/$foldertex".md
 
-    markdown-description-program "${filename}" >> "$folder/$foldertex"/"${filename}".md
+    markdown-description-program "${filename}" >> "$folder/$foldertex"/"${filename}".tex.md
 
-    tex-description "$folder" "${File}" "$foldertex" >> "$folder"/"$foldertex"/"${filename}".md
+    tex-description "$folder" "${File}" "$foldertex" >> "$folder"/"$foldertex"/"${filename}".tex.md
 
 }
 

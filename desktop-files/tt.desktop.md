@@ -27,7 +27,7 @@ chmod u+x tt.desktop && ln -sf $(pwd)/tt.desktop ~/.local/share/kservices5/Servi
 [Desktop Entry]
 Type=Service
 X-KDE-ServiceTypes=KonqPopupMenu/Plugin
-MimeType=application/*;audio/*;video/*;image/*;inode/directory;message/rfc822;text/html;text/x-tex;
+MimeType=application/*;audio/*;video/*;image/*;inode/directory;message/rfc822;text/html;text/x-tex;text/*;
 Actions=maketxtnoyad;
 #maketxt;
 X-KDE-Priority=TopLevel

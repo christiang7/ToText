@@ -44,7 +44,7 @@ https://overflow.adminforge.de/exchange/unix/questions/431836/preserve-images-mo
 
 *make.sh*
 ```bash
-noweb.py -Rtt tt.md > tt && chmod u+x tt && echo 'tt' && notify-send -a "Compilation" "" "$(date +"%Y-%m-%d") fertig"
+noweb.py -Rtt tt.md > tt && chmod u+x tt && echo 'tt' && notify-send -a "Compilation tt" "" "$(date +"%Y-%m-%d") fertig"
 ```
 
 using ``tt`` function with the parameters as following
@@ -196,6 +196,12 @@ then
 	#elif [[ -n $extenspdf | -n $extensxopp || -z $extensmp4 || -z $extensmov || -z $extensflv || -z $extensmkv ]]
 	#then
 	#	echo "tue nichts"
+	elif [[ $extens == py || $extens == jl  || $extens == css || $extens == js || $extens == html || $extens == c || $extens == cpp || $extens == f || $extens == f90 || $extens == for || $extens == php || $extens == r || $extens == sh ]]
+	then
+		#file-description "$folder" "$File" "@Document $tags" "$source" "$additiontext" >> "$folder"/"$File".md
+		markdown-description-program "${File}" >> "$folder"/"${File}".md
+
+		template-code "$folder" "${File}" >> "$folder"/"${File}".md
 	else
 		file-description "$folder" "$File" "$tags" "$source" "$additiontext" "" "yes" >> "$folder"/"$File".md
 	fi

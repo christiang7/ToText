@@ -63,39 +63,43 @@ then
 	if [[ ${template} == "Programming" ]]
 	then
 		extens="$(get-extens ${langname})"
-		add="[[./"${filename}".${extens}]]\n"
+		add="[[./"${filename}".${extens}]]\n[[./"${filename}".${extens}.md]]\n"
 	fi
 
-	create-note "$folder" "$foldertex" "@LATEX $tags" "" "$add[[./$filename.md]]\n[[./$filename.tex]]\n[[./$filename.pdf]]" >> "$folder"/"$foldertex".md
+	create-note "$folder" "$foldertex" "@LATEX $tags" "" "$add[[./$filename.tex.md]]\n[[./$filename.tex]]\n[[./$filename.pdf]]" >> "$folder"/"$foldertex".md
 
-	markdown-description-program "${filename}" >> "$folder"/"$foldertex"/"${filename}".md
+	markdown-description-program "${filename}".tex >> "$folder"/"$foldertex"/"${filename}".tex.md
 
 	File="${filename}.tex"
 	case ${template} in
 		normal)
 		cp "$templateDir"/normal-template.tex "$folder"/"$foldertex"/"${File}"
 
-		tex-description "$folder" "${File}" "$foldertex" "$additiontext" >> "$folder"/"$foldertex"/"${filename}".md
+		tex-description "$folder" "${File}" "$foldertex" "$additiontext" >> "$folder"/"$foldertex"/"${filename}".tex.md
 			;;
         Rechnung)
 		cp "$templateDir"/Rechnung-template.tex "$folder"/"$foldertex"/"${File}"
 
-		tex-description "$folder" "${File}" "$foldertex" "$additiontext" >> "$folder"/"$foldertex"/"${filename}".md
+		tex-description "$folder" "${File}" "$foldertex" "$additiontext" >> "$folder"/"$foldertex"/"${filename}".tex.md
 
 			;;
 		Schreiben)
 		cp "$templateDir"/Schreiben-template.tex "$folder"/"$foldertex"/"${File}"
 
-		tex-description "$folder" "${File}" "$foldertex" "$additiontext" >> "$folder"/"$foldertex"/"${filename}".md
+		tex-description "$folder" "${File}" "$foldertex" "$additiontext" >> "$folder"/"$foldertex"/"${filename}".tex.md
 
             ;;
 		Programming)
 
 		cp "$templateDir"/programming-template.tex "$folder"/"$foldertex"/"${File}"
 
-		tex-description "$folder" "${File}" "$foldertex" "$additiontext\n\\\begin{minted}[linenos=true,bgcolor=lightgraycolor,numberblanklines=true,showspaces=false,breaklines=true]{${langname}}\n#*${filename}.${extens}}}\n\\\end{minted}" "#*run code}}" >> "$folder"/"$foldertex"/"${filename}".md
+		tex-description "$folder" "${File}" "$foldertex" "$additiontext\n\\\begin{minted}[linenos=true,bgcolor=lightgraycolor,numberblanklines=true,showspaces=false,breaklines=true]{${langname}}\n#*${filename}.${extens}}}\n\\\end{minted}" "cat ${filename}.${extens}.md ${filename}.tex.md > BUNDLE" >> "$folder"/"$foldertex"/"${filename}".tex.md
 
-		template-code "$folder/$foldertex" "${filename}.${extens}" "${filename}.tex" "yes" >> "$folder"/"$foldertex"/"${filename}".md
+		markdown-description-program "${filename}.${extens}" >> "$folder"/"$foldertex"/"${filename}".${extens}.md
+
+		#template-code "$folder/$foldertex" "${filename}.${extens}" "${filename}.tex" "yes" >> "$folder"/"$foldertex"/"${filename}".${extens}.md
+
+		template-code "$folder/$foldertex" "${filename}.${extens}" >> "$folder"/"$foldertex"/"${filename}".${extens}.md
 
 			;;
 	esac
@@ -108,4 +112,6 @@ then
 	fi
 
 fi
+
+notify-send -a "Created template $filename.tex" "" "$(date +"%Y-%m-%d") fertig"
 

@@ -59,4 +59,5 @@ then
 		template-calculation-project.sh "$1"
 		;;
 	esac
+	notify-send -a "template-calculation.sh created $File" "" "$(date +"%Y-%m-%d") fertig"
 fi
