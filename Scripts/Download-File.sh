@@ -26,7 +26,7 @@ abfrage=$(yad --title="Download File" --text="Something to add?" \
     --field="Tags:" \
     --field="Something more:":TXT \
     --field="Insert Headline:":CB \
-    "$origname" "$url" "" "" "Yes,No")
+    "$origname" "$url" "" "" "No,Yes")
 
 if [ ! $? -eq 1 ];
 then

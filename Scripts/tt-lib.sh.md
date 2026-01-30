@@ -690,7 +690,7 @@ function tex-description(){
         echo -e "noweb.py -R${File} ${filename}.tex.md > ${File} && lualatex -interaction=nonstopmode -shell-escape ${File} && lualatex -interaction=nonstopmode -shell-escape ${File} && notify-send -a \"Compilation of ${File}\" \"\" \"\$(date +\"%Y-%m-%d\") fertig\" && xdg-open ${filename}.pdf 2>/dev/null \n\`\`\`\n\n"
     fi
     echo -e "*${File}*"
-    echo -e "\`\`\`tex"
+    echo -e "\`\`\`latex"
     cat "$folder"/"$foldertex"/"${File}" >> "$folder"/"$foldertex"/"${filename}".tex.md
     echo -e "\n\`\`\`"
     sed -i "s/additiontext/$additiontext/g" "$folder"/"$foldertex"/"${filename}".tex.md

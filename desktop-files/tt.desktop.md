@@ -37,11 +37,11 @@ Terminal=true
 Name=tt
 Icon=video
 Terminal=true
-Exec=tt %f "" "" "" "no" 2>&1 | tee ~/.config/tt/log
+Exec=rm ~/.config/tt/log && tt %f "" "" "" "no" 2>&1 | tee ~/.config/tt/log
 
 [Desktop Action maketxt]
 Name=tt with yad
 Icon=video
 Terminal=true
-Exec=tt %f 2>&1 | tee ~/.config/tt/log
+Exec=rm ~/.config/tt/log && tt %f 2>&1 | tee ~/.config/tt/log
 ```

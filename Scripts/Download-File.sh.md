@@ -6,7 +6,7 @@ https://superuser.com/questions/1347359/how-can-i-get-the-extensions-of-a-file-b
 
 *make.sh*
 ```bash
-noweb.py -RDownload-File.sh Download-File.md > Download-File.sh && chmod u+x Download-File.sh && echo 'fertig'
+noweb.py -RDownload-File.sh Download-File.sh.md > Download-File.sh && chmod u+x Download-File.sh && echo 'fertig'
 ```
 
 *Download-File.sh*
@@ -39,7 +39,7 @@ abfrage=$(yad --title="Download File" --text="Something to add?" \
     --field="Tags:" \
     --field="Something more:":TXT \
     --field="Insert Headline:":CB \
-    "$origname" "$url" "" "" "Yes,No")
+    "$origname" "$url" "" "" "No,Yes")
 
 if [ ! $? -eq 1 ];
 then

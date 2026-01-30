@@ -48,15 +48,20 @@ fi
 session=$(yad --title="Insert websession?" --text="\nSave copied tabs\n" \
 	--form --width 500 --separator="~" --item-separator=","  \
 	--field="Filename:" \
-	"2»ws-$(date +"%Y-%m-%d")")
+    --field="Insert Headline:":CB \
+	"2»ws-$(date +"%Y-%m-%d")" "Yes,No")
 if [ ! $? -eq 1 ];
 then
    sessionfile=$(echo "$session" | cut -s -d "~" -f 1)
-
+   headline=$(echo "$session" | cut -s -d "~" -f 2)
+   
    sessionfile=$(cleanName "$sessionfile") 
    if [[ ! -e "$folder"/"$sessionfile".md ]]
    then
-      echo -e "==== $(date +"%Y-%m-%d") "
+      if [[ $headline == "Yes" ]];
+      then
+         echo -e "==== $(date +"%Y-%m-%d") "
+      fi
       echo "[[+$sessionfile]]"
       echo "====== $sessionfile ======" >> "$folder"/"$sessionfile".md
    fi

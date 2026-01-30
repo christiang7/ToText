@@ -11,41 +11,41 @@ Terminal=true
 Name=tt
 Icon=video
 Terminal=true
-Exec=tt %f "" "" "" "no" 2>&1 | tee ~/.config/tt/log
+Exec=rm ~/.config/tt/log && tt %f "" "" "" "no" 2>&1 | tee ~/.config/tt/log
 
 [Desktop Action Maketxt]
 Name=tt with yad
 Icon=video
 Terminal=true
-Exec=tt %f 2>&1 | tee ~/.config/tt/log
+Exec=rm ~/.config/tt/log && tt %f 2>&1 | tee ~/.config/tt/log
 
 [Desktop Action ttMoveFile]
 Name=ttm
 Icon=audio
 Terminal=true
-Exec=ttm %f 2>&1 | tee ~/.config/tt/log
+Exec=rm ~/.config/tt/log && ttm %f 2>&1 | tee ~/.config/tt/log
 
 [Desktop Action ttDeleteFile]
 Name=ttdel
 Icon=video
 Terminal=true
-Exec=ttdel %f 2>&1 | tee ~/.config/tt/log
+Exec=rm ~/.config/tt/log && ttdel %f 2>&1 | tee ~/.config/tt/log
 
 [Desktop Action DownloadFile]
 Name=Download-File
 Icon=video
 Terminal=true
-Exec=wgett %f 2>&1 | tee ~/.config/tt/log
+Exec=rm ~/.config/tt/log && Download-File.sh %f 2>&1 | tee ~/.config/tt/log
 
 [Desktop Action InsertWebsession]
 Name=Insert-Websession
 Icon=video
 Terminal=true
-Exec=insert-websession.sh %f 2>&1 | tee ~/.config/tt/log
+Exec=rm ~/.config/tt/log && insert-websession.sh %f 2>&1 | tee ~/.config/tt/log
 
 [Desktop Action NowebSync]
 Name=noweb-sync.sh
 Icon=video
 Terminal=true
-Exec=noweb-sync.sh %f 2>&1 | tee ~/.config/tt/log
+Exec=rm ~/.config/tt/log && noweb-sync.sh %f 2>&1 | tee ~/.config/tt/log
 

@@ -10,17 +10,17 @@ X-KDE-Submenu=tt-template
 Name=template-note.sh create note with folder
 Name[de]=template-note.sh erstelle Notiz mit Ordner
 Icon=audio
-Exec=template-note.sh %f 2>&1 | tee ~/.config/tt/log
+Exec=rm ~/.config/tt/log && template-note.sh %f 2>&1 | tee ~/.config/tt/log
 
 [Desktop Action template_tex]
 Name=template-tex.sh
 Icon=video
 Terminal=true
-Exec=template-tex.sh %f 2>&1 | tee ~/.config/tt/log
+Exec=rm ~/.config/tt/log && template-tex.sh %f 2>&1 | tee ~/.config/tt/log
 
 [Desktop Action template_calc]
 Name=template-calc or program
 Icon=video
 Terminal=true
-Exec=template-calculation.sh %f 2>&1 | tee ~/.config/tt/log
+Exec=rm ~/.config/tt/log && template-calculation.sh %f 2>&1 | tee ~/.config/tt/log
 
