@@ -196,7 +196,7 @@ then
 	#elif [[ -n $extenspdf | -n $extensxopp || -z $extensmp4 || -z $extensmov || -z $extensflv || -z $extensmkv ]]
 	#then
 	#	echo "tue nichts"
-	elif [[ $extens == py || $extens == jl  || $extens == css || $extens == js || $extens == html || $extens == c || $extens == cpp || $extens == f || $extens == f90 || $extens == for || $extens == php || $extens == r || $extens == sh ]]
+	elif [[ $extens == py || $extens == jl  || $extens == css || $extens == js || $extens == html || $extens == c || $extens == cpp || $extens == f || $extens == f90 || $extens == for || $extens == php || $extens == r || $extens == sh  || $extens == yml ]]
 	then
 		#file-description "$folder" "$File" "@Document $tags" "$source" "$additiontext" >> "$folder"/"$File".md
 		markdown-description-program "${File}" >> "$folder"/"${File}".md
