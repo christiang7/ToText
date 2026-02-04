@@ -27,7 +27,7 @@ chmod u+x tt-tools-template.desktop && ln -sf $(pwd)/tt-tools-template.desktop ~
 Type=Service
 X-KDE-ServiceTypes=KonqPopupMenu/Plugin
 MimeType=inode/directory;
-Actions=template_note;template_tex;template_calc;
+Actions=template_note;template_tex;template_calc;template_apply;
 X-KDE-Priority=TopLevel
 X-KDE-Submenu=tt-template
 
@@ -48,5 +48,11 @@ Name=template-calc or program
 Icon=video
 Terminal=true
 Exec=rm ~/.config/tt/log && template-calculation.sh %f 2>&1 | tee ~/.config/tt/log
+
+[Desktop Action template_apply]
+Name=template-apply
+Icon=video
+Terminal=true
+Exec=rm ~/.config/tt/log && template-apply.sh %f 2>&1 | tee ~/.config/tt/log
 
 ```
