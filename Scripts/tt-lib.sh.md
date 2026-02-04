@@ -685,7 +685,7 @@ function tex-description(){
     if [[ ! $moreCommands == "" ]]
     then
         echo -e "$moreCommands"
-        echo -e "noweb.py -R${File} BUNDLE > ${File} && lualatex -interaction=nonstopmode -shell-escape ${File} && lualatex -interaction=nonstopmode -shell-escape ${File} && notify-send -a \"Compilation of ${File}\" \"\" \"\$(date +\"%Y-%m-%d\") fertig\" && xdg-open ${filename}.pdf 2>/dev/null \n\`\`\`\n\n"
+        echo -e "noweb.py -R${File} MAKE > ${File} && lualatex -interaction=nonstopmode -shell-escape ${File} && lualatex -interaction=nonstopmode -shell-escape ${File} && notify-send -a \"Compilation of ${File}\" \"\" \"\$(date +\"%Y-%m-%d\") fertig\" && xdg-open ${filename}.pdf 2>/dev/null \n\`\`\`\n\n"
     else
         echo -e "noweb.py -R${File} ${filename}.tex.md > ${File} && lualatex -interaction=nonstopmode -shell-escape ${File} && lualatex -interaction=nonstopmode -shell-escape ${File} && notify-send -a \"Compilation of ${File}\" \"\" \"\$(date +\"%Y-%m-%d\") fertig\" && xdg-open ${filename}.pdf 2>/dev/null \n\`\`\`\n\n"
     fi

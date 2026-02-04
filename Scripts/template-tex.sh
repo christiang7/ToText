@@ -93,7 +93,7 @@ then
 
 		cp "$templateDir"/programming-template.tex "$folder"/"$foldertex"/"${File}"
 
-		tex-description "$folder" "${File}" "$foldertex" "$additiontext\n\\\begin{minted}[linenos=true,bgcolor=lightgraycolor,numberblanklines=true,showspaces=false,breaklines=true]{${langname}}\n#*${filename}.${extens}}}\n\\\end{minted}" "cat ${filename}.${extens}.md ${filename}.tex.md > BUNDLE" >> "$folder"/"$foldertex"/"${filename}".tex.md
+		tex-description "$folder" "${File}" "$foldertex" "$additiontext\n\\\begin{minted}[linenos=true,bgcolor=lightgraycolor,numberblanklines=true,showspaces=false,breaklines=true]{${langname}}\n#*${filename}.${extens}}}\n\\\end{minted}" "cat *.md > MAKE" >> "$folder"/"$foldertex"/"${filename}".tex.md
 
 		markdown-description-program "${filename}.${extens}" >> "$folder"/"$foldertex"/"${filename}".${extens}.md
 
