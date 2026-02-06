@@ -107,7 +107,8 @@ then
 	then
 		cd "$foldertex"
 		git init
-		git add *
+		echo -e "*.log\n*.out\nMAKE" > .gitignore
+		git add * .gitignore
 		git commit -a -m "init git"
 	fi
 
