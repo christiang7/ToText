@@ -8,22 +8,19 @@
 @startwbs
 + tasks
  + Backlog
-  - [ ] Anpassung bei beliebigen Dateinamen mit doppelten oder keiner Dateiendung
-  - [ ] rewrite everything in english
-  - [ ] delete not used scripts 
-  - [ ] write blog post for [website]()
-  - [ ] using builtin `shell options` for [scripts]()
-  - [ ] rewrite [tt-lib.sh]() with [subshell]() for optional output
-  - [ ] latex `template files` in a separate folder [templates]() 
-  - [ ] Terminalabkürzung einführen für kate mit Journal öffnen
+  + [ ] Anpassung bei beliebigen Dateinamen mit doppelten oder keiner Dateiendung
+  + [ ] rewrite everything in english
+  + [ ] write blog post for [website]()
+  + [ ] using builtin `shell options` for [scripts]()
+  + [ ] rewrite [tt-lib.sh]() with [subshell]() for optional output
+  + [ ] Terminalabkürzung einführen für kate mit Journal öffnen
  + Doing (2)
-  - [ ] write [documentation]()
-   - [ ] make overview page about used tools,\n use for structuring the desktop files
-	- [ ] describe main application 
-	 - [ ] which [script]() do what
-	- [ ] explain possible [workflows]() with used [scripts]()
-   - [x] [install instructions] in [README]()
-	- [x] make [script]() for that
+  + [ ] latex `template files` in a separate folder [templates]() 
+  + [ ] write [documentation]()
+   + [ ] make overview page about used tools,\n use for structuring the desktop files
+    + [ ] describe main application 
+     + [ ] which [script]() do what
+    + [ ] explain possible [workflows]() with used [scripts]()
 @endwbs
 ```
 
@@ -35,26 +32,31 @@ https://www.dev-insider.de/bash-scripting-mit-optionen-und-parametern-a-4af6b57c
 Adding arguments and options to your Bash scripts  
 https://www.redhat.com/en/blog/arguments-options-bash-scripts  
 
+
+  + [X] delete not used scripts 
+  + [X] [install instructions] in [README]()
+   + [X] make [script]() for that
+
 ### 2025-03-05
-  - [x] substitute `log file` location with `~` in [.desktop files]()
+  - [X] substitute `log file` location with `~` in [.desktop files]()
 
 ### 2025-03-04
-  - [x] [tt]() with real path of file not the terminal path, `realpath` \n program not working, using the real path of the [.desktop]() file with `tt $f`
+  - [X] [tt]() with real path of file not the terminal path, `realpath` \n program not working, using the real path of the [.desktop]() file with `tt $f`
 
 ### 2025-02-25
-  - [x] make [website]()
-  - [x] insert in [scripts]() the `author` variable from [config file]()
-   - [x] insert in [example-config]()
+  - [X] make [website]()
+  - [X] insert in [scripts]() the `author` variable from [config file]()
+   - [X] insert in [example-config]()
 
 ### 2025-02-17
-- [x] use websession for [tabs2topics]() like in [save-websession.sh]()
-	- [x] apply to new note with tabs
-- [x] save and open web session with [zim-firefox-session]()
-	- [x] [script]() for save a web session in a [markdown file]()
-	- [x] rewrite [zim-firefox-session]() for opening saved sessions from file, not selection
-	- [x] option for copied and a file
-	- [x] renamed [zim-firefox-session]() to [open-websession]()
-	- [x] make a [.desktop file]() for using in dolphin 
+- [X] use websession for [tabs2topics]() like in [save-websession.sh]()
+	- [X] apply to new note with tabs
+- [X] save and open web session with [zim-firefox-session]()
+	- [X] [script]() for save a web session in a [markdown file]()
+	- [X] rewrite [zim-firefox-session]() for opening saved sessions from file, not selection
+	- [X] option for copied and a file
+	- [X] renamed [zim-firefox-session]() to [open-websession]()
+	- [X] make a [.desktop file]() for using in dolphin 
 
 ### 2025-02-16
 - [x] [zim-insert-picture]() combined with [zim-insert-sketch]()

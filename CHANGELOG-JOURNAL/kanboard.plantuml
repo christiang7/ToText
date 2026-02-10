@@ -1,18 +1,17 @@
 @startwbs
 + tasks
  + Backlog
-  - [ ] rewrite everything in english
-  - [ ] delete not used scripts
-  - [ ] write blog post for [website]()
-  - [ ] using builtin `shell options` for [scripts]()
-  - [ ] rewrite [tt-lib.sh]() with [subshell]() for optional output
-  - [ ] latex `template files` in a separate folder [templates]()
+  + [ ] Anpassung bei beliebigen Dateinamen mit doppelten oder keiner Dateiendung
+  + [ ] rewrite everything in english
+  + [ ] write blog post for [website]()
+  + [ ] using builtin `shell options` for [scripts]()
+  + [ ] rewrite [tt-lib.sh]() with [subshell]() for optional output
+  + [ ] Terminalabkürzung einführen für kate mit Journal öffnen
  + Doing (2)
-  - [ ] write [documentation]()
-   - [ ] make overview page about used tools,\n use for structuring the desktop files
-    - [ ] describe main application
-     - [ ] which [script]() do what
-    - [ ] explain possible [workflows]() with used [scripts]()
-   - [x] [install instructions] in [README]()
-    - [x] make [script]() for that
+  + [ ] latex `template files` in a separate folder [templates]()
+  + [ ] write [documentation]()
+   + [ ] make overview page about used tools,\n use for structuring the desktop files
+    + [ ] describe main application
+     + [ ] which [script]() do what
+    + [ ] explain possible [workflows]() with used [scripts]()
 @endwbs

@@ -16,6 +16,11 @@ if [[ ! $yt == "" ]];
 then
 	#links2 -dump "$website" &
 	profile="youtube"
+	playlist=$(echo "$website" | cut -s -d "&" -f 1)
+	if [[ ! $playlist == "" ]];
+	then
+		website="$playlist"
+	fi
 	#yt-dlp --get-description ${website}
 	#website="https://iv.melmac.space/watch?v="
 elif [[ ! $alttwitch == "" ]];
