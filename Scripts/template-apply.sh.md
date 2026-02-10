@@ -84,15 +84,16 @@ abfrage=$(yad --title="New Apply" --text="Necessary Informations:" \
 	--field="Applyname" \
 	--field="Author":CBE \
 	--field="Tags":CBE \
+	--field="Research Statement":CB \
 	--field="Git init?":CB \
 	--field="Description":TXT \
-	"" "$author,Internet" ",physic,math" "Yes,No" "$additiontext")
+	"" "$author,Internet" ",physic,math" "No,Yes" "Yes,No" "$additiontext")
 if [ ! $? -eq 1 ];
 then
 	Applyname=$(echo $abfrage | cut -s -d "~" -f 1)
-	langname=$(echo $abfrage | cut -s -d "~" -f 2)
-	source=$(echo $abfrage | cut -s -d "~" -f 3)
-	tags=$(echo $abfrage | cut -s -d "~" -f 4)
+	source=$(echo $abfrage | cut -s -d "~" -f 2)
+	tags=$(echo $abfrage | cut -s -d "~" -f 3)
+	researchstat=$(echo $abfrage | cut -s -d "~" -f 4)
 	gitinit=$(echo $abfrage | cut -s -d "~" -f 5)
 	additiontext=$(echo $abfrage | cut -s -d "~" -f 6)
 
@@ -113,8 +114,11 @@ then
     cp -r "$templateDir"/1»Bewerbungen/CV_tex "$folder"/"$Apply"/CV_tex
     
     cp -r "$templateDir"/1»Bewerbungen/Lebenslauf_tex "$folder"/"$Apply"/Lebenslauf_tex
-
-    cp -r "$templateDir"/1»Bewerbungen/Research_Statement_tex "$folder"/"$Apply"/Research_Statement_tex
+    
+    if [[ $researchstat == "Yes" ]];
+	then
+        cp -r "$templateDir"/1»Bewerbungen/Research_Statement_tex "$folder"/"$Apply"/Research_Statement_tex
+	fi
 
     ln  -sf "$templateDir"/1»Bewerbungen/Attachments "$folder"/"$Apply"/Attachments
 
