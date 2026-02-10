@@ -1,7 +1,7 @@
 # Download-Music
 Created Dienstag [2022:10:18]()
 
-- [x] **Download-Music**
+- [X] **Download-Music**
 
 For dumping the website, but it is not good formated
 ```bash
@@ -13,7 +13,7 @@ links2 -dump https://kalax.bandcamp.com/track/confie-hold-on-feat-francci
 
 *make.sh*
 ```bash
-noweb.py -RDownload-Music.sh Download-Music.md > Download-Music.sh && echo "Download-Music.sh" && date
+noweb.py -RDownload-Music.sh Download-Music.sh.md > Download-Music.sh && echo "Download-Music.sh" && date
 ```
 
 ### Download-Music.sh
@@ -66,7 +66,7 @@ then
     file-description "$musicDir" "$File" "@Musik $tags" "$source" "$text" >> "$musicDir"/"$File".md
 fi
 
-notify-send -a "Music Download finished" "Music $File" "$(cat ~/.config/tt/log)"
+notify-send -a "Music Download finished" "Music $File" ""
 #sleep 5
 ```
 

@@ -42,6 +42,8 @@ chmod u+x template-apply.sh && ln -sf $(pwd)/template-apply.sh ~/.local/bin/temp
 
 #*request}}
 
+
+
 ```
 
 ### Preamble
@@ -107,17 +109,16 @@ then
 
     template-tex.sh "$folder/$Apply" "no" "cover-letter" "Schreiben"
 
-    #cp "$templateDir"/Research_Statement_tex/general-preamble.tex "$folder"/"$Apply"/Research_Statement_tex/general-preamble.tex
-    
-    #cp "$templateDir"/Research_Statement_tex/color-style.tex "$folder"/"$Apply"/Research_Statement_tex/color-style.tex
-    
     cp -r "$templateDir"/1»Bewerbungen/CV_tex "$folder"/"$Apply"/CV_tex
+    cp -r "$templateDir"/1»Bewerbungen/CV_tex.md "$folder"/"$Apply"/CV_tex.md
     
     cp -r "$templateDir"/1»Bewerbungen/Lebenslauf_tex "$folder"/"$Apply"/Lebenslauf_tex
+    cp -r "$templateDir"/1»Bewerbungen/Lebenslauf_tex.md "$folder"/"$Apply"/Lebenslauf_tex.md
     
     if [[ $researchstat == "Yes" ]];
 	then
         cp -r "$templateDir"/1»Bewerbungen/Research_Statement_tex "$folder"/"$Apply"/Research_Statement_tex
+        cp -r "$templateDir"/1»Bewerbungen/Research_Statement_tex.md "$folder"/"$Apply"/Research_Statement_tex.md
 	fi
 
     ln  -sf "$templateDir"/1»Bewerbungen/Attachments "$folder"/"$Apply"/Attachments
@@ -126,6 +127,7 @@ then
 	then
 		#*git init}}
 	fi
+	notify-send -a "Created apply template $Apply" "" "$(date +"%Y-%m-%d") fertig"
 fi
 ```
 
