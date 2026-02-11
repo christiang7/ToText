@@ -102,9 +102,9 @@ function markdown-description-program(){
     echo -e "Created $(date +%Y-%m-%d)\n"
     echo -e "\n## Description"
     echo -e "\n## Journal"
-    echo -e " - [x] Backlog"
+    echo -e " - [X] Backlog"
     echo -e "    - [ ] "
-    echo -e " - [x] Doing"
+    echo -e " - [X] Doing"
 }
 
 function template-code(){
