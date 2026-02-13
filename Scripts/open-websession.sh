@@ -27,9 +27,6 @@ then
             element="$(echo "${text}" | sed "${i}q;d")"
         fi
         #echo "$element"
-        firstcharacters=${element:0:4}
-        #echo $firstcharacters
-        #echo $lines
         if [[ "${element:0:4}" == "http" ]]
         then
             firefox --new-tab "$element"

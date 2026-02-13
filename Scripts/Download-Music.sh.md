@@ -13,7 +13,7 @@ links2 -dump https://kalax.bandcamp.com/track/confie-hold-on-feat-francci
 
 *make.sh*
 ```bash
-noweb.py -RDownload-Music.sh Download-Music.sh.md > Download-Music.sh && echo "Download-Music.sh" && date
+noweb.py -RDownload-Music.sh Download-Music.sh.md > Download-Music.sh && echo "Download-Music.sh" && date && notify-send -a "Compilation of Download-Music.sh" "" "$(date +"%Y-%m-%d") fertig"
 ```
 
 ### Download-Music.sh

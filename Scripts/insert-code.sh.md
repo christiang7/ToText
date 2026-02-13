@@ -19,7 +19,7 @@ procedure
 
 *make.sh*
 ```bash
-noweb.py -Rinsert-code.sh insert-code.sh.md > insert-code.sh && echo 'insert-code.sh' && date 
+noweb.py -Rinsert-code.sh insert-code.sh.md > insert-code.sh && echo 'insert-code.sh' && date  && notify-send -a "Compilation of insert-code.sh" "" "$(date +"%Y-%m-%d") fertig"
 ```
 
 

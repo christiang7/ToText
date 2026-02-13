@@ -21,7 +21,7 @@ https://overflow.adminforge.de/exchange/unix/questions/175648/use-config-file-fo
 
 *make.sh*
 ```bash
-noweb.py -Rconfig.sh config.sh.md > config.sh && echo 'config.sh' && date
+noweb.py -Rconfig.sh config.sh.md > config.sh && echo 'config.sh' && date && notify-send -a "Compilation of config.sh" "" "$(date +"%Y-%m-%d") fertig"
 ```
 
 

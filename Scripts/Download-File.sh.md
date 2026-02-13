@@ -6,7 +6,7 @@ https://superuser.com/questions/1347359/how-can-i-get-the-extensions-of-a-file-b
 
 *make.sh*
 ```bash
-noweb.py -RDownload-File.sh Download-File.sh.md > Download-File.sh && chmod u+x Download-File.sh && echo 'fertig'
+noweb.py -RDownload-File.sh Download-File.sh.md > Download-File.sh && chmod u+x Download-File.sh && echo 'fertig' && notify-send -a "Compilation of Download-File.sh" "" "$(date +"%Y-%m-%d") fertig"
 ```
 
 *Download-File.sh*

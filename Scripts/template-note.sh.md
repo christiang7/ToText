@@ -7,7 +7,7 @@ Create note with a folder
 
 *make.sh*
 ```bash
-noweb.py -Rtemplate-note.sh template-note.sh.md > template-note.sh  && echo 'fertig'
+noweb.py -Rtemplate-note.sh template-note.sh.md > template-note.sh  && echo 'fertig' && notify-send -a "Compilation of template-note.sh" "" "$(date +"%Y-%m-%d") fertig"
 ```
 
 ```bash

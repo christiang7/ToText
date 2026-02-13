@@ -5,7 +5,7 @@ Playing videos from websites with used tools mpv and yt-dlp
 
 *make.sh*
 ```bash
-noweb.py -Rmpvv mpvv.md > mpvv && echo 'mpvv' && date
+noweb.py -Rmpvv mpvv.md > mpvv && echo 'mpvv' && date && notify-send -a "Compilation of mpvv" "" "$(date +"%Y-%m-%d") fertig"
 ```
 
 

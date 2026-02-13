@@ -32,7 +32,7 @@ https://ostechnix.com/zenity-create-gui-dialog-boxes-in-bash-scripts/
 
 *make.sh*
 ```bash
-noweb.py -Rtt-change tt-change.md > tt-change && date
+noweb.py -Rtt-change tt-change.md > tt-change && date && notify-send -a "Compilation of tt-change" "" "$(date +"%Y-%m-%d") fertig"
 ```
 
 ```bash

@@ -17,7 +17,7 @@ math
 
 *make.sh*
 ```bash
-noweb.py -Rtemplate-calculation-project.sh template-calculation-project.sh.md > template-calculation-project.sh && date
+noweb.py -Rtemplate-calculation-project.sh template-calculation-project.sh.md > template-calculation-project.sh && date && notify-send -a "Compilation of template-calculation-project.sh" "" "$(date +"%Y-%m-%d") fertig"
 ```
 
 

@@ -20,7 +20,7 @@ yt-dlp --no-mtime --exec 'ttdown {} '[HREF]' '[SELECTIONTEXT]'' -o "$outputDir/%
 
 *make.sh*
 ```bash
-noweb.py -RDownload-Video.sh Download-Video.md > Download-Video.sh && echo "Download-Video.sh" && date
+noweb.py -RDownload-Video.sh Download-Video.sh.md > Download-Video.sh && echo "Download-Video.sh" && date && notify-send -a "Compilation of Download-Video.sh" "" "$(date +"%Y-%m-%d") fertig"
 ```
 
 ```bash

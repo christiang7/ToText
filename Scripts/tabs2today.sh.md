@@ -8,7 +8,7 @@ Created Dienstag [2022:10:25]()
 
 *make.sh*
 ```bash
-noweb.py -Rtabs2today.sh tabs2today.sh.md > tabs2today.sh && echo 'fertig'
+noweb.py -Rtabs2today.sh tabs2today.sh.md > tabs2today.sh && echo 'fertig' && notify-send -a "Compilation of tabs2today.sh" "" "$(date +"%Y-%m-%d") fertig"
 ```
 
 ### tabs2today.sh

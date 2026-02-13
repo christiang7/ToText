@@ -23,7 +23,7 @@ https://phoenixnap.com/kb/bash-math
 
 *make.sh*
 ```bash
-noweb.py -Rnoweb-sync.sh noweb-sync.sh.md > noweb-sync.sh && echo 'noweb-sync.sh' && notify-send -a "Compilation" "" "$(date +"%Y-%m-%d") fertig" 
+noweb.py -Rnoweb-sync.sh noweb-sync.sh.md > noweb-sync.sh && echo 'noweb-sync.sh' && notify-send -a "Compilation of noweb-sync.sh" "" "$(date +"%Y-%m-%d") fertig" 
 ```
 
 

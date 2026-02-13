@@ -57,7 +57,7 @@ then
         cp -r "$templateDir"/1»Bewerbungen/Research_Statement_tex.md "$folder"/"$Apply"/Research_Statement_tex.md
 	fi
 
-    ln  -sf "$templateDir"/1»Bewerbungen/Attachments "$folder"/"$Apply"/Attachments
+    #ln  -sf "$templateDir"/1»Bewerbungen/Attachments "$folder"/"$Apply"/Attachments
 
     if [[ $gitinit == "Yes" ]];
 	then

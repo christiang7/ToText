@@ -15,7 +15,7 @@ Created 2025-12-02
 
 *make.sh*
 ```bash
-noweb.py -Rinsert-screenshot.sh insert-screenshot.sh.md > insert-screenshot.sh && echo 'insert-screenshot.sh' && notify-send -a "Compilation" "" "$(date +"%Y-%m-%d") fertig" 
+noweb.py -Rinsert-screenshot.sh insert-screenshot.sh.md > insert-screenshot.sh && echo 'insert-screenshot.sh' && notify-send -a "Compilation of insert-screenshot.sh" "" "$(date +"%Y-%m-%d") fertig"
 chmod u+x insert-screenshot.sh && ln -sf $(pwd)/insert-screenshot.sh ~/.local/bin/insert-screenshot.sh && echo 'fertig'
 ```
 

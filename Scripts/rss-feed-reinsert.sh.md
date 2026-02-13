@@ -17,7 +17,7 @@ There are options to choose in which place the tabs should be stored.
 
 *make.sh*
 ```bash
-noweb.py -Rrss-feed-reinsert.sh rss-feed-reinsert.md > rss-feed-reinsert.sh && echo 'fertig'
+noweb.py -Rrss-feed-reinsert.sh rss-feed-reinsert.sh.md > rss-feed-reinsert.sh && echo 'fertig' && notify-send -a "Compilation of rss-feed-reinsert.sh" "" "$(date +"%Y-%m-%d") fertig"
 ```
 
 

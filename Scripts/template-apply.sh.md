@@ -24,7 +24,7 @@ procedure
 
 *make.sh*
 ```bash
-noweb.py -Rtemplate-apply.sh template-apply.sh.md > template-apply.sh && echo 'template-apply.sh' && date 
+noweb.py -Rtemplate-apply.sh template-apply.sh.md > template-apply.sh && echo 'template-apply.sh' && date && notify-send -a "Compilation of template-apply.sh" "" "$(date +"%Y-%m-%d") fertig"
 ```
 
 
@@ -121,7 +121,7 @@ then
         cp -r "$templateDir"/1»Bewerbungen/Research_Statement_tex.md "$folder"/"$Apply"/Research_Statement_tex.md
 	fi
 
-    ln  -sf "$templateDir"/1»Bewerbungen/Attachments "$folder"/"$Apply"/Attachments
+    #ln  -sf "$templateDir"/1»Bewerbungen/Attachments "$folder"/"$Apply"/Attachments
 
     if [[ $gitinit == "Yes" ]];
 	then

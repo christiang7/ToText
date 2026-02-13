@@ -15,7 +15,7 @@ Created [2024-10-09](2024-10-09)
 
 *make.sh*
 ```bash
-noweb.py -Rtt-change-format.sh tt-change-format.sh.md > tt-change-format.sh && echo 'fertig'
+noweb.py -Rtt-change-format.sh tt-change-format.sh.md > tt-change-format.sh && echo 'fertig' && notify-send -a "Compilation of tt-change-format.sh" "" "$(date +"%Y-%m-%d") fertig"
 ```
 
 ### tt-change-format.sh

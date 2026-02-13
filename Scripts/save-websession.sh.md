@@ -14,7 +14,7 @@ Created [2025-02-17]()
 
 *make.sh*
 ```bash
-noweb.py -Rsave-websession.sh save-websession.sh.md > save-websession.sh && echo 'save-websession.sh' && date 
+noweb.py -Rsave-websession.sh save-websession.sh.md > save-websession.sh && echo 'save-websession.sh' && date && notify-send -a "Compilation of save-websession.sh" "" "$(date +"%Y-%m-%d") fertig"
 ```
 
 

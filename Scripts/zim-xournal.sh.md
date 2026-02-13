@@ -13,7 +13,7 @@ Created Mittwoch [2022:06:29]()
 
 *make.sh*
 ```bash
-noweb.py -Rzim-xournal.sh zim-xournal.md > zim-xournal.sh && echo 'fertig'
+noweb.py -Rzim-xournal.sh zim-xournal.sh.md > zim-xournal.sh && echo 'fertig' && notify-send -a "Compilation of zim-xournal.sh" "" "$(date +"%Y-%m-%d") fertig"
 ```
 
 

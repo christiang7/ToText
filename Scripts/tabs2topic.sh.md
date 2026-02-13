@@ -35,7 +35,7 @@ https://www.linuxteck.com/sed-commands-in-linux/
 
 *make.sh*
 ```bash
-noweb.py -Rtabs2topic.sh tabs2topic.sh.md > tabs2topic.sh && echo 'tabs2topic.sh' && date
+noweb.py -Rtabs2topic.sh tabs2topic.sh.md > tabs2topic.sh && echo 'tabs2topic.sh' && date && notify-send -a "Compilation of tabs2topic.sh" "" "$(date +"%Y-%m-%d") fertig"
 ```
 
 ### tabs2topic.sh

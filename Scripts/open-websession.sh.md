@@ -25,7 +25,7 @@ https://ao.bloat.cat/questions/22101778/how-to-preserve-line-breaks-when-storing
 
 *make.sh*
 ```bash
-noweb.py -Ropen-websession.sh open-websession.sh.md > open-websession.sh && date
+noweb.py -Ropen-websession.sh open-websession.sh.md > open-websession.sh && date && notify-send -a "Compilation of open-websession.sh" "" "$(date +"%Y-%m-%d") fertig"
 ```
 
 
