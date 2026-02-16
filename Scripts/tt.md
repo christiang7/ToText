@@ -145,12 +145,12 @@ then
 	elif [[ jpg == $extens || PNG == $extens || JPEG == $extens || png == $extens || webp == $extens || jpeg == $extens || avif == $extens ]] && [[ -z $extenspdf && -z $extensxopp && -z $extensmp4 && -z $extensmov && -z $extensflv && -z $extensmkv ]]
 	then
 		# || tif == $extens || tiff == $extens
-		extens=avif
 		if [[ avif != $extens ]]
 		then
 			convert "$folder"/"$File" "$folder"/"$Filename".avif
 			touch -r "$folder"/"$File" "$folder"/"$Filename".avif # make the original modification time
 		fi
+		extens=avif
 		ttpic "$folder" "$Filename".avif "$source" "$tags" "$additiontext"  >> "$folder"/"$Filename".avif.md
 		if [[ $origpic == "No" ]];
 		then
