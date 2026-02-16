@@ -146,8 +146,11 @@ then
 	then
 		# || tif == $extens || tiff == $extens
 		extens=avif
-		convert "$folder"/"$File" "$folder"/"$Filename".avif
-		touch -r "$folder"/"$File" "$folder"/"$Filename".avif # make the original modification time
+		if [[ avif != $extens ]]
+		then
+			convert "$folder"/"$File" "$folder"/"$Filename".avif
+			touch -r "$folder"/"$File" "$folder"/"$Filename".avif # make the original modification time
+		fi
 		ttpic "$folder" "$Filename".avif "$source" "$tags" "$additiontext"  >> "$folder"/"$Filename".avif.md
 		if [[ $origpic == "No" ]];
 		then
