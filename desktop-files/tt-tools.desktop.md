@@ -31,7 +31,7 @@ MimeType=application/*;audio/*;video/*;image/*;inode/directory;message/rfc822;te
 Actions=ttMoveFile;ttDeleteFile;Maketxt;DownloadFile;InsertWebsession;NowebSync;CopyScreenshot;
 X-KDE-Priority=TopLevel
 X-KDE-Submenu=tt-tools
-Terminal=true
+Terminal=false
 
 [Desktop Action maketxtnoyad]
 Name=tt
@@ -72,7 +72,7 @@ Exec=rm ~/.config/tt/log && insert-websession.sh %f 2>&1 | tee ~/.config/tt/log
 [Desktop Action CopyScreenshot]
 Name=Copy-Screenshot
 Icon=video
-Terminal=true
+Terminal=false
 Exec=rm ~/.config/tt/log && copy-screenshot.sh %f 2>&1 | tee ~/.config/tt/log
 
 [Desktop Action NowebSync]
