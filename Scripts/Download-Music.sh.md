@@ -20,6 +20,7 @@ noweb.py -RDownload-Music.sh Download-Music.sh.md > Download-Music.sh && echo "D
 *Download-Music.sh*
 ```bash
 #!/bin/bash
+eval "$(~/Programme/miniforge3/bin/conda shell.bash hook)"
 source config.sh; # load the config library functions
 source tt-lib.sh
 echo "$1"
@@ -47,8 +48,8 @@ author="$(config_get author)"
 
 abfrage=$(yad --title="Create text file" --text="Something to add?" \
 	--form --width 500 --separator="~" --item-separator=","  \
-	--field="Anderer Name:" \
-	--field="Quelle:":CBE \
+	--field="Anderer Name" \
+	--field="Quelle":CBE \
 	--field="Tags" \
 	--field="Weiteres":TXT \
 	"$name" "$website,Internet,$author" "$tags" "$text")

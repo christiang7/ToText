@@ -48,6 +48,7 @@ then
 	additiontext=$(echo $abfrage | cut -s -d "~" -f 4)
 
     create-note "${folder}" "${name}" "$tags" "$source" "$additiontext" >> "${folder}"/"${name}".md
+    notify-send -a "Note created" "" "$(date +"%Y-%m-%d") fertig"
 fi
 ```
 

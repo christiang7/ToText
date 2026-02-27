@@ -12,6 +12,7 @@ noweb.py -RDownload-File.sh Download-File.sh.md > Download-File.sh && chmod u+x 
 *Download-File.sh*
 ```bash
 #!/bin/bash
+eval "$(~/Programme/miniforge3/bin/conda shell.bash hook)"
 source config.sh; # load the config library functions
 #journalDir="$(config_get journalDir)"
 source tt-lib.sh;
@@ -34,12 +35,12 @@ cd $folder
 
 abfrage=$(yad --title="Download File" --text="Something to add?" \
     --form --separator="~" --item-separator="," \
-    --field="Another name:" \
-    --field="Source:" \
-    --field="Tags:" \
-    --field="Something more:":TXT \
-    --field="Insert Headline:":CB \
-    "$origname" "$url" "" "" "No,Yes")
+    --field="Another name" \
+    --field="Source" \
+    --field="Tags" \
+    --field="Something more":TXT \
+    --field="- Insert Headline":CHK \
+    "$origname" "$url" "" "" "FALSE")
 
 if [ ! $? -eq 1 ];
 then
@@ -54,6 +55,10 @@ then
     File=$(wget --no-use-server-timestamps --user-agent="Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:88.0)" --no-check-certificate --inet4-only "$url" 2>&1 | tee /dev/tty | grep Wird | cut -d ' ' -f 3 | sed "s/‘//g" | sed "s/’//g")
     #echo $File
     extens=$(file -b --extension "$File" | cut -d / -f 1)
+    if [ "$extens" == "???" ];
+    then
+        extens=${File##*.}
+    fi
     if [ "$Newname" == ""  ];
     then
         Newname="$origname"
@@ -65,7 +70,7 @@ then
     File="$Newname".$extens
 
     tt "${File}" "$tags" "$source" "$additiontext" "no"
-    if [[ $headline == "Yes" ]];
+    if [[ $headline == TRUE ]];
     then
         echo -e "==== $(date +"%Y-%m-%d") "
     fi

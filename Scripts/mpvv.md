@@ -15,6 +15,7 @@ noweb.py -Rmpvv mpvv.md > mpvv && echo 'mpvv' && date && notify-send -a "Compila
 *mpvv*
 ```bash
 #!/bin/bash
+eval "$(~/Programme/miniforge3/bin/conda shell.bash hook)"
 source config.sh; # load the config library functions
 journalPage="$(config_get journalPage)"
 tempInputDir="$(config_get tempInputDir)"
@@ -38,6 +39,7 @@ then
 		website="$playlist"
 	fi
 	#yt-dlp --get-description ${website}
+	#yt-dlp -F ${website}
 	#website="https://iv.melmac.space/watch?v="
 elif [[ ! $alttwitch == "" ]];
 then

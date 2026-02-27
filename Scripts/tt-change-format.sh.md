@@ -44,4 +44,5 @@ mv "${Filename%.*}"_Dateien "$folder"/"$Filename"_Dateien
 mv "$folder" "$folder.$extens"
 folder="$folder.$extens"
 sed -i "s/..\/$Filename/.\/$Filename/g" "$File"
+notify-send -a "Format changed" "" "$(date +"%Y-%m-%d") fertig"
 ```

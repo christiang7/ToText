@@ -86,10 +86,10 @@ abfrage=$(yad --title="New Apply" --text="Necessary Informations:" \
 	--field="Applyname" \
 	--field="Author":CBE \
 	--field="Tags":CBE \
-	--field="Research Statement":CB \
-	--field="Git init?":CB \
+	--field="- Research Statement":CHK \
+	--field="- Git init?":CHK \
 	--field="Description":TXT \
-	"" "$author,Internet" ",physic,math" "No,Yes" "Yes,No" "$additiontext")
+	"" "$author,Internet" ",physic,math" "FALSE" "TRUE" "$additiontext")
 if [ ! $? -eq 1 ];
 then
 	Applyname=$(echo $abfrage | cut -s -d "~" -f 1)
@@ -107,15 +107,20 @@ then
 
     markdown-description-program "README" >> "$folder/$Apply"/"README".md
 
-    template-tex.sh "$folder/$Apply" "no" "cover-letter" "Schreiben"
+    #template-tex.sh "$folder/$Apply" "no" "cover-letter" "Schreiben"
 
+    cp -r "$templateDir"/1»Bewerbungen/cover-letter_tex "$folder"/"$Apply"/cover-letter_tex
+    cp -r "$templateDir"/1»Bewerbungen/cover-letter_tex.md "$folder"/"$Apply"/cover-letter_tex.md
+    
     cp -r "$templateDir"/1»Bewerbungen/CV_tex "$folder"/"$Apply"/CV_tex
     cp -r "$templateDir"/1»Bewerbungen/CV_tex.md "$folder"/"$Apply"/CV_tex.md
     
     cp -r "$templateDir"/1»Bewerbungen/Lebenslauf_tex "$folder"/"$Apply"/Lebenslauf_tex
     cp -r "$templateDir"/1»Bewerbungen/Lebenslauf_tex.md "$folder"/"$Apply"/Lebenslauf_tex.md
     
-    if [[ $researchstat == "Yes" ]];
+    cp -r "$templateDir"/1»Bewerbungen/Media "$folder"/"$Apply"/Media
+    
+    if [[ $researchstat == TRUE ]];
 	then
         cp -r "$templateDir"/1»Bewerbungen/Research_Statement_tex "$folder"/"$Apply"/Research_Statement_tex
         cp -r "$templateDir"/1»Bewerbungen/Research_Statement_tex.md "$folder"/"$Apply"/Research_Statement_tex.md
@@ -123,7 +128,7 @@ then
 
     #ln  -sf "$templateDir"/1»Bewerbungen/Attachments "$folder"/"$Apply"/Attachments
 
-    if [[ $gitinit == "Yes" ]];
+    if [[ $gitinit == TRUE ]];
 	then
 		#*git init}}
 	fi

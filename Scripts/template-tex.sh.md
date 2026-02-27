@@ -73,7 +73,6 @@ echo "$folder"
 
 #*Main}}
 
-notify-send -a "Created template $filename.tex" "" "$(date +"%Y-%m-%d") fertig"
 
 ```
 
@@ -100,14 +99,14 @@ source tt-lib.sh;
 ```bash
 abfrage=$(yad --title="New Latex File" --text="Necessary Informations:" \
 	--form --width 500 --separator="~" --item-separator=","  \
-	--field="Filename:" \
-	--field="Which template:":CB \
+	--field="Filename" \
+	--field="Which template":CB \
 	--field="Shortname for language":CBE \
-	--field="Author:":CBE \
-	--field="Tags:":CBE \
-	--field="Git init?":CB \
-	--field="Description:":TXT \
-	"" "Programming,normal,Rechnung,Schreiben" "$langName" "$author,Internet" ",physic,math" "No,Yes" "")
+	--field="Author":CBE \
+	--field="Tags":CBE \
+	--field="- Git init?":CHK \
+	--field="Description":TXT \
+	"" "Programming,normal,Rechnung,Schreiben" "$langName" "$author,Internet" ",physic,math" "FALSE" "")
 ```
 
 ### Main
@@ -172,11 +171,12 @@ then
 		#*programming tex template}}
 			;;
 	esac
-	if [[ $gitinit == "Yes" ]];
+	if [[ $gitinit == TRUE ]];
 	then
 		#*git init}}
 	fi
 	
+	notify-send -a "Created template $filename.tex" "" "$(date +"%Y-%m-%d") fertig"
 fi
 ```
 

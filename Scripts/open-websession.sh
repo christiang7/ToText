@@ -32,4 +32,5 @@ then
             firefox --new-tab "$element"
         fi
     done
+    notify-send -a "Websession opened" "" "$(date +"%Y-%m-%d") fertig"
 fi

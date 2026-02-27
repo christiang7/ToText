@@ -97,12 +97,12 @@ else
 		abfrage=$(yad --title="Create md file" --text="Something to add?" \
 		--form --width 500 --separator="~" --item-separator=","  \
 		--field="Name" \
-		--field="Source:":CBE \
+		--field="Source":CBE \
 		--field="Tags" \
-		--field="Keep picture:":CB \
-		--field="Show file:":CB \
+		--field="- Keep picture":CHK \
+		--field="- Show file":CHK \
 		--field="Something more":TXT \
-		"$Filename" "$source,Internet,$author" "$tags" "Yes,No" "No,Yes" "$additiontext")
+		"$Filename" "$source,Internet,$author" "$tags" "TRUE" "FALSE" "$additiontext")
     fi
 fi
 
@@ -126,8 +126,8 @@ then
 		source="$2"
         tags="$3"
         additiontext="$4"
-		origpic="yes"
-		showfile="no"
+		origpic=TRUE
+		showfile=FALSE
 	fi
 	mv "$folder"/"$ofile" "$folder"/"$File"
 	extens=${File##*.}
@@ -152,7 +152,7 @@ then
 		fi
 		extens=avif
 		ttpic "$folder" "$Filename".avif "$source" "$tags" "$additiontext"  >> "$folder"/"$Filename".avif.md
-		if [[ $origpic == "No" ]];
+		if [[ $origpic == FALSE ]];
 		then
 			rm "$File"
 		fi
@@ -212,7 +212,7 @@ then
 	notify-send -a "tt finished" "tt $File" 
 fi
 
-if [[ $showfile == "Yes" ]];
+if [[ $showfile == TRUE ]];
 then
     if [[ $extens == tex ]]
     then

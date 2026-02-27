@@ -23,14 +23,14 @@ if [[ $yadSwitch == "" ]]
 then
 	abfrage=$(yad --title="New Latex File" --text="Necessary Informations:" \
 		--form --width 500 --separator="~" --item-separator=","  \
-		--field="Filename:" \
-		--field="Which template:":CB \
+		--field="Filename" \
+		--field="Which template":CB \
 		--field="Shortname for language":CBE \
-		--field="Author:":CBE \
-		--field="Tags:":CBE \
-		--field="Git init?":CB \
-		--field="Description:":TXT \
-		"" "Programming,normal,Rechnung,Schreiben" "$langName" "$author,Internet" ",physic,math" "No,Yes" "")
+		--field="Author":CBE \
+		--field="Tags":CBE \
+		--field="- Git init?":CHK \
+		--field="Description":TXT \
+		"" "Programming,normal,Rechnung,Schreiben" "$langName" "$author,Internet" ",physic,math" "FALSE" "")
 fi
 if [ ! $? -eq 1 ];
 then
@@ -103,7 +103,7 @@ then
 
 			;;
 	esac
-	if [[ $gitinit == "Yes" ]];
+	if [[ $gitinit == TRUE ]];
 	then
 		cd "$foldertex"
 		git init
@@ -112,7 +112,7 @@ then
 		git commit -a -m "init git"
 	fi
 
+	notify-send -a "Created template $filename.tex" "" "$(date +"%Y-%m-%d") fertig"
 fi
 
-notify-send -a "Created template $filename.tex" "" "$(date +"%Y-%m-%d") fertig"
 

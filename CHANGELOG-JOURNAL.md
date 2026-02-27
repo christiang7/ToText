@@ -18,9 +18,9 @@
   + [ ] latex `template files` in a separate folder [templates]() 
   + [ ] write [documentation]()
    + [ ] make overview page about used tools,\n use for structuring the desktop files
-    + [ ] describe main application 
-     + [ ] which [script]() do what
-    + [ ] explain possible [workflows]() with used [scripts]()
+	+ [ ] describe main application 
+	 + [ ] which [script]() do what
+	+ [ ] explain possible [workflows]() with used [scripts]()
 @endwbs
 ```
 
@@ -217,7 +217,7 @@ Aber ich denke man kann immer irgendetwas optimieren bzw etwas noch vereinfachen
 Daran wird sich dieses Projekt richten bzw es ist zu einem VERA geworden. 
 
 die Idee es mit Dateiattributen zu machen geht leider nicht, weil sie schnell kaputt gehen also von Programmen überschrieben werden
-[[2»Dateien mit Kommentaren versehen:0»InRef]]
+[[2»Dateinotiz:0»InRef]]
 
 === Programmname ===
 Der Name für das Programm soll sein: **Focus**
