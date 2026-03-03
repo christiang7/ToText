@@ -94,7 +94,7 @@ then
 		then
 			rm "$File"
 		fi
-	elif [[ mp4 == $extens || mov == $extens || mkv == $extens || flv = $extens || ogv = $extens ]]
+	elif [[ mp4 == $extens || mov == $extens || mkv == $extens || flv = $extens || ogv = $extens || MOV == $extens || MP4 == $extens ]]
 	then
 		ttvid "$folder" "$File" "$tags" "$source" "$additiontext" "$ofile" "yes" >> "$folder"/"$File".md
 	elif [[ epub == $extens ]]
