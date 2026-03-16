@@ -41,9 +41,9 @@ else
 fi
 echo $format
 
-yt-dlp --no-mtime --fixup force -f "$format" --js-runtimes deno:/home/christian/.deno/bin/deno --remote-components ejs:github --merge-output mp4 --add-chapters --external-downloader aria2c --http-chunk-size 256k --downloader-args aria2c:"-c -j 8 -s 8 -x 8 -k 1M" -o "$outputDir/%(title)s.%(ext)s" -i "${website}"
+yt-dlp --cookies-from-browser firefox --no-mtime --fixup force -f "$format" --js-runtimes deno:/home/christian/.deno/bin/deno --remote-components ejs:github --merge-output mp4 --add-chapters --external-downloader aria2c --http-chunk-size 256k --downloader-args aria2c:"-c -j 8 -s 8 -x 8 -k 1M" -o "$outputDir/%(title)s.%(ext)s" -i "${website}"
 
-ofile=$(yt-dlp --print filename -s "${website}" -o '%(title)s').mp4
+ofile=$(yt-dlp --cookies-from-browser firefox --print filename -s "${website}" -o '%(title)s').mp4
 extens=${ofile##*.}
 name=${ofile%.*}
 additiontext="$(yt-dlp --get-description ${website})"

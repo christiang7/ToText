@@ -9,15 +9,15 @@ yt="$(echo "$website" | grep youtube)"
 #cd $musicDir
 if [[ ! "$yt" = "" ]];
 then
-    text="$(yt-dlp --get-description ${website})"
+    text="$(yt-dlp --cookies-from-browser firefox --get-description ${website})"
     #text="$(echo -e "${text}" | sed 's/\"//g')"
-    yt-dlp --no-mtime -o "$musicDir/%(title)s.%(ext)s" -f "140/251" --js-runtimes deno:/home/christian/.deno/bin/deno --remote-components ejs:github -i "${website}"
-	ofile=$(yt-dlp --print filename -s "${website}" -f "140/251" --js-runtimes deno:/home/christian/.deno/bin/deno --remote-components ejs:github -o "%(title)s.%(ext)s")
+    yt-dlp --cookies-from-browser firefox --no-mtime -o "$musicDir/%(title)s.%(ext)s" -f "140/251" --js-runtimes deno:/home/christian/.deno/bin/deno --remote-components ejs:github -i "${website}"
+	ofile=$(yt-dlp --cookies-from-browser firefox --print filename -s "${website}" -f "140/251" --js-runtimes deno:/home/christian/.deno/bin/deno --remote-components ejs:github -o "%(title)s.%(ext)s")
 else
     text=$(links2 -dump ${website})
     #text=$(echo -e "${text}")
-    yt-dlp --no-mtime -o "$musicDir/%(title)s.%(ext)s" --js-runtimes deno:/home/christian/.deno/bin/deno --remote-components ejs:github --embed-thumbnail -f b --no-mtime --audio-quality 0 -i "${website}"
-	ofile=$(yt-dlp --print filename -s "${website}" -f b --audio-quality 0 --js-runtimes deno:/home/christian/.deno/bin/deno --remote-components ejs:github -o "%(title)s.%(ext)s")
+    yt-dlp --no-mtime -o "$musicDir/%(title)s.%(ext)s" --cookies-from-browser firefox --js-runtimes deno:/home/christian/.deno/bin/deno --remote-components ejs:github --embed-thumbnail -f b --no-mtime --audio-quality 0 -i "${website}"
+	ofile=$(yt-dlp --cookies-from-browser firefox --print filename -s "${website}" -f b --audio-quality 0 --js-runtimes deno:/home/christian/.deno/bin/deno --remote-components ejs:github -o "%(title)s.%(ext)s")
 fi
 
 extens=${ofile##*.}
