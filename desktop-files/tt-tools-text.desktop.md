@@ -28,7 +28,7 @@ chmod u+x tt-tools-text.desktop && ln -sf $(pwd)/tt-tools-text.desktop ~/.local/
 Type=Service
 X-KDE-ServiceTypes=KonqPopupMenu/Plugin
 MimeType=text/*;
-Actions=MakeFolder;ChangeFormat;DeleteFile;RenameFile;MoveFile;OpenWebsession;NowebSync;
+Actions=MakeFolder;ChangeFormat;DeleteFile;RenameFile;MoveFile;OpenWebsession;NowebSync;CopyFile;
 X-KDE-Priority=TopLevel
 X-KDE-Submenu=tt-tools
 
@@ -80,5 +80,11 @@ Name=noweb-sync.sh
 Icon=video
 Terminal=true
 Exec=rm ~/.config/tt/log && noweb-sync.sh %f 2>&1 | tee ~/.config/tt/log
+
+[Desktop Action CopyFile]
+Name=Copy-File
+Icon=video
+Terminal=false
+Exec=rm ~/.config/tt/log && copy-file.sh %f 2>&1 | tee ~/.config/tt/log
 
 ```

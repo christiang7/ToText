@@ -2,7 +2,7 @@
 Type=Service
 X-KDE-ServiceTypes=KonqPopupMenu/Plugin
 MimeType=application/*;audio/*;video/*;image/*;inode/directory;message/rfc822;text/html;text/x-tex;
-Actions=ttMoveFile;ttDeleteFile;Maketxt;DownloadFile;InsertWebsession;NowebSync;CopyScreenshot;
+Actions=ttMoveFile;ttDeleteFile;Maketxt;DownloadFile;InsertWebsession;NowebSync;CopyFile;
 X-KDE-Priority=TopLevel
 X-KDE-Submenu=tt-tools
 Terminal=false
@@ -43,15 +43,15 @@ Icon=video
 Terminal=true
 Exec=rm ~/.config/tt/log && insert-websession.sh %f 2>&1 | tee ~/.config/tt/log
 
-[Desktop Action CopyScreenshot]
-Name=Copy-Screenshot
-Icon=video
-Terminal=false
-Exec=rm ~/.config/tt/log && copy-screenshot.sh %f 2>&1 | tee ~/.config/tt/log
-
 [Desktop Action NowebSync]
 Name=noweb-sync.sh
 Icon=video
 Terminal=true
 Exec=rm ~/.config/tt/log && noweb-sync.sh %f 2>&1 | tee ~/.config/tt/log
+
+[Desktop Action CopyFile]
+Name=Copy-File
+Icon=video
+Terminal=false
+Exec=rm ~/.config/tt/log && copy-file.sh %f 2>&1 | tee ~/.config/tt/log
 

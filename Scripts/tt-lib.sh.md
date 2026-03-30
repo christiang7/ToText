@@ -246,6 +246,8 @@ function get-langname(){
             ;;
         mmd) langname="mermaid"
             ;;
+        desktop) langname="bash"
+            ;;
         *) langname="$extens"
             ;;
     esac
@@ -618,6 +620,14 @@ function template-code(){
                 echo "#plot "data.txt" using ($1):($2) title '1' lt rgb 'blue', "data.txt" using ($1):($3) title '2' lt rgb 'red', "data.txt" using ($1):($4) title '3' lt rgb 'green'" >> "$folder"/"$File"
                 echo "set term qt" >> "$folder"/"$File"
                 echo "replot" >> "$folder"/"$File"
+                ;;
+            desktop) 
+                echo "[Desktop Entry]" >> "$folder"/"$File"
+                echo "Name=" >> "$folder"/"$File"
+                echo "Comment=" >> "$folder"/"$File"
+                echo "Exec=" >> "$folder"/"$File"
+                echo "Icon=" >> "$folder"/"$File"
+                echo "Type=Application" >> "$folder"/"$File"
                 ;;
             *)
                 touch "$folder"/"$File"
