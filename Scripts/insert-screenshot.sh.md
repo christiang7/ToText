@@ -1,4 +1,3 @@
-===== insert-screenshot.sh =====
 # insert-screenshot.sh
 Created 2025-12-02
 

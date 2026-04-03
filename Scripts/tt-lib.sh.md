@@ -1,5 +1,5 @@
 # tt-lib.sh
-Created [2025-02-01](2025-02-01)
+Created 2025-02-01
 
 - [x] **tt-lib.sh**
     - [x] Doing

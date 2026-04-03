@@ -1,8 +1,8 @@
 # zim-script
+Created 2021-04-17
 
-- [x] @ArcVORLAGE @ArcPROGRAMM @SCRIPT @Zim  **zim-script**  !!
+- [x] **zim-script** 
 
-Created Samstag 17 April 2021 [17.04.2021]()
 
 
 

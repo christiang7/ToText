@@ -18,7 +18,7 @@
 
 ## Template scripts
 
-[template-calculation.sh](Scripts/template-calculation.md)
+[template-calculation.sh](Scripts/template-calculation.sh.md)
 
 [template-calculation-project.sh](Scripts/template-calculation-project.sh.md)
 
@@ -30,23 +30,21 @@
 
 [insert-code.sh](Scripts/insert-code.sh.md)
 
-[zim-xournal.sh](Scripts/zim-xournal.md)
+[zim-xournal.sh](Scripts/zim-xournal.sh.md)
 
 ## Work with internet
 
 [tabs2today.sh](Scripts/tabs2today.sh.md)
 
-[tabs2topics.sh](Scripts/tabs2topics.sh.md)
+[tabs2topic.sh](Scripts/tabs2topic.sh.md)
 
 [save-websession.sh](Scripts/save-websession.sh.md)
 
 [open-websession.sh](Scripts/open-websession.sh.md)
 
-[Download-Video.sh](Scripts/Download-Video.md)
+[Download-Video.sh](Scripts/Download-Video.sh.md)
 
-[Download-Music.sh](Scripts/Download-Music.md)
-
-[wgettpic.sh](Scripts/wgettpic.md)
+[Download-Music.sh](Scripts/Download-Music.sh.md)
 
 ## More related scripts
 

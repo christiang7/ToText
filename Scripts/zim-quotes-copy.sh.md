@@ -1,5 +1,5 @@
 # zim-quotes-copy
-Created Zettelkasten;2023-06-21]]
+Created 2023-06-21
 
 - [x]  **zim-quotes-copy** 
     - [x] Doing

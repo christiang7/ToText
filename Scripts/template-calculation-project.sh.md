@@ -1,7 +1,7 @@
 # template-calculation-project
-Created [2023-06-25]()
+Created 2023-06-25
 math
-- [x] **zim-template-calculation** [README.md](README.md)
+- [x] **zim-template-calculation**
     - [x] Doing
     - [x] Backlog
 

@@ -1,6 +1,5 @@
 # ttf
-Created Freitag [2022:05:20]()
-Backlink [CodeFabrik]()
+Created Freitag 2022-05-20
 
 - [x] **ttf**
 

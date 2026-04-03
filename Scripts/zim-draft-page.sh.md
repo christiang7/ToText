@@ -1,7 +1,7 @@
 # zim-draft-page
-Created [2023-09-19]()
+Created 2023-09-19
 
-- [x]  **zim-draft-page** Christian Gößl [README.md](README.md)
+- [x]  **zim-draft-page** Christian Gößl 
 	- [x] Doing
 	- [x] Backlog
 

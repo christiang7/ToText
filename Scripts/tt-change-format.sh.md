@@ -1,5 +1,5 @@
 # tt-change-format.sh
-Created [2024-10-09](2024-10-09)
+Created 2024-10-09
 
 - [x] **tt-change-format.sh**
     - [x] Doing

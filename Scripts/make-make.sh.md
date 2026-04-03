@@ -1,5 +1,5 @@
 # make-make.sh
-Created [2024-10-09](2024-10-09)
+Created 2024-10-09
 
 - [x] **make-make.sh**
     - [x] Doing

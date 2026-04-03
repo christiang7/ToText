@@ -1,7 +1,7 @@
 # template-calculation.sh
-Created [2023-06-25]()
+Created 2023-06-25
  math
-- [x] **template-calculation.sh** [README.md](README.md)
+- [x] **template-calculation.sh** 
 	- [x] Doing
 	- [x] Backlog
 

@@ -1,10 +1,7 @@
 # zim-web-screenshot
-Created Freitag [2022:10:07]()
+Created Freitag 2022-10-07
 
 - [x] **zim-web-screenshot**
-
-
-[2022:05:01:Screenshots in Firefox offener tabs]()
 
 <https://unix.stackexchange.com/questions/103252/how-do-i-get-a-websites-title-using-command-line> | web - How do I get a websites title using command line? - Unix & Linux Stack Exchange
 <https://github.com/benibela/xidel> | Releases · benibela/xidel

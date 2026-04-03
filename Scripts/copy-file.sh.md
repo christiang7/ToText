@@ -1,4 +1,3 @@
-===== copy-file.sh =====
 # copy-file.sh
 Created 2026-02-16
 

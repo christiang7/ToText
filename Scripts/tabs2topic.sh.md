@@ -1,6 +1,5 @@
 # tabs2topic
-Created Dienstag [2022:10:25]()
-Backlink [GedankenspeicherCoding](../GedankenspeicherCoding.md)
+Created Dienstag 2022-10-25
 
 - [x] **tabs2topic**
 	- [x] Doing
@@ -8,7 +7,7 @@ Backlink [GedankenspeicherCoding](../GedankenspeicherCoding.md)
 
 ## Features
 
-Combination with the program [tabs2today](tabs2today.md).
+Combination with the program ``tabs2today.sh``.
 You can add tabs from browser in a specific page you choose.
 
 

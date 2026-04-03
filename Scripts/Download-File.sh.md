@@ -1,5 +1,5 @@
 # Download-File.sh
-Created Donnerstag [2021:04:29]()
+Created Donnerstag 2021-04-29
 
 linux - How can I get the extension(s) of a file based on its content? - Super User  
 https://superuser.com/questions/1347359/how-can-i-get-the-extensions-of-a-file-based-on-its-content  

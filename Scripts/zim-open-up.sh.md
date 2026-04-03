@@ -1,7 +1,7 @@
 # zim-open-up
 Created 2023-06-22
 
-- [x]  **zim-open-up**  [README.md](README.md)
+- [x]  **zim-open-up**
 	- [x] Doing
 	- [x] Backlog
 

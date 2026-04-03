@@ -1,6 +1,6 @@
 # zim-filepath
-Created Sonntag [2022-11-06]()
-- [x] **zim-filepath** [README](README.md)
+Created Sonntag 2022-11-06
+- [x] **zim-filepath** 
 
 
 ## Information

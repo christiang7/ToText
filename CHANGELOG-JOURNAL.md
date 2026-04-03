@@ -207,8 +207,8 @@ Custom tool for open in [zim]() the folder of the containing file.
 The program [zim-quoting-copy]() can copy a marked line. The marked line gets an anchor. The copied text can be pasted at the desired position of pages.
 
 ### 2023-05-25 Kanboardlist and Dateheadlines
-[kanboardlist.md](kanboardlist.md) insert Kanboardlists in `zim-wiki`
-[zim-dateheadlines.md](zim-dateheadlines.md) insert date headlines in `zim-wiki`
+[kanboardlist.md]() insert Kanboardlists in `zim-wiki`
+[zim-dateheadlines.md]() insert date headlines in `zim-wiki`
 
 **ToText  🜄** 
 

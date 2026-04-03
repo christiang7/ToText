@@ -1,4 +1,3 @@
-===== noweb-sync.sh =====
 # noweb-sync.sh
 Created 2026-01-09
 

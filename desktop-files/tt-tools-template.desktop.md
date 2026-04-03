@@ -1,5 +1,5 @@
 # tt-tools-template.desktop
-Created [2025-02-05](2025-02-05)
+Created 2025-02-05
 
 - [x] **tt-tools-template.desktop**
     - [x] Doing

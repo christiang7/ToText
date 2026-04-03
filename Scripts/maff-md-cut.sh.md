@@ -1,5 +1,5 @@
 # maff-md-cut.sh
-Created [2024-03-15](2024-03-15)
+Created 2024-03-15
 
 - [x] **maff-md-cut.sh**
     - [x] Doing

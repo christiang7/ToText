@@ -1,5 +1,5 @@
 # template-apply.sh
-Created [2025-02-12]()
+Created 2025-02-12
 
 
 ## Description

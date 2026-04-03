@@ -1,8 +1,8 @@
 # texstudio-noweb-py.sh
-Created [2023-10-30]()
+Created 2023-10-30
 
 
-- [x] **texstudio-noweb-py.sh** [README.md](README.md)
+- [x] **texstudio-noweb-py.sh**
     - [x] Doing
     - [x] Backlog
 

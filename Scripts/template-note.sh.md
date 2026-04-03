@@ -1,6 +1,6 @@
 # template-note
-Created Dienstag [2022:11:01]()
-- [x] **template-note** [README]()
+Created Dienstag 2022-11-01
+- [x] **template-note** 
 
 
 Create note with a folder

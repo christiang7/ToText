@@ -1,5 +1,5 @@
 # config.sh
-Created [2025-02-01](2025-02-01)
+Created 2025-02-01
 
 - [x] **config.sh**
     - [x] Doing

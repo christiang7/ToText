@@ -1,5 +1,5 @@
 # zim-insert-sketch
-Created [2023:03:02]()
+Created 2023-03-02
 
 - [x] **zim-insert-sketch**
 

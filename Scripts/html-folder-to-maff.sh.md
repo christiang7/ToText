@@ -1,5 +1,5 @@
 # html-folder-to-maff.sh
-Created [2024-02-21](2024-02-21)
+Created 2024-02-21
 
 - [x] **html-folder-to-maff.sh**
     - [x] Doing

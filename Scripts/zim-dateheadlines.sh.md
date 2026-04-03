@@ -1,6 +1,6 @@
 # zim-dateheadlines
-Created [2023-05-25]()
-- [x]  **zim-dateheadlines**  [README.md](README.md)
+Created 2023-05-25
+- [x]  **zim-dateheadlines** 
    - [x] Doing
    - [x] Backlog
 

@@ -1,11 +1,11 @@
 # zim-xournal
-Created Mittwoch [2022:06:29]()
+Created Mittwoch 2022-06-29
 
 - [x] **zim-xournal**
 
 
 ## Features
-- Abfrage vom Dateinamen siehe [ttrename](./ttrename.md)
+- Abfrage vom Dateinamen siehe ``ttrename.sh``
 - export automatisch die pdf Datei nach schließen der Datei 
 
 

@@ -1,5 +1,5 @@
 # template-tex.sh
-Created [2023-10-29]()
+Created 2023-10-29
 
 - [x] Doing
 - [x] Backlog

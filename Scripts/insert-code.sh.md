@@ -1,5 +1,5 @@
 # insert-code.sh
-Created [2025-02-13]()
+Created 2025-02-13
 
 
 ## Description

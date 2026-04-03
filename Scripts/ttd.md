@@ -1,6 +1,6 @@
 # ttd
-[2021:04:22]()
-- [x] **[../ttd](./ttd)**
+2021-04-22
+
 Create for all files in a folder text files automaticly.
 
 *make.sh*

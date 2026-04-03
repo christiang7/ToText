@@ -1,7 +1,7 @@
 # rss-feed-reinsert
-Created [2023-06-07]()
+Created 2023-06-07
 
-- [x]  **rss-feed-reinsert**  [README.md](README.md)
+- [x]  **rss-feed-reinsert**
    - [x] Doing
 	  - [ ] Einen Download Stream einfügen
    - [x] Backlog

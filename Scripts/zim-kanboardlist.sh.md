@@ -1,6 +1,6 @@
 # zim-kanboardlist
 Created 2023-05-25
-- [x]  **zim-kanboardlist**  [README.md](README.md)
+- [x]  **zim-kanboardlist** 
    - [x] Doing
    - [x] Backlog
 

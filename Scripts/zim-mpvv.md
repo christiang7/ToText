@@ -1,9 +1,9 @@
 # zim-mpvv
+Created Samstag 2021-04-24
 
 - [x] @ArcPROGRAMM @Zim @VIDEO **zim-mpvv**
 
-Created Samstag [2021:04:24]()
-Backlink [2021:04:24]()
+
 
 Kommando zum Extrahieren des Scripts
 
