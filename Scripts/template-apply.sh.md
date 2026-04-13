@@ -54,7 +54,7 @@ Load configuration files
 ```bash
 #!/bin/bash
 source config.sh; # load the config library functions
-templateDir="$(config_get templateDir)"
+templateApply="$(config_get templateApply)"
 author="$(config_get author)"
 source tt-lib.sh
 ```
@@ -109,24 +109,24 @@ then
 
     #template-tex.sh "$folder/$Apply" "no" "cover-letter" "Schreiben"
 
-    cp -r "$templateDir"/1»Bewerbungen/cover-letter_tex "$folder"/"$Apply"/cover-letter_tex
-    cp -r "$templateDir"/1»Bewerbungen/cover-letter_tex.md "$folder"/"$Apply"/cover-letter_tex.md
+    cp -r "$templateApply"/cover-letter_tex "$folder"/"$Apply"/cover-letter_tex
+    cp -r "$templateApply"/cover-letter_tex.md "$folder"/"$Apply"/cover-letter_tex.md
     
-    cp -r "$templateDir"/1»Bewerbungen/CV_tex "$folder"/"$Apply"/CV_tex
-    cp -r "$templateDir"/1»Bewerbungen/CV_tex.md "$folder"/"$Apply"/CV_tex.md
+    cp -r "$templateApply"/CV_tex "$folder"/"$Apply"/CV_tex
+    cp -r "$templateApply"/CV_tex.md "$folder"/"$Apply"/CV_tex.md
     
-    cp -r "$templateDir"/1»Bewerbungen/Lebenslauf_tex "$folder"/"$Apply"/Lebenslauf_tex
-    cp -r "$templateDir"/1»Bewerbungen/Lebenslauf_tex.md "$folder"/"$Apply"/Lebenslauf_tex.md
+    cp -r "$templateApply"/Lebenslauf_tex "$folder"/"$Apply"/Lebenslauf_tex
+    cp -r "$templateApply"/Lebenslauf_tex.md "$folder"/"$Apply"/Lebenslauf_tex.md
     
-    cp -r "$templateDir"/1»Bewerbungen/Media "$folder"/"$Apply"/Media
+    cp -r "$templateApply"/Media "$folder"/"$Apply"/Media
     
     if [[ $researchstat == TRUE ]];
 	then
-        cp -r "$templateDir"/1»Bewerbungen/Research_Statement_tex "$folder"/"$Apply"/Research_Statement_tex
-        cp -r "$templateDir"/1»Bewerbungen/Research_Statement_tex.md "$folder"/"$Apply"/Research_Statement_tex.md
+        cp -r "$templateApply"/Research_Statement_tex "$folder"/"$Apply"/Research_Statement_tex
+        cp -r "$templateApply"/Research_Statement_tex.md "$folder"/"$Apply"/Research_Statement_tex.md
 	fi
 
-    #ln  -sf "$templateDir"/1»Bewerbungen/Attachments "$folder"/"$Apply"/Attachments
+    #ln  -sf "$templateApply"/Attachments "$folder"/"$Apply"/Attachments
 
     if [[ $gitinit == TRUE ]];
 	then
