@@ -33,10 +33,10 @@ then
    then
       if [[ $headline == TRUE ]];
       then
-         echo -e "==== $(date +"%Y-%m-%d") "
+         echo -e "### $(date +"%Y-%m-%d") "
       fi
       echo "[[+$sessionfile]]"
-      echo "====== $sessionfile ======" >> "$folder"/"$sessionfile".md
+      echo "# $sessionfile" >> "$folder"/"$sessionfile".md
    fi
    echo "$(wl-paste -n)" >> "$folder"/"$sessionfile".md
    #echo -e "==== $(date +"[[$journalPage:%Y:%m:%d|%Y-%m-%d]]") "

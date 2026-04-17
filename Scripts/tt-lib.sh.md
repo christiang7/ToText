@@ -297,20 +297,25 @@ function file-description(){
     echo "$tags"
     if [[ ! $folderSwitch == "" ]]
     then
-        echo "**[[./$File]]**"
+        #echo "**[[./$File]]**"
+        echo "**[](./$File)**"
     else
-        echo "**[[../$File]]**"
+        #echo "**[[../$File]]**"
+        echo "**[](../$File)**"
     fi
     if [[ ! $picture == "" ]]
     then
         if [[ ! $folderSwitch == "" ]]
         then
-            echo "{{./$File.avif?width=500}}"
+            #echo "{{./$File.avif?width=500}}"
+            echo "![](./$File.avif){width=500px}"
         elif [[ jpg == $extens || PNG == $extens || JPEG == $extens || png == $extens || webp == $extens || jpeg == $extens || avif == $extens ]]
         then
-            echo "{{../${File%.*}.avif?width=500}}"
+            #echo "{{../${File%.*}.avif?width=500}}"
+            echo "![](../${File%.*}){width=500px}"
         else
-            echo "{{../$File.avif?width=500}}"
+            #echo "{{../$File.avif?width=500}}"
+            echo "![](../$File.avif){width=500px}"
         fi
     fi
     echo -e "$source\n$additiontext\n"
@@ -337,7 +342,7 @@ function Markdown-description-file(){
     #echo "Text creation time: [%Y-%m-%d]($(date +"$journalPage/%Y/%m/%d")) Modification time: [%Y-%m-%d]($(date +"$journalPage/%Y/%m/%d" -r "$File"))"
     echo "Text creation time: $(date +"%Y-%m-%d") Modification time: $(date +"%Y-%m-%d")"
     echo "$3"
-    echo "**["$2"]] **"
+    echo "**[["$2"]] **"
     echo -e "$4\n$5\n"
 }
 ```
@@ -362,12 +367,14 @@ function create-note(){
     local title=$2
     local File=$(cleanName "$title")
     mkdir -p "${folder}"/"${File}"
-    Wikiprev "$title"
+    #Wikiprev "$title"
+    Markdownprev "$title"
     echo -e "$3"
     echo -e "$4\n$5\n"
-    echo -e "==== Journal ====\n"
+    #echo -e "==== Journal ====\n"
+    echo -e "## Journal \n"
     #echo -e "=== $(date +"[[$journalPage:%Y:%m:%d|%Y-%m-%d]]") ==="
-    echo -e "=== $(date +"%Y-%m-%d") ==="
+    echo -e "### $(date +"%Y-%m-%d")"
 }
 ```
 
@@ -654,7 +661,7 @@ function markdown-description-program(){
     local File=$1
     #local filename=${File%.*}
     #local foldertex=$3
-    echo -e "===== ${File} ====="
+    #echo -e "===== ${File} ====="
     echo -e "# ${File}"
     #echo -e "Created [$(date +%Y-%m-%d)]()\n"
     echo -e "Created $(date +%Y-%m-%d)\n"

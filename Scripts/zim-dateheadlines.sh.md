@@ -10,7 +10,7 @@ Created 2023-05-25
 
 *make.sh*
 ```bash
-noweb.py -Rzim-dateheadlines.sh zim-dateheadlines.md > zim-dateheadlines.sh && echo 'fertig'
+noweb.py -Rzim-dateheadlines.sh zim-dateheadlines.sh.md > zim-dateheadlines.sh && echo 'fertig'
 ```
 
 
@@ -25,7 +25,7 @@ chmod u+x zim-dateheadlines.sh && ln -sf $(pwd)/zim-dateheadlines.sh ~/.local/bi
 source config.sh; # load the config library functions
 journalPage="$(config_get journalPage)"
 
-#*dateheadlines}}
+#*dateheadlines markdown}}
 
 ```
 
@@ -42,5 +42,6 @@ echo -e "==== $(date +"%Y-%m-%d") "
 
 *dateheadlines markdown*
 ```bash
-echo -e "## $(date +"[[$journalPage/%Y/%m/%d|%Y-%m-%d]]") "
+#echo -e "### $(date +"[[$journalPage/%Y/%m/%d|%Y-%m-%d]]") "
+echo -e "### $(date +"%Y-%m-%d") "
 ```
