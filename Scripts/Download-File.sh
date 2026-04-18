@@ -59,12 +59,14 @@ then
     tt "${File}" "$tags" "$source" "$additiontext" "no"
     if [[ $headline == TRUE ]];
     then
-        echo -e "==== $(date +"%Y-%m-%d") "
+        #echo -e "==== $(date +"%Y-%m-%d") "
+        echo -e "### $(date +"%Y-%m-%d")"
     fi
     if [[ jpg == $extens || PNG == $extens || JPEG == $extens || png == $extens || webp == $extens || jpeg == $extens || avif == $extens ]]
 	then
         extens="avif"
-        echo -e "{{./$Newname.$extens?width=500}}"
+        #echo -e "{{./$Newname.$extens?width=500}}"
+        echo -e "![](./$Newname.$extens){width=500px}"
 	fi
     echo "[[+$Newname.$extens]]"
 fi
