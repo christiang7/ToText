@@ -111,7 +111,7 @@ GitHub - Osndok/zim-plugin-append: Makes adding text to Zim pages from the comma
 https://github.com/Osndok/zim-plugin-append  
 
 ### 2025-02-07
-- [x] [Download-Video.sh]() make possible for downloading from other websites then [youtube](), but sites like [arte tv](arte.tv) not working correctly, using [mediatekview]()
+- [x] [Download-Video.sh]() make possible for downloading from other websites then [youtube](), but sites like arte.tv not working correctly, using [mediatekview]()
 - [x] change variables name to more understandable names in config file
 - [x] rename [Download-Video-Select.sh]() to [Download-Video.sh]()
 
