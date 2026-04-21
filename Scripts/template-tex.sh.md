@@ -144,7 +144,11 @@ then
 	foldertex="$filename"_tex
 	mkdir -p "$foldertex"
 	cp $templateDir/general-preamble.tex "$foldertex"/general-preamble.tex
-	cp $templateDir/color-style.tex "$foldertex"/color-style.tex
+	cp $templateDir/text-style.tex "$foldertex"/text-style.tex
+	cp $templateDir/text-theme.tex "$foldertex"/text-theme.tex
+	cp $templateDir/formula-style.tex "$foldertex"/formula-style.tex
+	cp $templateDir/formula-theme.tex "$foldertex"/formula-theme.tex
+	cp $templateDir/symbol-style.tex "$foldertex"/symbol-style.tex
 	if [[ ${template} == "Programming" ]]
 	then
 		extens="$(get-extens ${langname})"
