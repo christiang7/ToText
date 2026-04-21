@@ -1,5 +1,5 @@
 #!/bin/bash
-echo "start tt script"
+echo "start tt script" > ~/.config/tt/log
 source config.sh '.config/tt/config'
 journalPage="$(config_get journalPage)"
 
