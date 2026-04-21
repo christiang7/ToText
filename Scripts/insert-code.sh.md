@@ -32,7 +32,6 @@ chmod u+x insert-code.sh && ln -sf $(pwd)/insert-code.sh ~/.local/bin/insert-cod
 ```bash
 #!/bin/bash
 source tt-lib.sh
-source config.sh
 langName="$(config_get langName)"
 
 txtfile=$(readlink -f -n "$1")

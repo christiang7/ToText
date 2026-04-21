@@ -53,10 +53,9 @@ Load configuration files
 *preamble*
 ```bash
 #!/bin/bash
-source config.sh; # load the config library functions
+source tt-lib.sh; # load the config library functions
 templateApply="$(config_get templateApply)"
 author="$(config_get author)"
-source tt-lib.sh
 ```
 
 ### Check files

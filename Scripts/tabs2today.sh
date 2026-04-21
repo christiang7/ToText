@@ -1,8 +1,7 @@
 #! /bin/bash
-source config.sh; # load the config library functions
+source tt-lib.sh; # load the config library functions
 journalDir="$(config_get journalDir)"
 journalPage="$(config_get journalPage)"
-source tt-lib.sh
 
 additiontext=$1
 if [ ! $? -eq 1 ];

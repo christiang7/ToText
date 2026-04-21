@@ -1,4 +1,4 @@
-# ttitle-correction
+# ttitle-correction.sh
 Created 2023-04-18
 
 - [x] **ttitle-correction**
@@ -32,8 +32,9 @@ in all cases it has to be done in 3th and 4th line
 
 ## main program
 
+*make.sh*
 ```bash
-noweb.py -Rttitle-correction.sh ttitle-correction.md > ttitle-correction.sh && echo 'fertig'
+noweb.py -Rttitle-correction.sh ttitle-correction.sh.md > ttitle-correction.sh && echo 'fertig'
 ```
 
 ```bash
@@ -41,13 +42,12 @@ chmod u+x ttitle-correction.sh && ln -sf $(pwd)/ttitle-correction.sh ~/.local/bi
 ```
 
 ### ttitle-correction.sh
+
 *ttitle-correction.sh*
 ```bash
 #!/bin/bash
-
 File=$(basename "$1")
 #echo "$File"
-
 line=$(sed -n '/\[\*\]/{=;}' $File )
 line=${line:0:1}
 #echo $line

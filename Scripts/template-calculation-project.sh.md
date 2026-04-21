@@ -44,10 +44,9 @@ Einstellungen vor dem Start des eigentlichen Programms, hier für ein Shell Scri
 *preamble*
 ```bash
 #!/bin/bash
-source config.sh; # load the config library functions
+source tt-lib.sh; # load the config library functions
 langName="$(config_get langName)"
 author="$(config_get author)"
-source tt-lib.sh
 ```
 
 ### Check files

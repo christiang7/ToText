@@ -1,6 +1,5 @@
 #!/bin/bash
-source config.sh; # load the config library functions
-source tt-lib.sh;
+source tt-lib.sh; # load the config library functions
 abfrage=$(yad --title="Inset-Screenshot" --text="Add headline?" \
     --form --separator="~" --item-separator="," \
     --field="Insert Headline:":CB \

@@ -1,7 +1,6 @@
 #!/bin/bash
-source config.sh; # load the config library functions
-journalPage="$(config_get journalPage)"
 source tt-lib.sh;
+journalPage="$(config_get journalPage)"
 
 htmlfolder="$1"
 list=$(ls -1 "$htmlfolder")

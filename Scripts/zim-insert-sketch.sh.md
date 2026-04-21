@@ -1,4 +1,4 @@
-# zim-insert-sketch
+# zim-insert-sketch.sh
 Created 2023-03-02
 
 - [x] **zim-insert-sketch**
@@ -23,7 +23,7 @@ krita "$filename".kra --export --export-filename "$filename".avif
 
 *make.sh*
 ```bash
-noweb.py -Rzim-insert-sketch.sh zim-insert-sketch.md > zim-insert-sketch.sh && echo 'fertig'
+noweb.py -Rzim-insert-sketch.sh zim-insert-sketch.sh.md > zim-insert-sketch.sh && echo 'fertig'
 ```
 
 ### zim-insert-sketch.sh
@@ -31,8 +31,7 @@ noweb.py -Rzim-insert-sketch.sh zim-insert-sketch.md > zim-insert-sketch.sh && e
 *zim-insert-sketch.sh*
 ```bash
 #!/bin/bash
-source config.sh; # load the config library functions
-source tt-lib.sh;
+source tt-lib.sh; # load the config library functions
 author="$(config_get author)"
 
 File=$(cleanName "$1")

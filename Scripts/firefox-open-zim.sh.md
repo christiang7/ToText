@@ -1,4 +1,4 @@
-# firefox-open-zim
+# firefox-open-zim.sh
 Created Montag 2022-12-19
 
 - [x] @Firefox @Zim @Wiki  **firefox-open-zim**
@@ -9,7 +9,7 @@ Created Montag 2022-12-19
 
 *make.sh*
 ```bash
-noweb.py -Rfirefox-open-zim.sh firefox-open-zim.md > firefox-open-zim.sh && echo 'fertig'
+noweb.py -Rfirefox-open-zim.sh firefox-open-zim.sh.md > firefox-open-zim.sh && echo 'fertig'
 ```
 
 ### firefox-open-zim.sh
@@ -17,7 +17,7 @@ noweb.py -Rfirefox-open-zim.sh firefox-open-zim.md > firefox-open-zim.sh && echo
 *firefox-open-zim.sh*
 ```bash
 #!/bin/sh
-source config.sh; # load the config library functions
+source tt-lib.sh # load the config library functions
 zimWikiName="$(config_get zimWikiName)"
 zimDir="$(config_get zimDir)"
 

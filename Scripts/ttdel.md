@@ -16,8 +16,7 @@ noweb.py -Rttdel ttdel.md > ttdel && echo 'fertig'
 *ttdel*
 ```bash
 #!/bin/bash
-source config.sh; # load the config library functions
-source tt-lib.sh;
+source tt-lib.sh; # load the config library functions
 
 yad --title="Delete files?" --text="\n Delete description file and original file \n"
 if [ ! $? -eq 1 ];

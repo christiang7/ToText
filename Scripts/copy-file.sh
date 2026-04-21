@@ -1,5 +1,4 @@
 #!/bin/bash
-source config.sh; # load the config library functions
 source tt-lib.sh;
 abfrage=$(yad --title="Copy-File" --text="Add headline?" \
     --form --separator="~" --item-separator="," \

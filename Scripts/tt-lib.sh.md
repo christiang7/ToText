@@ -17,7 +17,6 @@ Christian Gößl
 *make.sh*
 ```bash
 noweb.py -Rtt-lib.sh tt-lib.sh.md > tt-lib.sh && echo 'tt-lib.sh' && notify-send -a "Compilation tt-lib.sh" "" "$(date +"%Y-%m-%d") fertig" 
-
 ```
 
 
@@ -30,7 +29,8 @@ chmod u+x tt-lib.sh && ln -sf $(pwd)/tt-lib.sh ~/.local/bin/tt-lib.sh && echo 'f
 *tt-lib.sh*
 ```bash
 #!/bin/bash
-source config.sh
+echo "start tt script"
+source config.sh '.config/tt/config'
 journalPage="$(config_get journalPage)"
 
 #*cleanName}}
@@ -292,7 +292,7 @@ function file-description(){
         mv "$folder"/"$fileFolder" "$folder"/"$File"
         fileFolder="$fileFolder.$extens"
     fi
-    Wikiprev "$File"
+    Markdownprev "$File"
     Timestamps "$folder" "$File" "$fileFolder"
     echo "$tags"
     if [[ ! $folderSwitch == "" ]]

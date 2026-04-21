@@ -11,9 +11,8 @@ noweb.py -Rttd ttd.md > ttd && chmod u+x ttd && echo 'fertig'
 *ttd*
 ```bash
 #!/bin/bash
-source config.sh; # load the config library functions
+source tt-lib.sh; # load the config library functions
 journalPage="$(config_get journalPage)"
-source tt-lib.sh;
 yad --title="Execute ttd?" --text="\n All files in folder will get description files\n"
 if [ ! $? -eq 1 ];
 then

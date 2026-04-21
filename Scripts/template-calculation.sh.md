@@ -30,7 +30,6 @@ Einstellungen vor dem Start des eigentlichen Programms, hier für ein Shell Scri
 *preamble*
 ```bash
 #!/bin/bash
-source config.sh
 source tt-lib.sh
 langName="$(config_get langName)"
 author="$(config_get author)"

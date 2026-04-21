@@ -1,6 +1,5 @@
 #!/bin/bash
 source tt-lib.sh
-source config.sh
 langName="$(config_get langName)"
 
 txtfile=$(readlink -f -n "$1")

@@ -12,9 +12,8 @@ noweb.py -Rwebpage-pdf webpage-pdf.md > webpage-pdf && chmod u+x webpage-pdf && 
 *webpage-pdf*
 ```bash
 #!/bin/bash
-source config.sh; # load the config library functions
+source tt-lib.sh; # load the config library functions
 journalDir="$(config_get journalDir)"
-source tt-lib.sh
 
 folder=$(date +"$journalDir/%Y/%m/%d")
 mkdir -p $folder

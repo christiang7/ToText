@@ -1,7 +1,6 @@
 #!/bin/bash
-source config.sh; # load the config library functions
+source tt-lib.sh; # load the config library functions
 wikiDir="$(config_get wikiDir)"
-source tt-lib.sh;
 choose=$(yad --title="RSS insert" --text="Which topic?" \
 		--form --width 500 --separator="" --item-separator=","  \
 		--field="Show file:":CB \

@@ -42,12 +42,11 @@ noweb.py -Rtabs2topic.sh tabs2topic.sh.md > tabs2topic.sh && echo 'tabs2topic.sh
 *tabs2topic.sh*
 ```bash
 #! /bin/bash
-source config.sh; # load the config library functions
+source tt-lib.sh; # load the config library functions
 journalDir="$(config_get journalDir)"
 journalPage="$(config_get journalPage)"
 wikiDir="$(config_get wikiDir)"
 author="$(config_get author)"
-source tt-lib.sh
 #*request}}
 
 ```

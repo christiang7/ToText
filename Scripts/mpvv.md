@@ -16,10 +16,9 @@ noweb.py -Rmpvv mpvv.md > mpvv && echo 'mpvv' && date && notify-send -a "Compila
 ```bash
 #!/bin/bash
 eval "$(~/Programme/miniforge3/bin/conda shell.bash hook)"
-source config.sh; # load the config library functions
+source tt-lib.sh; # load the config library functions
 journalPage="$(config_get journalPage)"
 tempInputDir="$(config_get tempInputDir)"
-source tt-lib.sh;
 
 website="$1"
 noPlayback="$2"

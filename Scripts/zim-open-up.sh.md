@@ -1,4 +1,4 @@
-# zim-open-up
+# zim-open-up.sh
 Created 2023-06-22
 
 - [x]  **zim-open-up**
@@ -11,7 +11,7 @@ Open in zim the folder of the containing file.
 
 *make.sh*
 ```bash
- noweb.py -Rzim-open-up.sh zim-open-up.md > zim-open-up.sh && echo 'fertig' 
+ noweb.py -Rzim-open-up.sh zim-open-up.sh.md > zim-open-up.sh && echo 'fertig' 
 ```
 
 

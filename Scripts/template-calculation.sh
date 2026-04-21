@@ -1,5 +1,4 @@
 #!/bin/bash
-source config.sh
 source tt-lib.sh
 langName="$(config_get langName)"
 author="$(config_get author)"

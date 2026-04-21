@@ -1,7 +1,6 @@
 #!/bin/bash
-source config.sh; # load the config library functions
+source tt-lib.sh; # load the config library functions
 wikiDir="$(config_get wikiDir)"
-source tt-lib.sh;
 
 typ=$(yad --title="Which type?"  \
 	--form --width 500 --separator="" --item-separator=","  \

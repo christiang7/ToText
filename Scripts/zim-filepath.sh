@@ -1,5 +1,5 @@
 #!/bin/bash
-source config.sh; # load the config library functions
+source tt-lib.sh; # load the config library functions
 homeDir="$(config_get homeDir)"
 wikiDir="$(config_get wikiDir)"
 

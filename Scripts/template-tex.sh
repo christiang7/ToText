@@ -1,10 +1,9 @@
 #!/bin/bash
-source config.sh; # load the config library functions
+source tt-lib.sh; # load the config library functions
 journalPage="$(config_get journalPage)"
 templateDir="$(config_get templateDir)"
 langName="$(config_get langName)"
 author="$(config_get author)"
-source tt-lib.sh;
 
 yadSwitch=$2
 

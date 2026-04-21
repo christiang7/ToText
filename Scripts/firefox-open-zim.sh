@@ -1,5 +1,5 @@
 #!/bin/sh
-source config.sh; # load the config library functions
+source tt-lib.sh # load the config library functions
 zimWikiName="$(config_get zimWikiName)"
 zimDir="$(config_get zimDir)"
 

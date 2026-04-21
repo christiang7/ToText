@@ -13,7 +13,7 @@ noweb.py -Rinstadown instadown.md > instadown && chmod u+x instadown && echo 'fe
 *instadown*
 ```bash
 #!/bin/bash
-source config.sh; # load the config library functions
+source tt-lib.sh; # load the config library functions
 journalDir="$(config_get journalDir)"
 folder=$(date +"$journalDir/%Y/%m/%d")
 mkdir -p $folder

@@ -43,8 +43,7 @@ chmod u+x tt-change && ln -sf $(pwd)/tt-change ~/.local/bin/tt-change && echo 'f
 *tt-change*
 ```bash
 #!/bin/bash
-source config.sh; # load the config library functions
-source tt-lib.sh;
+source tt-lib.sh; # load the config library functions
 author="$(config_get author)"
 
 #case of input file is the original file

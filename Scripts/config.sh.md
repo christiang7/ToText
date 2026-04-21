@@ -28,11 +28,28 @@ noweb.py -Rconfig.sh config.sh.md > config.sh && echo 'config.sh' && date && not
 ```bash
 chmod u+x config.sh && ln -sf $(pwd)/config.sh ~/.local/bin/config.sh && echo 'fertig'
 ```
- 
+
 
 ### config.sh
 
 *config.sh*
+```bash
+#!/bin/bash
+path="$1"
+config_get() {
+    val="$(yq -oy -p toml ".${1}" ~/"$path")";
+    if [ "${val}" = "__UNDEFINED__" ]; then
+        val="$(yq -oy -p toml ".${1}" "$path")";
+    fi
+    printf -- "%s" "${val}";
+}
+
+```
+
+
+### old config.sh
+
+
 ```bash
 #!/bin/bash
 config_read_file() {

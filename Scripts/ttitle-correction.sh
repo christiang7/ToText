@@ -1,8 +1,6 @@
 #!/bin/bash
-
 File=$(basename "$1")
 #echo "$File"
-
 line=$(sed -n '/\[\*\]/{=;}' $File )
 line=${line:0:1}
 #echo $line
@@ -14,4 +12,3 @@ then
 else
     sed -i "$line s/\[\*\]/====== $(basename $File .md) ======\\n\[\*\]/" "$File"
 fi
-

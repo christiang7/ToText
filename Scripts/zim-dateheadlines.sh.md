@@ -22,7 +22,7 @@ chmod u+x zim-dateheadlines.sh && ln -sf $(pwd)/zim-dateheadlines.sh ~/.local/bi
 *zim-dateheadlines.sh*
 ```bash
 #!/bin/bash
-source config.sh; # load the config library functions
+source tt-lib.sh; # load the config library functions
 journalPage="$(config_get journalPage)"
 
 #*dateheadlines markdown}}

@@ -1,4 +1,4 @@
-# zim-web-screenshot
+# zim-web-screenshot.sh
 Created Freitag 2022-10-07
 
 - [x] **zim-web-screenshot**
@@ -13,7 +13,7 @@ Created Freitag 2022-10-07
 
 *make.sh*
 ```bash
-noweb.py -Rzim-web-screenshot.sh zim-web-screenshot.md > zim-web-screenshot.sh && echo 'fertig'
+noweb.py -Rzim-web-screenshot.sh zim-web-screenshot.sh.md > zim-web-screenshot.sh && echo 'fertig'
 ```
 
 
@@ -23,10 +23,9 @@ chmod u+x zim-web-screenshot.sh && ln -sf $(pwd)/zim-web-screenshot.sh ~/.local/
 *zim-web-screenshot.sh*
 ```bash
 #! /bin/bash
-source config.sh; # load the config library functions
+source tt-lib.sh; # load the config library functions
 journalPage="$(config_get journalPage)"
 journalDir="$(config_get journalDir)"
-source tt-lib.sh
 
 yad --title="Take screenshot?" --text="\n Taking screenshot\n"
 if [ ! $? -eq 1 ];

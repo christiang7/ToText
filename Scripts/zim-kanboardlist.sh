@@ -1,7 +1,7 @@
 #!/bin/bash
 
-echo "    [*] Backlog"
-echo "    [*] Planung ②"
-echo "    [*] Next ②"
-echo "    [*] Doing ② "
+echo "- [*] Backlog"
+echo "- [*] Planung (2)"
+echo "- [*] Next (2)"
+echo "- [*] Doing (2)"
 

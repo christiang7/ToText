@@ -1,11 +1,11 @@
-# zim-start-programm
-Created Dienstag 2022-10-11
+# zim-start-programm.sh
+Created 2022-10-11
 
 - [x] **zim-start-programm**
 
 *make.sh*
 ```bash
-noweb.py -Rzim-start-programm.sh zim-start-programm.md > zim-start-programm.sh && echo 'fertig'
+noweb.py -Rzim-start-programm.sh zim-start-programm.sh.md > zim-start-programm.sh && echo 'fertig'
 ```
 
 

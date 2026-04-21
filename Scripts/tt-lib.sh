@@ -1,5 +1,6 @@
 #!/bin/bash
-source config.sh
+echo "start tt script"
+source config.sh '.config/tt/config'
 journalPage="$(config_get journalPage)"
 
 function cleanName(){
@@ -287,7 +288,7 @@ function file-description(){
         mv "$folder"/"$fileFolder" "$folder"/"$File"
         fileFolder="$fileFolder.$extens"
     fi
-    Wikiprev "$File"
+    Markdownprev "$File"
     Timestamps "$folder" "$File" "$fileFolder"
     echo "$tags"
     if [[ ! $folderSwitch == "" ]]

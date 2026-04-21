@@ -1,10 +1,9 @@
 #!/bin/bash
-source config.sh; # load the config library functions
+source tt-lib.sh; # load the config library functions
 journalPage="$(config_get journalPage)"
 inputDir="$(config_get inputDir)"
 tempInputDir="$(config_get tempInputDir)"
 templateDir="$(config_get templateDir)"
-source tt-lib.sh
 
 file-description "$(pwd)" "$(date +"Draft_%Y-%m-%d".xopp)" "" "" "" >> "$(pwd)"/"$(date +"Draft_%Y-%m-%d".xopp)".md
 

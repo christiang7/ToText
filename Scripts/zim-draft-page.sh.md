@@ -1,4 +1,4 @@
-# zim-draft-page
+# zim-draft-page.sh
 Created 2023-09-19
 
 - [x]  **zim-draft-page** Christian Gößl 
@@ -19,7 +19,7 @@ https://overflow.hostux.net/questions/15374752/get-yesterdays-date-in-bash-on-li
 
 *make.sh*
 ```bash
-noweb.py -Rzim-draft-page.sh zim-draft-page.md > zim-draft-page.sh && echo 'fertig' 
+noweb.py -Rzim-draft-page.sh zim-draft-page.sh.md > zim-draft-page.sh && echo 'fertig' 
 ```
 
 
@@ -46,12 +46,11 @@ Einstellungen vor dem Start des eigentlichen Programms, hier für ein Shell Scri
 *preamble*
 ```bash
 #!/bin/bash
-source config.sh; # load the config library functions
+source tt-lib.sh; # load the config library functions
 journalPage="$(config_get journalPage)"
 inputDir="$(config_get inputDir)"
 tempInputDir="$(config_get tempInputDir)"
 templateDir="$(config_get templateDir)"
-source tt-lib.sh
 ```
 
 ### Template for draft page

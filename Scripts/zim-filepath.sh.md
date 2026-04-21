@@ -1,4 +1,4 @@
-# zim-filepath
+# zim-filepath.sh
 Created Sonntag 2022-11-06
 - [x] **zim-filepath** 
 
@@ -18,7 +18,7 @@ Created Sonntag 2022-11-06
 
 *make.sh*
 ```bash
-noweb.py -Rzim-filepath.sh zim-filepath.md > zim-filepath.sh && echo 'fertig'
+noweb.py -Rzim-filepath.sh zim-filepath.sh.md > zim-filepath.sh && echo 'fertig'
 ```
 
 
@@ -31,7 +31,7 @@ chmod u+x zim-filepath.sh && ln -sf $(pwd)/zim-filepath.sh ~/.local/bin/zim-file
 *zim-filepath.sh*
 ```bash
 #!/bin/bash
-source config.sh; # load the config library functions
+source tt-lib.sh; # load the config library functions
 homeDir="$(config_get homeDir)"
 wikiDir="$(config_get wikiDir)"
 

@@ -1,8 +1,8 @@
-# zim-kanboardlist
+# zim-kanboardlist.sh
 Created 2023-05-25
-- [x]  **zim-kanboardlist** 
-   - [x] Doing
-   - [x] Backlog
+
+- [x] Doing
+- [x] Backlog
 
 ## Features
 einfügen von einer Standard Kanboardliste für zim-wiki
@@ -11,7 +11,7 @@ einfügen von einer Standard Kanboardliste für zim-wiki
 
 *make.sh*
 ```bash
-noweb.py -Rzim-kanboardlist.sh zim-kanboardlist.md > zim-kanboardlist.sh && echo 'fertig'
+noweb.py -Rzim-kanboardlist.sh zim-kanboardlist.sh.md > zim-kanboardlist.sh && echo 'fertig'
 ```
 
 ## zim-kanboardlist.sh
@@ -29,9 +29,9 @@ Die Standardliste für das Gedankenspeicherprojekt für Kanboards
 
 *list*
 ```bash
-echo "    [*] Backlog"
-echo "    [*] Planung ②"
-echo "    [*] Next ②"
-echo "    [*] Doing ② "
+echo "- [*] Backlog"
+echo "- [*] Planung (2)"
+echo "- [*] Next (2)"
+echo "- [*] Doing (2)"
 ```
 

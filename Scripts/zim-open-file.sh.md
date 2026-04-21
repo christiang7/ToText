@@ -1,6 +1,6 @@
-# zim-open-file
+# zim-open-file.sh
 Created 2023-06-25
-- [x]  **zim-open-file**
+
     - [x] Doing
         - [ ] Problem with files in zim with german Umlaute
     - [x] Backlog
@@ -13,7 +13,7 @@ Created 2023-06-25
 
 *make.sh*
 ```bash
-noweb.py -Rzim-open-file.sh zim-open-file.md > zim-open-file.sh && echo 'fertig'
+noweb.py -Rzim-open-file.sh zim-open-file.sh.md > zim-open-file.sh && echo 'fertig'
 ```
 
 

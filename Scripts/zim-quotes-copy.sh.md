@@ -1,4 +1,4 @@
-# zim-quotes-copy
+# zim-quotes-copy.sh
 Created 2023-06-21
 
 - [x]  **zim-quotes-copy** 
@@ -13,14 +13,14 @@ Quoting with Anchors and Links. The quoted text is formated as verbatim text.
 
 *make.sh*
 ```bash
-noweb.py -Rzim-quotes-copy.sh zim-quotes-copy.md > zim-quotes-copy.sh && echo 'fertig'
+noweb.py -Rzim-quotes-copy.sh zim-quotes-copy.sh.md > zim-quotes-copy.sh && echo 'fertig'
 ```
 
 
 *zim-quotes-copy.sh*
 ```bash
 #!/bin/bash
-source config.sh; # load the config library functions
+source tt-lib.sh; # load the config library functions
 journalPage="$(config_get journalPage)"
 homeDir="$(config_get homeDir)"
 wikiDir="$(config_get wikiDir)"

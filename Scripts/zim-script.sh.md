@@ -1,4 +1,4 @@
-# zim-script
+# zim-script.sh
 Created 2021-04-17
 
 - [x] **zim-script** 
@@ -37,7 +37,7 @@ Mit ``%t`` wird der ausgewählte Text als Kommando ausgeführt vom Script
 
 *make.sh*
 ```bash
-noweb.py -Rzim-script.sh zim-script.md > zim-script.sh && echo 'fertig'
+noweb.py -Rzim-script.sh zim-script.sh.md > zim-script.sh && echo 'fertig'
 ```
 
 hier die zim-script Datei zum Ausführen

@@ -1,15 +1,15 @@
 # zim-mpvv
-Created Samstag 2021-04-24
+Created 2021-04-24
 
-- [x] @ArcPROGRAMM @Zim @VIDEO **zim-mpvv**
-
+- [x] **zim-mpvv**
 
 
 Kommando zum Extrahieren des Scripts
 
-``noweb.py -Rzim-mpvv zim-mpvv.md > zim-mpvv && echo 'fertig'``
-
-hier die zim-script Datei zum Ausführen
+*make.sh*
+```bash
+noweb.py -Rzim-mpvv zim-mpvv.md > zim-mpvv && echo 'fertig'
+```
 
 *zim-mpvv*
 ```bash

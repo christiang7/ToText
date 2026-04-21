@@ -10,11 +10,10 @@ noweb.py -Rttm ttm.md > ttm && chmod u+x ttm && echo 'fertig'
 *ttm*
 ```bash
 #!/usr/bin/env bash
-source config.sh; # load the config library functions
+source tt-lib.sh; # load the config library functions
 journalDir="$(config_get journalDir)"
 journalPage="$(config_get journalPage)"
 wikiDir="$(config_get wikiDir)"
-source tt-lib.sh
 
 
 f=$(basename "$1")

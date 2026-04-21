@@ -21,9 +21,8 @@ noweb.py -Rzim-xournal.sh zim-xournal.sh.md > zim-xournal.sh && echo 'fertig' &&
 *zim-xournal.sh*
 ```bash
 #!/bin/bash
-source config.sh; # load the config library functions
+source tt-lib.sh; # load the config library functions
 journalPage="$(config_get journalPage)"
-source tt-lib.sh;
 author="$(config_get author)"
 
 File=$1

@@ -1,6 +1,5 @@
 #!/bin/bash
-source config.sh; # load the config library functions
-source tt-lib.sh;
+source tt-lib.sh; # load the config library functions
 author="$(config_get author)"
 
 File=$(cleanName "$1")

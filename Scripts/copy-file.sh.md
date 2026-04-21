@@ -25,7 +25,6 @@ chmod u+x copy-file.sh && ln -sf $(pwd)/copy-file.sh ~/.local/bin/copy-file.sh &
 *copy-file.sh*
 ```bash
 #!/bin/bash
-source config.sh; # load the config library functions
 source tt-lib.sh;
 abfrage=$(yad --title="Copy-File" --text="Add headline?" \
     --form --separator="~" --item-separator="," \
