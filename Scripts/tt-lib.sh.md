@@ -312,7 +312,7 @@ function file-description(){
         elif [[ jpg == $extens || PNG == $extens || JPEG == $extens || png == $extens || webp == $extens || jpeg == $extens || avif == $extens ]]
         then
             #echo "{{../${File%.*}.avif?width=500}}"
-            echo "![](../${File%.*}){width=500px}"
+            echo "![](../${File%.*}.avif){width=500px}"
         else
             #echo "{{../$File.avif?width=500}}"
             echo "![](../$File.avif){width=500px}"
