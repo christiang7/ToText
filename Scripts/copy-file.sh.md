@@ -40,7 +40,7 @@ then
    #echo -e "==== $(date +"%Y-%m-%d")" > COPY
    echo -e "### $(date +"%Y-%m-%d")" > COPY
 fi
-if [[ jpg == $extens || PNG == $extens || JPEG == $extens || png == $extens || webp == $extens || jpeg == $extens || avif == $extens ]]
+if [[ jpg == $extens || PNG == $extens || svg == $extens || JPEG == $extens || png == $extens || webp == $extens || jpeg == $extens || avif == $extens ]]
 then
     #echo -e "{{./${File}?width=500}}">> COPY
     echo -e "![](./${File}){width=500px}">> COPY

@@ -74,7 +74,7 @@ then
         #echo -e "==== $(date +"%Y-%m-%d") "
         echo -e "### $(date +"%Y-%m-%d")"
     fi
-    if [[ jpg == $extens || PNG == $extens || JPEG == $extens || png == $extens || webp == $extens || jpeg == $extens || avif == $extens ]]
+    if [[ jpg == $extens || PNG == $extens || JPEG == $extens || png == $extens || webp == $extens || svg == $extens || jpeg == $extens || avif == $extens ]]
 	then
         extens="avif"
         #echo -e "{{./$Newname.$extens?width=500}}"

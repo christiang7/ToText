@@ -152,10 +152,10 @@ then
 	if [[ ${template} == "Programming" ]]
 	then
 		extens="$(get-extens ${langname})"
-		add="[[./"${filename}".${extens}]]\n[[./"${filename}".${extens}.md]]\n"
+		add="[](./"${filename}".${extens})\n[](./"${filename}".${extens}.md)\n"
 	fi
 
-	create-note "$folder" "$foldertex" "@LATEX $tags" "" "$add[[./$filename.tex.md]]\n[[./$filename.tex]]\n[[./$filename.pdf]]" >> "$folder"/"$foldertex".md
+	create-note "$folder" "$foldertex" "@LATEX $tags" "" "$add[](./$filename.tex.md)\n[](./$filename.tex)\n[](./$filename.pdf)" >> "$folder"/"$foldertex".md
 
 	markdown-description-program "${filename}".tex >> "$folder"/"$foldertex"/"${filename}".tex.md
 

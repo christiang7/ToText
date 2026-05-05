@@ -141,7 +141,7 @@ then
 	if [[ pdf == $extens ]]
 	then
 		ttpdf "$folder" "$File" "$source" "$tags" "$additiontext" "yes" >> "$folder"/"$File".md
-	elif [[ jpg == $extens || PNG == $extens || JPEG == $extens || png == $extens || webp == $extens || jpeg == $extens || avif == $extens ]] && [[ -z $extenspdf && -z $extensxopp && -z $extensmp4 && -z $extensmov && -z $extensflv && -z $extensmkv ]]
+	elif [[ jpg == $extens || PNG == $extens || JPEG == $extens || svg == $extens || png == $extens || webp == $extens || jpeg == $extens || avif == $extens ]] && [[ -z $extenspdf && -z $extensxopp && -z $extensmp4 && -z $extensmov && -z $extensflv && -z $extensmkv ]]
 	then
 		# || tif == $extens || tiff == $extens
 		if [[ avif != $extens ]]
