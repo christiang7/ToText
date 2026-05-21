@@ -427,7 +427,8 @@ function ttpdf(){
     file-description "$folder" "$File" "@Document $tags" "$source" "$additiontext" "pic" "$folderSwitch"
 
     pdftoppm -png -singlefile "$fileFolder"/"$File" "$fileFolder"/"$File"
-    convert "$fileFolder"/"$File".png -resize 1200x1200 "$fileFolder"/"$File".avif
+    convert "$fileFolder"/"$File".png -resize 1200x1200 "$fileFolder"/"$File".png
+    avifenc "$fileFolder"/"$File".png "$fileFolder"/"$File".avif > ~/.config/tt/log
     rm "$fileFolder"/"$File".png
     pdfinfo "$fileFolder"/"$File" | grep Pages
     echo -e "\n"
