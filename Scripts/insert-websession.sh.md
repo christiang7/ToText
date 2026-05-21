@@ -12,6 +12,9 @@ Created 2025-04-05
 ## sh code
 
 
+
+
+
 *make.sh*
 ```bash
 noweb.py -Rinsert-websession.sh insert-websession.sh.md > insert-websession.sh && echo 'insert-websession.sh' && date && notify-send -a "Compilation of insert-websession.sh" "" "$(date +"%Y-%m-%d") fertig" 
@@ -22,6 +25,22 @@ noweb.py -Rinsert-websession.sh insert-websession.sh.md > insert-websession.sh &
 chmod u+x insert-websession.sh && ln -sf $(pwd)/insert-websession.sh ~/.local/bin/insert-websession.sh && echo 'fertig'
 ```
 
+
+
+
+### insert-websession.sh
+
+definitions:
+
+*execution*
+```bash
+    insert-websession.sh 
+```
+
+*output*
+```bash
+    text
+```
 
 *insert-websession.sh*
 ```bash

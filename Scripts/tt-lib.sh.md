@@ -572,6 +572,7 @@ function template-code(){
         echo -e "{{./${Filename}.png?width=500}}"
 	fi
     echo -e " \n## ${langname} code\n\n"
+    echo -e " \n### Compilation code\n"
     echo -e "$codeHead"
     echo -e "\`\`\`bash"
     case ${extens} in
@@ -594,6 +595,7 @@ function template-code(){
             echo -e "chmod u+x ${Filename}.${extens} && ln -sf \$(pwd)/${Filename}.${extens} ~/.local/bin/${Filename}.${extens} && echo 'fertig'\n\`\`\`"
             ;;
     esac
+    echo -e "\n### ${Filename}.${extens}\n\n"
     echo -e "\n*${Filename}.${extens}*"
     echo -e "\`\`\`${langname}"
     if  [[ -e "$File" ]]
@@ -698,6 +700,7 @@ function tex-description(){
     local additiontext="$4"
     local moreCommands="$5"
     echo -e "\n## Latex File\n"
+    echo -e "\n## Latex Compilation\n"
     echo -e "\n*make.sh*"
     echo -e "\`\`\`bash"
     if [[ ! $moreCommands == "" ]]
@@ -707,6 +710,7 @@ function tex-description(){
     else
         echo -e "noweb.py -R${File} ${filename}.tex.md > ${File} && lualatex -interaction=nonstopmode -shell-escape ${File} && lualatex -interaction=nonstopmode -shell-escape ${File} && notify-send -a \"Compilation of ${File}\" \"\" \"\$(date +\"%Y-%m-%d\") fertig\" && xdg-open ${filename}.pdf 2>/dev/null \n\`\`\`\n\n"
     fi
+    echo -e "\n### ${File}"
     echo -e "*${File}*"
     echo -e "\`\`\`latex"
     cat "$folder"/"$foldertex"/"${File}" >> "$folder"/"$foldertex"/"${filename}".tex.md
