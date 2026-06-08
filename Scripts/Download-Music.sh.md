@@ -10,6 +10,10 @@ lynx --dump  https://kalax.bandcamp.com/track/confie-hold-on-feat-francci
 links2 -dump https://kalax.bandcamp.com/track/confie-hold-on-feat-francci
 ```
 
+```bash
+ffmpeg -i NINA_n_Radio_Wolf_-_To_See_You_-_Official_Visualizer.m4a -i art.png -map 0 -map 1 -c copy -disposition:v:0 attached_pic NINA_n_Radio_Wolf_-_To_See_You_-_Official_Visualizer.m4a
+```
+
 
 *make.sh*
 ```bash
@@ -25,19 +29,27 @@ source tt-lib.sh
 echo "$1"
 website="$1"
 musicDir="$(config_get musicDir)"
+homeDir="$(config_get homeDir)"
 yt="$(echo "$website" | grep youtube)"
 #cd $musicDir
 if [[ ! "$yt" = "" ]];
 then
     text="$(yt-dlp --cookies-from-browser firefox --get-description ${website})"
     #text="$(echo -e "${text}" | sed 's/\"//g')"
-    yt-dlp --cookies-from-browser firefox --no-mtime -o "$musicDir/%(title)s.%(ext)s" -f "140/251" --js-runtimes deno:/home/christian/.deno/bin/deno --remote-components ejs:github -i "${website}"
-	ofile=$(yt-dlp --cookies-from-browser firefox --print filename -s "${website}" -f "140/251" --js-runtimes deno:/home/christian/.deno/bin/deno --remote-components ejs:github -o "%(title)s.%(ext)s")
+    yt-dlp --cookies-from-browser firefox --no-mtime -o "$musicDir/%(title)s.%(ext)s" -f "140/251" --js-runtimes deno:$homeDir/.deno/bin/deno --remote-components ejs:github -i "${website}"
+    yt-dlp -q --js-runtimes deno:$homeDir/.deno/bin/deno --remote-components ejs:github --write-thumbnail --skip-download -i ${website} -o "$musicDir/%(title)s.%(ext)s"
+	ofile=$(yt-dlp --cookies-from-browser firefox --print filename -s "${website}" -f "140/251" --js-runtimes deno:$homeDir/.deno/bin/deno --remote-components ejs:github -o "%(title)s.%(ext)s")
+	name=${ofile%.*}
+	extens=${ofile##*.}
+    convert "$musicDir/$name.webp" "$musicDir/$name.jpg"
+	ffmpeg -i "$musicDir/$ofile" -i "$musicDir/$name.jpg" -map 0 -map 1 -c copy -disposition:v:0 attached_pic "$musicDir/$name-.$extens"
+	rm "$musicDir/$name.webp" "$musicDir/$name.jpg"
+	mv "$musicDir/$name-.$extens" "$musicDir/$ofile"
 else
     text=$(links2 -dump ${website})
     #text=$(echo -e "${text}")
-    yt-dlp --no-mtime -o "$musicDir/%(title)s.%(ext)s" --cookies-from-browser firefox --js-runtimes deno:/home/christian/.deno/bin/deno --remote-components ejs:github --embed-thumbnail -f b --no-mtime --audio-quality 0 -i "${website}"
-	ofile=$(yt-dlp --cookies-from-browser firefox --print filename -s "${website}" -f b --audio-quality 0 --js-runtimes deno:/home/christian/.deno/bin/deno --remote-components ejs:github -o "%(title)s.%(ext)s")
+    yt-dlp --no-mtime -o "$musicDir/%(title)s.%(ext)s" --cookies-from-browser firefox --js-runtimes deno:$homeDir/.deno/bin/deno --remote-components ejs:github --embed-thumbnail -f b --no-mtime --audio-quality 0 -i "${website}"
+	ofile=$(yt-dlp --cookies-from-browser firefox --print filename -s "${website}" -f b --audio-quality 0 --js-runtimes deno:$homeDir/.deno/bin/deno --remote-components ejs:github -o "%(title)s.%(ext)s")
 fi
 
 extens=${ofile##*.}
