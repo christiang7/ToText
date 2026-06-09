@@ -13,13 +13,15 @@ abfrage=$(yad --title="Insert code?" --text="Necessary Informations:" \
 	--field="Filename" \
 	--field="Shortname for language":CBE \
 	--field="Add to existing code":CB \
-	"" "$langName" ",yes")
+	--field="Type of note":CB \
+	"" "$langName" ",yes" "wiki, file")
 if [ ! $? -eq 1 ];
 then
 	mkdir -p "$folder"
 	File=$(echo $abfrage | cut -s -d "~" -f 1)
 	langname=$(echo $abfrage | cut -s -d "~" -f 2)
 	add=$(echo $abfrage | cut -s -d "~" -f 3)
+	notetype=$(echo $abfrage | cut -s -d "~" -f 4)
 
 	File=$(cleanName "$File")
 
@@ -27,8 +29,11 @@ then
 
 	Filename="$File"
 	File="$File"."${extens}"
-
-
-	template-code "." "${Filename}.${extens}" "${txtfilename}" "$add"
-
+	if [[ $notetype == "wiki" ]]
+	then
+		path="${txtfilename}"
+	else
+		path="."
+	fi
+	template-code "${path}" "${Filename}.${extens}" "${txtfilename}" "$add"
 fi

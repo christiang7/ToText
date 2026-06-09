@@ -546,9 +546,13 @@ function template-code(){
     local File=$(cleanName "$2")
     local outFile=$(cleanName "$3")
     local switchCode=$4
+    # used for insert code script
     if [[ $outFile == "" ]]
     then
         outFile=${File}
+        path="."
+    else
+        path="$folder"
     fi
     #local tags=$3
     #local source=$4
@@ -569,7 +573,7 @@ function template-code(){
     fi
     if  [[ $extens == "plantuml" || $extens == "plt" || $extens == "mmd" ]]
     then
-        echo -e "{{./${Filename}.png?width=500}}"
+        echo -e "![](./${Filename}.png)"
 	fi
     echo -e " \n## ${langname} code\n\n"
     echo -e " \n### Compilation code\n"
@@ -577,17 +581,16 @@ function template-code(){
     echo -e "\`\`\`bash"
     case ${extens} in
         plantuml)
-            mkdir -p "${outFile}"
-            echo -e "noweb.py -R${Filename}.${extens} ${outFile}.md > "${outFile}"/${Filename}.${extens} && plantuml "${outFile}"/${Filename}.${extens} && echo '${Filename}.${extens}' && notify-send -a \"Compilation of ${Filename}.${extens}\" \"\" \"\$(date +\"%Y-%m-%d\") fertig\" && gwenview "${outFile}"/${Filename}.png 2>/dev/null \n\`\`\`"
+            echo -e "noweb.py -R${Filename}.${extens} ${outFile}.md > "${path}"/${Filename}.${extens} && plantuml "${path}"/${Filename}.${extens} && echo '${Filename}.${extens}' && notify-send -a \"Compilation of ${Filename}.${extens}\" \"\" \"\$(date +\"%Y-%m-%d\") fertig\" && gwenview "${path}"/${Filename}.png 2>/dev/null \n\`\`\`"
             ;;
         typst) 
             echo -e "noweb.py -R${Filename}.${extens} ${outFile}.md > ${Filename}.${extens} && typst compile --format pdf ${Filename}.${extens} && echo '${Filename}.${extens}' && notify-send -a \"Compilation of ${Filename}.${extens}\" \"\" \"\$(date +\"%Y-%m-%d\") fertig\" && xournalpp ${Filename}.pdf 2>/dev/null & \n\`\`\`"
             ;;
         plt) 
-            echo -e "noweb.py -R${Filename}.${extens} ${outFile}.md > "${outFile}"/${Filename}.${extens} && notify-send -a \"Compilation of ${Filename}.${extens}\" \"\" \"\$(date +\"%Y-%m-%d\") fertig\" && gnuplot "${outFile}"/${Filename}.${extens} -p \n\`\`\`"
+            echo -e "noweb.py -R${Filename}.${extens} ${outFile}.md > "${path}"/${Filename}.${extens} && notify-send -a \"Compilation of ${Filename}.${extens}\" \"\" \"\$(date +\"%Y-%m-%d\") fertig\" && gnuplot "${path}"/${Filename}.${extens} -p \n\`\`\`"
             ;;
         mmd) 
-            echo -e "noweb.py -R${Filename}.${extens} ${outFile}.md > "${outFile}"/${Filename}.${extens} && mermaid-cli.sh "${outFile}"/${Filename}.${extens} && echo '${Filename}.${extens}' && notify-send -a \"Compilation of ${Filename}.${extens}\" \"\" \"\$(date +\"%Y-%m-%d\") fertig\" && gwenview "${outFile}"/${Filename}.png 2>/dev/null \n\`\`\`"
+            echo -e "noweb.py -R${Filename}.${extens} ${outFile}.md > "${path}"/${Filename}.${extens} && mermaid-cli.sh "${path}"/${Filename}.${extens} && echo '${Filename}.${extens}' && notify-send -a \"Compilation of ${Filename}.${extens}\" \"\" \"\$(date +\"%Y-%m-%d\") fertig\" && gwenview "${path}"/${Filename}.png 2>/dev/null \n\`\`\`"
             ;;
         *) 
             echo -e "noweb.py -R${Filename}.${extens} ${outFile}.md > ${Filename}.${extens} && echo '${Filename}.${extens}' && notify-send -a \"Compilation of ${Filename}.${extens}\" \"\" \"\$(date +\"%Y-%m-%d\") fertig\" \n\`\`\`"
@@ -600,49 +603,50 @@ function template-code(){
     echo -e "\`\`\`${langname}"
     if  [[ -e "$File" ]]
     then 
-        cat "$folder"/"$File" >> "$folder"/"$File".md
+        cat "$folder"/"$File" | tee -a "$folder"/"$File".md
     else
         case ${extens} in
             sh) 
-                echo -e "#!/bin/bash" >> "$folder"/"$File"
+                echo -e "#!/bin/bash" | tee -a "$folder"/"$File"
                 ;;
             plantuml) 
-                echo -e "@startuml\n allowmixing\n" >> "$folder"/"$File"
-                echo -e "@enduml" >> "$folder"/"$File"
+                echo -e "@startuml\nallowmixing\n" | tee -a "$folder"/"$File"
+                echo -e "@enduml" | tee -a "$folder"/"$File"
                 ;;
             mmd)
-                echo "graph TD" >> "$folder"/"$File"
-                echo "    accTitle: My title here" >> "$folder"/"$File"
-                echo "    accDescr: My description here" >> "$folder"/"$File"
-                echo "    A[Enter Chart Definition] --> B(Preview)" >> "$folder"/"$File"
+                echo "graph TD" | tee -a "$folder"/"$File"
+                echo "    accTitle: My title here" | tee -a "$folder"/"$File"
+                echo "    accDescr: My description here" | tee -a "$folder"/"$File"
+                echo "    A[Enter Chart Definition] --> B(Preview)" | tee -a "$folder"/"$File"
                 ;;
             plt) 
-                echo "reset" >> "$folder"/"$File"
-                echo "set grid" >> "$folder"/"$File"
-                echo "#set yrange [:]" >> "$folder"/"$File"
-                echo "#set xrange [:]" >> "$folder"/"$File"
-                echo "set ylabel 'y'" >> "$folder"/"$File"
-                echo "set xlabel 'x'" >> "$folder"/"$File"
-                echo "#set logscale y" >> "$folder"/"$File"
-                echo "set term png" >> "$folder"/"$File"
-                echo "set output sprintf('"${outFile}"/${Filename}.png')" >> "$folder"/"$File"
-                echo "plot  lt rgb 'blue'" >> "$folder"/"$File"
-                echo "#plot "data.txt" using ($1):($2) title '1' lt rgb 'blue', "data.txt" using ($1):($3) title '2' lt rgb 'red', "data.txt" using ($1):($4) title '3' lt rgb 'green'" >> "$folder"/"$File"
-                echo "set term qt" >> "$folder"/"$File"
-                echo "replot" >> "$folder"/"$File"
+                echo "reset" | tee -a "$folder"/"$File"
+                echo "set grid" | tee -a "$folder"/"$File"
+                echo "#set yrange [:]" | tee -a "$folder"/"$File"
+                echo "#set xrange [:]" | tee -a "$folder"/"$File"
+                echo "set ylabel 'y'" | tee -a "$folder"/"$File"
+                echo "set xlabel 'x'" | tee -a "$folder"/"$File"
+                echo "#set logscale y" | tee -a "$folder"/"$File"
+                echo "set term png" | tee -a "$folder"/"$File"
+                echo "set output sprintf('"${outFile}"/${Filename}.png')" | tee -a "$folder"/"$File"
+                echo "plot  lt rgb 'blue'" | tee -a "$folder"/"$File"
+                echo "#plot "data.txt" using ($1):($2) title '1' lt rgb 'blue', "data.txt" using ($1):($3) title '2' lt rgb 'red', "data.txt" using ($1):($4) title '3' lt rgb 'green'" | tee -a "$folder"/"$File"
+                echo "set term qt" | tee -a "$folder"/"$File"
+                echo "replot" | tee -a "$folder"/"$File"
                 ;;
             desktop) 
-                echo "[Desktop Entry]" >> "$folder"/"$File"
-                echo "Name=" >> "$folder"/"$File"
-                echo "Comment=" >> "$folder"/"$File"
-                echo "Exec=" >> "$folder"/"$File"
-                echo "Icon=" >> "$folder"/"$File"
-                echo "Type=Application" >> "$folder"/"$File"
+                echo "[Desktop Entry]" | tee -a "$folder"/"$File"
+                echo "Name=" | tee -a "$folder"/"$File"
+                echo "Comment=" | tee -a "$folder"/"$File"
+                echo "Exec=" | tee -a "$folder"/"$File"
+                echo "Icon=" | tee -a "$folder"/"$File"
+                echo "Type=Application" | tee -a "$folder"/"$File"
                 ;;
             *)
                 touch "$folder"/"$File"
         esac
-        cat "$folder"/"$File" >> "$folder"/"$File".md
+        #cat "$folder"/"$File" >> "$folder"/"$outFile".md
+        #noweb.py -R${Filename}.${extens} ${outFile}.md > "${outFile}"/${Filename}.${extens}
     fi
     echo -e "\n\`\`\`"
 }
