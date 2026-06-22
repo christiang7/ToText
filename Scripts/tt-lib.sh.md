@@ -444,10 +444,10 @@ function ttvid(){
         yt-dlp -q --sub-langs "en,de" --write-sub --write-thumbnail --write-auto-sub --sub-format "vtt" --skip-download -i ${source} -o "$folder/%(title)s.%(ext)s"
         mv "$folder"/"$oname".en.vtt "$fileFolder"/"$name".en.vtt
         mv "$folder"/"$oname".de.vtt "$fileFolder"/"$name".de.vtt
-        convert "$folder"/"$oname".jpg "$fileFolder"/"$File".avif
-        convert "$folder"/"$oname".jpeg "$fileFolder"/"$File".avif
-        convert "$folder"/"$oname".webp "$fileFolder"/"$File".avif
-        convert "$folder"/"$oname".png "$fileFolder"/"$File".avif
+        convert "$folder"/"$oname".webp "$folder"/"$oname".png
+        avifenc "$folder"/"$oname".jpg "$fileFolder"/"$File".avif > ~/.config/tt/log
+        avifenc "$folder"/"$oname".jpeg "$fileFolder"/"$File".avif > ~/.config/tt/log
+        avifenc "$folder"/"$oname".png "$fileFolder"/"$File".avif > ~/.config/tt/log
         rm "$folder"/"$oname".webp
         rm "$folder"/"$oname".jpg
         rm "$folder"/"$oname".jpeg
@@ -460,8 +460,9 @@ function ttvid(){
 		cat "$folder"/"${oname}".txt
 		rm "$folder"/"${oname}".txt
 		ffmpeg -loglevel quiet -ss 2 -i "$fileFolder"/"$File"  -t 1 -f image2 "$folder"/"$File".png
-        convert "$folder"/"$File".png -resize 1200x1200 "$fileFolder"/"$File".avif
-		rm "$folder"/"$File".png
+        convert "$folder"/"$File".png -resize 1200x1200 "$folder"/"$File"-.png
+        avifenc "$folder"/"$File"-.png  "$fileFolder"/"$File".avif > ~/.config/tt/log
+		rm "$folder"/"$File".png "$folder"/"$File"-.png
         ffmpeg -i "$folder"/"${oname}".srt "$fileFolder"/"${name}".vtt
         mv "$folder"/"${oname}".ttml "$fileFolder"/"${name}".ttml
         rm "$folder"/"${name}".srt
