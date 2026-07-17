@@ -199,6 +199,8 @@ function get-extens(){
             ;;
         mermaid) extens="mmd"
             ;;
+        markdown) extens="md"
+            ;;
         *) extens="${langname}"
             ;;
     esac
@@ -245,6 +247,8 @@ function get-langname(){
         plt) langname="bash"
             ;;
         mmd) langname="mermaid"
+            ;;
+        md) langname="markdown"
             ;;
         desktop) langname="bash"
             ;;
@@ -584,6 +588,9 @@ function template-code(){
         plantuml)
             echo -e "noweb.py -R${Filename}.${extens} ${outFile}.md > "${path}"/${Filename}.${extens} && plantuml "${path}"/${Filename}.${extens} && echo '${Filename}.${extens}' && notify-send -a \"Compilation of ${Filename}.${extens}\" \"\" \"\$(date +\"%Y-%m-%d\") fertig\" && gwenview "${path}"/${Filename}.png 2>/dev/null \n\`\`\`"
             ;;
+        md)
+            echo -e "noweb.py -R${Filename}.${extens} ${outFile}.md > "${path}"/${Filename}.${extens} && echo '${Filename}.${extens}' && notify-send -a \"Compilation of ${Filename}.${extens}\" \"\" \"\$(date +\"%Y-%m-%d\") fertig\" \n\`\`\`"
+            ;;
         typst) 
             echo -e "noweb.py -R${Filename}.${extens} ${outFile}.md > ${Filename}.${extens} && typst compile --format pdf ${Filename}.${extens} && echo '${Filename}.${extens}' && notify-send -a \"Compilation of ${Filename}.${extens}\" \"\" \"\$(date +\"%Y-%m-%d\") fertig\" && xournalpp ${Filename}.pdf 2>/dev/null & \n\`\`\`"
             ;;
@@ -601,26 +608,33 @@ function template-code(){
     esac
     echo -e "\n### ${Filename}.${extens}\n\n"
     echo -e "\n*${Filename}.${extens}*"
-    echo -e "\`\`\`${langname}"
     if  [[ -e "$File" ]]
     then 
         cat "$folder"/"$File" | tee -a "$folder"/"$File".md
     else
         case ${extens} in
+            md)
+                echo -e "\`\`\`${extens}"
+                echo -e "# \n" | tee -a "$folder"/"$File"
+                ;;
             sh) 
+                echo -e "\`\`\`${extens}"
                 echo -e "#!/bin/bash" | tee -a "$folder"/"$File"
                 ;;
             plantuml) 
+                echo -e "\`\`\`${extens}"
                 echo -e "@startuml\nallowmixing\n" | tee -a "$folder"/"$File"
                 echo -e "@enduml" | tee -a "$folder"/"$File"
                 ;;
             mmd)
+                echo -e "\`\`\`${extens}"
                 echo "graph TD" | tee -a "$folder"/"$File"
                 echo "    accTitle: My title here" | tee -a "$folder"/"$File"
                 echo "    accDescr: My description here" | tee -a "$folder"/"$File"
                 echo "    A[Enter Chart Definition] --> B(Preview)" | tee -a "$folder"/"$File"
                 ;;
             plt) 
+                echo -e "\`\`\`${extens}"
                 echo "reset" | tee -a "$folder"/"$File"
                 echo "set grid" | tee -a "$folder"/"$File"
                 echo "#set yrange [:]" | tee -a "$folder"/"$File"
@@ -636,6 +650,7 @@ function template-code(){
                 echo "replot" | tee -a "$folder"/"$File"
                 ;;
             desktop) 
+                echo -e "\`\`\`${langname}"
                 echo "[Desktop Entry]" | tee -a "$folder"/"$File"
                 echo "Name=" | tee -a "$folder"/"$File"
                 echo "Comment=" | tee -a "$folder"/"$File"
@@ -644,6 +659,7 @@ function template-code(){
                 echo "Type=Application" | tee -a "$folder"/"$File"
                 ;;
             *)
+                echo -e "\`\`\`${langname}"
                 touch "$folder"/"$File"
         esac
         #cat "$folder"/"$File" >> "$folder"/"$outFile".md
