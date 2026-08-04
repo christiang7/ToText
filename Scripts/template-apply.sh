@@ -47,11 +47,11 @@ then
     cp -r "$templateApply"/cover-letter_tex "$folder"/"$Apply"/cover-letter_tex
     cp -r "$templateApply"/cover-letter_tex.md "$folder"/"$Apply"/cover-letter_tex.md
 
-    cp -r "$templateApply"/CV_tex "$folder"/"$Apply"/CV_tex
-    cp -r "$templateApply"/CV_tex.md "$folder"/"$Apply"/CV_tex.md
+    #cp -r "$templateApply"/CV_tex "$folder"/"$Apply"/CV_tex
+    #cp -r "$templateApply"/CV_tex.md "$folder"/"$Apply"/CV_tex.md
 
-    cp -r "$templateApply"/Lebenslauf_tex "$folder"/"$Apply"/Lebenslauf_tex
-    cp -r "$templateApply"/Lebenslauf_tex.md "$folder"/"$Apply"/Lebenslauf_tex.md
+    #cp -r "$templateApply"/Lebenslauf_tex "$folder"/"$Apply"/Lebenslauf_tex
+    #cp -r "$templateApply"/Lebenslauf_tex.md "$folder"/"$Apply"/Lebenslauf_tex.md
 
     cp -r "$templateApply"/Media "$folder"/"$Apply"/Media
 
