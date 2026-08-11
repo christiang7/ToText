@@ -4,7 +4,7 @@ source config.sh '.config/tt/config'
 journalPage="$(config_get journalPage)"
 
 function cleanName(){
-    echo "$1" | sed 's/ /_/g' | sed 's/:/;/g'| sed -e "s/'/_/g" | sed 's/\"//g'|  sed 's/&/n/g' | sed 's/\///g' | sed 's/|//g' | sed 's/\[/(/g' | sed 's/\]/)/g' | sed 's/@/at/g' | sed 's/：/;/g' | sed 's/？/¿/g' | sed "s/|/;/g" | sed "s/·/;/g" | sed "s/💤/;/g" | sed "s/｜/-/g" | sed "s/?/¿/g" | sed "s/!/;/g" | sed "s/¦/;/g" | sed "s/⧸/-/g" | sed "s/~/-/g" | sed "s/—/-/g" | sed "s/#/;/g" | sed "s/!/;/g" | sed "s/\%/;/g"
+    echo "$1" | sed 's/ /_/g' | sed 's/:/;/g'| sed -e "s/'/_/g" | sed 's/\"//g'|  sed 's/&/n/g' | sed 's/\///g' | sed 's/|//g' | sed 's/\[/(/g' | sed 's/\]/)/g' | sed 's/@/at/g' | sed 's/：/;/g' | sed 's/？/¿/g' | sed "s/|/;/g" | sed "s/·/;/g" | sed "s/💤/;/g" | sed "s/｜/-/g" | sed "s/?/¿/g" | sed "s/!/i/g" | sed "s/¦/;/g" | sed "s/⧸/-/g" | sed "s/~/-/g" | sed "s/—/-/g" | sed "s/#/;/g" | sed "s/\%/;/g"
 }
 
 function WikiMarkprev(){
