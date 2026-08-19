@@ -31,7 +31,7 @@ chmod u+x Download-Video.sh && ln -sf $(pwd)/Download-Video.sh ~/.local/bin/Down
 *Download-Video.sh*
 ```bash
 #! /bin/bash
-eval "$(~/Programme/miniforge3/bin/conda shell.bash hook)"
+#eval "$(~/Programme/miniforge3/bin/conda shell.bash hook)"
 source tt-lib.sh
 
 outputDir="$(config_get outputDir)"

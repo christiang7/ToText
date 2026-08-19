@@ -24,7 +24,6 @@ noweb.py -RDownload-Music.sh Download-Music.sh.md > Download-Music.sh && echo "D
 *Download-Music.sh*
 ```bash
 #!/bin/bash
-eval "$(~/Programme/miniforge3/bin/conda shell.bash hook)"
 source tt-lib.sh
 echo "$1"
 website="$1"

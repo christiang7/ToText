@@ -41,7 +41,7 @@ noweb.py -Rtabs2topic.sh tabs2topic.sh.md > tabs2topic.sh && echo 'tabs2topic.sh
 
 *tabs2topic.sh*
 ```bash
-#! /bin/bash
+#!/bin/bash
 source tt-lib.sh; # load the config library functions
 journalDir="$(config_get journalDir)"
 journalPage="$(config_get journalPage)"

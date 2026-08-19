@@ -29,11 +29,6 @@ chmod u+x insert-code.sh && ln -sf $(pwd)/insert-code.sh ~/.local/bin/insert-cod
  
 ### insert-code.sh
 
-
-
-
-
-
 *insert-code.sh*
 ```bash
 #!/bin/bash

@@ -1,5 +1,5 @@
 #!/bin/bash
-eval "$(~/Programme/miniforge3/bin/conda shell.bash hook)"
+#eval "$(~/Programme/miniforge3/bin/conda shell.bash hook)"
 #journalDir="$(config_get journalDir)"
 source tt-lib.sh;
 

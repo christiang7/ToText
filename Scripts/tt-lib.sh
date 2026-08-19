@@ -1,4 +1,5 @@
 #!/bin/bash
+#eval "$(~/Programme/miniforge3/bin/conda shell.bash hook)"
 echo "start tt script" > ~/.config/tt/log
 source config.sh '.config/tt/config'
 journalPage="$(config_get journalPage)"

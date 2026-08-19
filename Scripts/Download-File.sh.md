@@ -12,7 +12,7 @@ noweb.py -RDownload-File.sh Download-File.sh.md > Download-File.sh && chmod u+x 
 *Download-File.sh*
 ```bash
 #!/bin/bash
-eval "$(~/Programme/miniforge3/bin/conda shell.bash hook)"
+#eval "$(~/Programme/miniforge3/bin/conda shell.bash hook)"
 #journalDir="$(config_get journalDir)"
 source tt-lib.sh;
 
