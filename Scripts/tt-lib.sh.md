@@ -692,9 +692,9 @@ function markdown-description-program(){
     echo -e "Created $(date +%Y-%m-%d)\n"
     echo -e "\n## Description"
     echo -e "\n## Journal"
-    echo -e " - [X] Backlog"
-    echo -e "    - [ ] "
-    echo -e " - [X] Doing"
+    echo -e "- [*] Backlog"
+    echo -e "   - [ ] "
+    echo -e "- [*] Doing"
 }
 ```
 
@@ -794,3 +794,4 @@ function ttex(){
 }
 
 ```
+

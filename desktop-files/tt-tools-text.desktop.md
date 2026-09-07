@@ -88,3 +88,5 @@ Terminal=false
 Exec=rm ~/.config/tt/log && copy-file.sh %f 2>&1 | tee ~/.config/tt/log
 
 ```
+
+

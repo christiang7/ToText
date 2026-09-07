@@ -1,8 +1,8 @@
 # zim-dateheadlines
 Created 2023-05-25
-- [x]  **zim-dateheadlines** 
-   - [x] Doing
-   - [x] Backlog
+- [*]  **zim-dateheadlines** 
+   - [*] Doing
+   - [*] Backlog
 
 ## Features
 
@@ -45,3 +45,7 @@ echo -e "==== $(date +"%Y-%m-%d") "
 #echo -e "### $(date +"[[$journalPage/%Y/%m/%d|%Y-%m-%d]]") "
 echo -e "### $(date +"%Y-%m-%d") "
 ```
+
+
+
+

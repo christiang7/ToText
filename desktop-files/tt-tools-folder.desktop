@@ -10,4 +10,4 @@ X-KDE-Submenu=tt-folder
 Name=ttd
 Name[de]=ttd
 Icon=audio
-Exec=rm ~/.config/tt/log && ttd %f 2>&1 | tee ~/.config/tt/log
+Exec=/bin/sh -c "rm ~/.config/tt/log && ttd %f 2>&1 | tee ~/.config/tt/log"
