@@ -449,7 +449,7 @@ function ttvid(){
         yt-dlp -q --sub-langs "en,de" --write-sub --write-thumbnail --write-auto-sub --sub-format "vtt" --skip-download -i ${source} -o "$folder/%(title)s.%(ext)s"
         mv "$folder"/"$oname".en.vtt "$fileFolder"/"$name".en.vtt
         mv "$folder"/"$oname".de.vtt "$fileFolder"/"$name".de.vtt
-        convert "$folder"/"$oname".webp "$folder"/"$oname".png
+        magick "$folder"/"$oname".webp "$folder"/"$oname".jpg
         avifenc "$folder"/"$oname".jpg "$fileFolder"/"$File".avif > ~/.config/tt/log
         avifenc "$folder"/"$oname".jpeg "$fileFolder"/"$File".avif > ~/.config/tt/log
         avifenc "$folder"/"$oname".png "$fileFolder"/"$File".avif > ~/.config/tt/log
@@ -464,10 +464,10 @@ function ttvid(){
 		# cat the old text file to the new one, then we do not need the ttvidc script
 		cat "$folder"/"${oname}".txt
 		rm "$folder"/"${oname}".txt
-		ffmpeg -loglevel quiet -ss 2 -i "$fileFolder"/"$File"  -t 1 -f image2 "$folder"/"$File".png
-        convert "$folder"/"$File".png -resize 1200x1200 "$folder"/"$File"-.png
-        avifenc "$folder"/"$File"-.png  "$fileFolder"/"$File".avif > ~/.config/tt/log
-		rm "$folder"/"$File".png "$folder"/"$File"-.png
+		ffmpeg -loglevel quiet -ss 2 -i "$fileFolder"/"$File"  -t 1 -f image2 "$folder"/"$File".jpg
+        magick "$folder"/"$File".jpg -resize 1200x1200 "$folder"/"$File"-.jpg
+        avifenc "$folder"/"$File"-.jpg  "$fileFolder"/"$File".avif > ~/.config/tt/log
+		rm "$folder"/"$File".jpg "$folder"/"$File"-.jpg
         ffmpeg -i "$folder"/"${oname}".srt "$fileFolder"/"${name}".vtt
         mv "$folder"/"${oname}".ttml "$fileFolder"/"${name}".ttml
         rm "$folder"/"${name}".srt
@@ -522,10 +522,10 @@ function ttpdf(){
     fi
     file-description "$folder" "$File" "@Document $tags" "$source" "$additiontext" "pic" "$folderSwitch"
 
-    pdftoppm -png -singlefile "$fileFolder"/"$File" "$fileFolder"/"$File"
-    convert "$fileFolder"/"$File".png -resize 1200x1200 "$fileFolder"/"$File".png
-    avifenc "$fileFolder"/"$File".png "$fileFolder"/"$File".avif > ~/.config/tt/log
-    rm "$fileFolder"/"$File".png
+    pdftoppm -jpeg -singlefile "$fileFolder"/"$File" "$fileFolder"/"$File"
+    magick "$fileFolder"/"$File".jpg -resize 1200x1200 "$fileFolder"/"$File".jpg
+    avifenc "$fileFolder"/"$File".jpg "$fileFolder"/"$File".avif > ~/.config/tt/log
+    rm "$fileFolder"/"$File".jpg
     pdfinfo "$fileFolder"/"$File" | grep Pages
     echo -e "\n"
     pdftotext -nopgbrk -enc UTF-8 -f 1 -l 1 "$fileFolder"/"$File" -

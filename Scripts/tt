@@ -10,9 +10,10 @@ folder=$(dirname "$(realpath "$ofile")")
 #ofile=$(basename "$file")
 #echo $ofile
 extens=${ofile##*.}
+mtype=$(file -b --mime-type "$ofile" | cut -s -d "/" -f 1)
+stype=$(file -b --mime-type "$ofile" | cut -s -d "/" -f 2)
 Filename=${ofile%.*}
 #folder=$(pwd)
-Unterricht=$(echo $File | grep -o Unterrichtsnotiz)
 File=$(cleanName "$ofile")
 yadSwitch=$5
 #echo $folder
@@ -20,15 +21,9 @@ if [[ -e "$File".md ]]
 then
 	xdg-open "$File" &
 else
-    if [[ $(echo $Filename | grep -o Unterrichtsnotiz) == Unterrichtsnotiz || $(echo $Filename | grep -o Unterrichtsnotizen) == Unterrichtsnotizen || $(echo $Filename | grep -o Unterricht) == Unterricht ]]
-    then
-        source="$author"
-        tags="@Unterricht @Nachhilfe"
-    else
-        source="$2"
-        tags="$3"
-        additiontext="$4"
-    fi
+	source="$2"
+	tags="$3"
+	additiontext="$4"
     if [[ $yadSwitch == "" ]]
     then
 		abfrage=$(yad --title="Create md file" --text="Something to add?" \
@@ -76,15 +71,23 @@ then
 	extensmkv=$(echo "$folder"/"$File" | grep -o mkv)
 	extensflv=$(echo "$folder"/"$File" | grep -o flv)
 
-	if [[ pdf == $extens ]]
+	if [[ pdf == $stype ]]
 	then
 		ttpdf "$folder" "$File" "$source" "$tags" "$additiontext" "yes" >> "$folder"/"$File".md
-	elif [[ jpg == $extens || PNG == $extens || JPEG == $extens || svg == $extens || png == $extens || webp == $extens || jpeg == $extens || avif == $extens ]] && [[ -z $extenspdf && -z $extensxopp && -z $extensmp4 && -z $extensmov && -z $extensflv && -z $extensmkv ]]
+	#elif [[ jpg == $extens || PNG == $extens || JPEG == $extens || svg == $extens || png == $extens || webp == $extens || jpeg == $extens || avif == $extens ]] && [[ -z $extenspdf && -z $extensxopp && -z $extensmp4 && -z $extensmov && -z $extensflv && -z $extensmkv ]]
+	elif [[ image == $mtype ]]
 	then
 		# || tif == $extens || tiff == $extens
-		if [[ avif != $extens ]]
+		if [[ avif != $stype ]]
 		then
-			convert "$folder"/"$File" "$folder"/"$Filename".avif
+			if [[ webp == $stype ]]
+			then
+				magick "$folder"/"$Filename".webp "$folder"/"$Filename"-.jpg
+				avifenc "$folder"/"$Filename"-.jpg "$folder"/"$Filename".avif
+				rm "$folder"/"$Filename"-.jpg
+			else
+				avifenc "$folder"/"$File" "$folder"/"$Filename".avif
+			fi
 			touch -r "$folder"/"$File" "$folder"/"$Filename".avif # make the original modification time
 		fi
 		extens=avif
@@ -93,18 +96,19 @@ then
 		then
 			rm "$File"
 		fi
-	elif [[ mp4 == $extens || mov == $extens || mkv == $extens || flv = $extens || ogv = $extens || MOV == $extens || MP4 == $extens ]]
+	#elif [[ mp4 == $extens || mov == $extens || mkv == $extens || flv = $extens || ogv = $extens || MOV == $extens || MP4 == $extens ]]
+	elif [[ video == $mtype ]]
 	then
 		ttvid "$folder" "$File" "$tags" "$source" "$additiontext" "$ofile" "yes" >> "$folder"/"$File".md
 	elif [[ epub == $extens ]]
 	then
 		file-description "$folder" "$File" "@Ebook $tags" "$source" "$additiontext" "" "yes" >> "$folder"/"$File".md
 		einfo "$folder"/"$File" >> "$folder"/"$File".md
-	elif [[ eml == $extens ]]
+	elif [[ message == $mtype ]]
 	then
 		file-description "$folder" "$File" "@Email $tags" "$source" "$additiontext" "" "yes" >> "$folder"/"$File".md
 		cat "$folder"/"$File" >> "$folder"/"$File".md
-	elif [[ maff == $extens ]]
+	elif [[ maff == $stype ]]
 	then
 		file-description "$folder" "$File" "@Web $tags" "$source" "$additiontext" "" "yes" >> "$folder"/"$File".md
 		folder2=$(unzip -Z -1 "$Filename" '*/')
@@ -112,22 +116,25 @@ then
 		cat $folder2'index.rdf' >> "$folder"/"$File".md
 		#pandoc -f html -t zimwiki $folder'index.html' >> "$folder"/"$File".md
 		rm -r $folder2
-	elif [[ cts == $extens ]]
+	elif [[ octet-stream == $stype ]]
 	then
+		# .cts files
 		file-description "$folder" "$File" "@Treesheets $tags" "$source" "$additiontext" "" "yes" >> "$folder"/"$File".md
-	elif [[ tex == $extens ]]
+	#elif [[ tex == $extens ]]
+	elif [[ x-tex == $stype ]]
 	then
 		ttex "$folder" "$File" "$ofile"
-	elif [[ $extens == xopp ]]
+	elif [[ $stype == x-xopp ]]
 	then
 		xournalpp --export-range=1 "$folder"/"$File" -i "$folder"/"$File".png
 		file-description "$folder" "$File" "@Document $tags" "$source" "$additiontext" "pic" "yes" >> "$folder"/"$File".md
 		convert "$folder"/"$File".png "$folder"/"$File"/"$File".avif
 		rm "$folder"/"$File".png
-	elif [[ mp3 == $extens || webm == $extens || flac == $extens || aac == $extens || ogg == $extens || weba == $extens || wav == $extens || aiff == $extens || m4a == $extens || opus == $extens ]]
+	#elif [[ mp3 == $extens || webm == $extens || flac == $extens || aac == $extens || ogg == $extens || weba == $extens || wav == $extens || aiff == $extens || m4a == $extens || opus == $extens ]]
+	elif [[ audio == $mtype ]]
 	then
 		file-description "$folder" "$File" "@Musik $tags" "$source" "$additiontext" >> "$folder"/"$File".md
-	elif [[ $extens == $File ]]
+	elif [[ directory == $stype ]]
 	then
 		file-description "$folder" "$File" "$tags" "$source" "$additiontext" >> "$folder"/"$File".md
 	elif [[ $extens == docx || $extens == doc  || $extens == odt || $extens == ods || $extens == xls || $extens == xlsx || $extens == ppt || $extens == pptx || $extens == odp ]]
@@ -151,13 +158,14 @@ fi
 
 if [[ $showfile == TRUE ]];
 then
-    if [[ $extens == tex ]]
+    if [[ $stype == x-tex ]]
     then
         File=$(cleanName "$Newname.$extens")
         filename=$(basename "$File" .tex)
         #kate "$filename"_tex.md
         texstudio "$filename"_tex/"$filename".md 2>/dev/null &
-    elif [[ jpg == $extens || png == $extens || webp == $extens || jpeg == $extens || avif == $extens ]]
+    #elif [[ jpg == $extens || png == $extens || webp == $extens || jpeg == $extens || avif == $extens ]]
+    elif [[ image == $mtype ]]
     then
         kate "$filename".avif.md 2>/dev/null &
         xdg-open "$filename".avif 2>/dev/null &
