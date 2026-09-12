@@ -32,7 +32,7 @@ cd $folder
 
 #origname=$(echo $origname | cut -s -d "?" -f 0)
 
-abfrage=$(yad --title="Download File" --text="Something to add?" \
+abfrage=$(yad --no-markup --title="Download File" --text="Something to add?" \
     --form --separator="~" --item-separator="," \
     --field="Another name" \
     --field="Source" \

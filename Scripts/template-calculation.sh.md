@@ -89,7 +89,7 @@ if [ ! $? -eq 1 ];
 then
 	File=$(echo $abfrage | cut -s -d "~" -f 1)
 	langname=$(echo $abfrage | cut -s -d "~" -f 2)
-	source=$(echo $abfrage | cut -s -d "~" -f 3)
+	author=$(echo $abfrage | cut -s -d "~" -f 3)
 	tags=$(echo $abfrage | cut -s -d "~" -f 4)
 	additiontext=$(echo $abfrage | cut -s -d "~" -f 5)
 	File=$(cleanName "$File")
@@ -112,9 +112,9 @@ Creating template
 *create Template*
 ```bash
 
-markdown-description-program "${Filename}.${extens}" >> "$folder"/"${Filename}.${extens}".md
+markdown-description-program "${Filename}.${extens}" "$author\n $tags\n $additiontext\n" >> "$folder"/"${Filename}.${extens}".md
 
-template-code "$folder" "${Filename}.${extens}" >> "$folder"/"${Filename}.${extens}".md
+template-code "$folder" "${Filename}.${extens}" "" "" >> "$folder"/"${Filename}.${extens}".md
 
 ```
 

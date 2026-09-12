@@ -50,7 +50,7 @@ author="$(config_get author)"
 
 
 
-abfrage=$(yad --title="Create text file" --text="Something to add?" \
+abfrage=$(yad --no-markup --title="Create text file" --text="Something to add?" \
 	--form --width 500 --separator="~" --item-separator=","  \
 	--field="Anderer Name:" \
 	--field="Quelle:":CBE \

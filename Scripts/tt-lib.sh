@@ -109,6 +109,7 @@ function markdown-description-program(){
     #echo -e "Created [$(date +%Y-%m-%d)]()\n"
     echo -e "Created $(date +%Y-%m-%d)\n"
     echo -e "\n## Description"
+    echo -e "\n$2"
     echo -e "\n## Journal"
     echo -e "- [*] Backlog"
     echo -e "   - [ ] "
@@ -169,10 +170,21 @@ function template-code(){
         mmd)
             echo -e "noweb.py -R${Filename}.${extens} ${outFile}.md > "${path}"/${Filename}.${extens} && mermaid-cli.sh "${path}"/${Filename}.${extens} && echo '${Filename}.${extens}' && notify-send -a \"Compilation of ${Filename}.${extens}\" \"\" \"\$(date +\"%Y-%m-%d\") fertig\" && gwenview "${path}"/${Filename}.png 2>/dev/null \n\`\`\`"
             ;;
-        *)
-            echo -e "noweb.py -R${Filename}.${extens} ${outFile}.md > ${Filename}.${extens} && echo '${Filename}.${extens}' && notify-send -a \"Compilation of ${Filename}.${extens}\" \"\" \"\$(date +\"%Y-%m-%d\") fertig\" \n\`\`\`"
+        sh)
+            echo -e "noweb.py -R${Filename}.${extens} ${outFile}.md > ${Filename}.${extens} && echo '${Filename}.${extens}' && chmod u+x ${Filename}.${extens} && notify-send -a \"Compilation of ${Filename}.${extens}\" \"\" \"\$(date +\"%Y-%m-%d\") fertig\" && konsole --hold -e \"./${Filename}.${extens}\" \n\`\`\`"
             echo -e "\n\n\`\`\`bash"
-            echo -e "chmod u+x ${Filename}.${extens} && ln -sf \$(pwd)/${Filename}.${extens} ~/.local/bin/${Filename}.${extens} && echo 'fertig'\n\`\`\`"
+            echo -e "ln -sf \$(pwd)/${Filename}.${extens} ~/.local/bin/${Filename}.${extens} && echo 'fertig'\n\`\`\`"
+            ;;
+        py)
+            echo -e "noweb.py -R${Filename}.${extens} ${outFile}.md > ${Filename}.${extens} && echo '${Filename}.${extens}' && chmod u+x ${Filename}.${extens} && notify-send -a \"Compilation of ${Filename}.${extens}\" \"\" \"\$(date +\"%Y-%m-%d\") fertig\" && konsole --hold -e \"python ./${Filename}.${extens}\"\n\`\`\`"
+            ;;
+        cpp)
+            echo -e "noweb.py -R${Filename}.${extens} ${outFile}.md > ${Filename}.${extens} && echo '${Filename}.${extens}' && chmod u+x ${Filename} && konsole --hold -e \"./${Filename}\" && notify-send -a \"Compilation of ${Filename}.${extens}\" \"\" \"\$(date +\"%Y-%m-%d\") fertig\" && g++ -o ${Filename} ./${Filename}.${extens} \n\`\`\`"
+            ;;
+        *)
+            echo -e "noweb.py -R${Filename}.${extens} ${outFile}.md > ${Filename}.${extens} && echo '${Filename}.${extens}' && chmod u+x ${Filename}.${extens} && notify-send -a \"Compilation of ${Filename}.${extens}\" \"\" \"\$(date +\"%Y-%m-%d\") fertig\" \n\`\`\`"
+            echo -e "\n\n\`\`\`bash"
+            echo -e "ln -sf \$(pwd)/${Filename}.${extens} ~/.local/bin/${Filename}.${extens} && echo 'fertig' && konsole --hold -e \"./${Filename}.${extens}\"\n\`\`\`"
             ;;
     esac
     echo -e "\n### ${Filename}.${extens}\n\n"
@@ -189,6 +201,7 @@ function template-code(){
             sh)
                 echo -e "\`\`\`${extens}"
                 echo -e "#!/bin/bash" | tee -a "$folder"/"$File"
+                echo -e "# set -x # for jupyter notebook style output on shell" | tee -a "$folder"/"$File"
                 ;;
             plantuml)
                 echo -e "\`\`\`${extens}"
@@ -299,7 +312,7 @@ function file-description(){
     local File=$2
     local tags=$3
     local source=$4
-    local additiontext=$5
+    local additiontext="$5"
     local picture=$6
     local folderSwitch=$7
     local fileFolder=

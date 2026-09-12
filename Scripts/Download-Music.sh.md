@@ -35,9 +35,10 @@ if [[ ! "$yt" = "" ]];
 then
     text="$(yt-dlp --cookies-from-browser firefox --get-description ${website})"
     #text="$(echo -e "${text}" | sed 's/\"//g')"
-    yt-dlp --cookies-from-browser firefox --no-mtime -o "$musicDir/%(title)s.%(ext)s" -f "140/251" --js-runtimes deno:$homeDir/.deno/bin/deno --remote-components ejs:github -i "${website}"
-    yt-dlp -q --js-runtimes deno:$homeDir/.deno/bin/deno --remote-components ejs:github --write-thumbnail --skip-download -i ${website} -o "$musicDir/%(title)s.%(ext)s"
-	ofile=$(yt-dlp --cookies-from-browser firefox --print filename -s "${website}" -f "140/251" --js-runtimes deno:$homeDir/.deno/bin/deno --remote-components ejs:github -o "%(title)s.%(ext)s")
+    yt-dlp --cookies-from-browser firefox --no-mtime -o "$musicDir/%(title)s.%(ext)s" -f "140/251" -i "${website}"
+    # --js-runtimes deno:$homeDir/.deno/bin/deno --remote-components ejs:github
+    yt-dlp -q --write-thumbnail --skip-download -i ${website} -o "$musicDir/%(title)s.%(ext)s"
+	ofile=$(yt-dlp --cookies-from-browser firefox --print filename -s "${website}" -f "140/251" -o "%(title)s.%(ext)s")
 	name=${ofile%.*}
 	extens=${ofile##*.}
     convert "$musicDir/$name.webp" "$musicDir/$name.jpg"
@@ -45,36 +46,38 @@ then
 	rm "$musicDir/$name.webp" "$musicDir/$name.jpg"
 	mv "$musicDir/$name-.$extens" "$musicDir/$ofile"
 else
-    text=$(links2 -dump ${website})
+    text=$(links -dump "${website}")
+    #links2 -no-numbering -no-references -dump "${website}"
     #text=$(echo -e "${text}")
-    yt-dlp --no-mtime -o "$musicDir/%(title)s.%(ext)s" --cookies-from-browser firefox --js-runtimes deno:$homeDir/.deno/bin/deno --remote-components ejs:github --embed-thumbnail -f b --no-mtime --audio-quality 0 -i "${website}"
-	ofile=$(yt-dlp --cookies-from-browser firefox --print filename -s "${website}" -f b --audio-quality 0 --js-runtimes deno:$homeDir/.deno/bin/deno --remote-components ejs:github -o "%(title)s.%(ext)s")
+    yt-dlp --no-mtime -o "$musicDir/%(title)s.%(ext)s" --cookies-from-browser firefox --embed-thumbnail -f b --audio-quality 0 -i "${website}"
+	ofile=$(yt-dlp --cookies-from-browser firefox --print filename -s "${website}" -f b --audio-quality 0 -o "%(title)s.%(ext)s")
+	# --js-runtimes deno:$homeDir/.deno/bin/deno --remote-components ejs:github 
 fi
 
 extens=${ofile##*.}
 name=${ofile%.*}
 #additiontext="$(yt-dlp --get-description ${website})"
 author="$(config_get author)"
-
-abfrage=$(yad --title="Create text file" --text="Something to add?" \
+text=$(echo -e "$text" | sed "s/\*/\+/g")
+abfrage=$(yad --no-markup --title="Create text file" --text="Something to add?" \
 	--form --width 500 --separator="~" --item-separator=","  \
 	--field="Anderer Name" \
 	--field="Quelle":CBE \
 	--field="Tags" \
 	--field="Weiteres":TXT \
-	"$name" "$website,Internet,$author" "$tags" "$text")
+	"$name" "$website,Internet,$author" "$tags" "${text}")
 if [ ! $? -eq 1 ];
 then
 	Newname=$(echo $abfrage | cut -s -d "~" -f 1)
 	source=$(echo $abfrage | cut -s -d "~" -f 2)
 	tags=$(echo $abfrage | cut -s -d "~" -f 3)
-	additiontext=$(echo $abfrage | cut -s -d "~" -f 4)
-
+	additiontext=$(echo $abfrage | awk -F '[~]' '{print $4}')
+	#echo "$additiontext"
 	File=$(cleanName "$Newname"."$extens")
 
 	mv "$musicDir"/"$ofile" "$musicDir"/"$File"
     
-    file-description "$musicDir" "$File" "@Musik $tags" "$source" "$text" >> "$musicDir"/"$File".md
+    file-description "$musicDir" "$File" "@Musik $tags" "$source" "$additiontext" >> "$musicDir"/"$File".md
 fi
 
 notify-send -a "Music Download finished" "Music $File" ""

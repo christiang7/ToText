@@ -83,10 +83,10 @@ then
 			if [[ webp == $stype ]]
 			then
 				magick "$folder"/"$Filename".webp "$folder"/"$Filename"-.jpg
-				avifenc "$folder"/"$Filename"-.jpg "$folder"/"$Filename".avif
+				avifenc "$folder"/"$Filename"-.jpg "$folder"/"$Filename".avif > ~/.config/tt/log
 				rm "$folder"/"$Filename"-.jpg
 			else
-				avifenc "$folder"/"$File" "$folder"/"$Filename".avif
+				avifenc "$folder"/"$File" "$folder"/"$Filename".avif > ~/.config/tt/log
 			fi
 			touch -r "$folder"/"$File" "$folder"/"$Filename".avif # make the original modification time
 		fi
